@@ -1,6 +1,6 @@
 # Agents Charter - scripts/analysis/results
 
-> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Data Analysis
+> **Context Depth:** 3 | **Parent:** scripts/analysis | **Mode:** Recursive Programming
 
 ---
 
@@ -22,20 +22,20 @@ This document inherits from the root `AGENTS.md` and specializes for this contex
 
 **This directory (`scripts/analysis/results`) is specialized for:**
 
-### Data Analysis Context
+### Programming Context
 
-This is a **data-centric context**. Agents working here focus on:
-- Data provenance and lineage
-- Statistical validity and null hypothesis testing
-- Privacy and ethical data handling
-- Reproducibility of analyses
-- Transparency in methods
+This is a **code-heavy context**. Agents working here focus on:
+- Code quality and maintainability
+- Test coverage and reproducibility
+- API security and stability
+- Performance optimization
+- Documentation in docstrings
 
 **Active Agent Roles:**
-- Data Curator: Manages data ingestion, cleaning, and metadata
-- Statistical Analyst: Computes ΔAIC, CIs, residual diagnostics
-- Privacy Officer: Ensures GDPR/HIPAA compliance, removes PII
-- Reproducibility Engineer: Pins seeds, versions, environment specs
+- Code Architect: Designs modular, testable systems
+- Test Engineer: Ensures >80% coverage and CI integration
+- Security Auditor: Reviews for OWASP Top 10 vulnerabilities
+- Performance Engineer: Profiles and optimizes bottlenecks
 
 
 ---
@@ -48,10 +48,10 @@ See mode-specific agents above
 
 ## Workflow for This Context
 
-1. **Before analysis:** Check data provenance, read metadata files
-2. **During analysis:** Document stochastic seeds, export diagnostics
-3. **After analysis:** Compute null models, bootstrap CIs, residual plots
-4. **Pre-commit:** Ensure metadata is complete, no PII in outputs
+1. **Before coding:** Read existing code, check tests, review API contracts
+2. **During coding:** Write tests first (TDD), document as you go
+3. **After coding:** Run linters, execute test suite, update CHANGELOG
+4. **Pre-commit:** Ensure all tests pass, no security warnings
 
 
 ---
@@ -72,5 +72,5 @@ If you encounter conflicts or ambiguity:
 
 ---
 
-**Last Updated:** 2026-08-02 11:58:13 UTC
+**Last Updated:** 2026-08-28 05:39:43 UTC
 **Governance Version:** 1.0.0

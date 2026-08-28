@@ -1,6 +1,6 @@
 # Governance Policy - scripts/analysis
 
-> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Data Analysis
+> **Context Depth:** 2 | **Parent:** scripts | **Mode:** Recursive Programming
 
 ---
 
@@ -22,19 +22,19 @@ This policy inherits from parent and root governance and adds context-specific r
 
 This policy governs all work in `scripts/analysis` and its subdirectories.
 
-**Mode:** Recursive Data Analysis
+**Mode:** Recursive Programming
 
 ---
 
 ## Operational Rules
 
-### Data Policy
+### Code Policy
 
-1. **Metadata Mandatory**: No data without `.metadata.json`
-2. **Immutable Raw Data**: Never modify files in `raw/`
-3. **Versioned Outputs**: Tag processed datasets with semantic versions
-4. **Statistical Rigor**: Always compute ΔAIC and bootstrap CIs
-5. **Privacy Compliance**: PII removal audited before commit
+1. **Test Coverage**: Minimum 80% for new code
+2. **Code Review**: All PRs require review by at least one other agent
+3. **Linting**: Code must pass `pylint`, `black`, `mypy` (Python) or equivalent
+4. **Documentation**: Public APIs must have docstrings with type hints
+5. **Commit Hygiene**: Use conventional commits (feat:, fix:, docs:, etc.)
 
 
 ---
@@ -43,23 +43,22 @@ This policy governs all work in `scripts/analysis` and its subdirectories.
 
 Before committing changes in this context:
 
-- [ ] Metadata file exists and is complete
-- [ ] Data provenance documented (source, license, date)
-- [ ] No PII in committed files
-- [ ] Null models defined and tested
-- [ ] Statistical diagnostics exported (ΔAIC, R², residuals)
-- [ ] Stochastic seeds logged
-- [ ] Confidence intervals computed
+- [ ] All tests pass (`pytest`, `unittest`, etc.)
+- [ ] Linters report no errors
+- [ ] Type hints added (Python 3.9+)
+- [ ] Docstrings complete for public functions
+- [ ] No hardcoded secrets or API keys
+- [ ] CHANGELOG updated
 
 
 ---
 
 ## Automation Hooks
 
-- **Pre-commit**: Scan for PII (email, SSN, names)
-- **CI Pipeline**: Validate metadata schemas
-- **Nightly**: Re-run key analyses with different seeds
-- **Release**: Archive datasets with DOI (Zenodo integration)
+- **Pre-commit**: Run linters and formatters
+- **CI Pipeline**: Execute full test suite on push
+- **Nightly**: Security audit of dependencies
+- **Release**: Automated version tagging and deployment
 
 
 ---
@@ -84,7 +83,7 @@ This policy can be updated by:
 
 **Change Log:**
 
-- 2026-08-02 11:58:13 UTC: Initial governance deployment (v1.0.0)
+- 2026-08-28 05:39:43 UTC: Initial governance deployment (v1.0.0)
 
 ---
 
@@ -95,5 +94,5 @@ This policy can be updated by:
 
 ---
 
-**Last Updated:** 2026-08-02 11:58:13 UTC
+**Last Updated:** 2026-08-28 05:39:43 UTC
 **Governance Version:** 1.0.0

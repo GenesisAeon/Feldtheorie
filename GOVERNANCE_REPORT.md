@@ -1,6 +1,6 @@
 # Fractal Governance Report
 
-**Generated:** 2026-08-02 11:58:14 UTC
+**Generated:** 2026-08-28 05:39:44 UTC
 **Governance Version:** 1.0.0
 
 ---
@@ -9,15 +9,15 @@
 
 - **Total Governed Contexts:** 655
 - **Contexts by Mode:**
-  - code: 59
-  - data: 425
-  - research: 171
+  - code: 65
+  - data: 420
+  - research: 170
 
 - **Total Agents:** 655
 - **Agents by Mode:**
-  - code: 59
-  - data: 425
-  - research: 171
+  - code: 65
+  - data: 420
+  - research: 170
 
 ---
 

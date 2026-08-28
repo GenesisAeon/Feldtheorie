@@ -1,6 +1,6 @@
 # Architecture - seed/releases/v4.0.0-alpha_MirrorMachine/data
 
-> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Data Analysis
+> **Context Depth:** 4 | **Parent:** seed/releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
 
 ---
 
@@ -21,24 +21,24 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 **This directory (`seed/releases/v4.0.0-alpha_MirrorMachine/data`) follows the following architectural pattern:**
 
-### Data Architecture
+### Research Architecture
 
 ```
 {{PATH}}
-├── raw/                 (Immutable source data)
-├── processed/           (Cleaned, versioned data)
-├── interim/             (Intermediate transformations)
-├── external/            (Third-party data)
-├── metadata/            (Provenance and schemas)
-└── README.md            (Data dictionary)
+├── manuscripts/         (Papers, preprints)
+├── references/          (BibTeX, PDFs)
+├── hypotheses/          (Testable claims)
+├── theories/            (Formal models)
+├── indices/             (Navigation, cross-links)
+└── README.md            (Knowledge map)
 ```
 
-**Data Flow:**
-1. Ingest → raw/
-2. Clean → interim/
-3. Transform → processed/
-4. Analyze → results/
-5. Publish → docs/
+**Documentation Flow:**
+1. Hypothesis → hypotheses/
+2. Evidence → data/, analysis/
+3. Synthesis → manuscripts/
+4. Review → releases/
+5. Archive → archive/
 
 
 ---
@@ -77,5 +77,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2026-08-02 11:58:13 UTC
+**Last Updated:** 2026-08-28 05:39:43 UTC
 **Governance Version:** 1.0.0

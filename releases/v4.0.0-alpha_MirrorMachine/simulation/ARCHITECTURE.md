@@ -1,6 +1,6 @@
 # Architecture - releases/v4.0.0-alpha_MirrorMachine/simulation
 
-> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Research
+> **Context Depth:** 3 | **Parent:** releases/v4.0.0-alpha_MirrorMachine | **Mode:** Recursive Programming
 
 ---
 
@@ -21,24 +21,22 @@ This document inherits architectural patterns from the root `ARCHITECTURE.md` an
 
 **This directory (`releases/v4.0.0-alpha_MirrorMachine/simulation`) follows the following architectural pattern:**
 
-### Research Architecture
+### Programming Architecture
 
 ```
 {{PATH}}
-├── manuscripts/         (Papers, preprints)
-├── references/          (BibTeX, PDFs)
-├── hypotheses/          (Testable claims)
-├── theories/            (Formal models)
-├── indices/             (Navigation, cross-links)
-└── README.md            (Knowledge map)
+├── __init__.py      (Module initialization)
+├── core/            (Core business logic)
+├── tests/           (Unit and integration tests)
+├── config/          (Configuration schemas)
+└── README.md        (Module documentation)
 ```
 
-**Documentation Flow:**
-1. Hypothesis → hypotheses/
-2. Evidence → data/, analysis/
-3. Synthesis → manuscripts/
-4. Review → releases/
-5. Archive → archive/
+**Design Principles:**
+- Separation of concerns
+- Dependency injection
+- Test-driven development
+- CI/CD integration
 
 
 ---
@@ -77,5 +75,5 @@ Integrates with parent context governance
 
 ---
 
-**Last Updated:** 2026-08-02 11:58:13 UTC
+**Last Updated:** 2026-08-28 05:39:43 UTC
 **Governance Version:** 1.0.0
