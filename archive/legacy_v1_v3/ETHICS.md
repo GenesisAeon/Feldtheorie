@@ -76,5 +76,5 @@ Before committing work in `archive/legacy_v1_v3`:
 
 ---
 
-**Last Updated:** 2026-08-28 21:09:21 UTC
+**Last Updated:** 2026-08-28 21:25:51 UTC
 **Governance Version:** 1.0.0
