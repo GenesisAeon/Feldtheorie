@@ -75,5 +75,5 @@ Before committing work in `pipelines/wavefunction`:
 
 ---
 
-**Last Updated:** 2026-08-28 20:47:24 UTC
+**Last Updated:** 2026-08-28 21:09:21 UTC
 **Governance Version:** 1.0.0
