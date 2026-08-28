@@ -76,5 +76,5 @@ Before committing work in `seed/theory/hypothese_quantum_aliasing`:
 
 ---
 
-**Last Updated:** 2026-08-28 05:45:04 UTC
+**Last Updated:** 2026-08-28 08:53:44 UTC
 **Governance Version:** 1.0.0
