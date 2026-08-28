@@ -37,6 +37,12 @@ jobs:
         # history. This flag makes mypy treat the repo root as the
         # package base, matching how the code actually imports itself.
         run: mypy --explicit-package-bases src
+      - name: Run AFET constant guard
+        # Was defined but never wired into any workflow -- this check
+        # existed as dead code while theory/afet.py's own AFETConstants.V_RIG
+        # carried a factor-1000 error (1.352 instead of 1352.07 km/s) that
+        # this guard's BANNED list would have flagged had it ever run.
+        run: python tools/afet_constant_guard.py
 
   test:
     name: Tests (Python ${{ matrix.python-version }})

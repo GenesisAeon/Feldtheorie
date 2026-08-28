@@ -1,9 +1,8 @@
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
-BANNED = ["13.5e6", "37.6", "0.0625", "1.352"]
+BANNED = ["13.5e6", "37.6", "0.0625", "1.352", "1352.0", "1352.07"]
 SCOPES = [Path("aeon"), Path("integration"), Path("src/uatc_core")]
 
 

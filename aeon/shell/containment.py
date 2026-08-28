@@ -10,7 +10,6 @@ from threading import Lock
 from typing import Any
 
 import numpy as np
-
 from theory.afet import AFETConstants
 
 from aeon.nullkern.zero_point_kernel import Nullkern
@@ -32,7 +31,7 @@ class AeonShell:
         max_agents: int = 100,
         trajectory_max_length: int = 1000,
         zeta_damping: float = 0.85,
-        v_rig_offset_km_s: float = AFETConstants.V_RIG,
+        v_rig_offset_km_s: float = 0.0,
         frame_principle_active: bool = True,
     ) -> None:
         self.kernel = kernel
@@ -164,7 +163,7 @@ class AeonShell:
         for _ in range(steps):
             self.evolve(steps=1, delta_time=compressed_delta)
             v_rig_eff = self.kernel.compute_v_rig_effective() + self.v_rig_offset_km_s
-            v_rig_base = AFETConstants.V_RIG * 1000.0 + self.v_rig_offset_km_s
+            v_rig_base = AFETConstants.V_RIG + self.v_rig_offset_km_s
             offset = v_rig_eff - v_rig_base
             v_rig_offsets.append(offset)
             beta_trace.append(float(self.kernel.state.beta))
@@ -308,7 +307,7 @@ class AeonShell:
             resonances = [getattr(a, "resonance", 0.5) for a in self.agents]
             beta_sync = np.std(resonances) / np.mean(resonances) if np.mean(resonances) > 0 else 0.0
             v_collective = (
-                (AFETConstants.V_RIG * 1000.0 + self.v_rig_offset_km_s)
+                (AFETConstants.V_RIG + self.v_rig_offset_km_s)
                 * kappa_field
                 * (1.0 / max(beta_sync, 0.1))
             )

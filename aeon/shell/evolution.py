@@ -18,9 +18,10 @@ References:
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 import numpy as np
+from theory.afet import AFETConstants
 
 
 class EvolutionTracker:
@@ -209,7 +210,7 @@ class EvolutionTracker:
                 p.get("information_density", 0.0) for p in self.trajectory
             ],
             "v_rig_effective": [
-                p.get("v_rig_effective", 1352.0) for p in self.trajectory
+                p.get("v_rig_effective", AFETConstants.V_RIG) for p in self.trajectory
             ],
             "phase_transitions": self.get_phase_transitions(),
             "critical_events": self.get_critical_events(),

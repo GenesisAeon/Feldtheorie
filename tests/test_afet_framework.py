@@ -1,7 +1,25 @@
 from __future__ import annotations
 
+import math
+
 import pytest
 from theory.afet import AFETConstants, AFETFramework
+
+
+def test_v_rig_matches_closed_form_derivation() -> None:
+    """Regression guard: v_RIG must equal c/(alpha^-1 * phi) in km/s.
+
+    Catches the factor-1000 error (1.352 instead of 1352.07 km/s) that
+    previously propagated from this constant into citation metadata and
+    several call sites' compensating "* 1000.0" workarounds.
+    """
+    c_light_km_s = 299792.458
+    alpha_inv = 137.035999177
+    phi = (1 + math.sqrt(5)) / 2
+    expected = c_light_km_s / (alpha_inv * phi)
+
+    assert AFETConstants.V_RIG == pytest.approx(expected, rel=1e-9)
+    assert 1300.0 < AFETConstants.V_RIG < 1400.0
 
 
 def test_predict_beta_anchor_points() -> None:

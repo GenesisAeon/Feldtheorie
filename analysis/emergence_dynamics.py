@@ -18,10 +18,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import numpy as np
-
 from theory.afet import AFETConstants
-
 
 # ---------------------------------------------------------------------------
 # Parameters
@@ -105,9 +102,18 @@ def simulate_stabilization(
 # Concept spread simulation
 # ---------------------------------------------------------------------------
 
+# The 0.05 growth-rate normalizer below was tuned by hand against v_RIG's
+# old (incorrect) magnitude of 1.352; the corrected physical value
+# (AFETConstants.V_RIG ~= 1352 km/s, see theory/afet.py) would make `rate`
+# ~1000x larger and saturate this logistic model in a single step. This
+# local default preserves the model's existing tested dynamics -- it is a
+# deliberate simulation-tuning constant, not the corrected physical v_RIG.
+_LEGACY_V_RIG_SCALE = 1.352
+
+
 def simulate_concept_spread(
     beta: float = AFETConstants.BETA_CRITICAL,
-    v_rig: float = AFETConstants.V_RIG,
+    v_rig: float = _LEGACY_V_RIG_SCALE,
     steps: int = 100,
     population: int = 100,
 ) -> dict[str, Any]:

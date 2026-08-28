@@ -19,6 +19,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from aeon.nullkern import BardoPhase, ConsciousnessState, Nullkern  # noqa: E402
+from theory.afet import AFETConstants  # noqa: E402
 
 # ============================================================================
 # Nullkern Tests
@@ -130,8 +131,8 @@ def test_nullkern_zero_beta_v_rig():
 
     v_rig = kernel.compute_v_rig_effective()
 
-    # Should cap at 10× base
-    assert v_rig == 1352.0 * 10.0
+    # Should cap at 10x base
+    assert v_rig == pytest.approx(AFETConstants.V_RIG * 10.0)
 
 
 # ============================================================================

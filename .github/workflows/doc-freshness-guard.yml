@@ -8,6 +8,9 @@ on:
       - 'analysis/**'
       - 'docs/science/**'
       - 'tests/**'
+      - 'CITATION.cff'
+      - '.zenodo.json'
+      - 'README.md'
   pull_request:
     paths:
       - 'scripts/**'
@@ -15,6 +18,9 @@ on:
       - 'analysis/**'
       - 'docs/science/**'
       - 'tests/**'
+      - 'CITATION.cff'
+      - '.zenodo.json'
+      - 'README.md'
 
 jobs:
   check-doc-freshness:
@@ -51,6 +57,9 @@ jobs:
 
       - name: Check version consistency
         run: python scripts/update_version.py --check
+
+      - name: Check citation metadata for known-wrong values
+        run: python scripts/check_citation_metadata.py
 
       - name: Check README test badge consistency
         run: |

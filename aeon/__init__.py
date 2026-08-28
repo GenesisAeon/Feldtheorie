@@ -2,6 +2,14 @@
 Aeon Architecture - V7 Phase 4
 ===============================
 
+**Status: speculative theory, not empirically validated.** Concepts here
+(Bardo states, kappa-decoupling, v_RIG as an "information integration
+velocity") are internal modeling metaphors borrowed from Buddhist
+metaphysics and dimensional-analysis wordplay on physical constants, not
+established physics or neuroscience. Treat outputs as simulation artifacts
+of this framework's own axioms, per theory/ETHICS.md's "Hypothesis
+Transparency" requirement -- not as evidence about consciousness itself.
+
 The Aeon system provides a framework for modeling consciousness states,
 evolution, and multi-agent coordination in the UTAC framework.
 
@@ -94,12 +102,12 @@ GPLv3 (Code), CC BY-NC 4.0 (Documentation)
 __version__ = "1.0.0-alpha"
 __author__ = "Johann Benjamin Römer"
 
-from aeon.nullkern.zero_point_kernel import Nullkern
-from aeon.shell.containment import AeonShell
-from aeon.agents.semantic_agent import SemanticAgent, RecursiveCoupler
+from aeon.agents.semantic_agent import RecursiveCoupler, SemanticAgent
 from aeon.modules.genesis_orchestrator import GenesisOrchestrator
 from aeon.modules.knowledge_system import KnowledgeSystem
+from aeon.nullkern.zero_point_kernel import Nullkern
 from aeon.resonanzpfad import ResonanzpfadOptimizer
+from aeon.shell.containment import AeonShell
 from aeon.shell.grammar import BNF_GRAMMAR, AeonShellGenerator, AeonShellParser
 
 __all__ = [

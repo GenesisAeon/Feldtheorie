@@ -22,6 +22,7 @@ from __future__ import annotations
 from typing import Any
 
 import numpy as np
+from theory.afet import AFETConstants
 
 
 class CollectiveInterface:
@@ -126,7 +127,7 @@ class CollectiveInterface:
             beta_sync = 0.0
 
         # v_collective = collective velocity
-        v_rig_base = 1352.0
+        v_rig_base = AFETConstants.V_RIG
         if beta_sync > 0:
             v_collective = v_rig_base * kappa_field * (1.0 / beta_sync)
         else:

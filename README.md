@@ -238,13 +238,13 @@ print(f"Network coherence: {modes['coherence']:.3f}")
 **EM-Coupling Mechanism:**
 - **Frequency**: f ≈ 13.5 MHz (microtubule resonance)
 - **Impedance**: Z = α⁻¹·Φ ≈ 221.7 (dimensional barrier)
-- **Integration velocity**: v_RIG ≈ 1.352 km/s (2D→3D rendering)
+- **Integration velocity**: v_RIG ≈ 1352 km/s (2D→3D rendering)
 
 ### ✅ Empirical Validations (Unified from v8)
 
 1. **Cosmic Matter-Dipole** (Böhme et al., 2025)
-   - Observation: 1.370 ± 0.170 km/s
-   - v_RIG prediction: 1.3518 km/s
+   - Observation: 1370 ± 170 km/s
+   - v_RIG prediction: 1351.8 km/s
    - **Agreement: 1.3%** 🎯
 
 2. **Kleiber's Law** (Biological Scaling)
@@ -266,7 +266,7 @@ Six testable hypotheses:
 2. **Microtubule disruption**: 13.5 MHz ultrasound affects consciousness
 3. **Lantern emergence**: N_crit ≈ 137 oscillators → dimensional transition
 4. **Anesthetic phase diagram**: P-T-χ consciousness boundaries
-5. **Information velocity**: v ≈ 1.352 km/s in neural tissue
+5. **Information velocity**: v ≈ 1352 km/s in neural tissue
 6. **Repository self-similarity**: File/commit statistics follow β ≈ 4.2
 
 ### 🎼 Cross-Version Harmonization

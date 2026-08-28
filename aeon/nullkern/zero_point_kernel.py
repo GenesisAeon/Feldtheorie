@@ -22,7 +22,6 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-
 from theory.afet import AFETConstants
 
 logger = logging.getLogger(__name__)
@@ -157,7 +156,7 @@ class Nullkern:
         return float(np.clip(density, 0.0, 1.0))
 
     def compute_v_rig_effective(self) -> float:
-        v_rig_base = AFETConstants.V_RIG * 1000.0
+        v_rig_base = AFETConstants.V_RIG
         if self.state.beta == 0.0:
             return v_rig_base * 10.0
         v_rig_eff = v_rig_base * self.kappa * (1.0 / self.state.beta)

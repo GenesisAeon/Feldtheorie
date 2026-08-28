@@ -1,9 +1,20 @@
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from pathlib import Path
 
 import pandas as pd
+
+# v_RIG = c / (alpha^-1 * phi), derived once here so every consumer shares
+# the same value. Previously hardcoded as the literal 1.352 -- a factor-1000
+# error (299792.458 / (137.036 * 1.618) = 1352.07, not 1.352) that had
+# propagated into citation metadata and several call sites, each silently
+# compensating with its own "* 1000.0" or bypassing this constant entirely
+# with a hardcoded 1352.0. See CHANGELOG for the correction.
+_C_LIGHT_KM_S = 299792.458
+_ALPHA_INV = 137.035999177  # CODATA 2022 inverse fine-structure constant
+_PHI = (1 + math.sqrt(5)) / 2  # golden ratio
 
 
 @dataclass(frozen=True)
@@ -13,7 +24,7 @@ class AFETConstants:
     BETA_CRITICAL: float = 37.6
     SIGMA_PHI: float = 0.0625
     FREQ_RES: float = 13.5e6
-    V_RIG: float = 1.352
+    V_RIG: float = _C_LIGHT_KM_S / (_ALPHA_INV * _PHI)  # km/s, ~= 1352.07
 
 
 class AFETFramework:
