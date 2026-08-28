@@ -76,5 +76,5 @@ Before committing work in `docs/narrative/parity_briefs`:
 
 ---
 
-**Last Updated:** 2026-08-28 19:43:58 UTC
+**Last Updated:** 2026-08-28 19:50:42 UTC
 **Governance Version:** 1.0.0

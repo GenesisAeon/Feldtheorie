@@ -76,5 +76,5 @@ Before committing work in `archive/legacy_v1_v3/data/experimental`:
 
 ---
 
-**Last Updated:** 2026-08-28 19:43:58 UTC
+**Last Updated:** 2026-08-28 19:50:42 UTC
 **Governance Version:** 1.0.0
