@@ -75,5 +75,5 @@ Before committing work in `modules/therapist`:
 
 ---
 
-**Last Updated:** 2026-08-28 20:13:28 UTC
+**Last Updated:** 2026-08-28 20:14:51 UTC
 **Governance Version:** 1.0.0
