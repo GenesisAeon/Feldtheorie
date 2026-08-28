@@ -76,5 +76,5 @@ Before committing work in `v11_gardener/docs`:
 
 ---
 
-**Last Updated:** 2026-08-28 21:47:44 UTC
+**Last Updated:** 2026-08-28 23:26:55 UTC
 **Governance Version:** 1.0.0
