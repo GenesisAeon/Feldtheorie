@@ -76,5 +76,5 @@ Before committing work in `seed/shadow_sigillin/metaquest/system/lanterns`:
 
 ---
 
-**Last Updated:** 2026-08-28 20:00:22 UTC
+**Last Updated:** 2026-08-28 20:13:28 UTC
 **Governance Version:** 1.0.0
