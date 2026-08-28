@@ -73,6 +73,12 @@ Integrates with parent context governance
 <!-- CUSTOM_RULES -->
 <!-- Add context-specific architecture notes below this marker. The fractal governance engine will preserve these. -->
 
+Träger/Variable role mapping for the ecosystem's climate packages
+(P105–P109) and their relationship to this repo's `AFETConstants`
+(`theory/afet.py`) is tracked externally: see `PACKAGE_REGISTRY.md`
+("Träger/Variable role check: P105–P109", 2026-08-29) in the GenesisAeon
+workspace root, not duplicated here.
+
 <!-- /CUSTOM_RULES -->
 
 ---
