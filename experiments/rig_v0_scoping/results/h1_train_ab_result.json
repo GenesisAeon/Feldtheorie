@@ -1,0 +1,28 @@
+{
+  "role_vector_train_a": {
+    "tau": 1007.0,
+    "V": 0.17917797468845242,
+    "I_macro": -2.330201760884807,
+    "window": 6000,
+    "block_size": 2014
+  },
+  "role_vector_train_b": {
+    "tau": 67.0,
+    "V": 0.37754678547331744,
+    "I_macro": 0.034627655839478355,
+    "window": 670,
+    "block_size": 134
+  },
+  "h1_pooled_goodness_tau_normalized": {
+    "mean_abs_dev": 0.18586031509029602,
+    "one_minus_r2": 0.6557994859115714,
+    "overlap": 11.915590863952334
+  },
+  "null_model_goodness_raw_index": {
+    "mean_abs_dev": 0.14541662254100932,
+    "one_minus_r2": 0.5463257334163439,
+    "overlap": 1.0
+  },
+  "tau_normalization_beats_null": false,
+  "note": "Fail-threshold check against hold-out cannot run yet -- hold-out is sealed per RIG_v0_SCOPING.md section 5. This report only establishes the Train A+B baseline goodness values that any future hold-out result will be compared against (hold-out must be <= 2x this mean_abs_dev, or H1 is rejected)."
+}
