@@ -76,5 +76,5 @@ Before committing work in `releases/v12.0.0`:
 
 ---
 
-**Last Updated:** 2026-08-29 15:08:30 UTC
+**Last Updated:** 2026-08-29 15:28:27 UTC
 **Governance Version:** 1.0.0

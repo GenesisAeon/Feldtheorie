@@ -83,5 +83,5 @@ workspace root, not duplicated here.
 
 ---
 
-**Last Updated:** 2026-08-29 15:08:30 UTC
+**Last Updated:** 2026-08-29 15:28:27 UTC
 **Governance Version:** 1.0.0
