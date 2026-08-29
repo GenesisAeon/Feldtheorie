@@ -81,5 +81,5 @@ Before committing work in `experiments/rig_v0_scoping/data`:
 
 ---
 
-**Last Updated:** 2026-08-29 15:28:27 UTC
+**Last Updated:** 2026-08-29 15:34:22 UTC
 **Governance Version:** 1.0.0

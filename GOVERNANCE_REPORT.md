@@ -1,22 +1,22 @@
 # Fractal Governance Report
 
-**Generated:** 2026-08-29 15:28:28 UTC
+**Generated:** 2026-08-29 15:34:23 UTC
 **Governance Version:** 1.0.0
 
 ---
 
 ## Summary
 
-- **Total Governed Contexts:** 656
+- **Total Governed Contexts:** 657
 - **Contexts by Mode:**
   - code: 65
-  - data: 421
+  - data: 422
   - research: 170
 
-- **Total Agents:** 656
+- **Total Agents:** 657
 - **Agents by Mode:**
   - code: 65
-  - data: 421
+  - data: 422
   - research: 170
 
 ---
@@ -383,6 +383,10 @@
 - `experiments/Phaethon_Geminiden_Bennu/docs/ETHICS.md`
 - `experiments/Phaethon_Geminiden_Bennu/docs/ARCHITECTURE.md`
 - `experiments/Phaethon_Geminiden_Bennu/docs/POLICY.md`
+- `experiments/rig_v0_scoping/data/AGENTS.md`
+- `experiments/rig_v0_scoping/data/ETHICS.md`
+- `experiments/rig_v0_scoping/data/ARCHITECTURE.md`
+- `experiments/rig_v0_scoping/data/POLICY.md`
 - `experiments/week1/results/AGENTS.md`
 - `experiments/week1/results/ETHICS.md`
 - `experiments/week1/results/ARCHITECTURE.md`

@@ -191,5 +191,5 @@ If human reviewer is unavailable and CREP ≥ 0.9 detected in **active risk scen
 
 ---
 
-**Last Updated:** 2026-08-29 15:28:27 UTC
+**Last Updated:** 2026-08-29 15:34:22 UTC
 **Governance Version:** 1.0.0

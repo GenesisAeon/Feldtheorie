@@ -76,5 +76,5 @@ Before committing work in `releases/v5.0.0_Zenodo_Ready`:
 
 ---
 
-**Last Updated:** 2026-08-29 15:28:27 UTC
+**Last Updated:** 2026-08-29 15:34:22 UTC
 **Governance Version:** 1.0.0
