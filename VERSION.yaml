@@ -11,12 +11,12 @@
 # Package Channel  — Python package SemVer (pip / PyPI)
 # Governs: pyproject.toml, pip install, Zenodo archive
 # ---------------------------------------------------------------------------
-package_version: "7.0.1"
+package_version: "7.0.2"
 
 # ---------------------------------------------------------------------------
 # Research Channel — Narrative release labels for the research programme
 # Governs: README badges, release notes, scientific publications
 # ---------------------------------------------------------------------------
 release_stream: "v13.0.0"
-stable_version: "7.0.1"
+stable_version: "7.0.2"
 alpha_version: "9.0.0-alpha"
