@@ -81,5 +81,5 @@ Before committing work in `analysis/implosion`:
 
 ---
 
-**Last Updated:** 2026-08-29 15:03:47 UTC
+**Last Updated:** 2026-08-29 15:08:30 UTC
 **Governance Version:** 1.0.0
