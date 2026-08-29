@@ -12,10 +12,10 @@ meta:
   version: 2.1.0
   created: '2025-11-06'
   status: active
-  markdown_files: 263
-  filesystem_markdown_docs: 263
+  markdown_files: 264
+  filesystem_markdown_docs: 264
   curated_markdown_docs: 46
-  updated: "2026-08-28T20:15:09Z"
+  updated: "2026-08-29T15:02:41Z"
   last_updated: '2026-02-05'
 categories:
   science:
@@ -3057,6 +3057,16 @@ markdown_docs:
   keywords: []
   description: ''
   path: docs/science/kappa_parameter_guide_v2.md
+- id: docs-auto-0218
+  name: science/v_rig_literature_convergence_2026-08.md
+  category: science
+  type: document
+  status: uncurated
+  relevance: medium
+  size_kb: 10.0
+  keywords: []
+  description: ''
+  path: docs/science/v_rig_literature_convergence_2026-08.md
 triggers:
   core_concepts:
   - σ(β(R-Θ))

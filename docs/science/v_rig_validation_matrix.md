@@ -4,6 +4,10 @@
 **Erstellt:** 2025-11-27
 **Updated:** 2025-12-08
 **Status:** ✅ Research Consolidation Complete
+
+> **Update 2026-08-29:** siehe `v_rig_literature_convergence_2026-08.md`
+> für eine unabhängige 2026er-Literaturprüfung — c/α⁻¹ ist real (Bohr'sche
+> Elektronengeschwindigkeit), der φ-Schritt bleibt ohne Mechanismus offen.
 **Scope:** Systematische Bewertung aller empirischen Tests der v_RIG-Hypothese
 
 ---

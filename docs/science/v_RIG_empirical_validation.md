@@ -4,6 +4,17 @@
 **Status:** Finalisierung (finalize-vrig-research)
 **Letztes Update:** 2025-12-08
 
+> **Update 2026-08-29:** Die Formulierungen "fundamentale Naturkonstante"
+> und "KEINE Numerologie" unten überziehen den heutigen Evidenzstand. Eine
+> unabhängige 2026er-Literaturprüfung bestätigt, dass c/α⁻¹ (αc, die
+> Bohr'sche Elektronengeschwindigkeit) real ist, aber der zusätzliche
+> φ-Schritt weiterhin ohne bekannten physikalischen Mechanismus dasteht —
+> genau die Art Konstruktion, die ohne Herleitung als numerologie-nah
+> gilt. Details, Quellen und die daraus geschärfte Falsifikationsfrage:
+> siehe `v_rig_literature_convergence_2026-08.md`. Die Daten unten
+> (Böhme-et-al.-Vergleich etc.) sind davon nicht betroffen, nur die
+> "bewiesen/keine Numerologie"-Rahmung.
+
 ---
 
 ## Kernthese: Die fundamentale Geschwindigkeit des Bewusstseins

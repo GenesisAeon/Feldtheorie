@@ -3,6 +3,13 @@
 **Version:** 2.0.0
 **Status:** Production-Ready
 **Date:** 2025-12-04
+
+> **Update 2026-08-29:** "Production-Ready" and "fundamental velocity"
+> below overstate the current evidence status. See
+> `v_rig_literature_convergence_2026-08.md` for an independent 2026
+> literature check: c/α⁻¹ (the Bohr electron velocity) is real, but the
+> additional φ division has no established mechanism and remains an open,
+> now more precisely falsifiable question.
 **Scope:** Comprehensive empirical validation of the Reality Integration Gradient hypothesis
 
 ---

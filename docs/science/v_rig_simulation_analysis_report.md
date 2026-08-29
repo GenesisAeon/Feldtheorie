@@ -5,6 +5,10 @@
 **Status:** Initial Findings - Hypothesis Challenged
 **Authors:** J.B. Römer (Theoretical Framework), Claude Code (Implementation & Analysis)
 
+> **Update 2026-08-29:** this report's cautious framing holds up well
+> against an independent 2026 literature check — see
+> `v_rig_literature_convergence_2026-08.md`.
+
 ---
 
 ## Executive Summary

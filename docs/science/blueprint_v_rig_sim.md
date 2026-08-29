@@ -1,6 +1,9 @@
 # 🏗️ Blueprint: Der v_RIG Reality-Renderer
 
 **Status:** Spezifikation für Implementierung (v1.0)
+
+> **Update 2026-08-29:** siehe `v_rig_literature_convergence_2026-08.md`
+> für den aktuellen, unabhängig geprüften Evidenzstand von v_RIG/φ.
 **Ziel:** Nachweis, dass 3D-Struktur (Raum) ein Artefakt der zeitlichen Integration von 2D-Slices ist.
 **Source:** releases/V6-Plans_etc/ (Gemini Deep Research)
 **Version:** v6.0.0-alpha
