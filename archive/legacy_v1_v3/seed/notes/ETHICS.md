@@ -76,5 +76,5 @@ Before committing work in `archive/legacy_v1_v3/seed/notes`:
 
 ---
 
-**Last Updated:** 2026-08-31 08:52:35 UTC
+**Last Updated:** 2026-08-31 09:07:37 UTC
 **Governance Version:** 1.0.0
