@@ -184,7 +184,7 @@ Artifacts are written to `v10_oracle/logs/planetary_diary.*` and `v10_oracle/log
 ### 🎯 Unified Constant: v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s
 
 > **Origin and status (canonical):** see
-> [`docs/science/v_RIG_ORIGIN_AND_STATUS.md`](docs/science/v_RIG_ORIGIN_AND_STATUS.md).
+> [`science/v_RIG_ORIGIN_AND_STATUS.md`](science/v_RIG_ORIGIN_AND_STATUS.md).
 > v_RIG is Johann Römer's own thought-experiment theory — speculative and
 > so far neither falsifiable nor verified, despite "Empirically Validated"
 > below (see that file for why this section overstates the evidence).
@@ -616,7 +616,7 @@ V8 builds on V6's entropy governance duality and V7's collective consciousness a
 > **Origin and status (canonical):** the "universal integration constant"
 > / "empirical validation" framing above overstates the current evidence
 > status — see
-> [`docs/science/v_RIG_ORIGIN_AND_STATUS.md`](docs/science/v_RIG_ORIGIN_AND_STATUS.md).
+> [`science/v_RIG_ORIGIN_AND_STATUS.md`](science/v_RIG_ORIGIN_AND_STATUS.md).
 > v_RIG is Johann Römer's own thought-experiment theory, speculative and
 > so far neither falsifiable nor verified.
 
