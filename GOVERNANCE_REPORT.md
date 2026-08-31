@@ -1,6 +1,6 @@
 # Fractal Governance Report
 
-**Generated:** 2026-08-29 15:34:23 UTC
+**Generated:** 2026-08-31 08:52:36 UTC
 **Governance Version:** 1.0.0
 
 ---
@@ -387,6 +387,10 @@
 - `experiments/rig_v0_scoping/data/ETHICS.md`
 - `experiments/rig_v0_scoping/data/ARCHITECTURE.md`
 - `experiments/rig_v0_scoping/data/POLICY.md`
+- `experiments/rig_v0_scoping/results/AGENTS.md`
+- `experiments/rig_v0_scoping/results/ETHICS.md`
+- `experiments/rig_v0_scoping/results/ARCHITECTURE.md`
+- `experiments/rig_v0_scoping/results/POLICY.md`
 - `experiments/week1/results/AGENTS.md`
 - `experiments/week1/results/ETHICS.md`
 - `experiments/week1/results/ARCHITECTURE.md`
