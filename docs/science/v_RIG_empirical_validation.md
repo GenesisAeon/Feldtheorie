@@ -14,6 +14,12 @@
 > siehe `v_rig_literature_convergence_2026-08.md`. Die Daten unten
 > (Böhme-et-al.-Vergleich etc.) sind davon nicht betroffen, nur die
 > "bewiesen/keine Numerologie"-Rahmung.
+>
+> **Ursprung und Status (kanonisch, 2026-08-31):** siehe
+> `v_RIG_ORIGIN_AND_STATUS.md` für den vollständigen Text. Kurzfassung:
+> v_RIG ist Johann Römers eigene Gedankenexperiment-Theorie (nicht aus
+> externer Physik übernommen, nicht von AI erfunden) — spekulativ und
+> bisher nicht falsifizierbar oder verifizierbar.
 
 ---
 

@@ -48,6 +48,9 @@ Core Concepts:
 - σ(β(R-Θ)): Logistic activation function
 - ζ(R): Impedance (resistance to threshold crossing)
 - v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s: Information integration velocity
+  (speculative, Johann Roemer's own thought-experiment theory, so far
+  neither falsifiable nor verified -- see
+  docs/science/v_RIG_ORIGIN_AND_STATUS.md)
 
 **Resonanzpfad (Resonance Path):**
 - Optimizes consciousness trajectories through β-space

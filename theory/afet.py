@@ -12,6 +12,11 @@ import pandas as pd
 # propagated into citation metadata and several call sites, each silently
 # compensating with its own "* 1000.0" or bypassing this constant entirely
 # with a hardcoded 1352.0. See CHANGELOG for the correction.
+#
+# Origin and status: speculative, and so far neither falsifiable nor
+# verified -- Johann Roemer's own thought experiment, not adopted from
+# external physics, not AI-invented. Full canonical note:
+# docs/science/v_RIG_ORIGIN_AND_STATUS.md
 _C_LIGHT_KM_S = 299792.458
 _ALPHA_INV = 137.035999177  # CODATA 2022 inverse fine-structure constant
 _PHI = (1 + math.sqrt(5)) / 2  # golden ratio

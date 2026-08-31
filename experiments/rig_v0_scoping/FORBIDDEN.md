@@ -20,6 +20,12 @@ result here is not evidence for them. See that whitepaper's own
 distinction: the structural *shape* (relational band) has independent
 support; the specific *numbers* do not.
 
+**Origin and status (canonical, 2026-08-31):** see
+`docs/science/v_RIG_ORIGIN_AND_STATUS.md` for the full text. v_RIG is
+Johann Römer's own thought-experiment theory (not adopted from external
+physics, not AI-invented) — speculative and so far neither falsifiable
+nor verified.
+
 ## Already falsified — do not reintroduce
 
 - v_RIG written as "1.352 km/s" (decimal-separator bug, was a real

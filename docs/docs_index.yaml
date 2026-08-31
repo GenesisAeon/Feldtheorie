@@ -15,7 +15,7 @@ meta:
   markdown_files: 264
   filesystem_markdown_docs: 264
   curated_markdown_docs: 46
-  updated: "2026-08-29T15:02:41Z"
+  updated: '2026-08-29T15:02:41Z'
   last_updated: '2026-02-05'
 categories:
   science:
@@ -3067,6 +3067,16 @@ markdown_docs:
   keywords: []
   description: ''
   path: docs/science/v_rig_literature_convergence_2026-08.md
+- id: docs-auto-0219
+  name: science/v_RIG_ORIGIN_AND_STATUS.md
+  category: science
+  type: document
+  status: uncurated
+  relevance: medium
+  size_kb: 3.4
+  keywords: []
+  description: ''
+  path: docs/science/v_RIG_ORIGIN_AND_STATUS.md
 triggers:
   core_concepts:
   - σ(β(R-Θ))

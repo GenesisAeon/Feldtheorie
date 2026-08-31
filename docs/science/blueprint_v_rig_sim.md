@@ -4,6 +4,12 @@
 
 > **Update 2026-08-29:** siehe `v_rig_literature_convergence_2026-08.md`
 > für den aktuellen, unabhängig geprüften Evidenzstand von v_RIG/φ.
+>
+> **Ursprung und Status (kanonisch, 2026-08-31):** siehe
+> `v_RIG_ORIGIN_AND_STATUS.md` für den vollständigen Text. Kurzfassung:
+> v_RIG ist Johann Römers eigene Gedankenexperiment-Theorie (nicht aus
+> externer Physik übernommen, nicht von AI erfunden) — spekulativ und
+> bisher nicht falsifizierbar oder verifizierbar.
 **Ziel:** Nachweis, dass 3D-Struktur (Raum) ein Artefakt der zeitlichen Integration von 2D-Slices ist.
 **Source:** releases/V6-Plans_etc/ (Gemini Deep Research)
 **Version:** v6.0.0-alpha

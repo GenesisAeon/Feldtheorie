@@ -182,6 +182,13 @@ Artifacts are written to `v10_oracle/logs/planetary_diary.*` and `v10_oracle/log
 - **Testable CMB Prediction:** 12-fold symmetry from tesseract cube geometry (falsifiable with Planck data)
 
 ### 🎯 Unified Constant: v_RIG = c/(α⁻¹·Φ) ≈ 1,352 km/s
+
+> **Origin and status (canonical):** see
+> [`docs/science/v_RIG_ORIGIN_AND_STATUS.md`](docs/science/v_RIG_ORIGIN_AND_STATUS.md).
+> v_RIG is Johann Römer's own thought-experiment theory — speculative and
+> so far neither falsifiable nor verified, despite "Empirically Validated"
+> below (see that file for why this section overstates the evidence).
+
 - **Regime Transition Rate:** Information flow between S∝A ↔ S∝V governance
 - **Consciousness Integration Speed:** ~10^42 slices/second creating subjective "now"
 - **Empirically Validated:** Solar circulation velocity match (1.3% error)
@@ -605,6 +612,13 @@ See [`releases/V6-Plans_etc/Finalize/V7_wird noch verlergt/v7_fraktal_todos.md`]
 **Status:** Draft / Alpha Phase | **Target:** Q1 2026
 
 V8 builds on V6's entropy governance duality and V7's collective consciousness architecture to establish **v_RIG as a universal integration constant** with empirical validation across cosmology, biology, neuroscience, and artificial intelligence.
+
+> **Origin and status (canonical):** the "universal integration constant"
+> / "empirical validation" framing above overstates the current evidence
+> status — see
+> [`docs/science/v_RIG_ORIGIN_AND_STATUS.md`](docs/science/v_RIG_ORIGIN_AND_STATUS.md).
+> v_RIG is Johann Römer's own thought-experiment theory, speculative and
+> so far neither falsifiable nor verified.
 
 ### 🌟 Core Discovery: The v_RIG Integration Constant
 

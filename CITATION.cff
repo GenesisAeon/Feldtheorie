@@ -5,7 +5,10 @@ abstract: >-
   First consolidated release of the General Field Entropy Theory (AFET),
   documenting the evolution from UTAC through 38 Zenodo publications.
   AFET demonstrates universal entropic scaling: metastability buffer
-  sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1352 km/s,
+  sigma_Phi = 0.0625 (1/16), integration velocity v_RIG = 1352 km/s
+  (speculative, Johann Roemer's own thought-experiment theory -- so far
+  neither falsifiable nor verified, see
+  docs/science/v_RIG_ORIGIN_AND_STATUS.md),
   and fractal beta-hierarchy via Phi^(n/3). Validated across 78 datasets
   (8 domains, median r-squared = 0.88, Delta-AIC >= 10). Key prediction
   confirmed: 13.5 MHz neurite resonance (Fontana et al. 2024).

@@ -3473,6 +3473,18 @@
       "keywords": [],
       "description": "",
       "path": "docs/science/v_rig_literature_convergence_2026-08.md"
+    },
+    {
+      "id": "docs-auto-0219",
+      "name": "science/v_RIG_ORIGIN_AND_STATUS.md",
+      "category": "science",
+      "type": "document",
+      "status": "uncurated",
+      "relevance": "medium",
+      "size_kb": 3.4,
+      "keywords": [],
+      "description": "",
+      "path": "docs/science/v_RIG_ORIGIN_AND_STATUS.md"
     }
   ],
   "triggers": {

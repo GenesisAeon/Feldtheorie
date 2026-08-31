@@ -14,6 +14,13 @@ fact-check pass), reviewed and corrected by Johann Römer and Claude Code.
 framing in `v_rig_validation_final.md` / `v_rig_validation_matrix.md` —
 see "Relationship to earlier v_RIG documents" below.
 
+**Origin and status (canonical, added 2026-08-31):** see
+`v_RIG_ORIGIN_AND_STATUS.md` for the full text. Short version: v_RIG is
+Johann Römer's own thought-experiment theory (not adopted from external
+physics, not AI-invented) — speculative and so far neither falsifiable
+nor verified. Its closeness to the Böhme et al. (2025) dipole anomaly
+remains a noted data point, not proof.
+
 ---
 
 ## Why this document exists

@@ -10,6 +10,12 @@
 > literature check: c/α⁻¹ (the Bohr electron velocity) is real, but the
 > additional φ division has no established mechanism and remains an open,
 > now more precisely falsifiable question.
+>
+> **Origin and status (canonical, 2026-08-31):** see
+> `v_RIG_ORIGIN_AND_STATUS.md` for the full text. Short version: v_RIG is
+> Johann Römer's own thought-experiment theory (not adopted from external
+> physics, not AI-invented) — speculative and so far neither falsifiable
+> nor verified.
 **Scope:** Comprehensive empirical validation of the Reality Integration Gradient hypothesis
 
 ---
