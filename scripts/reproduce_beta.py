@@ -39,22 +39,66 @@ def _poly_fit(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     return coeffs, yhat
 
 
+def _exp_model(x: np.ndarray, a: float, b: float) -> np.ndarray:
+    return a * np.exp(b * x)
+
+
 def _exp_fit(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Fit y = a * exp(b*x) by minimizing ORIGINAL-scale SSE.
+
+    Until 2026-09-08 this fit minimized log-scale SSE via a closed-form
+    log-linear regression (fit log(y) ~ b*x + log(a)), which implies a
+    log-normal/multiplicative error model -- a different likelihood than
+    the original-scale-Gaussian one `_aic_bic`'s `n*log(RSS/n) + 2k`
+    formula assumes. Since `_aic_bic` was (and still is) always called
+    with original-scale y_true/y_pred for every model including this
+    one, that made the logistic/linear fits (both optimized on original
+    scale) and the exponential/power fits (optimized on log scale, then
+    evaluated on original scale) not directly AIC-comparable -- their
+    ΔAIC values did not all measure "best fit under the same error
+    model." The log-linear regression is now only the initial guess for
+    a proper original-scale nonlinear fit.
+    """
     mask = y > 0
     if not np.any(mask):
         raise ValueError("Exponential fit requires positive response values")
-    coeffs = np.polyfit(x[mask], np.log(y[mask]), deg=1)
-    yhat = np.exp(coeffs[1]) * np.exp(coeffs[0] * x)
-    return coeffs, yhat
+    log_coeffs = np.polyfit(x[mask], np.log(y[mask]), deg=1)
+    p0 = (float(np.exp(log_coeffs[1])), float(log_coeffs[0]))
+    try:
+        popt, _ = curve_fit(_exp_model, x, y, p0=p0, maxfev=200_000)
+    except RuntimeError:
+        LOGGER.warning("Original-scale exponential fit failed to converge; "
+                        "falling back to the log-linear estimate.")
+        popt = np.asarray(p0)
+    yhat = _exp_model(x, *popt)
+    return np.asarray(popt), yhat
+
+
+def _power_model(x: np.ndarray, a: float, b: float) -> np.ndarray:
+    return a * np.power(np.clip(x, 1e-12, None), b)
 
 
 def _power_fit(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Fit y = a * x^b by minimizing ORIGINAL-scale SSE.
+
+    Same fix and rationale as `_exp_fit`: the closed-form log-log
+    regression is now only the initial guess for a proper original-scale
+    nonlinear fit, so this model's ΔAIC is comparable to the others
+    under one consistent (original-scale Gaussian) error model.
+    """
     mask = (x > 0) & (y > 0)
     if not np.any(mask):
         raise ValueError("Power-law fit requires positive control and response")
-    coeffs = np.polyfit(np.log(x[mask]), np.log(y[mask]), deg=1)
-    log_pred = coeffs[1] + coeffs[0] * np.log(np.clip(x, 1e-12, None))
-    return coeffs, np.exp(log_pred)
+    log_coeffs = np.polyfit(np.log(x[mask]), np.log(y[mask]), deg=1)
+    p0 = (float(np.exp(log_coeffs[1])), float(log_coeffs[0]))
+    try:
+        popt, _ = curve_fit(_power_model, x, y, p0=p0, maxfev=200_000)
+    except RuntimeError:
+        LOGGER.warning("Original-scale power-law fit failed to converge; "
+                        "falling back to the log-log estimate.")
+        popt = np.asarray(p0)
+    yhat = _power_model(x, *popt)
+    return np.asarray(popt), yhat
 
 
 def _rss(y_true: np.ndarray, y_pred: np.ndarray) -> float:

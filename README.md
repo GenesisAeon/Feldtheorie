@@ -1077,9 +1077,17 @@ Where:
 
 **Paradigm Shift:** β is NOT universal, but **domain-specific**!
 
-**Empirical Basis:** 78 threshold systems, analyzed 2025-11-15
-**Statistical Significance:** ANOVA F(4,73) = 185.3, **p < 10⁻²⁰** (essentially zero)
-**Effect Size:** η² = 0.91 → **91% of β-variance explained by domain**
+> **CORRECTION (2026-09-08):** `data/derived/beta_estimates.csv` actually
+> contains 36 data rows (6 explicitly synthetic LLM training
+> trajectories, not independently observed systems), not 78. The ANOVA
+> below assumes N=78 and cannot be reproduced from this file as it
+> stands -- found via independent verification of a third-party
+> deep-research audit. Treat the numbers below as unverified pending
+> recomputation on the actual dataset.
+
+~~**Empirical Basis:** 78 threshold systems, analyzed 2025-11-15~~
+~~**Statistical Significance:** ANOVA F(4,73) = 185.3, **p < 10⁻²⁰** (essentially zero)~~
+~~**Effect Size:** η² = 0.91 → **91% of β-variance explained by domain**~~
 
 | Domain | n | β-Range | β̄ ± σ | Φ^(n/3) Attractor | Match | Interpretation |
 |--------|---|---------|--------|-------------------|-------|----------------|
@@ -1175,7 +1183,7 @@ See [`METHODS.md`](METHODS.md) for fitting details and [`REPRODUCE.md`](https://
 │   ├── biology/                   ← Ecosystems, microbiomes
 │   ├── cognition/                 ← Neural avalanches
 │   ├── derived/
-│   │   └── beta_estimates.csv    ← **78 validated β-values**
+│   │   └── beta_estimates.csv    ← **36 rows, 6 synthetic (corrected 2026-09-08, was misstated as 78)**
 │   └── experimental/              ← Aletheia Phase 1-4
 │
 ├── 🌱 seed/                       ← 74+ conceptual documents
@@ -1341,7 +1349,9 @@ Each dataset is accompanied by `<name>.metadata.json` describing:
 - Licensing and provenance
 - Schema: [`schemas/metadata.schema.json`](https://github.com/GenesisAeon/Feldtheorie/blob/main/schemas/metadata.schema.json)
 
-**Master Dataset:** `data/derived/beta_estimates.csv` (78 validated systems)
+**Master Dataset:** `data/derived/beta_estimates.csv` (36 data rows, 6 of
+which are explicitly synthetic LLM training trajectories -- corrected
+2026-09-08, was previously misstated as "78 validated systems")
 
 When contributing new data:
 - Cite canonical publication or dataset URL

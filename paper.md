@@ -24,7 +24,7 @@ bibliography: paper.bib
 
 The `feldtheorie` framework provides a production-grade architecture for self-organizing research repositories based on the Universal Threshold Activation-Coupling (UTAC) model. It implements three core innovations: (1) **Trilayer documentation** (YAML/JSON/Markdown) that prevents information loss through synchronized representations, (2) **Fractal governance** that propagates organizational rules recursively through directory hierarchies, and (3) **Diamond architecture** with bottom-up indexing that allows repository structure to emerge from data rather than being manually curated.
 
-At its scientific core, `feldtheorie` models threshold transitions across multiple domains (astrophysics, biology, cognition, climate, AI) using the logistic quartet $\sigma(\beta(R-\Theta))$, where $R$ is a system observable, $\Theta$ is a critical threshold, $\beta$ is coupling strength, and $\zeta(R)$ is impedance. Version 5.0.0 demonstrates domain-specific $\beta$-clustering across 78 validated systems (ANOVA: $F(4,73)=185.3$, $p<10^{-20}$, $\eta^2=0.91$), revealing that informational systems (LLMs, consciousness) operate at $\beta \approx 4.2$ while climate systems require $\beta \approx 11.0$ for comparable transitions—a finding that explains why symbolic emergence is "cheap" while climate tipping points are irreversible.
+At its scientific core, `feldtheorie` models threshold transitions across multiple domains (astrophysics, biology, cognition, climate, AI) using the logistic quartet $\sigma(\beta(R-\Theta))$, where $R$ is a system observable, $\Theta$ is a critical threshold, $\beta$ is coupling strength, and $\zeta(R)$ is impedance. Version 5.0.0 proposed domain-specific $\beta$-clustering, illustrated by informational systems (LLMs, consciousness) operating at $\beta \approx 4.2$ while climate systems require $\beta \approx 11.0$ for comparable transitions. **Correction, 2026-09-08:** the ANOVA statistic previously cited here ($F(4,73)=185.3$, $p<10^{-20}$, $\eta^2=0.91$, "78 validated systems") assumed a dataset of 78 systems; the actual `data/derived/beta_estimates.csv` contains 36 data rows, 6 of them explicitly synthetic LLM training trajectories rather than independently observed systems, so this statistic cannot be reproduced from that file and should be treated as unverified pending recomputation on the real dataset. The domain-clustering hypothesis itself is not thereby refuted, only this specific significance claim.
 
 The framework is fully operational: 430/430 tests pass, 8 GitHub Actions workflows enforce structural integrity (including trilayer synchronization and codex logging), and a DOI-minted Zenodo archive ensures reproducibility. The `universal_skeleton_builder.py` script allows any research group to replicate this architecture for their own domain—physics, business analytics, software engineering, or creative projects—with customizable metrics (CREP for research, ROI for business, KPI for engineering).
 
@@ -43,7 +43,7 @@ Existing tools address subsets of these problems: DVC handles data versioning, S
 
 The framework has already enabled:
 
-- **Cross-domain meta-analysis**: 78 threshold systems from astrophysics to neuroscience, unified under a single statistical framework ($\Delta$AIC $\geq$ 10 falsifiability threshold).
+- **Cross-domain meta-analysis**: threshold systems from astrophysics to neuroscience, unified under a single statistical framework ($\Delta$AIC $\geq$ 10 falsifiability threshold). (The dataset backing this is `data/derived/beta_estimates.csv`, 36 rows including 6 synthetic -- see the correction above; this was previously overstated as "78 threshold systems.")
 - **Computational reproducibility**: DOI 10.5281/zenodo.17472834 with SHA256-verified archives and pinned dependencies (`requirements.txt` + `constraints.txt`).
 - **Transferable architecture**: The `setup/universal_skeleton_builder.py` script has been tested on synthetic projects in physics, business, and literature, successfully replicating the governance model.
 
@@ -94,7 +94,7 @@ my-project/
 └── README.md
 ```
 
-Data pipelines follow a standardized flow: CSV + `.metadata.json` → analysis script → JSON results (with $\beta$, $\Theta$, $\Delta$AIC, $R^2$, confidence intervals) → aggregation into `data/derived/beta_estimates.csv` (78 validated systems).
+Data pipelines follow a standardized flow: CSV + `.metadata.json` → analysis script → JSON results (with $\beta$, $\Theta$, $\Delta$AIC, $R^2$, confidence intervals) → aggregation into `data/derived/beta_estimates.csv` (36 data rows, 6 of them explicitly synthetic -- corrected 2026-09-08, was previously misstated as "78 validated systems").
 
 # Computational Methods
 

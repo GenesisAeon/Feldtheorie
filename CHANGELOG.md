@@ -7,6 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed (2026-09-08)
+
+- **`analysis/multiple_testing_correction.py`: `aic_to_likelihood_ratio_p()`
+  was missing the parameter-count correction term entirely** (silently
+  assumed the logistic and null models had the same number of fitted
+  parameters, when the logistic actually has 3 (beta, theta, L) versus
+  2 for linear/exponential/power). Added the correction term
+  (`ΔAIC + 2*(k_logistic - k_null)`), but more importantly: the
+  compared models are not nested (no parameter setting of the logistic
+  reduces it to any of the null models), so a chi-squared
+  likelihood-ratio p-value is not statistically valid here regardless of
+  the correction. The function now raises a loud runtime warning on
+  every call and its docstring explains why; a new
+  `akaike_relative_likelihood()` (`exp(-ΔAIC/2)`, Burnham & Anderson
+  2002) is added as a valid non-nested-model alternative, exposed
+  alongside the (flagged-invalid) p-value in every output record.
+- **`scripts/reproduce_beta.py`: exponential/power null-model fits
+  minimized log-scale SSE while the logistic and linear fits minimized
+  original-scale SSE**, but AIC was always computed from original-scale
+  residuals for every model -- an inconsistent-likelihood comparison
+  that systematically understated the null models' true best fit,
+  biasing every ΔAIC toward the logistic. `_exp_fit`/`_power_fit` now
+  use the closed-form log-linear/log-log regression only as an initial
+  guess for a proper original-scale nonlinear fit (`curve_fit`), making
+  all four models' AIC values comparable under the same
+  original-scale-Gaussian error model.
+- **`SUMMARY.md`, `README.md`, `paper.md`: corrected a dataset-size
+  claim.** These stated "78 validated/threshold systems" (backing an
+  ANOVA `F(4,73)=185.3, p<10^-20, eta^2=0.91`); the actual
+  `data/derived/beta_estimates.csv` contains 36 data rows, 6 of them
+  explicitly synthetic LLM training trajectories rather than
+  independently observed systems. That ANOVA cannot be reproduced from
+  this file and is now marked unverified pending recomputation on the
+  real dataset; the domain-clustering hypothesis itself is not thereby
+  refuted, only this specific significance claim.
+
+All three issues were found via independent verification of specific,
+reproducible claims in a third-party deep-research audit
+(`GenesisAeon-Tiefenanalyse-2026-09-08.docx`, held in the workspace root
+above this repo) -- each was reproduced against this exact source tree
+(re-running the actual fits, re-counting the actual CSV rows) before
+being treated as real, not accepted from the audit's description alone.
+
 ## [v13.0.0] - Research Channel / [6.0.0] - Package Channel
 
 ### Changed

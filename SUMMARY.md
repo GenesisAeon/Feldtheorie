@@ -35,9 +35,22 @@ P(R) = L / (1 + exp(-β(R - Θ)))
 **Key Finding:** β is NOT universal but domain-specific.
 
 **Statistical Evidence:**
-- Sample: 78 threshold systems across 5 domains
-- ANOVA: F(4,73) = 185.3, p < 10⁻²⁰
-- Effect size: η² = 0.91 (91% of variance explained by domain)
+- **CORRECTION (2026-09-08):** the dataset this claim was based on,
+  `data/derived/beta_estimates.csv`, actually contains **36 data rows**
+  (not 78), of which **6 are explicitly synthetic** (LLM training
+  trajectories, not independently observed systems) rather than empirical
+  measurements. The ANOVA below assumes N=78 (F(4,73) implies
+  df_within=73, i.e. N=78) and **cannot be reproduced from this file as
+  it stands** -- found via independent verification of a third-party
+  deep-research audit, confirmed by directly counting the CSV's rows.
+  Treat the statistics below as **unverified pending recomputation** on
+  the actual dataset (with synthetic rows either excluded or reported
+  separately, not pooled with empirical ones), not as a confirmed result.
+- ~~Sample: 78 threshold systems across 5 domains~~ (actual file: 36 rows,
+  6 synthetic)
+- ~~ANOVA: F(4,73) = 185.3, p < 10⁻²⁰~~ (unverified -- see correction above)
+- ~~Effect size: η² = 0.91 (91% of variance explained by domain)~~
+  (unverified -- see correction above)
 
 ---
 
@@ -263,7 +276,10 @@ pytest tests/ -v
 
 ### 8.3 Data Sources
 
-**Master Dataset:** `data/derived/beta_estimates.csv` (78 validated systems)
+**Master Dataset:** `data/derived/beta_estimates.csv` (36 data rows, of
+which 6 are explicitly synthetic LLM training trajectories rather than
+independently observed systems -- corrected 2026-09-08, was previously
+misstated as "78 validated systems"; see the correction note in §2.2)
 
 **Individual Domains:**
 - `data/ai/` - LLM emergence (Wei et al. 2022)

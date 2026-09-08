@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -38,16 +39,90 @@ class ModelComparison:
     dataset: str
     null_model: str
     delta_aic: float
-    p_value: float  # Approximate p-value from likelihood ratio test
+    p_value: float  # NOT statistically valid here -- see aic_to_likelihood_ratio_p's caveat
+    relative_likelihood: float  # exp(-delta_aic/2); valid for non-nested models
 
 
-def aic_to_likelihood_ratio_p(delta_aic: float) -> float:
-    """Convert ΔAIC to approximate p-value.
+def aic_to_likelihood_ratio_p(
+    delta_aic: float, k_logistic: int = 3, k_null: int = 2
+) -> float:
+    """Convert ΔAIC to an approximate p-value -- NOT A VALID TEST HERE, see caveat.
 
-    ΔAIC = 2 * log(L1/L0) where L1, L0 are likelihoods.
-    Under nested models, 2*log(LR) ~ χ²(df), where df = difference in parameters.
+    ΔAIC = 2 * log(L1/L0) where L1, L0 are likelihoods. Under NESTED
+    models, 2*log(LR) ~ χ²(df), where df = k1 - k0 (the parameter-count
+    difference). Because AIC already includes a 2k parameter penalty,
+    the actual likelihood-ratio statistic is 2*(logL1 - logL0) =
+    ΔAIC + 2*(k1 - k0) -- a correction term this function omitted
+    entirely until 2026-09-08 (it silently assumed k1 - k0 == 0).
 
-    For logistic (4 params) vs linear/power-law (2 params), df = 2.
+    **CAVEAT, added 2026-09-08 (see CHANGELOG):** even with that
+    correction applied, this is still not a statistically valid p-value
+    for the comparisons this module actually runs. A chi-squared
+    likelihood-ratio test additionally requires the null model to be a
+    special case of the alternative (nested models). The logistic
+    sigmoid fitted here is NOT nested with the linear, exponential, or
+    power-law null models used in `reproduce_beta.py` -- no parameter
+    setting of the logistic reduces it to any of them. This function is
+    kept (with a loud runtime warning) as a documented-but-unverified
+    approximation; do not treat downstream Bonferroni/Holm/BH-corrected
+    "significance" results derived from it as confirmed findings. A
+    correct fix requires a non-nested-model comparison method (e.g.
+    Vuong's test) or reporting Akaike weights / relative likelihood
+    (`exp(-ΔAIC/2)`, valid regardless of nesting) instead of a p-value --
+    a statistical-design decision, not something this bug fix imposes
+    unilaterally.
+
+    Parameters
+    ----------
+    delta_aic : float
+        AIC(null) - AIC(logistic). Positive favors logistic.
+    k_logistic : int, default=3
+        Number of fitted parameters in the logistic model as actually
+        used by `reproduce_beta.py` (beta, theta, L).
+    k_null : int, default=2
+        Number of fitted parameters in the null model (linear/exp/power,
+        each a 2-parameter fit via `np.polyfit(..., deg=1)`).
+
+    Returns
+    -------
+    p_value : float
+        Approximate p-value -- see caveat above before using this for
+        any significance claim.
+    """
+    warnings.warn(
+        "aic_to_likelihood_ratio_p: the logistic model is not nested "
+        "with the linear/exponential/power-law null models compared "
+        "here, so this is not a valid likelihood-ratio p-value even "
+        "with the parameter-count correction applied. See CHANGELOG "
+        "2026-09-08 before using this for any significance claim.",
+        stacklevel=2,
+    )
+    if delta_aic <= 0:
+        return 1.0  # Null is better or equal
+
+    # 2*(logL_logistic - logL_null) = delta_aic + 2*(k_logistic - k_null).
+    # This parameter-count correction term was entirely missing before
+    # 2026-09-08 (equivalent to silently assuming k_logistic == k_null).
+    chi2_stat = delta_aic + 2 * (k_logistic - k_null)
+    df = abs(k_logistic - k_null)
+    if chi2_stat <= 0 or df == 0:
+        return 1.0
+    p_value = 1 - stats.chi2.cdf(chi2_stat, df=df)
+
+    return float(p_value)
+
+
+def akaike_relative_likelihood(delta_aic: float) -> float:
+    """Relative likelihood of the null model versus the logistic fit.
+
+    `exp(-delta_aic/2)` (Burnham & Anderson 2002, sec. 2.6) is a valid
+    AIC-based comparison that, unlike a likelihood-ratio p-value, does
+    NOT require the compared models to be nested -- so it applies here
+    where `aic_to_likelihood_ratio_p`'s chi-squared approach does not.
+    There is no p<0.05-style significance cutoff for this quantity;
+    Burnham & Anderson's own rule of thumb is that delta_aic > 10
+    (relative likelihood < 0.007) indicates essentially no support for
+    the weaker model relative to the better one.
 
     Parameters
     ----------
@@ -56,18 +131,13 @@ def aic_to_likelihood_ratio_p(delta_aic: float) -> float:
 
     Returns
     -------
-    p_value : float
-        Approximate two-tailed p-value.
+    relative_likelihood : float
+        A value in (0, 1]; smaller means the null model is less
+        plausible relative to the logistic fit, given the data.
     """
     if delta_aic <= 0:
-        return 1.0  # Null is better or equal
-
-    # ΔAIC = 2 * log(L_logistic / L_null)
-    # Under H0 (null is true), this follows χ²(df=2)
-    chi2_stat = delta_aic
-    p_value = 1 - stats.chi2.cdf(chi2_stat, df=2)
-
-    return float(p_value)
+        return 1.0
+    return float(np.exp(-delta_aic / 2.0))
 
 
 def bonferroni_correction(p_values: np.ndarray, alpha: float = 0.05) -> np.ndarray:
@@ -236,7 +306,9 @@ def load_comparisons_from_cohort() -> list[ModelComparison]:
             if delta_aic is None:
                 continue
 
-            p_value = aic_to_likelihood_ratio_p(delta_aic)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")  # caveat already documented at module level
+                p_value = aic_to_likelihood_ratio_p(delta_aic)
 
             comparisons.append(
                 ModelComparison(
@@ -245,6 +317,7 @@ def load_comparisons_from_cohort() -> list[ModelComparison]:
                     null_model=null_model,
                     delta_aic=float(delta_aic),
                     p_value=p_value,
+                    relative_likelihood=akaike_relative_likelihood(delta_aic),
                 )
             )
 
@@ -263,6 +336,17 @@ def interpret_corrections(
     lines = []
     lines.append("MULTIPLE TESTING CORRECTION ANALYSIS")
     lines.append("=" * 60)
+    lines.append("")
+    lines.append(
+        "CAVEAT (added 2026-09-08, see CHANGELOG): the p-values below come "
+        "from aic_to_likelihood_ratio_p(), which is NOT a valid "
+        "likelihood-ratio test here -- the logistic model is not nested "
+        "with the linear/exponential/power-law null models being "
+        "compared. Treat every 'significant'/'rejected' result below as "
+        "UNVERIFIED pending a proper non-nested-model comparison; see "
+        "each comparison's 'akaike_relative_likelihood' field for a "
+        "valid (but not directly p-value-comparable) alternative."
+    )
     lines.append("")
 
     lines.append(f"Total comparisons: {len(comparisons)}")
@@ -364,6 +448,7 @@ def main():
                     "null_model": comp.null_model,
                     "delta_aic": comp.delta_aic,
                     "p_value": comp.p_value,
+                    "relative_likelihood": comp.relative_likelihood,
                 }
                 for i, comp in enumerate(comparisons)
                 if bonferroni_reject[i]
@@ -378,6 +463,7 @@ def main():
                     "null_model": comp.null_model,
                     "delta_aic": comp.delta_aic,
                     "p_value": comp.p_value,
+                    "relative_likelihood": comp.relative_likelihood,
                 }
                 for i, comp in enumerate(comparisons)
                 if bh_reject[i]
@@ -392,6 +478,7 @@ def main():
                     "null_model": comp.null_model,
                     "delta_aic": comp.delta_aic,
                     "p_value": comp.p_value,
+                    "relative_likelihood": comp.relative_likelihood,
                 }
                 for i, comp in enumerate(comparisons)
                 if holm_reject[i]
@@ -404,6 +491,7 @@ def main():
                 "null_model": c.null_model,
                 "delta_aic": c.delta_aic,
                 "p_value": c.p_value,
+                "relative_likelihood": c.relative_likelihood,
                 "bonferroni_reject": bool(bonferroni_reject[i]),
                 "bh_reject": bool(bh_reject[i]),
                 "holm_reject": bool(holm_reject[i]),
