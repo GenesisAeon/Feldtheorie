@@ -76,5 +76,5 @@ Before committing work in `docs/science/figures/beta_dist/individual`:
 
 ---
 
-**Last Updated:** 2026-08-31 09:07:37 UTC
+**Last Updated:** 2026-09-08 19:14:59 UTC
 **Governance Version:** 1.0.0
