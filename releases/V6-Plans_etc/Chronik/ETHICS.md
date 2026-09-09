@@ -76,5 +76,5 @@ Before committing work in `releases/V6-Plans_etc/Chronik`:
 
 ---
 
-**Last Updated:** 2026-09-08 19:14:59 UTC
+**Last Updated:** 2026-09-09 10:09:52 UTC
 **Governance Version:** 1.0.0
