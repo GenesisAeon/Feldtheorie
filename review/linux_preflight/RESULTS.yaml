@@ -1,0 +1,161 @@
+date: '2026-09-11'
+author: Codex
+reviewed_independent_review_commit: fae4a1c0713669bb19ca133387a658bf6d18bfc4
+implementation_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+status: merge_ready_with_documented_clarifications
+scientific_hypothesis_result: null
+native_resource_checks: passed
+original_suite:
+  passed: 25
+  failed: 0
+  shim: false
+original_archive_audit:
+  status: passed
+  samples: 576
+  signature_check: unchanged
+  float_comparisons: exact; unchanged
+review_gate:
+  G01: approved
+  implementation: approved
+  real_linux_verify_reviews: passed
+  original_reports_and_reviews_json: unchanged
+g01_replay:
+  results: 14
+  class_records: 401
+  rotation_and_translation_states: 65536
+  max_absolute_difference: 4.529709940470639e-14
+clarifications:
+- id: C1
+  scope: G01 narrative
+  correction: Block and block-plus-boundary Bayes errors are equal; all scrambled
+    controls have strictly lower Bayes errors in these ensembles.
+- id: C2
+  scope: G02 narrative
+  correction: 'Four adaptations: removed whole signature equality, allclose features,
+    allclose predictions, tolerant validation MAE.'
+additional_reference_check: Real quarter-turn and torus translation on every state;
+  original rotation-named reference check was a checkerboard row shift.
+initial_harness_error:
+  description: Initial guard accepted only a .so resource module; this runtime uses
+    the genuine built-in module. Guard corrected; experiment source unchanged.
+  initial_script_sha256: 50e39ce3f31e6776d98b176e1dc7b19626eebef282b41952c62beea3de4df944
+  stderr: "Traceback (most recent call last):\n  File \"/workspace/scratch/bcc2398d8596/review-work/review/linux_preflight/native_preflight.py\"\
+    , line 184, in <module>\n    main(parser.parse_args())\n  File \"/workspace/scratch/bcc2398d8596/review-work/review/linux_preflight/native_preflight.py\"\
+    , line 150, in main\n    result = probe(args.child, args.output)\n           \
+    \  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/bcc2398d8596/review-work/review/linux_preflight/native_preflight.py\"\
+    , line 40, in probe\n    check(resource.__spec__ is not None and resource.__spec__.origin.endswith(\"\
+    .so\"),\n  File \"/workspace/scratch/bcc2398d8596/review-work/review/linux_preflight/native_preflight.py\"\
+    , line 30, in check\n    raise AssertionError(message)\nAssertionError: Expected\
+    \ real CPython resource extension, not a shim\n"
+native_checks:
+  disk:
+    disk_fixture_bytes: 98304
+    existing_file_preserved: true
+    external_over_limit_detected: true
+    memory_limit_restored: true
+    preflight_refused: true
+    signal_handler_restored: true
+    status: passed
+    timer_cancelled: true
+  interruption_resume:
+    audit:
+      all_rng_states_reconstructed: true
+      code_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+      counts:
+        train:
+          axial: 128
+          iid: 128
+          smooth: 128
+        validation:
+          axial: 64
+          iid: 64
+          smooth: 64
+      files_verified: 14
+      independent_cellwise_reference_mae: 0.0
+      rejections:
+        train:
+          axial: 0
+          iid: 0
+          smooth: 0
+        validation:
+          axial: 0
+          iid: 0
+          smooth: 0
+      samples_checked: 576
+      scope: implementer-authored development audit
+      status: passed
+      test_states_generated: false
+    existing_files_preserved: 2
+    final_file_hashes:
+      batch-a3ffdb2069f546b58382a3928560ba51.json: 5343580650b59546ecc6ffa9c03a1c87d2b6007e0888eee5e9dc1d399ed5cffa
+      batch-b6f47a14fb604abe82f039f605e2cb31.json: 93fe2c5140462d1e700e1e74d9c9341966e2a24d9a458840343b08f8c78c7426
+      development.json: 2ffb027d9265d5446093dc3d5a4ca06976263e179479b47f908cfa2f5f58a762
+      manifest.json: f16d68bfd69e51ce9c91c62ee62af74732790126e96148de5fa1a077e1bb0e72
+      repeat-00/BASE.json: fca164c105fc1776678668a0bef5eb968d33c67623d0949858857fe60b3a58eb
+      repeat-00/COARSE.json: 688366c63d3ea0a630a4e2f3cf7e6cb36bd1f8564d583797fddf87f1f308b126
+      repeat-00/GEOMETRY.json: 68d30f182b52e966c57892699a3241414c4f736f9d5e30d75186ce04ecfad601
+      repeat-00/MICRO.json: 31707f57dfca94f71337aae65460e522ad13bab199378c2b726f02f90ece242d
+      repeat-00/SHUFFLED.json: 8660ba54efa79ce8992754181473eb26f9b049a804b003ea9bac86bab9684af2
+      repeat-00/frozen.json: dca45c748b904978c4fd176a686740ac5a75ca838c31c56082ce6bcf143f300a
+      repeat-00/train-predictions.json: fd57fd8d4760ad33bbbde5ddd954f79994f927c1e84f5a931fef50cf341c620d
+      repeat-00/train.json: 939a8aa0a279f588fb0e019ebe3876d0b82502bf7059697dc37a8abd2255c1cc
+      repeat-00/validation-predictions.json: b36541f820968d828eca8812d3990ab8efff00968fafee23881fe6dc8c8b717d
+      repeat-00/validation.json: 15ee4b1164d8c754d6c3ceefee04c2e1076f04e4042c4349464b3ea0fa12b4af
+    interrupted_status: incomplete
+    resource_batches:
+    - active_seconds: 0.03049653200002922
+      failure: 'TimeoutError: Active batch time limit reached; resume the same stage'
+      memory_enforcement: RLIMIT_AS <= 4 GiB virtual address space (stricter than
+        RSS)
+      numerical_threads: 1
+      peak_rss_kib: 26224
+      size_bytes: 683
+      stage: development
+      status: incomplete
+      worker_processes: 1
+    - active_seconds: 0.544748391999974
+      failure: null
+      memory_enforcement: RLIMIT_AS <= 4 GiB virtual address space (stricter than
+        RSS)
+      numerical_threads: 1
+      peak_rss_kib: 44664
+      size_bytes: 3753036
+      stage: development
+      status: completed
+      worker_processes: 1
+    resume_status: completed
+    status: passed
+    time_fixture_seconds: 0.03
+  memory:
+    active_rlimit_as_bytes: 4294967296
+    memory_limit_restored: true
+    oversized_virtual_mapping: rejected_ENOMEM
+    signal_handler_restored: true
+    status: passed
+    timer_cancelled: true
+  timer:
+    configured_seconds: 0.05
+    elapsed_seconds: 0.05014639000000898
+    memory_limit_restored: true
+    real_SIGALRM_delivered: true
+    signal_handler_restored: true
+    status: passed
+    timer_cancelled: true
+environment:
+  platform: Linux-6.18.35-x86_64-with-glibc2.39
+  python: 3.12.14
+  numpy: 2.3.5
+  resource_module: built-in
+source_hashes:
+  PROTOCOL.md: 7b58145b26d68413719294bf1c998ef430677d54943f8d75daed8952be6c37ba
+  model.py: c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878
+  protocol.json: 38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578
+  runner.py: a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0
+evidence_sha256:
+  native_results.json: 83e45bf173d42b4dc81f235fb00c97196e15fea8a8fe8735ad014555f3fc68eb
+  g01_linux_replay.json: 1dba96eaece042cabec12e00d8b7ed38900bfc2315b699861bd882135b799ce1
+  native_preflight.py: 19329da028477fdda1b8bfe11310bcff5aa3b7edb58745cd3c3cc9a19a66f385
+  recheck_g01.py: 08ea07af54ecd65c752ac050d99068f43798fd39b21e9af0304182951ca09319
+confirmatory_prepare_or_evaluate_executed: false
+scientific_test_states_generated: false
+rig_eeg_holdout: untouched
