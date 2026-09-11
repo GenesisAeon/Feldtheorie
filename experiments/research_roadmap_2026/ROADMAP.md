@@ -127,7 +127,7 @@ SF-001 untersucht Vererbung, Mutation und Vielfalt in Populationen künstlicher 
 
 Die erste Vergleichsreihe enthält neutrale Verzweigung, feste Selektionsregeln und evolvierbare Mutationsstärken. Jedes Universum erhält dasselbe Budget an simulierten Schritten. Zusätzlich wird die Gesamtpopulation begrenzt, damit eine Linie nicht allein durch mehr Rechenzeit erfolgreicher wirkt. Reproduktionsereignisse, Überleben, Vielfalt und Erholung nach Parameteränderungen werden getrennt gemessen.
 
-Die wichtigste Gegenprobe fragt, ob der gewünschte Zustand bereits durch die gewählte Fitnessfunktion erzwungen wird. Daher werden zumindest einige Erfolgskriterien erst bei der Auswertung angelegt, ohne die Selektion daran zu optimieren. Unterschiedliche Reproduktionsregeln und faire Ressourcenbegrenzungen gehören zum Versuch.
+Die wichtigste Gegenprobe fragt, ob der gewünschte Zustand bereits durch die gewählte Fitnessfunktion erzwungen wird. Daher werden zusätzliche Erfolgskriterien vor dem Lauf festgelegt, die ausschließlich zur späteren Auswertung dienen und nicht in die Selektion eingehen. Unterschiedliche Reproduktionsregeln und faire Ressourcenbegrenzungen gehören zum Versuch.
 
 **Entscheidung:** Robust entstehende Vielfalt oder eine überprüfbare Beziehung zwischen Vererbungsgenauigkeit und Anpassung wären Ergebnisse über künstliche Evolution. Ein Übergang zur beobachtbaren Kosmologie benötigt danach eine eigenständige Zuordnung von Modellgrößen zu Messdaten. Dieser zusätzliche Schritt wird ausdrücklich geplant, sobald ein enger Kandidat dafür existiert.
 
