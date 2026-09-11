@@ -1,0 +1,124 @@
+protocol_id: GW-PRED-002
+date: '2026-09-11'
+status: development_completed_confirmatory_pending
+protocol_commit: 065ee4d9207cc88d76f02a75a72c82ca3ad28e5d
+implementation_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+manifest:
+  code_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+  machine: x86_64
+  mode: development
+  model_sha256: c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878
+  numpy: 2.3.5
+  platform: Linux-6.18.35-x86_64-with-glibc2.39
+  protocol_id: GW-PRED-002
+  protocol_md_sha256: 7b58145b26d68413719294bf1c998ef430677d54943f8d75daed8952be6c37ba
+  protocol_sha256: 38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578
+  python: 3.12.14
+  runner_sha256: a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0
+tests:
+  passed: 25
+  failed: 0
+  scope: standalone experiment; implementer-authored
+audit:
+  status: passed
+  scope: implementer-authored development audit
+  code_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+  samples_checked: 576
+  counts:
+    train:
+      iid: 128
+      smooth: 128
+      axial: 128
+    validation:
+      iid: 64
+      smooth: 64
+      axial: 64
+  rejections:
+    train:
+      axial: 0
+      iid: 0
+      smooth: 0
+    validation:
+      axial: 0
+      iid: 0
+      smooth: 0
+  independent_cellwise_reference_mae: 0.0
+  all_rng_states_reconstructed: true
+  test_states_generated: false
+  files_verified: 14
+execution_checks:
+  resume_exit_code: 0
+  prior_files_preserved_byte_for_byte: 13
+  new_files:
+  - batch-6e84fd89fe054bd68cc9c1649b57c82b.json
+  missing_review_exit_code: 1
+  missing_review_output_created: false
+validation_mae:
+  BASE: 0.10776174689928253
+  COARSE: 0.10769868900705677
+  GEOMETRY: 0.10502214586663994
+  MICRO: 0.10887386159783163
+  PERSISTENCE: 0.3099161783854167
+  SHUFFLED: 0.10916063379331925
+fits:
+  BASE:
+    lambda: 0.01
+    design_rank: 136
+    effective_degrees_of_freedom: 91.1600746305062
+  GEOMETRY:
+    lambda: 0.01
+    design_rank: 210
+    effective_degrees_of_freedom: 137.14168265940188
+  MICRO:
+    lambda: 1.0
+    design_rank: 210
+    effective_degrees_of_freedom: 30.692855320347665
+  COARSE:
+    lambda: 1.0
+    design_rank: 208
+    effective_degrees_of_freedom: 31.84836474895244
+  SHUFFLED:
+    lambda: 1.0
+    design_rank: 210
+    effective_degrees_of_freedom: 31.534843997389483
+selected_comparator: COARSE
+development_comparator_minus_geometry: 0.0026765431404168344
+primary_hypothesis_support: null
+confirmatory_fits_frozen: 0
+confirmatory_test_states_generated: false
+G01_independent_review: pending
+implementation_independent_review: pending
+resource_batches:
+- active_seconds: 0.003947184000026027
+  failure: null
+  memory_enforcement: RLIMIT_AS <= 4 GiB virtual address space (stricter than RSS)
+  numerical_threads: 1
+  peak_rss_kib: 25584
+  size_bytes: 3752972
+  stage: development
+  status: completed
+  worker_processes: 1
+- active_seconds: 0.5627913589999025
+  failure: null
+  memory_enforcement: RLIMIT_AS <= 4 GiB virtual address space (stricter than RSS)
+  numerical_threads: 1
+  peak_rss_kib: 44656
+  size_bytes: 3752581
+  stage: development
+  status: completed
+  worker_processes: 1
+archive:
+  path: runs/development_001.tar.gz
+  sha256: 3ee95971ac92ade16071a6ca74a283fae6db5657aa65b68de1d00d11a9bfad58
+  bytes: 814279
+  members: 14
+  uncompressed_bytes: 3753365
+limitations:
+- One development repetition; no confirmatory inference or confidence interval.
+- Validation scores also selected lambdas and the comparator.
+- Only iid, smooth and axial were generated; diagonal/tiles and both test splits remain
+  unopened.
+- Acquisition costs and actual information content are unequal across sensors.
+- Independent review, real review-approved evaluation and full repository suite remain
+  outstanding.
+rig_eeg_holdout: untouched

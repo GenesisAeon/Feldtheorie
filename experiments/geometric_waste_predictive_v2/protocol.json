@@ -1,0 +1,384 @@
+{
+  "protocol_id": "GW-PRED-002",
+  "version": "1.0.0",
+  "roadmap_task": "G02",
+  "status": "specified_not_implemented",
+  "results_available": false,
+  "base_commit": "cfeebb99256a8de88e05ab56f70a3468e7c502ee",
+  "prior_merge_commit": "d07b91b965a2c56857ddd2233ba8e513479da19b",
+  "question": "Does quantized geometric side information improve one-step block prediction on unseen structured families at a fixed maximum transmission budget?",
+  "system": {
+    "side": 16,
+    "initial_ones": 128,
+    "boundary": "periodic",
+    "update": "synchronous",
+    "neighbourhood": "eight Moore neighbours excluding centre",
+    "alive_next": "neighbours == 3 or (alive_now and neighbours == 2)",
+    "steps": 1,
+    "block_side": 4,
+    "block_order": "row-major",
+    "target": "16 block occupancy fractions after one step"
+  },
+  "sensors": {
+    "base": {
+      "values": 16,
+      "alphabet_size": 17,
+      "bit_width_each": 5,
+      "bits": 80,
+      "normalization": "occupancy / 16"
+    },
+    "side_channel": {
+      "values": 4,
+      "alphabet_size": 4,
+      "bit_width_each": 2,
+      "bits": 8,
+      "normalization": "q / 3"
+    },
+    "BASE": {
+      "definition": "four zeros"
+    },
+    "GEOMETRY": {
+      "region_side": 8,
+      "regions": 4,
+      "edges_per_region": 112,
+      "definition": "horizontal and vertical disagreements inside each quadrant, excluding quadrant seams and wraparound edges",
+      "quantization": "floor(4 * L / 113)",
+      "edge_comparisons": 448
+    },
+    "MICRO": {
+      "local_rows": [
+        3,
+        4
+      ],
+      "local_columns": [
+        3,
+        4
+      ],
+      "quantization": "min(occupied_cells, 3)",
+      "cell_reads": 16
+    },
+    "COARSE": {
+      "definition": "mean of four absolute adjacent differences of the 2x2 coarse occupancy fractions in each quadrant",
+      "quantization": "min(3, floor(4 * D))",
+      "new_microstate_information": false
+    },
+    "SHUFFLED": {
+      "definition": "permute complete GEOMETRY feature rows across each whole split, independent between splits",
+      "family_stratification": false,
+      "diagnostic_only": true
+    },
+    "budget_scope": "fixed maximum code length, not matched entropy, mutual information or measurement cost"
+  },
+  "generators": {
+    "common": {
+      "selection": "top 128 scores",
+      "tie_break": "lower row-major index wins",
+      "noise": "independent standard normal per cell",
+      "symmetry_order": [
+        "uniform quarter-turn rotation",
+        "Bernoulli(0.5) column reflection",
+        "uniform torus row and column shifts"
+      ],
+      "coordinates": "zero-based integer row r and column c"
+    },
+    "iid": {
+      "family_id": 0,
+      "score": "independent Uniform[0,1)"
+    },
+    "smooth": {
+      "family_id": 1,
+      "centres": 4,
+      "centre_coordinates": "independent Uniform[0,16)",
+      "amplitudes": "independent Uniform[-1,1)",
+      "shared_width_choices": [
+        1.5,
+        2.5,
+        3.5
+      ],
+      "distance": "shortest Euclidean distance on the torus",
+      "score": "sum(a * exp(-d_squared/(2*s*s))) + 0.25 * normal"
+    },
+    "axial": {
+      "family_id": 2,
+      "frequency_choices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "direction_choices": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "phase": "Uniform[0,2*pi)",
+      "score": "cos(2*pi*k*(a*r+b*c)/16 + phase) + 0.35 * normal"
+    },
+    "diagonal": {
+      "family_id": 3,
+      "frequency_choices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "direction_choices": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          -1
+        ]
+      ],
+      "phase": "Uniform[0,2*pi)",
+      "score": "cos(2*pi*k*(a*r+b*c)/16 + phase) + 0.35 * normal",
+      "held_out": true
+    },
+    "tiles": {
+      "family_id": 4,
+      "width_choices": [
+        2,
+        4,
+        8
+      ],
+      "offset_choices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "score": "(-1)**(floor(((r+u)%16)/w)+floor(((c+v)%16)/w)) + 0.5 * normal",
+      "held_out": true
+    }
+  },
+  "sampling": {
+    "repeats": 20,
+    "repeat_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "rng": "NumPy PCG64",
+    "master_seed": 2026091102,
+    "shuffle_seed": 2026091103,
+    "bootstrap_seed": 2026091104,
+    "development_seed": 2026091199,
+    "generator_stream": "SeedSequence([master_seed, repeat_index, split_id, family_id])",
+    "shuffle_stream": "SeedSequence([shuffle_seed, repeat_index, split_id])",
+    "bootstrap_stream": "PCG64(bootstrap_seed)",
+    "development_stream": "SeedSequence([development_seed, 0, split_id, family_id])",
+    "split_order": [
+      "train",
+      "validation",
+      "test_known",
+      "test_unseen"
+    ],
+    "family_order": [
+      "iid",
+      "smooth",
+      "axial",
+      "diagonal",
+      "tiles"
+    ],
+    "splits": {
+      "train": {
+        "split_id": 0,
+        "counts": {
+          "iid": 128,
+          "smooth": 128,
+          "axial": 128
+        }
+      },
+      "validation": {
+        "split_id": 1,
+        "counts": {
+          "iid": 64,
+          "smooth": 64,
+          "axial": 64
+        }
+      },
+      "test_known": {
+        "split_id": 2,
+        "counts": {
+          "iid": 64,
+          "smooth": 64,
+          "axial": 64
+        }
+      },
+      "test_unseen": {
+        "split_id": 3,
+        "counts": {
+          "diagonal": 128,
+          "tiles": 128
+        }
+      }
+    },
+    "samples_per_repeat": 1024,
+    "total_samples": 20480,
+    "deduplication": {
+      "scope": "all splits and families within a repeat",
+      "key": "lexicographically smallest 256-bit row-major tuple over eight square symmetries and all integer torus translations",
+      "complement_equivalence": false,
+      "repeat_registries": "independent",
+      "maximum_failed_candidates_per_slot": 10000,
+      "report_rejection_rates": true
+    },
+    "development_families": [
+      "iid",
+      "smooth",
+      "axial"
+    ],
+    "test_data_generated_in_this_delivery": false
+  },
+  "learner": {
+    "family": "quadratic ridge multi-output regression",
+    "input_dimensions": 20,
+    "outputs": 16,
+    "features": "intercept, 20 linear terms, all z_i*z_j with i<=j",
+    "maximum_design_columns": 231,
+    "standardization": "train-only mean and population std of non-intercept polynomial columns; zero variance becomes zero",
+    "ddof": 0,
+    "objective_per_output": "mean squared error + lambda * sum(nonintercept coefficient squared)",
+    "lambda_grid": [
+      1e-06,
+      0.0001,
+      0.01,
+      1.0
+    ],
+    "selection_metric": "validation mean absolute error",
+    "lambda_tie_break": "larger lambda",
+    "clip_predictions": [
+      0.0,
+      1.0
+    ],
+    "refit_after_validation": false,
+    "report_design_rank": true,
+    "report_effective_degrees_of_freedom": true,
+    "observers": [
+      "BASE",
+      "GEOMETRY",
+      "MICRO",
+      "COARSE",
+      "SHUFFLED"
+    ],
+    "comparison_pool_in_tie_order": [
+      "BASE",
+      "MICRO",
+      "COARSE",
+      "PERSISTENCE"
+    ],
+    "comparison_selection": "minimum validation MAE per repeat after per-observer lambda selection",
+    "PERSISTENCE": "current block fractions",
+    "full_state_reference": "exact rule application; correctness check only"
+  },
+  "evaluation": {
+    "primary_test_split": "test_unseen",
+    "primary_loss": "mean absolute error over 16 future block fractions per sample",
+    "aggregation": "mean per family, then equal mean over diagonal and tiles, then mean across repeats",
+    "paired_delta": "selected comparison MAE minus GEOMETRY MAE",
+    "practical_delta": 0.01,
+    "primary_ci": {
+      "method": "paired repeat-level percentile bootstrap",
+      "draws": 10000,
+      "confidence": 0.95,
+      "quantiles": [
+        0.025,
+        0.975
+      ],
+      "quantile_interpolation": "linear",
+      "unit": "complete independent repeat"
+    },
+    "support_all_conditions": [
+      "mean primary delta >= 0.01",
+      "lower primary CI > 0",
+      "mean BASE MAE minus GEOMETRY MAE >= 0.01",
+      "each unseen-family mean selected-comparison MAE minus GEOMETRY MAE >= -0.005"
+    ],
+    "maximum_family_degradation": 0.005,
+    "against_practical_advantage": "upper primary CI < 0.01",
+    "evidence_of_disadvantage": "upper primary CI < 0",
+    "secondary": "known-family test, individual comparator contrasts, relative improvement and resource costs; descriptive only",
+    "relative_if_denominator_zero": null,
+    "formal_power_guarantee": false,
+    "interpretation": "only this rule, density, quantization, model class and specified generators"
+  },
+  "execution": {
+    "processes_max": 2,
+    "batch_active_seconds_max": 1800,
+    "runner_memory_gib_max": 4,
+    "output_gib_max": 2,
+    "requires_enforced_limits": true,
+    "overwrite": false,
+    "resume": "same scientific configuration, checkpointed states and hashes",
+    "partial_result_status": "incomplete",
+    "all_models_frozen_before_any_test_generation": true
+  },
+  "gates": {
+    "G01_independent_recomputation": "not_documented_in_PR_781",
+    "implementation": "not_started",
+    "implementation_protocol_review": "pending",
+    "held_out_test_opening": "requires completed gates and frozen fits"
+  },
+  "artifacts": [
+    "manifest and environment",
+    "generator parameters and split IDs",
+    "initial states and next-step block fractions",
+    "features by observer",
+    "frozen fits and validation choices",
+    "per-example predictions",
+    "per-repeat and per-family losses",
+    "bootstrap result",
+    "rejection rates",
+    "resource log",
+    "human-readable limitations"
+  ],
+  "sources": [
+    {
+      "title": "Original geometric-waste hypothesis",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/seed/theory/entropy_geometric_waste/entropy_geometric_waste.md"
+    },
+    {
+      "title": "GW-EXACT-001 results",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/ff86d7f35a70a75bfccc74f7c2059348b65dd15f/experiments/geometric_waste_v1/runs/calibration_v1/RESULTS.md"
+    }
+  ],
+  "meaning_link": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+  "order_link": "seed/seed_index.md",
+  "rig_eeg_holdout": "untouched"
+}
