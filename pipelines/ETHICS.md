@@ -75,5 +75,5 @@ Before committing work in `pipelines`:
 
 ---
 
-**Last Updated:** 2026-09-09 10:09:52 UTC
+**Last Updated:** 2026-09-11 07:06:35 UTC
 **Governance Version:** 1.0.0
