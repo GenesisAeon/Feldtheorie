@@ -1,0 +1,34 @@
+{
+  "all_rng_states_reconstructed": true,
+  "code_commit": "584b79500e912dffc17e03832802ac6a94f7bb45",
+  "counts": {
+    "train": {
+      "axial": 128,
+      "iid": 128,
+      "smooth": 128
+    },
+    "validation": {
+      "axial": 64,
+      "iid": 64,
+      "smooth": 64
+    }
+  },
+  "files_verified": 14,
+  "independent_cellwise_reference_mae": 0.0,
+  "rejections": {
+    "train": {
+      "axial": 0,
+      "iid": 0,
+      "smooth": 0
+    },
+    "validation": {
+      "axial": 0,
+      "iid": 0,
+      "smooth": 0
+    }
+  },
+  "samples_checked": 576,
+  "scope": "implementer-authored development audit (review-adapted for Windows, see docstring)",
+  "status": "passed",
+  "test_states_generated": false
+}
