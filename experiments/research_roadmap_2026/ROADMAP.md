@@ -254,6 +254,12 @@ Damit steht die Richtung fest, während die theoretischen Möglichkeiten erhalte
 
 ## Fortschritt nach dem ersten Merge
 
-Stand 11. September 2026: PR #781 ist auf main übernommen. G02 ist jetzt als [GW-PRED-002](../geometric_waste_predictive_v2/PROTOCOL.md) spezifiziert: Vorhersage künftiger Blockbelegungen, acht Bit Zusatzkanal, vorab festgelegte Strukturklassen, Vergleichsverfahren und Entscheidungsschwellen. Der neue Versuch wurde noch nicht implementiert oder ausgeführt.
+Stand bei Festlegung des G02-Protokolls am 11. September 2026: PR #781 ist auf main übernommen. G02 ist als [GW-PRED-002](../geometric_waste_predictive_v2/PROTOCOL.md) spezifiziert: Vorhersage künftiger Blockbelegungen, acht Bit Zusatzkanal, vorab festgelegte Strukturklassen, Vergleichsverfahren und Entscheidungsschwellen. Zu diesem Zeitpunkt war der neue Versuch noch nicht implementiert oder ausgeführt.
 
 Die ursprüngliche Roadmap bleibt als Planungsstand erhalten. Der aktuelle nächste Schritt besteht aus G01, soweit die unabhängige Nachrechnung noch nicht dokumentiert ist, und den Implementierungsvoraussetzungen für G03. Vor Erzeugung der Testzustände werden Programm, Fits und Validierungsentscheidungen festgehalten. Aus dem Merge allein wird keine wissenschaftliche oder unabhängige Bestätigung abgeleitet.
+
+## Fortschritt nach der G02-Implementierung
+
+Aktueller Stand 11. September 2026: Der gestufte Runner ist implementiert, 25 Prüfungen sind grün, und ein [Entwicklungslauf mit 576 Zuständen](../geometric_waste_predictive_v2/DEVELOPMENT.md) samt vollständiger Zustandsprüfung und Wiederaufnahme ist abgeschlossen. Protokoll und Parameter bleiben unverändert. Die Entwicklungswerte sind keine Bestätigung der Hypothese; beide Testsplits und die unbekannten Familien bleiben unbenutzt.
+
+Für G03 stehen die unabhängige G01-Nachrechnung und der dokumentierte Implementierungsabgleich an. Anschließend können alle zwanzig Fits eingefroren und die Testdaten erzeugt werden. Die Rohdaten und Prüfnachweise sind im Entwicklungsbericht verlinkt.

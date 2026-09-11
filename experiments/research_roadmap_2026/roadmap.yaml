@@ -1,5 +1,5 @@
 id: genesis-experimental-roadmap-2026-09
-version: 1.1.0
+version: 1.2.0
 updated: '2026-09-11'
 language: de
 owner: GenesisAeon / Johann Benjamin Römer
@@ -40,9 +40,10 @@ tasks:
   title: Strukturierten Verschnittversuch definieren
   dependency_note: G00
   completion_condition: Zielwert, Datenfamilien, Sensorzugang und Budgets festgelegt
-  status: specified_not_executed
+  status: implemented_development_verified_pending_independent_review
   protocol: experiments/geometric_waste_predictive_v2/PROTOCOL.md
   protocol_id: GW-PRED-002
+  development_report: experiments/geometric_waste_predictive_v2/DEVELOPMENT.md
 - id: G03
   title: Bestätigungslauf durchführen
   dependency_note: G01 und G02
@@ -283,3 +284,8 @@ progress_notes:
   G02: specified
   G03: requires implementation, frozen evaluation and independent G01 evidence
   independent_review: not inferred from merge
+- date: '2026-09-11'
+  protocol_id: GW-PRED-002
+  G02: implemented; 25 checks and 576-state development audit passed
+  G03: requires independent G01 and implementation reviews; no test data generated
+  implementation_commit: 584b79500e912dffc17e03832802ac6a94f7bb45

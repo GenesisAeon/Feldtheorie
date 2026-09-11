@@ -10,4 +10,4 @@ Meaning links lead to the original hypotheses listed in roadmap.json; the order 
 
 ## Progress after PR 781
 
-PR 781 is merged. G02 now has a specified [predictive protocol](../geometric_waste_predictive_v2/PROTOCOL.md). G01 independent recomputation remains to be documented; the next G03 work is implementation and verification against the protocol. No GW-PRED-002 test data or scientific results have been generated. The earlier near-term paragraph is the original planning snapshot; this progress entry is current.
+PR 781 is merged. G02 has a frozen [predictive protocol](../geometric_waste_predictive_v2/PROTOCOL.md), an implemented staged runner and 25 passing checks. A [576-state development run](../geometric_waste_predictive_v2/DEVELOPMENT.md), full saved-state audit and explicit resume are complete. G01 independent recomputation and implementation review remain pending before G03. No confirmatory fits or test states have been generated. The earlier near-term paragraph is the original planning snapshot; this progress entry is current.

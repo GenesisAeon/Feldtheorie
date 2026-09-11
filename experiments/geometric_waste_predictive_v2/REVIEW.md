@@ -1,8 +1,8 @@
-# Protocol review before implementation
+# Protocol and implementation review
 
-Status: independent review pending. The protocol has been specified, not executed. A merge of the prior experiment does not by itself document its independent recomputation.
+Status: independent review pending. The frozen protocol has an implementation and a completed development run; confirmatory data remain unopened. See [IMPLEMENTATION.md](IMPLEMENTATION.md) and [DEVELOPMENT.md](DEVELOPMENT.md). A merge of the prior experiment does not by itself document its independent recomputation.
 
-Review these questions before freezing a runner:
+Review these questions before approving a runner for confirmatory evaluation:
 
 1. Can the chosen cellular rule, fixed half density and two held-out families answer the stated narrow prediction question?
 2. Are sensor access, quantization and unequal acquisition costs clear? The shared budget is eight transmitted bits, not equal entropy or equal energy.

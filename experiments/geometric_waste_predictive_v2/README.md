@@ -4,7 +4,7 @@ G02 is specified in [PROTOCOL.md](PROTOCOL.md), with matching parameters in [pro
 
 The question is whether four quantized geometric measurements improve next-step block predictions on unseen families under an eight-bit side-channel limit. Fixed transmission length does not imply equal information content or sensor cost. The protocol defines two non-geometric baselines, a redundant coarse-feature control, shuffled diagnostics, data-generation rules, split isolation, ridge fitting, uncertainty and practical effect criteria.
 
-The staged runner and 25 regression/reference checks are implemented. Independent G01 recomputation and implementation review remain pending. No held-out states have been generated for this delivery. Review interpretation and cost accounting using [REVIEW.md](REVIEW.md).
+The staged runner and 25 regression/reference checks are implemented. A 576-state development run, full saved-state audit and explicit resume have passed; see [DEVELOPMENT.md](DEVELOPMENT.md) and its complete data archive. Independent G01 recomputation and implementation review remain pending. No held-out states have been generated for this delivery. Review interpretation and cost accounting using [REVIEW.md](REVIEW.md).
 
 ## Reproduce
 

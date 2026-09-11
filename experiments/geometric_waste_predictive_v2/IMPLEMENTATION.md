@@ -1,7 +1,7 @@
 # Implementation and review handoff
 
 Protocol: GW-PRED-002, frozen in `065ee4d9207cc88d76f02a75a72c82ca3ad28e5d`.
-Status: runner implemented; 25 regression/reference checks passed; development profiling is the next step. No confirmatory fit or test generation has been run. Independent G01 and implementation review are pending.
+Status: runner implemented; 25 regression/reference checks passed; the 576-state development run, saved-state audit and explicit resume are complete. See [DEVELOPMENT.md](DEVELOPMENT.md), its matching JSON/YAML records and full archive. No confirmatory fit or test generation has been run. Independent G01 and implementation review are pending.
 
 ## What is implemented
 
