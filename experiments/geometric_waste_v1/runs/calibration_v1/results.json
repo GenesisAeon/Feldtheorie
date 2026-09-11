@@ -1,0 +1,134 @@
+{
+  "protocol_id": "GW-EXACT-001",
+  "status": "exact_calibration_not_hypothesis_confirmation",
+  "base_commit": "546c606f6ca15acec152c14f99fa6806a839596a",
+  "protocol_sha256": "6c93fe30f5dd6f37b1b67e89be4c6699b0fe18ffeb40031a19a8cdbf2c5ff8d3",
+  "protocol_json_sha256": "d906d72e9053dac1eaf6d24601fcb513d862987eb9fc902a084c31191cd3eabf",
+  "runner_sha256": "f21ea5703f84c8244c1e68fee636dd334462b58a444f66b2b945d5465d4cb8ac",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "diagnostic_seeds": [
+    11,
+    23,
+    47
+  ],
+  "independent_review": "pending",
+  "ensembles": {
+    "uniform_all": {
+      "identity": {
+        "microstates": 65536,
+        "observation_classes": 65536,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 0.0,
+        "retained_information_bits": 16.0,
+        "bayes_cell_error_fraction": 0.0
+      },
+      "occupancy": {
+        "microstates": 65536,
+        "observation_classes": 17,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 12.953450440564637,
+        "retained_information_bits": 3.0465495594353627,
+        "bayes_cell_error_fraction": 0.4018096923828125
+      },
+      "block_counts": {
+        "microstates": 65536,
+        "observation_classes": 625,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 7.877443751081733,
+        "retained_information_bits": 8.122556248918267,
+        "bayes_cell_error_fraction": 0.3125
+      },
+      "block_counts_boundary": {
+        "microstates": 65536,
+        "observation_classes": 2086,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 5.91420927489502,
+        "retained_information_bits": 10.08579072510498,
+        "bayes_cell_error_fraction": 0.3125
+      },
+      "block_counts_scrambled_11": {
+        "microstates": 65536,
+        "observation_classes": 4152,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 5.398252764933485,
+        "retained_information_bits": 10.601747235066515,
+        "bayes_cell_error_fraction": 0.2886219024658203
+      },
+      "block_counts_scrambled_23": {
+        "microstates": 65536,
+        "observation_classes": 4166,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 5.398451401929071,
+        "retained_information_bits": 10.601548598070929,
+        "bayes_cell_error_fraction": 0.2883720397949219
+      },
+      "block_counts_scrambled_47": {
+        "microstates": 65536,
+        "observation_classes": 4145,
+        "microstate_entropy_bits": 16.0,
+        "conditional_entropy_bits": 5.40044634285355,
+        "retained_information_bits": 10.599553657146451,
+        "bayes_cell_error_fraction": 0.28876590728759766
+      }
+    },
+    "uniform_density_half": {
+      "identity": {
+        "microstates": 12870,
+        "observation_classes": 12870,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 0.0,
+        "retained_information_bits": 13.651724433108065,
+        "bayes_cell_error_fraction": 0.0
+      },
+      "occupancy": {
+        "microstates": 12870,
+        "observation_classes": 1,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 13.651724433108065,
+        "retained_information_bits": 0.0,
+        "bayes_cell_error_fraction": 0.5
+      },
+      "block_counts": {
+        "microstates": 12870,
+        "observation_classes": 85,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 8.392550770473377,
+        "retained_information_bits": 5.259173662634687,
+        "bayes_cell_error_fraction": 0.3384615384615385
+      },
+      "block_counts_boundary": {
+        "microstates": 12870,
+        "observation_classes": 316,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 6.330078965997928,
+        "retained_information_bits": 7.3216454671101365,
+        "bayes_cell_error_fraction": 0.3384615384615385
+      },
+      "block_counts_scrambled_11": {
+        "microstates": 12870,
+        "observation_classes": 535,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 6.040197533061468,
+        "retained_information_bits": 7.611526900046597,
+        "bayes_cell_error_fraction": 0.31823038073038074
+      },
+      "block_counts_scrambled_23": {
+        "microstates": 12870,
+        "observation_classes": 530,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 6.04285731636483,
+        "retained_information_bits": 7.608867116743235,
+        "bayes_cell_error_fraction": 0.3188034188034188
+      },
+      "block_counts_scrambled_47": {
+        "microstates": 12870,
+        "observation_classes": 536,
+        "microstate_entropy_bits": 13.651724433108065,
+        "conditional_entropy_bits": 6.040987759707433,
+        "retained_information_bits": 7.610736673400631,
+        "bayes_cell_error_fraction": 0.3181866744366744
+      }
+    }
+  }
+}

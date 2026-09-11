@@ -1,0 +1,26 @@
+{
+  "protocol_id": "GW-EXACT-001",
+  "version": "1.0.0",
+  "status": "frozen_before_first_run",
+  "base_commit": "546c606f6ca15acec152c14f99fa6806a839596a",
+  "side": 4,
+  "boundary": "periodic nearest-neighbour disagreement count",
+  "ensembles": [
+    "uniform_all",
+    "uniform_density_half"
+  ],
+  "diagnostic_seeds": [
+    11,
+    23,
+    47
+  ],
+  "primary_metric": "conditional entropy in bits per lattice",
+  "secondary_metric": "Bayes cellwise Hamming error fraction",
+  "confirmatory": false,
+  "independent_review": "pending",
+  "meaning_source": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+  "order_source": "seed/seed_index.md",
+  "negative_evidence_policy": "retain all results with explicit limitations; no deletion",
+  "protocol_document": "PROTOCOL.md",
+  "runner": "run_exact.py"
+}

@@ -1,0 +1,342 @@
+{
+  "id": "genesis-experimental-roadmap-2026-09",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "language": "de",
+  "owner": "GenesisAeon / Johann Benjamin Römer",
+  "base_commits": {
+    "Feldtheorie": "546c606f6ca15acec152c14f99fa6806a839596a",
+    "unified-mandala": "a76052842cbb9e6cb5ba70b36b1350feb35ad70a"
+  },
+  "branch": "codex/experimental-roadmap-geometric-waste",
+  "protocol_commit": "620a5ce3425f9da741c6444e12ce5b26c029771e",
+  "scope": "experimental and theoretical research",
+  "policy": {
+    "preserve_existing_work": true,
+    "paid_cloud_budget": null,
+    "human_review": "pending",
+    "independent_ai_review": "pending",
+    "sealed_rig_eeg_holdout": "untouched"
+  },
+  "next": [
+    "G01",
+    "G02"
+  ],
+  "tasks": [
+    {
+      "id": "R00",
+      "title": "Roadmap und Quellen festhalten",
+      "dependency_note": "Forschungsatlas",
+      "completion_condition": "Markdown, JSON, YAML und lesbares Dokument vorhanden",
+      "status": "delivered"
+    },
+    {
+      "id": "G00",
+      "title": "Exakte Verschnittkalibrierung",
+      "dependency_note": "R00 als Arbeitsrichtung",
+      "completion_condition": "Protokoll vor Lauf fixiert; Ergebnis und sieben Prüfungen vorhanden",
+      "status": "executed_pending_independent_review"
+    },
+    {
+      "id": "G01",
+      "title": "Unabhängige Nachrechnung",
+      "dependency_note": "G00",
+      "completion_condition": "Zweite Implementierung prüft Entropie, Rekonstruktion und Aussagen",
+      "status": "planned"
+    },
+    {
+      "id": "G02",
+      "title": "Strukturierten Verschnittversuch definieren",
+      "dependency_note": "G00",
+      "completion_condition": "Zielwert, Datenfamilien, Sensorzugang und Budgets festgelegt",
+      "status": "planned"
+    },
+    {
+      "id": "G03",
+      "title": "Bestätigungslauf durchführen",
+      "dependency_note": "G01 und G02",
+      "completion_condition": "Eingefrorene Auswertung auf neuen Familien samt Unsicherheit",
+      "status": "planned"
+    },
+    {
+      "id": "M00",
+      "title": "Einen dynamischen Kern anbinden",
+      "dependency_note": "R00",
+      "completion_condition": "Zustandsfolgen, Eingaben und Kosten reproduzierbar exportiert",
+      "status": "planned"
+    },
+    {
+      "id": "M01",
+      "title": "Metastabilität an Aufgabe messen",
+      "dependency_note": "M00",
+      "completion_condition": "Feste, zufällige und adaptive Varianten fair verglichen",
+      "status": "planned"
+    },
+    {
+      "id": "M02",
+      "title": "Topologie mit Umbaukosten vergleichen",
+      "dependency_note": "M01",
+      "completion_condition": "Gesamtnutzen und Amortisationsbereich bestimmt",
+      "status": "planned"
+    },
+    {
+      "id": "D00",
+      "title": "Beobachter und Gedächtnisreferenz bauen",
+      "dependency_note": "M00",
+      "completion_condition": "Bekannte Dynamik mit kontrolliert fehlender Information",
+      "status": "planned"
+    },
+    {
+      "id": "D01",
+      "title": "Beschreibungswechsel untersuchen",
+      "dependency_note": "D00",
+      "completion_condition": "Dimension, Gedächtnis und Modellflexibilität gegeneinander geprüft",
+      "status": "planned"
+    },
+    {
+      "id": "Q00",
+      "title": "Aliasing-Minimalmodell formulieren",
+      "dependency_note": "R00",
+      "completion_condition": "Zustand, Dynamik, Beobachter und Messannahmen vollständig",
+      "status": "planned"
+    },
+    {
+      "id": "Q01",
+      "title": "Phasen- und Basiswechsel prüfen",
+      "dependency_note": "Q00",
+      "completion_condition": "Vorhersagen für nicht zur Anpassung genutzte Einstellungen",
+      "status": "planned"
+    },
+    {
+      "id": "S00",
+      "title": "Universumsverzweigung budgetieren",
+      "dependency_note": "R00",
+      "completion_condition": "Gleiche Zeit je Modell und begrenzte Gesamtpopulation",
+      "status": "planned"
+    },
+    {
+      "id": "S01",
+      "title": "Vererbung und Vielfalt vergleichen",
+      "dependency_note": "S00",
+      "completion_condition": "Neutralität, Selektion und Mutation nachvollziehbar getrennt",
+      "status": "planned"
+    },
+    {
+      "id": "F00",
+      "title": "Begriffe und Formeln registrieren",
+      "dependency_note": "R00",
+      "completion_condition": "Herkunft, Einheiten, Status und nächste Prüfung je Kandidat",
+      "status": "planned"
+    },
+    {
+      "id": "F01",
+      "title": "Einen offenen Ansatz operationalisieren",
+      "dependency_note": "F00",
+      "completion_condition": "Eigenständige Vorhersage mit passendem Gegenmodell",
+      "status": "planned"
+    },
+    {
+      "id": "K00",
+      "title": "Scope-Anschluss definieren",
+      "dependency_note": "G00",
+      "completion_condition": "Aktuelle Schnittstelle geprüft; Beleg- und Ereignisformat festgelegt",
+      "status": "planned"
+    },
+    {
+      "id": "K01",
+      "title": "Fehlervermeidung durch Gedächtnis testen",
+      "dependency_note": "K00",
+      "completion_condition": "Neue Aufgaben mit und ohne relevante Spur fair verglichen",
+      "status": "planned"
+    },
+    {
+      "id": "P00",
+      "title": "Einen Befund unabhängig reproduzieren",
+      "dependency_note": "Mindestens G03 oder M01",
+      "completion_condition": "Reproduktion mit Abweichungsbericht und bestätigtem Geltungsbereich",
+      "status": "planned"
+    },
+    {
+      "id": "P01",
+      "title": "Engen Forschungsbeitrag ausarbeiten",
+      "dependency_note": "P00",
+      "completion_condition": "Neuheitsprüfung, Methoden, Gegenbefunde und reproduzierbare Belege",
+      "status": "planned"
+    }
+  ],
+  "sources": {
+    "u_matrix": {
+      "label": "Binary Existence Matrix",
+      "publisher": "unified-mandala",
+      "path": "packages/universum-simulationen/binary_existence_matrix.py",
+      "url": "https://github.com/GenesisAeon/unified-mandala/blob/a76052842cbb9e6cb5ba70b36b1350feb35ad70a/packages/universum-simulationen/binary_existence_matrix.py",
+      "type": "repo"
+    },
+    "f_membrane": {
+      "label": "Membransolver mit dynamischen Rand- und Schwellenmodellen",
+      "publisher": "Feldtheorie",
+      "path": "models/membrane_solver.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/models/membrane_solver.py",
+      "type": "repo"
+    },
+    "f_morph": {
+      "label": "Rekursives morphologisches Computing",
+      "publisher": "Feldtheorie",
+      "path": "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md",
+      "type": "repo"
+    },
+    "f_status": {
+      "label": "Literaturabgleich und relationaler Ansatz, August 2026",
+      "publisher": "Feldtheorie",
+      "path": "docs/science/v_rig_literature_convergence_2026-08.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/docs/science/v_rig_literature_convergence_2026-08.md",
+      "type": "repo"
+    },
+    "f_waste": {
+      "label": "Entropie als geometrischer Verschnitt",
+      "publisher": "Feldtheorie",
+      "path": "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+      "type": "repo"
+    },
+    "f_lantern": {
+      "label": "Lantern-Net: Netzwerkarchitektur und Experimente",
+      "publisher": "Feldtheorie",
+      "path": "v9_alpha/README.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/v9_alpha/README.md",
+      "type": "repo"
+    },
+    "f_phase": {
+      "label": "Kuramoto-Phasendynamik",
+      "publisher": "Feldtheorie",
+      "path": "v9_alpha/models/phase_dynamics.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/v9_alpha/models/phase_dynamics.py",
+      "type": "repo"
+    },
+    "f_emergence": {
+      "label": "Emergenzmetriken und Φ-Proxy",
+      "publisher": "Feldtheorie",
+      "path": "v9_alpha/models/emergence_metrics.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/v9_alpha/models/emergence_metrics.py",
+      "type": "repo"
+    },
+    "f_garden": {
+      "label": "Gardener: Agentenzustände und Entropiebudget",
+      "publisher": "Feldtheorie",
+      "path": "v11_gardener/ecosystem/multi_agent_system.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/v11_gardener/ecosystem/multi_agent_system.py",
+      "type": "repo"
+    },
+    "u_neural": {
+      "label": "Adaptive neuronale Membran",
+      "publisher": "unified-mandala",
+      "path": "packages/aeon-neural-membrane/aeonUniversalMembrane.ts",
+      "url": "https://github.com/GenesisAeon/unified-mandala/blob/a76052842cbb9e6cb5ba70b36b1350feb35ad70a/packages/aeon-neural-membrane/aeonUniversalMembrane.ts",
+      "type": "repo"
+    },
+    "f_dim": {
+      "label": "Dimensionale Emergenz: theoretische Ausarbeitung",
+      "publisher": "Feldtheorie",
+      "path": "docs/science/v9_dimensional_emergence.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/docs/science/v9_dimensional_emergence.md",
+      "type": "repo"
+    },
+    "f_cube": {
+      "label": "Genesis Cube und entropische Wellenfunktion",
+      "publisher": "Feldtheorie",
+      "path": "simulation/genesis_cube.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/simulation/genesis_cube.py",
+      "type": "repo"
+    },
+    "f_psi": {
+      "label": "Ψ-Field-Pipeline",
+      "publisher": "Feldtheorie",
+      "path": "pipelines/wavefunction/psi_field.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/pipelines/wavefunction/psi_field.py",
+      "type": "repo"
+    },
+    "f_origin": {
+      "label": "v_RIG: kanonische Herkunfts- und Statusnotiz",
+      "publisher": "Feldtheorie",
+      "path": "docs/science/v_RIG_ORIGIN_AND_STATUS.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/docs/science/v_RIG_ORIGIN_AND_STATUS.md",
+      "type": "repo"
+    },
+    "f_scope": {
+      "label": "RIG v0: eingefrorene Versuchsspezifikation",
+      "publisher": "Feldtheorie",
+      "path": "experiments/rig_v0_scoping/RIG_v0_SCOPING.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/experiments/rig_v0_scoping/RIG_v0_SCOPING.md",
+      "type": "repo"
+    },
+    "f_rigresult": {
+      "label": "RIG v0: dokumentiertes negatives Ergebnis",
+      "publisher": "Feldtheorie",
+      "path": "experiments/rig_v0_scoping/RESULTS.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/experiments/rig_v0_scoping/RESULTS.md",
+      "type": "repo"
+    },
+    "f_alias": {
+      "label": "Quantenaliasing: Hypothesenkern",
+      "publisher": "Feldtheorie",
+      "path": "seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/seed/theory/hypothese_quantum_aliasing/hypothese_quantum_aliasing.md",
+      "type": "repo"
+    },
+    "f_aliaspdf": {
+      "label": "Dimensionales Aliasing: ausführliches Theorie-PDF",
+      "publisher": "Feldtheorie",
+      "path": "seed/V4-Grundlagen/Quantenmechanik als dimensionales Aliasing.pdf",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/seed/V4-Grundlagen/Quantenmechanik%20als%20dimensionales%20Aliasing.pdf",
+      "type": "repo"
+    },
+    "f_dna": {
+      "label": "UniverseDNA: Variation kosmischer Parameter",
+      "publisher": "Feldtheorie",
+      "path": "simulation/v4_stellar_forge/universe_dna.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/simulation/v4_stellar_forge/universe_dna.py",
+      "type": "repo"
+    },
+    "f_multi": {
+      "label": "MultiverseManager: Prozess- und Abstammungssteuerung",
+      "publisher": "Feldtheorie",
+      "path": "simulation/v4_stellar_forge/multiverse_manager.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/simulation/v4_stellar_forge/multiverse_manager.py",
+      "type": "repo"
+    },
+    "f_abm": {
+      "label": "Mikroskopisches Agentenmodell und Coarse-Graining",
+      "publisher": "Feldtheorie",
+      "path": "models/utac_microscopic_abm.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/models/utac_microscopic_abm.py",
+      "type": "repo"
+    },
+    "f_rg": {
+      "label": "Phänomenologische RG-Flüsse",
+      "publisher": "Feldtheorie",
+      "path": "models/rg_flow_simulator.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/models/rg_flow_simulator.py",
+      "type": "repo"
+    },
+    "f_afet": {
+      "label": "AFET: Konstanten und Dimensionsvorhersage",
+      "publisher": "Feldtheorie",
+      "path": "theory/afet.py",
+      "url": "https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/theory/afet.py",
+      "type": "repo"
+    },
+    "u_evidence": {
+      "label": "Evidenzschema mit Beobachtung, Modell, Expertise und Proxy",
+      "publisher": "unified-mandala",
+      "path": "packages/epistemic/src/evidence.ts",
+      "url": "https://github.com/GenesisAeon/unified-mandala/blob/a76052842cbb9e6cb5ba70b36b1350feb35ad70a/packages/epistemic/src/evidence.ts",
+      "type": "repo"
+    }
+  },
+  "meaning_links": [
+    "seed/theory/entropy_geometric_waste/entropy_geometric_waste.md",
+    "seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md"
+  ],
+  "order_link": "seed/seed_index.md"
+}
