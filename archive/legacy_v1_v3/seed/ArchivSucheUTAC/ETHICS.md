@@ -76,5 +76,5 @@ Before committing work in `seed/ArchivSucheUTAC`:
 
 ---
 
-**Last Updated:** 2026-09-11 07:06:35 UTC
+**Last Updated:** 2026-09-11 12:02:39 UTC
 **Governance Version:** 1.0.0
