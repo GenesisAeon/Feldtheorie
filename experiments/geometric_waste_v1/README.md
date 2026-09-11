@@ -18,3 +18,7 @@ Conceptual origin: [geometric waste hypothesis](../../seed/theory/entropy_geomet
 <!-- CUSTOM_RULES -->
 The experiment-level protocol and result records use Markdown, JSON and YAML. Python and CSV are executable and tabular artifacts referenced by those records, not duplicated into artificial formats. No logistic model is fit, so AIC and bootstrap confidence intervals are inapplicable to this exact enumeration.
 <!-- /CUSTOM_RULES -->
+
+## Completed first run
+
+Read [the result and its limits](runs/calibration_v1/RESULTS.md) and [the independent review packet](REVIEW_PACKET.md). The broader [research roadmap](../research_roadmap_2026/ROADMAP.md) defines the next experiment.
