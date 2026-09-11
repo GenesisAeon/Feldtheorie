@@ -1,0 +1,35 @@
+protocol_id: GW-PRED-002
+stage: all_fits_frozen_before_test_generation
+recorded_utc: '2026-09-11T17:09:16.137729+00:00'
+code_commit: 2da5414c8a58ffbcf8a963c9b1f9a96202e3300a
+manifest_sha256: 3bd8c140dcce30321c8a26b7e916c8f93657179d67bb84d4c3b5c812a93c9c3b
+prepared_sha256: cef3776a1d1d70e5d4752b402eaa39c27c4d59482db3da3492f849b101510f24
+frozen_repetitions: 20
+training_states: 7680
+validation_states: 3840
+test_states_generated: false
+reviews_sha256: 253b047005355d047238a715774258bc4179cc49462142d956c8aa7be1a2bb58
+source_hashes:
+  model_sha256: c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878
+  protocol_md_sha256: 7b58145b26d68413719294bf1c998ef430677d54943f8d75daed8952be6c37ba
+  protocol_sha256: 38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578
+  runner_sha256: a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0
+operational_interruption:
+  event: exec-server transport disconnected during initial prepare
+  observed_completed_repetitions_after_interruption: 10
+  prior_process_running_before_resume: false
+  resume: completed all 20 with source and frozen-file verification
+  first_segment_resource_log: unavailable after process termination
+  rejected_retry: a fresh-start retry refused the existing directory without overwriting;
+    explicit resume then used
+final_prepare_batch:
+- active_seconds: 5.42339700499997
+  failure: null
+  memory_enforcement: RLIMIT_AS <= 4 GiB virtual address space (stricter than RSS)
+  numerical_threads: 1
+  peak_rss_kib: 45464
+  size_bytes: 75170841
+  stage: prepare
+  status: completed
+  worker_processes: 1
+rig_eeg_holdout: untouched

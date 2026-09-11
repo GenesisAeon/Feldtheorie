@@ -1,0 +1,14 @@
+{
+  "_content_sha256": "643ba9d3b94a9455e0949f941bb8e6cec72a458887335edc5b85afa845e1a095",
+  "code_commit": "2da5414c8a58ffbcf8a963c9b1f9a96202e3300a",
+  "machine": "x86_64",
+  "mode": "confirmatory",
+  "model_sha256": "c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878",
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+  "protocol_id": "GW-PRED-002",
+  "protocol_md_sha256": "7b58145b26d68413719294bf1c998ef430677d54943f8d75daed8952be6c37ba",
+  "protocol_sha256": "38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578",
+  "python": "3.12.14",
+  "runner_sha256": "a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0"
+}

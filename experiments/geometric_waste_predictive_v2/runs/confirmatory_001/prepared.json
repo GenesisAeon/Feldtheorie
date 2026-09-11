@@ -1,0 +1,490 @@
+{
+  "_content_sha256": "c97db63b2a0dba827587be48149ef0c45105f28fb01e49171d3cbd32333add08",
+  "frozen_hashes": {
+    "repeat-00/frozen.json": "8cfd5056a4b74befab6ea475f4be68f42c856339aff3cb51e425d8f6e1bed05c",
+    "repeat-01/frozen.json": "baa49612e19698dd8a818d2d07be77412f7322d5800f7eb1aba6ffe18e65b150",
+    "repeat-02/frozen.json": "5443e213e5d481b0196cba030a435a720efda609e738d1f386bdfe02badac32d",
+    "repeat-03/frozen.json": "bf30c1e5a084c45793dab372e2114051eeb32fe39b45b85c54fb8c4590e32d45",
+    "repeat-04/frozen.json": "a6320b44e4674a1f8bffedbccc893a81db06f58898c9cc584d5df5972cc0d948",
+    "repeat-05/frozen.json": "2d0557116ab4b5e565f07b4d547a88a0744b04ae13f176c29116cf1f3d4a47ce",
+    "repeat-06/frozen.json": "4e8a19f2a547671b44c374986d60ebab3f19d4f4bbbd6a0afec34badeefb7f7e",
+    "repeat-07/frozen.json": "fb7b41d83c50749cbe9aab08e8247c538c910d7f8404a95927e344be84031e9a",
+    "repeat-08/frozen.json": "4fa1ffc318713c8377588c2a63554e52a35b1d892a356c5d6f65787b596840f4",
+    "repeat-09/frozen.json": "0cd67fd0d8df90495b11d3fa2a595fc6f7f1624a30e15f7a1213ee32e8cfbbeb",
+    "repeat-10/frozen.json": "8acee68d9177e7a18ceec3902cdd262a61891deae80cdd3650c250ec27460433",
+    "repeat-11/frozen.json": "c97e92f864f6f1ad723540402cd508b138a83bab06ad41b910196f27debb8626",
+    "repeat-12/frozen.json": "679667b57a818e016c39edba9fa135f396c4ddfd26befb6cdf4d2aaee078d0bb",
+    "repeat-13/frozen.json": "4be6d25a68adbc850019c3fcc8ab7fd19b6df2d3bfed61bf812e60bc6c9dae58",
+    "repeat-14/frozen.json": "e6f8c40ce89ca722191483089505913e580d1c85f530556ff8fff03a495320bc",
+    "repeat-15/frozen.json": "756961e35bcdcd097d6e958b0f35209897a9459202708c0a8ed5bba957d688fa",
+    "repeat-16/frozen.json": "02939a0234ce40df5ff93aae3d5ed50c11cbfc03f643cc3f617165f6d2cbdcdc",
+    "repeat-17/frozen.json": "014a5b11d9558600daba03b208745e19254fd13f9eb75ee7646b18946947a129",
+    "repeat-18/frozen.json": "ea9e018872346d7eb599eab967fc86400112ef7880dcb15ac85795cfac90a0df",
+    "repeat-19/frozen.json": "63d87c22961451dd8b2cbca14d423829492c2d48d041de7d812119304aa8807f"
+  },
+  "repeats": 20,
+  "status": "fits_frozen",
+  "test_states_generated": false,
+  "validation": [
+    {
+      "file_hashes": {
+        "BASE.json": "9fa8b5ff63791e680f3bb940b25feb2d5d3a8baf070296409f25a310031994b6",
+        "COARSE.json": "22979e95e804491d567da025c5db4ca82aa15a3ccc1b2ba814b24695fa693fa5",
+        "GEOMETRY.json": "0db01abbd0efc1596ce1e2e6d4e01216150ec0d5fbb1694b1dc3aeca821b46b2",
+        "MICRO.json": "135b9822fa200c927692974585816a5ef1eb35035cc6a254d53e541cd576ab51",
+        "SHUFFLED.json": "37c8ec7e76d2bcda3a6f1d236875bb58c6a4d6b200512845cde90036dc88515b",
+        "train-predictions.json": "9921d39fb719644501b37e5a650d8a6d1190b7806253847a0b113b9a9cd641af",
+        "train.json": "0839f4a73407618c9fc52daeac9de7a7a3c3e4a78daa20694d05e9cca01ca522",
+        "validation-predictions.json": "38680f9552a56487a596ebeffbfe21ba4734c44d7271929d61bcda46345fc08b",
+        "validation.json": "ce261d7e0238845b09447e5e201b8b100cc7732b8901591b815410c4a3d865e8"
+      },
+      "repeat": 0,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.1041418068098217,
+        "COARSE": 0.10338925922185006,
+        "GEOMETRY": 0.10125117117980224,
+        "MICRO": 0.10498743686514762,
+        "PERSISTENCE": 0.3104248046875,
+        "SHUFFLED": 0.10655454779371672
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "33ce48e20d84dd0fda3735fc01324a0762b5cfee0eb33af6a42e377853d0ac31",
+        "COARSE.json": "329f5eb9c2501fabc491636a537c1d7cee4e20445a5c8adfef39b2083d773808",
+        "GEOMETRY.json": "912123a0e673f562f1e9cd7155cd50ffa5cbc1b45ac4907360516f8b026f5462",
+        "MICRO.json": "096784a19ef5a3c6c649163bbf9074c3a282225ac1a1337431e9e9ae66a0120f",
+        "SHUFFLED.json": "0848efd62c44111b11a51d9cfb7a39d2e6e6b6946f2eb1d434ba453b6b822796",
+        "train-predictions.json": "39b34f8267f0e340387ef40a4abf3a08e77981d5a706dbcb7a09a9d3620b8a71",
+        "train.json": "1075c77d2e3c5e49c2a46fb3d62a69577d582e84c1ae00a32da672604384cfd5",
+        "validation-predictions.json": "010945dec4b4b0872561764e14241ca77130aca932548cebc653ac73fe1d18c2",
+        "validation.json": "f5fa942e0b8450e6c24302133a4f52935e9889303609c84ea109cee89b9dac9a"
+      },
+      "repeat": 1,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10412805481485395,
+        "COARSE": 0.10228664954850987,
+        "GEOMETRY": 0.10045197935056205,
+        "MICRO": 0.10547840757835947,
+        "PERSISTENCE": 0.32012939453125,
+        "SHUFFLED": 0.10698689484730924
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "667ad28becc465a03ac3969c9a9526eeb4ab77a670241a17310831de5aa544e8",
+        "COARSE.json": "a3eae37425eb782fbb5d573118626bc4f37928f15d14d4e4b930c818394631ef",
+        "GEOMETRY.json": "c46fec2759148b22614e6785ce2a75c0f8d10dd7869ff3c66546baaa6906e285",
+        "MICRO.json": "10dab78a81811fef6f404a91d6a8e10fb7968efa4149c6e335d64cb598598fee",
+        "SHUFFLED.json": "880a00c16a6e40ce1ff6ff94dbfe751c8b96c200433b66ad15e3d544dc6758e4",
+        "train-predictions.json": "37925f2a2ca4504cc04b89fbcfe29078a035e24567de11d808967acdf7ba9f24",
+        "train.json": "d6a2a76752228b7f829a44c247c8eeb23350dac50bb5d7cc00aeb10b27c5cfa2",
+        "validation-predictions.json": "9edae19ca836552d1415c60f377110fd45011f03eddba0f79878ef19ad74c74b",
+        "validation.json": "f34061b0dd6693d9b8788a718f3e48d9dee6a1a2bab7e7aee241e812880b4cfc"
+      },
+      "repeat": 2,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10696787270290065,
+        "COARSE": 0.1069328861306394,
+        "GEOMETRY": 0.10542439346018473,
+        "MICRO": 0.10897159775575156,
+        "PERSISTENCE": 0.31573486328125,
+        "SHUFFLED": 0.10964457332622346
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "d4db2fc5408687f350b40cfcc4c0e1df5a9f9de4d1b9dc8c9dbddec1d433744c",
+        "COARSE.json": "77c451c8955ac1429ae1c35a861f6bf1a747236a8f60ba4be8e5e339019d70b2",
+        "GEOMETRY.json": "52e94088649466025bf1f0bd908de2e6559ba17d3a8a4cec63bfc8efbefa667a",
+        "MICRO.json": "6a44ccf1f8ebb77a5230305f5431207b8a7edd5303ad3f1b19369a561dc46cec",
+        "SHUFFLED.json": "7151d6f54f0a94f2be4a9aa19fe9f3b33daca020af4ca094ec4098871d55e809",
+        "train-predictions.json": "d58a51a871873a9f8aea7080ce47a4f6b2d8962a72560283de7e29a5bfda637e",
+        "train.json": "a6b87579ccdb6b000e914fb69ac128cdffb17158c80e7df3f895bc829bca0729",
+        "validation-predictions.json": "1b4be12faf2a0f1020ddd3f66cec4c25ae7f14c65690b38ee4591c0d885195fc",
+        "validation.json": "8183df2b2b9e87bfb7f05a54b905277ef2d2e558e00ea8435d3a6ad18afde314"
+      },
+      "repeat": 3,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10609656883414027,
+        "COARSE": 0.10433864879796369,
+        "GEOMETRY": 0.10101801957132543,
+        "MICRO": 0.10681156884061434,
+        "PERSISTENCE": 0.3222249348958333,
+        "SHUFFLED": 0.10722056022786142
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "70c4184604b43111548673253733f0fa18f6a6e38ff82480a014f0cdfaecc802",
+        "COARSE.json": "2d8245111d6d8c492053e5b5e72009de1d83967fc384ddc87953bacbdff09f86",
+        "GEOMETRY.json": "2e5b6ecf51dbbab5af60a399edb02cefec508be7cd424ec3566b681d77e88df6",
+        "MICRO.json": "eef6b17cc99b05f757fabe5f092d5ca0ab4c9eb411fceb5d7a8b204c77b23dce",
+        "SHUFFLED.json": "fbeba183f94f2a375f4167282d07dd35987c80971d2f0a0398e64e47ca3dae92",
+        "train-predictions.json": "c5d9c93cd3f96f75e38313a2241322e59040ffe6f3765cca519e6cd2bb713567",
+        "train.json": "ee2da5dcb5f417292d720b97605d3a0a7dbf193420c9bb05c3813fb1331241e5",
+        "validation-predictions.json": "2c145a0ec18caf4053173fcbc94c7643f73ebd03fabcd98ea66bbc0da5d5dc01",
+        "validation.json": "f9f013e5cb568bef2aadd5c9a71dbbde5ddac505c33de08a686b1857c39623a0"
+      },
+      "repeat": 4,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10543859883204769,
+        "COARSE": 0.10369540930493311,
+        "GEOMETRY": 0.10090869709815035,
+        "MICRO": 0.10394903306344477,
+        "PERSISTENCE": 0.3258870442708333,
+        "SHUFFLED": 0.10588394679536017
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "8101eacade043594354041e27d00769b4029a6125b9bd8544ffc5a0420976f82",
+        "COARSE.json": "1102bb3d83f866d1d8fbcd4af316e4820c0607838531fe92a6e7ac22d2c167db",
+        "GEOMETRY.json": "3e895097009ed780f0620a5ef824b9fb7e31ccf4ee90065caa7d15d4e7eee2c0",
+        "MICRO.json": "0b410f1794ce01e25bf9c5dbedf6f242f3e6bdf5bd4b0d264188f316a6d3ae06",
+        "SHUFFLED.json": "923b17b303828576a4276ad81c6490414d1cb377051c54e13ae385ada34699c5",
+        "train-predictions.json": "50aef638f445b0cfc6535ea28cd261075fc91e23f3ae3ab7e5b84d2a45013666",
+        "train.json": "9edcadd8869efc1db77c029da9b11b767bb3990c2d682411202aabf27779e058",
+        "validation-predictions.json": "e97e866d6c4dade0dc67daa2754b647742edcfb7a2d94d4c796e690969f24d92",
+        "validation.json": "54a6912347cfa3dbec63997ce14a09cfa4f6833a8817d6ac83d2e00e49302f88"
+      },
+      "repeat": 5,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10775704352038507,
+        "COARSE": 0.10697361446188126,
+        "GEOMETRY": 0.10123263403311238,
+        "MICRO": 0.10773693979121927,
+        "PERSISTENCE": 0.3172200520833333,
+        "SHUFFLED": 0.10821371548154844
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "eede8bf2b0e3fff614f505165e7d9a423be7eef1116970b877844d82150ff76d",
+        "COARSE.json": "0182ab8749d1aca3433c67c80a0f89dab033842c34983f03767b62a49ef19107",
+        "GEOMETRY.json": "d9c1a929f9c1da18b7549a823133bf7e58abffd5f98466ff20c6a5c4379ab4b8",
+        "MICRO.json": "3ecd751ef702e471d9f3ee59bc7231f6b4c6d2cb3223ab34cec9fa1d7077ee06",
+        "SHUFFLED.json": "bef30dd463adfe67d9d98d6167e72dad12e71af5aec5d82c5b3c441e01b75301",
+        "train-predictions.json": "c292368398067bb65324c3517c591d5e63c7e68b7fb6adfa34e1de21fe8caabf",
+        "train.json": "618072c9fc9c65d141f2535e930222351e522bc029dfa26a1be0cd3ee702fd69",
+        "validation-predictions.json": "0b7719809704e7198a6d7c62556dff95bff5a99743bbc85bf9e0be3d3c15d3d4",
+        "validation.json": "443f87540af32ebf8009bfb7ad22b34dd386a96c586ad9ed7ee3680073ae8274"
+      },
+      "repeat": 6,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10431825042699516,
+        "COARSE": 0.10439128370004651,
+        "GEOMETRY": 0.10066554843979075,
+        "MICRO": 0.10539282609522362,
+        "PERSISTENCE": 0.3219807942708333,
+        "SHUFFLED": 0.10672088631462107
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "a9729fe4f140c4164a0aa81fec1f4d36eb92721bf32d8c635fd54e00910f9e04",
+        "COARSE.json": "4aaf8c5d9f0babc171173d57978b5fa01e1ef53df4c42665526cb828bbfc9f79",
+        "GEOMETRY.json": "5c8228b4cf6de7f9640f2f7b60991fb664049734251e332df7b8795d6317ebcb",
+        "MICRO.json": "d5e69b8450f4b27d03c5784bbefb60923fd0d3c69a5e19b49c647f4b969d9afe",
+        "SHUFFLED.json": "293e9ebcf74af63b79380887324024d94a9c4c2e5309447e9cbe753f1b267766",
+        "train-predictions.json": "70e1dad917e419e4496f5bc3803ae862c52f4c6221a6dab60388c82c04765ba5",
+        "train.json": "0ff8d51477d21122721b3676fa14f7a398abf9eea139b9d01a7e8fc9cb6e6d08",
+        "validation-predictions.json": "ea3d972bf81b196c074b30344ee5deb21ca38165286db6eca9ea706591d8fa37",
+        "validation.json": "4f082ad92c9c64f3d1056c267cf8c3e1a410ea5673d9844ad750ab8ed20118b7"
+      },
+      "repeat": 7,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10578600344154027,
+        "COARSE": 0.1057320961114079,
+        "GEOMETRY": 0.1038125232025852,
+        "MICRO": 0.10735130623040452,
+        "PERSISTENCE": 0.3216349283854167,
+        "SHUFFLED": 0.10840633309136588
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "7ac3f07f026c9bdc5758a95c56f2bbce0b8ce21a87010ab0775cd49e0756ab24",
+        "COARSE.json": "59fbf266eb9e6abbb7c0bda2245d5292af2a9f69408596a470b4f486d6663617",
+        "GEOMETRY.json": "66d177ddb5efd6ec19e7cccb033eaefeda7c6703a087e56b9efa2a6f6e568014",
+        "MICRO.json": "b8bf5fc01e7ee94918a0c20ca9c59b89b6e7fdefc18c6b2434d27cbd11216a03",
+        "SHUFFLED.json": "885992f0b8da76bfa28158a2fad4452ba00f74e127881b2b82d5706f38b99fa1",
+        "train-predictions.json": "f64103fcd442d53d0d1c8507e8eba8208fc46ed70c6ece18096c55b9ecf808b0",
+        "train.json": "a91d3429e519285d047b71fe359a07b9cfe8eeb2a376557ab4efb92f6cf6ee19",
+        "validation-predictions.json": "58048b3d258c318be1a9641cd2a8cf9c8722ae31f74fe371e118359b0d052afe",
+        "validation.json": "81d066259749e577e277268e1f9042d63fd2dc074acedee10bda564ef8752993"
+      },
+      "repeat": 8,
+      "selected_comparator": "MICRO",
+      "validation_mae": {
+        "BASE": 0.10409757503151895,
+        "COARSE": 0.10399664140508595,
+        "GEOMETRY": 0.09972632597561125,
+        "MICRO": 0.10390731877244654,
+        "PERSISTENCE": 0.3207600911458333,
+        "SHUFFLED": 0.10534380575927677
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "8a9b8999ea8c36b5acf696768d66c0f03b3636a84d5e1df3ba850d739c4bc981",
+        "COARSE.json": "c014912246e91176330ff282161ef55ef1eee7cfe880666c8c59c576337a9d7c",
+        "GEOMETRY.json": "4025dd7757a01b1cc2ca670940b4e6e79a2fd51caa0256b6ae66ec99fa097c51",
+        "MICRO.json": "864447b250bc5871d5e228a114ec0de374b65d58312da40173a70d9ee440a507",
+        "SHUFFLED.json": "e3590e3c2f352aebf925c2f3a227675275d91527276ef7898e211d1a0bb123c7",
+        "train-predictions.json": "f101d7bc8e7714e5d7931772fc366796b530f3e0e971d4a61dab750891ee0ee0",
+        "train.json": "4bad122bdf78636dbbbb0c70f5a95e5ac60e9ab79c0d8a2b04b1530534f77e15",
+        "validation-predictions.json": "382530ce927a44ccf99a0088a0a6995a07f8b63721d5fc0d4be4326773874bf8",
+        "validation.json": "02d6e0d385627232da44e726fe92a669df31d3f5c4f2964e09d57d145ab2127a"
+      },
+      "repeat": 9,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10471969057728887,
+        "COARSE": 0.10514816677625644,
+        "GEOMETRY": 0.10215339613349132,
+        "MICRO": 0.10781244894274238,
+        "PERSISTENCE": 0.320556640625,
+        "SHUFFLED": 0.10852536676226494
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "0b570251711822dddb528a7bc51347278338602996ac93bb43e57bc39d663fc7",
+        "COARSE.json": "87c803e7cbfe7c8f3e422e6edb14bdde00b1e8b32e50f3bae7e5d7d5adb3307b",
+        "GEOMETRY.json": "7e46f7404007b97ea244eca5cf2b2fe328492337d50a8f6984cdae4315419952",
+        "MICRO.json": "c6392570512f7a3362f433013a2c664fe8fc45d1d9c5caee7648899e004b9d64",
+        "SHUFFLED.json": "98874f5a8faa5bafeac972181019e53a473e2458564c6a50d1e29f3d4ce3490c",
+        "train-predictions.json": "1068aedba4b5710004026668bfcc545b384f925e7f4adca9344aa9ed33fab8a8",
+        "train.json": "038c493c13261b0f2a626129ce99a0fecd2a1bb0b38ddf9bfdf687f5bf049ad5",
+        "validation-predictions.json": "6673f71973ce7832db7b7980b53b728da52ea25d82004a23a4ae61034dcf849c",
+        "validation.json": "2d622e43cb3e98e427a73c99a18e634116248d55a22b2e6e1667f76032e407b2"
+      },
+      "repeat": 10,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10601328912004104,
+        "COARSE": 0.10685182788387165,
+        "GEOMETRY": 0.1034153605789586,
+        "MICRO": 0.10846304333729018,
+        "PERSISTENCE": 0.3095906575520833,
+        "SHUFFLED": 0.10958174716993298
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "c6736185eefb6d32bae929a6e97cb05748c71701f3d5cb29667b93c38ef2c016",
+        "COARSE.json": "297dcebcf56472b1892b6d2d0f02645f69d4685a2d3e0c096be357ec93d1c6c6",
+        "GEOMETRY.json": "ddc9950655ff47e1f573a15009b7e42ada8200039731c0b7ef27bfa144a8e206",
+        "MICRO.json": "3734eb4e6270dec5953b0ce805e34913bb9d69318d649572539a461306793d03",
+        "SHUFFLED.json": "99db4e30bc10b596bb3255e8390f34a79396214f254738c6082e96bb9f91bdf8",
+        "train-predictions.json": "3664a4d0e02973ba7492f8e5781084dd07ce992d1644c9bd24ec538cc1150fab",
+        "train.json": "c898304685a77a6e41ae7828eae3325d9506e4044dca73e8c4999c429a31e66f",
+        "validation-predictions.json": "9e3dd7eb98e74a1672bbf6b8050057f5c71021d64ff87a5c73c32f613e824233",
+        "validation.json": "a530fb61d8df9c7c736443b66ffeb9fa9b3d991503b0325681a16a757bd166cc"
+      },
+      "repeat": 11,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10651094932767578,
+        "COARSE": 0.10552533382592931,
+        "GEOMETRY": 0.10270895425305167,
+        "MICRO": 0.1066806023052741,
+        "PERSISTENCE": 0.31622314453125,
+        "SHUFFLED": 0.10804811461803641
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "eca3b53ab0e1ccb79a4f7ec3c8c7120d5e79ad65485f5821bd283fedea9057b7",
+        "COARSE.json": "dbee4e34d52d992630856233ed7a3b1c4c102021e09ac3a016519993b535db07",
+        "GEOMETRY.json": "4304a2d1fc7d516f5343204906a1c7d89608f140ad9b686336ba35746e3e12c0",
+        "MICRO.json": "40dd9d997de1ee5ff45fca87d65fba5d25d441d4bfbaf83985617c9c6de165d6",
+        "SHUFFLED.json": "f22c0bf7d39a28a456a52eb484835716313999b2996b2a91fa96207f189b234b",
+        "train-predictions.json": "72b5648dfcde6308d6c7ec98a64c8a1e1f08b4f818be76b915d34c414fa0c45d",
+        "train.json": "c2ad28561492c248b234cf63dfb0750f382febdf03500d152b2ecdfc5168a1c6",
+        "validation-predictions.json": "318f83122e75d384bf110866e14928c2b854d8bfc41df1a607595a28234c2294",
+        "validation.json": "35973a6c0dc32121ba266377cb809fa973ff7c3aad1270f117fab724f66e2fa2"
+      },
+      "repeat": 12,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10606714449952849,
+        "COARSE": 0.1067795077482479,
+        "GEOMETRY": 0.10263503525286606,
+        "MICRO": 0.10730463123064875,
+        "PERSISTENCE": 0.3100789388020833,
+        "SHUFFLED": 0.10904652935691073
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "b29cb075961edd9b3e5049684f4843807495ed1d3bfe0d50ef3c0b5d724915ac",
+        "COARSE.json": "fbdcf4fc3af2b4e00d0fcbc126cd22a74d60078e5968bf7bcd71ec9c4a5a6c8f",
+        "GEOMETRY.json": "dec0a29bc8e22750062066eb2650ceb46bb604c45b9d982978509f11aa3a9eda",
+        "MICRO.json": "958d18123926d18e7bd78785a7fdd8fc8bf40cb7b30dc2fa3218451adf830d22",
+        "SHUFFLED.json": "63ebadb3c85cafd951626983c211b0fe46561c0e6b184112702833825faf59ef",
+        "train-predictions.json": "5b7aae4c56cfbf75abe6ce661fd28f89a84032986afb7bafe848733b6e6834fc",
+        "train.json": "2cc1d936df1e37206ff48aa770a461e6ad63551a13f58e217d5cff83ddbf716d",
+        "validation-predictions.json": "c87966d829d3f60269f9df1f8b1a1bfe4d1ae651d5c6abc7a3bdf9de2c68fd95",
+        "validation.json": "575e34047bc29fa3eb6e3e499b27363bfdb3dba098f09b1a8fcacd9b6dd86d06"
+      },
+      "repeat": 13,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10585579231328357,
+        "COARSE": 0.10698030414016431,
+        "GEOMETRY": 0.10393748267185361,
+        "MICRO": 0.10756013183277134,
+        "PERSISTENCE": 0.3107706705729167,
+        "SHUFFLED": 0.10788102298184739
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "13de40300bb6de659454ded5bb8938da2405500d9664a79733ebe93e7cc4deff",
+        "COARSE.json": "78e176d19d630f676dd42956403534c6736d794f3944e9ac35bf8c2dea33ad07",
+        "GEOMETRY.json": "2764567e27b6326943d77e5429e74ee10e6154b4e0277eafdcbc753767c2aee4",
+        "MICRO.json": "3a665deac171541c7e69b55aec5b4c4209445e1cc148c3219a65e1b081260b3d",
+        "SHUFFLED.json": "330b138abe7812b4ba85c88b42ac205e1bfbd85dd7580ab59ed968ad0dc7af11",
+        "train-predictions.json": "5812a4ab6eeef42c19fd34f9831f24e1f10c9b1776423253c2cd6d7a989defae",
+        "train.json": "2ea850ca0794a1fd51704852ac028b7a688b97a84bac7243cc2e2f798eb494f1",
+        "validation-predictions.json": "68678f21a53bb79507d871c12856b8930f8c6eb5bd58f3fea6c04c67c0e10c23",
+        "validation.json": "7884ee37187540ff70d5dffe7afa7ec4471933dc58c16c5db573952c9c221739"
+      },
+      "repeat": 14,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.1050426541599054,
+        "COARSE": 0.1046672549239417,
+        "GEOMETRY": 0.10150717770002161,
+        "MICRO": 0.1062807802823005,
+        "PERSISTENCE": 0.3205362955729167,
+        "SHUFFLED": 0.10707208865717861
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "c6ba9cb4d9595cc92614db5854a4513a0e6a95a34bdb8a82b6ffaffc4305e077",
+        "COARSE.json": "85200199363c14166df9d0c2561a6604cb715679c83f0644ae6d04584fc99598",
+        "GEOMETRY.json": "5dd85f78957171c4a8d9e394796c8d349301f013b0602c83a97bd0cd97853f5d",
+        "MICRO.json": "aae93cead716e3cb78d74bfe5a2a3dbd9f172664f8843016f8c85784bc00ea03",
+        "SHUFFLED.json": "2fd64df6d76822b53c6a6c37a1fe5307982af1d60e2a5dba745f0c163ed7c622",
+        "train-predictions.json": "7a78cee81f1b767c8d5492e1c808110b8b735e379a2e000d460173f3c08abbd1",
+        "train.json": "050a19ec3968da5eb9756fdf9d2c9195ef5deb0bf9ed69afdee841763a8f0e38",
+        "validation-predictions.json": "d2bf05f27537feabf801cc38811f120639efcef06084077ba8d07d00ac3147a5",
+        "validation.json": "b6ce5660844ee72633306c2d0cf33971566e3e926c1cd0697966048d53d3ae73"
+      },
+      "repeat": 15,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.1077421779523261,
+        "COARSE": 0.10552824816772981,
+        "GEOMETRY": 0.10388102165050965,
+        "MICRO": 0.10769004252477947,
+        "PERSISTENCE": 0.3097941080729167,
+        "SHUFFLED": 0.10907954218517779
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "476f662714632165fbc918b61d43b794f0c534e54468f7eb34a666ec703395d4",
+        "COARSE.json": "4a249114f647ed2bb678d33b0089aa17e7e8f677189001c46a68c5ef60adca7d",
+        "GEOMETRY.json": "9b3aa05554ca087559713d841b59192c7aceb934150e3dec7254dfc768c40237",
+        "MICRO.json": "533977513b9836ca7b6b9d4d6a32526f120065b03252233176e25d47401aa3e9",
+        "SHUFFLED.json": "7162304ae4d7496e645e05215af04639fa3a6dae43564a4aa0ac79b8c3c56aaa",
+        "train-predictions.json": "5c71d6de977cae52de2e559eb0e5ce3efc39745a77bfe3cf9bc3b41ed18bba38",
+        "train.json": "11ebc8b6ed12eed178cefe4e126687560c6e3703cc77e5563e9d2b75e126b28e",
+        "validation-predictions.json": "4ee0d3506a19382b22c09dbea40d7ff47029cee0cc1bd71f603a061bde5b3146",
+        "validation.json": "975aad87dbb9726235a006b9edf8a538f7df9f0112c78ec0f153e25b0473c7db"
+      },
+      "repeat": 16,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10672997770876151,
+        "COARSE": 0.1064823135818098,
+        "GEOMETRY": 0.10427076610560344,
+        "MICRO": 0.10829021533981359,
+        "PERSISTENCE": 0.3114420572916667,
+        "SHUFFLED": 0.1089081265516053
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "d769e925faea1868334d1f5e90ec36c426bf59625b57c3dcad07b93e6fa98e58",
+        "COARSE.json": "6b8275912ecfd18e332683a6dc7a987ae870007ebf35768ad1c0accf176ce0f4",
+        "GEOMETRY.json": "0d3ec3fd47e4430fe507aa8f055c87b540efa08acb167f21044de2089aae6c57",
+        "MICRO.json": "0fe5d6145f21334ebc379710305d48193d0d0533dcfe716264cd482c2fdb081e",
+        "SHUFFLED.json": "a471cd7a14df516d4adf1a92ab2ef41b96b820754a1a4ce03d8cafba52752a81",
+        "train-predictions.json": "458a9489fc144324d7a56ca1c457abe3f89d65ebf5b7f785fb2758b31b30776b",
+        "train.json": "52e18f5c1a773373bd609c8236b49218479e921762cb139554afd582a0cc5e1b",
+        "validation-predictions.json": "29d6a4e1cf98d3b765fe83262f2b5e0e859cf367e568cff8dac84576fe0c6fdf",
+        "validation.json": "40e0141d870d3a1bcad473506fa7f734d563b830cf754c89d17d81f13fa7171d"
+      },
+      "repeat": 17,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.1096071308574627,
+        "COARSE": 0.10913003281879648,
+        "GEOMETRY": 0.10532228594432018,
+        "MICRO": 0.11019270514561902,
+        "PERSISTENCE": 0.30975341796875,
+        "SHUFFLED": 0.11112871444058496
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "eb05d54415b5468e3c15026a5653930733c14fe66335f694b4c9357fbee70396",
+        "COARSE.json": "276b351adecf4047e247287aa092038455b3e28c50d65f50a71adb62f5a173f5",
+        "GEOMETRY.json": "b4d85a1db9f07246cf19c2f8be504d14ecf9813207087734244e931dd5598410",
+        "MICRO.json": "fe6ad16d5a0c18f0d31b2a74e6ef8fb982376c93fda94718246db6ed324c581f",
+        "SHUFFLED.json": "0890416141f82a67c0ae8b1598cc2f0109efd293cccb928a31927d16e7f4f479",
+        "train-predictions.json": "317c99d381b326bff0a8cc1c99aab01a15d0682afdb1ac88ac7aba05bf331362",
+        "train.json": "137cd9e548c7e239d4d61849d7e6fa0e12e8bda7c48f5f812c4ee5dfb8656130",
+        "validation-predictions.json": "6e1e1315789ef0d949f85470edff835be981634df16c0ea378d8323a31993005",
+        "validation.json": "95cb1ed61dbbf21885cef0a558e104796a9521fd568015e877c8fd0021def3bb"
+      },
+      "repeat": 18,
+      "selected_comparator": "COARSE",
+      "validation_mae": {
+        "BASE": 0.10654154476162003,
+        "COARSE": 0.10485631927989608,
+        "GEOMETRY": 0.10223581986512942,
+        "MICRO": 0.10585544272875809,
+        "PERSISTENCE": 0.31396484375,
+        "SHUFFLED": 0.10718013156322233
+      }
+    },
+    {
+      "file_hashes": {
+        "BASE.json": "06eea57c3f201a3b278e2d6b3372c2fd64c8792ce2cc37131c5ec04214ec42c8",
+        "COARSE.json": "ebc7de8406c2660c239aefc0d4264f01691bca7065e213370d17fccdd638e5fe",
+        "GEOMETRY.json": "33111d5f871b2928dfa96b0f1c8b1fb6a96360b4747620b39df48d373bcbc993",
+        "MICRO.json": "125ce648b689814c92ec592a87ec12b418c1f43cae0433910a3de2e1bd938815",
+        "SHUFFLED.json": "e1fda582dfc272a76d1c4a3b8e04c5dd6b65beb6e3e87da9767532c0aa07ee0c",
+        "train-predictions.json": "87efb182903a5b29e7a5372d5356128d370a4125bc9530e2f121f40ecdde417d",
+        "train.json": "cd6f93d9f068b5caa3001089d7c83185ffb244fb42bceea08e5d4e4ddaa235e7",
+        "validation-predictions.json": "fcbfb58b58247a023f896de05cfb97c4335d104e5becc00eeecb291222b4bdb5",
+        "validation.json": "ed0f5c0f08c1b2fe8a4c9a7a4503199ab4534cb28d1812393c97157d42e1fff5"
+      },
+      "repeat": 19,
+      "selected_comparator": "BASE",
+      "validation_mae": {
+        "BASE": 0.10648114479960541,
+        "COARSE": 0.10798400596988912,
+        "GEOMETRY": 0.10341731220546528,
+        "MICRO": 0.10699658597899865,
+        "PERSISTENCE": 0.3204752604166667,
+        "SHUFFLED": 0.10873359473230954
+      }
+    }
+  ]
+}
