@@ -251,3 +251,9 @@ Damit steht die Richtung fest, während die theoretischen Möglichkeiten erhalte
 22. Feldtheorie: [Phänomenologische RG-Flüsse](https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/models/rg_flow_simulator.py).
 23. Feldtheorie: [AFET: Konstanten und Dimensionsvorhersage](https://github.com/GenesisAeon/Feldtheorie/blob/546c606f6ca15acec152c14f99fa6806a839596a/theory/afet.py).
 24. unified-mandala: [Evidenzschema mit Beobachtung, Modell, Expertise und Proxy](https://github.com/GenesisAeon/unified-mandala/blob/a76052842cbb9e6cb5ba70b36b1350feb35ad70a/packages/epistemic/src/evidence.ts).
+
+## Fortschritt nach dem ersten Merge
+
+Stand 11. September 2026: PR #781 ist auf main übernommen. G02 ist jetzt als [GW-PRED-002](../geometric_waste_predictive_v2/PROTOCOL.md) spezifiziert: Vorhersage künftiger Blockbelegungen, acht Bit Zusatzkanal, vorab festgelegte Strukturklassen, Vergleichsverfahren und Entscheidungsschwellen. Der neue Versuch wurde noch nicht implementiert oder ausgeführt.
+
+Die ursprüngliche Roadmap bleibt als Planungsstand erhalten. Der aktuelle nächste Schritt besteht aus G01, soweit die unabhängige Nachrechnung noch nicht dokumentiert ist, und den Implementierungsvoraussetzungen für G03. Vor Erzeugung der Testzustände werden Programm, Fits und Validierungsentscheidungen festgehalten. Aus dem Merge allein wird keine wissenschaftliche oder unabhängige Bestätigung abgeleitet.

@@ -1,5 +1,5 @@
 id: genesis-experimental-roadmap-2026-09
-version: 1.0.0
+version: 1.1.0
 updated: '2026-09-11'
 language: de
 owner: GenesisAeon / Johann Benjamin Römer
@@ -17,7 +17,7 @@ policy:
   sealed_rig_eeg_holdout: untouched
 next:
 - G01
-- G02
+- G03
 tasks:
 - id: R00
   title: Roadmap und Quellen festhalten
@@ -40,7 +40,9 @@ tasks:
   title: Strukturierten Verschnittversuch definieren
   dependency_note: G00
   completion_condition: Zielwert, Datenfamilien, Sensorzugang und Budgets festgelegt
-  status: planned
+  status: specified_not_executed
+  protocol: experiments/geometric_waste_predictive_v2/PROTOCOL.md
+  protocol_id: GW-PRED-002
 - id: G03
   title: Bestätigungslauf durchführen
   dependency_note: G01 und G02
@@ -273,3 +275,11 @@ meaning_links:
 - seed/theory/entropy_geometric_waste/entropy_geometric_waste.md
 - seed/theory/hypothese_morphological_computing/hypothese_morphological_computing.md
 order_link: seed/seed_index.md
+progress_notes:
+- date: '2026-09-11'
+  previous_pr: 781
+  previous_pr_status: merged
+  protocol_id: GW-PRED-002
+  G02: specified
+  G03: requires implementation, frozen evaluation and independent G01 evidence
+  independent_review: not inferred from merge
