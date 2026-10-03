@@ -32,6 +32,8 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9a | Herleitung der Moden und Fehlerschranke, unabhängige Kontrollen, geschlossenes Vorhersagemodul | ✅ erledigt |
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
+| Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
+| M10 | Erinnerung unter Ablenkung: [Versuchsplan](docs/M10_PLAN_ABLENKUNG.md) zur Prüfung | Plan, nicht eingefroren |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -826,3 +828,21 @@ Zu korrigieren waren **zwei Erklärungen, keine Rechnung**. Beide Gegenbeispiele
   - „Modul B löschen“ verändert die Aufgabe;
   - die Commit-Folge belegt die versionierte Reihenfolge.
 - **Weitere berichtigte Stellen:** Erläuterung von `memory_duration` in `lab.py`, Zusammenfassung in `lab.js` („keine: bei keiner Pause 0–64 …“) und die Roadmap-Stellen zu „–“ und zum anti-modularen Bereich.
+
+## Lokale Integration in `main` (2026-10-03)
+
+**Auftrag:** `D:/mandala/AnschlussPromtAstra.txt`, Teil 1. Lokale Merges waren ausdrücklich autorisiert; kein Push.
+
+**Bericht:** `D:/mandala/mandala-memory-results/integration-2026-10-03/INTEGRATIONSBERICHT.md`. Er enthält alle Prüfdaten der Integration im selben Ordner.
+
+| Repo | Ausgangsstand `main` (Tag) | geprüfter Stand (Tag) | `main` nach Integration |
+|---|---|---|---|
+| Feldtheorie | `0e46ec8` (`backup/main-vor-mandala-memory-2026-10-03`) | `a1e61cd` (`reviewed/mandala-memory-a1e61cd`) | `061adba` |
+| unified-mandala | `a7605284` (`backup/main-vor-memory-lab-2026-10-03`) | `515951be` (`reviewed/memory-lab-515951b`) | `1e310caa` |
+
+Gefundene und behobene Integrationsfehler (auf diesem Branch, dann erneut gemergt):
+- **Repo-weites pytest:** Die Feldtheorie-CI ruft `pytest` ohne Pfad auf. In fremder Umgebung scheiterten dadurch 111/211 Labortests. Jetzt prüft `tests/conftest.py` die Laborumgebung (Windows, D:/mandala, SCF ≥ 0.42). Fehlt sie, wird der Ordner nicht gesammelt, und der Grund wird gemeldet.
+- **Trilayer** (Feldtheorie `AGENTS.md`): Die M9-Vorhersagen bekamen einen YAML- und einen MD-Zwilling. Das JSON ist unverändert; die Gleichheit prüft ein Test.
+- **Getrennte Prüfablage:** `serve.py --explore-dir` lenkt die explorativen Protokolle in einen eigenen Ordner, nie auf C:.
+- **Browser-Smoke-Test** `tools/browser_smoke.py`: Er klickt beide Ansichten in Headless-Edge über DevTools durch (stdlib, keine Installation). Ergebnis gegen beide `main`-Stände: 16/16.
+- **Umgebung:** PyYAML 6.0.3 in der Labor-Umgebung auf D: ergänzt, für den Zwillingstest.
