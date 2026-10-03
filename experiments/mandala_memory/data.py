@@ -26,7 +26,7 @@ import numpy as np
 
 from experiments.mandala_memory.core import MemoryLabError
 
-MODES = {"smoke": 1, "research": 2, "explore": 3, "test": 9}
+MODES = {"smoke": 1, "research": 2, "explore": 3, "m9": 4, "test": 9}
 ROLES = ("adapt_train", "decoder_train", "validation", "test")
 
 
