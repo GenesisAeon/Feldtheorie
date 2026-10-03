@@ -141,34 +141,7 @@ def test_inference_rules():
     assert wording(False, -0.01, 0.001) == "Richtung widerspricht der Hypothese"
 
 
-def test_research_is_blocked_until_frozen(monkeypatch):
-    from experiments.mandala_memory import m10_run
-
-    with pytest.raises(MemoryLabError, match="not frozen"):
-        m10_run.mode_settings(PROTO, "research")
-    with pytest.raises(MemoryLabError):
-        m10_run.run("research", m10_run.Path("D:/mandala/.tmp/never"), write=False)
-    monkeypatch.setattr(m10_run, "FROZEN_PROTOCOL_SHA256", "0" * 64)
-    with pytest.raises(MemoryLabError, match="differs"):
-        m10_run.mode_settings(PROTO, "research")
-    monkeypatch.setattr(m10_run, "FROZEN_PROTOCOL_SHA256", m10_run.protocol_sha256())
-    with pytest.raises(MemoryLabError, match="overrides"):
-        m10_run.run("research", m10_run.Path("D:/mandala/.tmp/never"), n_mc=10, write=False)
-    with pytest.raises(MemoryLabError):
-        m10_run.run("dev", "C:/mandala-m10", n_mc=10)
-
-
-def test_release_gate(monkeypatch):
-    from experiments.mandala_memory import m10_evaluate, m10_run
-
-    base = {"mode": "research", "status": "complete", "failures": [], "protocol_sha256": m10_run.protocol_sha256(),
-            "overrides": {"delays": None, "n_mc": None, "seeds": None, "skip_level_d": False}}
-    assert "protocol_not_frozen" in m10_evaluate.release(base)["reasons"]
-    monkeypatch.setattr(m10_run, "FROZEN_PROTOCOL_SHA256", m10_run.protocol_sha256())
-    assert m10_evaluate.release(base)["released"]
-    for bad in ({"mode": "smoke"}, {"status": "failed"}, {"failures": ["x"]}, {"protocol_sha256": "1" * 64},
-                {"overrides": {**base["overrides"], "n_mc": 5}}):
-        assert not m10_evaluate.release({**base, **bad})["released"]
+# research/smoke gate and release gate: see test_m10_controls.py (review R9-R12)
 
 
 def test_protocol_records_the_decisions():

@@ -145,12 +145,20 @@
 "exclusion":
   ["a failure in any sub-run (seed or MC stream) is logged; the run is then incomplete and nothing is confirmed", "update task: patterns/episodes without pulse are excluded; their number/mass is reported", "non-finite values abort with status, no silent repair", "no change of conditions, delays, decoders, n_mc, delta or alpha after the freeze"]
 "resources":
-  "cpu_hard_limit_s": 1200
-  "ram_limit_gib": 1
-  "results_limit_mb": 100
+  "time_limit":
+    "seconds": 1200
+    "kind": "elapsed wall-clock time of the run() call (time.monotonic), not CPU time"
+    "enforcement": "checked before every Monte Carlo block (50 000 draws), every state computation and every level-D unit; on exceeding: status aborted_timeout, partial result written exclusively, never released"
+    "max_overshoot": "one unit; measured in the development runtime check: about 0.16 s per MC block (6.2 s per 2e6 draws)"
+  "ram_limit_gib":
+    "value": 1
+    "status": "planned budget, NOT enforced; peak RSS is measured and reported (runtime check: 158 MiB)"
+  "results_limit_mb":
+    "value": 100
+    "status": "planned budget, NOT enforced; file size reported (estimate about 1 MB)"
   "blas_threads": 2
   "output": "D:/mandala/mandala-memory-results/m10/<mode>/, exclusive writes, C: refused"
-  "runtime_check": "measured at development settings before the freeze (ROADMAP M10d)"
+  "runtime_check": "development settings, full size: estimated research total about 463 s (ROADMAP M10)"
 "smoke":
   "seeds":
     [31001, 31002, 31003]
@@ -174,3 +182,9 @@
       "Y": 6
       "amplitude": 0.9
   "purpose": "tests, tool checks and the runtime check; values chosen outside the research conditions"
+"freeze":
+  "modes_requiring_freeze":
+    ["smoke", "research"]
+  "requirements":
+    ["FROZEN_PROTOCOL_SHA256 in m10_run.py equals the LF-normalised SHA-256 of this file", "protocol/m10_freeze.json names the same protocol hash, the reviewed code commit and the SHA-256 of every M10 code file (m10_run.CODE_FILES); all must match the files on disk"]
+  "release_gate": "m10_evaluate.release: research mode, status complete, no failures, frozen protocol and code hashes, no overrides, the COMPLETE expected grid derived from this protocol (no missing, duplicate or extra rows; exact n; expected stream keys; finite values), all deterministic controls passed"

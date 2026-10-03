@@ -960,7 +960,7 @@ Entwicklungseinstellungen in voller Größe: n_MC = 2·10⁶, d ∈ {3, 4, 6}, 3
   | Aktualisieren | 6,06 s | 6,06 s |
 
 - Ebene D 1,5 s; Zustände und Diagnosen 1,7 s; Spitzen-RAM 158 MiB.
-- Größter Monte-Carlo-Fehler 1,0·10⁻⁴.
+- Größter Monte-Carlo-**Standardfehler** 1,0·10⁻⁴. Er ist eine geschätzte Streuung, keine garantierte Schranke der tatsächlichen Abweichung.
 
 **Hochgerechnet auf den Forschungsumfang** (72 Ebene-B-Schätzungen = 2 Netze × 2 Nichtlinearitäten × 3 Bedingungen × 3 Pausen × 2 Aufgaben; 20 Seeds, 4 Bedingungen):
 
@@ -979,11 +979,42 @@ Entwicklungseinstellungen in voller Größe: n_MC = 2·10⁶, d ∈ {3, 4, 6}, 3
 ### Freeze-Vorbereitung (noch nicht ausgeführt)
 
 1. **Nachprüfung** des Codes (Mischungsgewichte, SE, Ströme, Gate) und des Protokoll-Kandidaten.
-2. **Einfrier-Commit:**
-   - Status im Protokoll auf „frozen“ setzen;
-   - Zwillinge neu erzeugen (`tools/make_trilayer_twins.py`);
+2. **Einfrier-Commit:** *(nach Review R9–R12 präzisiert)*
+   - Status im Protokoll auf „frozen“ setzen und die Zwillinge neu erzeugen;
    - `FROZEN_PROTOCOL_SHA256` in `m10_run.py` auf den LF-normierten SHA-256 des Protokolls setzen;
-   - Pflichtlauf und Mutationsprüfung;
-   - ein Test prüft dann, dass Konstante und Datei übereinstimmen.
+   - `protocol/m10_freeze.json` schreiben: Protokoll-Hash, **geprüfter Code-Commit** und SHA-256 jeder M10-Codedatei (`m10_run.CODE_FILES`);
+   - Smoke **und** Research verlangen genau diesen Zustand;
+   - Pflichtlauf und Mutationsprüfung.
 3. **Smoke-Lauf** (`--mode smoke`, Smoke-Seeds, n_MC = 10⁵): nur Laufzeit und Format.
 4. **Forschungslauf** (`--mode research`) einmal, dann `m10_evaluate`. Abweichungen werden berichtet, nicht repariert.
+
+## Review-Fix `astra-m10-review` (R9–R12)
+
+**Review:** `D:/mandala/mandala-memory-results/astra-m10-review/REVIEW.md` (Stand `66c5e81`). Der numerische Kern war schlüssig (Mischungsgewichte, Standardfehler, Ströme); vier Kontrolllücken mussten vor dem Freeze geschlossen werden. Astras Gegenbeispiele habe ich **zuerst unverändert reproduziert**, als Kopie ihres Skripts mit Ausgabe in meinen Temp-Ordner, ihr Ordner bleibt unberührt:
+- leeres Ergebnis → `released: true`;
+- falsche Leckprüfung → `status: complete`, `failures: []`;
+- Smoke vor dem Freeze → Einstellungen mit Forschungsbedingungen.
+
+| Befund | Korrektur | Regression (`tests/test_m10_controls.py`) |
+|---|---|---|
+| **R9** Gate prüft keine Vollständigkeit | `m10_evaluate.completeness`: Das erwartete Raster wird **nur aus dem Protokoll** abgeleitet, nie aus den Metadaten des Ergebnisses. Geprüft werden Ebene B (Netz × Nichtlinearität × Bedingung × Pause, je Aufgabe exaktes n_MC und Block, erwarteter Stromschlüssel, endliche Werte im Bereich, K0 mit Aktualisieren = N/A), Ebene D (Seed × Pause × Netz × Nichtlinearität × Bedingung, exakte n, erwartete Stromschlüssel je Rolle, Kontrollen, Aktualisieren-Zählung, endliche Werte), das Diagnoseraster sowie Pausen, n_MC und Seeds gegen das Protokoll. Fehlende, doppelte und zusätzliche Zeilen werden abgelehnt. Außerdem wird gegen den Code-Hash im Freeze-Datensatz geprüft. | Ein unabhängig gebautes, vollständiges synthetisches Forschungsergebnis wird freigegeben. **20 gezielte Verfälschungen** werden je mit ihrem Grund abgelehnt, darunter Astras leeres Ergebnis, entfernte, doppelte und zusätzliche Zeilen, doppelte Seeds, falsche n, fremde Ströme, NaN/Inf, K0-Aktualisieren, Overrides, Modus, protokollierter Fehler und veränderter Code. |
+| **R10** Kontrollen ohne Konsequenz | Runner: Eine falsche Leck- oder Trennungsprüfung (`ControlFailure`) und unerwartete deterministische Diagnosen (`enforce_diagnostics`, vor Ebene B) führen zu `status: failed`. Die erwartete negative A1-Kontrolle (N bzw. Ndev im modularen Netz) zählt als „wie erwartet“. Das Gate prüft alle Kontrollen zusätzlich selbst. **Statistische 4-SE-Alarme** bleiben reine Berichte und sperren nicht. | Über den echten Runner: falsche Leckprüfung (Astras Gegenbeispiel), kaputte Trennungsprüfung, invertiertes A1, fehlschlagendes A2 ⇒ `failed`, keine Freigabe. Die erwartete Negativkontrolle lässt den Lauf vollständig. Gate: fehlgeschlagene Kontrollen in sonst vollständigen Daten ⇒ keine Freigabe. Ein A3-Alarm wird berichtet, die Freigabe bleibt. |
+| **R11** Smoke vor dem Freeze | `require_frozen` gilt für Smoke **und** Research: Konstante gesetzt und gleich dem Protokoll, Freeze-Datensatz vorhanden mit gleichem Protokoll-Hash, geprüftem Code-Commit und gleichen Code-Hashes. Vor dem Freeze ist nur `dev` möglich. | Für beide Modi: nicht eingefroren, falscher Hash, fehlender Datensatz und veränderter Code werden abgelehnt; gültiger Freeze wird angenommen; Overrides sind verboten. |
+| **R12** 1200 s nicht durchgesetzt | Die Grenze ist **verstrichene Zeit** (`time.monotonic`) des Laufs, 1200 s. Sie wird vor jedem Monte-Carlo-Block, jeder Zustandsberechnung und jeder Ebene-D-Einheit geprüft; die größte Überschreitung ist eine Einheit (gemessen etwa 0,16 s je Block). Bei Überschreitung gilt `aborted_timeout`, das Teilergebnis wird exklusiv gespeichert und nie freigegeben. RAM- und Dateigrößenbudget sind im Protokoll als **„geplant, nicht durchgesetzt; gemessen und berichtet“** gekennzeichnet. | Mit kontrollierter Uhr bricht der Lauf **innerhalb** der Monte-Carlo-Schleife ab, die Datei ist gespeichert, es gibt keine Freigabe, und Überschreiben ist unmöglich. Die Frist wird vor jedem Block geprüft (Überschreitung ≤ 1 Block). Die Protokollangaben sind eindeutig. |
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Astras Gegenbeispiele erneut | leeres Ergebnis ⇒ nicht freigegeben (7 Gründe); falsche Leckprüfung ⇒ `failed` mit `ControlFailure`; Smoke vor dem Freeze ⇒ verweigert |
+| Pflicht-Labortestlauf | **287/287**, 0 übersprungen |
+| Linux ohne SCF | 143 bestanden, 144 übersprungen |
+| Linux mit SCF | 273 bestanden, 14 übersprungen |
+
+**Mutationsprüfung:** siehe Commit-Nachricht. Neu sind 12 Mutanten zur **Durchsetzung**:
+- Gate ohne Vollständigkeit, ohne Stromprüfung, ohne Duplikatprüfung, ohne Code-Hash, ohne Kontrollprüfung;
+- Runner ignoriert die Leckprüfung, Diagnosen nicht durchgesetzt;
+- Smoke nicht gesperrt, Code-Hash nicht geprüft;
+- Monte Carlo ohne Frist, Blockschleife ohne Prüfung, Timeout als vollständig gezählt.
+
+Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen und Tests umgezielt.

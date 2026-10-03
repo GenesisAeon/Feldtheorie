@@ -104,20 +104,121 @@ def numeric_diagnostics(result: Dict, proto: Dict) -> Dict:
             "policy": proto["diagnostics"]["alarm_policy"]}
 
 
+def _finite(*xs) -> bool:
+    return all(isinstance(x, (int, float)) and not isinstance(x, bool) and np.isfinite(x) for x in xs)
+
+
+def completeness(result: Dict, proto: Dict) -> List[str]:
+    """Review R9: the expected grid is derived from the PROTOCOL alone (never from
+    the result's own metadata) and compared row by row with the data."""
+    from experiments.mandala_memory.data import stream
+
+    problems: List[str] = []
+    nets, nls = ("modular", "uniform"), ("tanh", "identity")
+    conds, delays = proto["conditions"], proto["delays"]["all"]
+    lb, ld = proto["level_B"], proto["level_D"]
+    if result.get("delays") != delays:
+        problems.append("delays_differ_from_protocol")
+    if result.get("n_mc") != lb["n_mc"]:
+        problems.append("n_mc_differs_from_protocol")
+    if result.get("seeds") != ld["seeds"]:
+        problems.append("seeds_differ_from_protocol")
+    # level B: exactly one row per (network, nonlinearity, condition, delay)
+    expected_b = {(n, nl, c, d) for n in nets for nl in nls for c in conds for d in delays}
+    keys_b = [(r.get("network"), r.get("nonlinearity"), r.get("condition"), r.get("delay")) for r in result.get("level_B", [])]
+    if len(keys_b) != len(set(keys_b)):
+        problems.append("level_B_duplicate_rows")
+    if set(keys_b) - expected_b:
+        problems.append("level_B_extra_rows")
+    if expected_b - set(keys_b):
+        problems.append("level_B_missing_rows")
+    for r, key in zip(result.get("level_B", []), keys_b):
+        if key not in expected_b:
+            continue
+        n, nl, c, d = key
+        if conds[c] is None:
+            pv = r.get("preserve") or {}
+            if r.get("update") is not None or pv.get("n") != 0 or not _finite(pv.get("estimate")) or not 0.5 <= pv["estimate"] <= 1:
+                problems.append(f"level_B_K0_invalid:{key}")
+            continue
+        for task in ("preserve", "update"):
+            v = r.get(task) or {}
+            want = list(stream("m10bayes", lb["streams"]["base_seed"], task, n, nl, c, d)[1])
+            if v.get("n") != lb["n_mc"] or v.get("block") != lb["block"]:
+                problems.append(f"level_B_wrong_n:{task}:{key}")
+            if v.get("stream") != want:
+                problems.append(f"level_B_foreign_stream:{task}:{key}")
+            if not _finite(v.get("estimate"), v.get("se")) or not 0.5 <= v["estimate"] <= 1 or v["se"] < 0:
+                problems.append(f"level_B_non_finite_or_out_of_range:{task}:{key}")
+    # level D: exactly one row per (seed, delay, network, nonlinearity, condition)
+    expected_d = {(s, d, n, nl, c) for s in ld["seeds"] for d in delays for n in nets for nl in nls for c in conds}
+    rows_d = result.get("level_D", [])
+    keys_d = [(r.get("seed"), r.get("delay"), r.get("network"), r.get("nonlinearity"), r.get("condition")) for r in rows_d]
+    if len(keys_d) != len(set(keys_d)):
+        problems.append("level_D_duplicate_rows")
+    if set(keys_d) - expected_d:
+        problems.append("level_D_extra_rows")
+    if expected_d - set(keys_d):
+        problems.append("level_D_missing_rows")
+    n_tr, n_te = 2 * ld["n_train_per_class"], 2 * ld["n_test_per_class"]
+    for r, key in zip(rows_d, keys_d):
+        if key not in expected_d:
+            continue
+        s, d, n, nl, c = key
+        want = {role: [list(stream("m10", s, kind, role, d)[1]) for kind in ("pattern", "noise")]
+                for role in ("decoder_train", "test")}
+        if r.get("streams") != want:
+            problems.append(f"level_D_foreign_stream:{key}")
+        if not r.get("checks") or not all(r["checks"].values()):
+            problems.append(f"level_D_control_failed:{key}")
+        pv = r.get("preserve") or {}
+        if pv.get("n_train") != n_tr or pv.get("n_test") != n_te:
+            problems.append(f"level_D_wrong_n:{key}")
+        if not _finite(pv.get("nearest_mean"), pv.get("lda_ledoit_wolf")):
+            problems.append(f"level_D_non_finite:{key}")
+        up = r.get("update")
+        if (conds[c] is None) != (up is None):
+            problems.append(f"level_D_update_presence:{key}")
+        elif up is not None and (up.get("n_test", 0) + up.get("n_excluded_test", -1) != n_te
+                                 or not _finite(up.get("nearest_mean"), up.get("lda_ledoit_wolf"))):
+            problems.append(f"level_D_update_invalid:{key}")
+    # deterministic diagnostics: one row per non-K0 (network, nonlinearity, condition, delay), all as expected
+    expected_g = {(n, nl, c, d) for n in nets for nl in nls for c in conds if conds[c] is not None for d in delays}
+    keys_g = [(r.get("network"), r.get("nonlinearity"), r.get("condition"), r.get("delay")) for r in result.get("diagnostics", [])]
+    if len(keys_g) != len(set(keys_g)) or set(keys_g) != expected_g:
+        problems.append("diagnostics_grid_incomplete")
+    for r in result.get("diagnostics", []):
+        if not r.get("A1_as_expected"):
+            problems.append("A1_not_as_expected")
+        if r.get("nonlinearity") == "identity" and r.get("p_fixed") and not (r.get("A2_structural") or {}).get("holds"):
+            problems.append("A2_structural_failed")
+    return problems
+
+
 def release(result: Dict) -> Dict:
-    from experiments.mandala_memory.m10_run import FROZEN_PROTOCOL_SHA256, protocol_sha256
+    """Confirmatory release only for a complete research run with the frozen protocol
+    and code (reviews R2-analogue, R9, R10)."""
+    from experiments.mandala_memory import m10_run
 
     reasons = []
-    if result["mode"] != "research":
+    if result.get("mode") != "research":
         reasons.append("mode_is_not_research")
-    if result["status"] != "complete" or result["failures"]:
+    if result.get("status") != "complete" or result.get("failures"):
         reasons.append("run_not_complete")
-    if FROZEN_PROTOCOL_SHA256 is None:
+    if m10_run.FROZEN_PROTOCOL_SHA256 is None:
         reasons.append("protocol_not_frozen")
-    elif result["protocol_sha256"] != FROZEN_PROTOCOL_SHA256 or protocol_sha256() != FROZEN_PROTOCOL_SHA256:
-        reasons.append("protocol_differs_from_frozen")
+    else:
+        if result.get("protocol_sha256") != m10_run.FROZEN_PROTOCOL_SHA256 or m10_run.protocol_sha256() != m10_run.FROZEN_PROTOCOL_SHA256:
+            reasons.append("protocol_differs_from_frozen")
+        try:
+            rec = m10_run.require_frozen("release")
+            if result.get("code_sha256") != rec["code_sha256"]:
+                reasons.append("code_differs_from_frozen")
+        except Exception as e:
+            reasons.append(f"freeze_invalid: {e}")
     if any(v not in (None, False) for v in result.get("overrides", {}).values()):
         reasons.append("overrides_used")
+    reasons += completeness(result, mt.load_protocol())
     return {"released": not reasons, "reasons": reasons}
 
 
@@ -149,18 +250,28 @@ def level_d_summary(result: Dict, proto: Dict) -> List[Dict]:
     return out
 
 
+def _safe(fn, *args):
+    try:
+        return fn(*args)
+    except (KeyError, TypeError) as e:                 # incomplete data: reported, never released
+        return {"not_computable": f"{type(e).__name__}: {e}"}
+
+
 def evaluate(result: Dict) -> Dict:
     proto = mt.load_protocol()
     rel = release(result)
-    conf = confirmatory(result, proto) if 4 in result["delays"] else None
+    try:
+        conf = confirmatory(result, proto)
+    except (KeyError, TypeError) as e:                 # incomplete data: not computable (and never released)
+        conf = {"not_computable": f"{type(e).__name__}: {e}"}
     return {"run_id": result.get("run_id"), "mode": result["mode"], "release": rel,
             "confirmatory": conf, "confirmatory_label": "confirmatory (released)" if rel["released"] else
             "DESCRIPTIVE ONLY -- not released: " + ", ".join(rel["reasons"]),
             "deterministic_diagnostics": {
                 "A1_all_as_expected": all(r["A1_as_expected"] for r in result["diagnostics"]),
                 "A2_structural_all_hold": all(r["A2_structural"]["holds"] for r in result["diagnostics"] if "A2_structural" in r)},
-            "numeric_diagnostics": numeric_diagnostics(result, proto),
-            "level_D": level_d_summary(result, proto) if result["level_D"] else [],
+            "numeric_diagnostics": _safe(numeric_diagnostics, result, proto),
+            "level_D": _safe(level_d_summary, result, proto) if result.get("level_D") else [],
             "evidence": {"level_B": "numerical_sample (MC) of a deterministic model quantity", "level_D": "numerical_sample",
                          "empirical_status": "synthetic_only"}}
 

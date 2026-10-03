@@ -42,6 +42,11 @@ SCF = {
     "test_m10_kernel.py::test_level_d_episodes_pairing_leak_and_split_controls",
     "test_m10_kernel.py::test_update_task_excludes_episodes_without_pulse",
     "test_m10_kernel.py::test_small_development_run_end_to_end",
+    "test_m10_controls.py::test_r10_failed_leak_check_fails_the_run",
+    "test_m10_controls.py::test_r10_failed_split_check_fails_the_run",
+    "test_m10_controls.py::test_r10_unexpected_deterministic_diagnostic_fails_the_run",
+    "test_m10_controls.py::test_r10_expected_negative_a1_control_does_not_fail_the_run",
+    "test_m10_controls.py::test_r12_timeout_through_the_runner",
     # derived from a Linux run WITHOUT scoped-correspondence: exactly these failed on the
     # missing module (directly, or via a runner seed that caught it); see ROADMAP, review R8
     "test_m1_core.py::test_k3_reset_after_pulse",

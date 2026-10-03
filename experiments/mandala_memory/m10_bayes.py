@@ -69,12 +69,16 @@ def max_posterior(y: np.ndarray, classes: Sequence[Mixture], sigma: float) -> np
 
 
 def bayes_accuracy_mc(classes: Sequence[Mixture], sigma: float, n: int, rng: np.random.Generator,
-                      block: int = 50_000) -> Dict:
+                      block: int = 50_000, deadline=None) -> Dict:
+    """deadline: optional callable, called before every block; it raises when the
+    run's time budget is exhausted (review R12: overshoot at most one block)."""
     C = len(classes)
     cum = [np.cumsum(np.asarray(w, dtype=float) / np.sum(w)) for _, w in classes]
     acc = {"n": 0, "mean": 0.0, "m2": 0.0}
     done = 0
     while done < n:
+        if deadline is not None:
+            deadline()
         b = min(block, n - done)
         c = rng.integers(0, C, size=b)
         u = rng.random(b)
