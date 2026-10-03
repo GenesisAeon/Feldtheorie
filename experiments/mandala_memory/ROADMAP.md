@@ -23,7 +23,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M0 | Stände, APIs, Laufzeit, Speicherorte; Protokoll eingefroren; Kontrollen unabhängig | ✅ erledigt |
 | M1 | Episodenoperator, linearer/Null-Referenzkern; K1–K9, SCF-Parität, Reset/Fortsetzung | ✅ erledigt |
 | M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ✅ erledigt |
-| M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ⬜ |
+| M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ✅ erledigt |
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ⬜ |
 | M5 | Feldtheorie-Membranpilot (separat) | ⬜ |
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ⬜ |
@@ -156,4 +156,100 @@ K2, K4, K5 und K6 betreffen Beobachtung und Decoder und werden in M2 geprüft.
 | K5 | Daten und Testpunkte ×1000 ergeben identische Vorhersagen |
 | K6 | Permutation: eingefroren 0, neu angepasst 1, \|det\| = 1 |
 
-**Testfehler unterwegs:** In meinem eigenen Test hatte ich `(x+ε)−x == ε` exakt erwartet, was in Gleitkomma nicht gilt. Die Prüfung läuft jetzt mit 1e‑15 plus direktem Vergleich der Rausch-Arrays. Am Code war das kein Fehler.
+**Testfehler unterwegs (nicht im Code):** In meinem eigenen Test hatte ich `(x+ε)−x == ε` exakt erwartet, was in Gleitkomma nicht gilt. Die Prüfung läuft jetzt mit 1e‑15 plus direktem Vergleich der Rausch-Arrays. Am Code war das kein Fehler.
+
+## M3: Eingefrorenes und angepasstes Netz, Ablationen, Smoke-Lauf
+
+### Code
+
+- [`model.py`](model.py):
+  - **Episodische Hebb-Anpassung:** 40 balancierte Episoden in zufälliger Reihenfolge (eigener Strom `adaptation`), je Puls + 4 Nullschritte.
+  - Die zeitversetzten Paare einer Episode gehen in **einen** Aufruf von SCF `hebb_update` (η = 0,3, feste Maske, Renormierung auf γ).
+  - Danach ist das Netz eingefroren; das Eingangsnetz bleibt unverändert.
+  - Dies ist ein **neues Protokoll**, keine Wiederholung des alten ON-Benchmarks.
+- [`runner.py`](runner.py):
+  - Pro Seed: anpassen, dann für jedes d Decoder-Training und Test (in der Forschungsrunde zusätzlich Validierung).
+  - Das Testrauschen ist über alle Bedingungen gepaart.
+  - Es werden nur Rohwerte gespeichert, kein Gesamtscore.
+  - Der Runner verweigert Ausgaben auf C:, bricht nach dem Smoke-Limit mit Status ab und protokolliert fehlgeschlagene Seeds.
+  - Gemessen werden Laufzeit und Spitzen-RAM (Windows `PeakWorkingSetSize`).
+- [`cli.py`](cli.py): setzt die BLAS-Threads auf 2 und TEMP auf D:.
+- [`summarize.py`](summarize.py): rein beschreibende Tabelle.
+
+**Startbefehl Smoke:** `PYTHONPATH=. D:/mandala/.venvs/mandala-memory/Scripts/python.exe -m experiments.mandala_memory.cli run --mode smoke`
+
+Die Ausgabe landet in `D:/mandala/mandala-memory-results/smoke/`.
+
+### Bedingungen
+
+| Bedingung | Bedeutung |
+|---|---|
+| frozen | Netz vor der Anpassung |
+| adapted | Netz nach der Anpassung, Decoder neu trainiert |
+| adapted_with_frozen_decoder | Netz nach der Anpassung, Decoder auf dem Vorher-Netz eingefroren |
+| uncoupled_leak | A = 0; **weniger** Kopplungsbudget, also kein budgetgleicher Modularitätstest |
+| linear | Identität statt tanh |
+| uniform_M1 ≡ renamed_M3_c8_11 | identisches Netz unter anderen Modulnamen |
+| reset_control | x nach dem Puls auf 0 gesetzt |
+| sum_observation_frozen | H = (1, …, 1), **andere Beobachtungsdimension**, also kein ressourcengleicher Vergleich |
+| permutation_* | umgekehrte Sensorreihenfolge, Decoder eingefroren bzw. neu angepasst |
+
+### Tests
+
+[`tests/test_m3_model_runner.py`](tests/test_m3_model_runner.py): **9 neue, insgesamt 54/54.**
+
+- Gewichte ändern sich nur im Training.
+- Zeilenbudget γ und Maske bleiben erhalten; Episoden ändern A nicht.
+- Die Anpassung ist je Seed deterministisch; die Reihenfolge ist balanciert.
+- Uniform und umbenannt sind identisch.
+- Der Runner liefert bei Wiederholung bitgleiche Ergebnisse.
+- Die Sperre für C: greift.
+- Ein Timeout führt zum Status „aborted“, die deklarierte Seed-Liste bleibt erhalten.
+- Ein fehlgeschlagener Seed wird protokolliert.
+- Spitzen-RAM wird gemessen.
+
+**Bewusst nicht geprüft:** eine Effektrichtung.
+
+### Smoke-Lauf
+
+| Feld | Wert |
+|---|---|
+| Run-ID | `smoke-e19650a0a0` |
+| Konfigurations-SHA-256 | beginnt mit `e19650a0a0` |
+| Ergebnisdatei-SHA-256 | beginnt mit `1a78faaaa1eaabc6` |
+| Status | complete, 3 Seeds, kein Ausfall |
+| Laufzeit | **3,4 s** (Anpassung 0,11 s, Auswertung 0,45 s; der Rest ist Import und Start) |
+| Spitzen-RAM | **93 MiB** |
+| Ergebnisgröße | 83 KiB |
+| Wiederholung | bitgleiche Rohwerte |
+
+Alle Prüfungen sind je Seed wahr:
+- eingefrorenes A unverändert;
+- angepasstes A während der Tests unverändert;
+- Maske eingehalten, Zeilensummen = γ.
+
+### Smoke-Ergebnisse
+
+Rein **beschreibend**: 3 Seeds, 40 Trainings- und 40 Testepisoden je Klasse und Verzögerung, keine Inferenz. Werte sind die mittlere Balanced Accuracy.
+
+| d | frozen | adapted | adapted, Decoder eingefroren | Leak (A = 0) | linear | uniform ≡ umbenannt | Reset | Summe | Perm. eingefroren | Perm. neu |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 0,483 | 0,504 | 0,483 | 1,000 |
+| 1 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 0,492 | 0,512 | 0,725 | 1,000 |
+| 2 | 1,000 | 1,000 | 1,000 | 0,975 | 1,000 | 0,946 | 0,512 | 0,504 | 0,713 | 1,000 |
+| 4 | 0,904 | 0,908 | 0,908 | 0,704 | 0,929 | 0,625 | 0,442 | 0,504 | 0,733 | 0,933 |
+| 8 | 0,662 | 0,662 | 0,654 | 0,546 | 0,671 | 0,550 | 0,554 | 0,550 | 0,596 | 0,654 |
+| 16 | 0,496 | 0,496 | 0,492 | 0,496 | 0,496 | 0,496 | 0,496 | 0,533 | 0,496 | 0,496 |
+| 32 | 0,492 | 0,492 | 0,492 | 0,492 | 0,492 | 0,492 | 0,492 | 0,483 | 0,492 | 0,492 |
+
+### Lesart (beschreibend, nicht inferenziell)
+
+- **Zerfall der Spur:** Die Reizinformation ist bei d ≤ 2 vollständig lesbar und zerfällt bis d = 8. Ab d = 16 liegt die Zustandstrennung bei etwa 10⁻³ und damit unter σ = 0,02, die Werte sind Zufallsschwankungen.
+- **Hebb-Anpassung kaum wirksam:** Unter diesem Protokoll ändert sie A wenig (‖ΔA‖_F ≈ 0,05). Die Kurven von eingefrorenem und angepasstem Netz sind praktisch gleich, auch beim vorab festgelegten Hauptkontrast d = 8.
+- **Kopplung wirkt:** Gegenüber dem ungekoppelten Leak-Modell ist der Unterschied sichtbar (d = 4: 0,90 gegen 0,70).
+- **Modulstruktur:** Das modulare Netz (c = 1/4) hält die Spur länger als das gleich budgetierte uniforme Netz (d = 4: 0,90 gegen 0,63). Modulnamen allein ändern nichts.
+- **Kontrollen:**
+  - Reset und Summenbeobachtung liegen auf Zufallsniveau. Die Summe ist wegen der symmetrischen Eingänge schon bei d = 0 informationslos.
+  - Der eingefrorene Decoder versagt nach der Permutation, ein neu angepasster liest wieder.
+- **Gepaartes Rauschen sichtbar:** Bei d = 32 haben alle Bedingungen exakt denselben Wert, weil sie dasselbe Rauschen sehen und die Zustände nahezu gleich sind.
+
