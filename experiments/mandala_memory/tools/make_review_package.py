@@ -98,7 +98,7 @@ def main() -> int:
     resources = {}
     for sub in ("smoke", "research"):
         for f in (RES / sub).glob(f"{sub}-*.json"):
-            if f.name.endswith(".evaluation.json"):
+            if ".evaluation" in f.name:        # evaluation files (incl. versioned ones) are not runs
                 continue
             r = json.loads(f.read_text(encoding="utf-8"))
             resources[r["run_id"]] = {"status": r["status"], "seeds": len(r["seeds"]), "failed": r["failed_seeds"], **r["resources"],
