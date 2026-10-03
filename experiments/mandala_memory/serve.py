@@ -230,7 +230,9 @@ def set_explore_dir(path) -> Path:
     global EXPLORE_DIR
     if path is not None:
         path = Path(path)
-        if path.drive.upper().startswith("C"):
+        from experiments.mandala_memory.core import is_drive_c
+
+        if is_drive_c(path):
             raise MemoryLabError("explore directory must not be on C:")
         EXPLORE_DIR = path
     return EXPLORE_DIR

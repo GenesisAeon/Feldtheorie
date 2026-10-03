@@ -152,7 +152,9 @@ def evaluate(fr: Dict) -> Dict:
 
 
 def write_result(res: Dict, out_dir: Path = OUT_DIR) -> Path:
-    if out_dir.drive.upper().startswith("C"):
+    from experiments.mandala_memory.core import is_drive_c
+
+    if is_drive_c(out_dir):
         raise RuntimeError("results must not be written to C:")
     text = json.dumps(res, indent=1, ensure_ascii=False, allow_nan=False) + "\n"
     exe = hashlib.sha256(text.encode("utf-8")).hexdigest()[:10]

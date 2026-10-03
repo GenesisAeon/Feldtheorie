@@ -1,0 +1,12 @@
+# Mandala memory lab -- declared test/runtime dependencies (review R8).
+# Tiers (see tests/conftest.py):
+#   portable tests  : numpy, pytest, PyYAML
+#   scf tests       : + scoped-correspondence (network construction, SCF reference functions)
+#   lab_integration : additionally the Windows lab layout on D:/mandala (not installable)
+# Versions as used in the lab venv D:/mandala/.venvs/mandala-memory (Python 3.11.9) and
+# in the Linux check (Python 3.12.3).
+numpy==2.2.6
+pytest==9.1.1
+PyYAML==6.0.3
+scoped-correspondence==0.42.0
+scipy==1.15.3

@@ -38,6 +38,18 @@ class MemoryLabError(ValueError):
     """Input outside the declared scope of the experiment."""
 
 
+def is_drive_c(path) -> bool:
+    """True if the path names drive C: -- checked on the RAW spelling with Windows
+    path rules, so that the guard also holds on POSIX (where Path("C:/x").drive
+    is empty and "C:/x" would become a relative folder)."""
+    from pathlib import Path, PureWindowsPath
+
+    raw = str(path)
+    if PureWindowsPath(raw).drive.upper().startswith("C"):
+        return True
+    return Path(raw).resolve().drive.upper().startswith("C")
+
+
 @dataclass
 class NetworkSpec:
     """Frozen description of one network condition."""

@@ -10,8 +10,9 @@ from pathlib import Path
 import pytest
 
 from experiments.mandala_memory import m9_freeze, m9_registry as reg, predict
+from experiments.mandala_memory.tests._paths import scratch
 
-TMP = Path(r"D:/mandala/.tmp/mandala-memory/test-results/m9")
+TMP = scratch("m9")
 
 
 def test_draw_is_deterministic_balanced_and_in_family():
@@ -97,4 +98,24 @@ def test_committed_frozen_predictions_are_intact():
     assert [it["prediction"]["combination"] for it in fr["held_out"]] == held
     for it in fr["held_out"]:
         again = json.loads(json.dumps(predict.predict(it["prediction"]["combination"], fr["rules"]["p_star"])))
-        assert again == it["prediction"]
+        _same_up_to_last_digits(again, it["prediction"], it["id"])
+
+
+def _same_up_to_last_digits(a, b, where):
+    """Recomputing the frozen predictions must reproduce them: identical structure,
+    identical integers/booleans/None (D values, intervals, flags), floats equal up to
+    relative 1e-12. Bit-identity holds on the freeze platform (Windows lab); a Linux
+    run differed in the last digit (libm/BLAS), see review R8. The frozen FILE itself
+    stays protected bit-exactly by its SHA-256."""
+    if isinstance(a, dict):
+        assert isinstance(b, dict) and set(a) == set(b), where
+        for k in a:
+            _same_up_to_last_digits(a[k], b[k], f"{where}.{k}")
+    elif isinstance(a, list):
+        assert isinstance(b, list) and len(a) == len(b), where
+        for i, (x, y) in enumerate(zip(a, b)):
+            _same_up_to_last_digits(x, y, f"{where}[{i}]")
+    elif isinstance(a, float) and isinstance(b, float):
+        assert abs(a - b) <= 1e-12 * max(1.0, abs(a), abs(b)), (where, a, b)
+    else:
+        assert type(a) is type(b) and a == b, (where, a, b)

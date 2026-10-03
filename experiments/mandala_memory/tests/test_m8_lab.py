@@ -17,9 +17,10 @@ import experiments.mandala_memory.serve as serve
 from experiments.mandala_memory import lab
 from experiments.mandala_memory.core import MemoryLabError, recall_state
 from experiments.mandala_memory.model import condition_specs
+from experiments.mandala_memory.tests._paths import scratch
 
 UI = Path(r"D:/mandala/.worktrees/unified-mandala-memory-lab/experiments/memory_lab")
-TEST_EXPLORE = Path(r"D:/mandala/.tmp/mandala-memory/test-results/explore")
+TEST_EXPLORE = scratch("explore")
 B = lab.BENCHMARK_KNOBS
 
 

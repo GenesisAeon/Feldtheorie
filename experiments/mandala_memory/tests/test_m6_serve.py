@@ -11,9 +11,10 @@ import pytest
 
 import experiments.mandala_memory.serve as serve
 from experiments.mandala_memory.core import MemoryLabError, recall_state
+from experiments.mandala_memory.tests._paths import scratch
 
 UI = Path(r"D:/mandala/.worktrees/unified-mandala-memory-lab/experiments/memory_lab")
-TEST_EXPLORE = Path(r"D:/mandala/.tmp/mandala-memory/test-results/explore")
+TEST_EXPLORE = scratch("explore")
 
 
 @pytest.mark.parametrize("bad", [

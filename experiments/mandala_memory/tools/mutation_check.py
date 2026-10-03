@@ -45,7 +45,10 @@ MUTANTS = [
     # retargeted: the default mask already allows every off-diagonal edge, so dropping it was equivalent
     ("adapted_mask_allows_self_loops", "model.py", "    mask = spec.mask.tolist()", "    mask = np.ones((spec.N, spec.N), dtype=int).tolist()",
      ["test_m3_model_runner.py"]),
-    ("c_drive_guard_removed", "runner.py", "    if out_dir.drive.upper().startswith(\"C\"):", "    if False:", ["test_m3_model_runner.py"]),
+    ("c_drive_guard_removed", "runner.py", "    if is_drive_c(out_dir):", "    if False:", ["test_m3_model_runner.py"]),
+    # review R8: the guard must hold on POSIX too, where Path("C:/x").drive is empty
+    ("c_drive_guard_not_portable", "core.py", "    if PureWindowsPath(raw).drive.upper().startswith(\"C\"):\n        return True\n",
+     "", ["test_m3_model_runner.py"]),
     ("failed_seed_dropped", "runner.py", "            result[\"failed_seeds\"].append({\"seed\": seed, \"error\": f\"{type(e).__name__}: {e}\"})",
      "            pass", ["test_m3_model_runner.py"]),
     ("primary_pairing_shifted", "evaluate.py", "    diffs = paired_differences(result, \"adapted\", \"frozen\", primary_d)",

@@ -7,9 +7,10 @@ import pytest
 
 from experiments.mandala_memory.evaluate import bootstrap_mean_ci, evaluate, paired_differences
 from experiments.mandala_memory.runner import run_experiment
+from experiments.mandala_memory.tests._paths import scratch
 
 CFG = json.loads((Path(__file__).resolve().parents[1] / "protocol" / "startkonfiguration.json").read_text(encoding="utf-8"))
-OUT = Path(r"D:/mandala/.tmp/mandala-memory/test-results/m4")
+OUT = scratch("m4")
 
 
 @pytest.fixture(scope="module")
