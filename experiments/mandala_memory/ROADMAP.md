@@ -30,7 +30,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ✅ erledigt |
 | M8 | Regler-Labor: explorativ, protokolliert, getrennt vom Benchmark | ✅ erledigt |
 | M9a | Herleitung der Moden und Fehlerschranke, unabhängige Kontrollen, geschlossenes Vorhersagemodul | ✅ erledigt |
-| M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | offen |
+| M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | offen |
 
 ## M0: Bestand, Laufzeit und Kontrollen
@@ -622,3 +622,55 @@ Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten 
 **Fehler unterwegs (im Vorhersagemodul, durch Entwicklungstest gefunden):** Im linearen Grenzfall hatte ich g = ℓ·tanh(a) statt ℓ·a benutzt. Ohne tanh wird auch der Puls nicht gesättigt. Das ist korrigiert und als Mutant abgesichert.
 
 **Mutationsprüfung: 32/32 erkannt**, mit 4 neuen Mutanten: falsches Modulverhältnis, Schranke weggelassen, zu kleine Rate ρ, tanh im linearen Grenzfall.
+
+## M9b: Vorhersagen eingefroren
+
+- **Werkzeuge:**
+  - [`m9_registry.py`](m9_registry.py): Register des Gesehenen und Prüfraster, reine Daten.
+  - [`m9_freeze.py`](m9_freeze.py): Ziehung, mechanische Prüfung auf „ungesehen“, exklusives Schreiben. Importiert keinen Kern; ein Test prüft das in einem eigenen Prozess.
+- **Ziehung:** Seed 202610039, 24 Kombinationen, je 6 pro Messoperator (`full`, `module_means`, `node`, `sum`), davon 9 mit Eingängen im selben Modul (2 davon wegen M = 1). Das Raster für c, γ, ℓ, a und σ teilt **keinen** Wert mit den 21 gesehenen Fällen:
+  - 20 Entwicklungsfälle (enthalten Benchmark und Scan vor M8);
+  - 1 Labor-Eintrag in `explore/protocol.jsonl`: meine Sichtprüfung mit Benchmarkwerten.
+- **Eingefroren:** [`protocol/m9_frozen_predictions.json`](protocol/m9_frozen_predictions.json)
+  - SHA-256 `1e872cecaaa4ff10d796e921a289119cde32ba1fee8698cc0881e4137867de13`, geschrieben auf Stand `6f8a812`;
+  - `kernel_evaluated_before_freeze: false`;
+  - Prüfsummen (zeilenende-normiert) von `predict.py`, `docs/M9_HERLEITUNG.md` und `m9_registry.py`. Ändert sich eine dieser Dateien nach dem Einfrieren, schlägt `test_committed_frozen_predictions_are_intact` an.
+- **Prüfregeln** sind in der Datei selbst festgehalten (`rules`), wie in der Herleitung, Abschnitt 7.
+
+**Die eingefrorenen Vorhersagen** (p\* = 0,75; „–“ = schon bei d = 0 unter p\*):
+
+| id | N/M | c | γ | ℓ | a | σ | Eingänge | H | q | μ_D | μ_I | D_lin | [D_lo, D_hi] | D_q |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| h00 | 12/1 | – | 0.6 | 0.75 | 2.4 | 0.015 | n9/n6 (gleich) | full | 0.700 | – | 0.209 | 2 | [2, 2] | 11 |
+| h01 | 12/3 | 0.100 | 0.6 | 0.3 | 1.6 | 0.01 | n0/n10 (versch.) | full | 0.880 | 0.853 | 0.646 | 16 | [16, 16] | 26 |
+| h02 | 12/4 | 0.600 | 0.85 | 0.75 | 1.6 | 0.01 | n0/n1 (gleich) | full | 0.887 | 0.378 | 0.122 | 2 | [2, 2] | 35 |
+| h03 | 12/3 | 0.150 | 0.85 | 0.4 | 0.9 | 0.03 | n6/n9 (versch.) | full | 0.940 | 0.863 | 0.504 | 10 | [10, 10] | 37 |
+| h04 | 18/9 | 0.100 | 0.9 | 0.3 | 0.3 | 0.03 | n4/n7 (versch.) | full | 0.970 | 0.940 | 0.457 | 12 | [12, 12] | 36 |
+| h05 | 12/1 | – | 0.85 | 0.4 | 1.6 | 0.015 | n3/n9 (gleich) | full | 0.940 | – | 0.569 | 5 | [5, 5] | 52 |
+| h06 | 12/6 | 0.150 | 0.6 | 0.75 | 1.6 | 0.01 | n10/n8 (versch.) | module_means | 0.700 | 0.619 | -0.133 | 7 | [7, 7] | 10 |
+| h07 | 18/2 | 0.350 | 0.85 | 0.4 | 0.3 | 0.015 | n7/n10 (versch.) | module_means | 0.940 | 0.702 | 0.572 | – | [–, –] | – |
+| h08 | 24/12 | 0.150 | 0.6 | 0.4 | 1.6 | 0.03 | n19/n18 (gleich) | module_means | 0.840 | 0.801 | 0.396 | – | [–, –] | – |
+| h09 | 24/2 | 0.150 | 0.9 | 0.4 | 1.6 | 0.015 | n8/n13 (versch.) | module_means | 0.960 | 0.852 | 0.572 | 4 | [4, 4] | 18 |
+| h10 | 18/3 | 0.800 | 0.85 | 0.3 | 0.9 | 0.03 | n16/n6 (versch.) | module_means | 0.955 | 0.649 | 0.690 | 0 | [0, 0] | 4 |
+| h11 | 24/6 | 0.350 | 0.9 | 0.4 | 0.9 | 0.015 | n2/n0 (gleich) | module_means | 0.960 | 0.809 | 0.522 | – | [–, –] | – |
+| h12 | 12/3 | 0.800 | 0.6 | 0.3 | 1.6 | 0.01 | n5/n8 (versch.) | node n2 | 0.880 | 0.664 | 0.688 | – | [–, –] | – |
+| h13 | 18/9 | 0.150 | 0.7 | 0.6 | 2.4 | 0.015 | n0/n15 (versch.) | node n15 | 0.820 | 0.749 | 0.043 | 9 | [8, 9] | 16 |
+| h14 | 12/4 | 0.350 | 0.9 | 0.3 | 0.9 | 0.03 | n0/n1 (gleich) | node n1 | 0.970 | 0.844 | 0.612 | 3 | [3, 3] | 54 |
+| h15 | 24/6 | 0.100 | 0.85 | 0.6 | 1.6 | 0.03 | n4/n19 (versch.) | node n19 | 0.910 | 0.849 | 0.247 | 7 | [7, 7] | 27 |
+| h16 | 18/2 | 0.350 | 0.6 | 0.3 | 1.6 | 0.01 | n13/n8 (versch.) | node n8 | 0.880 | 0.754 | 0.685 | 8 | [8, 8] | 23 |
+| h17 | 24/6 | 0.100 | 0.7 | 0.75 | 2.4 | 0.015 | n15/n14 (gleich) | node n14 | 0.775 | 0.712 | 0.092 | 1 | [1, 1] | 14 |
+| h18 | 12/4 | 0.800 | 0.7 | 0.75 | 1.6 | 0.015 | n10/n0 (versch.) | sum | 0.775 | 0.215 | 0.198 | – | [–, –] | – |
+| h19 | 18/2 | 0.100 | 0.9 | 0.4 | 1.6 | 0.03 | n6/n15 (versch.) | sum | 0.960 | 0.888 | 0.559 | – | [–, –] | – |
+| h20 | 24/6 | 0.150 | 0.85 | 0.3 | 1.6 | 0.01 | n14/n15 (gleich) | sum | 0.955 | 0.909 | 0.628 | – | [–, –] | – |
+| h21 | 24/2 | 0.800 | 0.7 | 0.6 | 0.9 | 0.015 | n15/n0 (versch.) | sum | 0.820 | 0.148 | 0.392 | – | [–, –] | – |
+| h22 | 24/2 | 0.800 | 0.7 | 0.4 | 1.6 | 0.03 | n9/n12 (versch.) | sum | 0.880 | 0.432 | 0.595 | – | [–, –] | – |
+| h23 | 12/4 | 0.150 | 0.85 | 0.75 | 0.3 | 0.015 | n2/n1 (gleich) | sum | 0.887 | 0.760 | -0.021 | – | [–, –] | – |
+
+**Vorab, ohne Kern, lesbar:**
+- 23 von 24 sind Punktvorhersagen für D. Nur h13 (a = 2,4) hat das Band [8, 9].
+- 10 Kombinationen sagen „keine Erinnerung über p\*“ vorher:
+  - 6× nur die Summe beobachtet, denn der Unterschied ist antisymmetrisch;
+  - h08 und h11: Modulmittel bei gleichem Modul;
+  - h12: beobachteter Knoten in einem unbeteiligten Modul, dort ist Δx durch die Symmetrie exakt 0;
+  - h07: Modulmittel-Unterschied g·√2/n = 0,018 schon bei d = 0 unter r\* = 0,020.
+- Die naive q-Regel sagt bei **allen** 14 Kombinationen mit vorhergesagter Erinnerung eine längere Dauer voraus, meist ein Vielfaches: h05 52 statt 5, h14 54 statt 3; am knappsten h06 mit 10 statt 7.
