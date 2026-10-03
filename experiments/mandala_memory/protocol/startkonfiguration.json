@@ -1,0 +1,17 @@
+{
+  "schema_version": "mandala-memory-plan-v1",
+  "status": "proposed_protocol_not_production_config",
+  "experiment": "pulse_delay_recall",
+  "network": {"N": 12, "M": 3, "c": 0.25, "gamma": 0.8, "ell": 0.5, "inputs_zero_based": [0, 4], "B_amplitude": 0.6},
+  "episode": {"pulse_steps": 1, "delay_steps": [0, 1, 2, 4, 8, 16, 32], "readout": "state_after_pulse_plus_d_zero_steps", "reset_between_episodes": true},
+  "observation": {"primary_H": "identity", "noise": "independent_gaussian", "sigma": 0.02, "process_noise_sigma": 0},
+  "adaptation": {"eta": 0.3, "trials_total": 40, "balanced_classes": true, "delay_steps": 4, "update_on": "training_only", "fixed_edge_mask": true},
+  "decoder": {"kind": "nearest_mean", "per_delay": true, "standardization": "none", "tie_break_class": 0},
+  "smoke": {"seeds": [2026100300, 2026100301, 2026100302], "decoder_train_per_class_per_delay": 40, "test_per_class_per_delay": 40, "inferential_claims": false},
+  "research": {"seeds": [2026100300, 2026100301, 2026100302, 2026100303, 2026100304, 2026100305, 2026100306, 2026100307, 2026100308, 2026100309, 2026100310, 2026100311, 2026100312, 2026100313, 2026100314, 2026100315, 2026100316, 2026100317, 2026100318, 2026100319], "decoder_train_per_class_per_delay": 100, "validation_per_class_per_delay": 50, "test_per_class_per_delay": 100, "primary_delay": 8, "bootstrap_repetitions": 2000, "bootstrap_seed": 2026100399},
+  "rng_contract": "Derive named streams using SeedSequence for mode, run, adaptation, split, delay and observation. Smoke and research have disjoint mode streams even when run ids match. Paired conditions reuse exogenous test noise; adaptation and decoder/test streams are separate. Record derivation and episode IDs.",
+  "limits": {"concurrent_runs": 1, "blas_threads": 2, "smoke_timeout_seconds": 600, "target_peak_ram_gib": 2, "output_budget_mib": 100},
+  "working_drive": "D:",
+  "evidence_kind": "numerical_sample",
+  "empirical_status": "synthetic_only"
+}
