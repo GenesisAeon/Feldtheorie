@@ -33,7 +33,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
-| M10 | Erinnerung unter Ablenkung: [Versuchsplan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md) nach Review R5–R7 | Plan, nicht eingefroren |
+| M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), Implementierung, [Protokoll-Kandidat](protocol/m10_protokoll.json) | implementiert, **nicht eingefroren**, Forschungslauf gesperrt |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -894,3 +894,96 @@ Gefundene und behobene Integrationsfehler (auf diesem Branch, dann erneut gemerg
 **Mutationsprüfung:** 38/38.
 
 **Verbleibende Lücke (ehrlich):** Die Feldtheorie-CI installiert weder SCF noch PyYAML, und ein Workflow für die Laborstufen wurde nicht angelegt. Auf GitHub laufen deshalb nur portable Tests. Für alles Weitere ist das fehlende CI-Abdeckung; verbindlich ist der dokumentierte Pflicht-Labortestlauf.
+
+## M10: Implementierung, Laufzeitcheck, Freeze-Vorbereitung
+
+**Freigabe:** `ASTRA_FOLLOWUP_R5_R8.md`. Vorher wurde R5–R8 lokal integriert (Feldtheorie `main` = `15a24d85af`, Tag `reviewed/mandala-memory-485bfc0`).
+
+**Entscheidungen:**
+- O9: δ = 0,01;
+- O10: n_MC = 2·10⁶ (bestätigt durch den Laufzeitcheck unten);
+- O11: Ebene D beschreibend.
+
+### Code
+
+| Datei | Inhalt |
+|---|---|
+| [`m10_task.py`](m10_task.py) | 27 Fenstermuster mit exakten Wahrscheinlichkeiten (Brüche); Episodenablauf (Fenster W = 3 direkt vor x_(d+1)); Netze mit vier Eingangsspalten (A, B, X, Y); Zustände z(s, π) aus dem getesteten Kern; A1 (Zustandsidentität x_B = P x_A je Muster) und A2 strukturell (‖P₋ r(π)‖) |
+| [`m10_bayes.py`](m10_bayes.py) | Ebene B: allgemeiner Schätzer E[max_c P(c\|y)] für endliche Gauß-Mischungen. Numerik: log-sum-exp, zentrierte Distanzen auf 0 abgeschnitten, Blöcke mit Mittel/M2 nach Chan, SE = √(var/n), SE = 0 wird als 0 berichtet, nicht-endlich führt zum Abbruch. Mischungen: **Bewahren** p(y\|s) = Σ_π P(π) N(z(s,π)); **Aktualisieren** p(y\|L=l) = Σ_s ½ Σ_{π: last=l} P(π)/P(last=l) N(z(s,π)) mit P(last = X) = P(last = Y) = 7/16; **K0** analytisch, Aktualisieren = N/A (`None`). |
+| [`m10_decoders.py`](m10_decoders.py) | Ebene D: Episoden aus Strömen (Seed, Art, Rolle, Pause), gleich über Netze und Bedingungen (gepaart), getrennt über Rollen; jedes Muster einmal für A und einmal für B. Leckprüfung (Muster-Häufigkeiten je Klasse gleich), Trennungsprüfung (SCF `check_split` plus disjunkte Ströme), Nearest-Mean und LDA mit Ledoit-Wolf (eigene Umsetzung, vektorisiert) |
+| [`m10_run.py`](m10_run.py) | Modi `dev`/`smoke`/`research`. **`research` ist gesperrt**, solange `FROZEN_PROTOCOL_SHA256` = `None` ist, und bei Abweichung des Protokolls; keine Overrides in `research`; exklusive Ablage, C: verboten |
+| [`m10_evaluate.py`](m10_evaluate.py) | Diagnosen mit Alarmregel, Interferenz, bestätigende Familie (Z, SE = 0-Regel, Holm, Wortregeln), **Freigabe-Gate** (`release`: research + vollständig + eingefrorenes Protokoll + keine Overrides), Ebene D beschreibend (Bootstrap über ganze Seeds) |
+| [`protocol/m10_protokoll.json`](protocol/m10_protokoll.json) | Protokoll-Kandidat mit YAML- und MD-Zwilling. Enthält Astras drei Präzisierungen: Likelihood der Aufgabe „letzter Kanal“ mit K0 = N/A; 4-SE als **Diagnosealarm** mit fester Zahl der Gegenproben (15 + 18), ohne Wiederholen bis zum Bestehen; Numerik, Ströme und Fehlerquellen getrennt benannt. |
+
+### Für die gezielte Prüfung
+
+| Prüfpunkt | Stelle |
+|---|---|
+| Mischungsgewichte | `m10_bayes.preserve_mixtures`, `update_mixtures`; Tests `test_update_mixture_conditions_on_the_last_channel`, `test_patterns_and_last_channel_probabilities` |
+| Standardfehler | `m10_bayes._merge`, `bayes_accuracy_mc`; Tests gegen geschlossene Formel und 1-D-Quadratur, SE = 0 |
+| Zufallsströme | `m10_run.level_b` (`stream("m10bayes", base_seed, task, net, nl, cond, d)`), `m10_decoders.make_episodes` (`stream("m10", seed, kind, role, d)`) |
+| Freigabe-Gate | `m10_run.mode_settings`/`run`, `m10_evaluate.release`; Tests `test_research_is_blocked_until_frozen`, `test_release_gate` |
+
+### Tests und Mutationen
+
+- **Neu:** [`tests/test_m10_portable.py`](tests/test_m10_portable.py) mit 15 Testfällen (numpy) und [`tests/test_m10_kernel.py`](tests/test_m10_kernel.py) mit 15 Testfällen (Kern/SCF), zusammen 30; dazu 2 Trilayer-Fälle; **nur Entwicklungseinstellungen** (Ablenkorte 9/11 und 2/6, a = 0,9; Seeds 901–903).
+- **Werkzeugprüfungen:**
+  - Schätzer gegen Φ(‖Δ‖/2σ) im 1-Komponenten-Fall;
+  - gegen eine 1-D-Trapez-Quadratur einer Zwei-Komponenten-Mischung;
+  - zentrierte gegen direkte Distanzen.
+- **Negativkontrollen:**
+  - klassenabhängige Ablenkung ⇒ Leckprüfung schlägt an;
+  - Teststrom aus dem Trainingsstrom ⇒ Trennungsprüfung schlägt an;
+  - nicht P-feste Orte ⇒ A1 und A2 schlagen an.
+- **Pflicht-Labortestlauf:** **256/256**, 0 übersprungen.
+- **Linux (WSL):** ohne SCF 118 bestanden, 138 übersprungen; mit SCF 242 bestanden, 14 übersprungen.
+- **Gefunden unter Linux:** Der LDA-Test benutzte `data.balanced_accuracy` (SCF) und war deshalb nicht portabel; er rechnet sie jetzt selbst.
+- **Mutationsprüfung: 51/51**, mit 13 neuen M10-Mutanten:
+  - Fenster verschoben, log-sum-exp ohne Verschiebung;
+  - Aktualisieren ohne Bedingung auf den letzten Kanal bzw. ohne Marginalisierung über s;
+  - Holm ohne Abbruch, SE = 0-Regel falsch;
+  - Forschung nicht gesperrt, Gate ignoriert Overrides;
+  - LDA ohne Kovarianz, A1 ohne Permutation;
+  - Leck- bzw. Trennungsprüfung blind;
+  - K0-Aktualisieren nicht N/A.
+
+### Laufzeitcheck (O10)
+
+Entwicklungseinstellungen in voller Größe: n_MC = 2·10⁶, d ∈ {3, 4, 6}, 3 Seeds mit 1000/2000 Episoden. Ergebnis in `D:/mandala/mandala-memory-results/m10/dev-runtime-check/`.
+
+**Gemessen:**
+- 48 Ebene-B-Schätzungen in 298,6 s, also 6,2 s je Schätzung:
+
+  | | tanh | linear |
+  |---|---|---|
+  | Bewahren | 6,34 s | 6,42 s |
+  | Aktualisieren | 6,06 s | 6,06 s |
+
+- Ebene D 1,5 s; Zustände und Diagnosen 1,7 s; Spitzen-RAM 158 MiB.
+- Größter Monte-Carlo-Fehler 1,0·10⁻⁴.
+
+**Hochgerechnet auf den Forschungsumfang** (72 Ebene-B-Schätzungen = 2 Netze × 2 Nichtlinearitäten × 3 Bedingungen × 3 Pausen × 2 Aufgaben; 20 Seeds, 4 Bedingungen):
+
+| Teil | Sekunden |
+|---|---|
+| Ebene B, Bewahren | ≈ 230 |
+| Ebene B, Aktualisieren | ≈ 218 |
+| (davon tanh / lineare Kontrollen) | (≈ 223 / ≈ 225) |
+| Ebene D | ≈ 13 |
+| Zustände, Diagnosen | ≈ 2 |
+| **Gesamt** | **≈ 463 s (7,7 min)** |
+
+- RAM etwa 160 MiB, Ergebnis etwa 1 MB.
+- **Bewertung:** Die harte Protokollgrenze von 1200 s wird mit Abstand eingehalten. Das Planziel „Ebene B < 5 min“ (Plan, Abschnitt 9) wird mit ≈ 7,5 min **verfehlt**. Das ist ein Zielwert, keine Grenze. Eine Anpassung von n_MC ist nach dieser Messung nicht nötig; die Entscheidung liegt vor dem Freeze bei der Nachprüfung.
+
+### Freeze-Vorbereitung (noch nicht ausgeführt)
+
+1. **Nachprüfung** des Codes (Mischungsgewichte, SE, Ströme, Gate) und des Protokoll-Kandidaten.
+2. **Einfrier-Commit:**
+   - Status im Protokoll auf „frozen“ setzen;
+   - Zwillinge neu erzeugen (`tools/make_trilayer_twins.py`);
+   - `FROZEN_PROTOCOL_SHA256` in `m10_run.py` auf den LF-normierten SHA-256 des Protokolls setzen;
+   - Pflichtlauf und Mutationsprüfung;
+   - ein Test prüft dann, dass Konstante und Datei übereinstimmen.
+3. **Smoke-Lauf** (`--mode smoke`, Smoke-Seeds, n_MC = 10⁵): nur Laufzeit und Format.
+4. **Forschungslauf** (`--mode research`) einmal, dann `m10_evaluate`. Abweichungen werden berichtet, nicht repariert.

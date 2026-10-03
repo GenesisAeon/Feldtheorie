@@ -25,6 +25,9 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 | M9: Vorhersagen einfrieren (einmalig, schon geschehen) | `PYTHONPATH=. PY -m experiments.mandala_memory.m9_freeze` | schreibt exklusiv `protocol/m9_frozen_predictions.json` |
 | M9: Prüfung | `PYTHONPATH=. PY -m experiments.mandala_memory.m9_evaluate` | ≈ 5 s → `D:/mandala/mandala-memory-results/m9/` |
 | M9: Handkontrollen | `PY experiments/mandala_memory/controls/m9_hand_controls.py` | exakte Brüche |
+| M10: Entwicklungslauf / Laufzeitcheck | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_run --mode dev --out-dir D:/mandala/mandala-memory-results/m10/dev` | Entwicklungseinstellungen, kein Teil der Studie |
+| M10: Auswertung einer Ergebnisdatei | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_evaluate <ergebnis.json>` | bestätigend nur nach Freeze + vollständigem Forschungslauf |
+| M10: Forschungslauf | `… m10_run --mode research …` | **gesperrt**, bis das Protokoll eingefroren ist |
 | Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
 | Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
 

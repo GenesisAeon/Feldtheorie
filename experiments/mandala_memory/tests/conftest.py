@@ -35,6 +35,13 @@ REQUIRED = os.environ.get("MANDALA_LAB_REQUIRED") == "1"
 
 # --- explicit dependency table (node ids relative to this folder) ---------------
 SCF = {
+    # M10 kernel tests (network construction via SCF budget_adjacency; split check via SCF)
+    "test_m10_kernel.py::test_a1_state_identity_and_negative_control",
+    "test_m10_kernel.py::test_a2_structural_and_negative_control",
+    "test_m10_kernel.py::test_k0_states_and_analytic_baseline",
+    "test_m10_kernel.py::test_level_d_episodes_pairing_leak_and_split_controls",
+    "test_m10_kernel.py::test_update_task_excludes_episodes_without_pulse",
+    "test_m10_kernel.py::test_small_development_run_end_to_end",
     # derived from a Linux run WITHOUT scoped-correspondence: exactly these failed on the
     # missing module (directly, or via a runner seed that caught it); see ROADMAP, review R8
     "test_m1_core.py::test_k3_reset_after_pulse",
