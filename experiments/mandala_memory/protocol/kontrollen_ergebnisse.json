@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "independent_control_groups": 9,
+  "scope": "analytical/exact controls and one numerical contraction example; no production tests",
+  "results": {
+    "K1": {
+      "delays": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "positive_states": [
+        "1",
+        "1/2",
+        "1/4",
+        "1/16",
+        "1/256"
+      ]
+    },
+    "K2": {
+      "sigma": 0.25,
+      "bayes_accuracy": [
+        0.9999683287581669,
+        0.9772498680518209,
+        0.8413447460685428,
+        0.5987063256829237,
+        0.5062332194998896
+      ]
+    },
+    "K3": {
+      "reset_state": 0,
+      "bayes_accuracy": 0.5
+    },
+    "K4": {
+      "equal_sum": "1/8",
+      "full_states_distinct": true
+    },
+    "K5": {
+      "amplitude_scale": 1000,
+      "same_accuracy": true
+    },
+    "K6": {
+      "frozen_accuracy": 0,
+      "remapped_accuracy": 1,
+      "invertible": true
+    },
+    "K7": {
+      "exact_matrix_equality": true,
+      "row_sum": "4/5",
+      "off_diagonal": "4/55"
+    },
+    "K8": {
+      "q": "9/10",
+      "q_power_10": 0.3486784401,
+      "sample_distance": 0.136516439792299,
+      "bound": 0.17433922004999997
+    },
+    "K9": {
+      "whole": [
+        1.0,
+        0.5,
+        0.25,
+        0.125,
+        0.0625
+      ],
+      "continued": [
+        1.0,
+        0.5,
+        0.25,
+        0.125,
+        0.0625
+      ],
+      "reset": [
+        1.0,
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "mandala-memory-m0-manifest-v1",
+  "created": "2026-10-03",
+  "handover": {
+    "dir": "D:\\mandala\\ArbeitFeldtheorie_mandala\\Mandala_Gedaechtnis_Uebergabe_2026-10-03",
+    "files_sha256": {
+      "CLAUDE_START.md": "459f4a3e397a298b1da0021bcefd892af71d4e5d3693127cbeeaa0815629335e",
+      "IMPLEMENTIERUNGSPLAN.md": "60be603a73de0b2575bd5462679e08bfb100290f0c08add9d5a22c2bc2322cd3",
+      "kontrollen.py": "0461da45f02ca841965b4dcba6db70992e5f89d07adae9a1de0185e56580f41d",
+      "kontrollen_ergebnisse.json": "546369ac82bdafaf27b313446a17a4dedf099e7bc0cb5c7db43b9af1e8dbe5c7",
+      "manifest_sha256.json": "34f164e247b36d855ccf641661e96ba901c9d86d22e5c97e586e4532343ba5bb",
+      "README.md": "559b9839079a19440832ac251c010f1c5a37d3c16858cc72a2e646334fc9ed9d",
+      "startkonfiguration.json": "d04bc2946a0c0300b40bd458aec13cc6b45eea1b4b01ca602a363beaf3a85f3c"
+    },
+    "manifest_check": "all 6 files match manifest_sha256.json"
+  },
+  "frozen_protocol": {
+    "kontrollen.py": "0461da45f02ca841965b4dcba6db70992e5f89d07adae9a1de0185e56580f41d",
+    "kontrollen_ergebnisse.json": "546369ac82bdafaf27b313446a17a4dedf099e7bc0cb5c7db43b9af1e8dbe5c7",
+    "startkonfiguration.json": "d04bc2946a0c0300b40bd458aec13cc6b45eea1b4b01ca602a363beaf3a85f3c"
+  },
+  "repositories": {
+    "Feldtheorie": {
+      "main_checkout": "D:/mandala/Feldtheorie",
+      "head": "0e46ec88181b430c41330016279a8bd1ea2c0d9b",
+      "plan_commit": "0e46ec88181b430c41330016279a8bd1ea2c0d9b",
+      "untracked_in_main_checkout": 25,
+      "work_copy": "D:/mandala/.worktrees/feldtheorie-mandala-memory (git worktree, branch mandala-memory)"
+    },
+    "unified-mandala": {
+      "main_checkout": "D:/mandala/unified-mandala",
+      "head": "a76052842cbb9e6cb5ba70b36b1350feb35ad70a",
+      "plan_commit": "a76052842cbb9e6cb5ba70b36b1350feb35ad70a"
+    },
+    "scoped-correspondence-formalism": {
+      "used_as": "published package scoped-correspondence==0.42.0 from PyPI (== git 873adb8 tree for the used modules)",
+      "local_main_checkout": "D:/mandala/scoped-correspondence-formalism at 4a7ed38 with untracked handovers -- untouched"
+    }
+  },
+  "runtime": {
+    "venv": "D:/mandala/.venvs/mandala-memory (isolated, no system site-packages)",
+    "python": "3.11.9",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "scoped_correspondence": "0.42.0",
+    "scf_path": "D:\\mandala\\.venvs\\mandala-memory\\Lib\\site-packages\\scoped_correspondence\\__init__.py",
+    "base_interpreter": "C:\\Users\\Privat\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "cpu_threads": 8,
+    "blas_threads_limit": 2
+  },
+  "storage": {
+    "temp": "D:/mandala/.tmp/mandala-memory",
+    "cache": "D:/mandala/.cache/mandala-memory",
+    "C_free_before_session_cleanup": "605 MB",
+    "C_free_after_removing_own_temp_venvs": "about 1.7 GB"
+  },
+  "findings": [
+    "System Python 3.11 has an editable install of the OLD local SCF checkout (4a7ed38, metadata 0.10.0a1); any import there resolves to old code -> isolated venv without system site-packages.",
+    "Store Python pip fails SSL verification to pypi.org; installs used pip --use-feature=truststore (Windows certificate store), nothing changed globally.",
+    "SCF simulate_trial resets x to 0 and holds u constant -> a separate episode operator is required (as the plan anticipated); hebb_update/budget_adjacency/edge_mask/input_matrix are usable as public APIs.",
+    "SCF NearestMeanDecoder always standardises with training statistics; the protocol fixes standardization 'none' and tie-break class 0 -> own minimal nearest-mean decoder (documented deviation).",
+    "Feldtheorie AdaptiveLogisticMembrane: propagate updates theta/beta per step and returns post-update values; reset() restores baselines -- matches the plan.",
+    "Feldtheorie AGENTS.md asks for a YAML+JSON+MD 'Trilayer' per artifact; the protocol is JSON+MD here, a YAML twin is deferred to M7."
+  ]
+}
