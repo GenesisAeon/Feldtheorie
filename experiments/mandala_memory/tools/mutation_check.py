@@ -52,6 +52,20 @@ MUTANTS = [
      "    _a = [r[\"delays\"][primary_d][\"adapted\"][\"balanced_accuracy\"] for r in result[\"runs\"]]\n"
      "    _f = [r[\"delays\"][primary_d][\"frozen\"][\"balanced_accuracy\"] for r in result[\"runs\"]]\n"
      "    diffs = [x - y for x, y in zip(_a, _f[1:] + _f[:1])]", ["test_m4_evaluate.py"]),
+    # --- Astra review 2026-10-03 (R1 result identity, R2 inference release) ---
+    ("r1_overwrite_instead_of_exclusive", "runner.py", "    write_exclusive(path, json.dumps(result, indent=1, ensure_ascii=False, allow_nan=False) + \"\\n\")",
+     "    path.write_text(json.dumps(result, indent=1, ensure_ascii=False, allow_nan=False) + \"\\n\", encoding=\"utf-8\")",
+     ["test_m3_model_runner.py"]),
+    ("r1_no_execution_id", "runner.py", "    run_id = f\"{protocol_id}--{execution_id}\"", "    run_id = protocol_id",
+     ["test_m3_model_runner.py"]),
+    ("r1_negative_timeout_accepted", "runner.py", "    if timeout_s is not None and not (timeout_s > 0):", "    if False:",
+     ["test_m3_model_runner.py"]),
+    ("r2_release_ignores_seed_list", "evaluate.py", "    if executed != declared:\n        reasons.append(\"executed_seeds_differ_from_protocol\")",
+     "    if False:\n        reasons.append(\"executed_seeds_differ_from_protocol\")", ["test_m4_evaluate.py"]),
+    ("r2_release_ignores_status", "evaluate.py", "    if result.get(\"status\") != \"complete\":", "    if False:",
+     ["test_m4_evaluate.py"]),
+    ("r2_release_by_mode_only", "evaluate.py", "        \"inferential_claims\": release[\"released\"],",
+     "        \"inferential_claims\": bool(mode == \"research\"),", ["test_m4_evaluate.py"]),
     ("frozen_membrane_not_frozen", "membrane_pilot.py", "FROZEN_GAINS = dict(plasticity=0.0,", "FROZEN_GAINS = dict(plasticity=0.1,",
      ["test_m5_membrane.py"]),
     ("whitelist_bypassed", "serve.py", "        if name is None:                               # fixed whitelist: no paths from the browser",

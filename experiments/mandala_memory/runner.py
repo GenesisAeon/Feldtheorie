@@ -17,6 +17,7 @@ import os
 import platform
 import sys
 import time
+import uuid
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -153,18 +154,34 @@ def run_experiment(cfg: Dict, mode: str, out_dir: Path, *, timeout_s: Optional[f
         raise MemoryLabError("mode must be smoke or research")
     out_dir = _check_output_dir(out_dir)
     block = cfg[mode]
-    seeds = list(seeds if seeds is not None else block["seeds"])
+    declared = list(block["seeds"])
+    seeds = list(seeds if seeds is not None else declared)
+    if len(set(seeds)) != len(seeds):
+        raise MemoryLabError("duplicate seeds are not allowed (they would fake independent repetitions)")
+    if not seeds:
+        raise MemoryLabError("at least one seed required")
     sizes = {"train": block["decoder_train_per_class_per_delay"], "test": block["test_per_class_per_delay"],
              "validation": block.get("validation_per_class_per_delay", 0)}
+    timeout_explicit = timeout_s is not None
     if timeout_s is None:
         timeout_s = cfg["limits"]["smoke_timeout_seconds"] if mode == "smoke" else None
+    if timeout_s is not None and not (timeout_s > 0):
+        raise MemoryLabError("timeout_s must be > 0 (or None)")
     chash = config_hash(cfg)
-    run_id = f"{mode}-{chash[:10]}"
+    # Review R1: the PROTOCOL id stays fixed for a configuration; every execution
+    # gets its own unique id, so partial, aborted and repeated runs never overwrite
+    # each other.
+    protocol_id = f"{mode}-{chash[:10]}"
+    execution_id = time.strftime("%Y%m%dT%H%M%S") + "-" + uuid.uuid4().hex[:8]
+    run_id = f"{protocol_id}--{execution_id}"
     out_dir.mkdir(parents=True, exist_ok=True)
-    result = {"schema_version": SCHEMA_VERSION, "run_id": run_id, "mode": mode, "config_sha256": chash,
-              "config": cfg, "seeds": seeds, "status": "running",
+    result = {"schema_version": SCHEMA_VERSION, "run_id": run_id, "protocol_id": protocol_id, "execution_id": execution_id,
+              "mode": mode, "config_sha256": chash, "config": cfg,
+              "seeds": seeds, "seeds_declared_by_protocol": declared,
+              "execution_options": {"seeds_override": seeds != declared, "timeout_s": timeout_s,
+                                    "timeout_explicit": timeout_explicit},
+              "status": "running",
               "evidence_kind": "numerical_sample", "empirical_status": "synthetic_only",
-              "inferential_claims": bool(block.get("inferential_claims", mode == "research")),
               "time_convention": "u_0 = e_s pulse, then d zero steps; readout x_(d+1); d = 0 directly after the pulse",
               "runs": [], "failed_seeds": [], "abort_reason": None}
     t_start = time.perf_counter()
@@ -184,10 +201,26 @@ def run_experiment(cfg: Dict, mode: str, out_dir: Path, *, timeout_s: Optional[f
                            "peak_rss_mib": None if peak_rss_bytes() is None else round(peak_rss_bytes() / 2 ** 20, 1),
                            "python": sys.version.split()[0], "numpy": np.__version__,
                            "blas_threads_env": {k: os.environ.get(k) for k in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS")}}
+    from experiments.mandala_memory.evaluate import inference_release
+
+    result["inference_release"] = inference_release(result)       # review R2: completeness gate, not the mode alone
     path = out_dir / f"{run_id}.json"
-    path.write_text(json.dumps(result, indent=1, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+    write_exclusive(path, json.dumps(result, indent=1, ensure_ascii=False, allow_nan=False) + "\n")
     result["output_path"] = str(path)
     return result
 
 
-__all__ = ["config_hash", "peak_rss_bytes", "run_seed", "run_experiment", "PERMUTATION"]
+def write_exclusive(path: Path, text: str) -> None:
+    """Atomic, never-overwriting write: temp file in the same directory, then a
+    rename that FAILS if the target exists (os.link semantics on every platform)."""
+    tmp = path.with_name(f".{path.name}.{uuid.uuid4().hex}.tmp")
+    tmp.write_text(text, encoding="utf-8")
+    try:
+        os.link(tmp, path)            # raises FileExistsError if the target exists
+    except FileExistsError:
+        raise MemoryLabError(f"refusing to overwrite existing result {path.name}") from None
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
+__all__ = ["config_hash", "peak_rss_bytes", "run_seed", "run_experiment", "write_exclusive", "PERMUTATION"]

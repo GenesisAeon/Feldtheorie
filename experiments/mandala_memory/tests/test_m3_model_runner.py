@@ -82,15 +82,88 @@ def test_runner_deterministic_and_refuses_c_drive(tmp_path_factory):
     r2 = run_experiment(cfg, "smoke", TMP_OUT / "b")
     assert r1["status"] == r2["status"] == "complete"
     assert json.dumps(r1["runs"], sort_keys=True) == json.dumps(r2["runs"], sort_keys=True), "identical repetition"
-    assert r1["run_id"] == r2["run_id"] and r1["config_sha256"] == r2["config_sha256"]
+    # review R1: the protocol id is fixed per configuration, every execution has its own id
+    assert r1["protocol_id"] == r2["protocol_id"] and r1["config_sha256"] == r2["config_sha256"]
+    assert r1["run_id"] != r2["run_id"]
     with pytest.raises(MemoryLabError):
         run_experiment(cfg, "smoke", Path("C:/mandala-memory-should-not-exist"))
 
 
-def test_runner_timeout_aborts_without_shrinking_claims():
-    res = run_experiment(small_cfg(), "smoke", TMP_OUT / "timeout", timeout_s=0.0)
+def test_runner_timeout_aborts_without_shrinking_claims(monkeypatch):
+    import experiments.mandala_memory.runner as runner
+
+    clock = iter(float(i) for i in range(10 ** 6))         # deterministic clock: +1 s per call
+    monkeypatch.setattr(runner.time, "perf_counter", lambda: next(clock))
+    res = run_experiment(small_cfg(), "smoke", TMP_OUT / "timeout", timeout_s=0.5)
     assert res["status"] == "aborted" and "timeout" in res["abort_reason"] and res["runs"] == []
     assert res["seeds"] == [11, 12], "declared seeds stay recorded"
+    assert res["inference_release"]["released"] is False
+
+
+@pytest.mark.parametrize("bad", [0.0, -1.0])
+def test_runner_rejects_non_positive_timeout(bad):
+    with pytest.raises(MemoryLabError):
+        run_experiment(small_cfg(), "smoke", TMP_OUT / "bad-timeout", timeout_s=bad)
+
+
+def test_runner_rejects_duplicate_seeds():
+    with pytest.raises(MemoryLabError):
+        run_experiment(small_cfg(), "smoke", TMP_OUT / "dup", seeds=[11, 11])
+
+
+def test_review_r1_full_partial_aborted_never_overwrite(monkeypatch):
+    """Review R1: full, partial and aborted executions of the SAME configuration in
+    the SAME directory must all survive."""
+    import shutil
+    import experiments.mandala_memory.runner as runner
+
+    out = TMP_OUT / "r1"
+    shutil.rmtree(out, ignore_errors=True)
+    cfg = small_cfg()
+    full = run_experiment(cfg, "smoke", out)
+    part = run_experiment(cfg, "smoke", out, seeds=[11])
+    clock = iter(float(i) for i in range(10 ** 6))
+    monkeypatch.setattr(runner.time, "perf_counter", lambda: next(clock))
+    abort = run_experiment(cfg, "smoke", out, timeout_s=0.5)
+    paths = [Path(r["output_path"]) for r in (full, part, abort)]
+    assert len(set(paths)) == 3 and all(p.is_file() for p in paths)
+    runs = [len(json.loads(p.read_text(encoding="utf-8"))["runs"]) for p in paths]
+    assert runs == [2, 1, 0], "nothing was overwritten"
+    assert {full["protocol_id"], part["protocol_id"], abort["protocol_id"]} == {full["protocol_id"]}
+    assert part["execution_options"]["seeds_override"] is True and full["execution_options"]["seeds_override"] is False
+    assert not any(p.name.startswith(".") for p in out.iterdir()), "no leftover temp files"
+
+
+def test_runner_itself_never_overwrites_on_id_collision(monkeypatch):
+    """Mutation-check finding: unique execution ids hid whether the RUNNER writes
+    exclusively. Force an id collision; the second run must fail and the first
+    file must stay intact."""
+    import shutil
+    import uuid as uuid_mod
+    import experiments.mandala_memory.runner as runner
+
+    out = TMP_OUT / "collision"
+    shutil.rmtree(out, ignore_errors=True)
+    fixed = uuid_mod.UUID("12345678123456781234567812345678")
+    monkeypatch.setattr(runner.uuid, "uuid4", lambda: fixed)
+    monkeypatch.setattr(runner.time, "strftime", lambda fmt: "20261003T000000")
+    first = run_experiment(small_cfg(), "smoke", out)
+    before = Path(first["output_path"]).read_bytes()
+    with pytest.raises(MemoryLabError):
+        run_experiment(small_cfg(), "smoke", out, seeds=[11])
+    assert Path(first["output_path"]).read_bytes() == before
+
+
+def test_write_exclusive_refuses_existing(tmp_path_factory):
+    from experiments.mandala_memory.runner import write_exclusive
+
+    target = TMP_OUT / "excl" / "x.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.unlink(missing_ok=True)
+    write_exclusive(target, "first")
+    with pytest.raises(MemoryLabError):
+        write_exclusive(target, "second")
+    assert target.read_text(encoding="utf-8") == "first"
 
 
 def test_runner_reports_failed_seed(monkeypatch):

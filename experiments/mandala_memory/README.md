@@ -24,6 +24,35 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 | Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
 | Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
 
+### PowerShell
+
+Die Befehle oben sind für Bash geschrieben. In PowerShell im Worktree-Wurzelverzeichnis zuerst einmalig je Sitzung:
+
+```powershell
+Set-Location D:\mandala\.worktrees\feldtheorie-mandala-memory
+$env:PYTHONPATH = "."
+$env:PYTHONDONTWRITEBYTECODE = "1"
+$env:OPENBLAS_NUM_THREADS = "2"
+$env:TMP = "D:\mandala\.tmp\mandala-memory"; $env:TEMP = $env:TMP
+$PY = "D:\mandala\.venvs\mandala-memory\Scripts\python.exe"
+```
+
+Danach:
+
+```powershell
+& $PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests
+& $PY -m experiments.mandala_memory.cli run --mode smoke
+& $PY -m experiments.mandala_memory.cli run --mode research
+& $PY -m experiments.mandala_memory.evaluate D:\mandala\mandala-memory-results\research\<datei>.json --out D:\mandala\mandala-memory-results\research\<datei>.evaluation.json
+& $PY -m experiments.mandala_memory.serve --port 8765      # dann http://127.0.0.1:8765/ öffnen
+& $PY experiments/mandala_memory/tools/mutation_check.py
+& $PY experiments/mandala_memory/tools/make_review_package.py
+```
+
+**Ergebnisdateien:** Jeder Lauf schreibt eine **neue** Datei `<protokoll-id>--<ausführungs-id>.json`. Vorhandene Dateien werden nie überschrieben (Review R1). Die Originaldatei der ersten Forschungsrunde (`research-e19650a0a0.json`, aus der Zeit vor dieser Korrektur) bleibt unverändert.
+
+**Inferenz** ist nur freigegeben, wenn der vorab festgelegte Forschungsumfang vollständig erreicht ist (Review R2): alle 20 Protokoll-Seeds, Status „complete“, keine Fehlschläge, Konfiguration identisch mit dem eingefrorenen Protokoll. Sonst bleibt das Ergebnis beschreibend; die Gründe stehen in `inference_release.reasons`.
+
 ## Ergebnis der ersten Runde
 
 Synthetisch, nur dieses Protokoll:
@@ -34,7 +63,7 @@ Synthetisch, nur dieses Protokoll:
   - Kopplung hilft gegenüber A = 0 (d = 4: 0,93 gegen 0,71).
   - Das modulare Netz (c = 1/4) hält die Spur länger als das gleich budgetierte uniforme (0,93 gegen 0,65).
   - Reset, Summenbeobachtung und eingefrorener Decoder nach der Permutation verhalten sich wie die Kontrollen K3, K4 und K6 erwarten lassen.
-- **Membran-Pilot** (separate Aufgabe, kein Vergleich): Die adaptive Membran speichert die Reizamplitude in θ, lesbar bis etwa d = 8–16; die eingefrorene Membran zeigt kein Gedächtnis.
+- **Membran-Pilot** (separate Aufgabe, kein Vergleich): Die adaptive Membran trägt die Reizamplitude in ihrem **adaptiven Parameterzustand** (θ und β) weiter, lesbar bis etwa d = 8–16. Die eingefrorene Membran zeigt kein Gedächtnis. Welcher der beiden Parameter wie viel beiträgt, ist ohne eigene Parameter-Ablation nicht belegt.
 
 ## Bekannte Grenzen
 

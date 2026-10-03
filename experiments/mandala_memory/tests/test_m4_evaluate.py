@@ -20,6 +20,74 @@ def small_result():
     return run_experiment(cfg, "smoke", OUT)
 
 
+ORIGINAL_RESEARCH = Path(r"D:/mandala/mandala-memory-results/research/research-e19650a0a0.json")
+
+
+@pytest.mark.skipif(not ORIGINAL_RESEARCH.exists(), reason="original research result not present")
+def test_review_r2_original_full_round_released_and_numerically_unchanged():
+    res = json.loads(ORIGINAL_RESEARCH.read_text(encoding="utf-8"))
+    ev = evaluate(res)
+    assert ev["inference_release"]["released"] is True and ev["inference_release"]["reasons"] == []
+    assert ev["primary"]["mean_paired_difference"] == -0.0009999999999999898
+    assert ev["primary"]["bootstrap_95"]["low"] == -0.0025000000000000022
+    assert ev["primary"]["bootstrap_95"]["high"] == 0.0005000000000000227
+
+
+@pytest.mark.skipif(not ORIGINAL_RESEARCH.exists(), reason="original research result not present")
+@pytest.mark.parametrize("case", ["two_seeds", "duplicates", "aborted", "failed", "renamed_smoke", "config_changed"])
+def test_review_r2_incomplete_protocol_not_released(case):
+    res = json.loads(ORIGINAL_RESEARCH.read_text(encoding="utf-8"))
+    if case == "two_seeds":
+        res["runs"] = res["runs"][:2]
+        res["seeds"] = res["seeds"][:2]
+        expected = "executed_seeds_differ_from_protocol"
+    elif case == "duplicates":
+        res["runs"] = res["runs"][:19] + [res["runs"][0]]
+        expected = "duplicate_seeds"
+    elif case == "aborted":
+        res["status"] = "aborted"
+        res["runs"] = []
+        expected = "status_aborted"
+    elif case == "failed":
+        res["status"] = "complete_with_failures"
+        res["failed_seeds"] = [{"seed": res["seeds"][-1], "error": "x"}]
+        res["runs"] = res["runs"][:-1]
+        expected = "failed_seeds_present"
+    elif case == "renamed_smoke":
+        # a smoke result relabelled as research must not become inferential
+        res["config"] = json.loads(json.dumps(res["config"]))
+        res["config"]["research"]["seeds"] = res["config"]["smoke"]["seeds"]
+        res["runs"] = res["runs"][:3]
+        res["seeds"] = res["config"]["smoke"]["seeds"]
+        expected = "configuration_differs_from_frozen_protocol"
+    else:
+        res["config"] = json.loads(json.dumps(res["config"]))
+        res["config"]["observation"]["sigma"] = 0.01
+        expected = "configuration_differs_from_frozen_protocol"
+    ev = evaluate(res)
+    assert ev["inference_release"]["released"] is False and ev["inferential_claims"] is False
+    assert expected in ev["inference_release"]["reasons"], ev["inference_release"]["reasons"]
+    assert ev["reading"].startswith("descriptive only")
+
+
+def test_exact_sign_flip_equals_scf_enumeration():
+    from fractions import Fraction as F
+    from scoped_correspondence.validation.modular_networks.decoders import sign_flip_test
+    from experiments.mandala_memory.evaluate import sign_flip_p_exact
+
+    rng = np.random.default_rng(3)
+    for n in range(1, 13):
+        diffs = [F(int(k), 200) for k in rng.integers(-6, 7, size=n)]
+        assert sign_flip_p_exact(diffs) == sign_flip_test(diffs), diffs
+    assert sign_flip_p_exact([F(1)] * 5) == F(1, 16)
+
+
+@pytest.mark.skipif(not ORIGINAL_RESEARCH.exists(), reason="original research result not present")
+def test_original_sign_flip_p_unchanged():
+    res = json.loads(ORIGINAL_RESEARCH.read_text(encoding="utf-8"))
+    assert evaluate(res)["primary"]["sign_flip_p_two_sided"] == "11/32", "same value as the M4 report"
+
+
 def test_bootstrap_deterministic_and_brackets_mean():
     v = [0.01, -0.02, 0.0, 0.03, -0.01]
     a = bootstrap_mean_ci(v, 2000, 7)

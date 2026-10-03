@@ -367,7 +367,7 @@ Rein beschreibend, 3 Seeds, 40 Episoden je Klasse:
 | 32 | 0,103 / 0,103 | 0,689 / 0,689 | ≈ 0,5 | ≈ 0,5 |
 
 **Lesart:**
-- Die adaptive Membran speichert die Reizamplitude in θ. Die Spur zerfällt über die Pause, weil θ unter R = 0 gegen etwa 0,10 läuft.
+- Die adaptive Membran trägt die Reizamplitude in ihrem adaptiven Parameterzustand (θ und β) weiter. Die Spur zerfällt über die Pause, unter anderem weil θ unter R = 0 gegen etwa 0,10 läuft. *Präzisiert nach Review 2026-10-03:* Eine Zuschreibung allein an θ wäre ohne Parameter-Ablation zu stark.
 - Die eingefrorene Membran zeigt ausdrücklich kein Gedächtnis: identische Ausgabe für beide Klassen.
 - **Dies ist eine andere Aufgabe als im Netz-Benchmark**, also kein fairer Vergleich und kein Modellsieger.
 
@@ -447,6 +447,41 @@ Gemacht mit einem Headless-Edge-Screenshot (Profil auf D:) von `/?autostart`. Di
 | `primary_not_paired` | **Echte Testlücke:** Im Testfall waren alle gepaarten Differenzen 0, die Paarung war deshalb unsichtbar. | Neuer Test mit synthetischen, je Seed verschiedenen Werten; der Mutant „verschobene Paarung“ wird jetzt erkannt. |
 
 **Tests danach: 80/80.**
+
+## Review-Fix `astra-review-2026-10-03` (R1, R2)
+
+Review: `D:/mandala/mandala-memory-results/astra-review-2026-10-03/REVIEW_FUER_CLAUDE.md`, geprüft am Stand `0a931fd`.
+
+Das Review bestätigt unabhängig:
+- den Hauptbefund (−0,001; [−0,0025; +0,0005]);
+- die Formel Φ(‖Δx‖₂ / 2σ);
+- einen frischen Forschungslauf, der identisch mit dem Original ist.
+
+Beide Befunde habe ich **zuerst unverändert reproduziert** (`0a931fd`, isolierter Temp-Ordner auf D:):
+- **R1:** gleiche ID, gleicher Pfad; aus 2 gespeicherten Läufen wurden 0.
+- **R2:** 2-Seed-Lauf „complete“ mit `inferential_claims = True`; abgebrochener Lauf „aborted“, ebenfalls `True`.
+
+| Befund | Korrektur | Regression |
+|---|---|---|
+| **R1** Ergebnisdateien kollidieren | Feste **Protokoll-ID** plus eindeutige **Ausführungs-ID**; Dateiname `<protokoll>--<ausführung>.json`. Das Manifest führt angeforderte und deklarierte Seeds sowie die effektiven Optionen. Schreiben ist **atomar und exklusiv** (Temp-Datei + `os.link`, schlägt bei vorhandenem Ziel fehl). Timeout ≤ 0 und doppelte Seeds werden abgewiesen. Auch `evaluate --out` schreibt exklusiv. | Voll-, Teil- und Abbruchlauf im selben Ordner bleiben alle erhalten (2/1/0 Läufe); keine Temp-Reste; erzwungene ID-Kollision bricht ab und lässt die erste Datei unverändert; `write_exclusive`; Timeout 0 und −1; doppelte Seeds |
+| **R2** Inferenz trotz unvollständigem Protokoll | `inference_release(result)` gibt Inferenz nur frei bei: Modus „research“, Status „complete“, keine Fehlschläge, eindeutige Seeds, ausgeführte und angeforderte Seeds gleich der **eingefrorenen** Protokoll-Liste, Konfiguration gleich dem eingefrorenen Protokoll. Technischer Status und Protokollvollständigkeit stehen getrennt, die Gründe maschinenlesbar. Der exakte Sign-Flip-p-Wert wird nur bei Freigabe berechnet; sonst ist das Ergebnis **nur beschreibend**. | 2 statt 20 Seeds, Duplikate, Abbruch, Fehlschlag, als „research“ umetikettierter Smoke-Lauf, geänderte Konfiguration → alle nicht freigegeben. Die Original-Vollrunde ist freigegeben und **zahlengleich**. |
+
+### Weitere Änderungen
+
+- **Exakter Sign-Flip schneller:** Er läuft jetzt über die Zählung exakter Summen statt über die Aufzählung aller 2²⁰ Muster. Ohne das hätten die neuen Tests 5 min statt 6 s gebraucht. Der Wert ist gleich SCF `sign_flip_test` (Kreuztest für n ≤ 12) und für das Original wieder **11/32**.
+- **UI erklärt die Bayes-Zahl:** Sie ist die ideale Trennbarkeit genau dieser zwei Läufe. Nur bei gleichem Netz, gleichem Eingriff und Reiz A gegen B ist sie die Erinnerungsleistung des Netzes. Per Screenshot geprüft.
+- **Membran-Formulierung präzisiert:** adaptiver Parameterzustand θ **und** β; eine Zuschreibung allein an θ wäre ohne Parameter-Ablation zu stark.
+- **README:** PowerShell-Startbefehle und die neuen Regeln für Ergebnisdateien und Inferenz.
+
+### Mutationsprüfung
+
+**21/21 erkannt**, mit 6 neuen Mutanten für R1/R2. Einer überlebte zunächst: `r1_overwrite_instead_of_exclusive`. Die eindeutige ID verdeckte, ob der Runner selbst exklusiv schreibt. Ein neuer Test erzwingt deshalb eine Kollision.
+
+### Ergebnis
+
+- **Tests:** 95/95 in etwa 6 s.
+- **Hauptauswertung** der unveränderten Originaldaten, neu berechnet: zahlengleich, abgelegt als neue Datei `research-e19650a0a0.evaluation.v2-after-review.json`. Die alte Auswertung bleibt unberührt.
+- **Kein Push.**
 
 
 
