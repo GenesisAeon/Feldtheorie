@@ -1,0 +1,50 @@
+# Mandala-Gedächtnislabor: „Reiz → Pause → Erinnerung“
+
+Kleines, reproduzierbares CPU-Experiment. Es fragt: Welche Information über einen vergangenen Reiz bleibt nach einer reizfreien Pause aus dem Zustand eines kleinen modularen Netzes lesbar, und wie verändern Kopplung und Anpassung das?
+
+- **Feldtheorie** liefert Modell und Protokoll.
+- **SCF** (`scoped-correspondence==0.42.0`) liefert geprüfte Bausteine: Budgetmatrix, Hebb-Regel, Split- und Auswerteprüfungen.
+- **unified-mandala** (`experiments/memory_lab/`) zeigt Zustände und Eingriffe.
+
+Die Arbeitsschritte M0–M7 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), das eingefrorene Protokoll unter [protocol/](protocol/).
+
+## Startbefehle
+
+Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala-memory` ausführen. Mit `PY` ist die Umgebung `D:/mandala/.venvs/mandala-memory/Scripts/python.exe` gemeint.
+
+| Zweck | Befehl | Dauer / Ablage |
+|---|---|---|
+| Tests (80) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
+| Smoke-Lauf | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode smoke` | ≈ 4 s → `D:/mandala/mandala-memory-results/smoke/` |
+| Forschungsrunde | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode research` | ≈ 6 s |
+| Auswertung | `PYTHONPATH=. PY -m experiments.mandala_memory.evaluate <research.json> --out <evaluation.json>` | |
+| Beschreibende Tabelle | `PYTHONPATH=. PY -m experiments.mandala_memory.summarize <result.json> --markdown` | |
+| Membran-Pilot | `PYTHONPATH=. PY -m experiments.mandala_memory.cli pilot-membrane` | |
+| Ansicht | `PYTHONPATH=. PY -m experiments.mandala_memory.serve --port 8765`, dann `http://127.0.0.1:8765/` öffnen | |
+| Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
+| Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
+
+## Ergebnis der ersten Runde
+
+Synthetisch, nur dieses Protokoll:
+
+- **Hauptkontrast** (vorab festgelegt: d = 8, neu trainierter Decoder, angepasst minus eingefroren, 20 Seeds): mittlere gepaarte Differenz −0,001, 95-%-Bootstrap über Seeds [−0,0025; +0,0005]. Die episodische Hebb-Anpassung bringt hier **keinen nachweisbaren Gewinn**.
+- **Beschreibend:**
+  - Die Reizspur ist bis d = 2 vollständig lesbar und zerfällt bis d = 8 auf etwa 0,67.
+  - Kopplung hilft gegenüber A = 0 (d = 4: 0,93 gegen 0,71).
+  - Das modulare Netz (c = 1/4) hält die Spur länger als das gleich budgetierte uniforme (0,93 gegen 0,65).
+  - Reset, Summenbeobachtung und eingefrorener Decoder nach der Permutation verhalten sich wie die Kontrollen K3, K4 und K6 erwarten lassen.
+- **Membran-Pilot** (separate Aufgabe, kein Vergleich): Die adaptive Membran speichert die Reizamplitude in θ, lesbar bis etwa d = 8–16; die eingefrorene Membran zeigt kein Gedächtnis.
+
+## Bekannte Grenzen
+
+- **Rein synthetisch.** Seeds sind Wiederholungen, keine biologischen Präparate. Die Unsicherheit gilt nur für diese Seed- und Rauschverteilung.
+- **Variabilität:** Die Dynamik ist deterministisch, Prozessrauschen ist null; Schwankungen kommen nur aus Messrauschen σ = 0,02 und der Reihenfolge der Anpassung.
+- **Enger Geltungsbereich:** Das Ergebnis gilt für η = 0,3, 40 Episoden zu je 5 Schritten und den Nearest-Mean-Decoder ohne Standardisierung. Andere Lernregeln, längeres Training oder Online-Lernen im Test sind nicht untersucht.
+- **Keine ressourcengleichen Vergleiche:** Leak-Modell (weniger Budget), Summenbeobachtung (andere Dimension) und lineares Modell (andere Amplitudendynamik) dienen nur als Kontrollen.
+- **Keine unabhängigen Tests:** Die Verzögerungen eines Seeds teilen ein angepasstes Netz.
+- **Membran-Pilot:** Die Anfangswerte θ0 = 0,5 und β0 = 6 sind Annahmen dieses Pilots.
+- **Ansicht:** Klang und Kantenablation fehlen noch. Der Screenshot-Test ersetzt keinen Bedientest durch einen Menschen.
+- **Abweichungen vom SCF-Standard:** Statt SCFs immer standardisierendem `NearestMeanDecoder` gibt es einen eigenen Decoder. Statt `simulate_trial` gibt es einen eigenen Episodenoperator, der bitgleich zu `simulate_trial` ist.
+- **Tests:** Die Feldtheorie-weite Test-Suite wurde nicht ausgeführt; berührt wurden nur neue Ordner. Die `pytest.ini` von Feldtheorie erzeugt eine harmlose Warnung (`asyncio_default_fixture_loop_scope`).
+- **Kein Push**, keine Veröffentlichung: Alles liegt lokal in Git-Worktrees.

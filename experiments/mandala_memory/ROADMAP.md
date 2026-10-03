@@ -27,7 +27,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ✅ erledigt |
 | M5 | Feldtheorie-Membranpilot (separat) | ✅ erledigt |
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ✅ erledigt |
-| M7 | Reproduzierbare Übergabe, Reviewpaket | ⬜ |
+| M7 | Reproduzierbare Übergabe, Reviewpaket | ✅ erledigt |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -421,6 +421,33 @@ Gemacht mit einem Headless-Edge-Screenshot (Profil auf D:) von `/?autostart`. Di
 - Außerdem wurden die überlappenden Knotenbeschriftungen nach außen gerückt.
 
 **Start:** `PYTHONPATH=. …/python.exe -m experiments.mandala_memory.serve --port 8765`, dann `http://127.0.0.1:8765/` öffnen.
+
+## M7: Reproduzierbare Übergabe
+
+### Dateien
+
+- [`README.md`](README.md): Startbefehle, Ergebnis der ersten Runde und bekannte Grenzen.
+- [`protocol/startkonfiguration.yaml`](protocol/startkonfiguration.yaml): YAML-Zwilling der eingefrorenen JSON-Konfiguration. Damit ist die Trilayer-Regel aus Feldtheories `AGENTS.md` erfüllt (M0-Befund 7). Beim Einlesen ist er inhaltlich identisch mit dem JSON.
+- [`tools/mutation_check.py`](tools/mutation_check.py): gezielte Mutanten. Sie laufen auf einer **Kopie**; ein Hash belegt, dass der Arbeitsbaum unverändert bleibt.
+- [`tools/make_review_package.py`](tools/make_review_package.py): baut das Reviewpaket unter `D:/mandala/mandala-memory-results/review/`. Es enthält:
+  - Patches beider Repos gegen die Plan-Commits und die Commit-IDs;
+  - SHA-256 jeder Experiment-, Ansichts- und Ergebnisdatei;
+  - Konfiguration als JSON und YAML;
+  - Rohergebnisse (Smoke, Forschung mit Auswertung, Membran-Pilot, Explore-Protokoll);
+  - Ressourcen, pytest-JUnit-Bericht, Mutationsbericht und Screenshots.
+
+### Mutationsprüfung
+
+**15/15 erkannt.** Der erste Lauf erkannte 12/15; die drei Überlebenden habe ich einzeln untersucht:
+
+| Mutant | Befund | Folge |
+|---|---|---|
+| `float_matrix_not_exact` | **Falsch konstruiert:** Er skalierte beide Matrizen gleich. | Auf den Gleitkomma-Pfad umgezielt. Dort weichen M = 1 und M = 3 (c = 8/11) um 1,4·10⁻¹⁷ ab, und K7 erkennt das. Die exakte Konstruktion ist also nötig. |
+| `adapted_mask_ignored` | **Äquivalent:** Die Standardmaske erlaubt ohnehin alle Kanten außer der Diagonale. | Ersetzt durch „Diagonale erlaubt“; SCF `hebb_update` lehnt das ab. |
+| `primary_not_paired` | **Echte Testlücke:** Im Testfall waren alle gepaarten Differenzen 0, die Paarung war deshalb unsichtbar. | Neuer Test mit synthetischen, je Seed verschiedenen Werten; der Mutant „verschobene Paarung“ wird jetzt erkannt. |
+
+**Tests danach: 80/80.**
+
 
 
 

@@ -28,6 +28,25 @@ def test_bootstrap_deterministic_and_brackets_mean():
     assert bootstrap_mean_ci([0.1], 2000, 7)["low"] is None
 
 
+def test_primary_pairs_values_of_the_same_seed():
+    """Mutation-check finding: the small fixture has all-zero differences, so a
+    wrong pairing order was invisible. Here per-seed values differ."""
+    runs = []
+    for seed, (a, f) in enumerate([(0.60, 0.58), (0.70, 0.71), (0.80, 0.75)]):
+        runs.append({"seed": seed, "adaptation": {"weight_change_fro": 0.0, "weight_change_max": 0.0},
+                     "delays": {"8": {c: {"balanced_accuracy": v} for c, v in
+                                      (("adapted", a), ("frozen", f), ("adapted_with_frozen_decoder", a))}}})
+    for c in ("uncoupled_leak", "linear", "uniform_M1", "renamed_M3_c8_11", "reset_control", "sum_observation_frozen",
+              "permutation_frozen_decoder", "permutation_refit_decoder"):
+        for r in runs:
+            r["delays"]["8"][c] = {"balanced_accuracy": 0.5}
+    res = {"config": CFG, "mode": "research", "run_id": "synthetic", "config_sha256": "x", "status": "complete",
+           "failed_seeds": [], "runs": runs}
+    p = evaluate(res)["primary"]
+    assert p["per_seed_paired_differences"] == pytest.approx([0.02, -0.01, 0.05], abs=1e-12)
+    assert p["mean_paired_difference"] == pytest.approx(0.02, abs=1e-12)
+
+
 def test_primary_is_paired_and_honest(small_result):
     ev = evaluate(small_result)
     p = ev["primary"]
