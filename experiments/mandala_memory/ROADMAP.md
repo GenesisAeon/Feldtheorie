@@ -26,7 +26,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ✅ erledigt |
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ✅ erledigt |
 | M5 | Feldtheorie-Membranpilot (separat) | ✅ erledigt |
-| M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ⬜ |
+| M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ✅ erledigt |
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ⬜ |
 
 ## M0: Bestand, Laufzeit und Kontrollen
@@ -370,6 +370,57 @@ Rein beschreibend, 3 Seeds, 40 Episoden je Klasse:
 - Die adaptive Membran speichert die Reizamplitude in θ. Die Spur zerfällt über die Pause, weil θ unter R = 0 gegen etwa 0,10 läuft.
 - Die eingefrorene Membran zeigt ausdrücklich kein Gedächtnis: identische Ausgabe für beide Klassen.
 - **Dies ist eine andere Aufgabe als im Netz-Benchmark**, also kein fairer Vergleich und kein Modellsieger.
+
+## M6: Lokale Mandala-Ansicht
+
+### Dienst
+
+[`serve.py`](serve.py) ist ein lokaler Python-Dienst (Standardbibliothek).
+
+- **Erreichbarkeit:** nur `127.0.0.1`.
+- **Keine Shell-Endpunkte, keine Pfade aus dem Browser:** Die Datei-Whitelist umfasst `index.html`, `app.js` und `style.css`. Andere Pfade wie `/../serve.py` liefern 404.
+- **Nur aufgezählte, begrenzte Parameter:** Netz, Reiz A/B, Pause 0–64, Eingriff „löschen nach dem Reiz“, 1–4 Läufe.
+- **Herkunft der Traces:** Jeder Trace kommt aus dem getesteten Kern (`EpisodeOperator`). Es gibt **keinen zweiten Physik-Kern in JavaScript**.
+- **Protokoll:**
+  - Jede Anfrage bekommt eine **neue Run-ID** `explore-…` und die Kennzeichnung explorativ.
+  - Sie wird unter `D:/mandala/mandala-memory-results/explore/` abgelegt, plus eine angehängte Zeile in `protocol.jsonl`.
+  - Benchmark-Daten (`smoke/`, `research/`) werden nie geschrieben. Ein Test prüft das.
+- **Vergleich:** Er berichtet ‖Δx‖₂ und die **Bayes-Accuracy** Φ(‖Δx‖₂ / 2σ) über alle Koordinaten. Siehe die Korrektur weiter unten.
+
+### Ansicht
+
+Liegt in unified-mandala, Worktree `D:/mandala/.worktrees/unified-mandala-memory-lab`, Branch `memory-lab`, Ordner `experiments/memory_lab/`: `index.html`, `app.js`, `style.css`, `FORMAT.md`, `README.md`.
+
+- **Technik:** HTML/JS ohne Abhängigkeiten und ohne Build-Schritt.
+- **Mandala:** zwölf Knoten mit Helligkeit auf fester Skala [0,1], der Zahlenwert steht immer dabei. Kantenstärke aus A; Modulring und Beschriftung M1–M3; markierte Eingänge.
+- **Zeitachse:** mit den Phasen Start / Reiz / gelöscht / Pause / Ablesung, inklusive Abspielen.
+- **Vergleich:** zwei Läufe nebeneinander mit identischem x₀.
+- **Weitere Bereiche:** Ergebnis- und Protokollbereich, die schreibgeschützte Voreinstellung ist einsehbar.
+- **Klang:** aus (nicht implementiert).
+- **Kantenablation:** noch nicht eingebaut; sie ist für die nächste Runde vorgesehen.
+
+### Tests
+
+[`tests/test_m6_serve.py`](tests/test_m6_serve.py): **15 neue, insgesamt 79/79.**
+
+- Ungültige Anfragen werden abgewiesen.
+- Die Traces sind gleich `recall_state`.
+- Der Eingriff „löschen“ ergibt null; der Start ist identisch.
+- Die Bayes-Accuracy entspricht der Formel.
+- Jede Anfrage bekommt eine neue Run-ID und einen Protokolleintrag.
+- Echte HTTP-Anfragen: Whitelist und 404, Bindung an 127.0.0.1, HTTP 400 bei ungültigen Werten.
+- Benchmark-Dateien bleiben unberührt.
+
+### Visuelle Prüfung
+
+Gemacht mit einem Headless-Edge-Screenshot (Profil auf D:) von `/?autostart`. Dieser Parameter startet den voreingestellten Vergleich A gegen B bei d = 8; auch das ist ein protokollierter, explorativer Lauf.
+
+**Korrektur nach der Sichtprüfung:**
+- **Vorher:** Die Ansicht urteilte über die größte Einzelkoordinate max|Δx| = 0,007 < σ und meldete „praktisch nicht unterscheidbar“. Das war **irreführend**, denn der Decoder nutzt alle 12 Koordinaten.
+- **Jetzt:** Die Ansicht zeigt Φ(‖Δx‖₂ / 2σ) = **68,3 %**. Das stimmt mit der gemessenen Balanced Accuracy der Forschungsrunde bei d = 8 überein (0,668).
+- Außerdem wurden die überlappenden Knotenbeschriftungen nach außen gerückt.
+
+**Start:** `PYTHONPATH=. …/python.exe -m experiments.mandala_memory.serve --port 8765`, dann `http://127.0.0.1:8765/` öffnen.
 
 
 
