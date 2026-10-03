@@ -95,6 +95,16 @@ MUTANTS = [
     ("predict_tanh_in_linear_limit", "predict.py",
      "    g = ell * (math.tanh(p[\"amplitude\"]) if p[\"nonlinearity\"] == \"tanh\" else p[\"amplitude\"])",
      "    g = ell * math.tanh(p[\"amplitude\"])", ["test_m9_predict.py"]),
+    # --- M9b/M9c freeze and evaluation ---
+    # retargeted: disabling only the equality test is equivalent (the stricter "differs in no continuous knob"
+    # layer catches the same case); the real gap was whether build() runs the check at all
+    ("m9_freeze_skips_seen_check", "m9_freeze.py", "    seen_info = check_unseen(held, seen)",
+     "    seen_info = {\"n_seen\": len(seen), \"seen_continuous_values\": {}}", ["test_m9_freeze.py"]),
+    ("m9_integrity_not_checked", "m9_evaluate.py", "    if sha != expected_sha:", "    if False:", ["test_m9_evaluate.py"]),
+    ("m9_duration_not_checked", "m9_evaluate.py", "    D_ok = _d(lo) <= _d(D_k) <= _d(hi)", "    D_ok = True", ["test_m9_evaluate.py"]),
+    ("m9_band_ignores_bound", "m9_evaluate.py", "        allowed = Hn * e + 1e-12 * max(1.0, s) + 1e-15",
+     "        allowed = Hn * e + 1e-12 * max(1.0, s) + 1e-15 + 1.0", ["test_m9_evaluate.py"]),
+    ("m9_decoder_band_open", "m9_evaluate.py", "\"passed\": band[0] <= acc <= band[1]}", "\"passed\": True}", ["test_m9_evaluate.py"]),
 ]
 
 

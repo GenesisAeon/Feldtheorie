@@ -55,6 +55,17 @@ def test_lab_entries_of_the_explore_protocol_count_as_seen(tmp_path):
         m9_freeze.check_unseen(m9_freeze.draw_held_out(), seen)
 
 
+def test_build_refuses_when_a_held_out_combination_was_tried_in_the_lab(tmp_path):
+    """The freeze itself (not only the helper) must run the seen check."""
+    h = m9_freeze.draw_held_out()[5]
+    knobs = {**h, "c": 0.25 if h["c"] is None else h["c"], "clear": "none", "p_star": 0.75,
+             "ablation": {"edges": [], "mode": "budget_loss"}}
+    proto = tmp_path / "protocol.jsonl"
+    proto.write_text(json.dumps({"run_id": "lab-z", "kind": "lab", "knobs": knobs}) + "\n", encoding="utf-8")
+    with pytest.raises(RuntimeError):
+        m9_freeze.build(proto)
+
+
 def test_write_exclusive_never_overwrites():
     TMP.mkdir(parents=True, exist_ok=True)
     f = TMP / "exclusive.json"

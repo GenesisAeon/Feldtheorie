@@ -31,7 +31,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M8 | Regler-Labor: explorativ, protokolliert, getrennt vom Benchmark | ✅ erledigt |
 | M9a | Herleitung der Moden und Fehlerschranke, unabhängige Kontrollen, geschlossenes Vorhersagemodul | ✅ erledigt |
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
-| M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | offen |
+| M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -674,3 +674,131 @@ Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten 
   - h12: beobachteter Knoten in einem unbeteiligten Modul, dort ist Δx durch die Symmetrie exakt 0;
   - h07: Modulmittel-Unterschied g·√2/n = 0,018 schon bei d = 0 unter r\* = 0,020.
 - Die naive q-Regel sagt bei **allen** 14 Kombinationen mit vorhergesagter Erinnerung eine längere Dauer voraus, meist ein Vielfaches: h05 52 statt 5, h14 54 statt 3; am knappsten h06 mit 10 statt 7.
+
+## M9c: Prüfung der eingefrorenen Vorhersagen
+
+### Werkzeug
+
+[`m9_evaluate.py`](m9_evaluate.py) wurde **vor** dem ersten echten Lauf committet (`ac764e4`). Es arbeitet in dieser Reihenfolge:
+1. **Integrität:** SHA-256 der eingefrorenen Datei, dazu die unveränderten Prüfsummen von `predict.py`, Herleitung und Register.
+2. **Primärprüfung:** gegen den getesteten Kern (über `lab.compute`).
+3. **Decoder-Prüfung:** eigener Zufallsmodus `m9`, Seeds 9000 + Index.
+4. **Ablage:** exklusiv unter `D:/mandala/mandala-memory-results/m9/`.
+
+Tests: [`tests/test_m9_evaluate.py`](tests/test_m9_evaluate.py) mit Negativkontrollen an Entwicklungsfällen:
+- eine manipulierte Datei wird erkannt, ein CRLF-Checkout besteht;
+- ein zu schmales Band (E = 0) bei starker Nichtlinearität wird erkannt;
+- eine falsche Dauer [7, 7] statt 6 wird erkannt;
+- eine falsche Decoder-Vorhersage wird erkannt;
+- die m9-Ströme sind von allen früheren Modi getrennt;
+- die Ablage schreibt exklusiv und verweigert C:.
+
+**Insgesamt 207/207.**
+
+### Ergebnis
+
+Ergebnisdatei `D:/mandala/mandala-memory-results/m9/m9-evaluation--8d353dbc88.json`, eingefroren auf `6f8a812`, ausgewertet auf `ac764e4`.
+
+| Prüfstufe | Ergebnis |
+|---|---|
+| **Primär** (deterministisch, 24 Kombinationen × 65 Pausen) | **bestanden 24/24.** Jede Kern-Kurve liegt im eingefrorenen Band, jedes Kern-D im vorhergesagten Intervall. Die größte Abweichung nutzt 67 % des Erlaubten; die Schranke ist eng, nicht nur formal erfüllt. |
+| **Sekundär** (Decoder, statistisch) | **bestanden 28/28** (14 Kombinationen × d = D_lin, D_lin + 1) |
+| Punktvorhersagen | 23/23 exakt getroffen; h13 (Band [8, 9]) → Kern 9 |
+| **Naive q-Regel** | liegt bei **allen 14** Kombinationen mit Erinnerung daneben, immer zu lang (z. B. h05: 52 statt 5, h14: 54 statt 3) |
+| Zusatzhypothese Z1 (nicht bewiesen) | gilt in 3/3 anwendbaren Fällen; bleibt eine Hypothese |
+| Stärkste Nichtlinearität | 3,8 % relative Abweichung von der linearen Kurve (h17, a = 2,4, ℓ = 0,75) |
+
+**Je Kombination** („größte Abweichung / erlaubt“ ≤ 1 heißt bestanden; 0 bei exakt verschwindender Trennung):
+
+| id | H | D vorhergesagt | D Kern | naive q-Regel | größte Abweichung / erlaubt | max. relative Nichtlinearität |
+|---|---|---|---|---|---|---|
+| h00 | full | 2 | 2 | 11 | 0.213 | 0.0003 |
+| h01 | full | 16 | 16 | 26 | 0.631 | 0.0005 |
+| h02 | full | 2 | 2 | 35 | 0.498 | 0.0149 |
+| h03 | full | 10 | 10 | 37 | 0.646 | 0.0022 |
+| h04 | full | 12 | 12 | 36 | 0.598 | 0.0014 |
+| h05 | full | 5 | 5 | 52 | 0.213 | 0.0003 |
+| h06 | module_means | 7 | 7 | 10 | 0.512 | 0.0289 |
+| h07 | module_means | – | – | – | 0.581 | 0.0000 |
+| h08 | module_means | – | – | – | 0.000 | 0.0000 |
+| h09 | module_means | 4 | 4 | 18 | 0.674 | 0.0008 |
+| h10 | module_means | 0 | 0 | 4 | 0.406 | 0.0001 |
+| h11 | module_means | – | – | – | 0.000 | 0.0000 |
+| h12 | node | – | – | – | 0.000 | 0.0000 |
+| h13 | node | [8, 9] | 9 | 16 | 0.267 | 0.0252 |
+| h14 | node | 3 | 3 | 54 | 0.354 | 0.0014 |
+| h15 | node | 7 | 7 | 27 | 0.231 | 0.0098 |
+| h16 | node | 8 | 8 | 23 | 0.080 | 0.0000 |
+| h17 | node | 1 | 1 | 14 | 0.289 | 0.0380 |
+| h18 | sum | – | – | – | 0.000 | 0.0000 |
+| h19 | sum | – | – | – | 0.000 | 0.0000 |
+| h20 | sum | – | – | – | 0.000 | 0.0000 |
+| h21 | sum | – | – | – | 0.000 | 0.0000 |
+| h22 | sum | – | – | – | 0.000 | 0.0000 |
+| h23 | sum | – | – | – | 0.000 | 0.0000 |
+
+**Decoder** (1000 Trainings- und 4000 Testepisoden je Klasse; Prüfband = [lo − 0,01 − 4 SE, hi + 4 SE]):
+
+| id | d | Decoder (Balanced Acc.) | Bayes-Band | Prüfband | Kern-Bayes |
+|---|---|---|---|---|---|
+| h00 | 2 | 0.9383 | [0.9356, 0.9360] | [0.9146, 0.9470] | 0.9358 |
+| h00 | 3 | 0.6189 | [0.6245, 0.6250] | [0.5928, 0.6467] | 0.6248 |
+| h01 | 16 | 0.7821 | [0.7786, 0.7790] | [0.7501, 0.7975] | 0.7787 |
+| h01 | 17 | 0.7371 | [0.7437, 0.7440] | [0.7141, 0.7635] | 0.7437 |
+| h02 | 2 | 0.7704 | [0.7634, 0.7732] | [0.7346, 0.7921] | 0.7701 |
+| h02 | 3 | 0.5346 | [0.5330, 0.5386] | [0.5007, 0.5609] | 0.5361 |
+| h03 | 10 | 0.7846 | [0.7811, 0.7824] | [0.7527, 0.8009] | 0.7814 |
+| h03 | 11 | 0.7423 | [0.7486, 0.7498] | [0.7192, 0.7692] | 0.7488 |
+| h04 | 12 | 0.7550 | [0.7544, 0.7553] | [0.7252, 0.7745] | 0.7546 |
+| h04 | 13 | 0.7331 | [0.7412, 0.7420] | [0.7116, 0.7616] | 0.7413 |
+| h05 | 5 | 0.8500 | [0.8500, 0.8504] | [0.8241, 0.8664] | 0.8502 |
+| h05 | 6 | 0.7284 | [0.7223, 0.7227] | [0.6923, 0.7428] | 0.7225 |
+| h06 | 7 | 0.7996 | [0.7890, 0.8156] | [0.7612, 0.8335] | 0.7957 |
+| h06 | 8 | 0.6839 | [0.6904, 0.7110] | [0.6600, 0.7315] | 0.6955 |
+| h09 | 4 | 0.7761 | [0.7772, 0.7774] | [0.7486, 0.7960] | 0.7773 |
+| h09 | 5 | 0.7417 | [0.7421, 0.7423] | [0.7126, 0.7619] | 0.7422 |
+| h10 | 0 | 0.7960 | [0.8007, 0.8007] | [0.7728, 0.8186] | 0.8007 |
+| h10 | 1 | 0.7104 | [0.7081, 0.7081] | [0.6778, 0.7284] | 0.7081 |
+| h13 | 9 | 0.7591 | [0.7461, 0.7880] | [0.7172, 0.8069] | 0.7619 |
+| h13 | 10 | 0.7059 | [0.6900, 0.7254] | [0.6597, 0.7458] | 0.7032 |
+| h14 | 3 | 0.7915 | [0.7941, 0.7948] | [0.7661, 0.8128] | 0.7946 |
+| h14 | 4 | 0.6847 | [0.6923, 0.6929] | [0.6617, 0.7136] | 0.6927 |
+| h15 | 7 | 0.7664 | [0.7594, 0.7761] | [0.7305, 0.7950] | 0.7659 |
+| h15 | 8 | 0.7281 | [0.7247, 0.7405] | [0.6949, 0.7603] | 0.7309 |
+| h16 | 8 | 0.7812 | [0.7760, 0.7760] | [0.7474, 0.7947] | 0.7760 |
+| h16 | 9 | 0.7016 | [0.7023, 0.7023] | [0.6719, 0.7228] | 0.7023 |
+| h17 | 1 | 0.9916 | [0.9849, 0.9914] | [0.9701, 0.9962] | 0.9894 |
+| h17 | 2 | 0.5840 | [0.5715, 0.5951] | [0.5394, 0.6172] | 0.5853 |
+
+### Lesart
+
+**Was jetzt belegt ist**, synthetisch und nur für Familie F:
+
+1. **Die Erinnerung steckt im Modul-Unterschieds-Modus.** Sie klingt mit μ_D = 1 − ℓ + ℓγ(1 − cN/(N−n)) ab. Binnenmodul-Unterschiede klingen mit μ_I ab, meist viel schneller. Der Gleichtaktmodus mit q kommt im Reizunterschied **gar nicht vor**: Das ist bewiesen (Symmetrie) und an 24 ungesehenen Kombinationen bestätigt.
+2. **q ist keine Erinnerungsrate**, nur eine obere Grenze. Die naive q-Regel überschätzt die Dauer in jedem geprüften Fall, meist um ein Vielfaches.
+3. **Abschottung hilft genau dann, wenn die Reize in verschiedenen Modulen ankommen** und das Ablesen den Modul-Unterschied sieht:
+   - Liegen beide Eingänge im selben Modul, trägt nur μ_I, und die Spur ist nach wenigen Schritten weg (h02, h14, h17).
+   - Werden nur Modulmittel abgelesen, sind Binnenmodul-Unterschiede unsichtbar (h08, h11).
+   - Die Summe sieht nie etwas (h18–h23).
+
+   Damit ist die Arbeitsteilung präzise: **Information innerhalb eines Moduls halten** heißt μ_D nahe 1, also kleines c. **Information zwischen Modulen austauschen** heißt großes c. Dieses c verkürzt genau diese Erinnerung. Ab c > (N−n)/N kippt der Modus ins Negative (anti-modular; bei h10 und h12 ist μ_D < 1−ℓ).
+4. **Reizstärke und Rauschen** wirken nur logarithmisch auf die Dauer, über g/σ = ℓ·tanh(a)/σ. Die tanh-Sättigung deckelt den Reizgewinn.
+
+**Was nicht behauptet wird:**
+- nichts außerhalb von F: Kantenablation, Eingriffe nach dem Reiz, Hebb-angepasste oder ungleich große Module;
+- keine biologische Aussage, kein Gewinner;
+- die 24 Kombinationen sind eine Stichprobe (`numerical_sample`); allgemein gilt die Schranke (`analytic_argument`), nicht die Stichprobe;
+- die Decoder-Schicht ist `numerical_sample` / `synthetic_only`.
+
+**Einschränkung der Prüfstärke:** 10 der 24 Vorhersagen sind „keine Erinnerung über p\*“. Bei 9 davon ist die Trennung aus Symmetriegründen exakt 0, oder der beobachtete Unterschied liegt schon bei d = 0 unter der Schwelle. Diese Fälle prüfen die Struktur (Messoperator, Symmetrie), aber kaum die Zahlenwerte. Die quantitative Last tragen die 14 Kombinationen mit Erinnerung.
+
+### Mutationsprüfung
+
+**37/37 erkannt**, mit 5 neuen Mutanten für M9b/M9c:
+- Einfrieren ohne Prüfung auf „gesehen“;
+- Integritätsprüfung aus;
+- D nicht geprüft;
+- Band ignoriert die Schranke;
+- Decoder-Band offen.
+
+Ein erster Mutant überlebte, `m9_seen_check_disabled`. Er war **äquivalent**, weil die strengere zweite Schicht denselben Fall abfängt. Die echte Lücke war, ob `build()` die Prüfung aufruft. Dafür gibt es jetzt einen neuen Test und einen umgezielten Mutanten.

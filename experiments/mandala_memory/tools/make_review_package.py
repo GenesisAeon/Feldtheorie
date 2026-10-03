@@ -7,10 +7,15 @@ Collects into D:/mandala/mandala-memory-results/review/:
   evaluation, membrane pilot, explore protocol), resource figures, the
   pytest report (JUnit XML + summary), the mutation report and screenshots.
 
-    python experiments/mandala_memory/tools/make_review_package.py
+    python experiments/mandala_memory/tools/make_review_package.py [--out DIR]
+
+M8/M9: also copies the M9 results (m9/) and the lab entries of the explore
+protocol; --out allows a NEW package folder so that an already reviewed
+package is never replaced.
 """
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -53,7 +58,11 @@ def yaml_dump(obj, indent=0) -> str:
     return f"{pad}{json.dumps(obj, ensure_ascii=False)}"
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    global OUT
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", type=Path, default=OUT)
+    OUT = ap.parse_args(argv).out
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "patches").mkdir(parents=True)
@@ -85,7 +94,7 @@ def main() -> int:
     (OUT / "mutation_summary.txt").write_text(m.stdout[-4000:], encoding="utf-8")
 
     # 4) results and screenshots (copies; originals untouched)
-    for sub in ("smoke", "research", "membrane_pilot"):
+    for sub in ("smoke", "research", "membrane_pilot", "m9"):
         if (RES / sub).exists():
             shutil.copytree(RES / sub, OUT / "results" / sub)
     if (RES / "explore" / "protocol.jsonl").exists():
