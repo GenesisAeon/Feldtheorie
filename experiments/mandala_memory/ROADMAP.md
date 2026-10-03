@@ -21,7 +21,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | Paket | Inhalt | Status |
 |---|---|---|
 | M0 | Stände, APIs, Laufzeit, Speicherorte; Protokoll eingefroren; Kontrollen unabhängig | ✅ erledigt |
-| M1 | Episodenoperator, linearer/Null-Referenzkern; K1–K9, SCF-Parität, Reset/Fortsetzung | ⬜ |
+| M1 | Episodenoperator, linearer/Null-Referenzkern; K1–K9, SCF-Parität, Reset/Fortsetzung | ✅ erledigt |
 | M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ⬜ |
 | M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ⬜ |
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ⬜ |
@@ -102,3 +102,33 @@ Geprüft wurde in der installierten Version 0.42.0 bzw. am Plan-Commit.
 - [x] keine lokalen Dateien überschrieben (Worktree, eigene Umgebung, Übergabe nur gelesen)
 - [x] unabhängige Kontrollwerte bestätigt
 - [x] Protokoll eingefroren
+
+## M1: Episodenoperator und Referenzkern
+
+[`core.py`](core.py):
+- **`EpisodeOperator`** mit `reset`, `step`, `run`, `snapshot`, `restore` und `observe`. Er verwendet denselben Schritt wie SCF `simulate_trial`, nimmt aber einen expliziten Anfangszustand und eine beliebige Eingangsfolge an.
+- **Determinismus:** Der Operator zieht keine Zufallszahlen.
+- **Snapshot:** Er kopiert x, k, A, B, ℓ und die Nichtlinearität. `restore` in ein anderes Netz wird abgewiesen.
+- **`build_network`:** baut das Netz über SCFs öffentliche APIs. Die Gewichte entstehen **exakt aus Brüchen** und werden erst danach in Gleitkomma umgewandelt. Exakt gleiche Matrizen sind so auch bitgleiche Floats.
+- **Weitere Funktionen:** `recall_state` mit Reset-Kontrolle und `LinearScalarKernel` für K1/K9.
+
+**Zeitkonvention:** u_0 = e_s, danach d Nullschritte; abgelesen wird x_(d+1). Bei d = 0 wird direkt nach dem Puls gelesen.
+
+[`tests/test_m1_core.py`](tests/test_m1_core.py): **32/32 bestanden.**
+
+| Prüfung | Ergebnis |
+|---|---|
+| K1 | ±2^(−d) exakt mit Brüchen |
+| K9 linear | exakt |
+| K9 Netz | `snapshot`/`restore` ergibt bitgleiche Fortsetzung; ein Reset an der Nahtstelle weicht ab |
+| SCF-Parität | bitgleich mit `simulate_trial` (konstantes u, x0 = 0, beide Klassen, 12 Schritte) |
+| Ablesung | x_(d+1) für alle d ∈ {0,1,2,4,8,16,32}; Puls genau einmal (Identität: x1 = ℓ·0,6·e) |
+| K3 | Reset nach dem Puls: beide Klassen exakt 0 |
+| K7 | exakt mit Brüchen; Trajektorien von M = 1 und M = 3 (c = 8/11) bitgleich; c = 1/4 weicht ab |
+| K8 | 200 Zufallspaare × 20 Schritte, Abstand in der Maximumsnorm ≤ q^k (Verhältnis ≤ 1) |
+| Weitere | ungekoppeltes Leak-Modell klingt mit (1−ℓ)^d ab; Scope-Fehler werden abgewiesen; Episoden ändern A und B nie |
+
+K2, K4, K5 und K6 betreffen Beobachtung und Decoder und werden in M2 geprüft.
+
+**Tests ausführen** (im Worktree-Wurzelverzeichnis):
+`PYTHONPATH=. D:/mandala/.venvs/mandala-memory/Scripts/python.exe -m pytest -p no:cacheprovider experiments/mandala_memory/tests`
