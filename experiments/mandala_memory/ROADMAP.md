@@ -24,7 +24,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M1 | Episodenoperator, linearer/Null-Referenzkern; K1–K9, SCF-Parität, Reset/Fortsetzung | ✅ erledigt |
 | M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ✅ erledigt |
 | M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ✅ erledigt |
-| M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ⬜ |
+| M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ✅ erledigt |
 | M5 | Feldtheorie-Membranpilot (separat) | ⬜ |
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ⬜ |
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ⬜ |
@@ -252,4 +252,80 @@ Rein **beschreibend**: 3 Seeds, 40 Trainings- und 40 Testepisoden je Klasse und 
   - Reset und Summenbeobachtung liegen auf Zufallsniveau. Die Summe ist wegen der symmetrischen Eingänge schon bei d = 0 informationslos.
   - Der eingefrorene Decoder versagt nach der Permutation, ein neu angepasster liest wieder.
 - **Gepaartes Rauschen sichtbar:** Bei d = 32 haben alle Bedingungen exakt denselben Wert, weil sie dasselbe Rauschen sehen und die Zustände nahezu gleich sind.
+
+## M4: Auswertung und Forschungsrunde
+
+### Hochrechnung vor dem Start
+
+- **Smoke:** Auswertung 0,45 s und Anpassung 0,11 s bei 3 Seeds × 80 Episoden je Klasse und Verzögerung.
+- **Forschungsrunde:** 20 Seeds × 250 Episoden je Klasse und Verzögerung.
+- **Erwartung:** etwa 0,45 × 3,1 × 6,7 + 0,11 × 6,7 ≈ 10 s, RAM etwa 100 MiB. Das liegt unter allen Grenzen (10 min, 2 GiB, 100 MiB).
+
+### Auswertung
+
+[`evaluate.py`](evaluate.py):
+
+- **Vorab festgelegter Hauptkontrast:** neu trainierter Decoder, angepasst minus eingefroren, d = 8.
+  - Gepaarte Differenz je Seed, also gleiche Testepisoden und gleiches Rauschen.
+  - 95-%-Bootstrap des Mittelwerts über **ganze Seeds**: 2000 Wiederholungen, Seed 2026100399. Benannt als **synthetische** Unsicherheit unter genau dieser Seed- und Rauschverteilung.
+  - Optional der exakte Sign-Flip-p-Wert über SCF, mit Austauschbarkeitsannahme.
+- **Übrige Verzögerungen und Bedingungen:** nur beschreibend.
+- **Ergebnisvokabular:** wie in SCF, `numerical_sample` / `synthetic_only`, mit Annahmen und „nicht behauptet“-Liste.
+
+[`tests/test_m4_evaluate.py`](tests/test_m4_evaluate.py): 2 neue, insgesamt **56/56**. Geprüft werden:
+- der Bootstrap ist deterministisch und umschließt den Mittelwert;
+- der Hauptkontrast ist tatsächlich gepaart;
+- Smoke-Ergebnisse sind als nicht inferenziell markiert;
+- es entsteht striktes JSON.
+
+### Forschungsrunde
+
+| Feld | Wert |
+|---|---|
+| Run-ID | `research-e19650a0a0` |
+| Status | complete, **20 Seeds**, kein Ausfall |
+| Episoden je Klasse und Verzögerung | 100 Decoder-Training, 50 Validierung, 100 Test; die Anpassung nutzt eigene Episoden |
+| Laufzeit / RAM | **5,9 s**, 95 MiB Spitze |
+| Ergebnisdatei | 572 KB, SHA-256 beginnt mit `e30b93fb683c9ba7` |
+| Auswertung | 36 KB, SHA-256 beginnt mit `63102e90ad85dcce` |
+| Ablage | `D:/mandala/mandala-memory-results/research/` |
+
+**Startbefehle:**
+- `PYTHONPATH=. …/python.exe -m experiments.mandala_memory.cli run --mode research`
+- `… -m experiments.mandala_memory.evaluate D:/mandala/mandala-memory-results/research/research-e19650a0a0.json --out …evaluation.json`
+
+### Hauptkontrast (vorab festgelegt)
+
+Bei d = 8, angepasst minus eingefroren, neu trainierter Decoder:
+- **mittlere gepaarte Differenz:** −0,001;
+- **95-%-Bootstrap:** [−0,0025; +0,0005];
+- **Sign-Flip:** p = 11/32 (unter der Austauschbarkeitsannahme).
+
+Unter diesem Protokoll verbessert die episodische Hebb-Anpassung das Ablesen bei d = 8 **nicht nachweisbar**. Das ist ein verwertbares Ergebnis und keine Gewinnerbehauptung.
+
+### Beschreibende Kurven
+
+Mittlere Balanced Accuracy über 20 Seeds:
+
+| d | frozen | adapted | adapted, Decoder eingefroren | Leak (A = 0) | linear | uniform ≡ umbenannt | Reset | Summe | Perm. eingefroren | Perm. neu |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 0,496 | 0,497 | 0,487 | 1,000 |
+| 1 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 1,000 | 0,495 | 0,506 | 0,735 | 1,000 |
+| 2 | 0,997 | 0,997 | 0,997 | 0,990 | 0,999 | 0,977 | 0,510 | 0,497 | 0,731 | 0,998 |
+| 4 | 0,931 | 0,933 | 0,933 | 0,706 | 0,950 | 0,651 | 0,499 | 0,489 | 0,721 | 0,930 |
+| 8 | 0,668 | 0,667 | 0,667 | 0,499 | 0,687 | 0,496 | 0,493 | 0,496 | 0,586 | 0,661 |
+| 16 | 0,506 | 0,505 | 0,505 | 0,507 | 0,508 | 0,507 | 0,507 | 0,487 | 0,508 | 0,508 |
+| 32 | 0,489 | 0,489 | 0,489 | 0,489 | 0,489 | 0,489 | 0,489 | 0,492 | 0,489 | 0,489 |
+
+### Grenzen
+
+- **Kein Ressourcenvergleich:**
+  - Das Leak-Modell hat weniger Kopplungsbudget.
+  - Die Summenbeobachtung hat eine andere Dimension.
+  - Das lineare Modell hat eine andere Amplitudendynamik; es ist separat berichtet und kein Sieg der Linearität.
+- **Keine unabhängigen Tests:** Die Verzögerungen eines Seeds teilen dasselbe angepasste Netz.
+- **Keine biologische Aussage:** Seeds sind synthetische Wiederholungen.
+- **Variabilität:** Prozessrauschen ist null; Schwankungen kommen nur aus dem Messrauschen und der Reihenfolge der Anpassung.
+- **Geltungsbereich:** Das Ergebnis gilt **nur** für dieses Protokoll, also η = 0,3, 40 Episoden zu je 5 Schritten und σ = 0,02. Ob andere Anpassungsregeln oder längeres Training helfen, ist eine offene Frage für eine spätere Runde.
+
 
