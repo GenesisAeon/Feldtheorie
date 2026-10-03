@@ -197,7 +197,10 @@ def memory_duration(bayes: List[float], p_star: float) -> Dict:
             "monotone_non_increasing": all(b2 <= b1 for b1, b2 in zip(bayes, bayes[1:])),
             "censored_at_d_max": bool(bayes[-1] >= p_star),
             "definition": "last delay d in 0..64 with ideal accuracy Phi(||H dx(d)||_2 / 2 sigma) >= p*; "
-                          "first_passage = first d below p* minus one; None = already below p* at d = 0"}
+                          "last_delay_at_or_above = None means below p* at every d in 0..64 (a single readout "
+                          "node can reach p* only later, so Bayes(0) < p* alone does not mean None); "
+                          "first_passage = (first d below p*) - 1, None if Bayes(0) < p* "
+                          "(then it says nothing about later delays)"}
 
 
 def compute(knobs: Dict) -> Dict:

@@ -14,7 +14,7 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 
 | Zweck | Befehl | Dauer / Ablage |
 |---|---|---|
-| Tests (207) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
+| Tests (211) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
 | Smoke-Lauf | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode smoke` | ≈ 4 s → `D:/mandala/mandala-memory-results/smoke/` |
 | Forschungsrunde | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode research` | ≈ 6 s |
 | Auswertung | `PYTHONPATH=. PY -m experiments.mandala_memory.evaluate <research.json> --out <evaluation.json>` | |
@@ -72,7 +72,7 @@ Synthetisch, nur dieses Protokoll:
 
 ## Ergebnis der zweiten Runde (M9): Warum das Mandala erinnert
 
-Die Herleitung steht in [docs/M9_HERLEITUNG.md](docs/M9_HERLEITUNG.md), die Prüfung im Abschnitt M9c der [ROADMAP](ROADMAP.md). Alles ist synthetisch und gilt nur für die Familie F: gleich große Module, Budgetmatrix, ein Puls, keine Eingriffe.
+Die Herleitung steht in [docs/M9_HERLEITUNG.md](docs/M9_HERLEITUNG.md) (eingefroren; zwei Erklärungen berichtigt in [docs/M9_ERRATUM_1.md](docs/M9_ERRATUM_1.md)), die Prüfung im Abschnitt M9c der [ROADMAP](ROADMAP.md). Alles ist synthetisch und gilt nur für die Familie F: gleich große Module, Budgetmatrix, ein Puls, keine Eingriffe.
 
 - **Wo die Erinnerung steckt:** im **Modul-Unterschieds-Modus** mit μ_D = 1 − ℓ + ℓγ(1 − cN/(N−n)). Unterschiede innerhalb eines Moduls verschwinden mit μ_I, meist viel schneller.
 - **q ist keine Erinnerungsrate:** Der Kontraktionsfaktor q gehört zum Gleichtaktmodus. Der Reizunterschied steht darauf senkrecht; das ist bewiesen, auch nichtlinear.

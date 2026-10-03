@@ -539,6 +539,7 @@ Beide Befunde habe ich **zuerst unverändert reproduziert** (`0a931fd`, isoliert
 1. **Vermutung bei „Modul löschen“ war falsch.** Ich hatte erwartet, dass das Löschen des Moduls von Eingang B die Erinnerung *schwächt*. Sie wird **stärker** (d = 8: 0,68 → 0,81; d = 16: 0,52 → 0,64). Der Grund:
    - Der Reiz landet nur auf Knoten 4. Nach dem Löschen ist deshalb x_B ≡ 0 und x_A − x_B = x_A.
    - x_A enthält den langsamen Gleichtaktmodus, der mit q abklingt. Ohne Eingriff steht der Reizunterschied senkrecht auf diesem Modus.
+   - *Präzisiert nach Review (Erratum 1):* Die Aufgabe hat sich dadurch verändert, denn A wird jetzt gegen ein Nullsignal unterschieden. Der gelöschte B-Zustand wird **nicht** wiederhergestellt.
 
    Der Test prüft jetzt diesen Mechanismus.
 2. **Toleranz im Linearitätstest zu streng.** Die absolute Toleranz von 1e‑18 war für Werte um 10⁻² zu eng; die Abweichung lag bei etwa 1e‑17. Jetzt wird relativ geprüft.
@@ -637,7 +638,7 @@ Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten 
   - Prüfsummen (zeilenende-normiert) von `predict.py`, `docs/M9_HERLEITUNG.md` und `m9_registry.py`. Ändert sich eine dieser Dateien nach dem Einfrieren, schlägt `test_committed_frozen_predictions_are_intact` an.
 - **Prüfregeln** sind in der Datei selbst festgehalten (`rules`), wie in der Herleitung, Abschnitt 7.
 
-**Die eingefrorenen Vorhersagen** (p\* = 0,75; „–“ = schon bei d = 0 unter p\*):
+**Die eingefrorenen Vorhersagen** (p\* = 0,75; „–“ = bei **keiner** Pause d = 0…64 mindestens p\*; *berichtigt nach Erratum 1, R4:* früher stand hier „schon bei d = 0 unter p\*“):
 
 | id | N/M | c | γ | ℓ | a | σ | Eingänge | H | q | μ_D | μ_I | D_lin | [D_lo, D_hi] | D_q |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -672,7 +673,7 @@ Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten 
   - 6× nur die Summe beobachtet, denn der Unterschied ist antisymmetrisch;
   - h08 und h11: Modulmittel bei gleichem Modul;
   - h12: beobachteter Knoten in einem unbeteiligten Modul, dort ist Δx durch die Symmetrie exakt 0;
-  - h07: Modulmittel-Unterschied g·√2/n = 0,018 schon bei d = 0 unter r\* = 0,020.
+  - h07: Modulmittel-Unterschied g·√2/n = 0,018 schon bei d = 0 unter r\* = 0,020; er klingt danach nur noch ab (|μ_D| < 1), bleibt also bei allen d darunter.
 - Die naive q-Regel sagt bei **allen** 14 Kombinationen mit vorhergesagter Erinnerung eine längere Dauer voraus, meist ein Vielfaches: h05 52 statt 5, h14 54 statt 3; am knappsten h06 mit 10 statt 7.
 
 ## M9c: Prüfung der eingefrorenen Vorhersagen
@@ -781,7 +782,7 @@ Ergebnisdatei `D:/mandala/mandala-memory-results/m9/m9-evaluation--8d353dbc88.js
    - Werden nur Modulmittel abgelesen, sind Binnenmodul-Unterschiede unsichtbar (h08, h11).
    - Die Summe sieht nie etwas (h18–h23).
 
-   Damit ist die Arbeitsteilung präzise: **Information innerhalb eines Moduls halten** heißt μ_D nahe 1, also kleines c. **Information zwischen Modulen austauschen** heißt großes c. Dieses c verkürzt genau diese Erinnerung. Ab c > (N−n)/N kippt der Modus ins Negative (anti-modular; bei h10 und h12 ist μ_D < 1−ℓ).
+   Damit ist die Arbeitsteilung präzise: **Information innerhalb eines Moduls halten** heißt μ_D nahe 1, also kleines c. **Information zwischen Modulen austauschen** heißt großes c. Dieses c verkürzt genau diese Erinnerung. Ab c > (N−n)/N wird der Kopplungseigenwert λ_D negativ (anti-modular), und μ_D sinkt unter 1−ℓ (h10, h12). *Berichtigt nach Erratum 1, R3:* Ein Vorzeichenwechsel der Spur pro Schritt folgt daraus nicht; dafür braucht es μ_D < 0. Bei h10 und h12 ist μ_D > 0.
 4. **Reizstärke und Rauschen** wirken nur logarithmisch auf die Dauer, über g/σ = ℓ·tanh(a)/σ. Die tanh-Sättigung deckelt den Reizgewinn.
 
 **Was nicht behauptet wird:**
@@ -790,7 +791,7 @@ Ergebnisdatei `D:/mandala/mandala-memory-results/m9/m9-evaluation--8d353dbc88.js
 - die 24 Kombinationen sind eine Stichprobe (`numerical_sample`); allgemein gilt die Schranke (`analytic_argument`), nicht die Stichprobe;
 - die Decoder-Schicht ist `numerical_sample` / `synthetic_only`.
 
-**Einschränkung der Prüfstärke:** 10 der 24 Vorhersagen sind „keine Erinnerung über p\*“. Bei 9 davon ist die Trennung aus Symmetriegründen exakt 0, oder der beobachtete Unterschied liegt schon bei d = 0 unter der Schwelle. Diese Fälle prüfen die Struktur (Messoperator, Symmetrie), aber kaum die Zahlenwerte. Die quantitative Last tragen die 14 Kombinationen mit Erinnerung.
+**Einschränkung der Prüfstärke:** 10 der 24 Vorhersagen sind „keine Erinnerung über p\*“. Bei 9 davon ist die Trennung aus Symmetriegründen exakt 0, bei h07 liegt der monoton abklingende Modulmittel-Unterschied schon bei d = 0 unter der Schwelle (der Kern bestätigt für alle 10: bei keiner Pause ≥ p\*). Diese Fälle prüfen die Struktur (Messoperator, Symmetrie), aber kaum die Zahlenwerte. Die quantitative Last tragen die 14 Kombinationen mit Erinnerung.
 
 ### Mutationsprüfung
 
@@ -802,3 +803,26 @@ Ergebnisdatei `D:/mandala/mandala-memory-results/m9/m9-evaluation--8d353dbc88.js
 - Decoder-Band offen.
 
 Ein erster Mutant überlebte, `m9_seen_check_disabled`. Er war **äquivalent**, weil die strengere zweite Schicht denselben Fall abfängt. Die echte Lücke war, ob `build()` die Prüfung aufruft. Dafür gibt es jetzt einen neuen Test und einen umgezielten Mutanten.
+
+## Followup-Review-Fix `astra-m8-m9-review` (R3, R4)
+
+Die Prüfung liegt unter `D:/mandala/mandala-memory-results/astra-m8-m9-review/REVIEW.md` (Stand `e8b1f10`). Unabhängig bestätigt wurden:
+- 207/207 Tests;
+- eine separat programmierte Simulation: 24/24 Bänder, 23/23 Dauern;
+- 28/28 Decoder-Prüfungen;
+- Symmetrieargument, Fehlerrekursion und Commit-Reihenfolge.
+
+Zu korrigieren waren **zwei Erklärungen, keine Rechnung**. Beide Gegenbeispiele habe ich zuerst unverändert mit dem Kern nachgerechnet; die Zahlen stimmen exakt.
+
+| Befund | Korrektur | Regression (`tests/test_m9_erratum.py`) |
+|---|---|---|
+| **R3** „λ_D < 0 ⇒ Vorzeichenwechsel“ | Ein Wechsel pro Schritt braucht μ_D < 0. λ_D < 0 heißt nur anti-modulare Kopplung mit μ_D < 1−ℓ. | c = 0,8: λ_D = −0,16, μ_D = +0,42, Kontrast 0,1342624 … stets positiv. Positivkontrolle c = 1, ℓ = 1, γ = 0,95: μ_D = −0,475, alterniert. |
+| **R4** „Bayes(0) < p\* ⇒ keine Erinnerung“ | D ist „keine“ genau dann, wenn **kein** d = 0…64 die Schwelle erreicht; first_passage ist eine eigene Größe. | Knoten n1, σ = 0,01: Bayes 0,5 → 0,879704 → 0,911444, D = 5, first_passage = None; die Vorhersage sagt [5, 5]. Alle 10 eingefrorenen „–“ bleiben bei jedem d unter p\*. |
+
+- **Erratum:** [`docs/M9_ERRATUM_1.md`](docs/M9_ERRATUM_1.md). Die eingefrorene [`docs/M9_HERLEITUNG.md`](docs/M9_HERLEITUNG.md) bleibt **unverändert**; ihr Hash-Test ist weiter grün.
+- **Im Erratum zusätzlich festgehalten:**
+  - Gleitkomma-Auswertung der Schranke ≠ zertifizierte Intervallarithmetik;
+  - das Decoder-Band ist kein gemeinsames Konfidenzniveau;
+  - „Modul B löschen“ verändert die Aufgabe;
+  - die Commit-Folge belegt die versionierte Reihenfolge.
+- **Weitere berichtigte Stellen:** Erläuterung von `memory_duration` in `lab.py`, Zusammenfassung in `lab.js` („keine: bei keiner Pause 0–64 …“) und die Roadmap-Stellen zu „–“ und zum anti-modularen Bereich.
