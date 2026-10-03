@@ -10,6 +10,7 @@ R12 the time limit is enforced during the run; timeout -> 'aborted_timeout',
     written exclusively, never released.
 """
 import copy
+import functools
 import json
 
 import numpy as np
@@ -37,9 +38,22 @@ def frozen(monkeypatch, tmp_path):
     return path
 
 
+@functools.lru_cache(maxsize=None)
+def _update_counts(seed, d):
+    """Training/test episodes of the update task, taken from the REAL episode generator
+    (independent of the gate's own reconstruction)."""
+    from experiments.mandala_memory import m10_decoders as md
+
+    ld, pats = PROTO["level_D"], mt.patterns()
+    tr = md.make_episodes("m10", seed, "decoder_train", d, ld["n_train_per_class"], pats, 12, 0.02)
+    te = md.make_episodes("m10", seed, "test", d, ld["n_test_per_class"], pats, 12, 0.02)
+    return int((tr.last > 0).sum()), int((te.last > 0).sum()), int((te.last == 0).sum())
+
+
 def synthetic_complete_result():
     """A complete research result built INDEPENDENTLY of the gate code (own loops,
-    own stream keys); numbers are placeholders, only the structure matters."""
+    own stream keys, counts from the real generator, FULL diagnostic structure);
+    accuracies are placeholders, every required field is present (follow-up review)."""
     p = PROTO
     nets, nls, delays = ("modular", "uniform"), ("tanh", "identity"), p["delays"]["all"]
     lb, ld = p["level_B"], p["level_D"]
@@ -62,13 +76,17 @@ def synthetic_complete_result():
                     res["level_B"].append(row)
                     perm = mt.swap_permutation(12, p["networks"][n]["M"])
                     fixed = mt.condition_is_p_fixed(perm, cond)
+                    tol1 = p["diagnostics"]["A1"]["tol_rel"]
                     diag = {"network": n, "nonlinearity": nl, "condition": c, "delay": d, "p_fixed": fixed,
-                            "A1_as_expected": True}
+                            "A1": {"max_rel_deviation": 0.0 if fixed else 0.4, "holds": fixed, "tol_rel": tol1},
+                            "A1_expected": fixed, "A1_as_expected": True}
                     if nl == "identity" and fixed:
-                        diag["A2_structural"] = {"holds": True}
+                        diag["A2_structural"] = {"max_norm_antisymmetric_part": 0.0, "holds": True,
+                                                 "tol": p["diagnostics"]["A2_structural"]["tol"]}
                     res["diagnostics"].append(diag)
     for s in ld["seeds"]:
         for d in delays:
+            u_tr, u_te, u_ex = _update_counts(s, d)
             streams = {role: [list(stream("m10", s, kind, role, d)[1]) for kind in ("pattern", "noise")]
                        for role in ("decoder_train", "test")}
             for n in nets:
@@ -80,7 +98,7 @@ def synthetic_complete_result():
                                        "train_identical_pattern_counts": True, "test_identical_pattern_counts": True},
                             "preserve": {"n_train": 2 * ld["n_train_per_class"], "n_test": 2 * ld["n_test_per_class"],
                                          "n_excluded_test": 0, "nearest_mean": 0.8, "lda_ledoit_wolf": 0.81},
-                            "update": None if cond is None else {"n_train": 1750, "n_test": 3500, "n_excluded_test": 500,
+                            "update": None if cond is None else {"n_train": u_tr, "n_test": u_te, "n_excluded_test": u_ex,
                                                                  "nearest_mean": 0.7, "lda_ledoit_wolf": 0.72}})
     return res
 
@@ -124,6 +142,29 @@ def _mutate(fn):
     ("non-finite D", lambda r: r["level_D"][3]["preserve"].update(nearest_mean=float("inf")), "level_D_non_finite"),
     ("update count wrong", lambda r: next(x for x in r["level_D"] if x["update"])["update"].update(n_excluded_test=0),
      "level_D_update_invalid"),
+    # --- follow-up review FOLLOWUP_R9_R12: the four reproduced gaps and their neighbours ---
+    ("K0 NaN se (review)", lambda r: r["level_B"][0]["preserve"].update(se=float("nan")), "level_B_K0_invalid"),
+    ("K0 non-zero se", lambda r: r["level_B"][0]["preserve"].update(se=1e-4), "level_B_K0_invalid"),
+    ("leak checks incomplete (review)", lambda r: r["level_D"][0].update(checks={"ids_disjoint": True}), "level_D_control_failed"),
+    ("leak check extra key", lambda r: r["level_D"][0]["checks"].update(other=True), "level_D_control_failed"),
+    ("leak check truthy non-bool", lambda r: r["level_D"][0]["checks"].update(ids_disjoint=1), "level_D_control_failed"),
+    ("A2 and p_fixed removed (review)", lambda r: [x.pop(k) for x in [next(z for z in r["diagnostics"] if "A2_structural" in z)]
+                                                  for k in ("A2_structural", "p_fixed")], "A2_structural_failed"),
+    ("A2 with other tolerance", lambda r: next(z for z in r["diagnostics"] if "A2_structural" in z)["A2_structural"].update(tol=1.0),
+     "A2_structural_failed"),
+    ("A2 on a non-fixed row", lambda r: next(z for z in r["diagnostics"] if not z["p_fixed"]).update(
+        A2_structural={"max_norm_antisymmetric_part": 0.0, "holds": True, "tol": 1e-13}), "A2_structural_unexpected"),
+    ("A1 measurement missing", lambda r: r["diagnostics"][0].pop("A1"), "A1_not_as_expected"),
+    ("A1 holds inconsistent with value", lambda r: r["diagnostics"][0]["A1"].update(max_rel_deviation=1.0), "A1_not_as_expected"),
+    ("p_fixed claimed wrongly", lambda r: next(z for z in r["diagnostics"] if not z["p_fixed"]).update(p_fixed=True),
+     "A1_not_as_expected"),
+    ("update zero training (review)", lambda r: next(x for x in r["level_D"] if x["update"])["update"].update(n_train=0),
+     "level_D_update_invalid"),
+    ("update count shifted by one pair", lambda r: (lambda u: u.update(n_test=u["n_test"] - 2, n_excluded_test=u["n_excluded_test"] + 2))(
+        next(x for x in r["level_D"] if x["update"])["update"]), "level_D_update_invalid"),
+    ("preserve excluded episodes", lambda r: r["level_D"][3]["preserve"].update(n_excluded_test=2), "level_D_wrong_n"),
+    ("accuracy above 1", lambda r: r["level_D"][3]["preserve"].update(lda_ledoit_wolf=1.5), "level_D_non_finite"),
+    ("n as float", lambda r: r["level_D"][3]["preserve"].update(n_test=4000.0), "level_D_wrong_n"),
     ("override used", lambda r: r["overrides"].update(n_mc=5), "overrides_used"),
     ("not research", lambda r: r.update(mode="smoke"), "mode_is_not_research"),
     ("failure logged", lambda r: r.update(failures=["x"]), "run_not_complete"),
@@ -146,9 +187,9 @@ def test_r10_failed_controls_in_data_block_the_release(frozen):
     rel = _mutate(lambda r: r["level_D"][0]["checks"].update(train_identical_pattern_counts=False))
     assert not rel["released"] and any(x.startswith("level_D_control_failed") for x in rel["reasons"])
     rel = _mutate(lambda r: r["diagnostics"][0].update(A1_as_expected=False))
-    assert "A1_not_as_expected" in rel["reasons"]
+    assert any(x.startswith("A1_not_as_expected") for x in rel["reasons"])
     rel = _mutate(lambda r: next(x for x in r["diagnostics"] if "A2_structural" in x)["A2_structural"].update(holds=False))
-    assert "A2_structural_failed" in rel["reasons"]
+    assert any(x.startswith("A2_structural_failed") for x in rel["reasons"])
 
 
 def test_r10_statistical_alarm_is_reported_but_does_not_block(frozen):
@@ -249,6 +290,38 @@ def test_r10_expected_negative_a1_control_does_not_fail_the_run():
     assert res["status"] == "complete"
 
 
+def test_r12_overrun_in_the_last_unit_is_not_complete(monkeypatch):
+    """Follow-up review: an overrun during the LAST level-D unit must still end as aborted_timeout."""
+    from experiments.mandala_memory import m10_decoders as md
+
+    t = {"now": 0.0}
+    monkeypatch.setattr(m10_run, "clock", lambda: t["now"])
+    real, calls = md.evaluate_level_d, {"n": 0}
+    total = 2 * 2 * 3 + 2 * 2 * 2                         # preserve for 3 dev conditions + update for 2, per net x nl
+
+    def last_unit_overruns(*a):
+        calls["n"] += 1
+        if calls["n"] == total:
+            t["now"] = 1e9                                 # the clock jumps during the very last unit
+        return real(*a)
+    monkeypatch.setattr(md, "evaluate_level_d", last_unit_overruns)
+    res = m10_run.run("dev", None, delays=[3], n_mc=10, seeds=[901], write=False, time_limit_s=100.0)
+    assert calls["n"] == total and res["status"] == "aborted_timeout"
+
+
+def test_r12_deadline_is_checked_inside_the_diagnostics(monkeypatch):
+    t = {"now": 0.0}
+    monkeypatch.setattr(m10_run, "clock", lambda: t["now"])
+    real = mt.check_a1
+
+    def slow_a1(*a):
+        t["now"] += 60.0                                   # every diagnostic unit takes "60 s"
+        return real(*a)
+    monkeypatch.setattr(mt, "check_a1", slow_a1)
+    res = m10_run.run("dev", None, delays=[3], n_mc=10, seeds=[901], write=False, time_limit_s=100.0)
+    assert res["status"] == "aborted_timeout" and res["diagnostics"] == [] and t["now"] <= 180.0
+
+
 def test_r12_timeout_through_the_runner(monkeypatch, tmp_path):
     t = {"now": 0.0}
 
@@ -256,12 +329,14 @@ def test_r12_timeout_through_the_runner(monkeypatch, tmp_path):
         t["now"] += 7.0                                    # every check advances the controlled clock by 7 s
         return t["now"]
     monkeypatch.setattr(m10_run, "clock", fake_clock)
-    res = m10_run.run("dev", tmp_path, delays=[3], n_mc=200_000, seeds=[901], time_limit_s=100.0)
+    # 12 state units + 8 diagnostic units = 20 clock steps of 7 s (140 s) fit into 160 s; the budget then runs out
+    # in the first Monte Carlo estimate (4 blocks of 50 000)
+    res = m10_run.run("dev", tmp_path, delays=[3], n_mc=200_000, seeds=[901], time_limit_s=160.0)
     assert res["status"] == "aborted_timeout" and any("RunTimeout" in f for f in res["failures"])
     # the budget ran out INSIDE the Monte Carlo loop (level B never completed), not only later
     assert res["diagnostics"] and res["level_B"] == [] and res["level_D"] == []
     saved = json.loads(open(res["output_path"], encoding="utf-8").read())
-    assert saved["status"] == "aborted_timeout" and saved["time_limit_s"] == 100.0
+    assert saved["status"] == "aborted_timeout" and saved["time_limit_s"] == 160.0
     assert "run_not_complete" in ev.release(saved)["reasons"]
     with pytest.raises(MemoryLabError):                    # exclusive: the same file is never overwritten
         m10_run.write_exclusive(m10_run.Path(res["output_path"]), "x")

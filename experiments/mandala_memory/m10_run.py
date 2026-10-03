@@ -17,10 +17,13 @@ with status "failed". Statistical 4-SE alarms are evaluated and only REPORTED by
 m10_evaluate (protocol alarm policy).
 
 Time budget (review R12): elapsed wall-clock time of run() (time.monotonic),
-protocol resources.time_limit. It is checked before every Monte Carlo block, every
-state computation and every level-D unit; on exceeding it the run stops with
-status "aborted_timeout" and the partial result is still written exclusively. The
-maximal overshoot is one such unit (measured <= ~0.2 s per MC block of 50 000).
+protocol resources.time_limit. It is checked COOPERATIVELY before every state
+computation, every diagnostic unit, every Monte Carlo block and every level-D unit,
+and once more immediately before the run is declared complete; on exceeding it the
+run stops with status "aborted_timeout" and the partial result is still written
+exclusively. The overshoot is therefore at most the duration of one unit; the
+measured duration of an MC block (about 0.16 s) is an observation, not a guaranteed
+bound.
 
 Writes one result file exclusively (never overwrites), never on C:.
 
@@ -139,7 +142,7 @@ def compute_states(proto: Dict, conditions: Dict, delays: Iterable[int], pats, d
     return out
 
 
-def diagnostics(proto: Dict, states: Dict, conditions: Dict, pats) -> List[Dict]:
+def diagnostics(proto: Dict, states: Dict, conditions: Dict, pats, deadline=None) -> List[Dict]:
     rows = []
     tol1 = proto["diagnostics"]["A1"]["tol_rel"]
     tol2 = proto["diagnostics"]["A2_structural"]["tol"]
@@ -147,6 +150,8 @@ def diagnostics(proto: Dict, states: Dict, conditions: Dict, pats) -> List[Dict]
         cond = conditions[cname]
         if cond is None:
             continue
+        if deadline:
+            deadline()
         perm = mt.swap_permutation(proto["network"]["N"], proto["networks"][net]["M"])
         fixed = mt.condition_is_p_fixed(perm, cond)
         a1 = mt.check_a1(st["spec"], perm, d, pats, tol1)
@@ -243,7 +248,7 @@ def run(mode: str, out_dir: Optional[Path], *, delays: Optional[List[int]] = Non
         states = compute_states(proto, st["conditions"], delays, pats, deadline)
         result["timing_s"]["states"] = time.perf_counter() - t0
         t = time.perf_counter()
-        result["diagnostics"] = diagnostics(proto, states, st["conditions"], pats)
+        result["diagnostics"] = diagnostics(proto, states, st["conditions"], pats, deadline)
         result["timing_s"]["diagnostics"] = time.perf_counter() - t
         enforce_diagnostics(result["diagnostics"])
         t = time.perf_counter()
@@ -253,6 +258,7 @@ def run(mode: str, out_dir: Optional[Path], *, delays: Optional[List[int]] = Non
         result["level_D"] = [] if skip_level_d else level_d(proto, states, st["conditions"], pats, seeds, delays,
                                                            st["n_train"], st["n_test"], deadline=deadline)
         result["timing_s"]["level_D"] = time.perf_counter() - t
+        deadline()                                           # also an overrun in the LAST unit must not count as complete
         result["status"] = "complete"
     except RunTimeout as e:
         result["failures"].append(f"{type(e).__name__}: {e}")

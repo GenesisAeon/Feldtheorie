@@ -138,7 +138,8 @@ def completeness(result: Dict, proto: Dict) -> List[str]:
         n, nl, c, d = key
         if conds[c] is None:
             pv = r.get("preserve") or {}
-            if r.get("update") is not None or pv.get("n") != 0 or not _finite(pv.get("estimate")) or not 0.5 <= pv["estimate"] <= 1:
+            if (r.get("update") is not None or pv.get("n") != 0 or not _finite(pv.get("estimate"), pv.get("se"))
+                    or not 0.5 <= pv["estimate"] <= 1 or pv["se"] != 0.0):        # K0 is analytic: SE exactly 0
                 problems.append(f"level_B_K0_invalid:{key}")
             continue
         for task in ("preserve", "update"):
@@ -161,6 +162,7 @@ def completeness(result: Dict, proto: Dict) -> List[str]:
     if expected_d - set(keys_d):
         problems.append("level_D_missing_rows")
     n_tr, n_te = 2 * ld["n_train_per_class"], 2 * ld["n_test_per_class"]
+    no_pulse = _no_pulse_counts(ld, delays)
     for r, key in zip(rows_d, keys_d):
         if key not in expected_d:
             continue
@@ -169,30 +171,78 @@ def completeness(result: Dict, proto: Dict) -> List[str]:
                 for role in ("decoder_train", "test")}
         if r.get("streams") != want:
             problems.append(f"level_D_foreign_stream:{key}")
-        if not r.get("checks") or not all(r["checks"].values()):
+        chk = r.get("checks")
+        if not isinstance(chk, dict) or set(chk) != REQUIRED_D_CHECKS or any(v is not True for v in chk.values()):
             problems.append(f"level_D_control_failed:{key}")
         pv = r.get("preserve") or {}
-        if pv.get("n_train") != n_tr or pv.get("n_test") != n_te:
+        if not _exact_int(pv, n_train=n_tr, n_test=n_te, n_excluded_test=0):
             problems.append(f"level_D_wrong_n:{key}")
-        if not _finite(pv.get("nearest_mean"), pv.get("lda_ledoit_wolf")):
+        if not _accuracies(pv):
             problems.append(f"level_D_non_finite:{key}")
         up = r.get("update")
+        k_tr, k_te = no_pulse[(s, d, "decoder_train")], no_pulse[(s, d, "test")]
         if (conds[c] is None) != (up is None):
             problems.append(f"level_D_update_presence:{key}")
-        elif up is not None and (up.get("n_test", 0) + up.get("n_excluded_test", -1) != n_te
-                                 or not _finite(up.get("nearest_mean"), up.get("lda_ledoit_wolf"))):
+        elif up is not None and not (_exact_int(up, n_train=n_tr - 2 * k_tr, n_test=n_te - 2 * k_te,
+                                                n_excluded_test=2 * k_te) and _accuracies(up)):
             problems.append(f"level_D_update_invalid:{key}")
     # deterministic diagnostics: one row per non-K0 (network, nonlinearity, condition, delay), all as expected
     expected_g = {(n, nl, c, d) for n in nets for nl in nls for c in conds if conds[c] is not None for d in delays}
     keys_g = [(r.get("network"), r.get("nonlinearity"), r.get("condition"), r.get("delay")) for r in result.get("diagnostics", [])]
     if len(keys_g) != len(set(keys_g)) or set(keys_g) != expected_g:
         problems.append("diagnostics_grid_incomplete")
-    for r in result.get("diagnostics", []):
-        if not r.get("A1_as_expected"):
-            problems.append("A1_not_as_expected")
-        if r.get("nonlinearity") == "identity" and r.get("p_fixed") and not (r.get("A2_structural") or {}).get("holds"):
-            problems.append("A2_structural_failed")
+    tol1, tol2 = proto["diagnostics"]["A1"]["tol_rel"], proto["diagnostics"]["A2_structural"]["tol"]
+    for r, key in zip(result.get("diagnostics", []), keys_g):
+        if key not in expected_g:
+            continue
+        n, nl, c, d = key
+        fixed = mt.condition_is_p_fixed(mt.swap_permutation(proto["network"]["N"], proto["networks"][n]["M"]), conds[c])
+        a1 = r.get("A1")
+        a1_ok = (isinstance(a1, dict) and _finite(a1.get("max_rel_deviation")) and a1["max_rel_deviation"] >= 0
+                 and a1.get("tol_rel") == tol1 and a1.get("holds") is (a1["max_rel_deviation"] <= tol1)
+                 and r.get("p_fixed") is fixed and r.get("A1_expected") is fixed
+                 and r.get("A1_as_expected") is True and a1["holds"] is fixed)
+        if not a1_ok:
+            problems.append(f"A1_not_as_expected:{key}")
+        need_a2 = nl == "identity" and fixed                   # derived from protocol, NOT from the result
+        a2 = r.get("A2_structural")
+        if need_a2:
+            if not (isinstance(a2, dict) and _finite(a2.get("max_norm_antisymmetric_part"))
+                    and a2["max_norm_antisymmetric_part"] >= 0 and a2.get("tol") == tol2
+                    and a2.get("holds") is True and a2["max_norm_antisymmetric_part"] <= tol2):
+                problems.append(f"A2_structural_failed:{key}")
+        elif a2 is not None:
+            problems.append(f"A2_structural_unexpected:{key}")
     return problems
+
+
+REQUIRED_D_CHECKS = {"ids_disjoint", "streams_disjoint", "train_identical_pattern_counts", "test_identical_pattern_counts"}
+
+
+def _exact_int(d: Dict, **want) -> bool:
+    return all(type(d.get(k)) is int and d.get(k) == v for k, v in want.items())
+
+
+def _accuracies(d: Dict) -> bool:
+    return all(_finite(d.get(k)) and 0.0 <= d[k] <= 1.0 for k in ("nearest_mean", "lda_ledoit_wolf"))
+
+
+def _no_pulse_counts(ld: Dict, delays) -> Dict:
+    """Number of drawn patterns without any pulse per (seed, delay, role), reconstructed
+    WITHOUT network dynamics from the fixed pattern streams (each drawn pattern is used
+    for one A and one B episode, so the excluded episodes are twice this number)."""
+    from experiments.mandala_memory.data import stream
+
+    pats = mt.patterns()
+    probs = np.array([float(pr) for _, pr in pats])
+    none = next(i for i, (pat, _) in enumerate(pats) if mt.last_channel(pat) is None)
+    out = {}
+    for s in ld["seeds"]:
+        for d in delays:
+            for role, n in (("decoder_train", ld["n_train_per_class"]), ("test", ld["n_test_per_class"])):
+                pi = stream("m10", s, "pattern", role, d)[0].choice(len(pats), size=n, p=probs / probs.sum())
+                out[(s, d, role)] = int(np.sum(pi == none))
+    return out
 
 
 def release(result: Dict) -> Dict:

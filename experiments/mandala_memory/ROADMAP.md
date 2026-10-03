@@ -1018,3 +1018,37 @@ Entwicklungseinstellungen in voller Größe: n_MC = 2·10⁶, d ∈ {3, 4, 6}, 3
 - Monte Carlo ohne Frist, Blockschleife ohne Prüfung, Timeout als vollständig gezählt.
 
 Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen und Tests umgezielt.
+
+## Followup-Review-Fix `FOLLOWUP_R9_R12` (Restlücken vor dem Freeze)
+
+**Nachprüfung:** `D:/mandala/mandala-memory-results/astra-m10-review/FOLLOWUP_R9_R12.md` (Stand `99b2c6b`). R11 ist geschlossen, und die Fehlerbehandlung im Runner bestätigt. Astras vier Gate-Gegenbeispiele habe ich zuerst **unverändert reproduziert** (alle `released: true`).
+
+| Lücke | Korrektur in `m10_evaluate.completeness` bzw. `m10_run` |
+|---|---|
+| K0 mit NaN-Standardfehler | K0 verlangt einen endlichen Schätzwert in [½, 1] und **SE = 0 exakt**, denn K0 ist analytisch. |
+| unvollständige Leckprüfungsfelder | Verlangt wird **genau** die Menge {`ids_disjoint`, `streams_disjoint`, `train_identical_pattern_counts`, `test_identical_pattern_counts`}, jeder Wert `is True`. Fehlende, zusätzliche oder nur „wahrheitsähnliche“ Werte werden abgelehnt. |
+| ausgelassene A2-Prüfung | Symmetrie und A2-Pflicht werden aus **Protokoll, Netz und Bedingung** abgeleitet (`swap_permutation`), nicht aus dem Ergebnisfeld `p_fixed`. Verlangt werden die vollständige gemessene A1-Struktur (endliche Abweichung, Protokolltoleranz, `holds` passend zum Messwert, `p_fixed`/`A1_expected` gleich der abgeleiteten Symmetrie, `A1_as_expected`) und für jede Pflichtzeile das vollständige A2 (endlicher Messwert ≤ Protokolltoleranz). A2 an einer Nicht-Pflichtzeile ist unzulässig. |
+| null Trainingsepisoden beim Aktualisieren | Die Zahl der Muster ohne Puls je (Seed, Pause, Rolle) wird **ohne Netzdynamik** aus den festen Musterströmen rekonstruiert. Trainings-, Test- und Ausschlusszahlen beider Aufgaben müssen exakt stimmen (ganze Zahlen, Bewahren ohne Ausschluss); Decoderwerte müssen endlich und in [0, 1] liegen. |
+| Frist nach der letzten Einheit / in den Diagnosen | Die Frist wird jetzt auch **je Diagnose-Einheit** und **unmittelbar vor `complete`** geprüft. Die Beschreibung ist präzisiert: kooperative Prüfung, Überschreitung höchstens eine Einheit; die gemessenen etwa 0,16 s je Block sind eine Beobachtung, keine garantierte Schranke (Code-Doku und Protokoll). |
+
+**Tests** (`tests/test_m10_controls.py`):
+- **Synthetischer Referenzdatensatz:** Er hat jetzt **alle Pflichtfelder**. Die Episodenzahlen kommen aus dem echten Episodengenerator; damit ist auch belegt, dass die Rekonstruktion im Gate mit dem Generator übereinstimmt. Diagnosen haben die vollständige A1/A2-Messstruktur. Ein künstlich unvollständiger Diagnoseblock dient nicht mehr als positive Referenz.
+- **16 neue Verfälschungen**, jede mit ihrem Grund abgelehnt:
+  - Astras vier Fälle;
+  - K0-SE ≠ 0;
+  - Zusatzfeld bzw. Wert `1` statt `True` in den Kontrollen;
+  - A2 mit fremder Toleranz, A2 an einer Nicht-Pflichtzeile;
+  - fehlende A1-Messung, `holds` widersprüchlich zum Messwert, falsch behauptetes `p_fixed`;
+  - um ein Paar verschobene Zählung;
+  - Ausschluss beim Bewahren, Trefferquote > 1, n als Gleitkommazahl.
+- **Frist mit kontrollierter Uhr:** Eine Überschreitung **genau in der letzten Decoder-Einheit** ergibt `aborted_timeout`, nicht `complete`. Eine Überschreitung **in den Diagnosen** bricht dort ab. Der Abbruch in der Monte-Carlo-Schleife ist weiter belegt.
+- **Astras Gegenbeispiele erneut:** alle vier `released: false` mit präzisem Grund.
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Pflicht-Labortestlauf | **305/305**, 0 übersprungen |
+| Linux ohne SCF | 159 bestanden, 146 übersprungen |
+| Linux mit SCF | 291 bestanden, 14 übersprungen |
+| Mutationsprüfung | siehe Commit-Nachricht, 6 neue Mutanten (unvollständige Kontrollmenge, K0-SE ungeprüft, Aktualisieren-n ungeprüft, A2-Pflicht aus dem Ergebnis, letzte und Diagnose-Frist entfernt) |

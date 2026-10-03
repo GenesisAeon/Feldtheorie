@@ -148,8 +148,8 @@
   "time_limit":
     "seconds": 1200
     "kind": "elapsed wall-clock time of the run() call (time.monotonic), not CPU time"
-    "enforcement": "checked before every Monte Carlo block (50 000 draws), every state computation and every level-D unit; on exceeding: status aborted_timeout, partial result written exclusively, never released"
-    "max_overshoot": "one unit; measured in the development runtime check: about 0.16 s per MC block (6.2 s per 2e6 draws)"
+    "enforcement": "cooperative: checked before every state computation, every diagnostic unit, every Monte Carlo block (50 000 draws) and every level-D unit, and once more immediately before the run is declared complete; on exceeding: status aborted_timeout, partial result written exclusively, never released"
+    "max_overshoot": "at most the duration of one unit; measured in the development runtime check: about 0.16 s per MC block (an observation, not a guaranteed bound)"
   "ram_limit_gib":
     "value": 1
     "status": "planned budget, NOT enforced; peak RSS is measured and reported (runtime check: 158 MiB)"
