@@ -13,10 +13,11 @@ import pytest
 from experiments.mandala_memory.core import MemoryLabError, recall_state
 from experiments.mandala_memory.model import adapt_network, condition_specs, network_from_config
 from experiments.mandala_memory.runner import peak_rss_bytes, run_experiment, run_seed
+from experiments.mandala_memory.tests._paths import scratch
 
 CFG_PATH = Path(__file__).resolve().parents[1] / "protocol" / "startkonfiguration.json"
 CFG = json.loads(CFG_PATH.read_text(encoding="utf-8"))
-TMP_OUT = Path(r"D:/mandala/.tmp/mandala-memory/test-results")
+TMP_OUT = scratch()
 
 
 def small_cfg(**smoke):
@@ -87,6 +88,18 @@ def test_runner_deterministic_and_refuses_c_drive(tmp_path_factory):
     assert r1["run_id"] != r2["run_id"]
     with pytest.raises(MemoryLabError):
         run_experiment(cfg, "smoke", Path("C:/mandala-memory-should-not-exist"))
+
+
+def test_c_drive_guard_is_portable(monkeypatch):
+    """Review R8: on POSIX Path("C:/x").drive is empty and resolve() yields a path
+    without a drive. The guard must still refuse C: from the raw spelling."""
+    import pathlib
+
+    from experiments.mandala_memory.core import is_drive_c
+
+    monkeypatch.setattr(pathlib.Path, "resolve", lambda self, strict=False: pathlib.Path("/no-drive"))
+    assert is_drive_c("C:/mandala") and is_drive_c("c:\\x") and is_drive_c(Path("C:/y"))
+    assert not is_drive_c("D:/mandala") and not is_drive_c("/tmp/x")
 
 
 def test_runner_timeout_aborts_without_shrinking_claims(monkeypatch):

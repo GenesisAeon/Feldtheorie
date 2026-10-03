@@ -24,7 +24,7 @@ from typing import Dict, List, Optional
 import numpy as np
 
 from experiments.mandala_memory import SCHEMA_VERSION
-from experiments.mandala_memory.core import MemoryLabError, recall_state
+from experiments.mandala_memory.core import MemoryLabError, is_drive_c, recall_state
 from experiments.mandala_memory.data import (
     NearestMeanDecoder,
     assert_disjoint,
@@ -67,10 +67,9 @@ def peak_rss_bytes() -> Optional[int]:
 
 
 def _check_output_dir(out_dir: Path) -> Path:
-    out_dir = Path(out_dir).resolve()
-    if out_dir.drive.upper().startswith("C"):
+    if is_drive_c(out_dir):                         # raw spelling first: portable guard (review R8)
         raise MemoryLabError(f"refusing to write on C: ({out_dir}); the protocol keeps all data on D:")
-    return out_dir
+    return Path(out_dir).resolve()
 
 
 def _evaluate(dec: NearestMeanDecoder, Y, labels):

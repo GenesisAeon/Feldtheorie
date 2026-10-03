@@ -14,7 +14,7 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 
 | Zweck | Befehl | Dauer / Ablage |
 |---|---|---|
-| Tests (211) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
+| Tests, Pflicht-Labortestlauf (224) | `MANDALA_LAB_REQUIRED=1` setzen, dann | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
 | Smoke-Lauf | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode smoke` | ≈ 4 s → `D:/mandala/mandala-memory-results/smoke/` |
 | Forschungsrunde | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode research` | ≈ 6 s |
 | Auswertung | `PYTHONPATH=. PY -m experiments.mandala_memory.evaluate <research.json> --out <evaluation.json>` | |
@@ -57,6 +57,22 @@ Danach:
 **Ergebnisdateien:** Jeder Lauf schreibt eine **neue** Datei `<protokoll-id>--<ausführungs-id>.json`. Vorhandene Dateien werden nie überschrieben (Review R1). Die Originaldatei der ersten Forschungsrunde (`research-e19650a0a0.json`, aus der Zeit vor dieser Korrektur) bleibt unverändert.
 
 **Inferenz** ist nur freigegeben, wenn der vorab festgelegte Forschungsumfang vollständig erreicht ist (Review R2): alle 20 Protokoll-Seeds, Status „complete“, keine Fehlschläge, Konfiguration identisch mit dem eingefrorenen Protokoll. Sonst bleibt das Ergebnis beschreibend; die Gründe stehen in `inference_release.reasons`.
+
+## Teststufen und Pflicht-Labortestlauf (Review R8)
+
+Jeder Test erklärt in [`tests/conftest.py`](tests/conftest.py), was er braucht. Fehlt etwas, werden **nur die betroffenen** Tests übersprungen, jeweils mit eigenem Grund. Die Abhängigkeiten stehen in [`requirements-lab.txt`](requirements-lab.txt).
+
+| Stufe | braucht | Tests | geprüft |
+|---|---|---|---|
+| portabel | numpy, pytest, PyYAML | 101 (Mathematik, Vorhersage, Freeze/Hash, Trilayer, Ablesungs- und Dauerdefinitionen, Runner-Regeln) | Linux (WSL, Python 3.12) und Windows |
+| `scf` | + scoped-correspondence 0.42 | 109 (Netzkonstruktion, Kern gegen Vorhersage, SCF-Paritäten) | Linux und Windows |
+| `lab_integration` | Windows-Laborablage auf `D:/mandala` (Originalergebnisse, Ansicht im unified-mandala-Worktree, Benchmarkdateien) | 13 | nur Windows-Labor |
+| `git_history` | Feldtheorie-Historie mit Plan-Commit `0e46ec8` | 1 | Windows-Labor (unter WSL ist die Worktree-Historie nicht lesbar) |
+
+- **Pflicht-Labortestlauf:** `MANDALA_LAB_REQUIRED=1` setzen, dann `pytest experiments/mandala_memory/tests`. Fehlt eine Voraussetzung, bricht der Lauf mit Fehler ab. Jeder übersprungene Test lässt den Lauf scheitern. Erwartet: **224 bestanden, 0 übersprungen.**
+- **Ohne die Variable** gilt ein Lauf mit übersprungenen Stufen **nicht** als Labortestlauf. Die Sitzung meldet dann ausdrücklich: „this is NOT a lab test run“.
+- **CI-Abdeckung (ehrlich):** Die bestehende Feldtheorie-CI installiert weder SCF noch PyYAML; ein Workflow für die Laborstufen wurde **nicht** angelegt. Auf GitHub laufen deshalb nach jetzigem Stand nur die portablen Tests ohne Trilayer-Test. Für `scf`, `lab_integration` und `git_history` ist das **fehlende CI-Abdeckung**, keine bestandene Labor-CI. Verbindlich bleibt der Pflicht-Labortestlauf.
+- **Schutz:** Unter POSIX schlägt die Sitzung fehl, wenn ein Test versehentlich einen relativen Ordner `D:` oder `C:` anlegt. Die C:-Sperre der Schreibwege prüft die Schreibweise plattformunabhängig.
 
 ## Ergebnis der ersten Runde
 

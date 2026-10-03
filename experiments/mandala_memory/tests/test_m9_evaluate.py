@@ -12,8 +12,9 @@ import pytest
 from experiments.mandala_memory import lab, m9_evaluate as ev, m9_freeze, predict
 from experiments.mandala_memory.data import stream
 from experiments.mandala_memory.m9_registry import BENCHMARK, DEV_COMBOS
+from experiments.mandala_memory.tests._paths import scratch
 
-TMP = Path(r"D:/mandala/.tmp/mandala-memory/test-results/m9")
+TMP = scratch("m9")
 STRONG = DEV_COMBOS[14]                    # a = 3, ell = 1, gamma = 0.95, c = 0: strongest nonlinearity of the dev set
 RULES = m9_freeze.RULES
 

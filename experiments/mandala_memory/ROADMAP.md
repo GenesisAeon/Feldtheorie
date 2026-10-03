@@ -33,7 +33,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
-| M10 | Erinnerung unter Ablenkung: [Versuchsplan](docs/M10_PLAN_ABLENKUNG.md) zur Prüfung | Plan, nicht eingefroren |
+| M10 | Erinnerung unter Ablenkung: [Versuchsplan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md) nach Review R5–R7 | Plan, nicht eingefroren |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -846,3 +846,51 @@ Gefundene und behobene Integrationsfehler (auf diesem Branch, dann erneut gemerg
 - **Getrennte Prüfablage:** `serve.py --explore-dir` lenkt die explorativen Protokolle in einen eigenen Ordner, nie auf C:.
 - **Browser-Smoke-Test** `tools/browser_smoke.py`: Er klickt beide Ansichten in Headless-Edge über DevTools durch (stdlib, keine Installation). Ergebnis gegen beide `main`-Stände: 16/16.
 - **Umgebung:** PyYAML 6.0.3 in der Labor-Umgebung auf D: ergänzt, für den Zwillingstest.
+
+## Review `ASTRA_REVIEW_M10_PLAN` (R5–R8)
+
+**Review:** `D:/mandala/mandala-memory-results/integration-2026-10-03/ASTRA_REVIEW_M10_PLAN.md`. Ergebnis: M10 vorerst nicht einfrieren; keine Forschungsrechnung, kein Push.
+
+### R5–R7: Plan, Fassung 2
+
+| Punkt | Umsetzung |
+|---|---|
+| **R5** Bayes-Aussagen ≠ trainierte Decoder | Zwei getrennte Messebenen:<br>• **Ebene B** mit expliziter Likelihood. Die Klassenverteilungen sind exakt Mischungen aus 27 Normalverteilungen, auch für tanh; Bayes-Trefferquote als E[max P(s\|y)] mit ausgewiesenem Monte-Carlo-Fehler.<br>• **Ebene D** mit trainierten Decodern, getrennt berichtet.<br>A1 wird als Zustandsidentität geprüft, A2 über die V₋-Projektion, A3 als analytisches Resultat mit festgelegter numerischer Gegenprobe. H-N ist für tanh ausdrücklich nur Hypothese. |
+| **R6** Ablesezeit | primär **d = 4 für beide Netze**; d = 6/3 bei ähnlicher Ausgangsleistung nur beschreibend; normierte Interferenz zusätzlich |
+| **R7** Inferenz | Nur H-N und H-F+ sind bestätigend, auf Ebene B: einseitig, Mindesteffekt δ = 0,01, Z aus Monte-Carlo-Standardfehlern, Holm α = 0,05. Berichtet werden adjustierte p-Werte und unadjustierte Intervalle, als solche benannt. H-F (kein TOST), Ebene D, Aktualisieren und Zielkonflikt bleiben beschreibend. Kein Sign-Flip-Test. |
+
+**Neu offen:** O9 (δ), O10 (n_MC), O11 (Ebene D bestätigend?).
+
+### R8: Teststufen statt Ordner-Ausschluss
+
+`tests/conftest.py` deklariert je Test, was er braucht; fehlt etwas, werden nur die betroffenen Tests mit eigenem Grund übersprungen. Abhängigkeiten in `requirements-lab.txt`.
+
+| Stufe | Tests |
+|---|---|
+| portabel | 101 |
+| `scf` | 109 |
+| `lab_integration` | 13 |
+| `git_history` | 1 |
+
+**Pflicht-Labortestlauf** `MANDALA_LAB_REQUIRED=1`: Jeder Skip und jede fehlende Voraussetzung lässt den Lauf scheitern.
+
+**So wurde die Einteilung ermittelt, nicht geschätzt:**
+- **Linux ohne SCF:** WSL-Ubuntu, Python 3.12, Linux-Wheels auf D: entpackt, nichts auf C: installiert. Die 52 Testfunktionen, die genau am fehlenden Modul scheitern, bilden die `scf`-Stufe. Alle 106 + 4 Fehlschläge sind diesem Grund zugeordnet; die 4 indirekten kamen über den Runner, der den Importfehler je Seed abfängt, und über den Nachrechen-Test (siehe unten).
+- **Feste Scratch-Ordner auf D:** Tests mit festen D:-Scratch-Ordnern nutzen jetzt `tests/_paths.py`: im Labor unverändert `D:/mandala/.tmp/…`, sonst System-Temp. Unter POSIX hätte `"D:/…"` still einen relativen Ordner `D:` angelegt; die Sitzung prüft das jetzt und schlägt sonst fehl.
+
+**Dabei gefundene echte Portabilitätsfehler (behoben):**
+1. **C:-Sperre:** Sie prüfte `Path(...).drive`. Unter POSIX ist das für `"C:/x"` leer; der Runner hätte dort einen relativen Ordner `C:` beschrieben. Jetzt prüft `core.is_drive_c` die rohe Schreibweise mit Windows-Regeln vor dem Auflösen (Runner, M9-Auswertung, Dienst). Abgesichert durch einen neuen Test und den Mutanten `c_drive_guard_not_portable`.
+2. **Nachrechnen der eingefrorenen Vorhersagen** verlangte Bit-Gleichheit. Unter Linux wich ein Wert in der letzten Stelle ab (0,9360274055191848 statt 0,936027405519185; libm/BLAS). Jetzt gilt: Struktur, ganze Zahlen (alle D-Werte und Intervalle), Wahrheitswerte und None exakt; Gleitkommazahlen relativ 1e‑12. Die eingefrorene **Datei** bleibt per SHA-256 bitgenau geschützt; Bit-Gleichheit gilt auf der Einfrier-Plattform.
+
+**Ergebnisse:**
+
+| Lauf | Ergebnis |
+|---|---|
+| Linux ohne SCF | 101 bestanden, 123 übersprungen (mit Gründen), kein streunender Ordner |
+| Linux mit SCF 0.42 | 210 bestanden, 14 übersprungen (Labor/Historie) |
+| Windows-Labor, Pflichtlauf | **224 bestanden, 0 übersprungen** |
+| Pflichtmodus mit SCF 0.41 | Abbruch mit klarer Meldung (Gegenprobe) |
+
+**Mutationsprüfung:** 38/38.
+
+**Verbleibende Lücke (ehrlich):** Die Feldtheorie-CI installiert weder SCF noch PyYAML, und ein Workflow für die Laborstufen wurde nicht angelegt. Auf GitHub laufen deshalb nur portable Tests. Für alles Weitere ist das fehlende CI-Abdeckung; verbindlich ist der dokumentierte Pflicht-Labortestlauf.
