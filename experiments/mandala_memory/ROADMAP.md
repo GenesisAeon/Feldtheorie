@@ -22,7 +22,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 |---|---|---|
 | M0 | Stände, APIs, Laufzeit, Speicherorte; Protokoll eingefroren; Kontrollen unabhängig | ✅ erledigt |
 | M1 | Episodenoperator, linearer/Null-Referenzkern; K1–K9, SCF-Parität, Reset/Fortsetzung | ✅ erledigt |
-| M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ⬜ |
+| M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ✅ erledigt |
 | M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ⬜ |
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ⬜ |
 | M5 | Feldtheorie-Membranpilot (separat) | ⬜ |
@@ -132,3 +132,28 @@ K2, K4, K5 und K6 betreffen Beobachtung und Decoder und werden in M2 geprüft.
 
 **Tests ausführen** (im Worktree-Wurzelverzeichnis):
 `PYTHONPATH=. D:/mandala/.venvs/mandala-memory/Scripts/python.exe -m pytest -p no:cacheprovider experiments/mandala_memory/tests`
+
+## M2: Splits, Decoder und Rauschströme
+
+[`data.py`](data.py):
+- **Benannte Zufallsströme** über `SeedSequence((seed, Modus, crc32(Namen)…))`. Smoke, Forschung, Exploration und Test sind getrennte Modi, auch bei gleichem Seed. Der Ableitungsschlüssel wird mitgeführt.
+- **`EpisodeSet`:** IDs der Form `mode:seed:role:d:class:index`, Labels und Beobachtungsrauschen. Das Rauschen ist eine Funktion der **Episode**, nicht der Netzbedingung, und damit für gepaarte Bedingungen identisch.
+- **`observe_episodes`:** y = H·x_(d+1) + ε. Prozessrauschen ist 0; die Dynamik ist deterministisch.
+- **`NearestMeanDecoder`:** ohne Standardisierung, Gleichstand → Klasse 0. `predict(Y)` hat keinen Label-Parameter. Bewusste Abweichung von SCF, siehe M0-Befund 5.
+- **Auswertung:** `balanced_accuracy` (über SCF), Konfusionsmatrix sowie Summen- und Permutationsbeobachtung.
+- **Disjunkte Splits:** geprüft über SCF `check_split`.
+
+[`tests/test_m2_data.py`](tests/test_m2_data.py): **13/13 bestanden** (zusammen mit M1: 45/45).
+
+| Prüfung | Ergebnis |
+|---|---|
+| Ströme | deterministisch; Modi, Rollen und Zwecke disjunkt |
+| Episoden | reproduzierbar, ID-disjunkt; gleiche Sets werden abgewiesen; Klassen balanciert |
+| Gepaartes Rauschen | beide Netzbedingungen bekommen bitgleich dasselbe ε |
+| Decoder | Gleichstand → 0; keine Labels in `predict`; keine Standardisierung; Eingabefehler werden abgewiesen |
+| K2 | Decoder liegt nahe Bayes Φ(a/σ) für d ∈ {0,1,2,4}. Fester Seed, n = 20 000, Toleranz 4 Standardfehler; keine exakte Zufallsgrenze. |
+| K4 | Summenbeobachtung ist bei gleichem Rauschen für beide Klassen identisch; Vollbeobachtung trennt |
+| K5 | Daten und Testpunkte ×1000 ergeben identische Vorhersagen |
+| K6 | Permutation: eingefroren 0, neu angepasst 1, \|det\| = 1 |
+
+**Testfehler unterwegs:** In meinem eigenen Test hatte ich `(x+ε)−x == ε` exakt erwartet, was in Gleitkomma nicht gilt. Die Prüfung läuft jetzt mit 1e‑15 plus direktem Vergleich der Rausch-Arrays. Am Code war das kein Fehler.
