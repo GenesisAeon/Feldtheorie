@@ -224,6 +224,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         pass
 
 
+def set_explore_dir(path) -> Path:
+    """Redirect the explorative logs (default: EXPLORE_DIR) -- e.g. a separate
+    check folder. Results never go to C:."""
+    global EXPLORE_DIR
+    if path is not None:
+        path = Path(path)
+        if path.drive.upper().startswith("C"):
+            raise MemoryLabError("explore directory must not be on C:")
+        EXPLORE_DIR = path
+    return EXPLORE_DIR
+
+
 def make_server(port: int = 8765, ui_dir: Path = DEFAULT_UI) -> http.server.ThreadingHTTPServer:
     Handler.ui_dir = Path(ui_dir)
     return http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
@@ -233,7 +245,10 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--ui", type=Path, default=DEFAULT_UI)
+    ap.add_argument("--explore-dir", type=Path, default=None,
+                    help="separate folder for the explorative logs (e.g. for a check run); never on C:")
     a = ap.parse_args(argv)
+    set_explore_dir(a.explore_dir)
     srv = make_server(a.port, a.ui)
     print(f"Mandala memory lab on http://127.0.0.1:{a.port}/  (Ctrl+C to stop; explorative runs -> {EXPLORE_DIR})")
     try:
