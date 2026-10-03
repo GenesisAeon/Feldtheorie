@@ -10,6 +10,10 @@ Security and data rules:
 - no second physics core in JavaScript: every trace is computed here by the
   tested Python kernel (core.EpisodeOperator).
 
+M8 adds the knob lab (lab.py, page lab.html): POST /api/lab with bounded,
+enumerated knobs; logged exactly like the comparison runs (own run id
+"lab-...", trace file, protocol line with kind "lab").
+
     python -m experiments.mandala_memory.serve [--port 8765] [--ui DIR]
 """
 from __future__ import annotations
@@ -29,6 +33,7 @@ import numpy as np
 from experiments.mandala_memory import SCHEMA_VERSION
 from experiments.mandala_memory.core import EpisodeOperator, MemoryLabError, one_hot
 from experiments.mandala_memory.model import adapt_network, condition_specs
+from experiments.mandala_memory import lab as lablib
 
 HERE = Path(__file__).resolve().parent
 CONFIG = json.loads((HERE / "protocol" / "startkonfiguration.json").read_text(encoding="utf-8"))
@@ -40,6 +45,9 @@ MAX_DELAY = 64
 MAX_RUNS = 4
 ADAPT_SEED = int(CONFIG["smoke"]["seeds"][0])
 TRACE_SCHEMA = "mandala-memory-trace-v1"
+UI_FILES = {"/": "index.html", "/index.html": "index.html", "/app.js": "app.js", "/style.css": "style.css",
+            "/lab.html": "lab.html", "/lab.js": "lab.js"}
+MAX_BODY = 20_000
 
 
 @lru_cache(maxsize=1)
@@ -134,6 +142,36 @@ def explore(req: Dict, *, write: bool = True) -> Dict:
     return payload
 
 
+@lru_cache(maxsize=1)
+def benchmark_lab_curve() -> List[float]:
+    """Reference curve for the lab: the benchmark knobs (frozen network)."""
+    return lablib.compute(lablib.BENCHMARK_KNOBS)["curve"]["bayes"]
+
+
+def _log(payload: Dict, kind: str, request: Dict) -> None:
+    EXPLORE_DIR.mkdir(parents=True, exist_ok=True)
+    with (EXPLORE_DIR / f"{payload['run_id']}.json").open("x", encoding="utf-8") as fh:   # never overwrite
+        fh.write(json.dumps(payload, allow_nan=False) + "\n")
+    with (EXPLORE_DIR / "protocol.jsonl").open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps({"run_id": payload["run_id"], "kind": kind, "created_unix": payload["created_unix"],
+                             **request, "explorative": True}, allow_nan=False) + "\n")
+
+
+def lab(req: Dict, *, write: bool = True) -> Dict:
+    """M8 knob lab: one explorative, logged computation (lab.py)."""
+    if not isinstance(req, dict) or set(req) != {"knobs"}:
+        raise MemoryLabError("lab request must be {'knobs': {...}}")
+    payload = lablib.compute(req["knobs"])
+    payload.update({"core_schema": SCHEMA_VERSION, "created_unix": time.time(),
+                    "benchmark_config_sha256": hashlib.sha256(json.dumps(CONFIG, sort_keys=True).encode()).hexdigest(),
+                    "reference_curve": {"label": "Benchmark-Netz (eingefroren)", "bayes": benchmark_lab_curve()}})
+    body = json.dumps(payload, sort_keys=True, allow_nan=False).encode()
+    payload["run_id"] = "lab-" + hashlib.sha256(body).hexdigest()[:12]
+    if write:
+        _log(payload, "lab", {"knobs": payload["knobs"]})
+    return payload
+
+
 class Handler(http.server.BaseHTTPRequestHandler):
     ui_dir: Path = DEFAULT_UI
     server_version = "MandalaMemoryLab/1"
@@ -152,9 +190,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/api/preset":
             return self._json(200, {"config": CONFIG, "networks": NETWORKS, "interventions": INTERVENTIONS,
-                                    "max_delay": MAX_DELAY, "max_runs": MAX_RUNS, "read_only": True})
+                                    "max_delay": MAX_DELAY, "max_runs": MAX_RUNS, "read_only": True,
+                                    "lab": {"benchmark_knobs": lablib.BENCHMARK_KNOBS, "ranges": lablib.FLOAT_RANGES,
+                                            "N_choices": lablib.N_CHOICES, "readouts": lablib.READOUTS,
+                                            "clears": lablib.CLEARS, "ablation_modes": lablib.ABLATION_MODES,
+                                            "d_max": lablib.D_MAX}})
         route = self.path.split("?", 1)[0]          # query strings (e.g. ?autostart) do not select files
-        name = {"/": "index.html", "/index.html": "index.html", "/app.js": "app.js", "/style.css": "style.css"}.get(route)
+        name = UI_FILES.get(route)
         if name is None:                               # fixed whitelist: no paths from the browser
             return self._json(404, {"error": "not found"})
         f = self.ui_dir / name
@@ -163,14 +205,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self._send(200, f.read_bytes(), mimetypes.guess_type(name)[0] or "text/plain")
 
     def do_POST(self):
-        if self.path != "/api/run":
+        handler = {"/api/run": explore, "/api/lab": lab}.get(self.path)
+        if handler is None:
             return self._json(404, {"error": "not found"})
         try:
             n = int(self.headers.get("Content-Length", "0"))
-            if n > 10_000:
+            if n > MAX_BODY:
+                if n <= 50 * MAX_BODY:                # drain a moderately large body so the client gets the 400
+                    self.rfile.read(n)
+                self.close_connection = True
                 raise MemoryLabError("request too large")
             req = json.loads(self.rfile.read(n) or b"{}")
-            return self._json(200, explore(req))
+            return self._json(200, handler(req))
         except (MemoryLabError, ValueError) as e:
             return self._json(400, {"error": str(e)})
 

@@ -72,6 +72,18 @@ MUTANTS = [
      "        if name is None:\n            name = route.lstrip('/')\n        if name is None:", ["test_m6_serve.py"]),
     ("bayes_on_max_coordinate", "serve.py", "\"bayes_accuracy_full_observation\": NormalDist().cdf(l2 / (2 * sigma)),",
      "\"bayes_accuracy_full_observation\": NormalDist().cdf(float(np.max(np.abs(a - b))) / (2 * sigma)),", ["test_m6_serve.py"]),
+    # --- M8 knob lab ---
+    ("lab_bound_ignores_readout_norm", "lab.py", "    kappa = float(np.sqrt((np.abs(H).sum(axis=1) ** 2).sum()))",
+     "    kappa = 1.0", ["test_m8_lab.py"]),
+    ("lab_renormalize_skipped", "lab.py", "    if k[\"ablation\"][\"mode\"] == \"renormalize\":", "    if False:", ["test_m8_lab.py"]),
+    ("lab_ablation_one_direction", "lab.py", "        A[i, j] = A[j, i] = 0.0", "        A[i, j] = 0.0", ["test_m8_lab.py"]),
+    ("lab_clears_wrong_modules", "lab.py", "if m == k[\"clear_module\"]]", "if m != k[\"clear_module\"]]", ["test_m8_lab.py"]),
+    ("lab_duration_first_passage_only", "lab.py", "    last = above[-1] if above else None",
+     "    last = (below[0] - 1 if below[0] > 0 else None) if below else len(bayes) - 1", ["test_m8_lab.py"]),
+    ("lab_curve_ignores_readout", "lab.py", "    sep = [float(np.linalg.norm(H @ dx[d + 1])) for d in range(D_MAX + 1)]",
+     "    sep = [float(np.linalg.norm(dx[d + 1])) for d in range(D_MAX + 1)]", ["test_m8_lab.py"]),
+    ("lab_log_overwrites", "serve.py", "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"x\", encoding=\"utf-8\") as fh:",
+     "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"w\", encoding=\"utf-8\") as fh:", ["test_m8_lab.py"]),
 ]
 
 

@@ -6,7 +6,7 @@ Kleines, reproduzierbares CPU-Experiment. Es fragt: Welche Information über ein
 - **SCF** (`scoped-correspondence==0.42.0`) liefert geprüfte Bausteine: Budgetmatrix, Hebb-Regel, Split- und Auswerteprüfungen.
 - **unified-mandala** (`experiments/memory_lab/`) zeigt Zustände und Eingriffe.
 
-Die Arbeitsschritte M0–M7 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), das eingefrorene Protokoll unter [protocol/](protocol/).
+Die Arbeitsschritte M0–M8 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), das eingefrorene Protokoll unter [protocol/](protocol/).
 
 ## Startbefehle
 
@@ -14,13 +14,14 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 
 | Zweck | Befehl | Dauer / Ablage |
 |---|---|---|
-| Tests (80) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
+| Tests (133) | `PYTHONPATH=. PY -m pytest -p no:cacheprovider experiments/mandala_memory/tests` | ≈ 10 s |
 | Smoke-Lauf | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode smoke` | ≈ 4 s → `D:/mandala/mandala-memory-results/smoke/` |
 | Forschungsrunde | `PYTHONPATH=. PY -m experiments.mandala_memory.cli run --mode research` | ≈ 6 s |
 | Auswertung | `PYTHONPATH=. PY -m experiments.mandala_memory.evaluate <research.json> --out <evaluation.json>` | |
 | Beschreibende Tabelle | `PYTHONPATH=. PY -m experiments.mandala_memory.summarize <result.json> --markdown` | |
 | Membran-Pilot | `PYTHONPATH=. PY -m experiments.mandala_memory.cli pilot-membrane` | |
 | Ansicht | `PYTHONPATH=. PY -m experiments.mandala_memory.serve --port 8765`, dann `http://127.0.0.1:8765/` öffnen | |
+| Regler-Labor (M8, explorativ) | derselbe Dienst, dann `http://127.0.0.1:8765/lab.html` öffnen | → `D:/mandala/mandala-memory-results/explore/lab-*.json` |
 | Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
 | Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
 
@@ -44,7 +45,7 @@ Danach:
 & $PY -m experiments.mandala_memory.cli run --mode smoke
 & $PY -m experiments.mandala_memory.cli run --mode research
 & $PY -m experiments.mandala_memory.evaluate D:\mandala\mandala-memory-results\research\<datei>.json --out D:\mandala\mandala-memory-results\research\<datei>.evaluation.json
-& $PY -m experiments.mandala_memory.serve --port 8765      # dann http://127.0.0.1:8765/ öffnen
+& $PY -m experiments.mandala_memory.serve --port 8765      # dann http://127.0.0.1:8765/ bzw. /lab.html öffnen
 & $PY experiments/mandala_memory/tools/mutation_check.py
 & $PY experiments/mandala_memory/tools/make_review_package.py
 ```
@@ -73,7 +74,8 @@ Synthetisch, nur dieses Protokoll:
 - **Keine ressourcengleichen Vergleiche:** Leak-Modell (weniger Budget), Summenbeobachtung (andere Dimension) und lineares Modell (andere Amplitudendynamik) dienen nur als Kontrollen.
 - **Keine unabhängigen Tests:** Die Verzögerungen eines Seeds teilen ein angepasstes Netz.
 - **Membran-Pilot:** Die Anfangswerte θ0 = 0,5 und β0 = 6 sind Annahmen dieses Pilots.
-- **Ansicht:** Klang und Kantenablation fehlen noch. Der Screenshot-Test ersetzt keinen Bedientest durch einen Menschen.
+- **Ansicht:** Klang fehlt noch. Der Screenshot-Test ersetzt keinen Bedientest durch einen Menschen.
+- **Regler-Labor (M8):** rein explorativ. Seine Kurven sind ideale Trefferquoten (Bayes) und keine Decoder-Messungen. Was dort auffällt, ist eine Beobachtung und erst nach einer vorab festgelegten Prüfung (M9) eine Aussage.
 - **Abweichungen vom SCF-Standard:** Statt SCFs immer standardisierendem `NearestMeanDecoder` gibt es einen eigenen Decoder. Statt `simulate_trial` gibt es einen eigenen Episodenoperator, der bitgleich zu `simulate_trial` ist.
 - **Tests:** Die Feldtheorie-weite Test-Suite wurde nicht ausgeführt; berührt wurden nur neue Ordner. Die `pytest.ini` von Feldtheorie erzeugt eine harmlose Warnung (`asyncio_default_fixture_loop_scope`).
 - **Kein Push**, keine Veröffentlichung: Alles liegt lokal in Git-Worktrees.

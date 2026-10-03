@@ -1,4 +1,4 @@
-# Mandala-Gedächtnislabor: Roadmap (M0–M7)
+# Mandala-Gedächtnislabor: Roadmap (M0–M9)
 
 **Erster Versuch:** „Reiz → Pause → Erinnerung“.
 
@@ -28,6 +28,8 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M5 | Feldtheorie-Membranpilot (separat) | ✅ erledigt |
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ✅ erledigt |
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ✅ erledigt |
+| M8 | Regler-Labor: explorativ, protokolliert, getrennt vom Benchmark | ✅ erledigt |
+| M9 | Herleitung der Moden, eingefrorene Vorhersagen, Prüfung an zurückgehaltenen Parameterkombinationen | geplant |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -483,6 +485,78 @@ Beide Befunde habe ich **zuerst unverändert reproduziert** (`0a931fd`, isoliert
 - **Hauptauswertung** der unveränderten Originaldaten, neu berechnet: zahlengleich, abgelegt als neue Datei `research-e19650a0a0.evaluation.v2-after-review.json`. Die alte Auswertung bleibt unberührt.
 - **Kein Push.**
 
+## M8: Regler-Labor (explorativ)
 
+**Auftrag (Johann, 2026-10-03):**
+- „Bitte M8, danach M9. M8 bleibt explorativ, protokolliert und getrennt vom Benchmark.“
+- „Erst das Mandala erlebbar machen; die bisherigen Benchmarkdaten bleiben dabei unverändert.“
 
+### Code
 
+- [`lab.py`](lab.py): reine Rechnung mit dem getesteten Kern (`EpisodeOperator`), kein zweiter Physik-Kern.
+  - **Regler** (begrenzt und aufgezählt, sonst Ablehnung): N ∈ {6, 12, 18, 24}, M, c, γ, ℓ, Reizstärke a, σ, Schwelle p*, Eingangsknoten A/B, tanh oder linear, Löschen nach dem Reiz (alles oder ein Modul), Ablesung H (alle Knoten / Modulmittel / Summe / ein Knoten).
+  - **Kantenablation** (ungerichtet), in zwei Arten:
+    - `budget_loss`: Die Zeilensumme sinkt.
+    - `renormalize`: Berührte Zeilen kommen zurück auf γ; Zeilen ohne verbleibende Kante bleiben 0 und werden gemeldet.
+  - **Ideale Erinnerungskurve:** Bayes(d) = Φ(‖H(x_A − x_B)‖₂ / 2σ) für d = 0…64.
+  - **Obere Schranke aus q:** q_eff = 1 − ℓ + ℓ·max_i Σ_j |A_ij| der *tatsächlich benutzten* Matrix, mit ‖H Δx(d)‖ ≤ κ(H)·q_eff^d·‖Δx_1‖_∞ und κ(H) = √(Σ_r (Σ_c |H_rc|)²).
+  - **Gedächtnisdauer, explizit definiert:** D = letzte Pause d ∈ 0…64 mit Bayes(d) ≥ p* (Standard p* = 0,75). Dazu kommen die Ersterreichungs-Variante, Monotonie und Zensur bei d = 64.
+- [`serve.py`](serve.py):
+  - `POST /api/lab` → Run-ID `lab-…`. Die Datei unter `explore/` wird **exklusiv** angelegt; es folgt eine Zeile `"kind": "lab"` mit den bereinigten Reglerwerten in `protocol.jsonl`.
+  - Whitelist erweitert um `lab.html` und `lab.js`.
+  - Ein zu großer Body (> 20 kB) wird begrenzt gelesen und mit 400 abgewiesen, statt die Verbindung abzubrechen.
+- Ansicht (unified-mandala `experiments/memory_lab/lab.html`, `lab.js`):
+  - Drei Mandalas: Zustand nach Reiz A, nach Reiz B und die **Gedächtnisspur** x_A − x_B in Einheiten von σ.
+  - Kanten werden per Klick entfernt.
+  - Erinnerungskurve mit Benchmark-Kurve, q-Schranke, Schwelle, D und bis zu drei festgehaltenen Kurven.
+  - Optional live neu rechnen.
+  - Im Browser wird nur dargestellt.
+
+### Tests
+
+[`tests/test_m8_lab.py`](tests/test_m8_lab.py): **38 neue, insgesamt 133/133.**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Ablehnung | 25 ungültige Reglerwerte (Bereich, Typ, NaN, Wahrheitswert, unbekannter Schlüssel, Pfad, Selbstkante, …) und falsche Anfrageform |
+| Benchmarkwerte | Ergeben bitgleich das eingefrorene Netz (A, B) und die Zustände von `recall_state`. Bayes(8) ist gleich der M6-Anzeige (0,683), q_eff = 0,9. |
+| q-Schranke | Bei 60 zufälligen Reglersätzen (mit Ablation, Löschen, allen H) nie überschritten |
+| Gleiches q, verschiedene Dauer | c = 0,05 / 0,25 / 0,5 haben alle q_eff = 0,9, aber D sinkt streng. Beim Benchmark liegt die Trennung bei d = 16 unter 5 % der Schranke. |
+| Ablation | Budgetverlust senkt nur berührte Zeilen; Renormieren bringt sie auf γ zurück; leere Zeilen werden gemeldet, schon fehlende Kanten ebenfalls. Alle Kanten weg ≡ Leak-Modell (bitgleich). |
+| Löschen | „Alles löschen“ gibt überall 0,5 und D = keine. Bei „ein Modul löschen“ ist das Modul null und der Rest gleich dem Zustand vor dem Eingriff. |
+| Ablesung | Die Summe trägt bei symmetrischen Eingängen nichts. Modulmittel, Einzelknoten und κ(H) sind von Hand nachgerechnet. |
+| Linear | Δx(d) = J^d Δx_1 mit J = (1−ℓ)I + ℓA (relativ 1e‑12) |
+| Definition D | Synthetische Kurven: nicht monoton, sofort unter der Schwelle, zensiert. Benchmark: Bayes(6) ≥ 0,75 > Bayes(7), also D = 6. |
+| Protokoll | Neue Run-ID je Berechnung, Protokollzeile `kind: lab`, kein Überschreiben (`FileExistsError`), Benchmark-Dateien und eingefrorenes Protokoll unverändert |
+| HTTP | `lab.html`/`lab.js` werden ausgeliefert, `lab.py` gibt 404; 400 bei ungültigen Werten, falscher Form und zu großem Body |
+
+**Mutationsprüfung: 28/28 erkannt**, darunter 7 neue Mutanten für M8: Schranke ohne κ(H), Renormierung übersprungen, Ablation nur in eine Richtung, falsches Modul gelöscht, D als Ersterreichung, Kurve ohne H, Überschreiben im Protokoll.
+
+### Fehler unterwegs (in meinen Tests, nicht im Code)
+
+1. **Vermutung bei „Modul löschen“ war falsch.** Ich hatte erwartet, dass das Löschen des Moduls von Eingang B die Erinnerung *schwächt*. Sie wird **stärker** (d = 8: 0,68 → 0,81; d = 16: 0,52 → 0,64). Der Grund:
+   - Der Reiz landet nur auf Knoten 4. Nach dem Löschen ist deshalb x_B ≡ 0 und x_A − x_B = x_A.
+   - x_A enthält den langsamen Gleichtaktmodus, der mit q abklingt. Ohne Eingriff steht der Reizunterschied senkrecht auf diesem Modus.
+
+   Der Test prüft jetzt diesen Mechanismus.
+2. **Toleranz im Linearitätstest zu streng.** Die absolute Toleranz von 1e‑18 war für Werte um 10⁻² zu eng; die Abweichung lag bei etwa 1e‑17. Jetzt wird relativ geprüft.
+3. **Verbindungsabbruch bei großem Body.** Der Server antwortete, ohne den Body zu lesen, und Windows brach die Verbindung ab. Behoben im Dienst, siehe oben.
+
+### Sichtprüfung
+
+Headless-Edge-Screenshot von `/lab.html?autostart` (ein protokollierter, explorativer Lauf):
+- Benchmark mit D = 6 und 68,3 % bei d = 8.
+- Die Gedächtnisspur zeigt das Muster +0,3σ (Modul M1) / −0,3σ (M2) / 0 (M3).
+- Die q-Schranke liegt weit über der Kurve.
+
+### Explorative Vorerfahrung (für M9 als „gesehen“ zu führen)
+
+Vor M8 habe ich mit einem Wegwerf-Skript (nicht im Repo) die ideale Kurve für einzelne Reglerwerte angesehen:
+- γ ∈ {0,5; 0,95}
+- ℓ ∈ {0,25; 0,9}
+- c ∈ {0,05; 0,5}
+- a = 1,2
+- Eingänge (0, 1)
+- M = 1
+
+Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten in M9 als **bereits gesehen** und sind dort keine Prüffälle.
