@@ -84,6 +84,17 @@ MUTANTS = [
      "    sep = [float(np.linalg.norm(dx[d + 1])) for d in range(D_MAX + 1)]", ["test_m8_lab.py"]),
     ("lab_log_overwrites", "serve.py", "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"x\", encoding=\"utf-8\") as fh:",
      "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"w\", encoding=\"utf-8\") as fh:", ["test_m8_lab.py"]),
+    # --- M9a closed-form predictions ---
+    ("predict_mode_D_wrong_ratio", "predict.py", "    lam_D = None if M == 1 else g_ * (1 - c * N / (N - n))",
+     "    lam_D = None if M == 1 else g_ * (1 - c * N / n)", ["test_m9_predict.py"]),
+    ("predict_error_bound_dropped", "predict.py", "            E.append(acc * (1 + FLOAT_SAFETY[0]) + FLOAT_SAFETY[1])",
+     "            E.append(0.0)", ["test_m9_predict.py"]),
+    ("predict_bound_rate_from_D_only", "predict.py",
+     "    rho = abs(mu(lam_I)) if same or M == 1 else max(abs(mu_D), abs(mu(lam_I)))",
+     "    rho = abs(mu(lam_I)) if same or M == 1 else abs(mu_D) * 0.5", ["test_m9_predict.py"]),
+    ("predict_tanh_in_linear_limit", "predict.py",
+     "    g = ell * (math.tanh(p[\"amplitude\"]) if p[\"nonlinearity\"] == \"tanh\" else p[\"amplitude\"])",
+     "    g = ell * math.tanh(p[\"amplitude\"])", ["test_m9_predict.py"]),
 ]
 
 

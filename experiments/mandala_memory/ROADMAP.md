@@ -29,7 +29,9 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ✅ erledigt |
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ✅ erledigt |
 | M8 | Regler-Labor: explorativ, protokolliert, getrennt vom Benchmark | ✅ erledigt |
-| M9 | Herleitung der Moden, eingefrorene Vorhersagen, Prüfung an zurückgehaltenen Parameterkombinationen | geplant |
+| M9a | Herleitung der Moden und Fehlerschranke, unabhängige Kontrollen, geschlossenes Vorhersagemodul | ✅ erledigt |
+| M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | offen |
+| M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | offen |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -560,3 +562,63 @@ Vor M8 habe ich mit einem Wegwerf-Skript (nicht im Repo) die ideale Kurve für e
 - M = 1
 
 Diese Kombinationen und alle `lab`-Einträge in `explore/protocol.jsonl` gelten in M9 als **bereits gesehen** und sind dort keine Prüffälle.
+
+## M9a: Herleitung, Kontrollen, Vorhersagemodul
+
+**Auftrag:** siehe [`docs/M9_HERLEITUNG.md`](docs/M9_HERLEITUNG.md). Dort stehen Modellfamilie, Moden, Projektionen, die Definition der Gedächtnisdauer, die beweisbare Fehlerschranke und das Prüfprotokoll. Das Dokument wurde **vor** jeder Rechnung an Prüfkombinationen geschrieben.
+
+### Kernaussagen der Herleitung
+
+- **Reizeinkopplung** ist exakt: x_1 = ℓ·tanh(a)·e_i. Linearisiert wird nur die Pause.
+- **Drei Moden** von J = (1−ℓ)I + ℓA:
+
+  | Mode | Eigenwert von J |
+  |---|---|
+  | Gleichtakt | q = 1 − ℓ + ℓγ |
+  | Modul-Unterschied | μ_D = 1 − ℓ + ℓγ(1 − cN/(N−n)) |
+  | Binnenmodul | μ_I = 1 − ℓ − ℓγ(1−c)/(n−1) |
+
+- **Der Reizunterschied hat keinen Gleichtakt-Anteil**, auch nichtlinear: Eine Involution P mit P A Pᵀ = A tauscht die beiden Eingänge, also gilt x_B(k) = P x_A(k). **q ist deshalb nicht die Erinnerungsrate**, nur eine obere Grenze.
+- **Fehlerschranke der Linearisierung:**
+  - Antisymmetrie und eine monotone Majorante (0 ≤ x_A(k) ≤ J^(k−1) x_1) ergeben E(d) = 2ℓ Σ ρ^(d−k) ‖h(A y_k)‖ mit h(z) = z − tanh z.
+  - Alles ist geschlossen berechenbar und ergibt ein beweisbares Band für die ideale Trefferquote und für D.
+
+### Unabhängige Kontrollen
+
+[`controls/m9_hand_controls.py`](controls/m9_hand_controls.py): exakte Brüche, eigene Blockmatrix, kein SCF, kein Vorhersagemodul.
+
+| Kontrolle | Wert |
+|---|---|
+| Moden Benchmark | q = 9/10, μ_D = 3/4, μ_I = 2/5 (λ_D = 1/2, λ_I = −1/5) |
+| Eigenwertgleichungen + Spur | exakt für 6 Netzformen (N/M = 12/3, 12/1, 12/2, 24/6, 18/9, 6/3) |
+| ‖J^d(e_0 − e_4)‖² | exakt = ½(3/4)^(2d) + (3/2)(2/5)^(2d) für d = 0…16 (direkte Matrixpotenz) |
+| Gleiches Modul (0, 1) | ‖J^d(e_0 − e_1)‖² = 2(2/5)^(2d) exakt |
+| Ideale Trefferquote, linear | d = 4: 0,935319; d = 8: 0,682698; d = 16: 0,518973 |
+| D₀,₇₅ | **6** (Bayes(6) = 0,801 ≥ 0,75 > Bayes(7) = 0,737) |
+| naive q-Regel | D_q = 25 (0,9^d ≥ 0,07105), also weit daneben |
+
+### Vorhersagemodul
+
+[`predict.py`](predict.py) arbeitet nur mit geschlossenen Formeln und importiert weder Kern noch Labor, Dienst oder SCF; ein Test prüft das in einem eigenen Prozess. Es liefert:
+- Moden und Projektionsgewichte;
+- die lineare Trennung s_lin(d) und die Schranke E(d);
+- das Bayes-Band;
+- D_lin, [D_lo, D_hi] und D_q.
+
+### Tests
+
+[`tests/test_m9_predict.py`](tests/test_m9_predict.py): **60 neue**, ausschließlich an **20 Entwicklungsfällen**. Deren Werte für c, γ, ℓ, a und σ liegen alle außerhalb des Prüfrasters von M9b.
+
+| Prüfung | Ergebnis |
+|---|---|
+| Benchmark | gleich den Handkontrollen; D = 6, Band [6, 6], D_q = 25; E(8) < 1 % von s_lin(8) |
+| Eigenwerte | Das Spektrum der Kernmatrix ist gleich {γ, λ_D^(M−1), λ_I^(N−M)} für alle Entwicklungsfälle. |
+| Symmetrie P | Für alle Paare i ≠ j in 6 Netzformen ist P eine Involution, P(i) = j und A[P,P] = A. |
+| Linearer Grenzfall | Vorhersage = Kern (relativ 1e‑10), E = 0 |
+| Band | Der Kern liegt bei **allen** 20 Entwicklungsfällen und allen d im Band, auch bei a = 3, ℓ = 1 und γ = 0,95; D des Kerns liegt in [D_lo, D_hi]. |
+| Struktur | Summe → 0; Modulmittel = g·μ_D^d·√2/n; Modulmittel bei gleichem Modul → 0 |
+| Familie | Kombinationen außerhalb von F werden abgewiesen. |
+
+**Fehler unterwegs (im Vorhersagemodul, durch Entwicklungstest gefunden):** Im linearen Grenzfall hatte ich g = ℓ·tanh(a) statt ℓ·a benutzt. Ohne tanh wird auch der Puls nicht gesättigt. Das ist korrigiert und als Mutant abgesichert.
+
+**Mutationsprüfung: 32/32 erkannt**, mit 4 neuen Mutanten: falsches Modulverhältnis, Schranke weggelassen, zu kleine Rate ρ, tanh im linearen Grenzfall.
