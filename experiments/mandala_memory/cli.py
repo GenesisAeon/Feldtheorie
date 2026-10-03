@@ -24,7 +24,20 @@ def main(argv=None) -> int:
     r.add_argument("--mode", choices=("smoke", "research"), required=True)
     r.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     r.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    p = sub.add_parser("pilot-membrane", help="M5: separate Feldtheorie membrane pilot")
+    p.add_argument("--out", type=Path, default=DEFAULT_OUT)
     a = ap.parse_args(argv)
+    if a.cmd == "pilot-membrane":
+        from experiments.mandala_memory.membrane_pilot import run_pilot
+        from experiments.mandala_memory.runner import _check_output_dir
+
+        out_dir = _check_output_dir(a.out / "membrane_pilot")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        res = run_pilot()
+        path = out_dir / "membrane_pilot.json"
+        path.write_text(json.dumps(res, indent=1, allow_nan=False) + "\n", encoding="utf-8")
+        print(json.dumps({"output": str(path), "delays": res["delays"], "seeds": res["seeds"]}))
+        return 0
     cfg = json.loads(a.config.read_text(encoding="utf-8"))
     threads = str(cfg["limits"]["blas_threads"])
     for k in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS"):

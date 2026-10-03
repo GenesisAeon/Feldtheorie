@@ -25,7 +25,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M2 | Splits, Decoder, Rauschströme; Trennung, gepaarte Tests, Determinismus | ✅ erledigt |
 | M3 | Eingefrorenes/adaptives Netz, Ablationen; Gewichte nur im Training; Smoke + Ressourcen | ✅ erledigt |
 | M4 | SCF-Auswertung, Forschungsrunde (nach Hochrechnung) | ✅ erledigt |
-| M5 | Feldtheorie-Membranpilot (separat) | ⬜ |
+| M5 | Feldtheorie-Membranpilot (separat) | ✅ erledigt |
 | M6 | Lokale Mandala-Ansicht (unified-mandala `experiments/memory_lab/`) | ⬜ |
 | M7 | Reproduzierbare Übergabe, Reviewpaket | ⬜ |
 
@@ -327,5 +327,49 @@ Mittlere Balanced Accuracy über 20 Seeds:
 - **Keine biologische Aussage:** Seeds sind synthetische Wiederholungen.
 - **Variabilität:** Prozessrauschen ist null; Schwankungen kommen nur aus dem Messrauschen und der Reihenfolge der Anpassung.
 - **Geltungsbereich:** Das Ergebnis gilt **nur** für dieses Protokoll, also η = 0,3, 40 Episoden zu je 5 Schritten und σ = 0,02. Ob andere Anpassungsregeln oder längeres Training helfen, ist eine offene Frage für eine spätere Runde.
+
+## M5: Feldtheorie-Membranpilot
+
+### Code
+
+[`membrane_pilot.py`](membrane_pilot.py): Pilot mit `AdaptiveLogisticMembrane` aus Feldtheorie. Die θ/β-Semantik bleibt **unverändert**.
+
+- **Loader:** Die Datei `models/adaptive_logistic_membrane.py` wird **per Pfad** geladen. `import models…` würde über `models/__init__.py` das ganze Modellpaket importieren (2,9 s, fremde Solver). Feldtheorie selbst wird nicht verändert.
+- **Aufgabe:** Amplitudenreiz R = 0,2 (Klasse 0) gegen 0,8 (Klasse 1), danach Pause R = 0 über d Schritte, danach eine **Probe** R = 0,5 als eigener, protokollierter Eingriff.
+- **Berichtet wird beides:**
+  - `pre_probe_sigma`: die Antwort mit dem Zustand vor der Probe;
+  - `post_probe_sigma`: die Ausgabe von `propagate`, die erst aktualisiert und dann ausgibt.
+- **Vergleich:** adaptive Membran gegen eingefrorene Membran, bei der alle Plastizitäts- und Relaxationsfaktoren 0 sind.
+- **Pilot-Annahmen** (nicht im Plan festgelegt): θ0 = 0,5, β0 = 6, übrige Parameter auf Standardwerten, dt = 1, σ = 0,02 auf der Probe-Ausgabe.
+- **Startbefehl:** `… -m experiments.mandala_memory.cli pilot-membrane`. Die Ausgabe landet in `D:/mandala/mandala-memory-results/membrane_pilot/`.
+
+### Tests
+
+[`tests/test_m5_membrane.py`](tests/test_m5_membrane.py): **8 neue, insgesamt 64/64.**
+
+- Ein langer Trace ist bitgleich mit zwei Stücken auf derselben Instanz.
+- Die **Parameter sind Zustand:** Eine Wiederverwendung ohne Reset behält die Erinnerung; `reset()` entspricht einer frischen Instanz.
+- Probe: bei der adaptiven Membran ist der Wert vor dem Update ≠ nach dem Update, bei der eingefrorenen gleich.
+- Die eingefrorene Membran hat kein Klassengedächtnis.
+- Der Loader importiert das `models`-Paket nicht.
+- Die Quelle ist gleich dem Plan-Commit.
+
+### Ergebnis
+
+Rein beschreibend, 3 Seeds, 40 Episoden je Klasse:
+
+| d | θ vor Probe (Klasse 0 / 1) | Probe-Ausgabe (0 / 1) | Balanced Accuracy adaptiv | eingefroren |
+|---|---|---|---|---|
+| 0 | 0,451 / 0,672 | 0,536 / 0,332 | 1,00 | ≈ 0,5 |
+| 4 | 0,307 / 0,521 | 0,613 / 0,483 | 1,00 | ≈ 0,5 |
+| 8 | 0,190 / 0,372 | 0,659 / 0,583 | ≈ 0,97 | ≈ 0,5 |
+| 16 | 0,110 / 0,151 | 0,687 / 0,673 | ≈ 0,66 | ≈ 0,5 |
+| 32 | 0,103 / 0,103 | 0,689 / 0,689 | ≈ 0,5 | ≈ 0,5 |
+
+**Lesart:**
+- Die adaptive Membran speichert die Reizamplitude in θ. Die Spur zerfällt über die Pause, weil θ unter R = 0 gegen etwa 0,10 läuft.
+- Die eingefrorene Membran zeigt ausdrücklich kein Gedächtnis: identische Ausgabe für beide Klassen.
+- **Dies ist eine andere Aufgabe als im Netz-Benchmark**, also kein fairer Vergleich und kein Modellsieger.
+
 
 
