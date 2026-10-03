@@ -201,6 +201,16 @@ def test_lab_never_writes_benchmark(monkeypatch):
     assert {p: (p.stat().st_mtime, p.stat().st_size) for p in files} == before and proto.read_bytes() == pb
 
 
+def test_explore_dir_can_be_redirected_but_never_to_c(monkeypatch):
+    monkeypatch.setattr(serve, "EXPLORE_DIR", serve.EXPLORE_DIR)          # restored after the test
+    with pytest.raises(MemoryLabError):
+        serve.set_explore_dir("C:/mandala-check")
+    target = TEST_EXPLORE.parent / "redirected"
+    assert serve.set_explore_dir(target) == target
+    p = serve.lab({"knobs": {}})
+    assert (target / f"{p['run_id']}.json").is_file()
+
+
 @pytest.fixture()
 def server(monkeypatch):
     monkeypatch.setattr(serve, "EXPLORE_DIR", TEST_EXPLORE)
