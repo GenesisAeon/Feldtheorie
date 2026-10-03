@@ -49,7 +49,9 @@ RULES = {
 
 
 def sha256_file(p: Path) -> str:
-    return hashlib.sha256(p.read_bytes()).hexdigest()
+    """SHA-256 of a text file with line endings normalised to LF, so that a
+    git checkout with CRLF conversion does not change the recorded hash."""
+    return hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def _same(a: Dict, b: Dict) -> bool:
