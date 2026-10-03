@@ -1,6 +1,6 @@
 {
  "schema": "mandala-memory-m10-protocol-v1",
- "status": "freeze-candidate, NOT frozen (research run blocked in code until the freeze hash is set)",
+ "status": "FROZEN 2026-10-03 after the final review ABSCHLUSSPRUEFUNG_6f2acfd.md; reviewed code commit 6f2acfd2a8a153c8f48bc50194cbcf651a510758; freeze record protocol/m10_freeze.json",
  "plan": "docs/M10_PLAN_ABLENKUNG.md (Fassung 2); reviews ASTRA_REVIEW_M10_PLAN (R5-R8) and ASTRA_FOLLOWUP_R5_R8",
  "question": "Does the identity of an original stimulus A/B stay readable when class-independent distractor pulses occur in the pause, and how do a modular and an equal-budget uniform network differ?",
  "network": {

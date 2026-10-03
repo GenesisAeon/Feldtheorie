@@ -10,8 +10,8 @@ Trilayer nach Feldtheorie `AGENTS.md`:
 
 Die beiden Zwillinge sind aus dem JSON erzeugt (`tools/make_trilayer_twins.py`).
 
-- **Status:** freeze-candidate, NOT frozen (research run blocked in code until the freeze hash is set)
-- **SHA-256 des JSON** (LF-normiert): `0fb986596b2847868b1bc08afda06b2a9da9087b455573d29bee4f5a5a0b4520`
+- **Status:** FROZEN 2026-10-03 after the final review ABSCHLUSSPRUEFUNG_6f2acfd.md; reviewed code commit 6f2acfd2a8a153c8f48bc50194cbcf651a510758; freeze record protocol/m10_freeze.json
+- **SHA-256 des JSON** (LF-normiert): `84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345`
 
 Plan und Begründungen: [`../docs/M10_PLAN_ABLENKUNG.md`](../docs/M10_PLAN_ABLENKUNG.md) (Fassung 2).
 

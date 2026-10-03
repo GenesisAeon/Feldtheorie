@@ -146,7 +146,7 @@ def test_inference_rules():
 
 def test_protocol_records_the_decisions():
     p = PROTO
-    assert p["status"].startswith("freeze-candidate") and p["confirmatory"]["delta"] == 0.01
+    assert p["status"].startswith("FROZEN") and p["confirmatory"]["delta"] == 0.01
     assert p["level_B"]["n_mc"] == 2_000_000 and p["delays"]["primary"] == 4
     assert p["level_D"]["role"].startswith("descriptive only") and "N/A" in p["tasks"]["update"]
     assert "DIAGNOSTIC ALARM" in p["diagnostics"]["alarm_policy"] and "No repetition" in p["diagnostics"]["alarm_policy"]

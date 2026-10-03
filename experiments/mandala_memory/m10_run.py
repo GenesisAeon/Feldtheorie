@@ -48,7 +48,10 @@ from experiments.mandala_memory import m10_decoders as md
 from experiments.mandala_memory import m10_task as mt
 from experiments.mandala_memory.runner import peak_rss_bytes, write_exclusive
 
-FROZEN_PROTOCOL_SHA256: Optional[str] = None          # set in the freeze commit; until then no smoke/research run
+# Freeze 2026-10-03: the ONLY code change of the freeze commit relative to the reviewed commit
+# 6f2acfd2a8a153c8f48bc50194cbcf651a510758 (final review ABSCHLUSSPRUEFUNG_6f2acfd.md). The code hashes in
+# protocol/m10_freeze.json were computed AFTER this line was set.
+FROZEN_PROTOCOL_SHA256: Optional[str] = "84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345"
 FREEZE_RECORD = mt.HERE / "protocol" / "m10_freeze.json"
 CODE_FILES = ("m10_task.py", "m10_bayes.py", "m10_decoders.py", "m10_run.py", "m10_evaluate.py", "data.py", "core.py",
               "predict.py")

@@ -205,6 +205,7 @@ def test_r10_statistical_alarm_is_reported_but_does_not_block(frozen):
 # --- R11 -----------------------------------------------------------------------
 @pytest.mark.parametrize("mode", ["smoke", "research"])
 def test_r11_smoke_and_research_require_a_valid_freeze(monkeypatch, tmp_path, mode):
+    monkeypatch.setattr(m10_run, "FROZEN_PROTOCOL_SHA256", None)    # the state before the freeze
     with pytest.raises(MemoryLabError, match="not frozen"):
         m10_run.mode_settings(PROTO, mode)                 # review counterexample: smoke before the freeze
     monkeypatch.setattr(m10_run, "FROZEN_PROTOCOL_SHA256", "0" * 64)
@@ -340,3 +341,17 @@ def test_r12_timeout_through_the_runner(monkeypatch, tmp_path):
     assert "run_not_complete" in ev.release(saved)["reasons"]
     with pytest.raises(MemoryLabError):                    # exclusive: the same file is never overwritten
         m10_run.write_exclusive(m10_run.Path(res["output_path"]), "x")
+
+
+# --- the real freeze (commit after the final review of 6f2acfd) --------------------
+def test_freeze_is_consistent():
+    """Constant, protocol file, freeze record and code files agree; the freeze record
+    names the reviewed commit; smoke and research are now allowed WITHOUT any patching."""
+    rec = json.loads(m10_run.FREEZE_RECORD.read_text(encoding="utf-8"))
+    assert m10_run.FROZEN_PROTOCOL_SHA256 == m10_run.protocol_sha256() == rec["protocol_sha256"]
+    assert rec["reviewed_code_commit"] == "6f2acfd2a8a153c8f48bc50194cbcf651a510758"
+    assert rec["code_sha256"] == m10_run.code_sha256() and set(rec["code_sha256"]) == set(m10_run.CODE_FILES)
+    assert PROTO["status"].startswith("FROZEN") and rec["reviewed_code_commit"] in PROTO["status"]
+    assert m10_run.require_frozen("research") == rec
+    for mode in ("smoke", "research"):
+        assert m10_run.mode_settings(PROTO, mode)["conditions"] == PROTO["conditions"]
