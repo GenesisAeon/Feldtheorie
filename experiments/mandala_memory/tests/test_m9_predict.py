@@ -15,20 +15,7 @@ import pytest
 
 from experiments.mandala_memory import lab, predict
 
-BASE = {"N": 12, "M": 3, "c": 0.25, "gamma": 0.8, "ell": 0.5, "amplitude": 0.6, "sigma": 0.02, "inputs": [0, 4],
-        "readout": "full", "readout_node": 0, "nonlinearity": "tanh"}
-DEV_COMBOS = [
-    BASE,
-    {**BASE, "gamma": 0.95}, {**BASE, "gamma": 0.5}, {**BASE, "ell": 0.25}, {**BASE, "ell": 0.9}, {**BASE, "c": 0.05},
-    {**BASE, "c": 0.5}, {**BASE, "amplitude": 1.2}, {**BASE, "inputs": [0, 1]}, {**BASE, "M": 1, "c": None},
-    {**BASE, "readout": "module_means"}, {**BASE, "readout": "sum"}, {**BASE, "readout": "node", "readout_node": 0},
-    {**BASE, "readout": "node", "readout_node": 5}, {**BASE, "amplitude": 3.0, "ell": 1.0, "gamma": 0.95, "c": 0.0},
-    {**BASE, "N": 24, "M": 12, "c": 0.05, "inputs": [3, 10], "readout": "module_means"},
-    {**BASE, "N": 6, "M": 3, "c": 1.0, "inputs": [1, 4], "sigma": 0.05},
-    {**BASE, "N": 18, "M": 2, "c": 0.5, "gamma": 0.95, "inputs": [2, 15], "readout": "node", "readout_node": 15, "amplitude": 3.0},
-    {**BASE, "N": 18, "M": 9, "ell": 1.0, "inputs": [4, 5], "amplitude": 1.2},
-    {**BASE, "nonlinearity": "identity", "amplitude": 3.0},
-]
+from experiments.mandala_memory.m9_registry import BENCHMARK as BASE, DEV_COMBOS
 
 
 def knobs(p):
