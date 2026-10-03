@@ -33,7 +33,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
-| M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), Implementierung, [Protokoll-Kandidat](protocol/m10_protokoll.json) | implementiert, **nicht eingefroren**, Forschungslauf gesperrt |
+| M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -1052,3 +1052,103 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
 | Linux ohne SCF | 159 bestanden, 146 übersprungen |
 | Linux mit SCF | 291 bestanden, 14 übersprungen |
 | Mutationsprüfung | siehe Commit-Nachricht, 6 neue Mutanten (unvollständige Kontrollmenge, K0-SE ungeprüft, Aktualisieren-n ungeprüft, A2-Pflicht aus dem Ergebnis, letzte und Diagnose-Frist entfernt) |
+
+## M10: Freeze, Smoke, Forschungsrechnung und Ergebnis
+
+**Freigabe:** `D:/mandala/mandala-memory-results/astra-m10-review/ABSCHLUSSPRUEFUNG_6f2acfd.md`.
+
+### Freeze
+
+- **Commit `7b31300`** (Tag `m10-freeze`).
+- **Änderungen gegenüber dem geprüften Stand `6f2acfd2a8a153c8f48bc50194cbcf651a510758`:**
+  - Protokollstatus FROZEN; Hash danach berechnet: `84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345`; Zwillinge neu erzeugt.
+  - `FROZEN_PROTOCOL_SHA256` im Runner, die **einzige Codeänderung**; im Diff belegt.
+  - `protocol/m10_freeze.json` mit Protokoll-Hash, geprüftem Code-Commit und den Code-Prüfsummen. Die Prüfsummen wurden **nach** dem Eintragen der Konstante berechnet.
+  - Tests auf den eingefrorenen Zustand umgestellt; neuer Konsistenztest.
+- **Prüfung:** Pflichtlauf 306/306. Freeze-Konsistenz in frischem Prozess geprüft: Konstante = Protokoll = Datensatz, Code-Prüfsummen gleich.
+
+### Smoke
+
+`D:/mandala/mandala-memory-results/m10/smoke/m10-smoke-20261003T225248-8cf17955.json`:
+- vollständig in 25,7 s;
+- alle deterministischen Kontrollen bestanden;
+- als Smoke korrekt **nicht** freigegeben (eigene Ströme und Seeds, kleineres n_MC);
+- keine Parameteränderung danach.
+
+### Forschungsrechnung (einmalig)
+
+**Dateien:**
+- Ergebnis: `D:/mandala/mandala-memory-results/m10/research/m10-research-20261003T230058-47d41706.json`
+- Auswertung (exklusiv): `….evaluation.json`
+- Lesefassung: `report.txt`
+
+**Lauf:**
+- Status complete, keine Fehler.
+- 473 s (Grenze 1200 s): Ebene B 461 s, Ebene D 10,5 s; Spitzen-RAM 158 MiB.
+- **Freigabe-Gate: freigegeben** (vollständiges Raster, eingefrorenes Protokoll und Code, keine Overrides).
+- **Deterministische Kontrollen:** A1 überall wie erwartet, inklusive Negativkontrolle N/modular; A2 strukturell hält überall.
+- **Statistische Diagnosen:** 15 A2- und 18 A3-Gegenproben, **kein Alarm**.
+
+### Bestätigende Familie (Ebene B, d = 4, tanh, δ = 0,01, Holm α = 0,05)
+
+| Hypothese | Δ̂ | SE | p (Holm) | 95 % unadjustiert | Ergebnis |
+|---|---|---|---|---|---|
+| **H-N:** I_modular(N) − I_uniform(N) > δ | **0,0238** | 0,00012 | < 10⁻¹⁰ | [0,0235; 0,0240] | **bestätigt** |
+| **H-F+:** I_uniform(F+) − I_modular(F+) > δ | −0,0001 | 0,00011 | 1 | [−0,0003; +0,0001] | **nicht bestätigt** (nicht „widerlegt“: das Intervall enthält 0) |
+
+**Komponenten:**
+
+| | Interferenz I | Bayes ohne → mit Ablenkung |
+|---|---|---|
+| modular N | 0,0236 | 0,9352 → 0,9116 |
+| uniform N | −0,0002 | 0,6696 → 0,6697 |
+| modular F+ | 0,0001 | – |
+| uniform F+ | −0,0001 | – |
+
+### Beschreibend: Ebene B über alle Pausen (Interferenz I = K0 − Bedingung, Bewahren)
+
+| Netz | d | K0 | F | N | F+ | linear N |
+|---|---|---|---|---|---|---|
+| modular | 3 | 0,981 | +0,000 | **+0,019** | −0,000 | +0,011 |
+| modular | 4 | 0,935 | −0,000 | **+0,024** | +0,000 | +0,013 |
+| modular | 6 | 0,801 | +0,000 | **+0,019** | −0,000 | +0,010 |
+| uniform | 3 | 0,828 | −0,000 | +0,000 | −0,000 | −0,000 |
+| uniform | 4 | 0,670 | −0,000 | −0,000 | −0,000 | +0,000 |
+| uniform | 6 | 0,538 | +0,000 | −0,000 | −0,000 | +0,000 |
+
+- **Angeglichener Vergleich** (ähnliche Ausgangsleistung, verschiedenes Alter der Erinnerung): modular d = 6: I(N) = 0,019; uniform d = 3: I(N) = 0,000.
+- **Normierte Interferenz bei d = 4:** modular N 0,054, uniform N ≈ 0.
+- **Aktualisieren (Bayes):** in allen Bedingungen 0,989–1,000, also fast perfekt in beiden Netzen.
+
+### Beschreibend: Ebene D (trainierte Decoder, 20 Seeds, Mittel [95 % Bootstrap], d = 4, tanh)
+
+| Netz, Bedingung | Interferenz Nearest-Mean | Interferenz LDA (Ledoit-Wolf) | Aktualisieren (NM / LDA) |
+|---|---|---|---|
+| modular N | **0,299** [0,298; 0,300] | **0,158** [0,155; 0,160] | 0,991 / 0,991 |
+| modular F | 0,002 | 0,001 | 0,988 / 0,985 |
+| modular F+ | 0,007 | 0,001 | 0,999 / 0,996 |
+| uniform N | 0,012 | 0,000 | 0,995 / 0,992 |
+| uniform F | 0,020 | 0,001 | 0,996 / 0,993 |
+| uniform F+ | 0,043 | 0,000 | 1,000 / 0,999 |
+
+### Lesart (synthetische Modellstudie; nur diese zwei Netze und Parameter)
+
+1. **Struktur bestimmt die Störbarkeit, und anders als „Modularität schützt“ vermuten ließe:**
+   - Ablenkung **in den Eingangsmodulen** (N) stört das modulare Netz messbar; die Bayes-Trefferquote sinkt um 2,4 Prozentpunkte.
+   - Das gleich budgetierte uniforme Netz stört sie **gar nicht**.
+   - Das ist die von der Symmetrie (A2) vorhergesagte Asymmetrie: Für das uniforme Netz sind die Orte 1/5 symmetrisch zum Reizpaar, für das modulare nicht. Der lineare Zwilling zeigt dieselbe Richtung, schwächer (A3/A4).
+2. **Ferne Ablenkung (F, F+) stört auf der Bayes-Ebene in keinem Netz**, auch nicht bei starker Sättigung (a = 1,8).
+   - Die Zustandsidentität A1 hält exakt.
+   - Die Sättigung ändert den Reizunterschied offenbar nicht messbar.
+   - H-F+ (Dämpfung vs. direkte Wirkung) ist damit **nicht bestätigt**. Der vermutete nichtlineare Störweg tritt hier nicht auf.
+3. **Information im Zustand ≠ ablesbare Information:**
+   - Der Bayes-Verlust bei N modular ist nur 0,024.
+   - Ein trainierter Nearest-Mean-Decoder verliert aber 0,30, LDA 0,16.
+   - An symmetrischen Orten erzeugt der Nearest-Mean-Decoder sogar **Scheininterferenz** (bis 0,043), die LDA und Bayes nicht zeigen. Ursache ist anisotrope, von der Zielklasse unabhängige Ablenkstreuung, die ein isotroper Decoder nicht wegrechnet.
+   - Ob ein Netz „vergisst“ oder nur „schwerer abzulesen ist“, hängt also vom Ablesenden ab.
+4. **Bewahren und Aktualisieren:** Die letzte Ablenkung ist in beiden Netzen fast perfekt ablesbar. Einen Zielkonflikt behaupte ich nicht; er ist vorab als beschreibend festgelegt.
+5. **Grenzen:**
+   - zwei feste 12-Knoten-Netze, ein Parametersatz, Pulse in einem Fenster aus 3 Schritten;
+   - die Unsicherheit ist Monte-Carlo-Unsicherheit über ein deterministisches Modell, keine Population von Netzen;
+   - keine biologische und keine allgemeine KI-Aussage;
+   - Ebene D ist decoderabhängig und nur beschreibend.

@@ -102,6 +102,14 @@ Die Herleitung steht in [docs/M9_HERLEITUNG.md](docs/M9_HERLEITUNG.md) (eingefro
 - **Die naive q-Regel versagt:** Sie sagt in allen 14 Fällen mit Erinnerung eine zu lange Dauer voraus, meist ein Vielfaches.
 - **Abschottung (kleines c) hilft nur unter drei Bedingungen:** Die Reize kommen in **verschiedenen** Modulen an, das Ablesen sieht den Modul-Unterschied, und Austausch zwischen Modulen ist nicht gefragt. Wer Information zwischen Modulen austauschen will (großes c), verkürzt genau diese Erinnerung.
 
+## Ergebnis der dritten Runde (M10): Erinnerung unter Ablenkung
+
+Vorab eingefroren: Protokoll `84d2b523…`, geprüfter Code `6f2acfd`, Tag `m10-freeze`. Ausgewertet wurde ein einziger Forschungslauf; Details stehen in der [ROADMAP](ROADMAP.md) im Abschnitt M10.
+
+- **Bestätigt (H-N):** Ablenkpulse **in den Eingangsmodulen** senken die ideale Trefferquote des modularen Netzes um 2,4 Prozentpunkte (0,935 → 0,912 bei d = 4). Beim gleich budgetierten uniformen Netz tun sie das nicht (Unterschied 0,024 > Mindesteffekt 0,01). Das folgt dem Symmetrieargument aus M9.
+- **Nicht bestätigt (H-F+):** Starke Ablenkung im unbeteiligten Modul stört auf der Bayes-Ebene in **keinem** Netz messbar.
+- **Beschreibend:** Trainierte Decoder verlieren unter Ablenkung viel mehr als nötig (Nearest-Mean 0,30, LDA 0,16 gegen Bayes 0,024). Die Information bleibt im Zustand, wird aber schwerer ablesbar. Die letzte Ablenkung ist in beiden Netzen fast perfekt erkennbar.
+
 ## Bekannte Grenzen
 
 - **Rein synthetisch.** Seeds sind Wiederholungen, keine biologischen Präparate. Die Unsicherheit gilt nur für diese Seed- und Rauschverteilung.
