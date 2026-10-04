@@ -106,9 +106,9 @@ Die Herleitung steht in [docs/M9_HERLEITUNG.md](docs/M9_HERLEITUNG.md) (eingefro
 
 Vorab eingefroren: Protokoll `84d2b523…`, geprüfter Code `6f2acfd`, Tag `m10-freeze`. Ausgewertet wurde ein einziger Forschungslauf; Details stehen in der [ROADMAP](ROADMAP.md) im Abschnitt M10.
 
-- **Bestätigt (H-N):** Ablenkpulse **in den Eingangsmodulen** senken die ideale Trefferquote des modularen Netzes um 2,4 Prozentpunkte (0,935 → 0,912 bei d = 4). Beim gleich budgetierten uniformen Netz tun sie das nicht (Unterschied 0,024 > Mindesteffekt 0,01). Das folgt dem Symmetrieargument aus M9.
-- **Nicht bestätigt (H-F+):** Starke Ablenkung im unbeteiligten Modul stört auf der Bayes-Ebene in **keinem** Netz messbar.
-- **Beschreibend:** Trainierte Decoder verlieren unter Ablenkung viel mehr als nötig (Nearest-Mean 0,30, LDA 0,16 gegen Bayes 0,024). Die Information bleibt im Zustand, wird aber schwerer ablesbar. Die letzte Ablenkung ist in beiden Netzen fast perfekt erkennbar.
+- **Bestätigt (H-N):** Ablenkpulse **in den Eingangsmodulen** senken die ideale Trefferquote des modularen Netzes um 2,4 Prozentpunkte (0,935 → 0,912 bei d = 4). Beim gleich budgetierten uniformen Netz ist kein Verlust erkennbar (Unterschied 0,024 > Mindesteffekt 0,01). Die Hypothese war durch die Symmetrien des linearen Zwillings motiviert; bewiesen ist die Störungsfreiheit nur für diesen linearen Zwilling, für das tanh-Netz ist das Ergebnis eine empirische Bestätigung.
+- **Nicht bestätigt (H-F+):** Bei starker Ablenkung im unbeteiligten Modul ist auf der Bayes-Ebene in beiden Netzen innerhalb der Monte-Carlo-Auflösung kein Verlust erkennbar. Das heißt nicht bewiesene Wirkungslosigkeit, sondern nur: weit unter der vorab gewählten Mindestdifferenz.
+- **Beschreibend:** Trainierte Decoder verlieren unter naher Ablenkung im modularen Netz viel mehr als die Bayes-Grenze: Nearest-Mean 29,9, LDA 15,75 gegen Bayes 2,36 Prozentpunkte. Das sind echte Leistungsverluste der Decoder, obwohl die optimale Trennbarkeit weitgehend erhalten bleibt. Die genaue Ursache ist nicht isoliert. Ansatz für weitere Arbeit: bessere Ausleseverfahren. Die letzte Ablenkung ist in beiden Netzen fast perfekt erkennbar.
 
 ## Bekannte Grenzen
 

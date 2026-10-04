@@ -1093,7 +1093,7 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
 
 | Hypothese | Δ̂ | SE | p (Holm) | 95 % unadjustiert | Ergebnis |
 |---|---|---|---|---|---|
-| **H-N:** I_modular(N) − I_uniform(N) > δ | **0,0238** | 0,00012 | < 10⁻¹⁰ | [0,0235; 0,0240] | **bestätigt** |
+| **H-N:** I_modular(N) − I_uniform(N) > δ | **0,0238** | 0,00012 | < 10⁻¹² (numerisch als 0 ausgegeben) | [0,0235; 0,0240] | **bestätigt** |
 | **H-F+:** I_uniform(F+) − I_modular(F+) > δ | −0,0001 | 0,00011 | 1 | [−0,0003; +0,0001] | **nicht bestätigt** (nicht „widerlegt“: das Intervall enthält 0) |
 
 **Komponenten:**
@@ -1105,7 +1105,7 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
 | modular F+ | 0,0001 | – |
 | uniform F+ | −0,0001 | – |
 
-### Beschreibend: Ebene B über alle Pausen (Interferenz I = K0 − Bedingung, Bewahren)
+### Beschreibend: Ebene B über die geprüften Pausen d = 3, 4, 6 (Interferenz I = K0 − Bedingung, Bewahren)
 
 | Netz | d | K0 | F | N | F+ | linear N |
 |---|---|---|---|---|---|---|
@@ -1135,20 +1135,25 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
 
 1. **Struktur bestimmt die Störbarkeit, und anders als „Modularität schützt“ vermuten ließe:**
    - Ablenkung **in den Eingangsmodulen** (N) stört das modulare Netz messbar; die Bayes-Trefferquote sinkt um 2,4 Prozentpunkte.
-   - Das gleich budgetierte uniforme Netz stört sie **gar nicht**.
-   - Das ist die von der Symmetrie (A2) vorhergesagte Asymmetrie: Für das uniforme Netz sind die Orte 1/5 symmetrisch zum Reizpaar, für das modulare nicht. Der lineare Zwilling zeigt dieselbe Richtung, schwächer (A3/A4).
-2. **Ferne Ablenkung (F, F+) stört auf der Bayes-Ebene in keinem Netz**, auch nicht bei starker Sättigung (a = 1,8).
-   - Die Zustandsidentität A1 hält exakt.
-   - Die Sättigung ändert den Reizunterschied offenbar nicht messbar.
-   - H-F+ (Dämpfung vs. direkte Wirkung) ist damit **nicht bestätigt**. Der vermutete nichtlineare Störweg tritt hier nicht auf.
+   - Beim gleich budgetierten uniformen Netz ist auf der Bayes-Ebene innerhalb der Monte-Carlo-Auflösung **kein** Verlust erkennbar.
+   - **Einordnung:** Die beobachtete Asymmetrie entspricht der Hypothese, die aus den Symmetrien des linearen Zwillings **motiviert** war. Für das uniforme Netz sind die Orte 1/5 symmetrisch zum Reizpaar, für das modulare nicht. **Bewiesen** ist die Störungsfreiheit (A2) nur für den linearen Zwilling. Im tanh-Netz war H-N vorab ausdrücklich eine Hypothese; das Ergebnis bestätigt sie empirisch und macht sie nicht nachträglich zu einer bewiesenen nichtlinearen Vorhersage.
+   - Der lineare Zwilling zeigt dieselbe Richtung, schwächer (A3/A4).
+2. **Bei ferner Ablenkung (F, F+) ist auf der Bayes-Ebene in den untersuchten Fällen innerhalb der Monte-Carlo-Auflösung kein Verlust erkennbar**, auch nicht bei starker Sättigung (a = 1,8).
+   - Die Zustandsidentität A1 hält im Rahmen der Toleranz.
+   - Das ist **kein** Beleg exakter Störungsfreiheit und **kein** Nachweis, dass es keinen nichtlinearen Störweg gibt. Belegt ist nur, dass ein Effekt dieser Art hier deutlich kleiner als die vorab gewählte Mindestdifferenz 0,01 ist.
+   - H-F+ forderte einen Unterschied über 0,01. Das beobachtete Intervall [−0,0003; +0,0001] liegt weit darunter; die Richtung eines sehr kleinen Effekts um null bleibt unentschieden. Die vorab festgelegte Bezeichnung bleibt: **nicht bestätigt**.
 3. **Information im Zustand ≠ ablesbare Information:**
-   - Der Bayes-Verlust bei N modular ist nur 0,024.
-   - Ein trainierter Nearest-Mean-Decoder verliert aber 0,30, LDA 0,16.
-   - An symmetrischen Orten erzeugt der Nearest-Mean-Decoder sogar **Scheininterferenz** (bis 0,043), die LDA und Bayes nicht zeigen. Ursache ist anisotrope, von der Zielklasse unabhängige Ablenkstreuung, die ein isotroper Decoder nicht wegrechnet.
-   - Ob ein Netz „vergisst“ oder nur „schwerer abzulesen ist“, hängt also vom Ablesenden ab.
+   - Der Bayes-Verlust bei N modular beträgt 0,0236 (2,36 Prozentpunkte).
+   - Ein trainierter Nearest-Mean-Decoder verliert aber 0,299 (29,9 Prozentpunkte), LDA 0,158 (15,75 Prozentpunkte).
+   - Diese Decoderverluste sind **echte Leistungsverluste** des jeweiligen Decoders, auch wenn die optimale Trennbarkeit weitgehend erhalten bleibt.
+   - An symmetrischen Orten verliert der Nearest-Mean-Decoder bis 0,043, während LDA und die Bayes-Grenze dort keinen Verlust zeigen. Im Sinn von „kein entsprechender Verlust der optimalen Bayes-Trennbarkeit“ ist das ein decoderbedingter Verlust; er ist aber ebenso real.
+   - **Die genaue Ursache ist durch den Vergleich allein nicht isoliert.** Anisotrope, von der Zielklasse unabhängige Ablenkstreuung ist eine naheliegende Erklärung, weil ein isotroper Decoder sie nicht wegrechnet. Endliche Trainingsdaten und die Modellklasse des Decoders sind als Beiträge aber nicht getrennt geprüft.
+   - Ob ein Netz „vergisst“ oder nur „schwerer abzulesen ist“, hängt also vom Ablesenden ab. Das ist ein konkreter Ansatz für weitere Arbeit: bessere Ausleseverfahren.
 4. **Bewahren und Aktualisieren:** Die letzte Ablenkung ist in beiden Netzen fast perfekt ablesbar. Einen Zielkonflikt behaupte ich nicht; er ist vorab als beschreibend festgelegt.
 5. **Grenzen:**
    - zwei feste 12-Knoten-Netze, ein Parametersatz, Pulse in einem Fenster aus 3 Schritten;
-   - die Unsicherheit ist Monte-Carlo-Unsicherheit über ein deterministisches Modell, keine Population von Netzen;
+   - die Unsicherheit ist Monte-Carlo-Unsicherheit über ein deterministisches Modell, keine Population von Netzen; die Intervalle quantifizieren Rechenunsicherheit;
+   - Aussagen über Pausen gelten nur für die geprüften d = 3, 4, 6;
+   - p-Werte aus 1 − Φ(Z), die als 0 ausgegeben werden, sind numerisch gerundet, nicht exakt null;
    - keine biologische und keine allgemeine KI-Aussage;
    - Ebene D ist decoderabhängig und nur beschreibend.
