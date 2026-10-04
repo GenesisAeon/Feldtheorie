@@ -34,6 +34,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
 | M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
+| M11 | Die vorhandene Erinnerung besser auslesen: [Versuchsplan](docs/M11_PLAN_AUSLESE.md) (Trainingsmenge vs. Decoder-Modellklasse, Referenz Bayes-Grenze; exakte Zerlegung der Lücke für lineare Regeln) | Plan zur Prüfung |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
