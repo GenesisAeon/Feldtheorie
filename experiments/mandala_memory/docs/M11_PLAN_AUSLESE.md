@@ -1,184 +1,213 @@
-# M11 – Die vorhandene Erinnerung besser auslesen: Versuchsplan (Entwurf zur Prüfung)
+# M11 – Die vorhandene Erinnerung besser auslesen: Versuchsplan, Fassung 2
 
-**Status:** reviewbarer **Plan**. Kein Protokoll eingefroren, keine Rechnung.
+**Status:** reviewbarer **Plan**. Kein Protokoll eingefroren, keine Referenzrechnung an Forschungsfällen, keine Forschungsrechnung.
 
-**M10 bleibt unverändert:** Netze, Bedingungen, eingefrorener Code und Ergebnisse (`m10-freeze`). M11 liest die Netze nur über die eingefrorenen M10-Funktionen.
+**M10 bleibt unverändert:** Netze, Bedingungen, eingefrorener Code und Ergebnisse (`m10-freeze`).
+
+**Fassung 2 berücksichtigt** `D:/mandala/mandala-memory-results/astra-m11-review/PLANREVIEW_49f94cf.md` (M11-R1 bis R4); die Übersicht steht am Ende.
 
 **Leitfrage (Johann, 2026-10-04):** Wie viel der Lücke zur Bayes-Grenze lässt sich durch ein besseres Ausleseverfahren schließen, während das Mandala unverändert bleibt?
 
 **Getrennt untersucht:**
-- **Trainingsmenge:** Helfen mehr Beispiele bereits Nearest-Mean und LDA?
-- **Modellklasse:** Hilft ein kleines nichtlineares Netz bei gleicher Trainingsmenge?
+- **Trainingsmenge:** Helfen mehr Beispiele Nearest-Mean und LDA?
+- **Lernverfahren:** Hilft ein kleines nichtlineares Netz (einschließlich seines Trainings- und Validierungsverfahrens) bei gleicher Trainingsmenge?
 
-**Referenz:** die Bayes-Grenze.
-
-Kennzeichnung: **[E]** bestehende Erkenntnis, **[H]** Hypothese, **[O]** offene Entscheidung (mit Vorschlag).
+**Referenz:** die Bayes-Grenze. Kennzeichnung: **[E]** Erkenntnis, **[H]** Hypothese, **[D]** beschreibende Diagnose, **[O]** Entscheidung.
 
 ## 1. Ausgangslage [E]
 
-Alle Werte aus dem freigegebenen M10-Forschungslauf, d = 4, tanh, Bewahren:
+**Quelle der Bayes-Werte:**
+- Datei: freigegebener M10-Forschungslauf `D:/mandala/mandala-memory-results/m10/research/m10-research-20261003T230058-47d41706.json`
+- SHA-256 `db114706f10a335194ed5756d25470662f8780c5f9a877a8e67811c0594cb54d`
+- d = 4, tanh, Aufgabe Bewahren
 
-| Fall | Bayes acc_B | Nearest-Mean (20 Seeds) | LDA Ledoit-Wolf | Lücke NM | Lücke LDA |
-|---|---|---|---|---|---|
-| **modular, N** (nahe Ablenkung) | 0,9116 | 0,6346 (sd 0,0036) | 0,7759 (sd 0,0061) | **0,277** | **0,136** |
-| uniform, F+ | 0,6696 | 0,6243 (sd 0,0226) | 0,6669 (sd 0,0069) | 0,045 | 0,003 |
-| modular, K0 (Kontrolle) | 0,9352 | 0,9335 | 0,9335 | 0,002 | 0,002 |
-| uniform, K0 (Kontrolle) | 0,6696 | 0,6672 | 0,6672 | 0,002 | 0,002 |
+| Fall | acc_B (M10) | Standardfehler (Monte Carlo) | NM, 20 Seeds | LDA | Lücke NM | Lücke LDA |
+|---|---|---|---|---|---|---|
+| **modular, N** | 0,911582 | 8,9·10⁻⁵ (2·10⁶ Ziehungen) | 0,6346 | 0,7759 | 0,277 | 0,136 |
+| uniform, F+ | 0,669634 | 7,8·10⁻⁵ | 0,6243 | 0,6669 | 0,045 | 0,003 |
+| modular, K0 | 0,935176 | 0 (analytisch) | 0,9335 | 0,9335 | 0,002 | 0,002 |
+| uniform, K0 | 0,669561 | 0 (analytisch) | 0,6672 | 0,6672 | 0,002 | 0,002 |
 
-Je Klasse wurden dafür 1000 Trainingsepisoden verwendet. Die Klassenverteilungen sind exakt bekannte Mischungen aus 27 Normalverteilungen (M10, Abschnitt 6.1).
+Die M10-Decoderwerte (je 1000 Trainingsepisoden je Klasse) sind **historische Schätzer**, keine M11-Referenzen. M11 zieht neue Trainings- und Testdaten. Es ist eine geplante Anschlussstudie an bekannten Fällen, keine Blindvalidierung.
 
-## 2. Kernidee: die Lücke vollständig zerlegen
+## 2. Messgrößen und Referenzen
 
-### 2.1 Exakte Populations-Trefferquote linearer Regeln
+### 2.1 Exakte Populations-Trefferquote einer festen linearen Regel
 
-Eine lineare Regel „Klasse B, wenn w·y + b > 0“ hat bei y = z(s, π) + ε mit ε ~ N(0, σ²I) die **exakte** Balanced Accuracy
+Regel: Klasse B, wenn w·y + b > 0. Bei gleichen Klassenprioren und y = z(s,π) + ε mit ε ~ N(0, σ²I) gilt für **w ≠ 0**:
 
   acc(w, b) = ½ Σ_π P(π) [ Φ(−(w·z(A,π) + b)/(σ‖w‖)) + Φ((w·z(B,π) + b)/(σ‖w‖)) ]
 
-Die Projektion ist eine Mischung aus 27 eindimensionalen Normalverteilungen. Für **jede trainierte** lineare Regel (Nearest-Mean, LDA) wird die Trefferquote damit **ohne Test-Stichprobenrauschen** bestimmt. Eine Testmenge dient nur noch als Gegenprobe.
+**Für w = 0** ist die Regel konstant, und es gilt acc = ½. Das wird explizit so behandelt.
 
-### 2.2 Referenzgrößen, vor der Rechnung aus dem Modell bestimmt und eingefroren
+Die Formel liefert die Populations-Trefferquote ohne Test-Stichprobenrauschen; offen bleibt nur die numerische Auswertung von Φ. Für trainierte lineare Decoder wird sie exakt angewandt, eine Testmenge dient als Gegenprobe.
 
-| Größe | Definition | Bestimmung |
+### 2.2 Referenzen
+
+| Größe | Definition | Status |
 |---|---|---|
-| acc_B | Bayes-Grenze | aus M10 übernommen (Monte Carlo, SE ≤ 10⁻⁴) |
-| acc_lin* | beste **lineare** Regel | numerische Maximierung von acc(w, b) aus 2.1, mit mehreren Startpunkten (LDA-, NM-Lösung, zufällige); berichtet als „beste gefundene“, eine untere Schranke für das lineare Optimum |
-| acc_NM(∞) | Nearest-Mean bei unendlich vielen Daten | Regel mit den wahren Klassenmitteln μ_s = Σ_π P(π) z(s,π), exakt aus 2.1 |
-| acc_LDA(∞) | LDA bei unendlich vielen Daten | wahre gepoolte Kovarianz σ²I + Σ_π P(π)(z − μ_s)(z − μ_s)ᵀ, Schrumpfung → 0; exakt aus 2.1 |
+| B | Bayes-Grenze: M10-Schätzer und sein Standardfehler (siehe 1) | übernommen, Monte-Carlo-unsicher |
+| acc_NM(∞), acc_LDA(∞) | lineare Regeln aus den **wahren** Momenten der Klassenmischungen: μ_s = Σ_π P(π) z(s,π); gepoolte Kovarianz σ²I + ½ Σ_s Σ_π P(π)(z − μ_s)(z − μ_s)ᵀ; Schrumpfung 0; Schwelle in der Mitte; exakt nach 2.1 | Populationsgrenzwerte der **Lernkriterien**, keine Leistungsobergrenzen endlich trainierter Regeln |
+| L_found | **numerische lineare Referenz:** beste gefundene lineare Regel (Optimierer in 2.3) | untere Schranke des unbekannten linearen Optimums L* |
 
-### 2.3 Zerlegung je Decoder D und Trainingsmenge n
+### 2.3 Optimierer für L_found (vorab festgelegt, M11-R1)
 
-  acc_B − acc_D(n) = [acc_B − acc_lin*] + [acc_lin* − acc_D(∞)] + [acc_D(∞) − acc_D(n)]
+- **Parametrisierung:** w = u/‖u‖ (Skalen-Mehrdeutigkeit entfernt), b frei. Ziel ist acc(w, b) aus 2.1.
+- **Verfahren:** `scipy.optimize.minimize` (L-BFGS-B) auf −acc mit numerischem Gradienten; `gtol` = 1e‑10, `maxiter` = 2000.
+- **Starts:**
+  - die Populations-Regeln NM(∞) und LDA(∞);
+  - 20 zufällige Richtungen aus einem festen Strom `m11-linref`, b jeweils in der Mitte der projizierten Klassenmittel.
+- **Unverlierbare Kandidaten:** L_found = max über alle Endpunkte **und** über die unoptimierten Regeln NM(∞) und LDA(∞). Damit liegt L_found nie unter den bekannten linearen Regeln.
+- **Berichtet werden:** alle Starts mit Endwert, die Spreizung der Endwerte und die Zahl der Starts innerhalb 10⁻⁴ des Besten.
 
-| Teil | Name | Bedeutung |
+### 2.4 Zerlegung: algebraisch richtig, kausal vorsichtig gelesen
+
+  B − acc_D(n) = [B − L_found] + [L_found − acc_D(∞)] + [acc_D(∞) − acc_D(n)]
+
+| Teil | Name | Lesart |
 |---|---|---|
-| acc_B − acc_lin* | **Nichtlinearitätslücke** | nur ein nichtlinearer Ausleser kann sie schließen |
-| acc_lin* − acc_D(∞) | **Kriteriumslücke** | das Anpassungskriterium des linearen Decoders (Mittelwerte bzw. Gauß-Annahme) ist nicht trefferoptimal; mehr Daten helfen nicht |
-| acc_D(∞) − acc_D(n) | **Schätzlücke** | mehr Daten helfen |
-
-**So beantwortet die Zerlegung die Leitfrage:**
-- Ist die Schätzlücke groß, fehlen vor allem Trainingsdaten.
-- Sind Kriteriums- oder Nichtlinearitätslücke groß, wertet die Modellklasse die gespeicherte Information nicht passend aus.
-
-Für das nichtlineare Netz gibt es keine geschlossene Grenze. Seine Lücke wird empirisch über n gemessen und an acc_B und acc_lin* eingeordnet.
+| B − L_found | **Abstand zur besten gefundenen linearen Regel** | **obere Schranke** der tatsächlichen Nichtlinearitätslücke B − L* (0 ≤ B − L* ≤ B − L_found), zuzüglich der Monte-Carlo-Unsicherheit von B. Kein Nachweis, dass nur nichtlineare Regeln den Abstand schließen können. Eine unvermeidbare Nichtlinearitätslücke wird nur behauptet, wenn eine belastbare obere Schranke für L* vorliegt; das ist in M11 nicht vorgesehen. |
+| L_found − acc_D(∞) | **Kriteriumsabstand** | Abstand zwischen dem Populationsgrenzwert des Lernkriteriums (Mittelwerte bzw. Gauß-Annahme) und der besten gefundenen linearen Regel |
+| acc_D(∞) − acc_D(n) | **Stichprobenabstand** | **vorzeichenbehaftet:** Einzelne trainierte Regeln können ihren Populationsgrenzwert übertreffen. Mehr Daten verbessern weder jeden Lauf noch zwingend monoton den Erwartungswert. |
 
 ## 3. Versuch
 
-### Fest aus M10 (unverändert)
+### Fest aus M10
 
 - Netze (modular c = 1/4, uniform M = 1), tanh, σ = 0,02, Fenster W = 3, p = 0,5;
-- Zustände z(s, π) aus dem eingefrorenen Kern;
-- Aufgabe **Bewahren** (A/B), d = 4.
+- Zustände aus dem eingefrorenen M10-Kern;
+- d = 4, Aufgabe **Bewahren**.
 
 ### Fälle
 
 | Fall | Rolle |
 |---|---|
-| **modular N** | Hauptfall: größte Lücke |
-| uniform F+ | Nebenfall: decoderspezifischer Verlust nur bei Nearest-Mean |
-| modular K0, uniform K0 | Kontrollen: ohne Ablenkung, Bayes-Regel linear, Lücke soll ≈ 0 sein |
+| **modular N** | Hauptfall |
+| uniform F+ | Nebenfall |
+| modular K0, uniform K0 | Kontrollen |
 
-### Faktor 1, Trainingsmenge
+Keine weiteren Pausen (O5).
 
-n je Klasse ∈ {250, 1000, 4000, 16000}, verschachtelt: die kleineren Mengen sind Präfixe derselben Ziehung je Seed.
-
-### Faktor 2, Modellklasse (bei denselben Daten je Seed und n)
+### Decoder
 
 | Decoder | Beschreibung |
 |---|---|
-| Nearest-Mean | ohne Standardisierung (wie M3–M10) |
-| LDA | Ledoit-Wolf (wie M10) |
-| **MLP** | 12 → 32 tanh → 1 (logistisch); Adam; Gewichtsabfall fest; volles Batch; frühes Stoppen auf 20 % **aus dem Trainingsbudget n** (gleiche Datenmenge wie die anderen Decoder); Eingaben mit Trainingsstatistik standardisiert (Teil der Modellklasse); feste maximale Epochenzahl; 3 Initialisierungen je Training, die beste nach **Validierung**. Umgesetzt in numpy, keine neue Installation. |
+| Nearest-Mean | ohne Standardisierung |
+| LDA | Ledoit-Wolf (beide wie M10) |
+| **MLP** | 12 → 32 tanh → 1 (logistisch), siehe 3.2 |
 
-**[O1]** MLP-Breite 32 und Hyperparameter. Vorschlag: vor dem Freeze **nur an den M10-Entwicklungsbedingungen** (Fdev/Ndev, Entwicklungs-Seeds) einstellen, dann einfrieren. Kein Nachjustieren an Forschungsdaten.
+### 3.1 Daten und Zufallsströme (M11-R3)
 
-### Daten
+- **Seeds:** 20 Forschungs-Seeds, eigener Modus `m11`; Entwicklungs-Seeds getrennt.
+- **Trainingsmengen:** **eine maximale Ziehung** je Seed und Fall mit 16 000 Paaren (Muster und Rauschen aus **getrennten** Strömen `pattern`/`noise`). n ∈ {250, 1000, 4000, 16000} sind **Präfixe** dieser Ziehung. Die Ströme hängen nicht von n ab, die Verschachtelung bleibt also erhalten.
+- **Paare:** Jedes gezogene Muster wird für eine A- und eine B-Episode verwendet; ein Paar bleibt immer zusammen.
+- **Testdaten für das MLP:** **je Seed ein unabhängiger Teststrom** mit 100 000 Paaren. Innerhalb eines Seeds ist er über n und Decoder gepaart (gleiche Testdaten), zwischen Seeds unabhängig.
+- **Lineare Decoder:** exakt nach 2.1; Gegenprobe auf derselben Testmenge.
 
-- 20 neue Seeds, eigener Modus `m11`.
-- Trainingsmuster und Rauschen kommen aus benannten Strömen (Seed, Rolle, n-Präfix); gepaart wie in M10 (jedes Muster einmal für A und B).
-- **Bewertung:**
-  - lineare Decoder exakt nach 2.1, Gegenprobe auf der Testmenge;
-  - MLP auf einer Testmenge von 100 000 Episoden je Klasse aus einem eigenen Strom (Standardfehler ≈ 0,001).
-- Der Decoder sieht nur y.
+### 3.2 MLP-Lernverfahren (vorab festgelegte Regeln, M11-R3; Werte nach O1)
 
-## 4. Hypothesen und Auswertung [H]
+- **Budget:** Aus dem Trainingsbudget n werden **klassenstratifiziert 20 % der Paare** als Validierung abgetrennt (Paare gemeinsam). Gefittet wird auf den übrigen 80 %.
+- **Standardisierung** nur mit Mittel und Streuung des Fit-Anteils.
+- **Training:** Adam, volles Batch, L2-Regularisierung, frühes Stoppen nach Validierungs-Log-Loss mit fester Geduld und fester maximaler Epochenzahl.
+- **Initialisierungen:** 3 aus dem Strom (Seed, `mlp-init`, n, k); gewählt wird die mit dem kleinsten **Validierungs**-Log-Loss. Die Regel ist für alle Fälle gleich.
+- **Keine Anpassung** an Forschungsresultaten.
 
-### Primäre Kennzahlen (Hauptfall)
+### 3.3 Unsicherheiten (getrennt behandelt, M11-R3)
 
-- G_D(n) = acc_B − acc_D(n) für D ∈ {NM, LDA, MLP} und alle n;
-- dazu die drei Lückenteile aus 2.3 für Nearest-Mean und LDA;
-- und der geschlossene Anteil (acc_D(n) − acc_LDA(1000)) / (acc_B − acc_LDA(1000)).
+| Quelle | Behandlung |
+|---|---|
+| **Trainingsziehung je Seed** | Seed-Ebene: gepaarte Seed-Differenzen, Bootstrap über ganze Seeds (2000 Wiederholungen, eigener Seed) |
+| **MLP-Testschwankung** | steckt je Seed im MLP-Wert (100 000 Paare, SE ≈ 0,001) und wird über die Seed-Streuung mit erfasst; Testströme sind über Seeds unabhängig |
+| **Bayes-Standardfehler** (übernommen) | gemeinsam für alle Seeds, im Seed-Bootstrap **nicht** enthalten. Bei absoluten Lücken und geschlossenen Anteilen wird er **separat ausgewiesen**, nicht verrechnet. Für C-Daten und C-Modell hebt sich B heraus. |
 
-Alles mit 95-%-Bootstrap über ganze Seeds.
+## 4. Hypothesen und Diagnosen
 
-### Bestätigende Kontraste (Vorschlag **[O2]**; Hauptfall, einseitig, δ = 0,01, Holm α = 0,05)
+### Bestätigende Kontraste (Hauptfall modular N; einseitig; δ = 0,01; Holm α = 0,05)
 
 | | Frage | Kontrast |
 |---|---|---|
-| **C-Daten** | Helfen mehr Beispiele dem besten linearen Decoder? | acc_LDA(16000) − acc_LDA(1000) > δ |
-| **C-Modell** | Hilft ein nichtlineares Netz bei gleicher Menge? | acc_MLP(1000) − acc_LDA(1000) > δ |
+| **C-Daten** | Helfen mehr Beispiele **LDA**? | acc_LDA(16000) − acc_LDA(1000) > δ |
+| **C-Modell** | Ist das **MLP-Lernverfahren** (Netz, Optimierung, Validierung) bei 1000 Beispielen besser als LDA? | acc_MLP(1000) − acc_LDA(1000) > δ |
 
-- **Prüfgröße:** gepaarte Seed-Differenzen; einseitiger t-Test auf (Mittel − δ) mit 19 Freiheitsgraden.
-- **Annahme:** näherungsweise normal verteilte Seed-Differenzen; berichtet zusammen mit Bootstrap-Intervallen.
-- **Wortregeln wie M10:** „bestätigt“ oder „nicht bestätigt“; „Richtung widerspricht“ nur, wenn das 95-%-Intervall ganz unter 0 liegt.
+**Testverfahren:**
+- **Daten:** gepaarte Seed-Differenzen (gleiche Trainingsziehung je Seed).
+- **Statistik:** einseitiger t-Test auf (Mittel − δ) mit 19 Freiheitsgraden.
+- **Annahmen:** Die näherungsweise Normalverteilung der Seed-Differenzen ist eine **Annahme**, keine bewiesene Kalibrierung. Bootstrap-Intervalle werden daneben berichtet.
+- **Nullvarianz-Regel:** Bei Seed-Streuung 0 gilt p = 0, wenn die mittlere Differenz > δ ist, sonst p = 1.
+- **Holm:** über beide Kontraste; berichtet werden die adjustierten p-Werte.
+- **Wortregeln wie M10:** „bestätigt“ oder „nicht bestätigt“; „Richtung widerspricht“ nur, wenn das unadjustierte 95-%-Intervall ganz unter 0 liegt.
 
-### Vorhersagen aus den Referenzen (vor dem Lauf eingefroren, deterministische Prüfung wie in M9)
+**Was C-Modell bedeutet (M11-R2):** Ein bestätigtes C-Modell zeigt, dass **dieses Lernverfahren** besser abliest als LDA. Es belegt **nicht**, dass Nichtlinearität notwendig ist; ein MLP kann LDA auch dann übertreffen, wenn das lineare Optimum B bereits erreicht.
 
-- **V1:** Trainierte Nearest-Mean- und LDA-Regeln nähern sich mit wachsendem n ihren exakten Grenzwerten acc_D(∞) an. Bei n = 16000 liegt der Mittelwert über Seeds innerhalb einer vorab festgelegten Toleranz unter acc_D(∞), Vorschlag 0,01.
-- **V2:** Ist acc_LDA(∞) ≈ acc_LDA(1000), also die Schätzlücke < δ, sagt das voraus, dass C-Daten **nicht** bestätigt wird. Das ist direkt aus den eingefrorenen Referenzen lesbar.
-- **V3:** Ist acc_B − acc_lin* > δ, gibt es Raum für C-Modell. Ob das MLP ihn bei n = 1000 nutzt, ist die **empirische** Frage.
+### Erwartungen und beschreibende Diagnosen (keine deterministischen Vorhersagen, M11-R2)
 
-### Beschreibend
+- **[D] Konvergenz:** |Mittel über Seeds von acc_D(16000) − acc_D(∞)| ≤ 0,01 für NM und LDA, berichtet mit Bootstrap-Intervall. Das ist eine empirische Konvergenzdiagnose ohne einseitige Forderung.
+- **[H qualitativ] Erwartung aus M10:** Mehr Daten werden LDA wenig helfen, weil die M10-Werte bei n = 1000 bereits stabil wirken (sd 0,006). Das ist eine qualitative Erwartung auf Basis historischer Schätzer und keine Prüfung.
+- **[D]** Zerlegung nach 2.4 für NM und LDA bei allen n, mit den Lesarten aus 2.4.
+- **[D] Geschlossener Anteil** = (Mittel acc_D(n) − Mittel acc_LDA(1000)) / (B − Mittel acc_LDA(1000)), als **Quotient der Seed-Mittel**.
+  - Intervall aus einem gemeinsamen gepaarten Bootstrap über Seeds; der Bayes-SE wird separat genannt.
+  - Ist der Nenner ≤ 0,01, wird der Anteil nicht berichtet (N/A).
+- **[D] Kontrollen K0:** Hier ist die Bayes-Regel linear. Erwartet wird L_found ≈ B, und bei großem n soll kein Decoder um mehr als δ unter B liegen. Eine Abweichung ist ein Diagnosebefund.
+- **[D] MLP-Lernkurve** über n.
 
-- alle n, Nebenfall und Kontrollen;
-- MLP-Lernkurve;
-- Testmengen-Gegenprobe der exakten Formel.
+## 5. Reihenfolge (M11-R4)
 
-**Kontrolle K0:** Dort ist die Bayes-Regel linear. Erwartet wird acc_lin* ≈ acc_B, und kein Decoder sollte bei großem n mehr als δ unter acc_B liegen. Eine Abweichung ist ein Diagnosebefund.
+1. **Plan festlegen** (diese Fassung nach Review): Referenzverfahren und Optimierer (2.2/2.3), Auswahlregeln des MLP (3.2), Hypothesen und Tests (4).
+2. **Code und Tests** an **Entwicklungsbedingungen** (M10-Entwicklungsorte Fdev/Ndev, Entwicklungs-Seeds); dort auch die MLP-Hyperparameter festlegen (O1); Laufzeitcheck. Danach **Implementierungsreview**.
+3. **Referenzverfahren und Studienentscheidungen versionieren** (Commit), **dann erst** die Referenzen an den Forschungsfällen **einmal berechnen**: acc_NM(∞), acc_LDA(∞) und L_found mit allen Starts. Dokumentiert als **modellbasierte Referenzphase**. Danach werden **keine** Hypothesen, Hyperparameter, Fälle oder Trainingsmengen mehr anhand dieser Werte gewählt oder geändert.
+4. **Einfrieren:** Referenzartefakte, endgültiges Protokoll (mit YAML- und MD-Zwilling) und Code mit Freeze-Datensatz (Protokoll-Hash, geprüfter Code-Commit, Code-Prüfsummen). Danach Smoke-Lauf und eine einmalige Trainings- und Auswertungsrunde über ein Freigabe-Gate wie in M10.
 
-## 5. Kontrollen und Prüfwerkzeuge (vor dem Freeze)
+## 6. Kontrollen und Prüfwerkzeuge (Schritt 2)
 
-- Die exakte Formel 2.1 wird an einem 1-Komponenten-Fall gegen Φ(‖Δ‖/2σ) geprüft und an Mischungen gegen eine große Monte-Carlo-Testmenge (Entwicklungsbedingungen).
-- Die Grenzwert-Regeln (NM/LDA mit wahren Momenten) werden gegen trainierte Regeln bei sehr großem n verglichen (Entwicklungsbedingungen).
-- MLP-Implementierung:
-  - Gradientenprüfung (finite Differenzen);
-  - auf K0 (zwei Normalverteilungen) erreicht sie bei großem n die Bayes-Grenze bis auf eine kleine Toleranz;
-  - deterministisch je Seed.
-- Freigabe-Gate wie M10 (erwartetes Raster aus dem Protokoll, exakte n, Ströme, Kontrollen); Zeitgrenze kooperativ; exklusive Ablage auf D:.
+- **Formel 2.1:**
+  - gegen Φ(‖Δ‖/2σ) im 1-Komponenten-Fall;
+  - gegen eine große Monte-Carlo-Testmenge an Mischungen;
+  - w = 0 ergibt ½.
+- **Populationsregeln:** gegen trainierte Regeln bei sehr großem n (Entwicklungsbedingungen).
+- **Optimierer:** Er findet an einem konstruierten Fall mit bekanntem linearem Optimum das Optimum. L_found ist nie kleiner als NM(∞) und LDA(∞).
+- **MLP:**
+  - Gradientenprüfung mit finiten Differenzen;
+  - deterministisch je Seed;
+  - Standardisierung nur aus dem Fit-Anteil;
+  - Validierung klassenstratifiziert, Paare zusammen;
+  - an K0-Entwicklungsfällen nahe B bei großem n.
+- **Daten:** Präfixe verschachtelt (die Ziehung für n = 250 ist Präfix der für 16 000); Testströme je Seed unabhängig, Trainings- und Teststrom disjunkt.
+- **Gate:** Raster aus dem Protokoll, exakte n, Ströme, Kontrollen, kooperative Zeitgrenze, exklusive Ablage auf D:.
 
-## 6. Ressourcen (Schätzung, per Laufzeitcheck an Entwicklungsbedingungen zu bestätigen)
+## 7. Ressourcen (im Laufzeitcheck zu bestätigen, M11-R4)
 
-| Teil | Umfang | Schätzung |
-|---|---|---|
-| Lineare Decoder | 20 Seeds × 4 n × 4 Fälle, exakte Bewertung | Sekunden |
-| MLP | 20 × 4 × 4 = 320 Trainings × 3 Initialisierungen, bis 32 000 Beispiele, kleines Netz, volles Batch | Ziel < 15 min, harte Grenze 30 min |
-| Referenzen | acc_lin* als numerische Optimierung über 13 Parameter, mehrere Starts, je Fall | < 1 min |
+| Teil | Umfang |
+|---|---|
+| MLP | 20 Seeds × 4 n × 4 Fälle × 3 Initialisierungen = **960 MLP-Trainings**, bis 25 600 Fit-Beispiele, Bewertung der 320 ausgewählten Modelle auf je 200 000 Testepisoden |
+| Lineare Decoder | 320 Fits, exakte Bewertung |
+| Referenzen | 4 Fälle × 22 Starts L-BFGS-B über 13 Parameter |
 
-RAM < 1 GiB.
-
-## 7. Einfrieren
-
-Wie M10:
-1. Plan-Review und Entscheidungen [O];
-2. Protokoll mit YAML- und MD-Zwilling, **einschließlich der eingefrorenen Referenzgrößen aus 2.2**;
-3. Code und Tests nur an Entwicklungsbedingungen;
-4. Freeze-Datensatz mit Protokoll-Hash, geprüftem Code-Commit und Code-Prüfsummen;
-5. Smoke-Lauf, dann ein einmaliger Forschungslauf;
-6. Auswertung über das Gate.
+- **Ziel:** < 15 min, harte Grenze 30 min (kooperativ geprüft); RAM < 1 GiB.
+- Liegt der Laufzeitcheck darüber, wird **vor** dem Freeze entschieden, nicht während der Forschungsrunde.
 
 ## 8. Grenzen
 
-- **Synthetische Modellstudie:** dieselben zwei 12-Knoten-Netze und M10-Bedingungen; eine nichtlineare Modellklasse (kleines MLP) mit festen Hyperparametern. Andere Architekturen sind nicht abgedeckt.
-- **acc_lin* ist die beste gefundene lineare Regel**, eine untere Schranke des linearen Optimums. Die Nichtlinearitätslücke ist damit höchstens überschätzt.
-- **MLP-Ergebnisse sind empirisch.** Die exakte Bewertung gilt nur für lineare Regeln.
-- **Keine biologische oder allgemeine KI-Aussage.** Es geht um das Auslesen **dieses** Zustands.
+- **Synthetische Modellstudie** mit zwei festen Netzen und bekannten M10-Fällen.
+- **Ein nichtlineares Lernverfahren**, feste Hyperparameter.
+- **L_found** ist eine untere Schranke des linearen Optimums; B − L_found ist eine obere Schranke der Nichtlinearitätslücke.
+- **Exakt bewertet** werden nur lineare Regeln; MLP-Werte sind empirisch.
+- **Keine biologische oder allgemeine KI-Aussage.**
 
-## 9. Offene Entscheidungen
+## 9. Entscheidungen
 
-| # | Frage | Vorschlag |
+| # | Frage | Stand |
 |---|---|---|
-| O1 | MLP-Architektur und Hyperparameter | 12 → 32 → 1 tanh, an Entwicklungsbedingungen festgelegt |
-| O2 | Bestätigende Familie | C-Daten und C-Modell, δ = 0,01, Holm |
-| O3 | Toleranz für V1 | 0,01 |
-| O4 | Trainingsmengen | {250, 1000, 4000, 16000} je Klasse |
-| O5 | Nebenfälle | uniform F+ beschreibend; weitere Pausen erst in einer späteren Runde |
+| O1 | MLP | 12 → 32 → 1 tanh als Ausgangspunkt. Epochen, Lernrate, L2, Geduld werden **nur an Entwicklungsbedingungen** festgelegt und vor der Referenzphase versioniert. |
+| O2 | Bestätigend | C-Daten (LDA) und C-Modell (MLP-Verfahren gegen LDA), δ = 0,01, Holm |
+| O3 | Konvergenztoleranz | 0,01, **beschreibend**, kein Bestehensversprechen |
+| O4 | Trainingsmengen | 250 / 1000 / 4000 / 16000 je Klasse |
+| O5 | Fälle | Hauptfall, Nebenfall uniform F+, K0-Kontrollen; keine weiteren Pausen |
+
+## Änderungen gegenüber Fassung 1 (Review M11-R1 bis R4)
+
+| Punkt | Änderung |
+|---|---|
+| R1 | L_found als **numerische lineare Referenz** (untere Schranke von L*); B − L_found als **obere Schranke** der Nichtlinearitätslücke; w = 0 ⇒ ½; Optimierer vorab festgelegt (Parametrisierung, Starts, Abbruch, unverlierbare Kandidaten NM(∞)/LDA(∞)) |
+| R2 | Stichprobenabstand vorzeichenbehaftet; V1 als beschreibende Konvergenzdiagnose; V2 als qualitative Erwartung aus M10, nicht deterministisch geprüft; V3 entfällt. C-Daten heißt „Helfen mehr Beispiele LDA?“; C-Modell vergleicht das MLP-Lernverfahren mit LDA, nicht isoliert die Modellklasse. |
+| R3 | eine maximale Ziehung je Seed mit n-Präfixen und getrennten Muster- und Rauschströmen; MLP-Validierung stratifiziert mit Paaren zusammen; Standardisierung nur aus dem Fit-Anteil; feste Initialisierungs- und Auswahlregel; Teststrom je Seed unabhängig; t-Annahme benannt; Nullvarianz-Regel und Holm-adjustierte p; Bayes-SE separat; geschlossener Anteil als Quotient der Mittel mit N/A-Regel |
+| R4 | ausdrückliche Reihenfolge: Verfahren festlegen → Entwicklung und Implementierungsreview → Verfahren versionieren → Referenzen einmal berechnen (modellbasierte Referenzphase, keine Auswahl danach) → Freeze → Smoke → einmalige Runde; M10-Bayes-Werte mit Datei, SHA, Fall und SE referenziert |
