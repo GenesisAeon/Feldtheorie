@@ -35,6 +35,9 @@ REQUIRED = os.environ.get("MANDALA_LAB_REQUIRED") == "1"
 
 # --- explicit dependency table (node ids relative to this folder) ---------------
 SCF = {
+    # service run ids (explore needs the kernel networks)
+    "test_m6_serve.py::test_identical_requests_with_a_frozen_clock_get_distinct_ids",
+    "test_m6_serve.py::test_forced_id_collision_never_overwrites_and_logs_nothing",
     # M11 optimiser/reference phase/runner/gate: scipy and the kernel (SCF network construction)
     "test_m11_kernel.py::test_optimiser_finds_a_known_linear_optimum",
     "test_m11_kernel.py::test_l_found_never_below_the_population_rules_on_a_mixture",

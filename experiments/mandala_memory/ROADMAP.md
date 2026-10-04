@@ -1269,3 +1269,26 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - **Gradientenprüfung:** Ohne sie fängt die Parameterprüfung derselben Epoche den Fall ab. Der Test verlangt jetzt die Erkennung am Gradienten selbst.
 
 **Zeitbudget, entschieden:** Johann hat am 2026-10-04 vor der Referenzphase **Option A** gewählt. Die Grenze liegt bei **5400 s** verstrichener Zeit. Alle geplanten Trainingspunkte (n bis 16000) und alle drei MLP-Initialisierungen bleiben; nur das Budget ändert sich, kein Verfahren. Im Protokoll steht das unter `resources.time_limit.decision`. Die Laufzeitschätzung von etwa 68 min ist eine Hochrechnung aus einem Entwicklungs-Seed, keine garantierte Gesamtdauer.
+
+## Service-Fix nach `FOLLOWUP_10cd638` (M6/M8-Dienst, kein Forschungscode)
+
+**Befund (Astra, P2):** Run-IDs der explorativen Läufe waren gekürzte Inhalts-Hashes einschließlich `time.time()`. Zwei identische Anfragen zum gleichen Zeitpunkt bekamen dieselbe ID. Bei `explore` wurde die Ergebnisdatei überschrieben (2 Protokollzeilen, 1 Datei); bei `lab` ging die zweite Anfrage mit `FileExistsError` verloren.
+
+**Reproduziert** mit eingefrorener Uhr (Kopie von Astras Skript, Ausgabe im Temp-Ordner): Beide Fälle traten genau so auf.
+
+**Korrektur** (`serve.py`):
+- Jeder explorative Lauf bekommt eine vom Zeitstempel und vom Inhalt unabhängige ID `<art>-<uuid4[:16]>`.
+- Zeitstempel und Inhalts-Hash (`content_sha256`) bleiben Metadaten.
+- Beide Endpunkte schreiben über dieselbe Funktion: zuerst die Datei **exklusiv**, dann die Protokollzeile.
+- Eine erzwungene Kollision überschreibt nichts und hinterlässt keine Protokollzeile; sie meldet einen klaren Fehler.
+
+**Tests:**
+- Je Endpunkt: identische Anfragen mit eingefrorener Uhr ⇒ verschiedene IDs, 2 Dateien, 2 passende Protokollzeilen.
+- Erzwungene ID-Kollision ⇒ erste Datei bitgleich, nur 1 Protokollzeile.
+- Astras Hinweis aufgenommen: Die wirkungslose `or True`-Assertion in `test_m11_kernel.py` ist durch einen echten Test für ein fehlendes Artefakt ersetzt.
+
+**Ergebnisse:**
+- Pflichtlauf **341/341**, 0 übersprungen.
+- Linux ohne SCF 171 bestanden, mit SCF 326 bestanden.
+- Mutationsprüfung **90/90**, mit 2 neuen Mutanten (zeitabhängige ID, überschreibendes `explore`).
+- Geändert sind nur `serve.py`, Tests und das Mutationswerkzeug; **kein** M10- oder M11-Forschungscode, kein Protokoll.

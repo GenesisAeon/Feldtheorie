@@ -198,7 +198,9 @@ def test_r5_bound_references_release_and_arbitrary_references_do_not(bound):
     assert any(r.startswith("references_values_invalid") for r in ev.release(res, bad)["reasons"])
     res2 = dict(res, references_sha256="0" * 64)
     assert "result_not_bound_to_frozen_references_or_m10" in ev.release(res2, refs)["reasons"]
-    assert "references_artifact_missing" in ev.references_problems(refs, PROTO, {}) or True
+    mref_missing = mref.RESEARCH_REFERENCES
+    mref_missing.unlink()                                          # the frozen artifact is gone (tmp copy only)
+    assert ev.references_problems(refs, PROTO, {}) == ["references_artifact_missing"]
 
 
 def test_r5_changed_m10_protocol_is_detected_before_any_state(monkeypatch):

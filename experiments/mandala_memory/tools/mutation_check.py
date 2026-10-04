@@ -85,8 +85,8 @@ MUTANTS = [
      "    last = (below[0] - 1 if below[0] > 0 else None) if below else len(bayes) - 1", ["test_m8_lab.py"]),
     ("lab_curve_ignores_readout", "lab.py", "    sep = [float(np.linalg.norm(H @ dx[d + 1])) for d in range(D_MAX + 1)]",
      "    sep = [float(np.linalg.norm(dx[d + 1])) for d in range(D_MAX + 1)]", ["test_m8_lab.py"]),
-    ("lab_log_overwrites", "serve.py", "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"x\", encoding=\"utf-8\") as fh:",
-     "    with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"w\", encoding=\"utf-8\") as fh:", ["test_m8_lab.py"]),
+    ("lab_log_overwrites", "serve.py", "        with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"x\", encoding=\"utf-8\") as fh:",
+     "        with (EXPLORE_DIR / f\"{payload['run_id']}.json\").open(\"w\", encoding=\"utf-8\") as fh:", ["test_m8_lab.py"]),
     # --- M9a closed-form predictions ---
     ("predict_mode_D_wrong_ratio", "predict.py", "    lam_D = None if M == 1 else g_ * (1 - c * N / (N - n))",
      "    lam_D = None if M == 1 else g_ * (1 - c * N / n)", ["test_m9_predict.py"]),
@@ -185,6 +185,13 @@ MUTANTS = [
      "    candidates = [r[\"end_acc\"] for r in runs if r[\"start\"].startswith(\"random\")]", ["test_m11_kernel.py"]),
     ("m11_reference_phase_unversioned", "m11_references.py", "    if not git_clean(VERSIONED):", "    if False:",
      ["test_m11_kernel.py"]),
+    # --- review FOLLOWUP_10cd638: service run ids ---
+    ("service_run_id_from_clock", "serve.py", "    return f\"{prefix}-{uuid.uuid4().hex[:16]}\"", "    return f\"{prefix}-{int(time.time())}\"",
+     ["test_m6_serve.py"]),
+    ("service_explore_overwrites", "serve.py", "        _log(payload, \"explore\", {\"request\": payload[\"request\"]})",
+     "        (EXPLORE_DIR / f\"{payload['run_id']}.json\").write_text(json.dumps(payload) + \"\\n\")\n"
+     "        with (EXPLORE_DIR / \"protocol.jsonl\").open(\"a\") as fh:\n            fh.write(json.dumps({\"run_id\": payload[\"run_id\"]}) + \"\\n\")",
+     ["test_m6_serve.py"]),
     # --- review IMPLEMENTIERUNGSREVIEW_c864678 (M11-R5 .. R9) ---
     ("r5_gate_ignores_references_content", "m11_evaluate.py", "    if refs != on_disk:", "    if False:", ["test_m11_kernel.py"]),
     # retargeted: in m11_run the check is doubled (settings() and the result record, both before any state) -> equivalent;
