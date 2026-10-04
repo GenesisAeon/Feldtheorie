@@ -1236,3 +1236,36 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 | C MLP bei n = 16000 mit 1 statt 3 Initialisierungen | Auswahlregel für diesen Punkt anders | ≈ 31 min |
 
 **Mein Vorschlag:** A, weil sich nur das Zeitbudget ändert und kein Verfahren. Die Entscheidung steht noch aus.
+
+## Followup-Review-Fix `IMPLEMENTIERUNGSREVIEW_c864678` (M11-R5 bis R9)
+
+**Review:** `D:/mandala/mandala-memory-results/astra-m11-review/IMPLEMENTIERUNGSREVIEW_c864678.md`. Ergebnis: noch keine Freigabe für die Referenzphase. Astras Gegenbeispiele habe ich **zuerst reproduziert**, mit einer Kopie des Skripts; die Sentinel-Datei lag dabei nur in meinem Temp-Ordner.
+- willkürliche Referenzen (B = 0,51) → `released: true`;
+- ungültige MLP-Metadaten → keine Beanstandung;
+- vorhandenes Artefakt → `compute` lief trotzdem;
+- NaN-Gradienten → Training endet still mit Erfolg.
+
+| Befund | Korrektur | Regression (`tests/test_m11_kernel.py`) |
+|---|---|---|
+| **R5** Referenzen und M10 nicht gebunden | Das Gate verlangt, dass die ausgewerteten Referenzen **inhaltlich gleich** dem eingefrorenen Artefakt sind, dass dessen SHA-256 im Freeze-Datensatz steht, dass sie sich auf den Protokollstand zur Referenzzeit beziehen und dass die Werte endlich und plausibel sind (L_found ≥ NM(∞), LDA(∞)). Das Ergebnis trägt Referenz-Hash und M10-Bindung. **Vor jeder Zustandsrechnung** (Entwicklung, Referenzphase, Smoke, Research) läuft `m10_run.require_frozen()`, das M10-Protokoll und M10-Code prüft. Fremde Referenzdateien nimmt die CLI nur für Entwicklungsergebnisse an. | Gebundene Referenzen ⇒ freigegeben; Astras willkürliche Referenzen, NaN-Werte und fremder Referenz-Hash im Ergebnis ⇒ nicht freigegeben. Ein verändertes M10-Protokoll wird erkannt, **bevor** ein Zustand berechnet wird; der Zustandskern ist im Test durch einen Platzhalter ersetzt, der bei Aufruf scheitert. |
+| **R6** NaN im MLP still erfolgreich | `MLPDivergence` bei jeder nicht-endlichen Eingabe, Skalierung, jedem Verlust, Gradienten, Parameter oder Validierungsverlust. Vorab festgelegte Regel im Protokoll: Der Lauf endet mit `failed`, ohne Wiederholung. Reguläres frühes Stoppen bleibt unberührt. | Isoliert (Astras Fall ⇒ `MLPDivergence` in Epoche 2) **und durch den echten Runner** (⇒ `failed`, keine Freigabe) |
+| **R7** MLP-Verfahren im Gate unvollständig | `fit_mlp` dokumentiert vollständig: Hyperparameter; je Initialisierung Index, Strom, Validierungsverlust, Epochen; Auswahl nach kleinstem Validierungsverlust, bei Gleichstand der kleinste Index; ganzzahlige Umfänge und Split-Regel. Geprüft wird **im Runner und im Gate**, dazu `mlp_hyper` auf Ergebnisebene. | Vollständiger synthetischer Referenzdatensatz; negativ: geänderte Hyperparameter (ergebnisweit und je Zeile), Astras Auswahl `init = 99` mit NaN und −1, fremder Init-Strom, NaN-Verlust, Epochen −1, fehlende Initialisierungen, falscher Index |
+| **R8** Referenzphase erst beim Schreiben gesperrt | Nur über `research_reference_phase()`. Diese prüft **vor jeder Rechnung**: Artefakt, Claim oder Fehlerprotokoll vorhanden? Verfahren committet? M10 eingefroren? Danach exklusiver Claim; ein Fehler wird protokolliert, ohne stille Wiederholung. Ein direkter `compute("research")`-Aufruf wird abgewiesen. | Mit einem Platzhalter für den Rechenkern, **ohne** echte Referenzphase: Artefakt, Claim oder Fehlerprotokoll vorhanden, unversioniert, M10 nicht eingefroren, direkter Aufruf ⇒ Kern **nicht** aufgerufen. Erfolgreiche Phase einmal, danach gesperrt; ein Fehler wird protokolliert und sperrt dann ebenfalls. |
+| **R9** Intervall für den geschlossenen Anteil fehlte | Gepaarter Bootstrap über ganze Seeds (gleiche Seeds für Decoder und LDA(1000)), Quotient je Replikat. Ungültige Replikate (Nenner ≤ 0,01) werden gezählt; ist schon der Punkt-Nenner ≤ 0,01, gilt N/A. B ist fest, sein Standardfehler wird separat genannt. Intervalle für absolute Lücken und den Stichprobenabstand sind als „bedingt auf feste Referenzen“ benannt. | Gegen eine unabhängige gepaarte Rechnung im Test (bit-genau), N/A-Regel und Zählung ungültiger Replikate |
+
+**Zusätzlich (Hinweis zur Frist):** Die Frist wird jetzt in **jeder MLP-Epoche** geprüft; die Überschreitung beträgt höchstens etwa eine Epoche bzw. einen Bewertungsschritt. Getestet: Abbruch vor der sechsten Epoche.
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Astras Gegenbeispiele erneut | alle abgewiesen bzw. abgebrochen |
+| Pflicht-Labortestlauf | **337 bestanden, 0 übersprungen**, auch nach der letzten Protokolländerung |
+| Linux ohne SCF | 171 bestanden |
+| Linux mit SCF | 322 bestanden |
+
+**Mutationsprüfung: 88/88**, mit 9 neuen Mutanten zu R5–R9 und zur Epochenfrist. Zwei Mutanten überlebten zunächst, beide **äquivalent** durch eine zweite Schutzschicht:
+- **M10-Prüfung im Runner:** Sie läuft doppelt, in `settings()` und beim Anlegen des Ergebnisdatensatzes, beide Male vor jeder Zustandsrechnung. Der Mutant ist auf die einzige ungeschützte Stelle in `m11_references.compute` umgezielt.
+- **Gradientenprüfung:** Ohne sie fängt die Parameterprüfung derselben Epoche den Fall ab. Der Test verlangt jetzt die Erkennung am Gradienten selbst.
+
+**Zeitbudget:** Der Laufzeitcheck schätzt etwa 68 min für 20 Seeds bei einer Protokollgrenze von 30 min. Empfohlen ist Option A (90 min, alle Punkte behalten). Die **Entscheidung steht aus** und muss vor der Referenzphase im Protokoll stehen.

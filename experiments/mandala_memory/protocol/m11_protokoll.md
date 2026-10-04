@@ -3,7 +3,7 @@
 Trilayer: `m11_protokoll.json` (maßgeblich), `m11_protokoll.yaml` (Strukturzwilling), diese Datei (Erzählung); erzeugt mit `tools/make_trilayer_twins.py`.
 
 - **Status:** candidate (step 2: development); NOT frozen; research references not computed
-- **SHA-256 des JSON** (LF-normiert): `4a0a586572bf258b6ba42b227cef09a09709ee5cd6d115ddfb663b23e420b5a9`
+- **SHA-256 des JSON** (LF-normiert): `f72a1639d33d9464b9735226075b2600d43c57051d74c1dc52236236a088edf3`
 - **Plan:** [`../docs/M11_PLAN_AUSLESE.md`](../docs/M11_PLAN_AUSLESE.md) (Fassung 2). Das Mandala ist unverändert (eingefrorene M10-Funktionen), d = 4, Aufgabe Bewahren.
 
 | Fall | Netz | Bedingung | Rolle |

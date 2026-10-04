@@ -169,6 +169,17 @@ def predict_linear(w, b, Y) -> np.ndarray:
 
 
 # --- plan 3.2: MLP learning procedure ------------------------------------------
+class MLPDivergence(MemoryLabError):
+    """A non-finite value occurred while training the MLP (review M11-R6). Pre-specified
+    rule: the whole run fails (no retry, no skipping, no silent fallback)."""
+
+
+def _check_finite(what: str, *arrays) -> None:
+    for a in arrays:
+        if not np.all(np.isfinite(a)):
+            raise MLPDivergence(f"non-finite {what}")
+
+
 class MLP:
     """12 -> H tanh -> 1 logistic; BCE + L2 (weights only); Adam, full batch; early
     stopping on validation log-loss (patience, max epochs); standardisation from the
@@ -204,21 +215,28 @@ class MLP:
         _, logit = self._forward(X, p or self.p)
         return float(np.mean(np.maximum(logit, 0) - logit * y + np.log1p(np.exp(-np.abs(logit)))))
 
-    def fit(self, Xfit, yfit, Xval, yval, rng) -> Dict:
+    def fit(self, Xfit, yfit, Xval, yval, rng, deadline=None) -> Dict:
+        _check_finite("input", Xfit, yfit, Xval, yval)
         self.mean, self.std = Xfit.mean(axis=0), Xfit.std(axis=0) + 1e-12
+        _check_finite("standardisation", self.mean, self.std)
         Xf, Xv = (Xfit - self.mean) / self.std, (Xval - self.mean) / self.std
         self._init(rng, Xf.shape[1])
         m = {k: np.zeros_like(v) for k, v in self.p.items()}
         v2 = {k: np.zeros_like(v) for k, v in self.p.items()}
         best, best_p, since, epoch = math.inf, None, 0, 0
         for epoch in range(1, self.max_epochs + 1):
-            _, grad = self.loss_and_grad(Xf, yfit)
+            if deadline is not None:                          # cooperative time limit, checked every epoch
+                deadline()
+            loss, grad = self.loss_and_grad(Xf, yfit)
+            _check_finite(f"training loss or gradient in epoch {epoch}", np.array([loss]), *grad.values())
             for k in self.p:
                 m[k] = 0.9 * m[k] + 0.1 * grad[k]
                 v2[k] = 0.999 * v2[k] + 0.001 * grad[k] ** 2
                 mh, vh = m[k] / (1 - 0.9 ** epoch), v2[k] / (1 - 0.999 ** epoch)
                 self.p[k] = self.p[k] - self.lr * mh / (np.sqrt(vh) + 1e-8)
+            _check_finite(f"parameters in epoch {epoch}", *self.p.values())
             vl = self.val_loss(Xv, yval)
+            _check_finite(f"validation loss in epoch {epoch}", np.array([vl]))
             if vl < best - 1e-7:
                 best, best_p, since = vl, {k: x.copy() for k, x in self.p.items()}, 0
             else:
@@ -239,19 +257,24 @@ def validation_split(n_pairs: int) -> np.ndarray:
     return (np.arange(n_pairs) % 5) == 4
 
 
-def fit_mlp(Y, labels, pair, n_pairs, hyper: Dict, mode: str, seed: int, case: str) -> Tuple[MLP, Dict]:
+def fit_mlp(Y, labels, pair, n_pairs, hyper: Dict, mode: str, seed: int, case: str, deadline=None) -> Tuple[MLP, Dict]:
+    """All inits are trained; the selected one has the smallest validation log-loss,
+    ties -> smallest index (review M11-R7). Full metadata for the gate."""
     val_pairs = validation_split(n_pairs)
     is_val = val_pairs[pair]
-    best_model, best_info, infos = None, None, []
+    models, infos = [], []
     for k in range(hyper["inits"]):
-        rng = stream(mode, seed, "mlp-init", case, n_pairs, k)[0]
+        rng, key = stream(mode, seed, "mlp-init", case, n_pairs, k)
         model = MLP(hyper["hidden"], hyper["lr"], hyper["l2"], hyper["patience"], hyper["max_epochs"])
-        info = model.fit(Y[~is_val], labels[~is_val].astype(float), Y[is_val], labels[is_val].astype(float), rng)
-        infos.append(info)
-        if best_info is None or info["best_val_loss"] < best_info["best_val_loss"]:
-            best_model, best_info = model, {**info, "init": k}
-    return best_model, {"selected": best_info, "inits": infos, "n_fit_pairs": int((~val_pairs).sum()),
-                        "n_val_pairs": int(val_pairs.sum())}
+        info = model.fit(Y[~is_val], labels[~is_val].astype(float), Y[is_val], labels[is_val].astype(float), rng, deadline)
+        models.append(model)
+        infos.append({"index": k, "stream": list(key), "best_val_loss": float(info["best_val_loss"]), "epochs": int(info["epochs"])})
+    sel = min(range(len(infos)), key=lambda k: (infos[k]["best_val_loss"], k))
+    return models[sel], {"hyper": dict(hyper), "inits": infos, "selected": {"init": sel, "best_val_loss": infos[sel]["best_val_loss"],
+                                                                           "epochs": infos[sel]["epochs"]},
+                         "split_rule": "every 5th pair -> validation", "n_fit_pairs": int((~val_pairs).sum()),
+                         "n_val_pairs": int(val_pairs.sum()), "n_fit_episodes": int((~is_val).sum()),
+                         "n_val_episodes": int(is_val.sum()), "n_val_class_B": int((is_val & (labels == 1)).sum())}
 
 
 __all__ = ["exact_accuracy", "population_moments", "population_rules", "linear_reference", "draw_pairs", "episodes",

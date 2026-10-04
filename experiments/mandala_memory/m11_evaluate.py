@@ -72,6 +72,8 @@ def completeness(result: Dict, proto: Dict, mode_key: str = "research") -> List[
         problems.append("n_grid_differs_from_protocol")
     if result.get("test_pairs") != proto["test_pairs"]:
         problems.append("test_pairs_differ_from_protocol")
+    if result.get("mlp_hyper") != expected_hyper(proto):                 # review M11-R7 (result-level record)
+        problems.append("mlp_hyper_differs_from_protocol")
     expected = {(s, c, n) for s in seeds for c in cases for n in grid}
     keys = [(r.get("seed"), r.get("case"), r.get("n")) for r in result.get("rows", [])]
     if len(keys) != len(set(keys)):
@@ -92,8 +94,9 @@ def completeness(result: Dict, proto: Dict, mode_key: str = "research") -> List[
         if r.get("n_test_pairs") != proto["test_pairs"]:
             problems.append(f"wrong_test_size:{key}")
         fit = (r.get("mlp") or {}).get("fit") or {}
-        if fit.get("n_fit_pairs") != n - n // 5 or fit.get("n_val_pairs") != n // 5 or len(fit.get("inits", [])) != proto["decoders"]["mlp"]["inits"]:
-            problems.append(f"wrong_mlp_budget:{key}")
+        problems += [f"{p}:{key}" for p in mlp_procedure_problems(fit, proto, smode, s, c, n)]
+        if not (type(r.get("n_test_pairs")) is int):
+            problems.append(f"wrong_test_size:{key}")
         vals = [(r.get("nm") or {}).get("exact"), (r.get("nm") or {}).get("test"), (r.get("lda") or {}).get("exact"),
                 (r.get("lda") or {}).get("test"), (r.get("mlp") or {}).get("test")]
         if not all(isinstance(v, float) and math.isfinite(v) and 0.0 <= v <= 1.0 for v in vals):
@@ -101,7 +104,82 @@ def completeness(result: Dict, proto: Dict, mode_key: str = "research") -> List[
     return problems
 
 
-def release(result: Dict) -> Dict:
+def expected_hyper(proto: Dict) -> Dict:
+    m = proto["decoders"]["mlp"]
+    return {**m["hyperparameters"], "hidden": m["hidden"], "inits": m["inits"]}
+
+
+def _is_int(x) -> bool:
+    return type(x) is int
+
+
+def mlp_procedure_problems(fit: Dict, proto: Dict, smode: str, seed: int, case: str, n: int) -> List[str]:
+    """Review M11-R7: the frozen MLP procedure must be fully documented and consistent:
+    hyperparameters, every init (index, stream, finite validation loss, valid epochs), the
+    selected init = argmin validation loss (ties -> smallest index), exact integer budgets."""
+    out = []
+    hp = expected_hyper(proto)
+    if fit.get("hyper") != hp:
+        out.append("mlp_hyper_differs")
+    inits = fit.get("inits")
+    if not isinstance(inits, list) or len(inits) != hp["inits"]:
+        return out + ["mlp_inits_missing"]
+    for k, it in enumerate(inits):
+        if not isinstance(it, dict) or it.get("index") != k or not _is_int(it.get("index")):
+            out.append("mlp_init_index_invalid")
+            continue
+        if it.get("stream") != list(mr.stream(smode, seed, "mlp-init", case, n, k)[1]):
+            out.append("mlp_init_foreign_stream")
+        vl, ep = it.get("best_val_loss"), it.get("epochs")
+        if not (isinstance(vl, float) and math.isfinite(vl) and vl >= 0):
+            out.append("mlp_init_val_loss_invalid")
+        if not (_is_int(ep) and 1 <= ep <= hp["max_epochs"]):
+            out.append("mlp_init_epochs_invalid")
+    sel = fit.get("selected") or {}
+    try:
+        want = min(range(len(inits)), key=lambda k: (inits[k]["best_val_loss"], k))
+        if (sel.get("init") != want or not _is_int(sel.get("init")) or sel.get("best_val_loss") != inits[want]["best_val_loss"]
+                or sel.get("epochs") != inits[want]["epochs"]):
+            out.append("mlp_selection_inconsistent")
+    except (KeyError, TypeError):
+        out.append("mlp_selection_inconsistent")
+    nv = n // 5
+    want_sizes = {"n_fit_pairs": n - nv, "n_val_pairs": nv, "n_fit_episodes": 2 * (n - nv), "n_val_episodes": 2 * nv,
+                  "n_val_class_B": nv}
+    if any(not _is_int(fit.get(k)) or fit.get(k) != v for k, v in want_sizes.items()) or fit.get("split_rule") != "every 5th pair -> validation":
+        out.append("wrong_mlp_budget")
+    return out
+
+
+def references_problems(refs: Dict, proto: Dict, rec: Dict) -> List[str]:
+    """Review M11-R5: the references actually used must BE the frozen artifact (content and
+    hash), refer to the protocol state at reference time and be finite and plausible."""
+    out = []
+    try:
+        on_disk = json.loads(mref.RESEARCH_REFERENCES.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return ["references_artifact_missing"]
+    if refs != on_disk:
+        out.append("references_differ_from_frozen_artifact")
+    if mref.sha(mref.RESEARCH_REFERENCES) != rec.get("references_sha256"):
+        out.append("references_artifact_not_frozen")
+    if refs.get("case_set") != "research" or set(refs.get("cases", {})) != {c["name"] for c in proto["cases"]}:
+        out.append("references_case_grid_invalid")
+    if refs.get("protocol_sha256") != rec.get("protocol_sha256_at_references"):
+        out.append("references_protocol_mismatch")
+    for name, r in (refs.get("cases") or {}).items():
+        vals = [r.get(k) for k in ("B", "L_found", "acc_nm_inf", "acc_lda_inf")]
+        if not all(isinstance(v, float) and math.isfinite(v) and 0.5 <= v <= 1.0 for v in vals):
+            out.append(f"references_values_invalid:{name}")
+            continue
+        if not (isinstance(r.get("B_se"), float) and math.isfinite(r["B_se"]) and r["B_se"] >= 0):
+            out.append(f"references_values_invalid:{name}")
+        if r["L_found"] < max(r["acc_nm_inf"], r["acc_lda_inf"]) - 1e-12:
+            out.append(f"references_L_found_below_population_rules:{name}")
+    return out
+
+
+def release(result: Dict, refs: Dict = None) -> Dict:
     from experiments.mandala_memory import m11_run
 
     proto = mref.load_protocol()
@@ -114,6 +192,9 @@ def release(result: Dict) -> Dict:
         rec = m11_run.require_frozen("release")
         if result.get("code_sha256") != rec["code_sha256"] or result.get("protocol_sha256") != rec["protocol_sha256"]:
             reasons.append("result_not_from_frozen_code_or_protocol")
+        if result.get("references_sha256") != rec.get("references_sha256") or result.get("m10_binding") != rec.get("m10_binding"):
+            reasons.append("result_not_bound_to_frozen_references_or_m10")
+        reasons += references_problems(refs if refs is not None else {}, proto, rec)
     except Exception as e:
         reasons.append(f"freeze_invalid: {e}")
     if any(v is not None for v in result.get("overrides", {}).values()):
@@ -139,6 +220,26 @@ def confirmatory(result: Dict, proto: Dict) -> Dict:
             "assumption": cf["test"]}
 
 
+def closed_share(dec_vals, lda1000_vals, B: float, reps: int = 2000, seed: int = 2026100412, min_denominator: float = 0.01) -> Dict:
+    """Ratio of seed means (mean D - mean LDA1000) / (B - mean LDA1000) with a PAIRED
+    whole-seed bootstrap (same resampled seeds for D and LDA1000; review M11-R9). B is
+    held fixed; its MC SE is reported separately. Replicates with a denominator <= 0.01
+    are invalid and counted; a point denominator <= 0.01 gives N/A."""
+    d, l = np.asarray(dec_vals, float), np.asarray(lda1000_vals, float)
+    denom = B - l.mean()
+    if denom <= min_denominator:
+        return {"estimate": None, "reason": f"denominator {denom:.4f} <= {min_denominator}: N/A"}
+    rng = np.random.Generator(np.random.PCG64(np.random.SeedSequence([seed])))
+    idx = rng.integers(0, d.size, size=(reps, d.size))
+    num_b, den_b = d[idx].mean(axis=1) - l[idx].mean(axis=1), B - l[idx].mean(axis=1)
+    ok = den_b > min_denominator
+    ratios = num_b[ok] / den_b[ok]
+    return {"estimate": float((d.mean() - l.mean()) / denom),
+            "bootstrap95": [float(np.quantile(ratios, 0.025)), float(np.quantile(ratios, 0.975))] if ratios.size else None,
+            "invalid_replicates": int((~ok).sum()), "replicates": reps,
+            "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"}
+
+
 def descriptive(result: Dict, refs: Dict, proto: Dict) -> Dict:
     T = table(result)
     seeds = sorted({r["seed"] for r in result["rows"]})
@@ -159,10 +260,13 @@ def descriptive(result: Dict, refs: Dict, proto: Dict) -> Dict:
                     inf = ref[f"acc_{dec}_inf"]
                     item["decomposition"] = {"B_minus_L_found (upper bound of nonlinearity gap)": B - Lf,
                                              "criterion_L_found_minus_inf": Lf - inf,
-                                             "sampling_inf_minus_n (signed)": inf - m}
+                                             "sampling_inf_minus_n (signed)": inf - m,
+                                             "sampling_ci95_conditional_on_references": [inf - item["bootstrap95"][1], inf - item["bootstrap95"][0]],
+                                             "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"}
                     item["convergence_abs_diff_to_inf"] = abs(m - inf) if n == max(result["n_grid"]) else None
-                denom = B - lda1000
-                item["closed_share_vs_LDA1000"] = (m - lda1000) / denom if denom > 0.01 else None
+                item["gap_to_B_ci95_conditional_on_B"] = [B - item["bootstrap95"][1], B - item["bootstrap95"][0]]
+                lda_vals = [T[(s, case, 1000)]["lda"]["exact"] for s in seeds]
+                item["closed_share_vs_LDA1000"] = closed_share(vals, lda_vals, B)
                 rows[f"{dec}@{n}"] = item
         out[case] = {"B": B, "B_se": ref["B_se"], "L_found": Lf, "acc_nm_inf": ref["acc_nm_inf"],
                      "acc_lda_inf": ref["acc_lda_inf"], "rows": rows}
@@ -171,7 +275,7 @@ def descriptive(result: Dict, refs: Dict, proto: Dict) -> Dict:
 
 def evaluate(result: Dict, refs: Dict) -> Dict:
     proto = mref.load_protocol()
-    rel = release(result)
+    rel = release(result, refs)
     try:
         conf = confirmatory(result, proto)
     except KeyError as e:
@@ -190,7 +294,10 @@ def main(argv=None) -> int:
     ap.add_argument("result", type=Path)
     ap.add_argument("--references", type=Path, default=mref.RESEARCH_REFERENCES)
     a = ap.parse_args(argv)
-    ev = evaluate(json.loads(a.result.read_text(encoding="utf-8")), json.loads(a.references.read_text(encoding="utf-8")))
+    result = json.loads(a.result.read_text(encoding="utf-8"))
+    if result.get("mode") != "dev" and a.references.resolve() != mref.RESEARCH_REFERENCES.resolve():
+        raise SystemExit("smoke/research results are evaluated only with the frozen reference artifact")
+    ev = evaluate(result, json.loads(a.references.read_text(encoding="utf-8")))
     print(json.dumps({k: ev[k] for k in ("mode", "release", "confirmatory_label")}, indent=1))
     return 0
 

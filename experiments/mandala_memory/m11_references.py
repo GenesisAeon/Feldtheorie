@@ -30,6 +30,8 @@ from experiments.mandala_memory.core import MemoryLabError, is_drive_c
 HERE = Path(__file__).resolve().parent
 PROTOCOL = HERE / "protocol" / "m11_protokoll.json"
 RESEARCH_REFERENCES = HERE / "protocol" / "m11_references.json"
+RESEARCH_CLAIM = HERE / "protocol" / "m11_references.claim.json"       # exclusive claim of the reference phase
+RESEARCH_FAILURE = HERE / "protocol" / "m11_references.failed.json"    # transparent abort record (no silent retry)
 VERSIONED = ("m11_readout.py", "m11_references.py", "m11_run.py", "m11_evaluate.py", "protocol/m11_protokoll.json")
 
 
@@ -63,7 +65,26 @@ def git_clean(paths) -> bool:
     return out.returncode == 0 and out.stdout.strip() == ""
 
 
-def compute(case_set: str) -> Dict:
+def require_m10_frozen() -> Dict:
+    """The Mandala must be the frozen M10 one: M10 protocol AND code hashes (review M11-R5).
+    Called before any state computation of M11."""
+    from experiments.mandala_memory import m10_run
+
+    rec = m10_run.require_frozen("m11")
+    return {"m10_protocol_sha256": m10_run.protocol_sha256(), "m10_reviewed_code_commit": rec["reviewed_code_commit"],
+            "m10_freeze_record_sha256": sha(m10_run.FREEZE_RECORD)}
+
+
+def compute(case_set: str, *, _claimed: bool = False) -> Dict:
+    """Reference computation. The research case set is ONLY reachable through
+    research_reference_phase() (claim + preconditions, review M11-R8)."""
+    if case_set == "research" and not _claimed:
+        raise MemoryLabError("research references only via research_reference_phase() (claimed, versioned, M10 frozen)")
+    m10_binding = require_m10_frozen()
+    return _compute_cases(case_set, m10_binding)
+
+
+def _compute_cases(case_set: str, m10_binding: Dict) -> Dict:
     proto = load_protocol()
     m10proto = mt.load_protocol()
     pats = mt.patterns()
@@ -79,7 +100,7 @@ def compute(case_set: str) -> Dict:
     out = {"schema": "mandala-memory-m11-references-v1", "case_set": case_set, "created_unix": time.time(),
            "protocol_sha256": sha(PROTOCOL), "code_sha256": {f: sha(HERE / f) for f in VERSIONED if f.endswith(".py")},
            "git_head": subprocess.run(["git", "-C", str(HERE), "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip(),
-           "cases": {}}
+           "m10_binding": m10_binding, "cases": {}}
     for case in cases:
         z = case_states(case, m10proto, conditions, pats, d)
         rules = mr.population_rules(z, probs, sigma)
@@ -103,6 +124,29 @@ def write_exclusive(path: Path, payload: Dict) -> None:
         fh.write(json.dumps(payload, indent=1, ensure_ascii=False, allow_nan=False) + "\n")
 
 
+def research_reference_phase() -> Dict:
+    """The one-time model-based reference phase for the research cases. Preconditions are
+    checked BEFORE any computation: no artifact, no claim, M11 procedures committed, M10
+    frozen. Then an exclusive claim is written; on failure a failure record is written and
+    the claim stays (no silent retry)."""
+    if RESEARCH_REFERENCES.exists():
+        raise MemoryLabError("reference phase already completed: artifact exists")
+    if RESEARCH_CLAIM.exists() or RESEARCH_FAILURE.exists():
+        raise MemoryLabError("reference phase already started or failed: claim/failure record exists (no silent retry)")
+    if not git_clean(VERSIONED):
+        raise MemoryLabError("reference phase refused: M11 procedures/protocol are not committed (M11-R4)")
+    m10_binding = require_m10_frozen()
+    head = subprocess.run(["git", "-C", str(HERE), "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
+    write_exclusive(RESEARCH_CLAIM, {"started_unix": time.time(), "git_head": head, "protocol_sha256": sha(PROTOCOL), **m10_binding})
+    try:
+        payload = compute("research", _claimed=True)
+    except Exception as e:
+        write_exclusive(RESEARCH_FAILURE, {"failed_unix": time.time(), "error": f"{type(e).__name__}: {e}"})
+        raise
+    write_exclusive(RESEARCH_REFERENCES, payload)
+    return payload
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", choices=("dev", "research"), required=True)
@@ -111,15 +155,17 @@ def main(argv=None) -> int:
     if a.cases == "research":
         if a.out is not None:
             raise SystemExit("research references are always written to protocol/m11_references.json")
-        if not git_clean(VERSIONED):
-            raise SystemExit("reference phase refused: M11 procedures/protocol are not committed (M11-R4)")
+        try:
+            payload = research_reference_phase()
+        except MemoryLabError as e:
+            raise SystemExit(str(e))
         out = RESEARCH_REFERENCES
     else:
         if a.out is None:
             raise SystemExit("--out is required for dev references")
         out = a.out
-    payload = compute(a.cases)
-    write_exclusive(out, payload)
+        payload = compute("dev")
+        write_exclusive(out, payload)
     print(json.dumps({"written": str(out), "cases": {k: {x: v[x] for x in ("B", "acc_nm_inf", "acc_lda_inf", "L_found")}
                                                      for k, v in payload["cases"].items()}}, indent=1))
     return 0

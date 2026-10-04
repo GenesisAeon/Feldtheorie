@@ -72,7 +72,7 @@
     "validation": "every 5th pair of the n-prefix (20 %, class-stratified, pairs together), taken from the same budget n"
     "standardisation": "mean/std of the fit part only"
     "inits": 3
-    "init_selection": "smallest validation log-loss"
+    "init_selection": "smallest validation log-loss; ties -> smallest init index"
     "hyperparameter_selection_result":
       "rule": "grid lr in {0.003, 0.01, 0.03} x l2 in {1e-5, 1e-4, 1e-3}, patience 100, max_epochs 3000, 1 init; smallest mean VALIDATION log-loss over the development cases and n in {1000, 16000}, dev seeds; no test data"
       "chosen":
@@ -93,6 +93,8 @@
         "0.03/1e-03": 0.43421
       "note": "the chosen point lies at the EDGE of the pre-stated grid (largest lr and l2); kept because the rule was fixed in advance; no further search"
       "data": "development cases and seeds 901-903 only; validation log-loss only; no test data"
+    "divergence_rule": "any non-finite input, standardisation value, training loss, gradient, parameter or validation loss -> MLPDivergence -> the run ends with status failed (no retry, no skipping, no fallback); regular early stopping restores the best VALID epoch"
+    "recorded_metadata": "hyperparameters; per init index, stream key, best validation loss, epochs; selected init; integer fit/validation sizes; split rule; checked in the runner AND in the gate"
 "linear_reference":
   "seed": 2026100411
   "n_random": 20
@@ -122,7 +124,7 @@
     "not_rejected": "nicht bestaetigt"
     "contrary": "Richtung widerspricht, only if the unadjusted 95% interval lies entirely below 0"
 "descriptive":
-  ["convergence diagnostic |mean_seed acc_D(16000) - acc_D(inf)| <= 0.01 for NM and LDA (no one-sided requirement)", "decomposition B - acc_D(n) = [B - L_found] + [L_found - acc_D(inf)] + [acc_D(inf) - acc_D(n)] with the readings of plan 2.4 (last term signed)", "closed share = (mean acc_D(n) - mean acc_LDA(1000)) / (B - mean acc_LDA(1000)), ratio of seed means, paired whole-seed bootstrap; B SE reported separately; N/A if the denominator <= 0.01", "MLP learning curve over n; secondary case and K0 controls (K0: decoders within delta of B at large n expected; deviation = diagnostic finding)", "test-set cross-check of the exact linear accuracies"]
+  ["convergence diagnostic |mean_seed acc_D(16000) - acc_D(inf)| <= 0.01 for NM and LDA (no one-sided requirement)", "decomposition B - acc_D(n) = [B - L_found] + [L_found - acc_D(inf)] + [acc_D(inf) - acc_D(n)] with the readings of plan 2.4 (last term signed)", "MLP learning curve over n; secondary case and K0 controls (K0: decoders within delta of B at large n expected; deviation = diagnostic finding)", "test-set cross-check of the exact linear accuracies", "closed share = ratio of seed means with a PAIRED whole-seed bootstrap (the same resampled seeds for D and LDA1000); replicates with denominator <= 0.01 are invalid and counted; point denominator <= 0.01 -> N/A; B fixed, its MC SE reported separately", "intervals of absolute gaps and of the signed sampling term are conditional on the fixed references (named so)"]
 "uncertainty":
   "training_draw": "seed level (paired seed differences, whole-seed bootstrap 2000 reps, seed 2026100412)"
   "mlp_test": "inside each seed value (100 000 test pairs), captured by the seed spread; test streams independent across seeds"
@@ -130,7 +132,9 @@
 "resources":
   "time_limit":
     "seconds": 1800
-    "kind": "elapsed wall-clock (time.monotonic), checked cooperatively before every unit and before completion"
+    "kind": "elapsed wall-clock (time.monotonic), checked cooperatively before every unit, in every MLP epoch and before completion"
+    "max_overshoot": "about one MLP epoch or one evaluation step (no guaranteed bound)"
+    "decision_pending": "runtime check estimated about 68 min for 20 seeds; options A (raise to 5400 s, keep all points), B, C; to be decided by Johann before the reference phase"
   "ram": "planned < 1 GiB, measured, not enforced"
   "output": "D:/mandala/mandala-memory-results/m11/<mode>/, exclusive writes, C: refused"
 "phases":
@@ -154,3 +158,7 @@
       "network": "uniform"
       "condition": "K0"
   "note": "K0 controls are identical in development and research (no distractor) and are used for the hyperparameter choice; they carry no hypothesis"
+"binding":
+  "m10": "before ANY state computation (dev, reference phase, smoke, research) m10_run.require_frozen() must pass (M10 protocol + code hashes); the M10 binding is recorded in references, results and the freeze record"
+  "references": "the evaluated references must equal the frozen artifact protocol/m11_references.json (content), whose SHA-256 is in the freeze record; values finite and plausible; otherwise not released"
+  "reference_phase": "only via m11_references.research_reference_phase(): refuses if artifact, claim or failure record exists, if M11 procedures/protocol are not committed or M10 is not frozen -- all BEFORE computing; exclusive claim file; a failure writes protocol/m11_references.failed.json (no silent retry)"

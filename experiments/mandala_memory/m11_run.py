@@ -51,7 +51,8 @@ def require_frozen(mode: str) -> Dict:
         raise MemoryLabError(f"{mode} run blocked: freeze record or reference artifact missing")
     rec = json.loads(FREEZE_RECORD.read_text(encoding="utf-8"))
     if (rec.get("protocol_sha256") != FROZEN_PROTOCOL_SHA256 or not rec.get("reviewed_code_commit")
-            or rec.get("references_sha256") != mref.sha(mref.RESEARCH_REFERENCES)):
+            or rec.get("references_sha256") != mref.sha(mref.RESEARCH_REFERENCES)
+            or rec.get("m10_binding") != mref.require_m10_frozen()):
         raise MemoryLabError(f"{mode} run blocked: freeze record does not match protocol/references")
     if rec.get("code_sha256") != code_sha256():
         raise MemoryLabError(f"{mode} run blocked: code differs from the frozen code")
@@ -59,6 +60,7 @@ def require_frozen(mode: str) -> Dict:
 
 
 def settings(proto: Dict, mode: str) -> Dict:
+    mref.require_m10_frozen()                 # review M11-R5: the Mandala must be the frozen M10 one, before any state
     m10 = mt.load_protocol()
     if mode in ("smoke", "research"):
         require_frozen(mode)
@@ -106,6 +108,8 @@ def run(mode: str, out_dir: Optional[Path], *, seeds: Optional[List[int]] = None
     sigma = m10["observation"]["sigma"]
     t0 = time.perf_counter()
     result = {"schema": SCHEMA, "mode": mode, "protocol_sha256": mref.sha(mref.PROTOCOL), "frozen_protocol_sha256": FROZEN_PROTOCOL_SHA256,
+              "m10_binding": mref.require_m10_frozen(),
+              "references_sha256": mref.sha(mref.RESEARCH_REFERENCES) if mode != "dev" else None,
               "code_sha256": code_sha256(), "overrides": overrides, "seeds": seeds, "n_grid": n_grid, "test_pairs": n_test,
               "mlp_hyper": hp, "time_limit_s": limit, "status": "running", "failures": [], "rows": []}
     try:
@@ -129,7 +133,13 @@ def run(mode: str, out_dir: Optional[Path], *, seeds: Optional[List[int]] = None
                         row[name] = {"exact": mr.exact_accuracy(w, b, z, probs, sigma),
                                      "test": mr.balanced_accuracy(tl, mr.predict_linear(w, b, T))}
                     t1 = time.perf_counter()
-                    model, info = mr.fit_mlp(Y, lab, pair, n, hp, st["stream_mode"], seed, case["name"])
+                    model, info = mr.fit_mlp(Y, lab, pair, n, hp, st["stream_mode"], seed, case["name"], deadline=deadline)
+                    if hyper is None:                    # review M11-R7: the procedure is checked in the runner too
+                        from experiments.mandala_memory.m11_evaluate import mlp_procedure_problems
+
+                        bad = mlp_procedure_problems(info, proto, st["stream_mode"], seed, case["name"], n)
+                        if bad:
+                            raise MemoryLabError(f"MLP procedure deviates for seed {seed}, {case['name']}, n {n}: {bad}")
                     row["mlp"] = {"test": mr.balanced_accuracy(tl, model.predict(T)), "fit": info,
                                   "seconds": time.perf_counter() - t1}
                     result["rows"].append(row)
