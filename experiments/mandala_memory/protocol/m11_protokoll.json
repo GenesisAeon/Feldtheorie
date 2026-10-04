@@ -1,6 +1,6 @@
 {
  "schema": "mandala-memory-m11-protocol-v1",
- "status": "candidate (step 2: development); NOT frozen; research references not computed",
+ "status": "FROZEN 2026-10-05 after IMPLEMENTIERUNGSREVIEW_c864678 / FOLLOWUP_10cd638 and the one-time reference phase; reviewed code commit 10cd6389e97ec40ce704c04519fff9e0afbdf02e (M11 code unchanged up to a622d43); reference artifact protocol/m11_references.json; freeze record protocol/m11_freeze.json",
  "plan": "docs/M11_PLAN_AUSLESE.md (Fassung 2) after PLANREVIEW_49f94cf (M11-R1..R4)",
  "question": "How much of the gap to the Bayes bound can a better readout close while the Mandala stays unchanged?",
  "mandala": "unchanged: M10 frozen functions m10_task.network/readout_states (tag m10-freeze), tanh, sigma 0.02, W 3, p 0.5",
@@ -238,5 +238,10 @@
   "m10": "before ANY state computation (dev, reference phase, smoke, research) m10_run.require_frozen() must pass (M10 protocol + code hashes); the M10 binding is recorded in references, results and the freeze record",
   "references": "the evaluated references must equal the frozen artifact protocol/m11_references.json (content), whose SHA-256 is in the freeze record; values finite and plausible; otherwise not released",
   "reference_phase": "only via m11_references.research_reference_phase(): refuses if artifact, claim or failure record exists, if M11 procedures/protocol are not committed or M10 is not frozen -- all BEFORE computing; exclusive claim file; a failure writes protocol/m11_references.failed.json (no silent retry)"
+ },
+ "reference_phase_record": {
+  "computed_with_protocol_sha256": "7dd73fccf4893fa3fd07adcdd2b172637ff5f5e8a6e2091c605333ce7dd4d68b",
+  "git_head": "a622d43182be4ab7be40922ca27b2e348b0fec6e",
+  "note": "references computed ONCE before this status change; no hypothesis, hyperparameter, case or n changed afterwards"
  }
 }

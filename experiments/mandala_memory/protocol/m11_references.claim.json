@@ -1,0 +1,8 @@
+{
+ "started_unix": 1791152196.007485,
+ "git_head": "a622d43182be4ab7be40922ca27b2e348b0fec6e",
+ "protocol_sha256": "7dd73fccf4893fa3fd07adcdd2b172637ff5f5e8a6e2091c605333ce7dd4d68b",
+ "m10_protocol_sha256": "84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345",
+ "m10_reviewed_code_commit": "6f2acfd2a8a153c8f48bc50194cbcf651a510758",
+ "m10_freeze_record_sha256": "6e761982a9b0ab58ad19c1ddc911e7cbb9e9e435953fb43666dda27a36fa02fb"
+}

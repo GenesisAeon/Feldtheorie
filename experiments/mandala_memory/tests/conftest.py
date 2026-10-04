@@ -58,6 +58,7 @@ SCF = {
     "test_m11_kernel.py::test_r8_unversioned_or_m10_not_frozen_blocks_before_compute",
     "test_m11_kernel.py::test_r8_one_phase_then_locked_and_failure_is_recorded",
     "test_m11_kernel.py::test_r9_closed_share_bootstrap_paired_and_na_rules",
+    "test_m11_kernel.py::test_m11_freeze_is_consistent",
     # M10 kernel tests (network construction via SCF budget_adjacency; split check via SCF)
     "test_m10_kernel.py::test_a1_state_identity_and_negative_control",
     "test_m10_kernel.py::test_a2_structural_and_negative_control",

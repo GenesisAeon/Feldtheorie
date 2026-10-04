@@ -36,7 +36,10 @@ def test_l_found_never_below_the_population_rules_on_a_mixture():
     assert ref["n_within_1e-4_of_best"] >= 1 and ref["label"].startswith("numerical linear reference")
 
 
-def test_reference_phase_refuses_unversioned_procedures(monkeypatch):
+def test_reference_phase_refuses_unversioned_procedures(monkeypatch, tmp_path):
+    # never touch the real reference paths (the real artifact exists after the reference phase)
+    for name in ("RESEARCH_REFERENCES", "RESEARCH_CLAIM", "RESEARCH_FAILURE"):
+        monkeypatch.setattr(mref, name, tmp_path / f"{name}.json")
     monkeypatch.setattr(mref, "git_clean", lambda paths: False)
     with pytest.raises(SystemExit, match="not committed"):
         mref.main(["--cases", "research"])
@@ -55,7 +58,8 @@ def test_dev_references_and_the_bayes_source_check(monkeypatch):
 
 
 @pytest.mark.parametrize("mode", ["smoke", "research"])
-def test_smoke_and_research_blocked_before_the_freeze(mode):
+def test_smoke_and_research_blocked_before_the_freeze(mode, monkeypatch):
+    monkeypatch.setattr(m11_run, "FROZEN_PROTOCOL_SHA256", None)                 # the state before the M11 freeze
     with pytest.raises(MemoryLabError, match="not frozen"):
         m11_run.run(mode, None, write=False)
 
@@ -139,8 +143,8 @@ def test_gate_completeness_on_synthetic_data():
         x = synthetic()
         fn(x)
         assert any(p.startswith(reason) for p in ev.completeness(x, PROTO)), reason
-    rel = ev.release(synthetic())
-    assert not rel["released"] and any(r.startswith("freeze_invalid") for r in rel["reasons"])
+    rel = ev.release(synthetic())                               # not from the frozen code/references, no references passed
+    assert not rel["released"] and any(r.startswith(("freeze_invalid", "result_not_from_frozen")) for r in rel["reasons"])
 
 
 def test_t_test_holm_and_zero_variance_rules():
@@ -331,3 +335,19 @@ def test_r9_closed_share_bootstrap_paired_and_na_rules():
     assert small["estimate"] is None and "N/A" in small["reason"]
     edge = ev.closed_share(mlp, lda, lda.mean() + 0.0105)        # some bootstrap replicates fall below the threshold
     assert edge["invalid_replicates"] > 0
+
+
+# --- the real M11 freeze -----------------------------------------------------------
+def test_m11_freeze_is_consistent():
+    """Constant, protocol, reference artifact, M10 binding and code agree; smoke/research allowed without patching."""
+    rec = json.loads(m11_run.FREEZE_RECORD.read_text(encoding="utf-8"))
+    refs = json.loads(mref.RESEARCH_REFERENCES.read_text(encoding="utf-8"))
+    assert m11_run.FROZEN_PROTOCOL_SHA256 == mref.sha(mref.PROTOCOL) == rec["protocol_sha256"]
+    assert rec["references_sha256"] == mref.sha(mref.RESEARCH_REFERENCES)
+    assert rec["protocol_sha256_at_references"] == refs["protocol_sha256"] != rec["protocol_sha256"]
+    assert rec["reviewed_code_commit"] == "10cd6389e97ec40ce704c04519fff9e0afbdf02e"
+    assert rec["code_sha256"] == m11_run.code_sha256() and rec["m10_binding"] == mref.require_m10_frozen() == refs["m10_binding"]
+    assert m11_run.require_frozen("research") == rec
+    assert ev.references_problems(refs, PROTO, rec) == []
+    for mode in ("smoke", "research"):
+        assert m11_run.settings(PROTO, mode)["cases"] == PROTO["cases"]

@@ -26,7 +26,10 @@ from experiments.mandala_memory import m11_references as mref
 from experiments.mandala_memory.core import MemoryLabError, is_drive_c
 from experiments.mandala_memory.runner import peak_rss_bytes, write_exclusive
 
-FROZEN_PROTOCOL_SHA256: Optional[str] = None          # set in the M11 freeze commit
+# M11 freeze 2026-10-05: the ONLY code change of the freeze commit relative to the reviewed M11 code
+# (10cd6389e97ec40ce704c04519fff9e0afbdf02e; unchanged up to a622d43). The code hashes in protocol/m11_freeze.json
+# were computed AFTER this line was set.
+FROZEN_PROTOCOL_SHA256: Optional[str] = "c25c9cdd7697c45609fd7abbaf6889a66fbaa012f3798420d59a96481846911e"
 FREEZE_RECORD = mref.HERE / "protocol" / "m11_freeze.json"
 CODE_FILES = ("m11_readout.py", "m11_references.py", "m11_run.py", "m11_evaluate.py", "m10_task.py", "m10_decoders.py",
               "core.py", "predict.py", "data.py")
