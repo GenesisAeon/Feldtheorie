@@ -194,10 +194,11 @@
  },
  "resources": {
   "time_limit": {
-   "seconds": 1800,
+   "seconds": 5400,
    "kind": "elapsed wall-clock (time.monotonic), checked cooperatively before every unit, in every MLP epoch and before completion",
    "max_overshoot": "about one MLP epoch or one evaluation step (no guaranteed bound)",
-   "decision_pending": "runtime check estimated about 68 min for 20 seeds; options A (raise to 5400 s, keep all points), B, C; to be decided by Johann before the reference phase"
+   "decision": "option A chosen by Johann on 2026-10-04 before the reference phase: 90 min elapsed wall-clock; all planned training points (n up to 16000) and all three MLP inits kept; only the budget changed, no procedure",
+   "runtime_check": "development cases, one seed at full per-seed volume: 205 s per seed, about 68 min for 20 seeds (an extrapolation, not a guaranteed total)"
   },
   "ram": "planned < 1 GiB, measured, not enforced",
   "output": "D:/mandala/mandala-memory-results/m11/<mode>/, exclusive writes, C: refused"

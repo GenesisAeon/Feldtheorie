@@ -1268,4 +1268,4 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - **M10-Prüfung im Runner:** Sie läuft doppelt, in `settings()` und beim Anlegen des Ergebnisdatensatzes, beide Male vor jeder Zustandsrechnung. Der Mutant ist auf die einzige ungeschützte Stelle in `m11_references.compute` umgezielt.
 - **Gradientenprüfung:** Ohne sie fängt die Parameterprüfung derselben Epoche den Fall ab. Der Test verlangt jetzt die Erkennung am Gradienten selbst.
 
-**Zeitbudget:** Der Laufzeitcheck schätzt etwa 68 min für 20 Seeds bei einer Protokollgrenze von 30 min. Empfohlen ist Option A (90 min, alle Punkte behalten). Die **Entscheidung steht aus** und muss vor der Referenzphase im Protokoll stehen.
+**Zeitbudget, entschieden:** Johann hat am 2026-10-04 vor der Referenzphase **Option A** gewählt. Die Grenze liegt bei **5400 s** verstrichener Zeit. Alle geplanten Trainingspunkte (n bis 16000) und alle drei MLP-Initialisierungen bleiben; nur das Budget ändert sich, kein Verfahren. Im Protokoll steht das unter `resources.time_limit.decision`. Die Laufzeitschätzung von etwa 68 min ist eine Hochrechnung aus einem Entwicklungs-Seed, keine garantierte Gesamtdauer.
