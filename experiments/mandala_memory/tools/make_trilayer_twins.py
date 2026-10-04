@@ -102,6 +102,63 @@ Die beiden Zwillinge sind aus dem JSON erzeugt (`tools/make_trilayer_twins.py`).
 """ + "\n".join(rows) + "\n"
 
 
+def m10_markdown(p: dict, sha: str) -> str:
+    c = p["conditions"]
+    rows = "\n".join(f"| {k} | " + ("–" if v is None else f"{v['X']} / {v['Y']} | {v['amplitude']}") + (" | –" if v is None else "") + " |"
+                     for k, v in c.items())
+    cf = p["confirmatory"]
+    return f"""# M10-Protokoll „Erinnerung unter Ablenkung“ (Narrativ-Zwilling)
+
+Trilayer nach Feldtheorie `AGENTS.md`:
+
+| Schicht | Datei | Rolle |
+|---|---|---|
+| JSON | `m10_protokoll.json` | maßgebliche Fassung |
+| YAML | `m10_protokoll.yaml` | inhaltsgleicher Strukturzwilling |
+| Markdown | diese Datei | Erzählung |
+
+Die beiden Zwillinge sind aus dem JSON erzeugt (`tools/make_trilayer_twins.py`).
+
+- **Status:** {p['status']}
+- **SHA-256 des JSON** (LF-normiert): `{sha}`
+
+Plan und Begründungen: [`../docs/M10_PLAN_ABLENKUNG.md`](../docs/M10_PLAN_ABLENKUNG.md) (Fassung 2).
+
+**Netze:**
+- modular: M = 3, c = 1/4;
+- uniform: M = 1;
+- beide mit N = 12, γ = 0,8, ℓ = 0,5, Zielknoten 0/4, a = 0,6, ohne Hebb;
+- lineare Zwillinge zur Prüfung von A2/A3.
+
+**Ablauf:**
+- Zielreiz, Ruhe, dann ein Ablenkfenster W = 3 direkt vor der Ablesung (p = 0,5 je Schritt, X/Y je ½), danach Ablesung x_(d+1) mit σ = 0,02;
+- Pausen d ∈ {{3, 4, 6}}, primär d = 4.
+
+| Bedingung | Orte X / Y | Amplitude |
+|---|---|---|
+{rows}
+
+**Ebene B** (Bayes, explizite Mischungs-Likelihood über 27 Fenstermuster):
+- n_MC = {p['level_B']['n_mc']:,} Ziehungen je Schätzung, Blöcke zu {p['level_B']['block']:,}, eigener Strom je Schätzung;
+- Aufgabe „letzter Kanal“: bedingt auf ≥ 1 Puls, Klassen X/Y gleich wahrscheinlich, K0 = N/A.
+
+**Ebene D** (trainierte Decoder, **nur beschreibend**):
+- {len(p['level_D']['seeds'])} Seeds, je {p['level_D']['n_train_per_class']} Trainings- und {p['level_D']['n_test_per_class']} Testepisoden je Klasse;
+- Nearest-Mean und LDA (Ledoit-Wolf).
+
+**Bestätigend:**
+- {', '.join(cf['family'])} auf Ebene B bei d = {cf['delay']};
+- einseitig, δ = {cf['delta']}, Holm α = {cf['holm']['alpha']};
+- Z aus Monte-Carlo-Standardfehlern, SE = 0-Regel wie im JSON.
+
+**Diagnosen:**
+- A1 (Zustandsidentität) und A2 strukturell sind deterministisch.
+- A2/A3 numerisch sind **statistische Alarme** (4 SE), keine sicheren Programmfehler; es gibt keine Wiederholung bis zum Bestehen.
+
+**Ausschluss, Ressourcen, Smoke- und Entwicklungseinstellungen:** siehe JSON.
+"""
+
+
 def main() -> int:
     raw = SRC.read_bytes().replace(b"\r\n", b"\n")
     sha = hashlib.sha256(raw).hexdigest()
@@ -110,7 +167,16 @@ def main() -> int:
         "# YAML twin of m9_frozen_predictions.json (generated; the JSON is authoritative)\n" + yaml_dump(fr) + "\n",
         encoding="utf-8", newline="\n")
     (PROTOCOL / "m9_frozen_predictions.md").write_text(markdown(fr, sha), encoding="utf-8", newline="\n")
-    print(json.dumps({"json_sha256": sha, "written": ["m9_frozen_predictions.yaml", "m9_frozen_predictions.md"]}))
+    m10 = PROTOCOL / "m10_protokoll.json"
+    raw10 = m10.read_bytes().replace(b"\r\n", b"\n")
+    sha10 = hashlib.sha256(raw10).hexdigest()
+    p10 = json.loads(raw10.decode("utf-8"))
+    (PROTOCOL / "m10_protokoll.yaml").write_text(
+        "# YAML twin of m10_protokoll.json (generated; the JSON is authoritative)\n" + yaml_dump(p10) + "\n",
+        encoding="utf-8", newline="\n")
+    (PROTOCOL / "m10_protokoll.md").write_text(m10_markdown(p10, sha10), encoding="utf-8", newline="\n")
+    print(json.dumps({"m9_json_sha256": sha, "m10_json_sha256": sha10,
+                      "written": ["m9_frozen_predictions.yaml", "m9_frozen_predictions.md", "m10_protokoll.yaml", "m10_protokoll.md"]}))
     return 0
 
 

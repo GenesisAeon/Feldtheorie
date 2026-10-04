@@ -25,6 +25,9 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 | M9: Vorhersagen einfrieren (einmalig, schon geschehen) | `PYTHONPATH=. PY -m experiments.mandala_memory.m9_freeze` | schreibt exklusiv `protocol/m9_frozen_predictions.json` |
 | M9: Prüfung | `PYTHONPATH=. PY -m experiments.mandala_memory.m9_evaluate` | ≈ 5 s → `D:/mandala/mandala-memory-results/m9/` |
 | M9: Handkontrollen | `PY experiments/mandala_memory/controls/m9_hand_controls.py` | exakte Brüche |
+| M10: Entwicklungslauf / Laufzeitcheck | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_run --mode dev --out-dir D:/mandala/mandala-memory-results/m10/dev` | Entwicklungseinstellungen, kein Teil der Studie |
+| M10: Auswertung einer Ergebnisdatei | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_evaluate <ergebnis.json>` | bestätigend nur nach Freeze + vollständigem Forschungslauf |
+| M10: Forschungslauf | `… m10_run --mode research …` | **gesperrt**, bis das Protokoll eingefroren ist |
 | Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
 | Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
 
@@ -98,6 +101,14 @@ Die Herleitung steht in [docs/M9_HERLEITUNG.md](docs/M9_HERLEITUNG.md) (eingefro
   - 28/28 Decoder-Prüfungen bestehen.
 - **Die naive q-Regel versagt:** Sie sagt in allen 14 Fällen mit Erinnerung eine zu lange Dauer voraus, meist ein Vielfaches.
 - **Abschottung (kleines c) hilft nur unter drei Bedingungen:** Die Reize kommen in **verschiedenen** Modulen an, das Ablesen sieht den Modul-Unterschied, und Austausch zwischen Modulen ist nicht gefragt. Wer Information zwischen Modulen austauschen will (großes c), verkürzt genau diese Erinnerung.
+
+## Ergebnis der dritten Runde (M10): Erinnerung unter Ablenkung
+
+Vorab eingefroren: Protokoll `84d2b523…`, geprüfter Code `6f2acfd`, Tag `m10-freeze`. Ausgewertet wurde ein einziger Forschungslauf; Details stehen in der [ROADMAP](ROADMAP.md) im Abschnitt M10.
+
+- **Bestätigt (H-N):** Ablenkpulse **in den Eingangsmodulen** senken die ideale Trefferquote des modularen Netzes um 2,4 Prozentpunkte (0,935 → 0,912 bei d = 4). Beim gleich budgetierten uniformen Netz ist kein Verlust erkennbar (Unterschied 0,024 > Mindesteffekt 0,01). Die Hypothese war durch die Symmetrien des linearen Zwillings motiviert; bewiesen ist die Störungsfreiheit nur für diesen linearen Zwilling, für das tanh-Netz ist das Ergebnis eine empirische Bestätigung.
+- **Nicht bestätigt (H-F+):** Bei starker Ablenkung im unbeteiligten Modul ist auf der Bayes-Ebene in beiden Netzen innerhalb der Monte-Carlo-Auflösung kein Verlust erkennbar. Das heißt nicht bewiesene Wirkungslosigkeit, sondern nur: weit unter der vorab gewählten Mindestdifferenz.
+- **Beschreibend:** Trainierte Decoder verlieren unter naher Ablenkung im modularen Netz viel mehr als die Bayes-Grenze: Nearest-Mean 29,9, LDA 15,75 gegen Bayes 2,36 Prozentpunkte. Das sind echte Leistungsverluste der Decoder, obwohl die optimale Trennbarkeit weitgehend erhalten bleibt. Die genaue Ursache ist nicht isoliert. Ansatz für weitere Arbeit: bessere Ausleseverfahren. Die letzte Ablenkung ist in beiden Netzen fast perfekt erkennbar.
 
 ## Bekannte Grenzen
 

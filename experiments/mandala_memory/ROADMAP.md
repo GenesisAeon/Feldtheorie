@@ -33,7 +33,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9b | Zurückgehaltene Kombinationen ziehen, Vorhersagen einfrieren (Commit vor jeder Kernrechnung) | ✅ erledigt |
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
-| M10 | Erinnerung unter Ablenkung: [Versuchsplan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md) nach Review R5–R7 | Plan, nicht eingefroren |
+| M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -894,3 +894,266 @@ Gefundene und behobene Integrationsfehler (auf diesem Branch, dann erneut gemerg
 **Mutationsprüfung:** 38/38.
 
 **Verbleibende Lücke (ehrlich):** Die Feldtheorie-CI installiert weder SCF noch PyYAML, und ein Workflow für die Laborstufen wurde nicht angelegt. Auf GitHub laufen deshalb nur portable Tests. Für alles Weitere ist das fehlende CI-Abdeckung; verbindlich ist der dokumentierte Pflicht-Labortestlauf.
+
+## M10: Implementierung, Laufzeitcheck, Freeze-Vorbereitung
+
+**Freigabe:** `ASTRA_FOLLOWUP_R5_R8.md`. Vorher wurde R5–R8 lokal integriert (Feldtheorie `main` = `15a24d85af`, Tag `reviewed/mandala-memory-485bfc0`).
+
+**Entscheidungen:**
+- O9: δ = 0,01;
+- O10: n_MC = 2·10⁶ (bestätigt durch den Laufzeitcheck unten);
+- O11: Ebene D beschreibend.
+
+### Code
+
+| Datei | Inhalt |
+|---|---|
+| [`m10_task.py`](m10_task.py) | 27 Fenstermuster mit exakten Wahrscheinlichkeiten (Brüche); Episodenablauf (Fenster W = 3 direkt vor x_(d+1)); Netze mit vier Eingangsspalten (A, B, X, Y); Zustände z(s, π) aus dem getesteten Kern; A1 (Zustandsidentität x_B = P x_A je Muster) und A2 strukturell (‖P₋ r(π)‖) |
+| [`m10_bayes.py`](m10_bayes.py) | Ebene B: allgemeiner Schätzer E[max_c P(c\|y)] für endliche Gauß-Mischungen. Numerik: log-sum-exp, zentrierte Distanzen auf 0 abgeschnitten, Blöcke mit Mittel/M2 nach Chan, SE = √(var/n), SE = 0 wird als 0 berichtet, nicht-endlich führt zum Abbruch. Mischungen: **Bewahren** p(y\|s) = Σ_π P(π) N(z(s,π)); **Aktualisieren** p(y\|L=l) = Σ_s ½ Σ_{π: last=l} P(π)/P(last=l) N(z(s,π)) mit P(last = X) = P(last = Y) = 7/16; **K0** analytisch, Aktualisieren = N/A (`None`). |
+| [`m10_decoders.py`](m10_decoders.py) | Ebene D: Episoden aus Strömen (Seed, Art, Rolle, Pause), gleich über Netze und Bedingungen (gepaart), getrennt über Rollen; jedes Muster einmal für A und einmal für B. Leckprüfung (Muster-Häufigkeiten je Klasse gleich), Trennungsprüfung (SCF `check_split` plus disjunkte Ströme), Nearest-Mean und LDA mit Ledoit-Wolf (eigene Umsetzung, vektorisiert) |
+| [`m10_run.py`](m10_run.py) | Modi `dev`/`smoke`/`research`. **`research` ist gesperrt**, solange `FROZEN_PROTOCOL_SHA256` = `None` ist, und bei Abweichung des Protokolls; keine Overrides in `research`; exklusive Ablage, C: verboten |
+| [`m10_evaluate.py`](m10_evaluate.py) | Diagnosen mit Alarmregel, Interferenz, bestätigende Familie (Z, SE = 0-Regel, Holm, Wortregeln), **Freigabe-Gate** (`release`: research + vollständig + eingefrorenes Protokoll + keine Overrides), Ebene D beschreibend (Bootstrap über ganze Seeds) |
+| [`protocol/m10_protokoll.json`](protocol/m10_protokoll.json) | Protokoll-Kandidat mit YAML- und MD-Zwilling. Enthält Astras drei Präzisierungen: Likelihood der Aufgabe „letzter Kanal“ mit K0 = N/A; 4-SE als **Diagnosealarm** mit fester Zahl der Gegenproben (15 + 18), ohne Wiederholen bis zum Bestehen; Numerik, Ströme und Fehlerquellen getrennt benannt. |
+
+### Für die gezielte Prüfung
+
+| Prüfpunkt | Stelle |
+|---|---|
+| Mischungsgewichte | `m10_bayes.preserve_mixtures`, `update_mixtures`; Tests `test_update_mixture_conditions_on_the_last_channel`, `test_patterns_and_last_channel_probabilities` |
+| Standardfehler | `m10_bayes._merge`, `bayes_accuracy_mc`; Tests gegen geschlossene Formel und 1-D-Quadratur, SE = 0 |
+| Zufallsströme | `m10_run.level_b` (`stream("m10bayes", base_seed, task, net, nl, cond, d)`), `m10_decoders.make_episodes` (`stream("m10", seed, kind, role, d)`) |
+| Freigabe-Gate | `m10_run.mode_settings`/`run`, `m10_evaluate.release`; Tests `test_research_is_blocked_until_frozen`, `test_release_gate` |
+
+### Tests und Mutationen
+
+- **Neu:** [`tests/test_m10_portable.py`](tests/test_m10_portable.py) mit 15 Testfällen (numpy) und [`tests/test_m10_kernel.py`](tests/test_m10_kernel.py) mit 15 Testfällen (Kern/SCF), zusammen 30; dazu 2 Trilayer-Fälle; **nur Entwicklungseinstellungen** (Ablenkorte 9/11 und 2/6, a = 0,9; Seeds 901–903).
+- **Werkzeugprüfungen:**
+  - Schätzer gegen Φ(‖Δ‖/2σ) im 1-Komponenten-Fall;
+  - gegen eine 1-D-Trapez-Quadratur einer Zwei-Komponenten-Mischung;
+  - zentrierte gegen direkte Distanzen.
+- **Negativkontrollen:**
+  - klassenabhängige Ablenkung ⇒ Leckprüfung schlägt an;
+  - Teststrom aus dem Trainingsstrom ⇒ Trennungsprüfung schlägt an;
+  - nicht P-feste Orte ⇒ A1 und A2 schlagen an.
+- **Pflicht-Labortestlauf:** **256/256**, 0 übersprungen.
+- **Linux (WSL):** ohne SCF 118 bestanden, 138 übersprungen; mit SCF 242 bestanden, 14 übersprungen.
+- **Gefunden unter Linux:** Der LDA-Test benutzte `data.balanced_accuracy` (SCF) und war deshalb nicht portabel; er rechnet sie jetzt selbst.
+- **Mutationsprüfung: 51/51**, mit 13 neuen M10-Mutanten:
+  - Fenster verschoben, log-sum-exp ohne Verschiebung;
+  - Aktualisieren ohne Bedingung auf den letzten Kanal bzw. ohne Marginalisierung über s;
+  - Holm ohne Abbruch, SE = 0-Regel falsch;
+  - Forschung nicht gesperrt, Gate ignoriert Overrides;
+  - LDA ohne Kovarianz, A1 ohne Permutation;
+  - Leck- bzw. Trennungsprüfung blind;
+  - K0-Aktualisieren nicht N/A.
+
+### Laufzeitcheck (O10)
+
+Entwicklungseinstellungen in voller Größe: n_MC = 2·10⁶, d ∈ {3, 4, 6}, 3 Seeds mit 1000/2000 Episoden. Ergebnis in `D:/mandala/mandala-memory-results/m10/dev-runtime-check/`.
+
+**Gemessen:**
+- 48 Ebene-B-Schätzungen in 298,6 s, also 6,2 s je Schätzung:
+
+  | | tanh | linear |
+  |---|---|---|
+  | Bewahren | 6,34 s | 6,42 s |
+  | Aktualisieren | 6,06 s | 6,06 s |
+
+- Ebene D 1,5 s; Zustände und Diagnosen 1,7 s; Spitzen-RAM 158 MiB.
+- Größter Monte-Carlo-**Standardfehler** 1,0·10⁻⁴. Er ist eine geschätzte Streuung, keine garantierte Schranke der tatsächlichen Abweichung.
+
+**Hochgerechnet auf den Forschungsumfang** (72 Ebene-B-Schätzungen = 2 Netze × 2 Nichtlinearitäten × 3 Bedingungen × 3 Pausen × 2 Aufgaben; 20 Seeds, 4 Bedingungen):
+
+| Teil | Sekunden |
+|---|---|
+| Ebene B, Bewahren | ≈ 230 |
+| Ebene B, Aktualisieren | ≈ 218 |
+| (davon tanh / lineare Kontrollen) | (≈ 223 / ≈ 225) |
+| Ebene D | ≈ 13 |
+| Zustände, Diagnosen | ≈ 2 |
+| **Gesamt** | **≈ 463 s (7,7 min)** |
+
+- RAM etwa 160 MiB, Ergebnis etwa 1 MB.
+- **Bewertung:** Die harte Protokollgrenze von 1200 s wird mit Abstand eingehalten. Das Planziel „Ebene B < 5 min“ (Plan, Abschnitt 9) wird mit ≈ 7,5 min **verfehlt**. Das ist ein Zielwert, keine Grenze. Eine Anpassung von n_MC ist nach dieser Messung nicht nötig; die Entscheidung liegt vor dem Freeze bei der Nachprüfung.
+
+### Freeze-Vorbereitung (noch nicht ausgeführt)
+
+1. **Nachprüfung** des Codes (Mischungsgewichte, SE, Ströme, Gate) und des Protokoll-Kandidaten.
+2. **Einfrier-Commit:** *(nach Review R9–R12 präzisiert)*
+   - Status im Protokoll auf „frozen“ setzen und die Zwillinge neu erzeugen;
+   - `FROZEN_PROTOCOL_SHA256` in `m10_run.py` auf den LF-normierten SHA-256 des Protokolls setzen;
+   - `protocol/m10_freeze.json` schreiben: Protokoll-Hash, **geprüfter Code-Commit** und SHA-256 jeder M10-Codedatei (`m10_run.CODE_FILES`);
+   - Smoke **und** Research verlangen genau diesen Zustand;
+   - Pflichtlauf und Mutationsprüfung.
+3. **Smoke-Lauf** (`--mode smoke`, Smoke-Seeds, n_MC = 10⁵): nur Laufzeit und Format.
+4. **Forschungslauf** (`--mode research`) einmal, dann `m10_evaluate`. Abweichungen werden berichtet, nicht repariert.
+
+## Review-Fix `astra-m10-review` (R9–R12)
+
+**Review:** `D:/mandala/mandala-memory-results/astra-m10-review/REVIEW.md` (Stand `66c5e81`). Der numerische Kern war schlüssig (Mischungsgewichte, Standardfehler, Ströme); vier Kontrolllücken mussten vor dem Freeze geschlossen werden. Astras Gegenbeispiele habe ich **zuerst unverändert reproduziert**, als Kopie ihres Skripts mit Ausgabe in meinen Temp-Ordner, ihr Ordner bleibt unberührt:
+- leeres Ergebnis → `released: true`;
+- falsche Leckprüfung → `status: complete`, `failures: []`;
+- Smoke vor dem Freeze → Einstellungen mit Forschungsbedingungen.
+
+| Befund | Korrektur | Regression (`tests/test_m10_controls.py`) |
+|---|---|---|
+| **R9** Gate prüft keine Vollständigkeit | `m10_evaluate.completeness`: Das erwartete Raster wird **nur aus dem Protokoll** abgeleitet, nie aus den Metadaten des Ergebnisses. Geprüft werden Ebene B (Netz × Nichtlinearität × Bedingung × Pause, je Aufgabe exaktes n_MC und Block, erwarteter Stromschlüssel, endliche Werte im Bereich, K0 mit Aktualisieren = N/A), Ebene D (Seed × Pause × Netz × Nichtlinearität × Bedingung, exakte n, erwartete Stromschlüssel je Rolle, Kontrollen, Aktualisieren-Zählung, endliche Werte), das Diagnoseraster sowie Pausen, n_MC und Seeds gegen das Protokoll. Fehlende, doppelte und zusätzliche Zeilen werden abgelehnt. Außerdem wird gegen den Code-Hash im Freeze-Datensatz geprüft. | Ein unabhängig gebautes, vollständiges synthetisches Forschungsergebnis wird freigegeben. **20 gezielte Verfälschungen** werden je mit ihrem Grund abgelehnt, darunter Astras leeres Ergebnis, entfernte, doppelte und zusätzliche Zeilen, doppelte Seeds, falsche n, fremde Ströme, NaN/Inf, K0-Aktualisieren, Overrides, Modus, protokollierter Fehler und veränderter Code. |
+| **R10** Kontrollen ohne Konsequenz | Runner: Eine falsche Leck- oder Trennungsprüfung (`ControlFailure`) und unerwartete deterministische Diagnosen (`enforce_diagnostics`, vor Ebene B) führen zu `status: failed`. Die erwartete negative A1-Kontrolle (N bzw. Ndev im modularen Netz) zählt als „wie erwartet“. Das Gate prüft alle Kontrollen zusätzlich selbst. **Statistische 4-SE-Alarme** bleiben reine Berichte und sperren nicht. | Über den echten Runner: falsche Leckprüfung (Astras Gegenbeispiel), kaputte Trennungsprüfung, invertiertes A1, fehlschlagendes A2 ⇒ `failed`, keine Freigabe. Die erwartete Negativkontrolle lässt den Lauf vollständig. Gate: fehlgeschlagene Kontrollen in sonst vollständigen Daten ⇒ keine Freigabe. Ein A3-Alarm wird berichtet, die Freigabe bleibt. |
+| **R11** Smoke vor dem Freeze | `require_frozen` gilt für Smoke **und** Research: Konstante gesetzt und gleich dem Protokoll, Freeze-Datensatz vorhanden mit gleichem Protokoll-Hash, geprüftem Code-Commit und gleichen Code-Hashes. Vor dem Freeze ist nur `dev` möglich. | Für beide Modi: nicht eingefroren, falscher Hash, fehlender Datensatz und veränderter Code werden abgelehnt; gültiger Freeze wird angenommen; Overrides sind verboten. |
+| **R12** 1200 s nicht durchgesetzt | Die Grenze ist **verstrichene Zeit** (`time.monotonic`) des Laufs, 1200 s. Sie wird vor jedem Monte-Carlo-Block, jeder Zustandsberechnung und jeder Ebene-D-Einheit geprüft; die größte Überschreitung ist eine Einheit (gemessen etwa 0,16 s je Block). Bei Überschreitung gilt `aborted_timeout`, das Teilergebnis wird exklusiv gespeichert und nie freigegeben. RAM- und Dateigrößenbudget sind im Protokoll als **„geplant, nicht durchgesetzt; gemessen und berichtet“** gekennzeichnet. | Mit kontrollierter Uhr bricht der Lauf **innerhalb** der Monte-Carlo-Schleife ab, die Datei ist gespeichert, es gibt keine Freigabe, und Überschreiben ist unmöglich. Die Frist wird vor jedem Block geprüft (Überschreitung ≤ 1 Block). Die Protokollangaben sind eindeutig. |
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Astras Gegenbeispiele erneut | leeres Ergebnis ⇒ nicht freigegeben (7 Gründe); falsche Leckprüfung ⇒ `failed` mit `ControlFailure`; Smoke vor dem Freeze ⇒ verweigert |
+| Pflicht-Labortestlauf | **287/287**, 0 übersprungen |
+| Linux ohne SCF | 143 bestanden, 144 übersprungen |
+| Linux mit SCF | 273 bestanden, 14 übersprungen |
+
+**Mutationsprüfung:** siehe Commit-Nachricht. Neu sind 12 Mutanten zur **Durchsetzung**:
+- Gate ohne Vollständigkeit, ohne Stromprüfung, ohne Duplikatprüfung, ohne Code-Hash, ohne Kontrollprüfung;
+- Runner ignoriert die Leckprüfung, Diagnosen nicht durchgesetzt;
+- Smoke nicht gesperrt, Code-Hash nicht geprüft;
+- Monte Carlo ohne Frist, Blockschleife ohne Prüfung, Timeout als vollständig gezählt.
+
+Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen und Tests umgezielt.
+
+## Followup-Review-Fix `FOLLOWUP_R9_R12` (Restlücken vor dem Freeze)
+
+**Nachprüfung:** `D:/mandala/mandala-memory-results/astra-m10-review/FOLLOWUP_R9_R12.md` (Stand `99b2c6b`). R11 ist geschlossen, und die Fehlerbehandlung im Runner bestätigt. Astras vier Gate-Gegenbeispiele habe ich zuerst **unverändert reproduziert** (alle `released: true`).
+
+| Lücke | Korrektur in `m10_evaluate.completeness` bzw. `m10_run` |
+|---|---|
+| K0 mit NaN-Standardfehler | K0 verlangt einen endlichen Schätzwert in [½, 1] und **SE = 0 exakt**, denn K0 ist analytisch. |
+| unvollständige Leckprüfungsfelder | Verlangt wird **genau** die Menge {`ids_disjoint`, `streams_disjoint`, `train_identical_pattern_counts`, `test_identical_pattern_counts`}, jeder Wert `is True`. Fehlende, zusätzliche oder nur „wahrheitsähnliche“ Werte werden abgelehnt. |
+| ausgelassene A2-Prüfung | Symmetrie und A2-Pflicht werden aus **Protokoll, Netz und Bedingung** abgeleitet (`swap_permutation`), nicht aus dem Ergebnisfeld `p_fixed`. Verlangt werden die vollständige gemessene A1-Struktur (endliche Abweichung, Protokolltoleranz, `holds` passend zum Messwert, `p_fixed`/`A1_expected` gleich der abgeleiteten Symmetrie, `A1_as_expected`) und für jede Pflichtzeile das vollständige A2 (endlicher Messwert ≤ Protokolltoleranz). A2 an einer Nicht-Pflichtzeile ist unzulässig. |
+| null Trainingsepisoden beim Aktualisieren | Die Zahl der Muster ohne Puls je (Seed, Pause, Rolle) wird **ohne Netzdynamik** aus den festen Musterströmen rekonstruiert. Trainings-, Test- und Ausschlusszahlen beider Aufgaben müssen exakt stimmen (ganze Zahlen, Bewahren ohne Ausschluss); Decoderwerte müssen endlich und in [0, 1] liegen. |
+| Frist nach der letzten Einheit / in den Diagnosen | Die Frist wird jetzt auch **je Diagnose-Einheit** und **unmittelbar vor `complete`** geprüft. Die Beschreibung ist präzisiert: kooperative Prüfung, Überschreitung höchstens eine Einheit; die gemessenen etwa 0,16 s je Block sind eine Beobachtung, keine garantierte Schranke (Code-Doku und Protokoll). |
+
+**Tests** (`tests/test_m10_controls.py`):
+- **Synthetischer Referenzdatensatz:** Er hat jetzt **alle Pflichtfelder**. Die Episodenzahlen kommen aus dem echten Episodengenerator; damit ist auch belegt, dass die Rekonstruktion im Gate mit dem Generator übereinstimmt. Diagnosen haben die vollständige A1/A2-Messstruktur. Ein künstlich unvollständiger Diagnoseblock dient nicht mehr als positive Referenz.
+- **16 neue Verfälschungen**, jede mit ihrem Grund abgelehnt:
+  - Astras vier Fälle;
+  - K0-SE ≠ 0;
+  - Zusatzfeld bzw. Wert `1` statt `True` in den Kontrollen;
+  - A2 mit fremder Toleranz, A2 an einer Nicht-Pflichtzeile;
+  - fehlende A1-Messung, `holds` widersprüchlich zum Messwert, falsch behauptetes `p_fixed`;
+  - um ein Paar verschobene Zählung;
+  - Ausschluss beim Bewahren, Trefferquote > 1, n als Gleitkommazahl.
+- **Frist mit kontrollierter Uhr:** Eine Überschreitung **genau in der letzten Decoder-Einheit** ergibt `aborted_timeout`, nicht `complete`. Eine Überschreitung **in den Diagnosen** bricht dort ab. Der Abbruch in der Monte-Carlo-Schleife ist weiter belegt.
+- **Astras Gegenbeispiele erneut:** alle vier `released: false` mit präzisem Grund.
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Pflicht-Labortestlauf | **305/305**, 0 übersprungen |
+| Linux ohne SCF | 159 bestanden, 146 übersprungen |
+| Linux mit SCF | 291 bestanden, 14 übersprungen |
+| Mutationsprüfung | siehe Commit-Nachricht, 6 neue Mutanten (unvollständige Kontrollmenge, K0-SE ungeprüft, Aktualisieren-n ungeprüft, A2-Pflicht aus dem Ergebnis, letzte und Diagnose-Frist entfernt) |
+
+## M10: Freeze, Smoke, Forschungsrechnung und Ergebnis
+
+**Freigabe:** `D:/mandala/mandala-memory-results/astra-m10-review/ABSCHLUSSPRUEFUNG_6f2acfd.md`.
+
+### Freeze
+
+- **Commit `7b31300`** (Tag `m10-freeze`).
+- **Änderungen gegenüber dem geprüften Stand `6f2acfd2a8a153c8f48bc50194cbcf651a510758`:**
+  - Protokollstatus FROZEN; Hash danach berechnet: `84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345`; Zwillinge neu erzeugt.
+  - `FROZEN_PROTOCOL_SHA256` im Runner, die **einzige Codeänderung**; im Diff belegt.
+  - `protocol/m10_freeze.json` mit Protokoll-Hash, geprüftem Code-Commit und den Code-Prüfsummen. Die Prüfsummen wurden **nach** dem Eintragen der Konstante berechnet.
+  - Tests auf den eingefrorenen Zustand umgestellt; neuer Konsistenztest.
+- **Prüfung:** Pflichtlauf 306/306. Freeze-Konsistenz in frischem Prozess geprüft: Konstante = Protokoll = Datensatz, Code-Prüfsummen gleich.
+
+### Smoke
+
+`D:/mandala/mandala-memory-results/m10/smoke/m10-smoke-20261003T225248-8cf17955.json`:
+- vollständig in 25,7 s;
+- alle deterministischen Kontrollen bestanden;
+- als Smoke korrekt **nicht** freigegeben (eigene Ströme und Seeds, kleineres n_MC);
+- keine Parameteränderung danach.
+
+### Forschungsrechnung (einmalig)
+
+**Dateien:**
+- Ergebnis: `D:/mandala/mandala-memory-results/m10/research/m10-research-20261003T230058-47d41706.json`
+- Auswertung (exklusiv): `….evaluation.json`
+- Lesefassung: `report.txt`
+
+**Lauf:**
+- Status complete, keine Fehler.
+- 473 s (Grenze 1200 s): Ebene B 461 s, Ebene D 10,5 s; Spitzen-RAM 158 MiB.
+- **Freigabe-Gate: freigegeben** (vollständiges Raster, eingefrorenes Protokoll und Code, keine Overrides).
+- **Deterministische Kontrollen:** A1 überall wie erwartet, inklusive Negativkontrolle N/modular; A2 strukturell hält überall.
+- **Statistische Diagnosen:** 15 A2- und 18 A3-Gegenproben, **kein Alarm**.
+
+### Bestätigende Familie (Ebene B, d = 4, tanh, δ = 0,01, Holm α = 0,05)
+
+| Hypothese | Δ̂ | SE | p (Holm) | 95 % unadjustiert | Ergebnis |
+|---|---|---|---|---|---|
+| **H-N:** I_modular(N) − I_uniform(N) > δ | **0,0238** | 0,00012 | < 10⁻¹² (numerisch als 0 ausgegeben) | [0,0235; 0,0240] | **bestätigt** |
+| **H-F+:** I_uniform(F+) − I_modular(F+) > δ | −0,0001 | 0,00011 | 1 | [−0,0003; +0,0001] | **nicht bestätigt** (nicht „widerlegt“: das Intervall enthält 0) |
+
+**Komponenten:**
+
+| | Interferenz I | Bayes ohne → mit Ablenkung |
+|---|---|---|
+| modular N | 0,0236 | 0,9352 → 0,9116 |
+| uniform N | −0,0002 | 0,6696 → 0,6697 |
+| modular F+ | 0,0001 | – |
+| uniform F+ | −0,0001 | – |
+
+### Beschreibend: Ebene B über die geprüften Pausen d = 3, 4, 6 (Interferenz I = K0 − Bedingung, Bewahren)
+
+| Netz | d | K0 | F | N | F+ | linear N |
+|---|---|---|---|---|---|---|
+| modular | 3 | 0,981 | +0,000 | **+0,019** | −0,000 | +0,011 |
+| modular | 4 | 0,935 | −0,000 | **+0,024** | +0,000 | +0,013 |
+| modular | 6 | 0,801 | +0,000 | **+0,019** | −0,000 | +0,010 |
+| uniform | 3 | 0,828 | −0,000 | +0,000 | −0,000 | −0,000 |
+| uniform | 4 | 0,670 | −0,000 | −0,000 | −0,000 | +0,000 |
+| uniform | 6 | 0,538 | +0,000 | −0,000 | −0,000 | +0,000 |
+
+- **Angeglichener Vergleich** (ähnliche Ausgangsleistung, verschiedenes Alter der Erinnerung): modular d = 6: I(N) = 0,019; uniform d = 3: I(N) = 0,000.
+- **Normierte Interferenz bei d = 4:** modular N 0,054, uniform N ≈ 0.
+- **Aktualisieren (Bayes):** in allen Bedingungen 0,989–1,000, also fast perfekt in beiden Netzen.
+
+### Beschreibend: Ebene D (trainierte Decoder, 20 Seeds, Mittel [95 % Bootstrap], d = 4, tanh)
+
+| Netz, Bedingung | Interferenz Nearest-Mean | Interferenz LDA (Ledoit-Wolf) | Aktualisieren (NM / LDA) |
+|---|---|---|---|
+| modular N | **0,299** [0,298; 0,300] | **0,158** [0,155; 0,160] | 0,991 / 0,991 |
+| modular F | 0,002 | 0,001 | 0,988 / 0,985 |
+| modular F+ | 0,007 | 0,001 | 0,999 / 0,996 |
+| uniform N | 0,012 | 0,000 | 0,995 / 0,992 |
+| uniform F | 0,020 | 0,001 | 0,996 / 0,993 |
+| uniform F+ | 0,043 | 0,000 | 1,000 / 0,999 |
+
+### Lesart (synthetische Modellstudie; nur diese zwei Netze und Parameter)
+
+1. **Struktur bestimmt die Störbarkeit, und anders als „Modularität schützt“ vermuten ließe:**
+   - Ablenkung **in den Eingangsmodulen** (N) stört das modulare Netz messbar; die Bayes-Trefferquote sinkt um 2,4 Prozentpunkte.
+   - Beim gleich budgetierten uniformen Netz ist auf der Bayes-Ebene innerhalb der Monte-Carlo-Auflösung **kein** Verlust erkennbar.
+   - **Einordnung:** Die beobachtete Asymmetrie entspricht der Hypothese, die aus den Symmetrien des linearen Zwillings **motiviert** war. Für das uniforme Netz sind die Orte 1/5 symmetrisch zum Reizpaar, für das modulare nicht. **Bewiesen** ist die Störungsfreiheit (A2) nur für den linearen Zwilling. Im tanh-Netz war H-N vorab ausdrücklich eine Hypothese; das Ergebnis bestätigt sie empirisch und macht sie nicht nachträglich zu einer bewiesenen nichtlinearen Vorhersage.
+   - Der lineare Zwilling zeigt dieselbe Richtung, schwächer (A3/A4).
+2. **Bei ferner Ablenkung (F, F+) ist auf der Bayes-Ebene in den untersuchten Fällen innerhalb der Monte-Carlo-Auflösung kein Verlust erkennbar**, auch nicht bei starker Sättigung (a = 1,8).
+   - Die Zustandsidentität A1 hält im Rahmen der Toleranz.
+   - Das ist **kein** Beleg exakter Störungsfreiheit und **kein** Nachweis, dass es keinen nichtlinearen Störweg gibt. Belegt ist nur, dass ein Effekt dieser Art hier deutlich kleiner als die vorab gewählte Mindestdifferenz 0,01 ist.
+   - H-F+ forderte einen Unterschied über 0,01. Das beobachtete Intervall [−0,0003; +0,0001] liegt weit darunter; die Richtung eines sehr kleinen Effekts um null bleibt unentschieden. Die vorab festgelegte Bezeichnung bleibt: **nicht bestätigt**.
+3. **Information im Zustand ≠ ablesbare Information:**
+   - Der Bayes-Verlust bei N modular beträgt 0,0236 (2,36 Prozentpunkte).
+   - Ein trainierter Nearest-Mean-Decoder verliert aber 0,299 (29,9 Prozentpunkte), LDA 0,158 (15,75 Prozentpunkte).
+   - Diese Decoderverluste sind **echte Leistungsverluste** des jeweiligen Decoders, auch wenn die optimale Trennbarkeit weitgehend erhalten bleibt.
+   - An symmetrischen Orten verliert der Nearest-Mean-Decoder bis 0,043, während LDA und die Bayes-Grenze dort keinen Verlust zeigen. Im Sinn von „kein entsprechender Verlust der optimalen Bayes-Trennbarkeit“ ist das ein decoderbedingter Verlust; er ist aber ebenso real.
+   - **Die genaue Ursache ist durch den Vergleich allein nicht isoliert.** Anisotrope, von der Zielklasse unabhängige Ablenkstreuung ist eine naheliegende Erklärung, weil ein isotroper Decoder sie nicht wegrechnet. Endliche Trainingsdaten und die Modellklasse des Decoders sind als Beiträge aber nicht getrennt geprüft.
+   - Ob ein Netz „vergisst“ oder nur „schwerer abzulesen ist“, hängt also vom Ablesenden ab. Das ist ein konkreter Ansatz für weitere Arbeit: bessere Ausleseverfahren.
+4. **Bewahren und Aktualisieren:** Die letzte Ablenkung ist in beiden Netzen fast perfekt ablesbar. Einen Zielkonflikt behaupte ich nicht; er ist vorab als beschreibend festgelegt.
+5. **Grenzen:**
+   - zwei feste 12-Knoten-Netze, ein Parametersatz, Pulse in einem Fenster aus 3 Schritten;
+   - die Unsicherheit ist Monte-Carlo-Unsicherheit über ein deterministisches Modell, keine Population von Netzen; die Intervalle quantifizieren Rechenunsicherheit;
+   - Aussagen über Pausen gelten nur für die geprüften d = 3, 4, 6;
+   - p-Werte aus 1 − Φ(Z), die als 0 ausgegeben werden, sind numerisch gerundet, nicht exakt null;
+   - keine biologische und keine allgemeine KI-Aussage;
+   - Ebene D ist decoderabhängig und nur beschreibend.

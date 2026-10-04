@@ -35,6 +35,20 @@ REQUIRED = os.environ.get("MANDALA_LAB_REQUIRED") == "1"
 
 # --- explicit dependency table (node ids relative to this folder) ---------------
 SCF = {
+    # M10 kernel tests (network construction via SCF budget_adjacency; split check via SCF)
+    "test_m10_kernel.py::test_a1_state_identity_and_negative_control",
+    "test_m10_kernel.py::test_a2_structural_and_negative_control",
+    "test_m10_kernel.py::test_k0_states_and_analytic_baseline",
+    "test_m10_kernel.py::test_level_d_episodes_pairing_leak_and_split_controls",
+    "test_m10_kernel.py::test_update_task_excludes_episodes_without_pulse",
+    "test_m10_kernel.py::test_small_development_run_end_to_end",
+    "test_m10_controls.py::test_r10_failed_leak_check_fails_the_run",
+    "test_m10_controls.py::test_r10_failed_split_check_fails_the_run",
+    "test_m10_controls.py::test_r10_unexpected_deterministic_diagnostic_fails_the_run",
+    "test_m10_controls.py::test_r10_expected_negative_a1_control_does_not_fail_the_run",
+    "test_m10_controls.py::test_r12_timeout_through_the_runner",
+    "test_m10_controls.py::test_r12_overrun_in_the_last_unit_is_not_complete",
+    "test_m10_controls.py::test_r12_deadline_is_checked_inside_the_diagnostics",
     # derived from a Linux run WITHOUT scoped-correspondence: exactly these failed on the
     # missing module (directly, or via a runner seed that caught it); see ROADMAP, review R8
     "test_m1_core.py::test_k3_reset_after_pulse",
