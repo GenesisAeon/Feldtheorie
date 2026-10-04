@@ -35,6 +35,17 @@ REQUIRED = os.environ.get("MANDALA_LAB_REQUIRED") == "1"
 
 # --- explicit dependency table (node ids relative to this folder) ---------------
 SCF = {
+    # M11 optimiser/reference phase/runner/gate: scipy and the kernel (SCF network construction)
+    "test_m11_kernel.py::test_optimiser_finds_a_known_linear_optimum",
+    "test_m11_kernel.py::test_l_found_never_below_the_population_rules_on_a_mixture",
+    "test_m11_kernel.py::test_reference_phase_refuses_unversioned_procedures",
+    "test_m11_kernel.py::test_dev_references_and_the_bayes_source_check",
+    "test_m11_kernel.py::test_smoke_and_research_blocked_before_the_freeze",
+    "test_m11_kernel.py::test_small_development_run_end_to_end_and_exact_vs_test",
+    "test_m11_kernel.py::test_timeout_is_enforced",
+    "test_m11_kernel.py::test_gate_completeness_on_synthetic_data",
+    "test_m11_kernel.py::test_t_test_holm_and_zero_variance_rules",
+    "test_m11_kernel.py::test_closed_share_is_na_for_a_small_denominator",
     # M10 kernel tests (network construction via SCF budget_adjacency; split check via SCF)
     "test_m10_kernel.py::test_a1_state_identity_and_negative_control",
     "test_m10_kernel.py::test_a2_structural_and_negative_control",
@@ -105,6 +116,7 @@ SCF = {
     "test_m9_predict.py::test_symmetry_permutation_is_an_automorphism",
 }
 LAB_INTEGRATION = {
+    "test_m11_kernel.py::test_dev_references_and_the_bayes_source_check",   # reads the M10 dev result on D:
     "test_m4_evaluate.py::test_review_r2_original_full_round_released_and_numerically_unchanged",
     "test_m4_evaluate.py::test_review_r2_incomplete_protocol_not_released",
     "test_m4_evaluate.py::test_original_sign_flip_p_unchanged",

@@ -28,6 +28,8 @@ Alle Befehle im Wurzelverzeichnis von `D:/mandala/.worktrees/feldtheorie-mandala
 | M10: Entwicklungslauf / Laufzeitcheck | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_run --mode dev --out-dir D:/mandala/mandala-memory-results/m10/dev` | Entwicklungseinstellungen, kein Teil der Studie |
 | M10: Auswertung einer Ergebnisdatei | `PYTHONPATH=. PY -m experiments.mandala_memory.m10_evaluate <ergebnis.json>` | bestätigend nur nach Freeze + vollständigem Forschungslauf |
 | M10: Forschungslauf | `… m10_run --mode research …` | **gesperrt**, bis das Protokoll eingefroren ist |
+| M11: Referenzen (Entwicklungsfälle) | `PYTHONPATH=. PY -m experiments.mandala_memory.m11_references --cases dev --out <datei>` | Forschungsfälle erst in der Referenzphase, nur bei committeten Verfahren |
+| M11: Entwicklungslauf | `PYTHONPATH=. PY -m experiments.mandala_memory.m11_run --mode dev --out-dir D:/mandala/mandala-memory-results/m11/dev` | Smoke/Research erst nach dem M11-Freeze |
 | Mutationsprüfung | `PY experiments/mandala_memory/tools/mutation_check.py` | |
 | Reviewpaket | `PY experiments/mandala_memory/tools/make_review_package.py` | → `D:/mandala/mandala-memory-results/review/` |
 

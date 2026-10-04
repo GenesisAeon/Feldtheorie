@@ -34,7 +34,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
 | M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
-| M11 | Die vorhandene Erinnerung besser auslesen: [Versuchsplan](docs/M11_PLAN_AUSLESE.md) (Trainingsmenge vs. Decoder-Modellklasse, Referenz Bayes-Grenze; exakte Zerlegung der Lücke für lineare Regeln) | Plan zur Prüfung |
+| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | Schritt 2 erledigt, wartet auf Implementierungsprüfung und Laufzeitentscheidung; Referenzphase noch **nicht** begonnen |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -1158,3 +1158,81 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
    - p-Werte aus 1 − Φ(Z), die als 0 ausgegeben werden, sind numerisch gerundet, nicht exakt null;
    - keine biologische und keine allgemeine KI-Aussage;
    - Ebene D ist decoderabhängig und nur beschreibend.
+
+## M11: Implementierung an Entwicklungsfällen (Schritt 2)
+
+**Plan:** [`docs/M11_PLAN_AUSLESE.md`](docs/M11_PLAN_AUSLESE.md), Fassung 2 (`56f3341`) nach `astra-m11-review/PLANREVIEW_49f94cf.md`.
+
+**M10 bleibt unverändert.** M11 nutzt die eingefrorenen M10-Funktionen nur lesend. Eine versehentliche Änderung an `data.py`, einer eingefrorenen M10-Codedatei, habe ich vor jedem Test zurückgenommen. M11 hat eigene Zufallsmodi (`m11`, `m11dev`) in `m11_readout.stream`. Der M10-Konsistenztest bleibt grün.
+
+### Code
+
+| Datei | Inhalt |
+|---|---|
+| [`m11_readout.py`](m11_readout.py) | exakte Populations-Trefferquote fester linearer Regeln (w = 0 ⇒ ½); Populationsregeln NM(∞) und LDA(∞) aus den wahren Momenten; numerische lineare Referenz L_found (L-BFGS-B, w = u/‖u‖, 2 Populations- und 20 Zufallsstarts, unverlierbare Kandidaten); verschachtelte Ziehung (n-Präfixe, getrennte Muster- und Rauschströme, unabhängig von n); Validierungsregel (jedes 5. Paar, Paare zusammen); MLP in numpy (Adam, volles Batch, BCE + L2, frühes Stoppen, Standardisierung nur aus dem Fit-Anteil, 3 Initialisierungen, Auswahl nach Validierungsverlust) |
+| [`m11_references.py`](m11_references.py) | Referenzphase: Bayes aus M10 mit Datei-SHA-Prüfung, NM(∞), LDA(∞), L_found mit allen Starts. **Forschungsreferenzen werden verweigert**, solange M11-Code oder Protokoll nicht committet sind (R4). Exklusives Schreiben. |
+| [`m11_run.py`](m11_run.py) | Runner; Smoke und Research nur nach gültigem Freeze (Protokoll, Referenzartefakt, Code-Prüfsummen, geprüfter Commit); kooperative Zeitgrenze; exklusive Ablage |
+| [`m11_evaluate.py`](m11_evaluate.py) | Gate (Raster aus dem Protokoll, exakte Budgets, Ströme je Seed, endliche Werte); C-Daten und C-Modell (einseitiger t-Test mit df = 19 als Annahme, Nullvarianz-Regel, Holm); beschreibende Zerlegung (Stichprobenabstand vorzeichenbehaftet), geschlossener Anteil (Quotient der Mittel, N/A bei Nenner ≤ 0,01), Bayes-SE separat |
+| [`protocol/m11_protokoll.json`](protocol/m11_protokoll.json) | Protokoll-Kandidat mit YAML- und MD-Zwilling |
+
+### MLP-Hyperparameter (O1): nur an Entwicklungsfällen, nachvollziehbar festgehalten
+
+- **Regel (vorab):** Raster lr ∈ {0,003; 0,01; 0,03} × L2 ∈ {10⁻⁵; 10⁻⁴; 10⁻³}, Geduld 100, höchstens 3000 Epochen. Gewählt wird der kleinste mittlere **Validierungs**-Log-Loss über die vier Entwicklungsfälle und n ∈ {1000, 16000} mit Seeds 901–903. Keine Testdaten.
+- **Ergebnis:** **lr = 0,03, L2 = 10⁻³** (mittlerer Validierungsverlust 0,4342; nächstbeste Kombination 0,4367). Das ganze Raster steht im Protokoll unter `hyperparameter_selection_result`.
+- **Hinweis:** Der gewählte Punkt liegt **am Rand** des vorab festgelegten Rasters. Er wird beibehalten, weil die Regel vorab galt; es gab keine weitere Suche.
+
+### Tests und Mutationen
+
+- **Neu:** [`tests/test_m11_readout.py`](tests/test_m11_readout.py) (9 Tests, portabel) und [`tests/test_m11_kernel.py`](tests/test_m11_kernel.py) (10 Tests; scipy/Kern):
+  - die Formel gegen geschlossene Form und Monte Carlo, Skaleninvarianz, w = 0;
+  - Populationsregeln als Grenzwerte trainierter Regeln;
+  - NM-Regel gleich dem NM-Decoder;
+  - Verschachtelung und Stromtrennung; Validierungsregel;
+  - MLP-Gradient mit finiten Differenzen, Determinismus, Standardisierung nur aus dem Fit-Anteil, Bayes-Nähe an zwei Normalverteilungen;
+  - Optimierer am bekannten linearen Optimum, L_found nie unter NM(∞)/LDA(∞);
+  - Referenzphase verweigert unversionierte Verfahren; SHA-Prüfung der Bayes-Quelle;
+  - Smoke/Research vor dem Freeze gesperrt; Entwicklungslauf Ende-zu-Ende mit Gegenprobe exakt gegen Testmenge; Zeitgrenze;
+  - Gate auf synthetischen Daten; t-Test gegen `scipy.stats.ttest_1samp`, Holm, Nullvarianz-Regel; N/A-Regel des Anteils.
+- **Gefunden und behoben:** Die Nullvarianz-Regel griff bei 20 identischen Differenzen nicht, weil die Standardabweichung durch Rundung bei etwa 10⁻¹⁸ statt 0 lag. Geprüft wird jetzt, ob alle Werte gleich sind.
+- **Unter Linux gefunden:** Der Referenztest der Entwicklungsfälle liest die M10-Datei von D:; er ist jetzt zusätzlich `lab_integration`.
+- **Ergebnisse:** Pflichtlauf **328/328**, 0 übersprungen; Linux ohne SCF 169 bestanden, mit SCF 311 bestanden.
+- **Mutationsprüfung: 79/79**, mit 10 neuen M11-Mutanten. `m11_validation_splits_pairs` war **äquivalent**, weil für Vielfache von 5 „jede 5. Episode“ gleich „jedes 5. Paar“ ist. Er wurde auf eine nicht stratifizierte Validierung umgezielt.
+
+### Entwicklungsbefunde (keine Studienbestätigung)
+
+Referenzen der Entwicklungsfälle in `D:/mandala/mandala-memory-results/m11/dev/references-dev.json`; Seed 901 aus dem Laufzeitcheck:
+
+| Fall (Entwicklung) | B | NM(∞) | LDA(∞) | L_found | LDA n = 1000 / 16000 | MLP n = 1000 / 16000 |
+|---|---|---|---|---|---|---|
+| modular Ndev | 0,924 | 0,612 | 0,735 | 0,735 | 0,734 / 0,735 | 0,819 / 0,907 |
+| uniform Fdev | 0,670 | 0,670 | 0,670 | 0,670 | 0,668 / 0,670 | 0,666 / 0,668 |
+| K0 modular / uniform | 0,935 / 0,670 | = B | = B | = B | ≈ B | etwas unter B |
+
+- **Was es heißt:** Diese Werte stammen aus Entwicklungsfällen mit **einem** Seed. Sie zeigen, dass das Werkzeug arbeitet und die Trennung von Trainingsmenge und Lernverfahren sinnvoll ist. Sie **bestätigen nichts** für die Forschungsfälle.
+- **Kleiner MLP-Nachteil:** In den linearen Fällen liegt das MLP bei kleinem n leicht unter LDA. Der abgetrennte Validierungsanteil ist dafür **eine mögliche Erklärung, keine isoliert geprüfte Ursache**.
+
+### Laufzeitcheck (Entwicklungsfälle, ein Seed im vollen Forschungsumfang)
+
+Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
+
+**Gemessen pro Seed:** 4 Fälle × 4 n × 3 Initialisierungen, 100 000 Testpaare.
+
+| n | MLP-Zeit | mittlere Epochen |
+|---|---|---|
+| 250 | 1,3 s | 124 |
+| 1000 | 4,2 s | 181 |
+| 4000 | 28,7 s | 266 |
+| 16000 | **169,0 s** | 378 |
+
+- Alles Übrige: 1,4 s; Spitzen-RAM 268 MiB.
+- **Insgesamt 205 s je Seed, hochgerechnet auf 20 Seeds ≈ 68 min.**
+
+**Bewertung:** Das **überschreitet** die Planvorgabe (Ziel < 15 min, harte Grenze 30 min). Laut Plan wird das **vor dem Freeze entschieden**, nicht während der Forschungsrunde. Optionen ohne Änderung der wissenschaftlichen Fragen:
+
+| Option | Folge | Laufzeit |
+|---|---|---|
+| **A** Zeitgrenze auf 90 min (5400 s) anheben | Verfahren unverändert, n = 16000 bleibt | ≈ 68 min |
+| B MLP nur bis n = 4000; NM/LDA weiter bis 16000 | C-Daten und C-Modell unberührt; der beschreibende MLP-Punkt bei 16000 fehlt | ≈ 12 min |
+| C MLP bei n = 16000 mit 1 statt 3 Initialisierungen | Auswahlregel für diesen Punkt anders | ≈ 31 min |
+
+**Mein Vorschlag:** A, weil sich nur das Zeitbudget ändert und kein Verfahren. Die Entscheidung steht noch aus.

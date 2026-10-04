@@ -1,0 +1,231 @@
+{
+ "schema": "mandala-memory-m11-protocol-v1",
+ "status": "candidate (step 2: development); NOT frozen; research references not computed",
+ "plan": "docs/M11_PLAN_AUSLESE.md (Fassung 2) after PLANREVIEW_49f94cf (M11-R1..R4)",
+ "question": "How much of the gap to the Bayes bound can a better readout close while the Mandala stays unchanged?",
+ "mandala": "unchanged: M10 frozen functions m10_task.network/readout_states (tag m10-freeze), tanh, sigma 0.02, W 3, p 0.5",
+ "delay": 4,
+ "task": "preserve (A/B)",
+ "cases": [
+  {
+   "name": "modular_N",
+   "network": "modular",
+   "condition": "N",
+   "role": "main"
+  },
+  {
+   "name": "uniform_Fplus",
+   "network": "uniform",
+   "condition": "Fplus",
+   "role": "secondary"
+  },
+  {
+   "name": "modular_K0",
+   "network": "modular",
+   "condition": "K0",
+   "role": "control"
+  },
+  {
+   "name": "uniform_K0",
+   "network": "uniform",
+   "condition": "K0",
+   "role": "control"
+  }
+ ],
+ "bayes_source": {
+  "research": {
+   "file": "D:/mandala/mandala-memory-results/m10/research/m10-research-20261003T230058-47d41706.json",
+   "sha256": "db114706f10a335194ed5756d25470662f8780c5f9a877a8e67811c0594cb54d",
+   "delay": 4
+  },
+  "dev": {
+   "file": "D:/mandala/mandala-memory-results/m10/dev-runtime-check/m10-dev-20261003T220111-f37321cb.json",
+   "sha256": "600721d901ed5e81bf41a5b081f32318486dbafdf241d0faaec1ea9ef8a69364",
+   "delay": 4
+  }
+ },
+ "modes": {
+  "research": "m11",
+  "smoke": "m11",
+  "dev": "m11dev"
+ },
+ "n_grid": [
+  250,
+  1000,
+  4000,
+  16000
+ ],
+ "n_max": 16000,
+ "test_pairs": 100000,
+ "streams": {
+  "train": "(seed, kind in {pattern, noise}, role 'train'), independent of n and case; n are prefixes",
+  "test": "(seed, kind, role 'test'): one independent test stream per seed, shared within the seed across n, cases and decoders",
+  "mlp_init": "(seed, 'mlp-init', case, n, k)",
+  "linear_reference": "(seed, 'linref', case)"
+ },
+ "seeds": {
+  "research": [
+   41101,
+   41102,
+   41103,
+   41104,
+   41105,
+   41106,
+   41107,
+   41108,
+   41109,
+   41110,
+   41111,
+   41112,
+   41113,
+   41114,
+   41115,
+   41116,
+   41117,
+   41118,
+   41119,
+   41120
+  ],
+  "smoke": [
+   41001,
+   41002
+  ],
+  "dev": [
+   901,
+   902,
+   903
+  ]
+ },
+ "decoders": {
+  "nearest_mean": "no standardisation, as M3-M10; evaluated exactly (plan 2.1) and on the test set",
+  "lda_ledoit_wolf": "as M10 (m10_decoders.LedoitWolfLDA); evaluated exactly and on the test set",
+  "mlp": {
+   "architecture": "12 -> hidden tanh -> 1 logistic",
+   "hidden": 32,
+   "training": "Adam (0.9, 0.999, 1e-8), full batch, BCE with logits + L2 on weights, early stopping on validation log-loss",
+   "hyperparameters": {
+    "lr": 0.03,
+    "l2": 0.001,
+    "patience": 100,
+    "max_epochs": 3000
+   },
+   "selection_rule_hyperparameters": "grid lr in {0.003, 0.01, 0.03} x l2 in {1e-5, 1e-4, 1e-3}, patience 100, max_epochs 3000, 1 init; smallest mean VALIDATION log-loss over the development cases and n in {1000, 16000}, dev seeds; no test data",
+   "validation": "every 5th pair of the n-prefix (20 %, class-stratified, pairs together), taken from the same budget n",
+   "standardisation": "mean/std of the fit part only",
+   "inits": 3,
+   "init_selection": "smallest validation log-loss",
+   "hyperparameter_selection_result": {
+    "rule": "grid lr in {0.003, 0.01, 0.03} x l2 in {1e-5, 1e-4, 1e-3}, patience 100, max_epochs 3000, 1 init; smallest mean VALIDATION log-loss over the development cases and n in {1000, 16000}, dev seeds; no test data",
+    "chosen": {
+     "lr": 0.03,
+     "l2": 0.001,
+     "mean_val_loss": 0.43421142744989777,
+     "mean_epochs": 279.4,
+     "max_epochs_reached": 0
+    },
+    "grid_mean_val_loss": {
+     "0.003/1e-05": 0.43911,
+     "0.003/1e-04": 0.43868,
+     "0.003/1e-03": 0.43918,
+     "0.01/1e-05": 0.44006,
+     "0.01/1e-04": 0.43876,
+     "0.01/1e-03": 0.43669,
+     "0.03/1e-05": 0.43995,
+     "0.03/1e-04": 0.43906,
+     "0.03/1e-03": 0.43421
+    },
+    "note": "the chosen point lies at the EDGE of the pre-stated grid (largest lr and l2); kept because the rule was fixed in advance; no further search",
+    "data": "development cases and seeds 901-903 only; validation log-loss only; no test data"
+   }
+  }
+ },
+ "linear_reference": {
+  "seed": 2026100411,
+  "n_random": 20,
+  "gtol": 1e-10,
+  "maxiter": 2000,
+  "method": "L-BFGS-B on -acc(w, b), w = u/||u||, b free, numerical gradient; starts NM(inf), LDA(inf), 20 random; non-losable candidates NM(inf), LDA(inf)",
+  "label": "numerical linear reference L_found (lower bound of the linear optimum L*); B - L_found is an UPPER bound of the nonlinearity gap"
+ },
+ "confirmatory": {
+  "case": "modular_N",
+  "delta": 0.01,
+  "alpha": 0.05,
+  "holm": true,
+  "one_sided": true,
+  "C-Daten": {
+   "question": "Do more examples help LDA?",
+   "contrast": "acc_LDA(16000) - acc_LDA(1000), exact population accuracy of the trained rules, paired by seed"
+  },
+  "C-Modell": {
+   "question": "Is the MLP learning procedure better than LDA at n = 1000?",
+   "contrast": "BA_MLP(1000) - BA_LDA(1000), both on the same per-seed test set, paired by seed",
+   "meaning": "compares concrete learning procedures (incl. optimisation/validation), not the model class in isolation; does not show that nonlinearity is necessary"
+  },
+  "test": "one-sided t test of (mean paired seed difference - delta), df = 19; normality of the seed differences is an ASSUMPTION; whole-seed bootstrap intervals reported alongside",
+  "zero_variance_rule": "if the seed differences have zero variance: p = 0 if mean > delta else 1",
+  "report": [
+   "mean",
+   "t",
+   "p",
+   "Holm-adjusted p",
+   "unadjusted 95% t interval and bootstrap interval"
+  ],
+  "wording": {
+   "rejected": "bestaetigt",
+   "not_rejected": "nicht bestaetigt",
+   "contrary": "Richtung widerspricht, only if the unadjusted 95% interval lies entirely below 0"
+  }
+ },
+ "descriptive": [
+  "convergence diagnostic |mean_seed acc_D(16000) - acc_D(inf)| <= 0.01 for NM and LDA (no one-sided requirement)",
+  "decomposition B - acc_D(n) = [B - L_found] + [L_found - acc_D(inf)] + [acc_D(inf) - acc_D(n)] with the readings of plan 2.4 (last term signed)",
+  "closed share = (mean acc_D(n) - mean acc_LDA(1000)) / (B - mean acc_LDA(1000)), ratio of seed means, paired whole-seed bootstrap; B SE reported separately; N/A if the denominator <= 0.01",
+  "MLP learning curve over n; secondary case and K0 controls (K0: decoders within delta of B at large n expected; deviation = diagnostic finding)",
+  "test-set cross-check of the exact linear accuracies"
+ ],
+ "uncertainty": {
+  "training_draw": "seed level (paired seed differences, whole-seed bootstrap 2000 reps, seed 2026100412)",
+  "mlp_test": "inside each seed value (100 000 test pairs), captured by the seed spread; test streams independent across seeds",
+  "bayes_se": "taken from M10, common to all seeds, NOT in the seed bootstrap; reported separately for absolute gaps and shares; cancels in C-Daten and C-Modell"
+ },
+ "resources": {
+  "time_limit": {
+   "seconds": 1800,
+   "kind": "elapsed wall-clock (time.monotonic), checked cooperatively before every unit and before completion"
+  },
+  "ram": "planned < 1 GiB, measured, not enforced",
+  "output": "D:/mandala/mandala-memory-results/m11/<mode>/, exclusive writes, C: refused"
+ },
+ "phases": [
+  "1 plan fixed (Fassung 2)",
+  "2 code/tests + hyperparameters on development cases + runtime check -> implementation review",
+  "3 version procedures/decisions, then compute research references ONCE (model-based reference phase); no selection afterwards",
+  "4 freeze (protocol + references + code hashes + reviewed commit), smoke, one research run, evaluation through the gate"
+ ],
+ "development": {
+  "cases": [
+   {
+    "name": "modular_Ndev",
+    "network": "modular",
+    "condition": "Ndev"
+   },
+   {
+    "name": "uniform_Fdev",
+    "network": "uniform",
+    "condition": "Fdev"
+   },
+   {
+    "name": "modular_K0",
+    "network": "modular",
+    "condition": "K0"
+   },
+   {
+    "name": "uniform_K0",
+    "network": "uniform",
+    "condition": "K0"
+   }
+  ],
+  "note": "K0 controls are identical in development and research (no distractor) and are used for the hyperparameter choice; they carry no hypothesis"
+ }
+}
