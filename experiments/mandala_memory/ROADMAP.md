@@ -1,4 +1,4 @@
-# Mandala-Gedächtnislabor: Roadmap (M0–M9)
+# Mandala-Gedächtnislabor: Roadmap (M0–M12)
 
 **Erster Versuch:** „Reiz → Pause → Erinnerung“.
 
@@ -34,7 +34,8 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
 | M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
-| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | Schritt 2 erledigt, wartet auf Implementierungsprüfung und Laufzeitentscheidung; Referenzphase noch **nicht** begonnen |
+| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | ✅ erledigt (Freeze `m11-freeze`; zweiter, dokumentierter Forschungsversuch freigegeben): C-Modell bestätigt, C-Daten nicht bestätigt; lokal in `main` |
+| M12 | Robustheit des festgehaltenen Auslesens: [Plan, Fassung 2](docs/M12_PLAN_ROBUSTHEIT.md), [Protokoll-Kandidat](protocol/m12_protokoll.json), Implementierung an Entwicklungsbedingungen | Implementierung erledigt, wartet auf Implementierungsreview; **nicht** eingefroren, keine Forschungsrechnung |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -1301,3 +1302,88 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - Im Hauptfall verbleibt gegenüber der gefundenen linearen Referenz fast die ganze Lücke zu B; B − L_found = 0,134 ist eine obere Schranke der Nichtlinearitätslücke, keine kausale Zuordnung. Das MLP schließt bei n = 16000 beschreibend rund 84 % der LDA(1000)-Lücke.
 - Formulierungen nach `ERGEBNISPRUEFUNG_78c2d2f` präzisiert; nur Dokumentation geändert.
 - Details stehen in `docs/M11_ERGEBNIS.md`.
+
+## M12 Plan (2026-10-05)
+
+- [`docs/M12_PLAN_ROBUSTHEIT.md`](docs/M12_PLAN_ROBUSTHEIT.md), Fassung 1. Es ist **nur ein Plan**: kein Training, keine Rechnung, kein Freeze.
+- **Leitfrage:** Wie robust sind festgehaltene MLP- und LDA-Decoder gegen eine geänderte Ablenkungsamplitude bzw. ein geändertes Messrauschen?
+- **Aufbau:** 9 Bedingungen, Hauptfall modular/N/d = 4, neue Basismodelle (keine M11-Rekonstruktion).
+- **Zerlegung:** Der Verlust wird aufgeteilt in die Informationsänderung ΔB und die Lückenänderung ΔG des Decoders.
+- **Offen:** Entscheidungen O1–O5.
+
+## M12: Implementierung an Entwicklungsbedingungen (2026-10-05)
+
+**Plan:** [Fassung 2](docs/M12_PLAN_ROBUSTHEIT.md) (`d1acc4a`) nach `PLANREVIEW_2a07ae4` (M12-R1 bis R4); O1–O5 angenommen. [Protokoll-Kandidat](protocol/m12_protokoll.json) mit YAML/MD-Zwillingen. **Nicht eingefroren**; keine Forschungsreferenzen, kein Forschungstraining.
+
+**Module** (M10/M11-Code unverändert und nur aufgerufen):
+
+| Datei | Inhalt |
+|---|---|
+| [`m12_common.py`](m12_common.py) | eigene Ströme (Modi 13/14/15), Raster, Zustände, Ziehungen mit gemeinsamen Zufallszahlen, Paar-SE, MLP-Wrapper (gleiche Regel wie `fit_mlp`), Artefakte (NPZ ohne Pickle, strenge Prüfung, Manifest) |
+| [`m12_references.py`](m12_references.py) | B(c) und LDA_pop(c) je Bedingung, Quelle für D1, Referenzphase mit Claim, Prüfung des Protokoll-Freeze |
+| [`m12_models.py`](m12_models.py) | Training nur in c₀, Roundtrip direkt nach dem Speichern, Herkunftsprüfung, Trainingsphase mit Claim, Modell-Freeze |
+| [`m12_robust.py`](m12_robust.py) | Auswertung festgehaltener Modelle; jeder Fit gesperrt; Hashes der Modelldateien und Gewichte vorher = nachher |
+| [`m12_evaluate.py`](m12_evaluate.py) | Gate, Diagnosen D1–D4 mit Alarmregel, ΔB mit MC-SE, ΔG bedingt, LDA-Aufteilung, R-a/R-σ an den erhöhten Endpunkten |
+
+**Laufzeitcheck** (ein Entwicklungs-Seed im vollen Umfang):
+
+| Phase | gemessen | Hochrechnung |
+|---|---|---|
+| Referenzen | 58 s | 58 s |
+| Training | 105 s je Seed | 20 Seeds etwa 35–45 min, Grenze 90 min |
+| Auswertung | 2,8 s je Seed | etwa 1 min |
+| Spitzen-RAM | 263 MiB | – |
+
+Bei vollem Umfang gab es keine Diagnose-Alarme. *Berichtigt nach M12-R4:* Die früher genannten 169 s waren über vier M11-Fälle summiert.
+
+**Tests:** [`tests/test_m12.py`](tests/test_m12.py) prüft unter anderem:
+- Bitgleichheit des Wrappers mit `fit_mlp` bei gleichen Strömen;
+- gemeinsame Zufallszahlen und exakte Rauschskalierung;
+- Paar-SE;
+- Roundtrip, strenge Ladung und Herkunft;
+- manipulierte, fehlende und zusätzliche Artefakte;
+- Smoke-/Dev-Manifest wird als Forschung abgewiesen;
+- das Training liest das Raster nie;
+- Fit-Sperre, unveränderte Gewichte und Dateien;
+- Identität L = ΔB + ΔG und c₀ = 0;
+- künstlicher Alarm sperrt die bestätigende Freigabe ohne Wiederholung;
+- Gate, Zeitgrenzen und Phasensperren.
+
+**Mutationsprüfung:** 20 neue Mutanten. Einer überlebte zunächst: `m12_npz_pickle_allowed`. Das war eine echte Testlücke, denn `MemoryLabError` ist selbst ein `ValueError`. Der Test prüft jetzt ein Objekt-Array unter einem gültigen Schlüssel und die Meldung der Pickle-Ablehnung.
+
+## Followup-Review-Fix `IMPLEMENTIERUNGSREVIEW_ba5dabc` (M12-R5 bis R8, NPZ-Regel)
+
+Astras Gegenbeispiele (`check_ba5dabc.py`) liefen zuerst unverändert in einer Temp-Kopie. Alle reproduzierten exakt:
+- vier Gate-Verfälschungen mit `released=true`;
+- Alarmfall mit `released=true` und „bestaetigt“;
+- NaN-Verluste mit fehlenden Epochen ohne Herkunftsproblem.
+
+| Befund | Korrektur | Regression |
+|---|---|---|
+| **R5** Gate unvollständig | `structure_problems` prüft **vor** Diagnosen und Statistik: numerisches Raster aus dem Protokoll, unabhängig rekonstruierte Testströme (≠ Trainingsströme), Paarzahl **je Zeile** (der Runner schreibt jetzt `n_test_pairs`), Typ/Endlichkeit/Bereich aller Zahlen, SE ≥ 0, beide Hash-Abbildungen vollständig und gleich den vom Lader verifizierten Dateien. Unvollständige Eingaben werden strukturiert abgelehnt. | Ein gültiger synthetischer Forschungsdatensatz wird zuerst **akzeptiert**; 7 Verfälschungen werden je mit eigenem Grund abgelehnt (Astras 4 wörtlich, dazu Paarzahl, Genauigkeit > 1, falsche verifizierte Hashes). |
+| **R6** Alarm sperrt nicht | `structurally_valid` und `confirmatory_status` stehen getrennt (`released` / `withheld_diagnostic_alarm` / `not_released`). `released` ist nur ohne Alarm true. Gesperrt heißt es „nicht freigegeben: Kriterium rechnerisch (nicht) erfüllt“; p-Werte bleiben. `alarm_review_reference` ist für eine spätere dokumentierte Prüfung vorgesehen. Diagnosen alarmieren auch bei nicht endlichen Werten. | Status, Gründe, Hypothesentext und CLI-Ausgabe beim D4-Alarm |
+| **R7** keine Einmal-Sperre | `evaluation_phase()`: Vorbedingungen inklusive NPZ-Git-Identität, dann **exklusiver Claim vor jeder Rechnung**; Fehler- und Abschlussdatensatz (mit Ergebnis-Hash). Ein direkter `run("research")` und `write=False` sind gesperrt. | Gezählter, gemockter Rechenkern: Ein zweiter Aufruf nach Erfolg, Timeout, Fehler oder Ausnahme scheitert vor jeder Rechnung, auch mit anderem Ausgabeordner. |
+| **R8** Herkunft gegen sich selbst | `expected_binding` leitet die erwartete Herkunft unabhängig ab: Protokoll, Referenzen, eingefrorener Code, Vorgänger, Hyperparameter-Quelle, n und c₀ des Modus. Manifest **und** jeder Seed werden dagegen geprüft. Vollständiges Fit-Schema: endliche Verluste, Epochen in [1, 3000], Initialisierungen, Auswahl mit Tie-Break, konsistente Auswahl-Metadaten, exakte Fit- und Validierungszahlen. Der Modell-Freeze **validiert vor** dem Schreiben und bindet zusätzlich die Datei-Hashes. | Astras NaN- und Epochenfall; 6 einzelne Schemadefekte; Tie-Break; gemeinsam falsches Manifest mit Metadaten bei stimmigen Hashes; Freeze schreibt bei Validierungsfehler nichts |
+| **NPZ-Regel** | `.gitattributes` in der Repo-Wurzel: `experiments/mandala_memory/protocol/m12_models/*.npz binary`. `npz_git_identity_problems` prüft das Attribut und die Bytegleichheit von Git-Blob und Datei; Teil der Vorbedingungen der Robustheitsphase. | `git check-attr` am echten Pfad; Commit in einem Temp-Repo mit `core.autocrlf=true`: Blob gleich Datei; ohne Regel wird es gemeldet. |
+
+**Unterwegs:**
+- Drei neue Tests liefen in der Linux-Stufe ohne SCF auf ein fehlendes scipy, das der t-Test braucht. Das war eine falsche Einstufung meiner Tests, kein Codefehler; sie stehen jetzt in der SCF-Stufe wie die M11-t-Tests.
+- Zwei ältere M12-Mutanten waren nach der Umformulierung ihrer Zielzeilen ungültig. Ich habe sie umgezielt und geprüft, dass jedes Mutantenziel genau einmal vorkommt.
+
+**Ergebnisse:**
+- Pflichtlauf **392/392**.
+- Linux: ohne SCF 191 bestanden, mit SCF 375 bestanden.
+- Mutationsprüfung **126/126**, mit 16 neuen Mutanten.
+- M10/M11 unverändert. Keine Forschungsrechnung, kein Freeze.
+
+## M12: Freeze, Referenzen, Smoke, Training, Modell-Freeze, Auswertung (2026-10-05)
+
+- **Protokoll-Freeze:** `f3a5bc2` (Tag `m12-freeze`). Danach Referenzen (`331f422`, 56 s), Smoke (gültig, nicht freigegeben) und das Training mit 20 Modellen (2343 s, Ruhezustand blockiert).
+- **Modell-Freeze:** `e8e53a8` (Tag `m12-models`).
+- **Robustheitsauswertung:** `093d34f`, einmalig, freigegeben, keine Alarme. Jede Phase hatte genau einen Versuch.
+- **Konfirmatorisch:** R-a (+0,104) und R-σ (+0,043) bestätigt.
+- **Beschreibend:**
+  - Beim Rauschen liegt die Leistungsänderung des fixierten MLP nahe bei ΔB. Seine absolute Bayes-Lücke bleibt klein, ändert sich relativ aber deutlich; beschreibend, kein Robustheitstest. *Präzisiert nach `ERGEBNISPRUEFUNG_M12`.*
+  - Bei der Ablenkungsamplitude verliert es in beide Richtungen mehr als ΔB.
+  - Bei Amplitude 0,30 ist die fixierte LDA besser.
+- Details stehen in [`docs/M12_ERGEBNIS.md`](docs/M12_ERGEBNIS.md).
