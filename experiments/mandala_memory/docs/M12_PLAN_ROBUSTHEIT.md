@@ -1,6 +1,8 @@
-# M12: Robustheit des festgehaltenen Auslesens (Plan, Fassung 1)
+# M12: Robustheit des festgehaltenen Auslesens (Plan, Fassung 2)
 
 **Status:** nur Plan. Nichts gerechnet, nichts eingefroren, nichts trainiert. Auftrag: Johann/Astra, 2026-10-05.
+
+**Fassung 2:** Präzisiert nach `PLANREVIEW_2a07ae4` (M12-R1 bis R4). Johann/Astra haben die Vorschläge O1–O5 angenommen (§ 12).
 
 **Leitfrage:** Wie verändert sich die Ausleseleistung bei anderer Ablenkungsstärke oder anderem Messrauschen, wenn die trainierten Decoder unverändert bleiben?
 
@@ -26,11 +28,10 @@
   - Validierung ist jedes 5. Paar; die Standardisierung kommt nur aus dem Fit-Teil.
   - Eine Initialisierung wird nach dem kleinsten Validierungsverlust auf c₀ gewählt, bei Gleichstand der kleinste Index.
   - Dass diese Hyperparameter in M11 am Rand des Entwicklungsrasters lagen, bleibt als bekannte Einschränkung bestehen.
-- **Trainingsgröße n = 16 000 Paare** (Vorschlag, O1):
+- **Trainingsgröße n = 16 000 Paare** (O1, angenommen):
   - Das ist der M11-Punkt, an dem das MLP den größten Teil der Lücke schloss (rund 84 %) und die Seed-Streuung am kleinsten war.
   - Die Robustheitsfrage betrifft ein gut trainiertes Auslesen.
   - LDA wird auf denselben 16 000 Paaren trainiert.
-  - Alternative: n = 4000, etwa ¼ der Rechenzeit, rund 76 % geschlossen.
 - **Seeds (neu, disjunkt zu M11):**
 
   | Zweck | Seeds |
@@ -60,9 +61,30 @@
 - Alles wird exklusiv geschrieben. Die Größe liegt insgesamt unter 1 MB, deshalb werden die Artefakte im Repo versioniert.
 
 **Fixierung:**
-- Ein Modell-Freeze-Datensatz bindet die Artefakte über Manifest-Hash, Protokoll-Hash und Code-Hashes. Der Commit bekommt den Tag `m12-models`.
+- Ein Modell-Freeze-Datensatz bindet die Artefakte über den Manifest-Hash und den Protokoll-Hash. Er bindet außerdem den Hash des Referenz-Artefakts (§ 5) und die Code-Hashes. Der Commit bekommt den Tag `m12-models`.
 - Danach wird weder nachtrainiert noch nach verschobenen Testdaten ausgewählt.
 - Die Robustheitsauswertung lädt nur Artefakte und prüft ihre Hashes. Ruft sie ein Fit auf, scheitert sie; ein Test patcht dafür `MLP.fit` und `lda_rule` so, dass sie eine Ausnahme werfen.
+
+**Vollständige Prüfbarkeit (M12-R4):**
+- **Laden:**
+  - NPZ wird ohne Pickle geladen (`allow_pickle=False`).
+  - Geprüft werden die exakten Schlüssel, die Formen (W1 12×32, b1 32, w2 32, b2 1, mean 12, std 12, w 12, b 1) und der Typ float64.
+  - Alle Werte müssen endlich sein, alle `std` größer 0.
+  - Die Pflichtmetadaten müssen vollständig sein: Seed, Stream-Schlüssel aller Initialisierungen, gewählte Initialisierung, Hyperparameter-Hash, Protokoll-Hash, Code-Hashes und Trainingsgröße.
+- **Manifest:**
+  - Es muss **genau** die 20 Forschungs-Seeds des Protokolls enthalten, je Seed genau die vorgesehenen Dateien.
+  - Ein Hash-Abgleich mit irgendeinem Manifest genügt nicht.
+- **Roundtrip-Test:**
+  - Gespeicherte und frisch geladene Modelle liefern auf festgelegten Entwicklungseingaben bitgleiche Scores und Vorhersagen (MLP-Logits, LDA-Werte w·y + b).
+  - Dasselbe gilt für das Modell im Speicher direkt nach dem Training.
+- **Unverändert:**
+  - Die Auswertung prüft die Hashes aller Modelldateien vor und nach dem Lauf.
+  - Sie vergleicht die geladene Standardisierung und die Gewichte nach der Auswertung mit einer Kopie.
+- **Smoke-Artefakte:**
+  - Sie liegen getrennt im Ergebnisordner, nicht im Repo, mit eigenem vollständigem Manifest (Modus `smoke`).
+  - Damit wird Speichern und Laden geprüft.
+  - Das Forschungs-Gate weist ein Smoke-Manifest immer ab.
+- **Wrapper-Bitgleichheitstest:** Er nutzt absichtlich dieselben (M11-)Testströme wie `fit_mlp`. Die produktiven M12-Ströme bleiben von M11 getrennt.
 
 ## 4 Verschiebungen (vorab fest, einzeln verändert)
 
@@ -76,7 +98,7 @@ Das ergibt **9 Testbedingungen**, mit c₀ gemeinsam. Fenster, Orte, Pulswahrsch
 ## 5 Testdaten und Referenzen
 
 - **Testepisoden:**
-  - 100 000 Paare je Seed und Bedingung (O4), aus einem eigenen Teststrom getrennt vom Training.
+  - 100 000 Paare je Seed und Bedingung (O4, angenommen), aus einem eigenen Teststrom getrennt vom Training.
   - **Gemeinsame Zufallszahlen über alle 9 Bedingungen:** dieselben Musterindizes und dasselbe standardnormale Rauschen ε; y = z(c) + σ(c)·ε.
   - Verluste gegenüber c₀ sind dadurch innerhalb eines Seeds gepaart.
   - MLP und LDA werden auf denselben Episoden gemessen.
@@ -86,7 +108,12 @@ Das ergibt **9 Testbedingungen**, mit c₀ gemeinsam. Fenster, Orte, Pulswahrsch
   - n_MC = 2·10⁶ in Blöcken zu 50 000, ein unabhängiger Strom je Schätzung; der Standardfehler wird berichtet.
   - Kontrolle: B(c₀) muss mit dem M10-Forschungswert 0,9116 innerhalb von 4 kombinierten SE übereinstimmen (gleicher Zustand, gleiches σ, anderer MC-Strom).
 - **Angepasste lineare Referenz LDA_pop(c):** die Populations-LDA für die Bedingung c, exakt über `population_rules`. Sie ist kein trainiertes Modell und braucht deshalb kein Nachtrainieren.
-- **Referenzphase:** B(c) und LDA_pop(c) hängen nicht von den Modellen ab. Sie werden **einmalig vor dem Training** berechnet, mit Claim-Sperre und exklusivem Artefakt, wie in M11.
+- **B(c₀) wird genau einmal berechnet** und für alle Kontraste wiederverwendet.
+- **Referenzphase:**
+  - B(c) und LDA_pop(c) hängen nicht von den Modellen ab. Sie werden **nach dem Protokoll-Freeze und vor dem Forschungstraining** einmalig berechnet, mit Claim-Sperre wie in M11.
+  - Das Ergebnis ist ein eigenes, unveränderliches Referenz-Artefakt mit eigenem Hash. Es enthält den Protokoll-Hash, gegen den es gerechnet wurde.
+  - Dieser Hash wird im Modell-Freeze und im Auswertungs-Gate gebunden.
+  - Der ursprüngliche Protokoll-Hash wird nicht nachträglich auf sich selbst bezogen: Das Protokoll ändert sich nach dem Freeze nicht; die Bindung läuft über den Freeze-Datensatz.
 
 ## 6 Auswertung
 
@@ -101,26 +128,49 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 
 **Identität:** L = ΔB + ΔG, exakt bei gleichen B-Schätzungen; ein Test prüft das.
 
-**Nur für LDA** wird ΔG weiter zerlegt:
-- **Änderung der linearen Grenze:** [B − LDA_pop](c) − [B − LDA_pop](c₀);
-- **Fehlanpassung der festgehaltenen Koeffizienten:** [LDA_pop − LDA_fix](c) − [LDA_pop − LDA_fix](c₀).
+**ΔG beschreibt eine Veränderung des Bayes-Abstands, nicht eindeutig deren Ursache.**
 
-**Grenze für das MLP:** Ohne Nachtrainieren gibt es keine angepasste MLP-Referenz. ΔG_MLP mischt also die Grenze der Modellklasse mit der Fehlanpassung. Das wird ausdrücklich so berichtet und nicht aufgelöst.
+**Nur für LDA** wird ΔG weiter zerlegt. Beide Terme sind vorzeichenbehaftet; die Zerlegung ist algebraisch exakt.
+- **Änderung des Bayes-Abstands der bedingungsspezifischen Populations-LDA:** [B − LDA_pop](c) − [B − LDA_pop](c₀).
+  - Die Populations-LDA ist die Populationsregel des LDA-Kriteriums, **nicht** die beste lineare Regel.
+  - Der Term mischt deshalb eine mögliche Beschränkung linearer Regeln mit dem Abstand des LDA-Kriteriums.
+  - Eine globale lineare Optimierung je Bedingung ist nicht vorgesehen.
+- **Änderung des Leistungsabstands der fixierten LDA zur bedingungsspezifischen Populations-LDA:** [LDA_pop − LDA_fix](c) − [LDA_pop − LDA_fix](c₀).
+  - Der Term enthält die endliche Schätzung des fixierten Ausgangsmodells.
+  - Er ist deshalb **kein** isolierter reiner Fehlanpassungseffekt.
 
-**Unsicherheit:**
-- Mittel über 20 Seeds mit unadjustierten 95 %-t-Intervallen.
-- Zusätzlich ein gepaarter Bootstrap über ganze Seeds: 2000 Wiederholungen, fester Bootstrap-Seed.
-- Die Test-Stichprobenstreuung steckt in der Streuung zwischen den Seeds.
-- Der MC-SE von B wird separat ausgewiesen; Intervalle von ΔB und ΔG sind bedingt auf die B-Schätzungen.
+**Für das MLP** gibt es ohne Nachtrainieren keine bedingungsspezifische Referenz. ΔG_MLP kann die Beschränkung der Modellklasse, die Fehlanpassung an die neue Bedingung, endliche Trainingsdaten sowie Optimierung und Regularisierung mischen. All das gehört zum konkreten Lernverfahren und wird nicht aufgelöst.
 
-**Konfirmatorisch (Vorschlag, O3), klein gehalten:**
-- **Frage:** Bleibt der Auslesevorteil des MLP bei den stärksten geplanten Verschiebungen erhalten?
-  - **R-a:** acc_MLP − acc_LDA,test > δ bei a_D = 0,9.
-  - **R-σ:** dasselbe bei σ = 0,03.
+**Unsicherheit (M12-R3):**
+- **Größen mit Seed-Bezug** (acc, L, ΔG und der MLP-LDA-Vorteil):
+  - Mittel über 20 Seeds mit unadjustierten 95 %-t-Intervallen.
+  - Zusätzlich ein gepaarter Bootstrap über ganze Seeds: 2000 Wiederholungen, fester Bootstrap-Seed.
+  - Die Test-Stichprobenstreuung steckt in der Streuung zwischen den Seeds.
+  - Die Intervalle für ΔG sind **bedingt auf die festen Bayes-Schätzungen**. Daneben steht der zusätzliche MC-SE der Bayes-Differenz.
+- **ΔB hat keine Seed-Streuung,** denn es ist eine MC-Schätzung eines festen Modellwerts. Aus 20 Wiederholungen desselben ΔB wird **kein** t- oder Bootstrap-Intervall gebildet. Berichtet wird der Schätzwert mit seinem MC-SE:
+  - c ≠ c₀ (unabhängige Ströme): SE_MC(ΔB) = √(SE_B(c₀)² + SE_B(c)²);
+  - c = c₀: ΔB = 0 exakt, ohne Unsicherheit.
+  - Weil alle Kontraste denselben Ausgangswert B(c₀) teilen, sind ihre MC-Fehler **korreliert**. Das wird ausgewiesen.
+- **Identität:** L = ΔB + ΔG verwendet dieselben gespeicherten B-Werte; deren MC-Fehler heben sich in der Summe auf.
+- **Standardfehler einer Testgenauigkeit:**
+  - Er wird aus den **Paarbeiträgen** bestimmt: r_i = (1[A_i richtig] + 1[B_i richtig])/2 und SE = sd(r)/√n_Paare.
+  - A und B eines Paares teilen das Ablenkungsmuster und sind deshalb keine 2·10⁵ unabhängigen Bernoulli-Beobachtungen.
+
+**Konfirmatorisch (O3, angenommen, M12-R2):**
+- **Frage:** Ist das fixierte MLP an den beiden **erhöhten Endpunkten** um mehr als 0,01 besser als die fixierte LDA?
+  - **R-a:** acc_MLP − acc_LDA > δ bei a_D = 0,9 (σ = 0,02).
+  - **R-σ:** dasselbe bei σ = 0,03 (a_D = 0,6).
+  - Beide Decoder werden auf denselben Testepisoden gemessen, beide Werte als Testgenauigkeit, damit es ein gepaarter Vergleich ist.
+- **Was nicht getestet wird:** weder Nichtunterlegenheit gegenüber c₀ noch die Erhaltung der Größe des Ausgangsvorteils. Ein Vorteil kann schrumpfen und trotzdem bestehen.
+- **Begründung der erhöhten Endpunkte, vorab:**
+  - Mehr Ablenkung und mehr Rauschen sind die Richtungen, in denen eine Verschlechterung des Auslesens praktisch zu erwarten ist und die Robustheit zählt.
+  - Für σ lässt die optimale Trefferquote analytisch nicht zu (§ 9). Für a_D macht M10 eine stärkere Störung im modularen Netz plausibel.
+  - Die halbierten Werte liegen gleich weit von c₀ entfernt und werden vollständig beschreibend berichtet.
+  - Eine Monotonie der Decoderverluste wird **nicht** vorausgesetzt.
+  - Es gibt keine nachträgliche Auswahl von Endpunkten.
 - **Verfahren:** δ = 0,01, einseitiger t-Test mit df = 19, Holm über beide Tests, Nullvarianz-Regel wie in M11.
 - **Formulierung:** „Nicht bestätigt“ heißt nur, dass das Kriterium nicht erfüllt ist; weitere Aussagen nur mit Intervall.
-- **Alles Übrige ist beschreibend**, einschließlich der Zerlegung.
-- **Alternative:** rein beschreibend, ohne konfirmatorische Familie.
+- **Alles Übrige ist beschreibend.** Dazu gehören die Verlustkurven, die Zerlegung und die Änderung des MLP-LDA-Vorteils gegenüber c₀. Eine weitere konfirmatorische Familie gibt es nicht.
 
 ## 7 Reihenfolge (Phasen)
 
@@ -128,11 +178,17 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 2. **Implementierung an Entwicklungsbedingungen:**
    - Module `m12_models.py` (Training, Artefakte, Hash-Prüfung), `m12_references.py`, `m12_robust.py` (Auswertung ohne Fit) und `m12_evaluate.py` (Gate, Zerlegung, Statistik).
    - Tests und Mutationsprüfung, Laufzeitcheck, danach Implementierungsreview.
-3. **Protokoll-Freeze** (Tag `m12-freeze`) **vor jedem Training.** Er enthält das Raster, die Seeds, n, den Hyperparameter-Hash, die Auswahl-, Ausschluss- und Freigaberegeln, das Budget und die Code-Hashes.
-4. **Referenzphase,** einmalig: B(c) und LDA_pop(c) für alle 9 Bedingungen.
+3. **Protokoll-Freeze** (Tag `m12-freeze`) **vor dem Forschungstraining.**
+   - Er enthält das Raster, die Seeds, n, den Hyperparameter-Hash, die Auswahl-, Ausschluss-, Diagnose- und Freigaberegeln, das Budget und die Code-Hashes.
+   - Entwicklungs- und Werkzeugtests trainieren vorher nur auf Entwicklungseinstellungen (Seeds 921–923, Modus `m12dev`).
+4. **Referenzphase,** einmalig: B(c) und LDA_pop(c) für alle 9 Bedingungen. Das Referenz-Artefakt bekommt einen eigenen Hash, sein Commit kommt vor dem Training.
 5. **Smoke:** Smoke-Modelle trainieren und auswerten, als Integrationsprüfung. Sie werden nicht freigegeben und nicht interpretiert.
-6. **Trainingsphase,** einmalig: 20 Forschungsmodelle je Decoder, nur in c₀.
-7. **Modell-Freeze** (Tag `m12-models`): Artefakte, Manifest und Freeze-Datensatz, sonst keine Änderung. Die Konsistenz wird in einem frischen Prozess geprüft.
+6. **Trainingsphase,** einmalig: 20 Forschungsmodelle je Decoder.
+   - Trainiert wird nur in c₀; ausgewählt wird nur die Initialisierung, auf der c₀-Validierung.
+   - Es werden keine Testgenauigkeiten berechnet, schon gar nicht zur Auswahl.
+7. **Modell-Freeze** (Tag `m12-models`): Artefakte, Manifest und Freeze-Datensatz, sonst keine Änderung.
+   - Der Freeze-Datensatz bindet den Protokoll-Hash, den Referenz-Hash, den Manifest-Hash und die Code-Hashes.
+   - Die Konsistenz wird in einem frischen Prozess geprüft, einschließlich Laden und Roundtrip.
 8. **Robustheitsauswertung,** einmalig, danach Ergebnisbericht, Review und Integration.
 
 **Versuchsregel (aus M11 gelernt):**
@@ -148,9 +204,26 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 - **Freigabe-Gate der Auswertung** (alle Bedingungen müssen gelten):
   - Modus `research`, Status `complete`, keine Fehler, keine Overrides;
   - Seeds gleich dem Protokoll; vollständiges Raster aus 20 × 9 × 2 Zeilen; alle Werte endlich;
-  - Protokoll, Code, Referenz-Artefakt und Modell-Manifest gleich ihren Freeze-Hashes; jedes Artefakt mit passender Herkunft;
+  - Protokoll, Code, Referenz-Artefakt und Modell-Manifest gleich ihren Freeze-Hashes; jedes Artefakt mit passender Herkunft und erfolgreich geladen (§ 3);
+  - Modelldateien vor und nach der Auswertung hashgleich;
   - Auswertung ohne Fit-Aufruf, laut Lauf-Metadaten und Code-Hash;
   - Teststrom vom Trainingsstrom getrennt.
+
+**Statistische Diagnosen (M12-R3), vorab festgelegt:**
+- **Art der Prüfung:** Die Diagnosen sind Gegenproben, keine Beweise. Ein einzelner 4-SE-Verstoß ist **kein** sicherer Codefehler.
+- **Alarmregel:**
+  - Jeder Alarm wird im Ergebnis vermerkt. Die konfirmatorische Freigabe ruht dann bis zu einer dokumentierten Prüfung durch Johann/Astra.
+  - Es gibt **keine** Wiederholung, bis eine Diagnose besteht.
+- **Fehlalarme:** Bei 4 SE erwarten wir über alle Diagnosen zusammen deutlich unter 1 Fehlalarm.
+
+| Diagnose | Anzahl | Toleranz |
+|---|---|---|
+| D1 Reproduktion: B(c₀) gegen M10-Forschungswert | 1 | \|Δ\| ≤ 4·√(SE² + SE²) |
+| D2 Keine Zunahme mit σ: B(σ_{k+1}) ≤ B(σ_k) + 4·√(SE² + SE²) für benachbarte σ | 4 | wie angegeben |
+| D3 LDA_pop(c) ≤ B(c) + 4·SE_B(c) | 9 | wie angegeben |
+| D4 exakte LDA gegen Test-LDA je Seed und Bedingung | 180 | \|Δ\| ≤ 4·SE (aus Paarbeiträgen) |
+
+**Analytisch** (getrennt von D2): Zusätzliches unabhängiges Gauß-Rauschen ist eine Verrauschung der Beobachtung. Die optimale Trefferquote kann dadurch **nicht zunehmen**. Eine **strenge** Abnahme bräuchte weitere Voraussetzungen und wird nicht behauptet.
 
 ## 9 Pflichtprüfungen der Implementierung (Auswahl, inklusive Negativkontrollen)
 
@@ -159,6 +232,11 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 | Wrapper-Gleichwertigkeit | Gleiche Daten und Ströme ergeben dieselben Gewichte wie `m11_readout.fit_mlp`. |
 | Verlusteigenschaften | Die Identität L = ΔB + ΔG gilt. In c₀ sind alle Verluste exakt 0. |
 | Gepaarte Testepisoden | Die Testepisoden sind über die Bedingungen gepaart, mit identischem ε und identischen Mustern. |
+| Laden und Roundtrip | Ohne Pickle; Schlüssel, Formen, Typ, Endlichkeit, std > 0 und Pflichtmetadaten werden geprüft; genau 20 Seeds. Scores sind bitgleich vor dem Speichern, nach dem Laden und im Speicher. |
+| Auswertung ändert nichts | Modell-Hashes vorher gleich nachher; Gewichte und Standardisierung unverändert. |
+| Getrennte Artefakte | Ein Smoke-Manifest wird vom Forschungs-Gate abgewiesen. |
+| ΔB in c₀ | ΔB(c₀) ist exakt 0 mit SE 0. B(c₀) wird nur einmal berechnet. |
+| Paar-SE | Der Standardfehler kommt aus Paarbeiträgen und stimmt mit einer unabhängigen Nachrechnung überein. |
 | Rauschskalierung | σ(c) skaliert das Rauschen exakt. |
 | LDA exakt gegen Test | Die exakte LDA-Genauigkeit stimmt mit der Testgenauigkeit innerhalb von 4 SE überein. |
 | Manipuliertes Artefakt | Ein geändertes Byte oder eine fehlende Datei wird abgewiesen. |
@@ -167,17 +245,16 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 | Gate | Lehnt Smoke-Läufe, unvollständige Läufe und Overrides ab. |
 | Ausgaben | Referenz und Artefakte werden exklusiv geschrieben; Ausgaben auf C: werden verweigert. |
 | Eingefrorene Dateien | M10- und M11-Dateien bleiben unverändert (Hash-Test). |
-| Plausibilität auf Entwicklungsbedingungen | B fällt streng mit σ. LDA_pop(c) ≤ B(c) + 4 SE. |
+| Diagnosen | Werden als Diagnosen mit Alarmregel geführt; ein künstlicher Alarm sperrt die konfirmatorische Freigabe und löst keine Wiederholung aus. |
 
 ## 10 Ressourcenbudget (Schätzung, wird im Laufzeitcheck gemessen)
 
 | Phase | Schätzung | vorgeschlagene Grenze |
 |---|---|---|
 | Referenz (9 × B mit 2·10⁶ MC, 9 × LDA_pop) | wenige Minuten | 1800 s |
-| Training, n = 16 000 | etwa 20 × 170 s ≈ 57 min (M11 gemessen: 169 s je MLP-Fit mit 3 Initialisierungen) | 5400 s |
-| Training, n = 4000 (falls O1) | etwa 15 min | 1800 s |
+| Training, n = 16 000 | **wird an Entwicklungseinstellungen im tatsächlichen M12-Umfang gemessen**, einschließlich Schreiben und Laden der Artefakte. Anhaltspunkt: Im M11-Forschungslauf (Versuch 2) lag die Laufzeitangabe für modular_N bei n = 16 000 im Mittel bei etwa 129 s je Modell mit 3 Initialisierungen, also etwa 43 min für 20 Seeds. *Berichtigt nach M12-R4:* Die früher genannten 169 s waren über vier Entwicklungsfälle summiert. | 5400 s (konservativ) |
 | Robustheitsauswertung (20 × 9 × 2·10⁵ Episoden, exakte LDA) | unter 5 min | 1800 s |
-| RAM | unter 1 GiB (M11-Spitze 264 MiB) | 2 GiB |
+| RAM | unter 1 GiB (M11-Spitze 264 MiB) | 2 GiB als Planwert; **gemessen und berichtet, nicht technisch durchgesetzt** |
 | Speicher | Artefakte unter 1 MB, Ergebnisse unter 50 MB; alles auf D: | – |
 
 ## 11 Was nicht behauptet wird
@@ -189,10 +266,12 @@ Für Decoder D, Seed s und Bedingung c (Vorzeichen: positiv heißt schlechter al
 
 ## 12 Offene Entscheidungen
 
-| | Frage | Vorschlag |
+Johann/Astra haben am 2026-10-05 alle Vorschläge angenommen.
+
+| | Frage | Entscheidung |
 |---|---|---|
-| O1 | Trainingsgröße | n = 16 000 (Alternative 4000) |
+| O1 | Trainingsgröße | n = 16 000 |
 | O2 | Raster | ×{0,5; 0,75; 1; 1,25; 1,5} je Achse |
-| O3 | Konfirmatorische Familie | R-a und R-σ (Alternative: rein beschreibend) |
+| O3 | Konfirmatorische Familie | R-a und R-σ, mit der präzisierten Frage aus M12-R2 |
 | O4 | Testpaare je Seed und Bedingung | 100 000 |
-| O5 | Zusätzlicher Ankerpunkt ohne Ablenkung (a_D = 0) | nein, Umfang klein halten |
+| O5 | Zusätzlicher Ankerpunkt ohne Ablenkung | nein |
