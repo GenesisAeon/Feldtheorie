@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import time
 from pathlib import Path
 from typing import Callable, Dict, List, Optional
@@ -161,35 +162,103 @@ def training_phase() -> Dict:
     return rec
 
 
-# --- provenance and loading for the evaluation ---------------------------------------------
-def provenance_problems(meta: Dict, proto: Dict, mode: str, seed: int, binding: Dict) -> List[str]:
+# --- provenance and loading for the evaluation (review M12-R8) ------------------------------
+BINDING_KEYS = ("protocol_sha256", "references_sha256", "code_sha256", "m10_binding", "m11_binding", "hyper_source", "n_pairs", "condition")
+
+
+def _is_int(x) -> bool:
+    return isinstance(x, int) and not isinstance(x, bool)
+
+
+def _is_finite_nonneg(x) -> bool:
+    return isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) and x >= 0
+
+
+def expected_binding(mode: str, proto: Dict, references_sha256: Optional[str], n_pairs: Optional[int] = None) -> Dict:
+    """Expected provenance derived INDEPENDENTLY of the manifest: protocol, references, current
+    (= frozen, for research/smoke) code, frozen predecessors, protocol hyper source, protocol n,
+    and the c0 base condition of the mode."""
+    case_set = "dev" if mode == "dev" else ("research" if mode == "research" else "smoke")
+    base = mc.base_of(proto, case_set)
+    pred = mc.require_predecessors_frozen()
+    n = proto["training"]["n_pairs"] if mode != "dev" else n_pairs
+    return {"protocol_sha256": mc.sha(mc.PROTOCOL), "references_sha256": references_sha256, "code_sha256": mc.code_sha256(),
+            "m10_binding": pred["m10"], "m11_binding": pred["m11"], "hyper_source": proto["training"]["hyper_source"],
+            "n_pairs": n, "condition": {"name": "c0", **{k: base[k] for k in ("X", "Y", "amplitude", "sigma")}}}
+
+
+def fit_schema_problems(fit, n: int, hyper: Dict, exp_init_streams: List) -> List[str]:
+    """Complete fit schema: finite valid losses, admissible epochs, init streams/indices,
+    selection incl. tie-break, consistent selected metadata, exact fit/validation counts."""
+    if not isinstance(fit, dict):
+        return ["fit_metadata_missing"]
+    bad = []
+    if fit.get("hyper") != hyper:
+        bad.append("fit_hyper_differs")
+    inits = fit.get("inits")
+    if not isinstance(inits, list) or len(inits) != hyper["inits"]:
+        return bad + ["inits_incomplete"]
+    for k, i in enumerate(inits):
+        if not isinstance(i, dict) or i.get("index") != k or not _is_int(i.get("index")):
+            bad.append(f"init_{k}_index")
+            continue
+        if i.get("stream") != exp_init_streams[k]:
+            bad.append(f"init_{k}_stream")
+        if not _is_finite_nonneg(i.get("best_val_loss")):
+            bad.append(f"init_{k}_val_loss_not_finite")
+        ep = i.get("epochs")
+        if not _is_int(ep) or not 1 <= ep <= hyper["max_epochs"]:
+            bad.append(f"init_{k}_epochs_invalid")
+    if bad:
+        return bad
+    sel = min(range(len(inits)), key=lambda k: (inits[k]["best_val_loss"], k))
+    chosen = fit.get("selected")
+    if not isinstance(chosen, dict) or chosen.get("init") != sel or not _is_int(chosen.get("init")):
+        bad.append("selection_rule_violated")
+    elif chosen.get("best_val_loss") != inits[sel]["best_val_loss"] or chosen.get("epochs") != inits[sel]["epochs"]:
+        bad.append("selected_metadata_inconsistent")
+    n_val = int(mr.validation_split(n).sum())
+    want = {"split_rule": "every 5th pair -> validation", "n_fit_pairs": n - n_val, "n_val_pairs": n_val,
+            "n_fit_episodes": 2 * (n - n_val), "n_val_episodes": 2 * n_val, "n_val_class_B": n_val}
+    for k, v in want.items():
+        if fit.get(k) != v or (k != "split_rule" and not _is_int(fit.get(k))):
+            bad.append(f"{k}_differs")
+    return bad
+
+
+def provenance_problems(meta: Dict, proto: Dict, mode: str, seed: int, expected: Dict) -> List[str]:
+    """`expected` comes from expected_binding() -- never from the manifest itself."""
     smode = proto["modes"][mode]
     hyper = mc.mlp_hyper(proto)
-    exp = expected_keys(smode, seed, meta.get("n_pairs", -1), hyper["inits"])
-    bad = []
-    for k in ("protocol_sha256", "references_sha256", "code_sha256", "m10_binding", "m11_binding", "hyper_source", "n_pairs", "condition"):
-        if meta.get(k) != binding.get(k):
-            bad.append(f"{k}_differs")
-    if mode != "dev" and meta.get("n_pairs") != proto["training"]["n_pairs"]:
-        bad.append("n_pairs_not_protocol")
+    bad = [f"{k}_differs" for k in BINDING_KEYS if meta.get(k) != expected.get(k)]
+    n = expected.get("n_pairs")
+    if not _is_int(n) or n < 5:
+        return bad + ["n_pairs_invalid"]
+    if meta.get("mode") != mode or meta.get("seed") != seed or meta.get("schema") != SCHEMA_META:
+        bad.append("identity_differs")
     if meta.get("hyper") != hyper:
         bad.append("hyper_differs")
+    exp = expected_keys(smode, seed, n, hyper["inits"])
     if meta.get("train_streams") != exp["train"]:
         bad.append("train_streams_differ")
-    fit = meta.get("fit", {})
-    inits = fit.get("inits", [])
-    if [i.get("stream") for i in inits] != exp["inits"] or [i.get("index") for i in inits] != list(range(hyper["inits"])):
-        bad.append("init_streams_differ")
-    try:
-        sel = min(range(len(inits)), key=lambda k: (inits[k]["best_val_loss"], k))
-        if fit.get("selected", {}).get("init") != sel:
-            bad.append("selection_rule_violated")
-    except (KeyError, ValueError, TypeError):
-        bad.append("fit_metadata_incomplete")
-    n = meta.get("n_pairs", 0)
-    if fit.get("n_val_pairs") != int(mr.validation_split(n).sum()) or fit.get("split_rule") != "every 5th pair -> validation":
-        bad.append("validation_split_differs")
-    return bad
+    return bad + fit_schema_problems(meta.get("fit"), n, hyper, exp["inits"])
+
+
+def _checked(mode: str, directory: Path, seeds: List[int], references_sha256: Optional[str]) -> Dict:
+    """Full check of a model directory against the independently derived provenance."""
+    proto = mc.load_protocol()
+    loaded = mc.load_models(directory, mode, seeds)
+    man = loaded["manifest"]
+    n_dev = man.get("n_pairs") if mode == "dev" else None
+    expected = expected_binding(mode, proto, references_sha256, n_dev)
+    man_bad = [f"manifest_{k}_differs" for k in BINDING_KEYS if man.get(k) != expected[k]]
+    if man_bad:
+        raise MemoryLabError(f"manifest provenance problems: {man_bad}")
+    problems = {s: provenance_problems(meta, proto, mode, s, expected) for s, (_, meta) in loaded["models"].items()}
+    problems = {s: p for s, p in problems.items() if p}
+    if problems:
+        raise MemoryLabError(f"provenance problems: {problems}")
+    return {**loaded, "directory": str(directory), "binding": expected, "file_hashes": mc.directory_hashes(directory)}
 
 
 def require_models(mode: str, directory: Optional[Path] = None, *, seeds: Optional[List[int]] = None,
@@ -201,55 +270,60 @@ def require_models(mode: str, directory: Optional[Path] = None, *, seeds: Option
         if not MODEL_FREEZE.is_file():
             raise MemoryLabError("research models blocked: model freeze record missing")
         frz = json.loads(MODEL_FREEZE.read_text(encoding="utf-8"))
-        directory, seeds = RESEARCH_MODELS, proto["seeds"]["research"]
         refs = mref.require_references("research")
         if (frz.get("protocol_sha256") != prec["protocol_sha256"] or frz.get("references_sha256") != refs["sha256"]
                 or frz.get("code_sha256") != mc.code_sha256()):
             raise MemoryLabError("model freeze record does not match protocol/references/code")
-        references_sha256 = refs["sha256"]
-    elif mode == "smoke":
+        out = _checked("research", RESEARCH_MODELS, proto["seeds"]["research"], refs["sha256"])
+        if frz.get("manifest_sha256") != out["manifest_sha256"] or frz.get("file_hashes") != out["file_hashes"]:
+            raise MemoryLabError("manifest or model files differ from the model freeze record")
+        return out
+    if mode == "smoke":
         mref.require_protocol_frozen("smoke models")
-        directory, seeds = Path(proto["artifacts"]["smoke_dir"]), proto["seeds"]["smoke"]
-        references_sha256 = mref.require_references("smoke")["sha256"]
-        frz = None
-    elif mode == "dev":
+        return _checked("smoke", Path(proto["artifacts"]["smoke_dir"]), proto["seeds"]["smoke"], mref.require_references("smoke")["sha256"])
+    if mode == "dev":
         if directory is None or seeds is None:
             raise MemoryLabError("dev models need a directory and the seeds")
-        frz = None
-    else:
-        raise MemoryLabError("mode must be dev, smoke or research")
-    loaded = mc.load_models(directory, mode, seeds)
-    if frz is not None and frz.get("manifest_sha256") != loaded["manifest_sha256"]:
-        raise MemoryLabError("manifest differs from the model freeze record")
-    man = loaded["manifest"]
-    binding = {k: man.get(k) for k in ("protocol_sha256", "references_sha256", "code_sha256", "m10_binding", "m11_binding",
-                                       "hyper_source", "n_pairs", "condition")}
-    if references_sha256 is not None and binding["references_sha256"] != references_sha256:
-        raise MemoryLabError("models were not trained against these references")
-    if mode != "dev" and binding["protocol_sha256"] != mc.sha(mc.PROTOCOL):
-        raise MemoryLabError("models were not trained under the frozen protocol")
-    pred = mc.require_predecessors_frozen()
-    if binding["m10_binding"] != pred["m10"] or binding["m11_binding"] != pred["m11"]:
-        raise MemoryLabError("models are bound to other M10/M11 states")
-    problems = {s: provenance_problems(meta, proto, mode, s, binding) for s, (_, meta) in loaded["models"].items()}
-    problems = {s: p for s, p in problems.items() if p}
-    if problems:
-        raise MemoryLabError(f"provenance problems: {problems}")
-    return {**loaded, "directory": str(directory), "binding": binding, "file_hashes": mc.directory_hashes(directory)}
+        return _checked("dev", Path(directory), seeds, references_sha256 if references_sha256 is not None
+                        else json.loads((Path(directory) / "manifest.json").read_text(encoding="utf-8")).get("references_sha256"))
+    raise MemoryLabError("mode must be dev, smoke or research")
+
+
+def npz_git_identity_problems(directory: Path = None) -> List[str]:
+    """Every NPZ must be committed and its git blob byte-identical to the file (no line-ending
+    conversion; .gitattributes marks the research NPZ as binary)."""
+    import hashlib
+    import subprocess
+
+    directory = Path(directory or RESEARCH_MODELS)
+    top = subprocess.run(["git", "-C", str(directory), "rev-parse", "--show-toplevel"], capture_output=True, text=True).stdout.strip()
+    bad = []
+    for f in sorted(directory.glob("*.npz")):
+        rel = f.resolve().relative_to(Path(top).resolve()).as_posix()
+        attr = subprocess.run(["git", "-C", top, "check-attr", "binary", "--", rel], capture_output=True, text=True).stdout
+        if not attr.strip().endswith("binary: set"):
+            bad.append(f"{f.name}: not marked binary")
+        blob = subprocess.run(["git", "-C", top, "show", f"HEAD:{rel}"], capture_output=True)
+        if blob.returncode != 0:
+            bad.append(f"{f.name}: not committed")
+        elif hashlib.sha256(blob.stdout).hexdigest() != mc.raw_sha(f):
+            bad.append(f"{f.name}: git blob differs from the file")
+    return bad
 
 
 def write_model_freeze(note: str) -> Dict:
-    """After the training phase: bind protocol, references, manifest and code (exclusive)."""
+    """After the training phase: FULL validation first (review M12-R8), then the exclusive
+    record binding protocol, references, manifest, model file hashes and code."""
     prec = mref.require_protocol_frozen("model freeze")
     refs = mref.require_references("research")
     proto = mc.load_protocol()
-    loaded = mc.load_models(RESEARCH_MODELS, "research", proto["seeds"]["research"])
+    checked = _checked("research", RESEARCH_MODELS, proto["seeds"]["research"], refs["sha256"])
     rec = {"schema": "mandala-memory-m12-model-freeze-v1", "frozen_unix": time.time(), "note": note,
            "protocol_sha256": prec["protocol_sha256"], "references_sha256": refs["sha256"],
-           "manifest_sha256": loaded["manifest_sha256"], "code_sha256": mc.code_sha256(),
+           "manifest_sha256": checked["manifest_sha256"], "file_hashes": checked["file_hashes"], "code_sha256": mc.code_sha256(),
            "reviewed_code_commit": prec["reviewed_code_commit"], "seeds": proto["seeds"]["research"]}
     mc.write_json_exclusive(MODEL_FREEZE, rec)
-    require_models("research")                                  # full check incl. provenance after writing
+    require_models("research")
     return rec
 
 

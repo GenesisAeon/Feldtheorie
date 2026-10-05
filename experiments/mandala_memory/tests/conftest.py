@@ -48,6 +48,12 @@ SCF = {
     "test_m12.py::test_a_fit_during_the_evaluation_fails_the_run",
     "test_m12.py::test_changed_weights_during_the_evaluation_fail_the_run",
     "test_m12.py::test_a_model_file_changed_during_the_evaluation_fails_the_run",
+    "test_m12.py::test_r8_jointly_wrong_manifest_and_metadata_are_rejected",
+    "test_m12.py::test_npz_rule_and_blob_identity",
+    # these run the confirmatory t test (scipy, installed with the SCF tier)
+    "test_m12.py::test_r5_valid_synthetic_result_is_accepted_first",
+    "test_m12.py::test_r5_each_falsification_is_rejected_with_its_own_reason",
+    "test_m12.py::test_r6_alarm_blocks_release_status_reasons_wording_and_cli",
     "test_m12.py::test_decomposition_identity_and_zero_at_c0",
     "test_m12.py::test_exact_lda_and_test_lda_agree_within_the_diagnostic",
     "test_m12.py::test_artificial_alarm_withholds_confirmatory_and_triggers_no_repeat",
@@ -149,6 +155,7 @@ SCF = {
 }
 LAB_INTEGRATION = {
     "test_m12.py::test_real_d1_source_is_the_frozen_m10_value",            # reads the M10 results on D:
+    "test_m12.py::test_npz_rule_and_blob_identity",                        # git + repository .gitattributes
     "test_m11_kernel.py::test_dev_references_and_the_bayes_source_check",   # reads the M10 dev result on D:
     "test_m4_evaluate.py::test_review_r2_original_full_round_released_and_numerically_unchanged",
     "test_m4_evaluate.py::test_review_r2_incomplete_protocol_not_released",

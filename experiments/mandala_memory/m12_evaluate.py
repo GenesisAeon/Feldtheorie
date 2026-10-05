@@ -31,18 +31,100 @@ Z4 = 4.0
 
 
 def _finite01(x) -> bool:
-    return isinstance(x, (int, float)) and math.isfinite(x) and 0.0 <= x <= 1.0
+    return isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) and 0.0 <= x <= 1.0
+
+
+def _se_ok(x) -> bool:
+    return isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) and x >= 0.0
+
+
+def expected_layout(result: Dict) -> Dict:
+    """What the result MUST look like, derived from the protocol and the mode alone."""
+    proto = mc.load_protocol()
+    mode = result.get("mode")
+    if mode == "research":
+        return {"conditions": mc.conditions(proto, "research"), "seeds": proto["seeds"]["research"], "pairs": proto["test"]["pairs"],
+                "smode": proto["modes"]["research"]}
+    if mode == "smoke":
+        return {"conditions": mc.conditions(proto, "smoke"), "seeds": proto["seeds"]["smoke"], "pairs": proto["test"]["pairs"],
+                "smode": proto["modes"]["smoke"]}
+    if mode == "dev":
+        seeds, pairs = result.get("seeds"), result.get("test_pairs")
+        ok = isinstance(seeds, list) and seeds and all(isinstance(x, int) and not isinstance(x, bool) for x in seeds) \
+            and isinstance(pairs, int) and not isinstance(pairs, bool) and pairs > 1
+        return {"conditions": mc.conditions(proto, "dev"), "seeds": seeds if ok else None, "pairs": pairs if ok else None,
+                "smode": proto["modes"]["dev"]}
+    return {}
+
+
+def structure_problems(result: Dict) -> List[str]:
+    """Review M12-R5: complete, typed, finite, protocol-conform input -- checked BEFORE any
+    diagnostic or confirmatory computation touches the values."""
+    exp = expected_layout(result)
+    if not exp:
+        return ["unknown_mode"]
+    if exp["seeds"] is None:
+        return ["seeds_or_test_pairs_malformed"]
+    bad: List[str] = []
+    if result.get("conditions") != exp["conditions"]:
+        bad.append("conditions_differ_from_protocol_grid")
+    if result.get("seeds") != exp["seeds"]:
+        bad.append("seeds_differ_from_protocol")
+    if result.get("test_pairs") != exp["pairs"]:
+        bad.append("test_pairs_differ")
+    hb, ha = result.get("model_file_hashes_before"), result.get("model_file_hashes_after")
+    if not isinstance(hb, dict) or not hb or not isinstance(ha, dict) or not ha:
+        bad.append("model_file_hashes_missing")
+    elif hb != ha:
+        bad.append("model_files_changed")
+    names = [c["name"] for c in exp["conditions"]]
+    grid = {(sd, c) for sd in exp["seeds"] for c in names}
+    rows = result.get("rows")
+    if not isinstance(rows, list):
+        return bad + ["rows_missing"]
+    got = [(r.get("seed"), r.get("condition")) if isinstance(r, dict) else None for r in rows]
+    if set(got) != grid or len(got) != len(grid):
+        bad.append("grid_incomplete_or_duplicated")
+    streams = {sd: {"test": [list(mc.stream(exp["smode"], sd, k, "test")[1]) for k in ("pattern", "noise")],
+                    "train": [list(mc.stream(exp["smode"], sd, k, "train")[1]) for k in ("pattern", "noise")]} for sd in exp["seeds"]}
+    flags = set()
+    for r in rows:
+        if not isinstance(r, dict) or r.get("seed") not in streams:
+            flags.add("row_malformed")
+            continue
+        st = streams[r["seed"]]
+        if r.get("test_streams") != st["test"]:
+            flags.add("test_streams_not_the_expected_test_streams")
+        if r.get("test_streams") == st["train"]:
+            flags.add("test_streams_equal_training_streams")
+        if r.get("n_test_pairs") != exp["pairs"] or isinstance(r.get("n_test_pairs"), bool):
+            flags.add("row_test_pairs_differ")
+        m, l, a = r.get("mlp"), r.get("lda"), r.get("advantage_test")
+        if not all(isinstance(x, dict) for x in (m, l, a)):
+            flags.add("row_values_missing")
+            continue
+        if not (_finite01(m.get("acc")) and _finite01(l.get("acc")) and _finite01(l.get("exact"))):
+            flags.add("accuracy_not_finite_or_out_of_range")
+        if not (_se_ok(m.get("se_pair")) and _se_ok(l.get("se_pair")) and _se_ok(a.get("se_pair"))):
+            flags.add("standard_error_not_finite_or_negative")
+        am = a.get("mean")
+        if not (isinstance(am, (int, float)) and not isinstance(am, bool) and math.isfinite(am) and -1.0 <= am <= 1.0):
+            flags.add("advantage_not_finite_or_out_of_range")
+    return bad + sorted(flags)
 
 
 def release(result: Dict, refs: Optional[Dict] = None) -> Dict:
+    """Structural validity of a RESEARCH result (the confirmatory status is set in evaluate)."""
     reasons: List[str] = []
-    proto = mc.load_protocol()
     if result.get("mode") != "research":
         reasons.append("mode_is_not_research")
     if result.get("status") != "complete" or result.get("failures"):
         reasons.append("run_not_complete")
     if any(v is not None for v in (result.get("overrides") or {}).values()):
         reasons.append("overrides_used")
+    if result.get("fit_guard") != "active":
+        reasons.append("fit_guard_missing")
+    reasons += structure_problems(result)
     try:
         prec = mref.require_protocol_frozen("release")
         if result.get("protocol_sha256") != prec["protocol_sha256"] or result.get("frozen_protocol_sha256") != prec["protocol_sha256"]:
@@ -59,30 +141,12 @@ def release(result: Dict, refs: Optional[Dict] = None) -> Dict:
               or frz.get("references_sha256") != art["sha256"]):
             reasons.append("models_not_the_frozen_models")
         else:
-            mm.require_models("research")
+            verified = mm.require_models("research")["file_hashes"]
+            if result.get("model_file_hashes_before") != verified or result.get("model_file_hashes_after") != verified:
+                reasons.append("model_file_hashes_not_the_verified_files")
     except Exception as e:                                    # any freeze problem blocks the release
         reasons.append(f"freeze_invalid: {type(e).__name__}: {e}")
-    if result.get("model_file_hashes_before") != result.get("model_file_hashes_after"):
-        reasons.append("model_files_changed")
-    if result.get("fit_guard") != "active":
-        reasons.append("fit_guard_missing")
-    if result.get("seeds") != proto["seeds"]["research"]:
-        reasons.append("seeds_differ_from_protocol")
-    if result.get("test_pairs") != proto["test"]["pairs"]:
-        reasons.append("test_pairs_differ")
-    names = [c["name"] for c in proto["grid"]["conditions"]]
-    if [c["name"] for c in result.get("conditions", [])] != names:
-        reasons.append("conditions_differ_from_protocol")
-    grid = {(s, c) for s in proto["seeds"]["research"] for c in names}
-    got = [(r.get("seed"), r.get("condition")) for r in result.get("rows", [])]
-    if set(got) != grid or len(got) != len(grid):
-        reasons.append("grid_incomplete_or_duplicated")
-    for r in result.get("rows", []):
-        vals = [r.get("mlp", {}).get("acc"), r.get("lda", {}).get("acc"), r.get("lda", {}).get("exact")]
-        if not all(_finite01(v) for v in vals):
-            reasons.append("non_finite_or_out_of_range_value")
-            break
-    return {"released": not reasons, "reasons": reasons}
+    return {"structurally_valid": not reasons, "reasons": reasons}
 
 
 def table(result: Dict) -> Dict:
@@ -106,20 +170,20 @@ def diagnostics(result: Dict, refs: Dict) -> Dict:
     out = {"D1": [], "D2": [], "D3": [], "D4": []}
     src = refs["d1_source"]
     tol = Z4 * math.sqrt(c["c0"]["B_se"] ** 2 + src["B_se"] ** 2)
-    out["D1"].append({"diff": c["c0"]["B"] - src["B"], "tol": tol, "alarm": abs(c["c0"]["B"] - src["B"]) > tol})
+    out["D1"].append({"diff": c["c0"]["B"] - src["B"], "tol": tol, "alarm": not abs(c["c0"]["B"] - src["B"]) <= tol})
     amp0 = c["c0"]["amplitude"]
     sig = sorted(((v["sigma"], k) for k, v in c.items() if v["amplitude"] == amp0), key=lambda x: x[0])
     for (s1, k1), (s2, k2) in zip(sig, sig[1:]):
         tol = Z4 * math.sqrt(c[k1]["B_se"] ** 2 + c[k2]["B_se"] ** 2)
         out["D2"].append({"lower_sigma": k1, "higher_sigma": k2, "increase": c[k2]["B"] - c[k1]["B"], "tol": tol,
-                          "alarm": c[k2]["B"] > c[k1]["B"] + tol})
+                          "alarm": not c[k2]["B"] <= c[k1]["B"] + tol})
     for k, v in c.items():
         tol = Z4 * v["B_se"]
-        out["D3"].append({"condition": k, "excess": v["lda_pop"]["acc"] - v["B"], "tol": tol, "alarm": v["lda_pop"]["acc"] > v["B"] + tol})
+        out["D3"].append({"condition": k, "excess": v["lda_pop"]["acc"] - v["B"], "tol": tol, "alarm": not v["lda_pop"]["acc"] <= v["B"] + tol})
     for r in result.get("rows", []):
         tol = Z4 * r["lda"]["se_pair"]
         out["D4"].append({"seed": r["seed"], "condition": r["condition"], "diff": r["lda"]["exact"] - r["lda"]["acc"], "tol": tol,
-                          "alarm": abs(r["lda"]["exact"] - r["lda"]["acc"]) > tol})
+                          "alarm": not abs(r["lda"]["exact"] - r["lda"]["acc"]) <= tol})
     alarms = [f"{k}:{i}" for k, lst in out.items() for i, x in enumerate(lst) if x["alarm"]]
     return {"checks": {k: len(v) for k, v in out.items()}, "alarms": alarms, "details": out,
             "rule": "statistical cross-checks at 4 SE, not proofs; an alarm withholds the confirmatory release pending a documented review; no repetition until passing"}
@@ -197,17 +261,38 @@ def confirmatory(result: Dict) -> Dict:
     return {"question": cf["question"], "delta": cf["delta"], "tests": tests, "not_tested": cf["not_tested"]}
 
 
+ALARM_RULE = ("an alarm withholds the confirmatory release until a documented review by Johann/Astra, referenced in a "
+              "separate addendum; never an automatic rerun; computed p-values stay as a NOT released evaluation")
+
+
 def evaluate(result: Dict, refs: Dict) -> Dict:
-    rel = release(result, refs) if result.get("mode") == "research" else {"released": False, "reasons": ["mode_is_not_research"]}
+    """Review M12-R6: structural validity and confirmatory release are stored SEPARATELY;
+    'released' is true only for a structurally valid research result WITHOUT diagnostic alarm.
+    Malformed input is rejected before diagnostics and statistics touch it."""
+    struct = structure_problems(result)
+    if struct:
+        return {"release": {"released": False, "structurally_valid": False, "reasons": struct, "confirmatory_status": "not_released",
+                            "alarm_review_reference": None},
+                "confirmatory_label": "rejected: malformed or incomplete result (no diagnostics, no statistics computed)"}
+    rel = release(result, refs) if result.get("mode") == "research" else {"structurally_valid": False, "reasons": ["mode_is_not_research"]}
     diag = diagnostics(result, refs)
-    out = {"release": rel, "diagnostics": diag, "descriptive": descriptive(result, refs), "confirmatory": confirmatory(result)}
-    if not rel["released"]:
-        out["confirmatory_label"] = "not released (descriptive only)"
+    conf = confirmatory(result)
+    if not rel["structurally_valid"]:
+        status = "not_released"
     elif diag["alarms"]:
-        out["confirmatory_label"] = "withheld pending documented review (diagnostic alarm)"
+        status = "withheld_diagnostic_alarm"
     else:
-        out["confirmatory_label"] = "confirmatory (released)"
-    return out
+        status = "released"
+    reasons = list(rel["reasons"]) + ([f"diagnostic_alarm: {', '.join(diag['alarms'])}"] if diag["alarms"] else [])
+    for t in conf["tests"].values():
+        if status != "released":
+            t["wording"] = ("nicht freigegeben: Kriterium rechnerisch erfuellt" if t["rejected"] else
+                            "nicht freigegeben: Kriterium rechnerisch nicht erfuellt") + f" ({status})"
+    labels = {"released": "confirmatory (released)", "withheld_diagnostic_alarm": "withheld pending documented review (diagnostic alarm)",
+              "not_released": "not released (descriptive only)"}
+    return {"release": {"released": status == "released", "structurally_valid": rel["structurally_valid"], "reasons": reasons,
+                        "confirmatory_status": status, "alarm_review_reference": None, "alarm_rule": ALARM_RULE},
+            "diagnostics": diag, "descriptive": descriptive(result, refs), "confirmatory": conf, "confirmatory_label": labels[status]}
 
 
 def main(argv=None) -> int:
@@ -227,8 +312,9 @@ def main(argv=None) -> int:
         refs = mref.require_references(res["mode"])["refs"]
     ev = evaluate(res, refs)
     mc.write_json_exclusive(a.out, ev)
-    print(json.dumps({"released": ev["release"]["released"], "reasons": ev["release"]["reasons"][:6], "label": ev["confirmatory_label"],
-                      "alarms": ev["diagnostics"]["alarms"]}, indent=1))
+    print(json.dumps({"released": ev["release"]["released"], "structurally_valid": ev["release"]["structurally_valid"],
+                      "confirmatory_status": ev["release"]["confirmatory_status"], "reasons": ev["release"]["reasons"][:6],
+                      "label": ev["confirmatory_label"], "alarms": ev.get("diagnostics", {}).get("alarms")}, indent=1))
     return 0
 
 

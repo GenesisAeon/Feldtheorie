@@ -1350,3 +1350,28 @@ Bei vollem Umfang gab es keine Diagnose-Alarme. *Berichtigt nach M12-R4:* Die fr
 - Gate, Zeitgrenzen und Phasensperren.
 
 **Mutationsprüfung:** 20 neue Mutanten. Einer überlebte zunächst: `m12_npz_pickle_allowed`. Das war eine echte Testlücke, denn `MemoryLabError` ist selbst ein `ValueError`. Der Test prüft jetzt ein Objekt-Array unter einem gültigen Schlüssel und die Meldung der Pickle-Ablehnung.
+
+## Followup-Review-Fix `IMPLEMENTIERUNGSREVIEW_ba5dabc` (M12-R5 bis R8, NPZ-Regel)
+
+Astras Gegenbeispiele (`check_ba5dabc.py`) liefen zuerst unverändert in einer Temp-Kopie. Alle reproduzierten exakt:
+- vier Gate-Verfälschungen mit `released=true`;
+- Alarmfall mit `released=true` und „bestaetigt“;
+- NaN-Verluste mit fehlenden Epochen ohne Herkunftsproblem.
+
+| Befund | Korrektur | Regression |
+|---|---|---|
+| **R5** Gate unvollständig | `structure_problems` prüft **vor** Diagnosen und Statistik: numerisches Raster aus dem Protokoll, unabhängig rekonstruierte Testströme (≠ Trainingsströme), Paarzahl **je Zeile** (der Runner schreibt jetzt `n_test_pairs`), Typ/Endlichkeit/Bereich aller Zahlen, SE ≥ 0, beide Hash-Abbildungen vollständig und gleich den vom Lader verifizierten Dateien. Unvollständige Eingaben werden strukturiert abgelehnt. | Ein gültiger synthetischer Forschungsdatensatz wird zuerst **akzeptiert**; 7 Verfälschungen werden je mit eigenem Grund abgelehnt (Astras 4 wörtlich, dazu Paarzahl, Genauigkeit > 1, falsche verifizierte Hashes). |
+| **R6** Alarm sperrt nicht | `structurally_valid` und `confirmatory_status` stehen getrennt (`released` / `withheld_diagnostic_alarm` / `not_released`). `released` ist nur ohne Alarm true. Gesperrt heißt es „nicht freigegeben: Kriterium rechnerisch (nicht) erfüllt“; p-Werte bleiben. `alarm_review_reference` ist für eine spätere dokumentierte Prüfung vorgesehen. Diagnosen alarmieren auch bei nicht endlichen Werten. | Status, Gründe, Hypothesentext und CLI-Ausgabe beim D4-Alarm |
+| **R7** keine Einmal-Sperre | `evaluation_phase()`: Vorbedingungen inklusive NPZ-Git-Identität, dann **exklusiver Claim vor jeder Rechnung**; Fehler- und Abschlussdatensatz (mit Ergebnis-Hash). Ein direkter `run("research")` und `write=False` sind gesperrt. | Gezählter, gemockter Rechenkern: Ein zweiter Aufruf nach Erfolg, Timeout, Fehler oder Ausnahme scheitert vor jeder Rechnung, auch mit anderem Ausgabeordner. |
+| **R8** Herkunft gegen sich selbst | `expected_binding` leitet die erwartete Herkunft unabhängig ab: Protokoll, Referenzen, eingefrorener Code, Vorgänger, Hyperparameter-Quelle, n und c₀ des Modus. Manifest **und** jeder Seed werden dagegen geprüft. Vollständiges Fit-Schema: endliche Verluste, Epochen in [1, 3000], Initialisierungen, Auswahl mit Tie-Break, konsistente Auswahl-Metadaten, exakte Fit- und Validierungszahlen. Der Modell-Freeze **validiert vor** dem Schreiben und bindet zusätzlich die Datei-Hashes. | Astras NaN- und Epochenfall; 6 einzelne Schemadefekte; Tie-Break; gemeinsam falsches Manifest mit Metadaten bei stimmigen Hashes; Freeze schreibt bei Validierungsfehler nichts |
+| **NPZ-Regel** | `.gitattributes` in der Repo-Wurzel: `experiments/mandala_memory/protocol/m12_models/*.npz binary`. `npz_git_identity_problems` prüft das Attribut und die Bytegleichheit von Git-Blob und Datei; Teil der Vorbedingungen der Robustheitsphase. | `git check-attr` am echten Pfad; Commit in einem Temp-Repo mit `core.autocrlf=true`: Blob gleich Datei; ohne Regel wird es gemeldet. |
+
+**Unterwegs:**
+- Drei neue Tests liefen in der Linux-Stufe ohne SCF auf ein fehlendes scipy, das der t-Test braucht. Das war eine falsche Einstufung meiner Tests, kein Codefehler; sie stehen jetzt in der SCF-Stufe wie die M11-t-Tests.
+- Zwei ältere M12-Mutanten waren nach der Umformulierung ihrer Zielzeilen ungültig. Ich habe sie umgezielt und geprüft, dass jedes Mutantenziel genau einmal vorkommt.
+
+**Ergebnisse:**
+- Pflichtlauf **392/392**.
+- Linux: ohne SCF 191 bestanden, mit SCF 375 bestanden.
+- Mutationsprüfung **126/126**, mit 16 neuen Mutanten.
+- M10/M11 unverändert. Keine Forschungsrechnung, kein Freeze.

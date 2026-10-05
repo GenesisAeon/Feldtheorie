@@ -308,13 +308,10 @@ def test_artificial_alarm_withholds_confirmatory_and_triggers_no_repeat(dev, mon
     refs["conditions"]["s0.03"]["lda_pop"]["acc"] = refs["conditions"]["s0.03"]["B"] + 0.1          # D3 violated
     d = ev.diagnostics(dev["res"], refs)
     assert any(a.startswith("D3") for a in d["alarms"])
-    monkeypatch.setattr(ev, "release", lambda result, refs=None: {"released": True, "reasons": []})
-    monkeypatch.setattr(ev, "confirmatory", lambda result: {"tests": {}})       # dev grid relabelled as research
-    res = dict(dev["res"], mode="research")
     calls = []
     monkeypatch.setattr(rob, "run", lambda *a, **k: calls.append(1))
-    out = ev.evaluate(res, refs)
-    assert out["confirmatory_label"].startswith("withheld") and calls == []
+    out = ev.evaluate(dev["res"], refs)                          # dev: never released, but evaluated and no rerun
+    assert out["release"]["released"] is False and calls == []
 
 
 def test_confirmatory_uses_the_same_episodes_and_holm(dev):
@@ -328,12 +325,245 @@ def test_confirmatory_uses_the_same_episodes_and_holm(dev):
 
 def test_release_gate_rejects_dev_and_manipulated_results(dev):
     rel = ev.release(dev["res"], dev["refs"])
-    assert not rel["released"] and "mode_is_not_research" in rel["reasons"]
+    assert not rel["structurally_valid"] and "mode_is_not_research" in rel["reasons"]
+    assert ev.evaluate(dev["res"], dev["refs"])["release"]["released"] is False
     bad = dict(dev["res"], mode="research", fit_guard=None, model_file_hashes_after={"x": "y"}, overrides={"test_pairs": 5})
     r = ev.release(bad, dev["refs"])["reasons"]
     for reason in ("fit_guard_missing", "model_files_changed", "overrides_used", "seeds_differ_from_protocol", "test_pairs_differ"):
         assert reason in r
     assert any(x.startswith("freeze_invalid") for x in r)                        # protocol not frozen yet
+
+
+# --- review IMPLEMENTIERUNGSREVIEW_ba5dabc: Astra's counterexamples verbatim ----------------
+def _synthetic_research(monkeypatch, tmp_path):
+    """Astra's check_ba5dabc.py setup: a complete research-shaped result; ONLY the missing
+    freeze/artifact prerequisites are replaced by placeholders, release/evaluate run unchanged."""
+    p = mc.load_protocol()
+    conds = copy.deepcopy(p["grid"]["conditions"])
+    refs = {"conditions": {c["name"]: {**c, "B": .9, "B_se": .001, "lda_pop": {"acc": .8}} for c in conds}, "d1_source": {"B": .9, "B_se": .001}}
+    f = tmp_path / "synthetic-model-freeze.json"
+    f.write_text(json.dumps({"manifest_sha256": "m", "references_sha256": "r"}), encoding="utf-8")
+    r = {"mode": "research", "status": "complete", "failures": [], "overrides": {}, "protocol_sha256": "p", "frozen_protocol_sha256": "p",
+         "code_sha256": {}, "references_sha256": "r", "manifest_sha256": "m", "model_freeze_sha256": mc.sha(f),
+         "model_file_hashes_before": {"synthetic": "hash"}, "model_file_hashes_after": {"synthetic": "hash"}, "fit_guard": "active",
+         "seeds": p["seeds"]["research"], "test_pairs": p["test"]["pairs"], "conditions": conds, "rows": []}
+    for sd in r["seeds"]:
+        for c in conds:
+            r["rows"].append({"seed": sd, "condition": c["name"], "n_test_pairs": p["test"]["pairs"],
+                              "test_streams": [list(mc.stream("m12", sd, k, "test")[1]) for k in ("pattern", "noise")],
+                              "mlp": {"acc": .85, "se_pair": .001}, "lda": {"acc": .8, "exact": .8, "se_pair": .001},
+                              "advantage_test": {"mean": .05, "se_pair": .001}})
+    monkeypatch.setattr(mref, "require_protocol_frozen", lambda what: {"protocol_sha256": "p", "code_sha256": {}})
+    monkeypatch.setattr(mref, "require_references", lambda case_set, path=None: {"sha256": "r", "refs": refs})
+    monkeypatch.setattr(mm, "MODEL_FREEZE", f)
+    monkeypatch.setattr(mm, "require_models", lambda *a, **k: {"file_hashes": {"synthetic": "hash"}})
+    return r, refs
+
+
+def test_r5_valid_synthetic_result_is_accepted_first(monkeypatch, tmp_path):
+    r, refs = _synthetic_research(monkeypatch, tmp_path)
+    assert ev.structure_problems(r) == [] and ev.release(r, refs) == {"structurally_valid": True, "reasons": []}
+    out = ev.evaluate(r, refs)
+    assert out["release"]["released"] is True and out["release"]["confirmatory_status"] == "released"
+    assert {v["wording"] for v in out["confirmatory"]["tests"].values()} == {"bestaetigt"}
+
+
+@pytest.mark.parametrize("case, reason", [
+    ("train_stream", "test_streams_not_the_expected_test_streams"),
+    ("changed_sigma", "conditions_differ_from_protocol_grid"),
+    ("nan_se", "standard_error_not_finite_or_negative"),
+    ("missing_hashes", "model_file_hashes_missing"),
+    ("row_pairs", "row_test_pairs_differ"),
+    ("acc_above_one", "accuracy_not_finite_or_out_of_range"),
+    ("wrong_verified_hashes", "model_file_hashes_not_the_verified_files"),
+])
+def test_r5_each_falsification_is_rejected_with_its_own_reason(monkeypatch, tmp_path, case, reason):
+    r, refs = _synthetic_research(monkeypatch, tmp_path)
+    x = copy.deepcopy(r)
+    if case == "train_stream":
+        x["rows"][0]["test_streams"] = [list(mc.stream("m12", r["seeds"][0], k, "train")[1]) for k in ("pattern", "noise")]
+    if case == "changed_sigma":
+        x["conditions"][1]["sigma"] = .021
+    if case == "nan_se":
+        x["rows"][0]["lda"]["se_pair"] = float("nan")
+        x["rows"][0]["lda"]["exact"] = .99
+    if case == "missing_hashes":
+        x.pop("model_file_hashes_before")
+        x.pop("model_file_hashes_after")
+    if case == "row_pairs":
+        x["rows"][5]["n_test_pairs"] = 99999
+    if case == "acc_above_one":
+        x["rows"][3]["mlp"]["acc"] = 1.2
+    if case == "wrong_verified_hashes":
+        x["model_file_hashes_before"] = x["model_file_hashes_after"] = {"other": "h"}
+    rel = ev.release(x, refs)
+    assert rel["structurally_valid"] is False and reason in rel["reasons"]
+    if case == "train_stream":
+        assert "test_streams_equal_training_streams" in rel["reasons"]
+    out = ev.evaluate(x, refs)
+    assert out["release"]["released"] is False
+    if case != "wrong_verified_hashes":                    # structural problems: rejected BEFORE diagnostics/statistics
+        assert "diagnostics" not in out and "confirmatory" not in out and reason in out["release"]["reasons"]
+
+
+def test_r6_alarm_blocks_release_status_reasons_wording_and_cli(monkeypatch, tmp_path, capsys):
+    r, refs = _synthetic_research(monkeypatch, tmp_path)
+    x = copy.deepcopy(r)
+    x["rows"][0]["lda"]["exact"] = .99                    # Astra: D4 alarm
+    out = ev.evaluate(x, refs)
+    rel = out["release"]
+    assert out["diagnostics"]["alarms"] == ["D4:0"]
+    assert rel["released"] is False and rel["structurally_valid"] is True and rel["confirmatory_status"] == "withheld_diagnostic_alarm"
+    assert any(x_.startswith("diagnostic_alarm") for x_ in rel["reasons"]) and rel["alarm_review_reference"] is None
+    for t in out["confirmatory"]["tests"].values():
+        assert t["wording"].startswith("nicht freigegeben") and t["wording"] != "bestaetigt" and "p_holm" in t
+    f = tmp_path / "res.json"
+    f.write_text(json.dumps(x), encoding="utf-8")
+    assert ev.main([str(f), "--out", str(tmp_path / "ev.json")]) == 0
+    cli = json.loads(capsys.readouterr().out)
+    assert cli["released"] is False and cli["confirmatory_status"] == "withheld_diagnostic_alarm" and cli["alarms"] == ["D4:0"]
+
+
+# --- review M12-R7: one attempt for the robustness phase ------------------------------------
+def _eval_phase_paths(monkeypatch, tmp_path, status="complete", raise_exc=False):
+    for name in ("EVAL_CLAIM", "EVAL_FAILURE", "EVAL_DONE"):
+        monkeypatch.setattr(rob, name, tmp_path / f"{name}.json")
+    monkeypatch.setattr(mref, "require_references", lambda case_set, path=None: {"refs": {}, "sha256": "r"})
+    monkeypatch.setattr(mm, "require_models", lambda *a, **k: {"file_hashes": {}})
+    monkeypatch.setattr(mm, "npz_git_identity_problems", lambda directory=None: [])
+    calls = []
+
+    def counted(mode, out_dir, **k):
+        calls.append(mode)
+        assert k.get("_claimed") is True and rob.EVAL_CLAIM.exists()       # claim BEFORE any computation
+        if raise_exc:
+            raise RuntimeError("boom")
+        out = tmp_path / "result.json"
+        out.write_text("{}", encoding="utf-8")
+        return {"status": status, "failures": [] if status == "complete" else ["x"], "run_id": "r", "output_path": str(out)}
+
+    monkeypatch.setattr(rob, "run", counted)
+    return calls
+
+
+@pytest.mark.parametrize("status", ["complete", "aborted_timeout", "failed"])
+def test_r7_second_research_evaluation_is_refused_before_any_computation(monkeypatch, tmp_path, status):
+    calls = _eval_phase_paths(monkeypatch, tmp_path, status)
+    rob.evaluation_phase(tmp_path / "out")
+    assert calls == ["research"]
+    assert (rob.EVAL_DONE.exists() if status == "complete" else rob.EVAL_FAILURE.exists())
+    with pytest.raises(MemoryLabError, match="already completed" if status == "complete" else "already started or failed"):
+        rob.evaluation_phase(tmp_path / "other-out")                        # another output folder does not help
+    assert calls == ["research"]
+
+
+def test_r7_exception_leaves_a_failure_record_and_locks(monkeypatch, tmp_path):
+    calls = _eval_phase_paths(monkeypatch, tmp_path, raise_exc=True)
+    with pytest.raises(RuntimeError, match="boom"):
+        rob.evaluation_phase(tmp_path / "out")
+    assert rob.EVAL_FAILURE.exists()
+    with pytest.raises(MemoryLabError, match="already started or failed"):
+        rob.evaluation_phase(tmp_path / "out")
+    assert calls == ["research"]
+
+
+def test_r7_direct_research_run_and_unwritten_research_are_blocked(tmp_path):
+    with pytest.raises(MemoryLabError, match="evaluation_phase"):
+        rob.run("research", tmp_path)
+    with pytest.raises(MemoryLabError, match="always written"):
+        rob.run("research", None, write=False, _claimed=True)
+
+
+# --- review M12-R8: provenance against independently derived expectations ------------------
+def _astra_meta():
+    p = mc.load_protocol()
+    h = mc.mlp_hyper(p)
+    n = p["training"]["n_pairs"]
+    sd = p["seeds"]["research"][0]
+    keys = mm.expected_keys("m12", sd, n, h["inits"])
+    nv = int(mr.validation_split(n).sum())
+    b = {"protocol_sha256": "p", "references_sha256": "r", "code_sha256": {}, "m10_binding": {}, "m11_binding": {},
+         "hyper_source": p["training"]["hyper_source"], "n_pairs": n,
+         "condition": {"name": "c0", **{k: p["base_condition"][k] for k in ("X", "Y", "amplitude", "sigma")}}}
+    m = {**copy.deepcopy(b), "schema": mm.SCHEMA_META, "mode": "research", "seed": sd, "hyper": h, "train_streams": keys["train"],
+         "fit": {"hyper": h, "inits": [{"index": i, "stream": k, "best_val_loss": .5 + i * .1, "epochs": 10} for i, k in enumerate(keys["inits"])],
+                 "selected": {"init": 0, "best_val_loss": .5, "epochs": 10}, "split_rule": "every 5th pair -> validation",
+                 "n_fit_pairs": n - nv, "n_val_pairs": nv, "n_fit_episodes": 2 * (n - nv), "n_val_episodes": 2 * nv, "n_val_class_B": nv}}
+    return p, sd, b, m
+
+
+def test_r8_complete_valid_metadata_passes_and_each_defect_is_found():
+    p, sd, b, m = _astra_meta()
+    assert mm.provenance_problems(m, p, "research", sd, b) == []
+    x = copy.deepcopy(m)                                   # Astra: NaN losses and missing epochs
+    for i in x["fit"]["inits"]:
+        i["best_val_loss"] = float("nan")
+        i.pop("epochs")
+    bad = mm.provenance_problems(x, p, "research", sd, b)
+    assert {"init_0_val_loss_not_finite", "init_0_epochs_invalid"} <= set(bad)
+    for mutate, reason in (
+            (lambda f: f.pop("n_fit_pairs"), "n_fit_pairs_differs"),
+            (lambda f: f["selected"].pop("epochs"), "selected_metadata_inconsistent"),
+            (lambda f: f["inits"][1].update(epochs=0), "init_1_epochs_invalid"),
+            (lambda f: f["inits"][2].update(epochs=3001), "init_2_epochs_invalid"),
+            (lambda f: f["inits"].pop(), "inits_incomplete"),
+            (lambda f: f.update(n_val_class_B=1), "n_val_class_B_differs")):
+        y = copy.deepcopy(m)
+        mutate(y["fit"])
+        assert reason in mm.provenance_problems(y, p, "research", sd, b), reason
+    tie = copy.deepcopy(m)                                  # tie-break: equal losses -> smallest index
+    for i in tie["fit"]["inits"]:
+        i["best_val_loss"] = .5
+    tie["fit"]["selected"] = {"init": 1, "best_val_loss": .5, "epochs": 10}
+    assert "selection_rule_violated" in mm.provenance_problems(tie, p, "research", sd, b)
+
+
+def test_r8_jointly_wrong_manifest_and_metadata_are_rejected(dev, tmp_path):
+    """Manifest AND every seed claim the same wrong c0 (with consistent hashes): only the
+    independent expectation from the protocol can catch it."""
+    d = _copy_models(dev, tmp_path)
+    man = json.loads((d / "manifest.json").read_text(encoding="utf-8"))
+    for sd in SEEDS:
+        js = d / f"seed-{sd}.json"
+        meta = json.loads(js.read_text(encoding="utf-8"))
+        meta["condition"]["amplitude"] = 0.7
+        js.write_text(json.dumps(meta, indent=1) + "\n", encoding="utf-8")
+        man["files"][js.name] = mc.sha(js)
+    man["condition"]["amplitude"] = 0.7
+    (d / "manifest.json").write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8")
+    with pytest.raises(MemoryLabError, match="manifest_condition_differs"):
+        mm.require_models("dev", d, seeds=SEEDS, references_sha256=mc.sha(dev["root"] / "refs.json"))
+
+
+def test_r8_model_freeze_validates_before_writing(monkeypatch, tmp_path):
+    _phase_paths(monkeypatch, tmp_path)
+    monkeypatch.setattr(mref, "require_protocol_frozen", lambda what: {"protocol_sha256": "p", "reviewed_code_commit": "c"})
+    monkeypatch.setattr(mref, "require_references", lambda case_set, path=None: {"refs": {}, "sha256": "r"})
+    monkeypatch.setattr(mm, "_checked", lambda *a, **k: (_ for _ in ()).throw(MemoryLabError("provenance problems: x")))
+    with pytest.raises(MemoryLabError, match="provenance"):
+        mm.write_model_freeze("test")
+    assert not mm.MODEL_FREEZE.exists()
+
+
+def test_npz_rule_and_blob_identity(dev, tmp_path):
+    """The repository rule marks research NPZ as binary; committed blob == file bytes even with autocrlf."""
+    import subprocess
+
+    top = Path(subprocess.run(["git", "-C", str(mc.HERE), "rev-parse", "--show-toplevel"], capture_output=True, text=True).stdout.strip())
+    attr = subprocess.run(["git", "-C", str(top), "check-attr", "binary", "--",
+                           "experiments/mandala_memory/protocol/m12_models/seed-41201.npz"], capture_output=True, text=True).stdout
+    assert attr.strip().endswith("binary: set")
+    repo = tmp_path / "repo"
+    md = repo / "experiments" / "mandala_memory" / "protocol" / "m12_models"
+    md.mkdir(parents=True)
+    shutil.copy(dev["root"] / "models" / "seed-921.npz", md / "seed-921.npz")
+    shutil.copy(top / ".gitattributes", repo / ".gitattributes")
+    for cmd in (["init", "-q"], ["config", "core.autocrlf", "true"], ["config", "user.email", "t@t"], ["config", "user.name", "t"],
+                ["add", "."], ["commit", "-q", "-m", "t"]):
+        subprocess.run(["git", "-C", str(repo), *cmd], check=True, capture_output=True)
+    assert mm.npz_git_identity_problems(md) == []
+    (repo / ".gitattributes").write_text("", encoding="utf-8")
+    assert mm.npz_git_identity_problems(md) == ["seed-921.npz: not marked binary"]
 
 
 def test_timeouts_are_enforced(dev, tmp_path):
@@ -354,10 +584,12 @@ def test_research_and_smoke_are_blocked_before_the_freeze(tmp_path, monkeypatch)
         mm.train("research")
     with pytest.raises(MemoryLabError, match="not frozen"):
         mm.train("smoke")
-    with pytest.raises(MemoryLabError, match="not frozen"):
+    with pytest.raises(MemoryLabError, match="evaluation_phase"):
         rob.run("research", tmp_path)
+    with pytest.raises(MemoryLabError, match="not frozen"):
+        rob.evaluation_phase(tmp_path)
     with pytest.raises(MemoryLabError, match="no overrides"):
-        rob.run("research", tmp_path, test_pairs=5)
+        rob.run("research", tmp_path, test_pairs=5, _claimed=True)
 
 
 def _phase_paths(monkeypatch, tmp_path):

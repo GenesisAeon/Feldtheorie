@@ -1,0 +1,2 @@
+# M12 model artifacts are binary: never convert line endings (their SHA-256 is frozen)
+experiments/mandala_memory/protocol/m12_models/*.npz binary
