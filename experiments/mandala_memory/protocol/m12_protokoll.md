@@ -2,8 +2,8 @@
 
 Trilayer: `m12_protokoll.json` (maßgeblich), `m12_protokoll.yaml` (Strukturzwilling), diese Datei (Erzählung); erzeugt mit `tools/make_trilayer_twins.py`.
 
-- **Status:** candidate (NOT frozen): implementation at development settings; no research references, no research training
-- **SHA-256 des JSON** (LF-normiert): `bdc40ce15f8948913ee111b8137839a5a0df111fb6f481f66ed92c11365b8329`
+- **Status:** FROZEN 2026-10-05 after IMPLEMENTIERUNGSREVIEW_ba5dabc / NACHPRUEFUNG_15edfbd; reviewed code commit 15edfbd0d4f034c15af0cf8efd4cbb82270c198c; freeze record protocol/m12_freeze.json; references, models and evaluation follow as one-time phases
+- **SHA-256 des JSON** (LF-normiert): `f3174a7d78d40aa548f257592208dab44e26437d35295fe2ff15c79a0b127c15`
 - **Plan:** [`../docs/M12_PLAN_ROBUSTHEIT.md`](../docs/M12_PLAN_ROBUSTHEIT.md). Das Mandala ist unverändert: modular, tanh, d = 4, nahe Ablenkung.
 
 **Training** nur in c₀ (Amplitude 0.6, σ = 0.02): n = 16000 Paare, LDA und MLP. Das MLP-Verfahren wird per Hash aus dem eingefrorenen M11-Protokoll übernommen. Forschungs-Seeds: 41201–41220.

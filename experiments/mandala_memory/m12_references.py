@@ -29,7 +29,10 @@ from experiments.mandala_memory import m11_readout as mr
 from experiments.mandala_memory import m12_common as mc
 from experiments.mandala_memory.core import MemoryLabError
 
-FROZEN_PROTOCOL_SHA256: Optional[str] = None            # set in the M12 protocol freeze commit
+# M12 protocol freeze 2026-10-05: the ONLY code change of the freeze commit relative to the reviewed code
+# (15edfbd0d4f034c15af0cf8efd4cbb82270c198c). The code hashes in protocol/m12_freeze.json were computed AFTER
+# this line was set.
+FROZEN_PROTOCOL_SHA256: Optional[str] = "f3174a7d78d40aa548f257592208dab44e26437d35295fe2ff15c79a0b127c15"
 FREEZE_RECORD = mc.HERE / "protocol" / "m12_freeze.json"
 RESEARCH_REFERENCES = mc.HERE / "protocol" / "m12_references.json"
 RESEARCH_CLAIM = mc.HERE / "protocol" / "m12_references.claim.json"

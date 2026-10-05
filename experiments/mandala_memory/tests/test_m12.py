@@ -578,6 +578,7 @@ def test_timeouts_are_enforced(dev, tmp_path):
 
 # --- phases and freeze gates ---------------------------------------------------------------
 def test_research_and_smoke_are_blocked_before_the_freeze(tmp_path, monkeypatch):
+    monkeypatch.setattr(mref, "FROZEN_PROTOCOL_SHA256", None)                 # the state before the M12 freeze
     with pytest.raises(MemoryLabError, match="reference_phase|research_reference_phase"):
         mref.compute("research")
     with pytest.raises(MemoryLabError, match="training_phase"):
@@ -600,6 +601,7 @@ def _phase_paths(monkeypatch, tmp_path):
 
 
 def test_reference_phase_checks_before_compute_and_locks(monkeypatch, tmp_path):
+    monkeypatch.setattr(mref, "FROZEN_PROTOCOL_SHA256", None)                 # the state before the M12 freeze
     _phase_paths(monkeypatch, tmp_path)
     calls = []
     monkeypatch.setattr(mref, "compute", lambda *a, **k: calls.append(1) or {"schema": "x"})
@@ -622,6 +624,7 @@ def test_reference_phase_checks_before_compute_and_locks(monkeypatch, tmp_path):
 
 
 def test_training_phase_checks_before_compute_and_records_failure(monkeypatch, tmp_path):
+    monkeypatch.setattr(mref, "FROZEN_PROTOCOL_SHA256", None)                 # the state before the M12 freeze
     _phase_paths(monkeypatch, tmp_path)
     calls = []
     monkeypatch.setattr(mm, "train", lambda *a, **k: calls.append(1) or (_ for _ in ()).throw(RuntimeError("boom")))
@@ -656,3 +659,14 @@ def test_real_d1_source_is_the_frozen_m10_value():
 def test_protocol_yaml_twin_equals_the_json():
     yaml = pytest.importorskip("yaml")
     assert yaml.safe_load((mc.HERE / "protocol" / "m12_protokoll.yaml").read_text(encoding="utf-8")) == PROTO
+
+
+# --- the real M12 protocol freeze --------------------------------------------------------
+def test_m12_protocol_freeze_is_consistent():
+    """Constant = protocol file = freeze record; code hashes computed after the constant; predecessors bound."""
+    rec = json.loads(mref.FREEZE_RECORD.read_text(encoding="utf-8"))
+    assert mref.FROZEN_PROTOCOL_SHA256 == mc.sha(mc.PROTOCOL) == rec["protocol_sha256"]
+    assert rec["reviewed_code_commit"] == "15edfbd0d4f034c15af0cf8efd4cbb82270c198c"
+    assert rec["code_sha256"] == mc.code_sha256() and rec["predecessors"] == mc.require_predecessors_frozen()
+    assert mref.require_protocol_frozen("test") == rec
+    assert PROTO["status"].startswith("FROZEN")
