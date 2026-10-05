@@ -156,6 +156,7 @@ SCF = {
 LAB_INTEGRATION = {
     "test_m12.py::test_real_d1_source_is_the_frozen_m10_value",            # reads the M10 results on D:
     "test_m12.py::test_npz_rule_and_blob_identity",                        # git + repository .gitattributes
+    "test_m12.py::test_model_files_survive_a_fresh_autocrlf_checkout_byte_identically",   # git
     "test_m11_kernel.py::test_dev_references_and_the_bayes_source_check",   # reads the M10 dev result on D:
     "test_m4_evaluate.py::test_review_r2_original_full_round_released_and_numerically_unchanged",
     "test_m4_evaluate.py::test_review_r2_incomplete_protocol_not_released",
