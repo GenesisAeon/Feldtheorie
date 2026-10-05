@@ -1375,3 +1375,15 @@ Astras Gegenbeispiele (`check_ba5dabc.py`) liefen zuerst unverändert in einer T
 - Linux: ohne SCF 191 bestanden, mit SCF 375 bestanden.
 - Mutationsprüfung **126/126**, mit 16 neuen Mutanten.
 - M10/M11 unverändert. Keine Forschungsrechnung, kein Freeze.
+
+## M12: Freeze, Referenzen, Smoke, Training, Modell-Freeze, Auswertung (2026-10-05)
+
+- **Protokoll-Freeze:** `f3a5bc2` (Tag `m12-freeze`). Danach Referenzen (`331f422`, 56 s), Smoke (gültig, nicht freigegeben) und das Training mit 20 Modellen (2343 s, Ruhezustand blockiert).
+- **Modell-Freeze:** `e8e53a8` (Tag `m12-models`).
+- **Robustheitsauswertung:** `093d34f`, einmalig, freigegeben, keine Alarme. Jede Phase hatte genau einen Versuch.
+- **Konfirmatorisch:** R-a (+0,104) und R-σ (+0,043) bestätigt.
+- **Beschreibend:**
+  - Beim Rauschen folgt das fixierte MLP weitgehend ΔB.
+  - Bei der Ablenkungsamplitude verliert es in beide Richtungen mehr als ΔB.
+  - Bei Amplitude 0,30 ist die fixierte LDA besser.
+- Details stehen in [`docs/M12_ERGEBNIS.md`](docs/M12_ERGEBNIS.md).
