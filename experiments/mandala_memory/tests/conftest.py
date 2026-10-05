@@ -35,6 +35,25 @@ REQUIRED = os.environ.get("MANDALA_LAB_REQUIRED") == "1"
 
 # --- explicit dependency table (node ids relative to this folder) ---------------
 SCF = {
+    # M12: everything that builds states (SCF budget_adjacency) or uses the dev pipeline fixture
+    "test_m12.py::test_wrapper_is_bit_equal_to_m11_fit_mlp_with_the_same_streams",
+    "test_m12.py::test_test_episodes_are_paired_across_conditions_and_noise_scales_exactly",
+    "test_m12.py::test_training_record_and_roundtrip",
+    "test_m12.py::test_tampered_missing_or_extra_artifact_is_rejected",
+    "test_m12.py::test_provenance_problems_detect_wrong_streams_selection_and_binding",
+    "test_m12.py::test_smoke_or_dev_manifest_is_never_accepted_as_research",
+    "test_m12.py::test_existing_model_directory_is_never_overwritten",
+    "test_m12.py::test_training_never_reads_the_shift_grid",
+    "test_m12.py::test_evaluation_complete_unchanged_models_and_fit_guard",
+    "test_m12.py::test_a_fit_during_the_evaluation_fails_the_run",
+    "test_m12.py::test_changed_weights_during_the_evaluation_fail_the_run",
+    "test_m12.py::test_a_model_file_changed_during_the_evaluation_fails_the_run",
+    "test_m12.py::test_decomposition_identity_and_zero_at_c0",
+    "test_m12.py::test_exact_lda_and_test_lda_agree_within_the_diagnostic",
+    "test_m12.py::test_artificial_alarm_withholds_confirmatory_and_triggers_no_repeat",
+    "test_m12.py::test_confirmatory_uses_the_same_episodes_and_holm",
+    "test_m12.py::test_release_gate_rejects_dev_and_manipulated_results",
+    "test_m12.py::test_timeouts_are_enforced",
     # service run ids (explore needs the kernel networks)
     "test_m6_serve.py::test_identical_requests_with_a_frozen_clock_get_distinct_ids",
     "test_m6_serve.py::test_forced_id_collision_never_overwrites_and_logs_nothing",
@@ -129,6 +148,7 @@ SCF = {
     "test_m9_predict.py::test_symmetry_permutation_is_an_automorphism",
 }
 LAB_INTEGRATION = {
+    "test_m12.py::test_real_d1_source_is_the_frozen_m10_value",            # reads the M10 results on D:
     "test_m11_kernel.py::test_dev_references_and_the_bayes_source_check",   # reads the M10 dev result on D:
     "test_m4_evaluate.py::test_review_r2_original_full_round_released_and_numerically_unchanged",
     "test_m4_evaluate.py::test_review_r2_incomplete_protocol_not_released",

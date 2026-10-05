@@ -1,4 +1,4 @@
-# Mandala-Gedächtnislabor: Roadmap (M0–M9)
+# Mandala-Gedächtnislabor: Roadmap (M0–M12)
 
 **Erster Versuch:** „Reiz → Pause → Erinnerung“.
 
@@ -34,7 +34,8 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
 | M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
-| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | Schritt 2 erledigt, wartet auf Implementierungsprüfung und Laufzeitentscheidung; Referenzphase noch **nicht** begonnen |
+| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | ✅ erledigt (Freeze `m11-freeze`; zweiter, dokumentierter Forschungsversuch freigegeben): C-Modell bestätigt, C-Daten nicht bestätigt; lokal in `main` |
+| M12 | Robustheit des festgehaltenen Auslesens: [Plan, Fassung 2](docs/M12_PLAN_ROBUSTHEIT.md), [Protokoll-Kandidat](protocol/m12_protokoll.json), Implementierung an Entwicklungsbedingungen | Implementierung erledigt, wartet auf Implementierungsreview; **nicht** eingefroren, keine Forschungsrechnung |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -1309,3 +1310,43 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - **Aufbau:** 9 Bedingungen, Hauptfall modular/N/d = 4, neue Basismodelle (keine M11-Rekonstruktion).
 - **Zerlegung:** Der Verlust wird aufgeteilt in die Informationsänderung ΔB und die Lückenänderung ΔG des Decoders.
 - **Offen:** Entscheidungen O1–O5.
+
+## M12: Implementierung an Entwicklungsbedingungen (2026-10-05)
+
+**Plan:** [Fassung 2](docs/M12_PLAN_ROBUSTHEIT.md) (`d1acc4a`) nach `PLANREVIEW_2a07ae4` (M12-R1 bis R4); O1–O5 angenommen. [Protokoll-Kandidat](protocol/m12_protokoll.json) mit YAML/MD-Zwillingen. **Nicht eingefroren**; keine Forschungsreferenzen, kein Forschungstraining.
+
+**Module** (M10/M11-Code unverändert und nur aufgerufen):
+
+| Datei | Inhalt |
+|---|---|
+| [`m12_common.py`](m12_common.py) | eigene Ströme (Modi 13/14/15), Raster, Zustände, Ziehungen mit gemeinsamen Zufallszahlen, Paar-SE, MLP-Wrapper (gleiche Regel wie `fit_mlp`), Artefakte (NPZ ohne Pickle, strenge Prüfung, Manifest) |
+| [`m12_references.py`](m12_references.py) | B(c) und LDA_pop(c) je Bedingung, Quelle für D1, Referenzphase mit Claim, Prüfung des Protokoll-Freeze |
+| [`m12_models.py`](m12_models.py) | Training nur in c₀, Roundtrip direkt nach dem Speichern, Herkunftsprüfung, Trainingsphase mit Claim, Modell-Freeze |
+| [`m12_robust.py`](m12_robust.py) | Auswertung festgehaltener Modelle; jeder Fit gesperrt; Hashes der Modelldateien und Gewichte vorher = nachher |
+| [`m12_evaluate.py`](m12_evaluate.py) | Gate, Diagnosen D1–D4 mit Alarmregel, ΔB mit MC-SE, ΔG bedingt, LDA-Aufteilung, R-a/R-σ an den erhöhten Endpunkten |
+
+**Laufzeitcheck** (ein Entwicklungs-Seed im vollen Umfang):
+
+| Phase | gemessen | Hochrechnung |
+|---|---|---|
+| Referenzen | 58 s | 58 s |
+| Training | 105 s je Seed | 20 Seeds etwa 35–45 min, Grenze 90 min |
+| Auswertung | 2,8 s je Seed | etwa 1 min |
+| Spitzen-RAM | 263 MiB | – |
+
+Bei vollem Umfang gab es keine Diagnose-Alarme. *Berichtigt nach M12-R4:* Die früher genannten 169 s waren über vier M11-Fälle summiert.
+
+**Tests:** [`tests/test_m12.py`](tests/test_m12.py) prüft unter anderem:
+- Bitgleichheit des Wrappers mit `fit_mlp` bei gleichen Strömen;
+- gemeinsame Zufallszahlen und exakte Rauschskalierung;
+- Paar-SE;
+- Roundtrip, strenge Ladung und Herkunft;
+- manipulierte, fehlende und zusätzliche Artefakte;
+- Smoke-/Dev-Manifest wird als Forschung abgewiesen;
+- das Training liest das Raster nie;
+- Fit-Sperre, unveränderte Gewichte und Dateien;
+- Identität L = ΔB + ΔG und c₀ = 0;
+- künstlicher Alarm sperrt die bestätigende Freigabe ohne Wiederholung;
+- Gate, Zeitgrenzen und Phasensperren.
+
+**Mutationsprüfung:** 20 neue Mutanten. Einer überlebte zunächst: `m12_npz_pickle_allowed`. Das war eine echte Testlücke, denn `MemoryLabError` ist selbst ein `ValueError`. Der Test prüft jetzt ein Objekt-Array unter einem gültigen Schlüssel und die Meldung der Pickle-Ablehnung.

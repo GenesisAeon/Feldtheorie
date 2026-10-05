@@ -186,6 +186,31 @@ Trilayer: `m11_protokoll.json` (maßgeblich), `m11_protokoll.yaml` (Strukturzwil
 """
 
 
+def m12_markdown(p: dict, sha: str) -> str:
+    conds = "\n".join(f"| {c['name']} | {c['amplitude']} | {c['sigma']} |" for c in p["grid"]["conditions"])
+    cf = p["confirmatory"]
+    return f"""# M12-Protokoll „Robustheit des festgehaltenen Auslesens“ (Narrativ-Zwilling)
+
+Trilayer: `m12_protokoll.json` (maßgeblich), `m12_protokoll.yaml` (Strukturzwilling), diese Datei (Erzählung); erzeugt mit `tools/make_trilayer_twins.py`.
+
+- **Status:** {p['status']}
+- **SHA-256 des JSON** (LF-normiert): `{sha}`
+- **Plan:** [`../docs/M12_PLAN_ROBUSTHEIT.md`](../docs/M12_PLAN_ROBUSTHEIT.md). Das Mandala ist unverändert: {p['mandala']['network']}, {p['mandala']['nonlinearity']}, d = {p['mandala']['delay']}, nahe Ablenkung.
+
+**Training** nur in c₀ (Amplitude {p['base_condition']['amplitude']}, σ = {p['base_condition']['sigma']}): n = {p['training']['n_pairs']} Paare, LDA und MLP. Das MLP-Verfahren wird per Hash aus dem eingefrorenen M11-Protokoll übernommen. Forschungs-Seeds: {p['seeds']['research'][0]}–{p['seeds']['research'][-1]}.
+
+**Testbedingungen** (eine Achse je Bedingung, gemeinsame Zufallszahlen, {p['test']['pairs']} Testpaare je Seed):
+
+| Bedingung | Ablenkungsamplitude | σ |
+|---|---|---|
+{conds}
+
+**Bestätigend:** {cf['question']} R-a bei {cf['tests']['R-a']['condition']}, R-σ bei {cf['tests']['R-sigma']['condition']}; δ = {cf['delta']}, Holm α = {cf['alpha']}. Nicht getestet: Nichtunterlegenheit gegenüber c₀ und die Erhaltung der Vorteilsgröße.
+
+**Diagnosen** D1–D4 sind statistische Gegenproben (4 SE) mit Alarmregel, keine Beweise; es gibt keine Wiederholung bis zum Bestehen. **Zerlegung**, Artefaktregeln, Phasen, Freigabe und Budget: siehe JSON.
+"""
+
+
 def main() -> int:
     raw = SRC.read_bytes().replace(b"\r\n", b"\n")
     sha = hashlib.sha256(raw).hexdigest()
@@ -210,7 +235,15 @@ def main() -> int:
         "# YAML twin of m11_protokoll.json (generated; the JSON is authoritative)\n" + yaml_dump(p11) + "\n",
         encoding="utf-8", newline="\n")
     (PROTOCOL / "m11_protokoll.md").write_text(m11_markdown(p11, sha11), encoding="utf-8", newline="\n")
-    print(json.dumps({"m9_json_sha256": sha, "m10_json_sha256": sha10, "m11_json_sha256": sha11,
+    m12 = PROTOCOL / "m12_protokoll.json"
+    raw12 = m12.read_bytes().replace(b"\r\n", b"\n")
+    sha12 = hashlib.sha256(raw12).hexdigest()
+    p12 = json.loads(raw12.decode("utf-8"))
+    (PROTOCOL / "m12_protokoll.yaml").write_text(
+        "# YAML twin of m12_protokoll.json (generated; the JSON is authoritative)\n" + yaml_dump(p12) + "\n",
+        encoding="utf-8", newline="\n")
+    (PROTOCOL / "m12_protokoll.md").write_text(m12_markdown(p12, sha12), encoding="utf-8", newline="\n")
+    print(json.dumps({"m9_json_sha256": sha, "m10_json_sha256": sha10, "m11_json_sha256": sha11, "m12_json_sha256": sha12,
                       "written": ["m9_frozen_predictions.yaml", "m9_frozen_predictions.md", "m10_protokoll.yaml", "m10_protokoll.md"]}))
     return 0
 
