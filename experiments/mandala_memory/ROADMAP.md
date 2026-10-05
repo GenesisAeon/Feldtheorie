@@ -1383,7 +1383,7 @@ Astras Gegenbeispiele (`check_ba5dabc.py`) liefen zuerst unverändert in einer T
 - **Robustheitsauswertung:** `093d34f`, einmalig, freigegeben, keine Alarme. Jede Phase hatte genau einen Versuch.
 - **Konfirmatorisch:** R-a (+0,104) und R-σ (+0,043) bestätigt.
 - **Beschreibend:**
-  - Beim Rauschen folgt das fixierte MLP weitgehend ΔB.
+  - Beim Rauschen liegt die Leistungsänderung des fixierten MLP nahe bei ΔB. Seine absolute Bayes-Lücke bleibt klein, ändert sich relativ aber deutlich; beschreibend, kein Robustheitstest. *Präzisiert nach `ERGEBNISPRUEFUNG_M12`.*
   - Bei der Ablenkungsamplitude verliert es in beide Richtungen mehr als ΔB.
   - Bei Amplitude 0,30 ist die fixierte LDA besser.
 - Details stehen in [`docs/M12_ERGEBNIS.md`](docs/M12_ERGEBNIS.md).

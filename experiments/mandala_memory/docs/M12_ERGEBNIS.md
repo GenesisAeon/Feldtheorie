@@ -12,7 +12,7 @@
 | Implementierung, Review-Fixes | `ba5dabc`, `15edfbd` | Nachprüfung durch Astra |
 | Protokoll-Freeze | `f3a5bc2`, Tag `m12-freeze` | Protokoll `f3174a7d…`; einzige Codeänderung: die Freeze-Konstante |
 | Referenzphase, einmalig | `331f422` | 56 s; B(c) mit 2·10⁶ MC-Ziehungen je Bedingung, Populations-LDA exakt |
-| Smoke | – | vollständig, strukturell gültig, keine Alarme; wie vorgesehen nicht freigegeben und nicht interpretiert |
+| Smoke | – | vollständig (Datenstruktur ohne Beanstandung), keine Alarme; wie vorgesehen nicht freigegeben (das Gate-Feld `structurally_valid` ist für Smoke per Modusregel false) und nicht interpretiert |
 | Trainingsphase, einmalig | – | 2343 s, Ruhezustand blockiert; jeder Seed mit bitgleichem Roundtrip |
 | Modell-Freeze | `e8e53a8`, Tag `m12-models` | Manifest `e128de27…`; NPZ als binär versioniert; Git-Blob gleich Datei |
 | Robustheitsauswertung, einmalig | `093d34f` | Lauf `m12-research-20261005T170243-972cca01`, 35 s, Ergebnis-SHA-256 `90d4ac29…` |
@@ -34,7 +34,7 @@ Nicht getestet wurden die Nichtunterlegenheit gegenüber c₀ und die Erhaltung 
 
 ## Beschreibend
 
-ΔB ist die Änderung der Bayes-Leistung, angegeben als Schätzwert mit seinem MC-SE (≤ 1,4·10⁻⁴); ein Seed-Intervall gibt es dafür nicht. ΔG ist die Änderung des Abstands zur Bayes-Grenze. Bei beiden Größen heißt ein positives Vorzeichen „schlechter als in c₀“. Die Seed-Intervalle der Verluste sind sehr eng (meist ±0,001).
+ΔB ist die Änderung der Bayes-Leistung, angegeben als Schätzwert mit seinem MC-SE (≤ 1,4·10⁻⁴); ein Seed-Intervall gibt es dafür nicht. ΔG ist die Änderung des Abstands zur Bayes-Grenze. Bei beiden Größen heißt ein positives Vorzeichen „schlechter als in c₀“. „Information“ meint hier immer die Bayes-Trennbarkeit dieser Aufgabe. Die Seed-Intervalle der Verluste sind sehr eng (meist ±0,001).
 
 | Bedingung | B | ΔB | MLP | Verlust MLP | ΔG MLP | LDA (exakt) | Verlust LDA | ΔG LDA | Vorteil MLP − LDA (Test) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -49,25 +49,26 @@ Nicht getestet wurden die Nichtunterlegenheit gegenüber c₀ und die Erhaltung 
 | σ = 0,030 | 0,793 | +0,119 | 0,779 | +0,111 | −0,008 | 0,736 | +0,041 | −0,078 | +0,043 |
 
 **Messrauschen, festgehaltenes MLP:**
-- Seine Verluste und Gewinne folgen weitgehend der Informationsänderung ΔB.
-- Sein Abstand zur Bayes-Grenze ändert sich nur wenig: ΔG zwischen −0,016 und −0,003, also eher etwas kleiner als in c₀.
-- In diesem Raster verhält es sich gegenüber dem Rauschen also nahezu so, wie es die geänderte Trennbarkeit des Zustands vorgibt.
+- Seine Leistungsänderung liegt nahe bei ΔB, der Änderung der Bayes-Trennbarkeit dieser Aufgabe (nicht einer gemessenen Informationsmenge).
+- Seine **absolute** Bayes-Lücke bleibt im untersuchten Rauschraster klein und wird gegenüber c₀ kleiner: 0,0215 in c₀, 0,0055 bei σ = 0,010, 0,0133 bei σ = 0,030. Die Änderung ist absolut klein, höchstens etwa 1,6 Prozentpunkte. **Relativ** zur Ausgangslücke ist sie aber deutlich, bei σ = 0,010 etwa −75 %.
+- Das ist eine beschreibende Beobachtung, **kein** bestätigender Robustheits- oder Äquivalenztest.
 
 **Messrauschen, festgehaltene LDA:**
 - Sie profitiert von weniger Rauschen weniger als die Bayes-Grenze (ΔG bis +0,051).
 - Bei mehr Rauschen verliert sie weniger (ΔG bis −0,078).
-- Die Zerlegung schreibt das fast ganz der Änderung des Bayes-Abstands der **bedingungsspezifischen Populations-LDA** zu (das ist die Regel des LDA-Kriteriums, nicht die beste lineare Regel).
-- Der Abstand der fixierten LDA zu dieser Populationsregel ändert sich wenig, höchstens um +0,012 bei σ = 0,010.
+- Die Änderung wird **überwiegend** durch den Bayes-Abstand der **bedingungsspezifischen Populations-LDA** beschrieben (das ist die Regel des LDA-Kriteriums, nicht die beste lineare Regel).
+- Bei σ = 0,010 trägt die Änderung des Abstands der fixierten Regel zur Populations-LDA rund **ein Viertel** bei: +0,012 von ΔG = +0,051, der Rest +0,038.
+- Das ist eine algebraische Zerlegung, keine isolierte Kausalanalyse.
 
 **Ablenkungsamplitude:**
 - **Bayes-Grenze:** Sie steigt in diesem Netz mit der Amplitude (0,876 → 0,925). Eine stärkere Ablenkung macht den Zustand hier also nicht schlechter trennbar. Das wird berichtet, nicht erklärt.
 - **Festgehaltenes MLP:** Es verliert in **beide** Richtungen mehr, als ΔB vorgibt (ΔG +0,020 bis +0,067). Bei Amplitude 0,9 sinkt seine Leistung um 0,054, obwohl die Bayes-Leistung um 0,013 steigt. Der Abstand zur Bayes-Grenze wächst also; die Ursache ist durch diesen Versuch nicht bestimmt. In Frage kommen die Grenzen der Modellklasse, die Fehlanpassung an die neue Bedingung, endliche Daten oder Optimierung und Regularisierung.
-- **Festgehaltene LDA:** Sie wird bei kleinerer Amplitude besser (0,848 bei 0,30) und bei größerer schlechter (0,733 bei 0,90). Auch das folgt nach der Zerlegung fast ganz der Populations-LDA dieser Bedingungen; der Abstand der fixierten Regel zu ihr ändert sich höchstens um +0,003.
+- **Festgehaltene LDA:** Sie wird bei kleinerer Amplitude besser (0,848 bei 0,30) und bei größerer schlechter (0,733 bei 0,90). Auch das wird nach der algebraischen Zerlegung überwiegend durch die Populations-LDA dieser Bedingungen beschrieben; der Abstand der fixierten Regel zu ihr ändert sich höchstens um +0,003.
 - **Umkehr des Vorteils:** Bei Amplitude 0,30 ist die fixierte LDA um 0,036 besser als das fixierte MLP. Bei 0,45 bleibt das MLP vorn, aber nur noch mit +0,038.
 
 ## Einordnung, ohne Gewinnerbehauptung
 
-- **Messrauschen:** Das festgehaltene MLP ist in diesem Raster robust in dem Sinn, dass seine Leistung der vorhandenen Information folgt.
+- **Messrauschen:** Die Leistungsänderung des festgehaltenen MLP liegt in diesem Raster nahe bei der Änderung der Bayes-Trennbarkeit. Seine absolute Bayes-Lücke bleibt klein, ändert sich relativ aber deutlich. Das ist beschreibend und kein bestätigter Robustheitsbefund.
 - **Ablenkungsamplitude:** Es ist empfindlich gegenüber Änderungen in **beide** Richtungen; das gilt auch bei gleich gebliebener oder höherer Bayes-Trennbarkeit.
 - **Vorteil gegenüber LDA:** Er besteht an beiden erhöhten Endpunkten (bestätigt), hängt aber stark von der Bedingung ab. Bei schwächerer Ablenkung kehrt er sich um.
 - **Gesamtbild:** Ein in c₀ besseres gelerntes Auslesen ist nicht automatisch unter allen geänderten Bedingungen das bessere.
@@ -77,3 +78,12 @@ Nicht getestet wurden die Nichtunterlegenheit gegenüber c₀ und die Erhaltung 
   - kein Vergleich mit nachtrainierten Modellen;
   - synthetische Seeds, keine biologische Aussage.
 - **Modelle:** Die Basismodelle sind eine neue Stichprobe, keine Wiederholung von M11. Ihre c₀-Werte (MLP 0,890, LDA 0,777) sind mit M11 vereinbar.
+
+## Prüfung
+
+Astras Ergebnisprüfung `ERGEBNISPRUEFUNG_M12.md` (Stand `d79b7b2`) hat bestätigt:
+- Freezes, Modell-Hashes und eine identische Neuauswertung;
+- 194 Diagnosen ohne Alarm;
+- beide Haupttests, separat nachgerechnet (R-a +0,1038, R-σ +0,0428).
+
+Ihre zwei Präzisierungen sind oben übernommen: der Anteil der Populations-LDA an der Zerlegung und die Unterscheidung absoluter und relativer Bayes-Lücke beim Rauschen. Geändert wurde nur Dokumentation.
