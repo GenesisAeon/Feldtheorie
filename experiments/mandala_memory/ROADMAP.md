@@ -1292,3 +1292,11 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - Linux ohne SCF 171 bestanden, mit SCF 326 bestanden.
 - Mutationsprüfung **90/90**, mit 2 neuen Mutanten (zeitabhängige ID, überschreibendes `explore`).
 - Geändert sind nur `serve.py`, Tests und das Mutationswerkzeug; **kein** M10- oder M11-Forschungscode, kein Protokoll.
+
+## M11 Forschungslauf (2026-10-05)
+
+- **Versuch 1** `m11-research-20261005T034640-10450239`: Wegen des Ruhezustands des Rechners brach er mit `aborted_timeout` ab. Er ist unvollständig, nicht freigegeben und nicht ausgewertet.
+- **Versuch 2** `m11-research-20261005T114106-e996e301`: nach dokumentierter Freigabe von Johann/Astra, mit unverändertem Code. Status `complete` nach 4845 s, **freigegeben**.
+- **C-Daten** ist nicht bestätigt (0,0017 < δ); **C-Modell** ist bestätigt (0,022, p_Holm 0,0011).
+- Im Hauptfall ist die Lücke von LDA zu B fast ganz nichtlinear (obere Schranke 0,134 von 0,136). Das MLP schließt bei n = 16000 rund 84 % davon.
+- Details stehen in `docs/M11_ERGEBNIS.md`.
