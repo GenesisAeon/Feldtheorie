@@ -331,7 +331,9 @@ def test_release_gate_rejects_dev_and_manipulated_results(dev):
     r = ev.release(bad, dev["refs"])["reasons"]
     for reason in ("fit_guard_missing", "model_files_changed", "overrides_used", "seeds_differ_from_protocol", "test_pairs_differ"):
         assert reason in r
-    assert any(x.startswith("freeze_invalid") for x in r)                        # protocol not frozen yet
+    # not bound to the frozen protocol/references/models (before the phases: freeze_invalid; after them: the binding reasons)
+    assert any(x.startswith(("freeze_invalid", "result_not_from_frozen", "references_not_the_frozen", "models_not_the_frozen",
+                             "model_freeze_missing")) for x in r)
 
 
 # --- review IMPLEMENTIERUNGSREVIEW_ba5dabc: Astra's counterexamples verbatim ----------------
@@ -587,6 +589,8 @@ def test_research_and_smoke_are_blocked_before_the_freeze(tmp_path, monkeypatch)
         mm.train("smoke")
     with pytest.raises(MemoryLabError, match="evaluation_phase"):
         rob.run("research", tmp_path)
+    for name in ("EVAL_CLAIM", "EVAL_FAILURE", "EVAL_DONE"):                    # never the real lock records
+        monkeypatch.setattr(rob, name, tmp_path / f"{name}.json")
     with pytest.raises(MemoryLabError, match="not frozen"):
         rob.evaluation_phase(tmp_path)
     with pytest.raises(MemoryLabError, match="no overrides"):
@@ -670,3 +674,10 @@ def test_m12_protocol_freeze_is_consistent():
     assert rec["code_sha256"] == mc.code_sha256() and rec["predecessors"] == mc.require_predecessors_frozen()
     assert mref.require_protocol_frozen("test") == rec
     assert PROTO["status"].startswith("FROZEN")
+
+
+def test_real_research_evaluation_phase_is_locked_after_completion(tmp_path):
+    """After the one-time robustness evaluation the real lock refuses any second attempt before computing."""
+    assert rob.EVAL_DONE.is_file() and rob.EVAL_CLAIM.is_file()
+    with pytest.raises(MemoryLabError, match="already completed"):
+        rob.evaluation_phase(tmp_path)
