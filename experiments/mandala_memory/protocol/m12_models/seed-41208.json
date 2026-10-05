@@ -1,0 +1,127 @@
+{
+ "schema": "mandala-memory-m12-model-v1",
+ "mode": "research",
+ "seed": 41208,
+ "n_pairs": 16000,
+ "condition": {
+  "name": "c0",
+  "X": 1,
+  "Y": 5,
+  "amplitude": 0.6,
+  "sigma": 0.02
+ },
+ "hyper": {
+  "lr": 0.03,
+  "l2": 0.001,
+  "patience": 100,
+  "max_epochs": 3000,
+  "hidden": 32,
+  "inits": 3
+ },
+ "hyper_source": {
+  "file": "protocol/m11_protokoll.json",
+  "m11_protocol_sha256": "c25c9cdd7697c45609fd7abbaf6889a66fbaa012f3798420d59a96481846911e"
+ },
+ "fit": {
+  "hyper": {
+   "lr": 0.03,
+   "l2": 0.001,
+   "patience": 100,
+   "max_epochs": 3000,
+   "hidden": 32,
+   "inits": 3
+  },
+  "inits": [
+   {
+    "index": 0,
+    "stream": [
+     41208,
+     13,
+     3080294798,
+     1311941593,
+     1389830809,
+     4108050209
+    ],
+    "best_val_loss": 0.2685439269054504,
+    "epochs": 1561
+   },
+   {
+    "index": 1,
+    "stream": [
+     41208,
+     13,
+     3080294798,
+     1311941593,
+     1389830809,
+     2212294583
+    ],
+    "best_val_loss": 0.27022635718492954,
+    "epochs": 1122
+   },
+   {
+    "index": 2,
+    "stream": [
+     41208,
+     13,
+     3080294798,
+     1311941593,
+     1389830809,
+     450215437
+    ],
+    "best_val_loss": 0.26595702798860815,
+    "epochs": 860
+   }
+  ],
+  "selected": {
+   "init": 2,
+   "best_val_loss": 0.26595702798860815,
+   "epochs": 860
+  },
+  "split_rule": "every 5th pair -> validation",
+  "n_fit_pairs": 12800,
+  "n_val_pairs": 3200,
+  "n_fit_episodes": 25600,
+  "n_val_episodes": 6400,
+  "n_val_class_B": 3200
+ },
+ "train_streams": [
+  [
+   41208,
+   13,
+   2747071630,
+   1550247075
+  ],
+  [
+   41208,
+   13,
+   4255749673,
+   1550247075
+  ]
+ ],
+ "protocol_sha256": "f3174a7d78d40aa548f257592208dab44e26437d35295fe2ff15c79a0b127c15",
+ "references_sha256": "333371a2ed634dabdbd8afb46c2e3eb69c0486076eae9f62c9e2c0eecffa8187",
+ "code_sha256": {
+  "m12_common.py": "6f2852b828b316efc38ce0ca7aeb70484ab52c69199bb69b9f35ae7c1cc8ded4",
+  "m12_references.py": "60e261f60ed3d1d15e4f02c7d83366e16cc4c68d06580b34d7fe119f2362e043",
+  "m12_models.py": "2781445b41e965279793bfa2bccdd2bbfbee3f7ce348cdbb665d0735cd7a65d9",
+  "m12_robust.py": "c3a06126d4245c1d572c69fa7bd163515fe2de25b67d1594bcf77e97559020ae",
+  "m12_evaluate.py": "94cd87618fe50c10e373bd54003d7cd8e521f94461bde1066b7b017eb346ee0e",
+  "m11_readout.py": "00f46aadd58140c2722cba358083af42255d12ab2e65d457f5ca4c3d5cac0a7d",
+  "m11_references.py": "ed830aa6eac56f42e9e82d3a248abc5f7454cbd30df53b88d039ce401ba7b494",
+  "m11_evaluate.py": "d27492b6643b645f64b3dfa26b8e14f0bc37116a3398c4286128ae86821f81a8",
+  "m10_task.py": "dce6147f212202cd307dbc85b545dcd5ec126388ac6873e9dcd4bd2b8b8e01c3",
+  "m10_bayes.py": "9336d2e728904cef1f39d1e740cc0636c62127f65f0ed5e273d9a32c50bbc080",
+  "m10_decoders.py": "3b4c57a51d035adc99eb3a5454e6a795865841efd6bb27d0af03b4d13cf99f98",
+  "core.py": "c152a41aba8b381eae3044dca4e19b4066760512650953fad0b2ce5d4380f381"
+ },
+ "m10_binding": {
+  "m10_protocol_sha256": "84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345",
+  "m10_reviewed_code_commit": "6f2acfd2a8a153c8f48bc50194cbcf651a510758",
+  "m10_freeze_record_sha256": "6e761982a9b0ab58ad19c1ddc911e7cbb9e9e435953fb43666dda27a36fa02fb"
+ },
+ "m11_binding": {
+  "m11_protocol_sha256": "c25c9cdd7697c45609fd7abbaf6889a66fbaa012f3798420d59a96481846911e",
+  "m11_reviewed_code_commit": "10cd6389e97ec40ce704c04519fff9e0afbdf02e",
+  "m11_freeze_record_sha256": "248c41930dc7c0efc05c16a3a061fcddf2993963fd82dfde5feba4bd9a1cc84f"
+ }
+}
