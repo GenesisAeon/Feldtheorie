@@ -681,3 +681,40 @@ def test_real_research_evaluation_phase_is_locked_after_completion(tmp_path):
     assert rob.EVAL_DONE.is_file() and rob.EVAL_CLAIM.is_file()
     with pytest.raises(MemoryLabError, match="already completed"):
         rob.evaluation_phase(tmp_path)
+
+
+def test_real_research_models_load_in_this_checkout():
+    """The frozen research models load with full provenance AND raw-byte file hashes in THIS
+    checkout (integration finding 2026-10-05: autocrlf had turned the model JSON into CRLF on main)."""
+    m = mm.require_models("research")
+    assert len(m["models"]) == 20 and m["file_hashes"] == json.loads(mm.MODEL_FREEZE.read_text(encoding="utf-8"))["file_hashes"]
+
+
+def test_model_files_survive_a_fresh_autocrlf_checkout_byte_identically(tmp_path):
+    """Commit, delete and check out again with core.autocrlf=true: with the repository rule the
+    NPZ and JSON bytes come back unchanged; without it the JSON is converted."""
+    import subprocess
+
+    top = Path(subprocess.run(["git", "-C", str(mc.HERE), "rev-parse", "--show-toplevel"], capture_output=True, text=True).stdout.strip())
+    src = mm.RESEARCH_MODELS
+    for rule_file, expect_equal in ((top / ".gitattributes", True), (None, False)):
+        repo = tmp_path / ("with" if rule_file else "without")
+        md = repo / "experiments" / "mandala_memory" / "protocol" / "m12_models"
+        md.mkdir(parents=True)
+        for name in ("seed-41201.npz", "seed-41201.json", "manifest.json"):
+            shutil.copy(src / name, md / name)
+        if rule_file:
+            shutil.copy(rule_file, repo / ".gitattributes")
+
+        def git(*a):
+            subprocess.run(["git", "-C", str(repo), *a], check=True, capture_output=True)
+
+        for cmd in (["init", "-q"], ["config", "core.autocrlf", "true"], ["config", "user.email", "t@t"], ["config", "user.name", "t"],
+                    ["add", "."], ["commit", "-q", "-m", "t"]):
+            git(*cmd)
+        for name in ("seed-41201.json", "manifest.json"):
+            (md / name).unlink()
+        git("checkout", "--", ".")
+        same = all((md / n).read_bytes() == (src / n).read_bytes() for n in ("seed-41201.json", "manifest.json"))
+        assert same is expect_equal
+        assert (md / "seed-41201.npz").read_bytes() == (src / "seed-41201.npz").read_bytes()
