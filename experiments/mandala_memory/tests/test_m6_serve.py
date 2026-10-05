@@ -122,3 +122,37 @@ def test_benchmark_results_are_never_written(monkeypatch):
     serve.explore({"runs": [{"network": "adapted", "stimulus": 1, "delay": 16}]})
     after = {p: p.stat().st_mtime for p in before}
     assert before == after
+
+
+# --- review FOLLOWUP_10cd638: run ids must not depend on the clock; never overwrite ----
+def _fresh(tmp_path, monkeypatch):
+    d = tmp_path / "explore"
+    monkeypatch.setattr(serve, "EXPLORE_DIR", d)
+    return d
+
+
+@pytest.mark.parametrize("endpoint", ["explore", "lab"])
+def test_identical_requests_with_a_frozen_clock_get_distinct_ids(tmp_path, monkeypatch, endpoint):
+    d = _fresh(tmp_path, monkeypatch)
+    monkeypatch.setattr(serve.time, "time", lambda: 1800000000.0)          # the review's reproduction
+    call = (lambda: serve.explore({"runs": [{"network": "frozen", "stimulus": 0, "delay": 2}]})) if endpoint == "explore" \
+        else (lambda: serve.lab({"knobs": {}}))
+    a, b = call(), call()
+    assert a["run_id"] != b["run_id"] and a["created_unix"] == b["created_unix"] == 1800000000.0
+    assert len(list(d.glob(f"{endpoint}-*.json"))) == 2
+    lines = (d / "protocol.jsonl").read_text(encoding="utf-8").strip().splitlines()
+    assert {json.loads(l)["run_id"] for l in lines} == {a["run_id"], b["run_id"]}
+
+
+@pytest.mark.parametrize("endpoint", ["explore", "lab"])
+def test_forced_id_collision_never_overwrites_and_logs_nothing(tmp_path, monkeypatch, endpoint):
+    d = _fresh(tmp_path, monkeypatch)
+    monkeypatch.setattr(serve, "new_run_id", lambda prefix: f"{prefix}-0000000000000000")
+    call = (lambda: serve.explore({"runs": [{"network": "frozen", "stimulus": 0, "delay": 2}]})) if endpoint == "explore" \
+        else (lambda: serve.lab({"knobs": {"c": 0.1}}))
+    call()
+    first = (d / f"{endpoint}-0000000000000000.json").read_bytes()
+    with pytest.raises(MemoryLabError, match="nothing was overwritten"):
+        call()
+    assert (d / f"{endpoint}-0000000000000000.json").read_bytes() == first
+    assert len((d / "protocol.jsonl").read_text(encoding="utf-8").strip().splitlines()) == 1

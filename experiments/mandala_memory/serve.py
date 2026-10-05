@@ -24,6 +24,7 @@ import http.server
 import json
 import mimetypes
 import time
+import uuid
 from functools import lru_cache
 from pathlib import Path
 from typing import Dict, List
@@ -130,15 +131,10 @@ def explore(req: Dict, *, write: bool = True) -> Dict:
         "adaptation_for_adapted_network": adapt_info,
         "traces": traces, "comparison": comparison,
     }
-    body = json.dumps(payload, sort_keys=True, allow_nan=False).encode()
-    run_id = "explore-" + hashlib.sha256(body).hexdigest()[:12]
-    payload["run_id"] = run_id
+    payload["content_sha256"] = hashlib.sha256(json.dumps(payload, sort_keys=True, allow_nan=False).encode()).hexdigest()
+    payload["run_id"] = new_run_id("explore")
     if write:
-        EXPLORE_DIR.mkdir(parents=True, exist_ok=True)
-        (EXPLORE_DIR / f"{run_id}.json").write_text(json.dumps(payload, allow_nan=False) + "\n", encoding="utf-8")
-        with (EXPLORE_DIR / "protocol.jsonl").open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps({"run_id": run_id, "created_unix": payload["created_unix"], "request": payload["request"],
-                                 "explorative": True}, allow_nan=False) + "\n")
+        _log(payload, "explore", {"request": payload["request"]})
     return payload
 
 
@@ -148,10 +144,21 @@ def benchmark_lab_curve() -> List[float]:
     return lablib.compute(lablib.BENCHMARK_KNOBS)["curve"]["bayes"]
 
 
+def new_run_id(prefix: str) -> str:
+    """Unique id per explorative run, independent of the clock and of the request content
+    (review FOLLOWUP_10cd638: identical requests at the same time collided)."""
+    return f"{prefix}-{uuid.uuid4().hex[:16]}"
+
+
 def _log(payload: Dict, kind: str, request: Dict) -> None:
+    """Write the result file EXCLUSIVELY first, then the protocol line: an (artificial) id
+    collision never overwrites a file and never leaves a protocol line without its file."""
     EXPLORE_DIR.mkdir(parents=True, exist_ok=True)
-    with (EXPLORE_DIR / f"{payload['run_id']}.json").open("x", encoding="utf-8") as fh:   # never overwrite
-        fh.write(json.dumps(payload, allow_nan=False) + "\n")
+    try:
+        with (EXPLORE_DIR / f"{payload['run_id']}.json").open("x", encoding="utf-8") as fh:   # never overwrite
+            fh.write(json.dumps(payload, allow_nan=False) + "\n")
+    except FileExistsError:
+        raise MemoryLabError(f"run id collision for {payload['run_id']}: nothing was overwritten, request not logged")
     with (EXPLORE_DIR / "protocol.jsonl").open("a", encoding="utf-8") as fh:
         fh.write(json.dumps({"run_id": payload["run_id"], "kind": kind, "created_unix": payload["created_unix"],
                              **request, "explorative": True}, allow_nan=False) + "\n")
@@ -165,8 +172,8 @@ def lab(req: Dict, *, write: bool = True) -> Dict:
     payload.update({"core_schema": SCHEMA_VERSION, "created_unix": time.time(),
                     "benchmark_config_sha256": hashlib.sha256(json.dumps(CONFIG, sort_keys=True).encode()).hexdigest(),
                     "reference_curve": {"label": "Benchmark-Netz (eingefroren)", "bayes": benchmark_lab_curve()}})
-    body = json.dumps(payload, sort_keys=True, allow_nan=False).encode()
-    payload["run_id"] = "lab-" + hashlib.sha256(body).hexdigest()[:12]
+    payload["content_sha256"] = hashlib.sha256(json.dumps(payload, sort_keys=True, allow_nan=False).encode()).hexdigest()
+    payload["run_id"] = new_run_id("lab")
     if write:
         _log(payload, "lab", {"knobs": payload["knobs"]})
     return payload

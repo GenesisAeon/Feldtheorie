@@ -12,7 +12,7 @@ from experiments.mandala_memory.tools import make_trilayer_twins as tw   # noqa:
 PROTOCOL = Path(__file__).resolve().parents[1] / "protocol"
 
 
-@pytest.mark.parametrize("stem", ["startkonfiguration", "m9_frozen_predictions", "m10_protokoll"])
+@pytest.mark.parametrize("stem", ["startkonfiguration", "m9_frozen_predictions", "m10_protokoll", "m11_protokoll"])
 def test_yaml_twin_has_identical_content(stem):
     j = json.loads((PROTOCOL / f"{stem}.json").read_text(encoding="utf-8"))
     y = yaml.safe_load((PROTOCOL / f"{stem}.yaml").read_text(encoding="utf-8"))
@@ -37,3 +37,10 @@ def test_m10_markdown_twin_matches_the_current_protocol():
 def test_float_scalars_survive_a_yaml_1_1_loader(v):
     assert yaml.safe_load(tw.yaml_scalar(v)) == v
     assert isinstance(yaml.safe_load(tw.yaml_scalar(v)), float)
+
+
+def test_m11_markdown_twin_matches_the_current_protocol():
+    import hashlib
+
+    raw = (PROTOCOL / "m11_protokoll.json").read_bytes().replace(b"\r\n", b"\n")
+    assert hashlib.sha256(raw).hexdigest() in (PROTOCOL / "m11_protokoll.md").read_text(encoding="utf-8")

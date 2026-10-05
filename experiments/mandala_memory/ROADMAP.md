@@ -34,6 +34,7 @@ Beide liegen im Übergabeordner unter `D:\mandala\ArbeitFeldtheorie_mandala\Mand
 | M9c | Prüfung gegen Kern (deterministisch) und Decoder (statistisch), Bericht | ✅ erledigt |
 | Integration | M0–M9 lokal in `main` beider Repos (Feldtheorie `061adba`, unified-mandala `1e310caa`) | ✅ erledigt |
 | M10 | Erinnerung unter Ablenkung: [Plan, Fassung 2](docs/M10_PLAN_ABLENKUNG.md), [Protokoll](protocol/m10_protokoll.json) eingefroren (`m10-freeze`), Forschungslauf ausgewertet | ✅ erledigt: H-N bestätigt, H-F+ nicht bestätigt |
+| M11 | Die vorhandene Erinnerung besser auslesen: [Plan, Fassung 2](docs/M11_PLAN_AUSLESE.md), Implementierung an Entwicklungsfällen, [Protokoll-Kandidat](protocol/m11_protokoll.json) | Schritt 2 erledigt, wartet auf Implementierungsprüfung und Laufzeitentscheidung; Referenzphase noch **nicht** begonnen |
 
 ## M0: Bestand, Laufzeit und Kontrollen
 
@@ -1157,3 +1158,146 @@ Die zwei alten Mutanten für Sperre und Overrides wurden auf die neuen Stellen u
    - p-Werte aus 1 − Φ(Z), die als 0 ausgegeben werden, sind numerisch gerundet, nicht exakt null;
    - keine biologische und keine allgemeine KI-Aussage;
    - Ebene D ist decoderabhängig und nur beschreibend.
+
+## M11: Implementierung an Entwicklungsfällen (Schritt 2)
+
+**Plan:** [`docs/M11_PLAN_AUSLESE.md`](docs/M11_PLAN_AUSLESE.md), Fassung 2 (`56f3341`) nach `astra-m11-review/PLANREVIEW_49f94cf.md`.
+
+**M10 bleibt unverändert.** M11 nutzt die eingefrorenen M10-Funktionen nur lesend. Eine versehentliche Änderung an `data.py`, einer eingefrorenen M10-Codedatei, habe ich vor jedem Test zurückgenommen. M11 hat eigene Zufallsmodi (`m11`, `m11dev`) in `m11_readout.stream`. Der M10-Konsistenztest bleibt grün.
+
+### Code
+
+| Datei | Inhalt |
+|---|---|
+| [`m11_readout.py`](m11_readout.py) | exakte Populations-Trefferquote fester linearer Regeln (w = 0 ⇒ ½); Populationsregeln NM(∞) und LDA(∞) aus den wahren Momenten; numerische lineare Referenz L_found (L-BFGS-B, w = u/‖u‖, 2 Populations- und 20 Zufallsstarts, unverlierbare Kandidaten); verschachtelte Ziehung (n-Präfixe, getrennte Muster- und Rauschströme, unabhängig von n); Validierungsregel (jedes 5. Paar, Paare zusammen); MLP in numpy (Adam, volles Batch, BCE + L2, frühes Stoppen, Standardisierung nur aus dem Fit-Anteil, 3 Initialisierungen, Auswahl nach Validierungsverlust) |
+| [`m11_references.py`](m11_references.py) | Referenzphase: Bayes aus M10 mit Datei-SHA-Prüfung, NM(∞), LDA(∞), L_found mit allen Starts. **Forschungsreferenzen werden verweigert**, solange M11-Code oder Protokoll nicht committet sind (R4). Exklusives Schreiben. |
+| [`m11_run.py`](m11_run.py) | Runner; Smoke und Research nur nach gültigem Freeze (Protokoll, Referenzartefakt, Code-Prüfsummen, geprüfter Commit); kooperative Zeitgrenze; exklusive Ablage |
+| [`m11_evaluate.py`](m11_evaluate.py) | Gate (Raster aus dem Protokoll, exakte Budgets, Ströme je Seed, endliche Werte); C-Daten und C-Modell (einseitiger t-Test mit df = 19 als Annahme, Nullvarianz-Regel, Holm); beschreibende Zerlegung (Stichprobenabstand vorzeichenbehaftet), geschlossener Anteil (Quotient der Mittel, N/A bei Nenner ≤ 0,01), Bayes-SE separat |
+| [`protocol/m11_protokoll.json`](protocol/m11_protokoll.json) | Protokoll-Kandidat mit YAML- und MD-Zwilling |
+
+### MLP-Hyperparameter (O1): nur an Entwicklungsfällen, nachvollziehbar festgehalten
+
+- **Regel (vorab):** Raster lr ∈ {0,003; 0,01; 0,03} × L2 ∈ {10⁻⁵; 10⁻⁴; 10⁻³}, Geduld 100, höchstens 3000 Epochen. Gewählt wird der kleinste mittlere **Validierungs**-Log-Loss über die vier Entwicklungsfälle und n ∈ {1000, 16000} mit Seeds 901–903. Keine Testdaten.
+- **Ergebnis:** **lr = 0,03, L2 = 10⁻³** (mittlerer Validierungsverlust 0,4342; nächstbeste Kombination 0,4367). Das ganze Raster steht im Protokoll unter `hyperparameter_selection_result`.
+- **Hinweis:** Der gewählte Punkt liegt **am Rand** des vorab festgelegten Rasters. Er wird beibehalten, weil die Regel vorab galt; es gab keine weitere Suche.
+
+### Tests und Mutationen
+
+- **Neu:** [`tests/test_m11_readout.py`](tests/test_m11_readout.py) (9 Tests, portabel) und [`tests/test_m11_kernel.py`](tests/test_m11_kernel.py) (10 Tests; scipy/Kern):
+  - die Formel gegen geschlossene Form und Monte Carlo, Skaleninvarianz, w = 0;
+  - Populationsregeln als Grenzwerte trainierter Regeln;
+  - NM-Regel gleich dem NM-Decoder;
+  - Verschachtelung und Stromtrennung; Validierungsregel;
+  - MLP-Gradient mit finiten Differenzen, Determinismus, Standardisierung nur aus dem Fit-Anteil, Bayes-Nähe an zwei Normalverteilungen;
+  - Optimierer am bekannten linearen Optimum, L_found nie unter NM(∞)/LDA(∞);
+  - Referenzphase verweigert unversionierte Verfahren; SHA-Prüfung der Bayes-Quelle;
+  - Smoke/Research vor dem Freeze gesperrt; Entwicklungslauf Ende-zu-Ende mit Gegenprobe exakt gegen Testmenge; Zeitgrenze;
+  - Gate auf synthetischen Daten; t-Test gegen `scipy.stats.ttest_1samp`, Holm, Nullvarianz-Regel; N/A-Regel des Anteils.
+- **Gefunden und behoben:** Die Nullvarianz-Regel griff bei 20 identischen Differenzen nicht, weil die Standardabweichung durch Rundung bei etwa 10⁻¹⁸ statt 0 lag. Geprüft wird jetzt, ob alle Werte gleich sind.
+- **Unter Linux gefunden:** Der Referenztest der Entwicklungsfälle liest die M10-Datei von D:; er ist jetzt zusätzlich `lab_integration`.
+- **Ergebnisse:** Pflichtlauf **328/328**, 0 übersprungen; Linux ohne SCF 169 bestanden, mit SCF 311 bestanden.
+- **Mutationsprüfung: 79/79**, mit 10 neuen M11-Mutanten. `m11_validation_splits_pairs` war **äquivalent**, weil für Vielfache von 5 „jede 5. Episode“ gleich „jedes 5. Paar“ ist. Er wurde auf eine nicht stratifizierte Validierung umgezielt.
+
+### Entwicklungsbefunde (keine Studienbestätigung)
+
+Referenzen der Entwicklungsfälle in `D:/mandala/mandala-memory-results/m11/dev/references-dev.json`; Seed 901 aus dem Laufzeitcheck:
+
+| Fall (Entwicklung) | B | NM(∞) | LDA(∞) | L_found | LDA n = 1000 / 16000 | MLP n = 1000 / 16000 |
+|---|---|---|---|---|---|---|
+| modular Ndev | 0,924 | 0,612 | 0,735 | 0,735 | 0,734 / 0,735 | 0,819 / 0,907 |
+| uniform Fdev | 0,670 | 0,670 | 0,670 | 0,670 | 0,668 / 0,670 | 0,666 / 0,668 |
+| K0 modular / uniform | 0,935 / 0,670 | = B | = B | = B | ≈ B | etwas unter B |
+
+- **Was es heißt:** Diese Werte stammen aus Entwicklungsfällen mit **einem** Seed. Sie zeigen, dass das Werkzeug arbeitet und die Trennung von Trainingsmenge und Lernverfahren sinnvoll ist. Sie **bestätigen nichts** für die Forschungsfälle.
+- **Kleiner MLP-Nachteil:** In den linearen Fällen liegt das MLP bei kleinem n leicht unter LDA. Der abgetrennte Validierungsanteil ist dafür **eine mögliche Erklärung, keine isoliert geprüfte Ursache**.
+
+### Laufzeitcheck (Entwicklungsfälle, ein Seed im vollen Forschungsumfang)
+
+Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
+
+**Gemessen pro Seed:** 4 Fälle × 4 n × 3 Initialisierungen, 100 000 Testpaare.
+
+| n | MLP-Zeit | mittlere Epochen |
+|---|---|---|
+| 250 | 1,3 s | 124 |
+| 1000 | 4,2 s | 181 |
+| 4000 | 28,7 s | 266 |
+| 16000 | **169,0 s** | 378 |
+
+- Alles Übrige: 1,4 s; Spitzen-RAM 268 MiB.
+- **Insgesamt 205 s je Seed, hochgerechnet auf 20 Seeds ≈ 68 min.**
+
+**Bewertung:** Das **überschreitet** die Planvorgabe (Ziel < 15 min, harte Grenze 30 min). Laut Plan wird das **vor dem Freeze entschieden**, nicht während der Forschungsrunde. Optionen ohne Änderung der wissenschaftlichen Fragen:
+
+| Option | Folge | Laufzeit |
+|---|---|---|
+| **A** Zeitgrenze auf 90 min (5400 s) anheben | Verfahren unverändert, n = 16000 bleibt | ≈ 68 min |
+| B MLP nur bis n = 4000; NM/LDA weiter bis 16000 | C-Daten und C-Modell unberührt; der beschreibende MLP-Punkt bei 16000 fehlt | ≈ 12 min |
+| C MLP bei n = 16000 mit 1 statt 3 Initialisierungen | Auswahlregel für diesen Punkt anders | ≈ 31 min |
+
+**Mein Vorschlag:** A, weil sich nur das Zeitbudget ändert und kein Verfahren. Die Entscheidung steht noch aus.
+
+## Followup-Review-Fix `IMPLEMENTIERUNGSREVIEW_c864678` (M11-R5 bis R9)
+
+**Review:** `D:/mandala/mandala-memory-results/astra-m11-review/IMPLEMENTIERUNGSREVIEW_c864678.md`. Ergebnis: noch keine Freigabe für die Referenzphase. Astras Gegenbeispiele habe ich **zuerst reproduziert**, mit einer Kopie des Skripts; die Sentinel-Datei lag dabei nur in meinem Temp-Ordner.
+- willkürliche Referenzen (B = 0,51) → `released: true`;
+- ungültige MLP-Metadaten → keine Beanstandung;
+- vorhandenes Artefakt → `compute` lief trotzdem;
+- NaN-Gradienten → Training endet still mit Erfolg.
+
+| Befund | Korrektur | Regression (`tests/test_m11_kernel.py`) |
+|---|---|---|
+| **R5** Referenzen und M10 nicht gebunden | Das Gate verlangt, dass die ausgewerteten Referenzen **inhaltlich gleich** dem eingefrorenen Artefakt sind, dass dessen SHA-256 im Freeze-Datensatz steht, dass sie sich auf den Protokollstand zur Referenzzeit beziehen und dass die Werte endlich und plausibel sind (L_found ≥ NM(∞), LDA(∞)). Das Ergebnis trägt Referenz-Hash und M10-Bindung. **Vor jeder Zustandsrechnung** (Entwicklung, Referenzphase, Smoke, Research) läuft `m10_run.require_frozen()`, das M10-Protokoll und M10-Code prüft. Fremde Referenzdateien nimmt die CLI nur für Entwicklungsergebnisse an. | Gebundene Referenzen ⇒ freigegeben; Astras willkürliche Referenzen, NaN-Werte und fremder Referenz-Hash im Ergebnis ⇒ nicht freigegeben. Ein verändertes M10-Protokoll wird erkannt, **bevor** ein Zustand berechnet wird; der Zustandskern ist im Test durch einen Platzhalter ersetzt, der bei Aufruf scheitert. |
+| **R6** NaN im MLP still erfolgreich | `MLPDivergence` bei jeder nicht-endlichen Eingabe, Skalierung, jedem Verlust, Gradienten, Parameter oder Validierungsverlust. Vorab festgelegte Regel im Protokoll: Der Lauf endet mit `failed`, ohne Wiederholung. Reguläres frühes Stoppen bleibt unberührt. | Isoliert (Astras Fall ⇒ `MLPDivergence` in Epoche 2) **und durch den echten Runner** (⇒ `failed`, keine Freigabe) |
+| **R7** MLP-Verfahren im Gate unvollständig | `fit_mlp` dokumentiert vollständig: Hyperparameter; je Initialisierung Index, Strom, Validierungsverlust, Epochen; Auswahl nach kleinstem Validierungsverlust, bei Gleichstand der kleinste Index; ganzzahlige Umfänge und Split-Regel. Geprüft wird **im Runner und im Gate**, dazu `mlp_hyper` auf Ergebnisebene. | Vollständiger synthetischer Referenzdatensatz; negativ: geänderte Hyperparameter (ergebnisweit und je Zeile), Astras Auswahl `init = 99` mit NaN und −1, fremder Init-Strom, NaN-Verlust, Epochen −1, fehlende Initialisierungen, falscher Index |
+| **R8** Referenzphase erst beim Schreiben gesperrt | Nur über `research_reference_phase()`. Diese prüft **vor jeder Rechnung**: Artefakt, Claim oder Fehlerprotokoll vorhanden? Verfahren committet? M10 eingefroren? Danach exklusiver Claim; ein Fehler wird protokolliert, ohne stille Wiederholung. Ein direkter `compute("research")`-Aufruf wird abgewiesen. | Mit einem Platzhalter für den Rechenkern, **ohne** echte Referenzphase: Artefakt, Claim oder Fehlerprotokoll vorhanden, unversioniert, M10 nicht eingefroren, direkter Aufruf ⇒ Kern **nicht** aufgerufen. Erfolgreiche Phase einmal, danach gesperrt; ein Fehler wird protokolliert und sperrt dann ebenfalls. |
+| **R9** Intervall für den geschlossenen Anteil fehlte | Gepaarter Bootstrap über ganze Seeds (gleiche Seeds für Decoder und LDA(1000)), Quotient je Replikat. Ungültige Replikate (Nenner ≤ 0,01) werden gezählt; ist schon der Punkt-Nenner ≤ 0,01, gilt N/A. B ist fest, sein Standardfehler wird separat genannt. Intervalle für absolute Lücken und den Stichprobenabstand sind als „bedingt auf feste Referenzen“ benannt. | Gegen eine unabhängige gepaarte Rechnung im Test (bit-genau), N/A-Regel und Zählung ungültiger Replikate |
+
+**Zusätzlich (Hinweis zur Frist):** Die Frist wird jetzt in **jeder MLP-Epoche** geprüft; die Überschreitung beträgt höchstens etwa eine Epoche bzw. einen Bewertungsschritt. Getestet: Abbruch vor der sechsten Epoche.
+
+**Ergebnisse:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| Astras Gegenbeispiele erneut | alle abgewiesen bzw. abgebrochen |
+| Pflicht-Labortestlauf | **337 bestanden, 0 übersprungen**, auch nach der letzten Protokolländerung |
+| Linux ohne SCF | 171 bestanden |
+| Linux mit SCF | 322 bestanden |
+
+**Mutationsprüfung: 88/88**, mit 9 neuen Mutanten zu R5–R9 und zur Epochenfrist. Zwei Mutanten überlebten zunächst, beide **äquivalent** durch eine zweite Schutzschicht:
+- **M10-Prüfung im Runner:** Sie läuft doppelt, in `settings()` und beim Anlegen des Ergebnisdatensatzes, beide Male vor jeder Zustandsrechnung. Der Mutant ist auf die einzige ungeschützte Stelle in `m11_references.compute` umgezielt.
+- **Gradientenprüfung:** Ohne sie fängt die Parameterprüfung derselben Epoche den Fall ab. Der Test verlangt jetzt die Erkennung am Gradienten selbst.
+
+**Zeitbudget, entschieden:** Johann hat am 2026-10-04 vor der Referenzphase **Option A** gewählt. Die Grenze liegt bei **5400 s** verstrichener Zeit. Alle geplanten Trainingspunkte (n bis 16000) und alle drei MLP-Initialisierungen bleiben; nur das Budget ändert sich, kein Verfahren. Im Protokoll steht das unter `resources.time_limit.decision`. Die Laufzeitschätzung von etwa 68 min ist eine Hochrechnung aus einem Entwicklungs-Seed, keine garantierte Gesamtdauer.
+
+## Service-Fix nach `FOLLOWUP_10cd638` (M6/M8-Dienst, kein Forschungscode)
+
+**Befund (Astra, P2):** Run-IDs der explorativen Läufe waren gekürzte Inhalts-Hashes einschließlich `time.time()`. Zwei identische Anfragen zum gleichen Zeitpunkt bekamen dieselbe ID. Bei `explore` wurde die Ergebnisdatei überschrieben (2 Protokollzeilen, 1 Datei); bei `lab` ging die zweite Anfrage mit `FileExistsError` verloren.
+
+**Reproduziert** mit eingefrorener Uhr (Kopie von Astras Skript, Ausgabe im Temp-Ordner): Beide Fälle traten genau so auf.
+
+**Korrektur** (`serve.py`):
+- Jeder explorative Lauf bekommt eine vom Zeitstempel und vom Inhalt unabhängige ID `<art>-<uuid4[:16]>`.
+- Zeitstempel und Inhalts-Hash (`content_sha256`) bleiben Metadaten.
+- Beide Endpunkte schreiben über dieselbe Funktion: zuerst die Datei **exklusiv**, dann die Protokollzeile.
+- Eine erzwungene Kollision überschreibt nichts und hinterlässt keine Protokollzeile; sie meldet einen klaren Fehler.
+
+**Tests:**
+- Je Endpunkt: identische Anfragen mit eingefrorener Uhr ⇒ verschiedene IDs, 2 Dateien, 2 passende Protokollzeilen.
+- Erzwungene ID-Kollision ⇒ erste Datei bitgleich, nur 1 Protokollzeile.
+- Astras Hinweis aufgenommen: Die wirkungslose `or True`-Assertion in `test_m11_kernel.py` ist durch einen echten Test für ein fehlendes Artefakt ersetzt.
+
+**Ergebnisse:**
+- Pflichtlauf **341/341**, 0 übersprungen.
+- Linux ohne SCF 171 bestanden, mit SCF 326 bestanden.
+- Mutationsprüfung **90/90**, mit 2 neuen Mutanten (zeitabhängige ID, überschreibendes `explore`).
+- Geändert sind nur `serve.py`, Tests und das Mutationswerkzeug; **kein** M10- oder M11-Forschungscode, kein Protokoll.
+
+## M11 Forschungslauf (2026-10-05)
+
+- **Versuch 1** `m11-research-20261005T034640-10450239`: Wegen des Ruhezustands des Rechners brach er mit `aborted_timeout` ab. Er ist unvollständig, nicht freigegeben und nicht ausgewertet.
+- **Versuch 2** `m11-research-20261005T114106-e996e301`: nach dokumentierter Freigabe von Johann/Astra, mit unverändertem Code. Status `complete` nach 4845 s, **freigegeben**.
+- **C-Daten** ist nicht bestätigt (0,0017 < δ); **C-Modell** ist bestätigt (0,022, p_Holm 0,0011).
+- Im Hauptfall verbleibt gegenüber der gefundenen linearen Referenz fast die ganze Lücke zu B; B − L_found = 0,134 ist eine obere Schranke der Nichtlinearitätslücke, keine kausale Zuordnung. Das MLP schließt bei n = 16000 beschreibend rund 84 % der LDA(1000)-Lücke.
+- Formulierungen nach `ERGEBNISPRUEFUNG_78c2d2f` präzisiert; nur Dokumentation geändert.
+- Details stehen in `docs/M11_ERGEBNIS.md`.

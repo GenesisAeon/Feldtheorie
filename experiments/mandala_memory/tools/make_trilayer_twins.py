@@ -159,6 +159,33 @@ Plan und Begründungen: [`../docs/M10_PLAN_ABLENKUNG.md`](../docs/M10_PLAN_ABLEN
 """
 
 
+def m11_markdown(p: dict, sha: str) -> str:
+    cases = "\n".join(f"| {c['name']} | {c['network']} | {c['condition']} | {c['role']} |" for c in p["cases"])
+    h = p["decoders"]["mlp"]["hyperparameters"]
+    return f"""# M11-Protokoll „Die vorhandene Erinnerung besser auslesen“ (Narrativ-Zwilling)
+
+Trilayer: `m11_protokoll.json` (maßgeblich), `m11_protokoll.yaml` (Strukturzwilling), diese Datei (Erzählung); erzeugt mit `tools/make_trilayer_twins.py`.
+
+- **Status:** {p['status']}
+- **SHA-256 des JSON** (LF-normiert): `{sha}`
+- **Plan:** [`../docs/M11_PLAN_AUSLESE.md`](../docs/M11_PLAN_AUSLESE.md) (Fassung 2). Das Mandala ist unverändert (eingefrorene M10-Funktionen), d = {p['delay']}, Aufgabe Bewahren.
+
+| Fall | Netz | Bedingung | Rolle |
+|---|---|---|---|
+{cases}
+
+**Trainingsmengen:** {p['n_grid']} je Klasse (Präfixe einer Ziehung); Testpaare je Seed: {p['test_pairs']}.
+
+**Decoder:**
+- Nearest-Mean, LDA (Ledoit-Wolf);
+- MLP 12 → {p['decoders']['mlp']['hidden']} tanh → 1 mit lr = {h['lr']}, L2 = {h['l2']}, Geduld {h['patience']}, höchstens {h['max_epochs']} Epochen, {p['decoders']['mlp']['inits']} Initialisierungen. Die Hyperparameter wurden nur an Entwicklungsfällen nach der Validierungsregel gewählt; siehe `hyperparameter_selection_result`.
+
+**Bestätigend:** C-Daten (Helfen mehr Beispiele LDA?) und C-Modell (MLP-Lernverfahren gegen LDA bei n = 1000), δ = {p['confirmatory']['delta']}, Holm α = {p['confirmatory']['alpha']}, einseitiger t-Test (Normalannahme).
+
+**Referenzen** (Bayes aus M10, NM(∞), LDA(∞), L_found) werden erst in der Referenzphase berechnet; siehe die Abschnitte `phases` und `linear_reference` im JSON.
+"""
+
+
 def main() -> int:
     raw = SRC.read_bytes().replace(b"\r\n", b"\n")
     sha = hashlib.sha256(raw).hexdigest()
@@ -175,7 +202,15 @@ def main() -> int:
         "# YAML twin of m10_protokoll.json (generated; the JSON is authoritative)\n" + yaml_dump(p10) + "\n",
         encoding="utf-8", newline="\n")
     (PROTOCOL / "m10_protokoll.md").write_text(m10_markdown(p10, sha10), encoding="utf-8", newline="\n")
-    print(json.dumps({"m9_json_sha256": sha, "m10_json_sha256": sha10,
+    m11 = PROTOCOL / "m11_protokoll.json"
+    raw11 = m11.read_bytes().replace(b"\r\n", b"\n")
+    sha11 = hashlib.sha256(raw11).hexdigest()
+    p11 = json.loads(raw11.decode("utf-8"))
+    (PROTOCOL / "m11_protokoll.yaml").write_text(
+        "# YAML twin of m11_protokoll.json (generated; the JSON is authoritative)\n" + yaml_dump(p11) + "\n",
+        encoding="utf-8", newline="\n")
+    (PROTOCOL / "m11_protokoll.md").write_text(m11_markdown(p11, sha11), encoding="utf-8", newline="\n")
+    print(json.dumps({"m9_json_sha256": sha, "m10_json_sha256": sha10, "m11_json_sha256": sha11,
                       "written": ["m9_frozen_predictions.yaml", "m9_frozen_predictions.md", "m10_protokoll.yaml", "m10_protokoll.md"]}))
     return 0
 

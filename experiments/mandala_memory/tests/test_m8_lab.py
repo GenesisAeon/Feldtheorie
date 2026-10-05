@@ -186,7 +186,7 @@ def test_lab_logging_new_ids_never_overwrite(monkeypatch):
     last = [json.loads(l) for l in (TEST_EXPLORE / "protocol.jsonl").read_text(encoding="utf-8").strip().splitlines()[-2:]]
     assert {l["run_id"] for l in last} == {a["run_id"], b["run_id"]}
     assert all(l["kind"] == "lab" and l["knobs"]["c"] == 0.1 and l["explorative"] for l in last)
-    with pytest.raises(FileExistsError):
+    with pytest.raises(MemoryLabError, match="nothing was overwritten"):
         serve._log(a, "lab", {"knobs": a["knobs"]})
     assert a["reference_curve"]["bayes"][8] == pytest.approx(0.683, abs=5e-4)
 
