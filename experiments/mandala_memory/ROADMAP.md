@@ -1298,5 +1298,6 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - **Versuch 1** `m11-research-20261005T034640-10450239`: Wegen des Ruhezustands des Rechners brach er mit `aborted_timeout` ab. Er ist unvollständig, nicht freigegeben und nicht ausgewertet.
 - **Versuch 2** `m11-research-20261005T114106-e996e301`: nach dokumentierter Freigabe von Johann/Astra, mit unverändertem Code. Status `complete` nach 4845 s, **freigegeben**.
 - **C-Daten** ist nicht bestätigt (0,0017 < δ); **C-Modell** ist bestätigt (0,022, p_Holm 0,0011).
-- Im Hauptfall ist die Lücke von LDA zu B fast ganz nichtlinear (obere Schranke 0,134 von 0,136). Das MLP schließt bei n = 16000 rund 84 % davon.
+- Im Hauptfall verbleibt gegenüber der gefundenen linearen Referenz fast die ganze Lücke zu B; B − L_found = 0,134 ist eine obere Schranke der Nichtlinearitätslücke, keine kausale Zuordnung. Das MLP schließt bei n = 16000 beschreibend rund 84 % der LDA(1000)-Lücke.
+- Formulierungen nach `ERGEBNISPRUEFUNG_78c2d2f` präzisiert; nur Dokumentation geändert.
 - Details stehen in `docs/M11_ERGEBNIS.md`.

@@ -18,13 +18,13 @@ Entwicklungsbefunde aus der Implementierungsphase zählen nicht als Bestätigung
 
 ## Konfirmatorisch (20 Seeds, einseitiges t mit df 19, δ = 0,01, Holm)
 
-| Kontrast | Mittel | 95 %-t-Intervall | p (Holm) | Befund |
+| Kontrast | Mittel | unadjustiertes 95 %-t-Intervall | p (Holm) | Befund |
 |---|---|---|---|---|
 | **C-Daten:** LDA(16000) − LDA(1000) > δ | 0,0017 | [0,0013; 0,0021] | 1 | **nicht bestätigt** |
 | **C-Modell:** MLP(1000) − LDA(1000) > δ | 0,0220 | [0,0154; 0,0285] | 0,0011 | **bestätigt** |
 
 Zu den beiden Kontrasten:
-- **C-Daten:** Mehr Trainingsdaten verbessern LDA im Hauptfall zwar messbar, aber um deutlich weniger als die vorab gesetzte Relevanzschwelle von 0,01. „Nicht bestätigt“ heißt hier nicht „kein Effekt“, sondern „unter der Relevanzschwelle“.
+- **C-Daten:** Mehr Trainingsdaten verbessern LDA im Hauptfall zwar messbar, aber um deutlich weniger als die vorab gesetzte Relevanzschwelle von 0,01. „Nicht bestätigt“ heißt hier nicht „kein Effekt“: Ein kleiner positiver Effekt ist mit den Daten vereinbar und durch das unadjustierte Intervall gestützt. Er liegt aber unter der Relevanzschwelle.
 - **C-Modell:** Bei gleicher Trainingsgröße und auf denselben Testdaten liest das kleine MLP die Erinnerung besser aus als LDA.
 
 ## Beschreibend: Zerlegung der Lücke im Hauptfall (modular, N-Ablenkung, d = 4)
@@ -37,7 +37,9 @@ B = 0,9116, L_found = 0,7775, LDA(∞) = 0,7774, NM(∞) = 0,6346.
 | L_found − LDA(∞) (Kriteriumslücke) | 0,0001 |
 | LDA(∞) − LDA(1000) (Stichprobenlücke, vorzeichenbehaftet) | 0,0018 |
 
-Fast die ganze Lücke von LDA zur Bayes-Grenze liegt daran, dass die beste lineare Regel (soweit gefunden) prinzipiell nicht weiter kommt. Weder das Kriterium noch die Trainingsgröße erklären sie. L_found ist numerisch gefunden, kein bewiesenes Optimum; deshalb ist der erste Term eine obere Schranke.
+Die Populations-LDA und die beste gefundene lineare Regel liegen hier sehr nahe beieinander. Gegenüber dieser numerischen linearen Referenz verbleibt fast die gesamte Lücke zur Bayes-Schätzung. Ob eine andere lineare Regel wesentlich besser wäre, ist durch die Optimierung nicht ausgeschlossen.
+
+B − L_found = 0,134 ist eine obere Schranke der unbekannten Nichtlinearitätslücke, mit zusätzlicher MC-Unsicherheit von B. Es ist keine kausale Zuordnung von 0,134 zur Nichtlinearität. Die Holm-Korrektur gilt für die p-Werte; die Intervalle in der Kontrasttabelle sind unadjustiert.
 
 | Verfahren | n = 250 | 1000 | 4000 | 16000 |
 |---|---|---|---|---|
@@ -47,15 +49,20 @@ Fast die ganze Lücke von LDA zur Bayes-Grenze liegt daran, dass die beste linea
 | geschlossener Anteil des MLP (gegen LDA(1000), gepaarter Bootstrap) | −0,07 | 0,16 [0,12; 0,20] | 0,76 [0,75; 0,76] | 0,84 [0,83; 0,84] |
 
 Was die Tabelle zeigt:
-- Das nichtlineare Auslesen schließt bei n = 16000 rund 84 % der Lücke. Es bleibt ein Abstand von 0,022 zur Bayes-Grenze.
-- Bei n = 250 ist das MLP schlechter als LDA. Der Gewinn hängt also an der Trainingsgröße, die bei LDA kaum etwas bringt.
-- Beide Achsen, Verfahren und Daten, wirken nur gemeinsam.
+- Der geschlossene Anteil ist beschreibend und relativ zur LDA(1000)-Lücke. Er ist bedingt auf die eingefrorene Bayes-Schätzung, deren MC-SE separat berichtet wird.
+- Bei n = 16000 schließt das MLP rund 84 % dieser Lücke. Es bleibt ein Abstand von 0,022 zur Bayes-Schätzung.
+- Bei festem n = 1000 ist das MLP-Lernverfahren besser als LDA. Über die untersuchten Trainingsmengen steigt die MLP-Leistung deutlich stärker als die LDA-Leistung; bei n = 250 liegt es noch darunter.
+- Ein formaler Interaktionstest oder ein universelles Erfordernis beider Änderungen wurde nicht nachgewiesen.
+
+## Prüfungen und Korrekturen
+
+Astras Ergebnisprüfung `ERGEBNISPRUEFUNG_78c2d2f.md` hat die Auswertung unabhängig reproduziert: vollständige Übereinstimmung, gültiger Freeze, korrekte Freigabe, Hash des ersten Laufs unverändert. Sie hat außerdem die Formulierungen dieses Dokuments präzisiert. Daten, Protokoll und eingefrorener Code blieben dabei unverändert.
 
 ## Kontrollen
 
-- **K0 (ohne Ablenkung, beide Netze):** Alle Verfahren konvergieren gegen B. Die Restlücke bei n = 16000 ist ≤ 0,0004.
-- **Uniform, F+:** Hier ist die lineare Regel schon Bayes-optimal (L_found = LDA(∞) = B bis auf 10⁻⁷). Das MLP bringt keinen Vorteil, bei kleinem n liegt es sogar leicht darunter. Der geschlossene Anteil ist hier mangels Lücke korrekt N/A.
+- **K0 (ohne Ablenkung, beide Netze):** Analytisch liegen hier zwei Gaußverteilungen mit gleicher Kovarianz vor; die lineare Bayes-Regel ist also begründet. Die endlich trainierten Verfahren erreichen B bis auf die berichtete Restlücke, bei n = 16000 höchstens 0,0004.
+- **Uniform, F+:** Die Populations-LDA und L_found erreichen innerhalb der Genauigkeit der übernommenen Bayes-Schätzung dieselbe Leistung. Ein relevanter Spielraum für das MLP ist hier nicht erkennbar, und bei kleinem n liegt es leicht darunter. Der geschlossene Anteil ist mangels Lücke N/A.
 
 ## Einordnung, ohne Gewinnerbehauptung
 
-Im Hauptfall steckt die Information, die LDA verfehlt, in einer nichtlinearen Struktur der Zustände: Die Ablenkungsmuster bilden eine Mischung. Ein besseres Auslesen kann sie mit genug Daten weitgehend nutzen, das Mandala selbst bleibt unverändert. Das gilt für dieses Netz, diese Ablenkung und diese Verzögerung, nicht allgemein. Das kleine MLP ist ein Beispiel für nichtlineares Auslesen, kein bestes Verfahren.
+Im Hauptfall erreicht dieses nichtlineare Lernverfahren (kleines MLP) bei genügend Trainingsdaten deutlich mehr als die geprüften linearen Verfahren (NM, LDA und die gefundene lineare Referenz). Das Mandala selbst bleibt unverändert. Welche Eigenschaft der Zustandsverteilung das MLP nutzt, ist damit nicht nachgewiesen; die Mischstruktur aus Ablenkungsmustern ist eine naheliegende, nicht geprüfte Erklärung. Das gilt für dieses Netz, diese Ablenkung und diese Verzögerung, nicht allgemein. Das kleine MLP ist ein Beispiel für nichtlineares Auslesen, kein bestes Verfahren.
