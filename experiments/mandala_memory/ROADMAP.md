@@ -1301,3 +1301,11 @@ Ergebnis: `D:/mandala/mandala-memory-results/m11/dev-runtime-check/`.
 - Im Hauptfall verbleibt gegenüber der gefundenen linearen Referenz fast die ganze Lücke zu B; B − L_found = 0,134 ist eine obere Schranke der Nichtlinearitätslücke, keine kausale Zuordnung. Das MLP schließt bei n = 16000 beschreibend rund 84 % der LDA(1000)-Lücke.
 - Formulierungen nach `ERGEBNISPRUEFUNG_78c2d2f` präzisiert; nur Dokumentation geändert.
 - Details stehen in `docs/M11_ERGEBNIS.md`.
+
+## M12 Plan (2026-10-05)
+
+- [`docs/M12_PLAN_ROBUSTHEIT.md`](docs/M12_PLAN_ROBUSTHEIT.md), Fassung 1. Es ist **nur ein Plan**: kein Training, keine Rechnung, kein Freeze.
+- **Leitfrage:** Wie robust sind festgehaltene MLP- und LDA-Decoder gegen eine geänderte Ablenkungsamplitude bzw. ein geändertes Messrauschen?
+- **Aufbau:** 9 Bedingungen, Hauptfall modular/N/d = 4, neue Basismodelle (keine M11-Rekonstruktion).
+- **Zerlegung:** Der Verlust wird aufgeteilt in die Informationsänderung ΔB und die Lückenänderung ΔG des Decoders.
+- **Offen:** Entscheidungen O1–O5.
