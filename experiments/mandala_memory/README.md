@@ -6,9 +6,9 @@ Kleines, reproduzierbares CPU-Experiment. Es fragt: Welche Information über ein
 - **SCF** (`scoped-correspondence==0.42.0`) liefert geprüfte Bausteine: Budgetmatrix, Hebb-Regel, Split- und Auswerteprüfungen.
 - **unified-mandala** (`experiments/memory_lab/`) zeigt Zustände und Eingriffe.
 
-**Einstieg:** [docs/FORSCHUNGSUEBERSICHT.md](docs/FORSCHUNGSUEBERSICHT.md) fasst M0–M11 zusammen: Fragen, Ergebnisse, Grenzen und Links zu den eingefrorenen Belegen.
+**Einstieg:** [docs/FORSCHUNGSUEBERSICHT.md](docs/FORSCHUNGSUEBERSICHT.md) fasst M0–M12 zusammen: Fragen, Ergebnisse, Grenzen und Links zu den eingefrorenen Belegen.
 
-Die Arbeitsschritte M0–M11 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), die eingefrorenen Protokolle unter [protocol/](protocol/).
+Die Arbeitsschritte M0–M12 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), die eingefrorenen Protokolle unter [protocol/](protocol/).
 
 ## Startbefehle
 

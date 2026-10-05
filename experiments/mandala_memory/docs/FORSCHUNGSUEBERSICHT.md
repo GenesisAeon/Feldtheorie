@@ -1,4 +1,4 @@
-# Mandala-Gedächtnislabor: Forschungsübersicht M0–M11
+# Mandala-Gedächtnislabor: Forschungsübersicht M0–M12
 
 Dies ist ein Einstieg neben der langen [Roadmap](../ROADMAP.md). Die Übersicht fasst nur zusammen, was dort und in den verlinkten Dokumenten bereits belegt ist; sie enthält keine neuen Rechnungen. Alle Aussagen gelten für eine **synthetische Modellstudie**: kleine Netze, feste Parameter, keine biologische und keine allgemeine KI-Aussage, keine Gewinnerbehauptung.
 
@@ -21,6 +21,7 @@ Zwei Arten von Leistung ziehen sich durch alle Pakete:
 | **M9** | Lässt sich die Gedächtnisdauer **vorhersagen**? | Ja, für die Modellfamilie F. Herleitung der Moden und eine beweisbare Fehlerschranke. Eingefrorene Vorhersagen an 24 ungesehenen Kombinationen: 24/24 Bänder, 23/23 Punktvorhersagen von D, 28/28 Decoder-Prüfungen. Die naive q-Regel lag in allen 14 Fällen mit Erinnerung daneben. | `analytic_argument` + eingefrorene Vorhersage |
 | **M10** | Wie stören Ablenkungen kurz vor dem Ablesen? | **H-N bestätigt:** Ablenkung in den Eingangsmodulen kostet das modulare Netz 0,024 an Bayes-Trennbarkeit; im uniformen Netz ist innerhalb der Monte-Carlo-Auflösung kein entsprechender Verlust erkennbar. **H-F+ nicht bestätigt:** Schätzung −0,0001, SE 0,00011, unadjustiertes 95 %-Intervall [−0,0003; +0,0001]. Getrennt davon verlieren trainierte Decoder zusätzlich viel mehr als die Bayes-Grenze (NM 0,30, LDA 0,16). | eingefrorenes Protokoll, einmaliger Lauf |
 | **M11** | Wie viel dieser Ablese-Lücke schließt ein besseres Ausleseverfahren, bei unverändertem Mandala? | **C-Modell bestätigt:** Ein kleines MLP ist bei n = 1000 um 0,022 besser als LDA. **C-Daten nicht bestätigt:** Mehr Daten bringen LDA nur +0,0017. Beschreibend schließt das MLP bei n = 16000 rund 84 % der LDA-Lücke. | eingefrorenes Protokoll; zwei Versuche, der zweite vollständig |
+| **M12** | Bleibt ein gelerntes Auslesen vorteilhaft, wenn sich Ablenkungsstärke oder Messrauschen ändern und die trainierten Decoder unverändert bleiben? | **Bestätigt (beide Endpunkttests):** Das fixierte MLP ist an den erhöhten Endpunkten besser als die fixierte LDA: +0,104 bei Ablenkungsamplitude 0,9, +0,043 bei σ = 0,03. **Beschreibend:** Bei veränderter Ablenkungsstärke wächst die Bayes-Lücke des unveränderten MLP in beide Richtungen; bei Amplitude 0,30 kehrt sich der Vorteil um (LDA um 0,036 besser). Beim Messrauschen bleibt die absolute Bayes-Lücke des MLP klein; das ist kein bestätigender Robustheits- oder Äquivalenztest. | eingefrorenes Protokoll, neue fixierte Basismodelle, je Phase ein Versuch |
 
 ## Was sich daraus ergibt
 
@@ -38,6 +39,10 @@ Zwei Arten von Leistung ziehen sich durch alle Pakete:
    - Unter Ablenkung bleibt die Bayes-Leistung im Hauptfall hoch (0,912), lineare Decoder fallen aber ab.
    - Ein nichtlineares Lernverfahren holt bei genug Daten den größten Teil zurück.
    - Ob ein Netz „vergisst“ oder nur „schwerer abzulesen ist“, hängt also vom Ablesenden ab.
+4. **Gute Ausleseleistung unter Trainingsbedingungen garantiert keinen Vorteil unter veränderten Bedingungen** (M12).
+   - **Bestätigt:** An den beiden vorab gewählten erhöhten Endpunkten bleibt das fixierte MLP mehr als 0,01 besser als die fixierte LDA. Ob der Ausgangsvorteil (+0,113) erhalten bleibt, wurde nicht getestet.
+   - **Beschreibend, Ablenkungsstärke:** Das unveränderte MLP verliert in beide Richtungen mehr, als die Änderung der Bayes-Trennbarkeit vorgibt. Bei Amplitude 0,9 sinkt es, obwohl die Bayes-Leistung steigt. Bei Amplitude 0,30 ist die fixierte LDA besser. Eine Ursache bestimmt der Versuch nicht.
+   - **Beschreibend, Messrauschen:** Die Leistungsänderung des MLP liegt nahe bei der Änderung der Bayes-Trennbarkeit. Seine absolute Bayes-Lücke bleibt klein, ändert sich relativ aber deutlich.
 
 ## Grenzen, die für alles gelten
 
@@ -50,7 +55,13 @@ Zwei Arten von Leistung ziehen sich durch alle Pakete:
 - **M11 im Besonderen:**
   - Die beste *gefundene* lineare Regel ist keine bewiesene Grenze aller linearen Regeln.
   - Das MLP ist ein Beispiel für nichtlineares Auslesen, kein bestes Verfahren.
-  - Bisher wurde es nur unter **passenden** Trainings- und Testbedingungen gemessen.
+  - In M11 wurde es nur unter **passenden** Trainings- und Testbedingungen gemessen; geänderte Bedingungen untersucht M12.
+- **M12 im Besonderen:**
+  - Es gibt nur ein Netz, nahe Ablenkung, d = 4 und 9 Rasterpunkte. Für Werte zwischen oder außerhalb der Punkte gilt keine Aussage.
+  - Es gab keinen Vergleich mit nachtrainierten Modellen. Eine Änderung der Bayes-Lücke (ΔG) wird keiner Ursache zugeschrieben.
+  - Die LDA-Zerlegung bezieht sich auf die bedingungsspezifische Populations-LDA, nicht auf die beste lineare Regel.
+  - Bestätigend sind nur die beiden Endpunkttests. Verlustkurven, Zerlegung, Umkehr bei Amplitude 0,30 und das Verhalten beim Rauschen sind beschreibend.
+  - Die Basismodelle sind eine neue Stichprobe, keine Wiederholung von M11.
 
 ## Eingefrorene Belege
 
@@ -59,14 +70,11 @@ Zwei Arten von Leistung ziehen sich durch alle Pakete:
 | M0–M4 | [Startkonfiguration](../protocol/startkonfiguration.json), [Manifest](../M0_MANIFEST.json) | `D:/mandala/mandala-memory-results/research/research-e19650a0a0.json` (+ Auswertung v2 nach Review R1/R2) |
 | M9 | [Herleitung](M9_HERLEITUNG.md) (hashgeschützt), [Vorhersagen](../protocol/m9_frozen_predictions.json) (SHA-256 `1e872cec…`; berechnet am dokumentierten Code-Stand `6f8a812`, versioniert eingefroren in Commit `359a4cf` vor jeder Kernrechnung), [Erratum 1](M9_ERRATUM_1.md) | `D:/mandala/mandala-memory-results/m9/m9-evaluation--8d353dbc88.json` |
 | M10 | [Plan](M10_PLAN_ABLENKUNG.md), [Protokoll](../protocol/m10_protokoll.json), [Freeze-Datensatz](../protocol/m10_freeze.json), Tag `m10-freeze` (7b31300) | `D:/mandala/mandala-memory-results/m10/research/m10-research-20261003T230058-47d41706.json`; Integrationsbericht `m10/INTEGRATION_M10.md` |
+| M12 | [Plan](M12_PLAN_ROBUSTHEIT.md), [Protokoll](../protocol/m12_protokoll.json), [Protokoll-Freeze](../protocol/m12_freeze.json) (Tag `m12-freeze`, f3a5bc2), [Referenzen](../protocol/m12_references.json), [Modell-Freeze](../protocol/m12_models_freeze.json) (Tag `m12-models`, e8e53a8) mit [Modellartefakten](../protocol/m12_models/), [Ergebnis](M12_ERGEBNIS.md) | `D:/mandala/mandala-memory-results/m12/research/m12-research-20261005T170243-972cca01.json` (+ `.evaluation.json`); Integrationsbericht `m12/INTEGRATION_M12.md` (mit dem behobenen Checkout-Befund zu den Zeilenenden der Modell-JSON) |
 | M11 | [Plan](M11_PLAN_AUSLESE.md), [Protokoll](../protocol/m11_protokoll.json), [Referenzen](../protocol/m11_references.json), [Freeze-Datensatz](../protocol/m11_freeze.json), Tag `m11-freeze` (1a5423f), [Ergebnis](M11_ERGEBNIS.md) | Versuch 2: `D:/mandala/mandala-memory-results/m11/research/m11-research-20261005T114106-e996e301.json` (+ `.evaluation.json`); Versuch 1 (abgebrochen, gesperrt), Abbruchbericht und Nachtrag im selben Ordner; `m11/INTEGRATION_M11.md` |
 
 Unabhängige Reviews von Astra liegen in den `astra-*`-Ordnern unter `D:/mandala/mandala-memory-results/`. Codefehler wurden über reproduzierbare Gegenbeispiele und gezielte Tests bearbeitet. Mathematische und sprachliche Überdehnungen wurden durch Herleitungsprüfung bzw. Dokumentationskorrekturen behoben, etwa im Erratum zu M9 oder in den Präzisierungen zu M10 und M11. Details stehen in der Roadmap.
 
-## Mögliche nächste Frage (noch nicht geplant)
+## Von der offenen Frage zu M12
 
-**Robustheit des gelernten Auslesens:** Funktioniert das in M11 trainierte MLP auch bei leicht veränderter Ablenkungsstärke oder verändertem Messrauschen, ohne neu trainiert zu werden? Und wie verhält sich LDA dabei im Vergleich? Für diese Frage gäbe es zuerst einen eigenen Plan mit vorab festgelegten Verschiebungen und Kontrasten, wie in M10 und M11.
-
-**Voraussetzung:** Der geprüfte M11-Runner speichert pro Lauf nur Trefferquoten und Fit-Metadaten. Er speichert **keine** MLP-Gewichte, keine Standardisierung und keine linearen Koeffizienten, und separate Modellartefakte gibt es nicht. Die trainierten M11-Modelle sind also nicht verfügbar. Für M12 braucht es deshalb eine von zwei Lösungen:
-- eine ausdrücklich dokumentierte, deterministische Rekonstruktion, abgeglichen mit den gespeicherten M11-Ergebnissen;
-- oder neue Basismodelle nach vorab festgelegtem Trainingsplan, die anschließend fixiert werden.
+Die frühere offene Frage nach der Robustheit des gelernten Auslesens hat M12 aufgegriffen. Weil M11 keine Modellgewichte gespeichert hatte, wurden **neue Basismodelle** nach vorab festgelegtem Plan trainiert und dann mit Prüfsummen fixiert; es sind keine rekonstruierten M11-Modelle. Ergebnisse und Grenzen stehen oben und in [M12_ERGEBNIS.md](M12_ERGEBNIS.md).
