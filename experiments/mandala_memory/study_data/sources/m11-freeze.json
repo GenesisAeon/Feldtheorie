@@ -1,0 +1,38 @@
+{
+ "schema": "mandala-memory-m11-freeze-v1",
+ "frozen_on": "2026-10-05",
+ "protocol": "protocol/m11_protokoll.json",
+ "protocol_sha256": "c25c9cdd7697c45609fd7abbaf6889a66fbaa012f3798420d59a96481846911e",
+ "protocol_sha256_at_references": "7dd73fccf4893fa3fd07adcdd2b172637ff5f5e8a6e2091c605333ce7dd4d68b",
+ "references": "protocol/m11_references.json",
+ "references_sha256": "bfaaba5f898a3deeb78dc6193e4755e239a4aaddea32380172b07c41e6995e23",
+ "reference_phase_git_head": "a622d43182be4ab7be40922ca27b2e348b0fec6e",
+ "m10_binding": {
+  "m10_protocol_sha256": "84d2b523d5f4c7dc9acc8e91d1986d71306e9aedbd4f99ef74c35c5b2056c345",
+  "m10_reviewed_code_commit": "6f2acfd2a8a153c8f48bc50194cbcf651a510758",
+  "m10_freeze_record_sha256": "6e761982a9b0ab58ad19c1ddc911e7cbb9e9e435953fb43666dda27a36fa02fb"
+ },
+ "reviewed_code_commit": "10cd6389e97ec40ce704c04519fff9e0afbdf02e",
+ "code_state_note": "M11 code files unchanged from the reviewed commit up to a622d43 (service fix touched serve.py and tests only)",
+ "reviews": [
+  "IMPLEMENTIERUNGSREVIEW_c864678.md",
+  "FOLLOWUP_10cd638.md"
+ ],
+ "changes_in_freeze_commit": [
+  "protocol status FROZEN (+ reference_phase_record), twins regenerated",
+  "m11_run.FROZEN_PROTOCOL_SHA256 set -- the only code change relative to the reviewed M11 code",
+  "reference artifact and claim committed; tests adapted to the frozen state (new freeze-consistency test)"
+ ],
+ "code_sha256_computed": "after FROZEN_PROTOCOL_SHA256 was set (LF-normalised SHA-256)",
+ "code_sha256": {
+  "m11_readout.py": "00f46aadd58140c2722cba358083af42255d12ab2e65d457f5ca4c3d5cac0a7d",
+  "m11_references.py": "ed830aa6eac56f42e9e82d3a248abc5f7454cbd30df53b88d039ce401ba7b494",
+  "m11_run.py": "39c9f8398a475c31e92af718d6a09d5f7dbc75f10a3af34a6e9d51bcd458f28f",
+  "m11_evaluate.py": "d27492b6643b645f64b3dfa26b8e14f0bc37116a3398c4286128ae86821f81a8",
+  "m10_task.py": "dce6147f212202cd307dbc85b545dcd5ec126388ac6873e9dcd4bd2b8b8e01c3",
+  "m10_decoders.py": "3b4c57a51d035adc99eb3a5454e6a795865841efd6bb27d0af03b4d13cf99f98",
+  "core.py": "c152a41aba8b381eae3044dca4e19b4066760512650953fad0b2ce5d4380f381",
+  "predict.py": "d970d33abb3246041627c86ff5162f2b2fb1738c857f888a4ccbc74edc830c54",
+  "data.py": "16a14bdf55ab15bede7e289d4c498d33f1208840597f3f2a4e915baa8751236a"
+ }
+}

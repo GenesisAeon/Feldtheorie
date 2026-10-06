@@ -1,3 +1,4 @@
 # M12 model artifacts: never convert line endings -- the model freeze binds their raw bytes
 experiments/mandala_memory/protocol/m12_models/*.npz binary
 experiments/mandala_memory/protocol/m12_models/*.json -text
+experiments/mandala_memory/study_data/** -text

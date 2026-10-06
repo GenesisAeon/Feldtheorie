@@ -1,0 +1,1555 @@
+{
+ "schema": "mandala-memory-m9-evaluation-v1",
+ "created_unix": 1791029652.4118316,
+ "frozen_sha256": "1e872cecaaa4ff10d796e921a289119cde32ba1fee8698cc0881e4137867de13",
+ "frozen_git_head": "6f8a81250a45b4193af5590f381452b10cc7b24a",
+ "git_head_at_evaluation": "ac764e4b9e12f2cef4db9b668139971a3ffd37f7",
+ "primary": {
+  "passed": true,
+  "n_combinations": 24,
+  "n_passed": 24,
+  "n_delays_per_combination": 65,
+  "evidence_kind_declared_set": "exhaustive_finite",
+  "evidence_kind_family": "analytic_argument (bound) + numerical_sample (24 held-out combinations)",
+  "all_candidates_scanned": true,
+  "search_complete": true
+ },
+ "secondary": {
+  "passed": true,
+  "n_checks": 28,
+  "n_passed": 28,
+  "evidence_kind": "numerical_sample",
+  "empirical_status": "synthetic_only"
+ },
+ "informative": {
+  "point_predictions": 23,
+  "point_predictions_exact": 23,
+  "naive_q_rule_misses": 14,
+  "naive_q_rule_misses_among_with_memory": 14,
+  "with_memory": 14,
+  "Z1": {
+   "n_applicable": 3,
+   "n_holds": 3,
+   "status": "hypothesis, not proven; reported either way"
+  },
+  "max_rel_nonlinear_deviation": 0.0379523208636167
+ },
+ "combinations": [
+  {
+   "id": "h00",
+   "combination": {
+    "N": 12,
+    "M": 1,
+    "c": null,
+    "gamma": 0.6,
+    "ell": 0.75,
+    "amplitude": 2.4,
+    "sigma": 0.015,
+    "inputs": [
+     9,
+     6
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 2,
+   "D_interval": [
+    2,
+    2
+   ],
+   "D_linear": 2,
+   "worst_deviation_over_allowed": 0.21320071416611378,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0003233371115394415,
+   "D_naive_q_rule": 11,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.5265072526479007,
+    "8": 0.5000507034479322,
+    "16": 0.5000000001852335
+   }
+  },
+  {
+   "id": "h01",
+   "combination": {
+    "N": 12,
+    "M": 3,
+    "c": 0.1,
+    "gamma": 0.6,
+    "ell": 0.3,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     0,
+     10
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 16,
+   "D_interval": [
+    16,
+    16
+   ],
+   "D_linear": 16,
+   "worst_deviation_over_allowed": 0.6314242827896465,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.00048325799948629105,
+   "D_naive_q_rule": 26,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": true,
+   "Z1_holds": true,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.999999998701415,
+    "8": 0.9973359193268372,
+    "16": 0.7786806069841761
+   }
+  },
+  {
+   "id": "h02",
+   "combination": {
+    "N": 12,
+    "M": 4,
+    "c": 0.6,
+    "gamma": 0.85,
+    "ell": 0.75,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     0,
+     1
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 2,
+   "D_interval": [
+    2,
+    2
+   ],
+   "D_linear": 2,
+   "worst_deviation_over_allowed": 0.4984488563646264,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.014902444473366444,
+   "D_naive_q_rule": 35,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.5044385686815834,
+    "8": 0.5000010023529194,
+    "16": 0.5000000000000508
+   }
+  },
+  {
+   "id": "h03",
+   "combination": {
+    "N": 12,
+    "M": 3,
+    "c": 0.15,
+    "gamma": 0.85,
+    "ell": 0.4,
+    "amplitude": 0.9,
+    "sigma": 0.03,
+    "inputs": [
+     6,
+     9
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 10,
+   "D_interval": [
+    10,
+    10
+   ],
+   "D_linear": 10,
+   "worst_deviation_over_allowed": 0.6462257100224555,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0022132056889806206,
+   "D_naive_q_rule": 37,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": true,
+   "Z1_holds": true,
+   "kernel_bayes_at": {
+    "0": 0.9999999999927751,
+    "4": 0.9720917707591921,
+    "8": 0.8513508339574509,
+    "16": 0.6262568791174505
+   }
+  },
+  {
+   "id": "h04",
+   "combination": {
+    "N": 18,
+    "M": 9,
+    "c": 0.1,
+    "gamma": 0.9,
+    "ell": 0.3,
+    "amplitude": 0.3,
+    "sigma": 0.03,
+    "inputs": [
+     4,
+     7
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 12,
+   "D_interval": [
+    12,
+    12
+   ],
+   "D_linear": 12,
+   "worst_deviation_over_allowed": 0.5981247318625698,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0014497401645599567,
+   "D_naive_q_rule": 36,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": true,
+   "Z1_holds": true,
+   "kernel_bayes_at": {
+    "0": 0.9802955301876561,
+    "4": 0.8720849831121558,
+    "8": 0.8116938381593234,
+    "16": 0.7044005761590489
+   }
+  },
+  {
+   "id": "h05",
+   "combination": {
+    "N": 12,
+    "M": 1,
+    "c": null,
+    "gamma": 0.85,
+    "ell": 0.4,
+    "amplitude": 1.6,
+    "sigma": 0.015,
+    "inputs": [
+     3,
+     9
+    ],
+    "readout": "full",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 5,
+   "D_interval": [
+    5,
+    5
+   ],
+   "D_linear": 5,
+   "worst_deviation_over_allowed": 0.21320070570346866,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.00026134848745750026,
+   "D_naive_q_rule": 52,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.965848523300002,
+    "8": 0.5758253157273765,
+    "16": 0.5008393430017007
+   }
+  },
+  {
+   "id": "h06",
+   "combination": {
+    "N": 12,
+    "M": 6,
+    "c": 0.15,
+    "gamma": 0.6,
+    "ell": 0.75,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     10,
+     8
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 7,
+   "D_interval": [
+    7,
+    7
+   ],
+   "D_linear": 7,
+   "worst_deviation_over_allowed": 0.512442117644241,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.02885780450669548,
+   "D_naive_q_rule": 10,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.9997544820293931,
+    "8": 0.6955236134392386,
+    "16": 0.5043987119629255
+   }
+  },
+  {
+   "id": "h07",
+   "combination": {
+    "N": 18,
+    "M": 2,
+    "c": 0.35,
+    "gamma": 0.85,
+    "ell": 0.4,
+    "amplitude": 0.3,
+    "sigma": 0.015,
+    "inputs": [
+     7,
+     10
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 0.5805105669165983,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 4.069111626778947e-05,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.7291810830292773,
+    "4": 0.5589160362623528,
+    "8": 0.5143572783437115,
+    "16": 0.5008469516833504
+   }
+  },
+  {
+   "id": "h08",
+   "combination": {
+    "N": 24,
+    "M": 12,
+    "c": 0.15,
+    "gamma": 0.6,
+    "ell": 0.4,
+    "amplitude": 1.6,
+    "sigma": 0.03,
+    "inputs": [
+     19,
+     18
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 0.0,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5
+   }
+  },
+  {
+   "id": "h09",
+   "combination": {
+    "N": 24,
+    "M": 2,
+    "c": 0.15,
+    "gamma": 0.9,
+    "ell": 0.4,
+    "amplitude": 1.6,
+    "sigma": 0.015,
+    "inputs": [
+     8,
+     13
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 4,
+   "D_interval": [
+    4,
+    4
+   ],
+   "D_linear": 4,
+   "worst_deviation_over_allowed": 0.6738693531759947,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.00077097992311624,
+   "D_naive_q_rule": 18,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.926228161995428,
+    "4": 0.7772549159590176,
+    "8": 0.6561461657139134,
+    "16": 0.5444261240573369
+   }
+  },
+  {
+   "id": "h10",
+   "combination": {
+    "N": 18,
+    "M": 3,
+    "c": 0.8,
+    "gamma": 0.85,
+    "ell": 0.3,
+    "amplitude": 0.9,
+    "sigma": 0.03,
+    "inputs": [
+     16,
+     6
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 0,
+   "D_interval": [
+    0,
+    0
+   ],
+   "D_linear": 0,
+   "worst_deviation_over_allowed": 0.4060675124171253,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 8.55341894582634e-05,
+   "D_naive_q_rule": 4,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.8007114330708893,
+    "4": 0.559525831449127,
+    "8": 0.5105989377187643,
+    "16": 0.500333642077075
+   }
+  },
+  {
+   "id": "h11",
+   "combination": {
+    "N": 24,
+    "M": 6,
+    "c": 0.35,
+    "gamma": 0.9,
+    "ell": 0.4,
+    "amplitude": 0.9,
+    "sigma": 0.015,
+    "inputs": [
+     2,
+     0
+    ],
+    "readout": "module_means",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 0.0,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5
+   }
+  },
+  {
+   "id": "h12",
+   "combination": {
+    "N": 12,
+    "M": 3,
+    "c": 0.8,
+    "gamma": 0.6,
+    "ell": 0.3,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     5,
+     8
+    ],
+    "readout": "node",
+    "readout_node": 2,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 2.3025225732536893e-12,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5
+   }
+  },
+  {
+   "id": "h13",
+   "combination": {
+    "N": 18,
+    "M": 9,
+    "c": 0.15,
+    "gamma": 0.7,
+    "ell": 0.6,
+    "amplitude": 2.4,
+    "sigma": 0.015,
+    "inputs": [
+     0,
+     15
+    ],
+    "readout": "node",
+    "readout_node": 15,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 9,
+   "D_interval": [
+    8,
+    9
+   ],
+   "D_linear": 9,
+   "worst_deviation_over_allowed": 0.2668790747244717,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.025169087680913475,
+   "D_naive_q_rule": 16,
+   "naive_q_rule_misses": true,
+   "point_prediction": false,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.9987529385570948,
+    "8": 0.8292581763683425,
+    "16": 0.5375765892179332
+   }
+  },
+  {
+   "id": "h14",
+   "combination": {
+    "N": 12,
+    "M": 4,
+    "c": 0.35,
+    "gamma": 0.9,
+    "ell": 0.3,
+    "amplitude": 0.9,
+    "sigma": 0.03,
+    "inputs": [
+     0,
+     1
+    ],
+    "readout": "node",
+    "readout_node": 1,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 3,
+   "D_interval": [
+    3,
+    3
+   ],
+   "D_linear": 3,
+   "worst_deviation_over_allowed": 0.3535510429168455,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0014137133996042894,
+   "D_naive_q_rule": 54,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.9998291794671532,
+    "4": 0.6927078659332403,
+    "8": 0.5282118837782184,
+    "16": 0.5005576261317237
+   }
+  },
+  {
+   "id": "h15",
+   "combination": {
+    "N": 24,
+    "M": 6,
+    "c": 0.1,
+    "gamma": 0.85,
+    "ell": 0.6,
+    "amplitude": 1.6,
+    "sigma": 0.03,
+    "inputs": [
+     4,
+     19
+    ],
+    "readout": "node",
+    "readout_node": 19,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 7,
+   "D_interval": [
+    7,
+    7
+   ],
+   "D_linear": 7,
+   "worst_deviation_over_allowed": 0.23108301884384924,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.009789761513996492,
+   "D_naive_q_rule": 27,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.8875493294523074,
+    "8": 0.7308545057550981,
+    "16": 0.5657825512208067
+   }
+  },
+  {
+   "id": "h16",
+   "combination": {
+    "N": 18,
+    "M": 2,
+    "c": 0.35,
+    "gamma": 0.6,
+    "ell": 0.3,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     13,
+     8
+    ],
+    "readout": "node",
+    "readout_node": 8,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 8,
+   "D_interval": [
+    8,
+    8
+   ],
+   "D_linear": 8,
+   "worst_deviation_over_allowed": 0.07986183283706447,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 3.124400774838248e-05,
+   "D_naive_q_rule": 23,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.9993319109398593,
+    "8": 0.7760131279782954,
+    "16": 0.5183029787442477
+   }
+  },
+  {
+   "id": "h17",
+   "combination": {
+    "N": 24,
+    "M": 6,
+    "c": 0.1,
+    "gamma": 0.7,
+    "ell": 0.75,
+    "amplitude": 2.4,
+    "sigma": 0.015,
+    "inputs": [
+     15,
+     14
+    ],
+    "readout": "node",
+    "readout_node": 14,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": 1,
+   "D_interval": [
+    1,
+    1
+   ],
+   "D_linear": 1,
+   "worst_deviation_over_allowed": 0.28867513419452856,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0379523208636167,
+   "D_naive_q_rule": 14,
+   "naive_q_rule_misses": true,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 1.0,
+    "4": 0.500742798184194,
+    "8": 0.5000000545637585,
+    "16": 0.5000000000000003
+   }
+  },
+  {
+   "id": "h18",
+   "combination": {
+    "N": 12,
+    "M": 4,
+    "c": 0.8,
+    "gamma": 0.7,
+    "ell": 0.75,
+    "amplitude": 1.6,
+    "sigma": 0.015,
+    "inputs": [
+     10,
+     0
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 2.0796408724414956e-07,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5000000000000001,
+    "16": 0.5000000000000001
+   }
+  },
+  {
+   "id": "h19",
+   "combination": {
+    "N": 18,
+    "M": 2,
+    "c": 0.1,
+    "gamma": 0.9,
+    "ell": 0.4,
+    "amplitude": 1.6,
+    "sigma": 0.03,
+    "inputs": [
+     6,
+     15
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 7.681467210072963e-12,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5000000000000003
+   }
+  },
+  {
+   "id": "h20",
+   "combination": {
+    "N": 24,
+    "M": 6,
+    "c": 0.15,
+    "gamma": 0.85,
+    "ell": 0.3,
+    "amplitude": 1.6,
+    "sigma": 0.01,
+    "inputs": [
+     14,
+     15
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 0.0,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5
+   }
+  },
+  {
+   "id": "h21",
+   "combination": {
+    "N": 24,
+    "M": 2,
+    "c": 0.8,
+    "gamma": 0.7,
+    "ell": 0.6,
+    "amplitude": 0.9,
+    "sigma": 0.015,
+    "inputs": [
+     15,
+     0
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 5.7144650054611424e-08,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5000000000000001,
+    "8": 0.5,
+    "16": 0.5000000000000001
+   }
+  },
+  {
+   "id": "h22",
+   "combination": {
+    "N": 24,
+    "M": 2,
+    "c": 0.8,
+    "gamma": 0.7,
+    "ell": 0.4,
+    "amplitude": 1.6,
+    "sigma": 0.03,
+    "inputs": [
+     9,
+     12
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 2.0308962285740715e-07,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5000000000000001,
+    "8": 0.5000000000000002,
+    "16": 0.5000000000000001
+   }
+  },
+  {
+   "id": "h23",
+   "combination": {
+    "N": 12,
+    "M": 4,
+    "c": 0.15,
+    "gamma": 0.85,
+    "ell": 0.75,
+    "amplitude": 0.3,
+    "sigma": 0.015,
+    "inputs": [
+     2,
+     1
+    ],
+    "readout": "sum",
+    "readout_node": 0,
+    "nonlinearity": "tanh"
+   },
+   "band_ok": true,
+   "D_ok": true,
+   "passed": true,
+   "D_kernel": null,
+   "D_interval": [
+    null,
+    null
+   ],
+   "D_linear": null,
+   "worst_deviation_over_allowed": 2.764896088252796e-07,
+   "violations": [],
+   "n_violations": 0,
+   "max_rel_nonlinear_deviation": 0.0,
+   "D_naive_q_rule": null,
+   "naive_q_rule_misses": false,
+   "point_prediction": true,
+   "Z1_applies": false,
+   "Z1_holds": null,
+   "kernel_bayes_at": {
+    "0": 0.5,
+    "4": 0.5,
+    "8": 0.5,
+    "16": 0.5
+   }
+  }
+ ],
+ "decoder_checks": [
+  {
+   "id": "h00",
+   "d": 2,
+   "seed": 9000,
+   "balanced_accuracy": 0.93825,
+   "band": [
+    0.9146168543838501,
+    0.9469887834458746
+   ],
+   "bayes_band": [
+    0.9355782323105397,
+    0.936027405519185
+   ],
+   "se": 0.002740344481672415,
+   "kernel_bayes": 0.935842069872154,
+   "passed": true
+  },
+  {
+   "id": "h00",
+   "d": 3,
+   "seed": 9000,
+   "balanced_accuracy": 0.6188750000000001,
+   "band": [
+    0.592799985016481,
+    0.6466511002579198
+   ],
+   "bayes_band": [
+    0.6244537855611363,
+    0.6249972997132646
+   ],
+   "se": 0.005413450136163811,
+   "kernel_bayes": 0.62475726800574,
+   "passed": true
+  },
+  {
+   "id": "h01",
+   "d": 16,
+   "seed": 9001,
+   "balanced_accuracy": 0.782125,
+   "band": [
+    0.750054499657927,
+    0.7975250704239156
+   ],
+   "bayes_band": [
+    0.7786166253851619,
+    0.7789629446966808
+   ],
+   "se": 0.004640531431808712,
+   "kernel_bayes": 0.7786806069841761,
+   "passed": true
+  },
+  {
+   "id": "h01",
+   "d": 17,
+   "seed": 9001,
+   "balanced_accuracy": 0.737125,
+   "band": [
+    0.7141295185646455,
+    0.7634944283717628
+   ],
+   "bayes_band": [
+    0.7436515943555823,
+    0.7439723525808261
+   ],
+   "se": 0.004880518947734192,
+   "kernel_bayes": 0.7437108064298157,
+   "passed": true
+  },
+  {
+   "id": "h02",
+   "d": 2,
+   "seed": 9002,
+   "balanced_accuracy": 0.770375,
+   "band": [
+    0.7345791569209417,
+    0.7921025748624659
+   ],
+   "bayes_band": [
+    0.7634467577060171,
+    0.7732349740773905
+   ],
+   "se": 0.004716900196268872,
+   "kernel_bayes": 0.7700676408372312,
+   "passed": true
+  },
+  {
+   "id": "h02",
+   "d": 3,
+   "seed": 9002,
+   "balanced_accuracy": 0.5346249999999999,
+   "band": [
+    0.5006737521865174,
+    0.5609198799677585
+   ],
+   "bayes_band": [
+    0.5329770518508604,
+    0.5386165803034155
+   ],
+   "se": 0.005575824916085731,
+   "kernel_bayes": 0.5361364866848479,
+   "passed": true
+  },
+  {
+   "id": "h03",
+   "d": 10,
+   "seed": 9003,
+   "balanced_accuracy": 0.784625,
+   "band": [
+    0.7526731230303546,
+    0.8009096481383042
+   ],
+   "bayes_band": [
+    0.7811443771843347,
+    0.7824383939843241
+   ],
+   "se": 0.004617813538495027,
+   "kernel_bayes": 0.7813737861221327,
+   "passed": true
+  },
+  {
+   "id": "h03",
+   "d": 11,
+   "seed": 9003,
+   "balanced_accuracy": 0.7422500000000001,
+   "band": [
+    0.7192061970717718,
+    0.7692176629410773
+   ],
+   "bayes_band": [
+    0.7485914189659093,
+    0.7498324410469398
+   ],
+   "se": 0.004846305473534361,
+   "kernel_bayes": 0.7488111764439437,
+   "passed": true
+  },
+  {
+   "id": "h04",
+   "d": 12,
+   "seed": 9004,
+   "balanced_accuracy": 0.755,
+   "band": [
+    0.7251958381076328,
+    0.7745445823662788
+   ],
+   "bayes_band": [
+    0.754433362685071,
+    0.7553070577888406
+   ],
+   "se": 0.004809381144359557,
+   "kernel_bayes": 0.7546182412318612,
+   "passed": true
+  },
+  {
+   "id": "h04",
+   "d": 13,
+   "seed": 9004,
+   "balanced_accuracy": 0.733125,
+   "band": [
+    0.7115783941452374,
+    0.7615941932302729
+   ],
+   "bayes_band": [
+    0.7411557311808106,
+    0.7420168561946997
+   ],
+   "se": 0.004894334258893309,
+   "kernel_bayes": 0.7413368543243516,
+   "passed": true
+  },
+  {
+   "id": "h05",
+   "d": 5,
+   "seed": 9005,
+   "balanced_accuracy": 0.85,
+   "band": [
+    0.8240878756644668,
+    0.8663519430162221
+   ],
+   "bayes_band": [
+    0.8500469492655027,
+    0.8503928694151862
+   ],
+   "se": 0.003989768400258982,
+   "kernel_bayes": 0.850242739837679,
+   "passed": true
+  },
+  {
+   "id": "h05",
+   "d": 6,
+   "seed": 9005,
+   "balanced_accuracy": 0.728375,
+   "band": [
+    0.6922873211075904,
+    0.7427646147563707
+   ],
+   "bayes_band": [
+    0.7223114162729624,
+    0.7227405195909987
+   ],
+   "se": 0.005006023791342976,
+   "kernel_bayes": 0.7225483083152239,
+   "passed": true
+  },
+  {
+   "id": "h06",
+   "d": 7,
+   "seed": 9006,
+   "balanced_accuracy": 0.799625,
+   "band": [
+    0.7612330489546097,
+    0.8334514470683685
+   ],
+   "bayes_band": [
+    0.7890425500743694,
+    0.8156419459486088
+   ],
+   "se": 0.0044523752799399,
+   "kernel_bayes": 0.7957273425929643,
+   "passed": true
+  },
+  {
+   "id": "h06",
+   "d": 8,
+   "seed": 9006,
+   "balanced_accuracy": 0.683875,
+   "band": [
+    0.6599646034987715,
+    0.731517199783804
+   ],
+   "bayes_band": [
+    0.6904440122015756,
+    0.711037791081
+   ],
+   "se": 0.005119852175701009,
+   "kernel_bayes": 0.6955236134392386,
+   "passed": true
+  },
+  {
+   "id": "h09",
+   "d": 4,
+   "seed": 9009,
+   "balanced_accuracy": 0.776125,
+   "band": [
+    0.7486212222196181,
+    0.7960003412053183
+   ],
+   "bayes_band": [
+    0.7772276044765761,
+    0.7773939589483603
+   ],
+   "se": 0.004651595564239487,
+   "kernel_bayes": 0.7772549159590176,
+   "passed": true
+  },
+  {
+   "id": "h09",
+   "d": 5,
+   "seed": 9009,
+   "balanced_accuracy": 0.7417499999999999,
+   "band": [
+    0.712565239166453,
+    0.7618700279874258
+   ],
+   "bayes_band": [
+    0.7421269680258553,
+    0.7423082991280234
+   ],
+   "se": 0.004890432214850589,
+   "kernel_bayes": 0.7421569306164802,
+   "passed": true
+  },
+  {
+   "id": "h10",
+   "d": 0,
+   "seed": 9010,
+   "balanced_accuracy": 0.796,
+   "band": [
+    0.7728467957098649,
+    0.8185760704319135
+   ],
+   "bayes_band": [
+    0.8007114330708892,
+    0.8007114330708892
+   ],
+   "se": 0.004466159340256068,
+   "kernel_bayes": 0.8007114330708893,
+   "passed": true
+  },
+  {
+   "id": "h10",
+   "d": 1,
+   "seed": 9010,
+   "balanced_accuracy": 0.710375,
+   "band": [
+    0.6777723009605542,
+    0.7284418416178066
+   ],
+   "bayes_band": [
+    0.7081041206961037,
+    0.708110021882257
+   ],
+   "se": 0.005082954933887374,
+   "kernel_bayes": 0.7081082694372978,
+   "passed": true
+  },
+  {
+   "id": "h13",
+   "d": 9,
+   "seed": 9013,
+   "balanced_accuracy": 0.759125,
+   "band": [
+    0.7171636328889905,
+    0.8069252074339319
+   ],
+   "bayes_band": [
+    0.7460679857031246,
+    0.7880208546197979
+   ],
+   "se": 0.004726088203533512,
+   "kernel_bayes": 0.7619372210603925,
+   "passed": true
+  },
+  {
+   "id": "h13",
+   "d": 10,
+   "seed": 9013,
+   "balanced_accuracy": 0.705875,
+   "band": [
+    0.6597063568456705,
+    0.7457683132025479
+   ],
+   "bayes_band": [
+    0.6900457373493672,
+    0.7254289326988511
+   ],
+   "se": 0.0050848451259242035,
+   "kernel_bayes": 0.703248225983217,
+   "passed": true
+  },
+  {
+   "id": "h14",
+   "d": 3,
+   "seed": 9014,
+   "balanced_accuracy": 0.7915,
+   "band": [
+    0.7660537771168519,
+    0.8128455700340192
+   ],
+   "bayes_band": [
+    0.7941258212586372,
+    0.7947735258922339
+   ],
+   "se": 0.004518011035446342,
+   "kernel_bayes": 0.7945610524490245,
+   "passed": true
+  },
+  {
+   "id": "h14",
+   "d": 4,
+   "seed": 9014,
+   "balanced_accuracy": 0.68475,
+   "band": [
+    0.6616517161029136,
+    0.7135555974666116
+   ],
+   "bayes_band": [
+    0.692286823633195,
+    0.6929204899363302
+   ],
+   "se": 0.005158776882570341,
+   "kernel_bayes": 0.6927078659332403,
+   "passed": true
+  },
+  {
+   "id": "h15",
+   "d": 7,
+   "seed": 9015,
+   "balanced_accuracy": 0.766375,
+   "band": [
+    0.7305297270526052,
+    0.7950022270663217
+   ],
+   "bayes_band": [
+    0.7594136557502777,
+    0.7761182983686492
+   ],
+   "se": 0.004720982174418143,
+   "kernel_bayes": 0.7659285878693578,
+   "passed": true
+  },
+  {
+   "id": "h15",
+   "d": 8,
+   "seed": 9015,
+   "balanced_accuracy": 0.7281249999999999,
+   "band": [
+    0.6949444293249322,
+    0.7602760857244888
+   ],
+   "bayes_band": [
+    0.7247379872716121,
+    0.7404825277778089
+   ],
+   "se": 0.00494838948666998,
+   "kernel_bayes": 0.7308545057550981,
+   "passed": true
+  },
+  {
+   "id": "h16",
+   "d": 8,
+   "seed": 9016,
+   "balanced_accuracy": 0.78125,
+   "band": [
+    0.7473564379604015,
+    0.7946704624664575
+   ],
+   "bayes_band": [
+    0.7760013608779831,
+    0.7760255395488759
+   ],
+   "se": 0.004661230729395385,
+   "kernel_bayes": 0.7760131279782954,
+   "passed": true
+  },
+  {
+   "id": "h16",
+   "d": 9,
+   "seed": 9016,
+   "balanced_accuracy": 0.7016249999999999,
+   "band": [
+    0.6718566640920092,
+    0.7227756904474136
+   ],
+   "bayes_band": [
+    0.7023050461509873,
+    0.7023273083884354
+   ],
+   "se": 0.00511209551474455,
+   "kernel_bayes": 0.7023158133732842,
+   "passed": true
+  },
+  {
+   "id": "h17",
+   "d": 1,
+   "seed": 9017,
+   "balanced_accuracy": 0.991625,
+   "band": [
+    0.9700977735289762,
+    0.996207754172353
+   ],
+   "bayes_band": [
+    0.984936550057182,
+    0.9913689776441472
+   ],
+   "se": 0.001209694132051427,
+   "kernel_bayes": 0.9894291115326423,
+   "passed": true
+  },
+  {
+   "id": "h17",
+   "d": 2,
+   "seed": 9017,
+   "balanced_accuracy": 0.5840000000000001,
+   "band": [
+    0.5394172788339812,
+    0.6171629093262311
+   ],
+   "bayes_band": [
+    0.5714655331969972,
+    0.595114654963215
+   ],
+   "se": 0.005512063590754001,
+   "kernel_bayes": 0.5853404534954634,
+   "passed": true
+  }
+ ],
+ "not_claimed": [
+  "no statement outside family F (ablation, interventions, adapted or unequal modules)",
+  "no biological statement",
+  "no winner",
+  "the 24 combinations are a sample of F; the bound itself is the general argument"
+ ]
+}
