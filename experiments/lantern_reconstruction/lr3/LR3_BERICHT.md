@@ -54,3 +54,25 @@ Trilayer: [`lr3_status.json`](lr3_status.json) (maßgeblich), [`lr3_status.yaml`
 - Master-Seeds und Kontextliste beim Freeze (LR6).
 
 Es gab keine Forschungsrechnung. Originalmodule und M0–M12 sind unverändert; es gab keinen Freeze, keinen Merge und keinen Push.
+
+## Nachtrag nach `REVIEW_LR3` (Übergaben zwischen den Modulen)
+
+**Zuerst reproduziert:**
+- (Kontext 0,9, Episode 1,9) ergab denselben Stromschlüssel wie (0, 1).
+- `[1, 1.9]` lieferte zwei identische Episoden mit den IDs (1, 1).
+- Ein Batch aus Kontext 0 lief unter Kontext 1.
+- `chunk = -1` gab einen ungefüllten Puffer zurück.
+- Ein Iterator verlor seine Episoden-IDs.
+
+| Befund | Korrektur |
+|---|---|
+| **R1** Stromkennungen | Alle Schlüsselteile (Studie, Kontext, Episode, Zusatz) werden **vor** jeder Umwandlung als echte nichtnegative Ganzzahlen geprüft. Episoden-IDs werden genau einmal materialisiert, Duplikate abgewiesen, leere Batches abgewiesen. |
+| **R2** Bindung | Der Batch trägt Studie, Kontext, Kontext-Fingerabdruck und Konfigurations-SHA. `simulate` prüft das samt Formen und Endlichkeit **vor** jeder Dynamik. `ContextSpec` wird strukturell validiert: echte Ganzzahlen, vier disjunkte Paare, Schreib- und Leseknoten sowie Referenz gleich der gespeicherten Permutation. |
+| **R3** Chunk | Er wird vor jeder Allokation als positive echte Ganzzahl geprüft. Es gibt keine pauschale Nullinitialisierung. |
+| **Ergänzungen** | Der Surrogat-Invariantenbericht bleibt erhalten (`coupling_matrices_with_report`, mit Kontext, Fingerabdruck, Stromschlüssel und Vorschlagszahl). Die Vorschlagszahl ist strikt: 0 wird nicht still zum Standard. Die Konfiguration ist tief unveränderlich und über `config_sha256()` an die Datei gebunden. |
+
+**Danach:** Alle fünf Fälle werden abgewiesen, und der Iterator behält seine IDs.
+
+**Mutation der neuen Verträge:** 13/13. Zwei Überlebende im ersten Lauf waren eine echte Testlücke: Grobe Negativfälle wurden erst von späteren Prüfungen abgefangen. Dafür gibt es jetzt sonst gültige Permutationsabweichungen als Tests.
+
+**Tests:** 182/182.

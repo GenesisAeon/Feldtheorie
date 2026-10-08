@@ -31,10 +31,10 @@ def test_study_defaults_trilayer_and_planned_values():
     import yaml
     p = ra.HERE / "protocol" / "study_defaults"
     assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
-    assert D["time_grid"] == [0, 0.5, 1, 2, 3, 5, 10] and D["integration"] == {"method": "rk4", "dt": 0.02, "plan_change": "AE-01"}
+    assert list(D["time_grid"]) == [0, 0.5, 1, 2, 3, 5, 10] and dict(D["integration"]) == {"method": "rk4", "dt": 0.02, "plan_change": "AE-01"}
     assert D["content"]["impulse_rad"] == 0.35 and D["measurement"]["sigma_rad"] == 0.03 and D["measurement"]["process_noise"] == 0.0
-    assert D["data_per_context"] == {"train": 1000, "val": 250, "test": 1000} and D["contexts"]["n"] == 20
-    assert D["streams"]["roles"] == {"locations": 10, "frequencies": 20, "targets": 30, "global_phase": 40, "measurement": 50,
+    assert dict(D["data_per_context"]) == {"train": 1000, "val": 250, "test": 1000} and D["contexts"]["n"] == 20
+    assert dict(D["streams"]["roles"]) == {"locations": 10, "frequencies": 20, "targets": 30, "global_phase": 40, "measurement": 50,
                                      "surrogate": 60, "decoder": 70}
     assert (D["tasks"]["A"]["features"], D["tasks"]["B"]["features"]) == (66, 16)
 
@@ -63,7 +63,7 @@ def test_context_locations_are_disjoint_and_reference_unwritten(lab):
         assert c.reference == c.read_nodes[-1] and c.reference not in c.write_nodes and abs(sum(c.omega)) < 1e-12
     assert contexts.make_context(SID, 0) == lab["ctx"] and contexts.make_context(SID, 1).permutation != lab["ctx"].permutation
     bad = replace(lab["ctx"], reference=lab["ctx"].write_nodes[0])
-    with pytest.raises(ValueError, match="reference is an unwritten"):
+    with pytest.raises(ValueError, match="reference"):
         contexts.check_context(bad)
 
 
@@ -180,7 +180,7 @@ def test_joint_permutation_of_all_node_objects_keeps_the_features(lab):
                                 tuple((int(inv[a]), int(inv[b])) for a, b in ctx.write_pairs), tuple(int(inv[i]) for i in ctx.read_nodes),
                                 int(inv[ctx.reference]), tuple(ctx.omega[i] for i in perm))
     b = episodes.make_batch(ctx, "train", range(5))
-    pb = replace(b, eps=np.ascontiguousarray(b.eps[:, :, perm]))
+    pb = replace(b, eps=np.ascontiguousarray(b.eps[:, :, perm]), context_fingerprint=contexts.fingerprint(pctx))  # same episodes, relabelled nodes
     C = lab["Cs"]["lantern"]
     s = episodes.simulate(ctx, b, C, lab["g"])
     ps = episodes.simulate(pctx, pb, C[np.ix_(perm, perm)], lab["g"])
@@ -249,3 +249,96 @@ def test_lr3_status_yaml_twin_equals_json():
     p = ra.HERE / "lr3" / "lr3_status"
     assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
 
+
+
+# --- review REVIEW_LR3: hand-over contracts between the modules (Astra's counterexamples) -------------
+def test_r1_fractional_or_bool_key_components_are_rejected():
+    assert streams.key(SID, 0, "test", "targets", 1) == (SID, 0, 2, 30, 1)
+    for bad in ({"context_id": 0.9}, {"episode": 1.9}, {"context_id": True}, {"episode": np.bool_(True)}, {"episode": -1}):
+        kw = {"context_id": 0, "episode": 1, **bad}
+        with pytest.raises(streams.StreamError, match="non-negative integer"):
+            streams.key(SID, kw["context_id"], "test", "targets", kw["episode"])
+    for extra in (0.5, -2, True):
+        with pytest.raises(streams.StreamError, match="extra key component"):
+            streams.key(SID, 0, "test", "targets", 1, extra)
+
+
+def test_r1_episode_ids_materialised_once_unique_and_integer(lab):
+    ctx = lab["ctx"]
+    with pytest.raises(ValueError):
+        episodes.make_batch(ctx, "test", [1, 1.9])                       # Astra: 1.9 aliased to 1
+    with pytest.raises(ValueError, match="duplicate"):
+        episodes.make_batch(ctx, "test", [3, 3])
+    with pytest.raises(ValueError, match="at least one"):
+        episodes.make_batch(ctx, "test", [])
+    it = episodes.make_batch(ctx, "test", iter([0, 1]))                  # Astra: an iterator lost its ids
+    assert it.episode_ids == (0, 1) and it.u.shape == (2, 4)
+    assert np.array_equal(it.u, episodes.make_batch(ctx, "test", [0, 1]).u)
+
+
+def test_r2_batch_bound_to_study_context_and_configuration(lab):
+    a, b = lab["ctx"], contexts.make_context(SID, 1)
+    clean = episodes.make_batch(a, "test", [0])
+    with pytest.raises(ValueError, match="belongs to study"):
+        episodes.simulate(b, clean, np.zeros((34, 34)), 1.0)              # Astra: batch of context 0 under context 1
+    other_study = contexts.make_context(SID + 1, 0)
+    with pytest.raises(ValueError, match="belongs to study"):
+        episodes.simulate(other_study, clean, np.zeros((34, 34)), 1.0)
+    for field, value, match in (("context_fingerprint", "0" * 64, "fingerprint"), ("config_sha256", "0" * 64, "configuration"),
+                                ("u", np.zeros((2, 4)), "shape"), ("eps", np.full((1, 7, 34), np.nan), "finite"),
+                                ("episode_ids", (0, 0), "duplicate")):
+        with pytest.raises(ValueError, match=match):
+            episodes.simulate(a, replace(clean, **{field: value}), np.zeros((34, 34)), 1.0)
+    assert episodes.simulate(a, clean, np.zeros((34, 34)), 1.0).shape == (1, 7, 34)   # the normal path still works
+
+
+@pytest.mark.parametrize("field, value", [
+    ("permutation", tuple(range(33)) + (0,)), ("write_pairs", ((0, 1),) * 4), ("read_nodes", tuple(range(9))),
+    ("omega", (0.1,) * 34), ("context_id", 1.5), ("study_id", True),
+])
+def test_r2_context_structure_validated(lab, field, value):
+    with pytest.raises((ValueError, streams.StreamError)):
+        contexts.check_context(replace(lab["ctx"], **{field: value}))
+
+
+def test_r2_locations_must_follow_the_stored_permutation(lab):
+    """Otherwise valid (disjoint, 8 + 9 nodes, unwritten reference) but not the stored permutation
+    (mutation check found that coarse cases were caught by later checks only)."""
+    ctx = lab["ctx"]
+    swapped_pairs = (ctx.write_pairs[1], ctx.write_pairs[0]) + ctx.write_pairs[2:]
+    with pytest.raises(ValueError, match="first eight entries"):
+        contexts.check_context(replace(ctx, write_pairs=swapped_pairs))
+    swapped_read = (ctx.read_nodes[1], ctx.read_nodes[0]) + ctx.read_nodes[2:]
+    with pytest.raises(ValueError, match="follow the stored permutation"):
+        contexts.check_context(replace(ctx, read_nodes=swapped_read))
+
+
+@pytest.mark.parametrize("chunk", [-1, 0, True, 2.5, np.bool_(True)])
+def test_r3_invalid_chunk_rejected_before_any_dynamics(lab, chunk, monkeypatch):
+    calls = []
+    monkeypatch.setattr(episodes.dyn, "integrate_rk4", lambda *a, **k: calls.append(1))
+    with pytest.raises(ValueError, match="chunk"):
+        episodes.simulate(lab["ctx"], episodes.make_batch(lab["ctx"], "test", [0]), np.zeros((34, 34)), 1.0, chunk=chunk)
+    assert calls == []
+
+
+def test_surrogate_report_kept_and_proposals_strict(lab):
+    mats, rep = episodes.coupling_matrices_with_report(lab["C"], lab["ctx"], proposals=500)
+    assert rep["ok"] and rep["proposals"] == 500 and rep["context_id"] == 0 and rep["stream_key"] == list(streams.key(SID, 0, "context", "surrogate"))
+    assert rep["context_fingerprint"] == contexts.fingerprint(lab["ctx"]) and rep["config_sha256"] == streams.config_sha256()
+    for bad in (0, -5, 2.5, True):
+        with pytest.raises(ValueError, match="proposals"):
+            episodes.coupling_matrices(lab["C"], lab["ctx"], proposals=bad)
+
+
+def test_configuration_is_immutable_and_bound_to_its_file():
+    import hashlib
+    cfg = streams.defaults()
+    with pytest.raises(TypeError):
+        cfg["measurement"]["sigma_rad"] = 0.5
+    with pytest.raises(TypeError):
+        cfg["streams"]["roles"]["targets"] = 99
+    with pytest.raises((TypeError, AttributeError)):
+        cfg["time_grid"].append(20.0)
+    raw = (ra.HERE / "protocol" / "study_defaults.json").read_bytes().replace(b"\r\n", b"\n")
+    assert streams.config_sha256() == hashlib.sha256(raw).hexdigest()

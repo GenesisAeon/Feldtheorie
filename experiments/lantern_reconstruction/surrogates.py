@@ -30,6 +30,8 @@ def uniform_total(C: np.ndarray) -> np.ndarray:
 
 
 def strength_surrogate(C: np.ndarray, rng: np.random.Generator, proposals: int) -> Tuple[np.ndarray, Dict]:
+    if isinstance(proposals, (bool, np.bool_)) or not isinstance(proposals, (int, np.integer)) or proposals < 1:
+        raise ValueError(f"proposals must be a positive integer (got {proposals!r})")
     C = check_coupling(C)
     if C.max() > 1.0:
         raise ValueError("C must lie in [0, 1]")

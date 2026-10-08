@@ -3,7 +3,9 @@
 contexts are NOT different network architectures (plan 3.2, point 3)."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+import hashlib
+import json
+from dataclasses import asdict, dataclass
 from typing import Tuple
 
 import numpy as np
@@ -44,11 +46,36 @@ def make_context(study_id: int, context_id: int) -> ContextSpec:
     return ctx
 
 
+def _true_int(x) -> bool:
+    return isinstance(x, (int, np.integer)) and not isinstance(x, (bool, np.bool_))
+
+
 def check_context(ctx: ContextSpec) -> None:
-    if sorted(ctx.permutation) != list(range(N)):
-        raise ValueError("permutation must cover all 34 nodes once")
+    """Structural validation (review REVIEW_LR3 R2): true integers in range, exactly four disjoint
+    pairs, write/read/reference consistent with the STORED permutation, finite centred omega."""
+    streams.check_study_id(ctx.study_id)
+    streams.check_index(ctx.context_id, "context_id")
+    perm = ctx.permutation
+    if not isinstance(perm, tuple) or len(perm) != N or not all(_true_int(i) for i in perm) or sorted(perm) != list(range(N)):
+        raise ValueError("permutation must be a tuple of the 34 node indices, each once")
+    if (not isinstance(ctx.write_pairs, tuple) or len(ctx.write_pairs) != 4
+            or not all(isinstance(p, tuple) and len(p) == 2 and all(_true_int(i) for i in p) for p in ctx.write_pairs)):
+        raise ValueError("write_pairs must be exactly four pairs of integer node indices")
+    if ctx.write_pairs != tuple((perm[2 * k], perm[2 * k + 1]) for k in range(4)):
+        raise ValueError("write pairs must be the first eight entries of the stored permutation")
+    if not isinstance(ctx.read_nodes, tuple) or ctx.read_nodes != tuple(perm[8:17]) or not _true_int(ctx.reference) or ctx.reference != ctx.read_nodes[-1]:
+        raise ValueError("read nodes/reference must follow the stored permutation (reference = last read node)")
     w, r = set(ctx.write_nodes), set(ctx.read_nodes)
     if len(w) != 8 or len(r) != 9 or w & r or ctx.reference not in r or ctx.reference in w:
         raise ValueError("write and read sets must be disjoint; the reference is an unwritten read node")
-    if len(ctx.omega) != N or not np.all(np.isfinite(ctx.omega)) or abs(sum(ctx.omega)) > 1e-12:
+    om = ctx.omega
+    if (not isinstance(om, tuple) or len(om) != N or any(isinstance(x, (bool, np.bool_)) for x in om)
+            or not np.all(np.isfinite(np.asarray(om, dtype=np.float64))) or abs(sum(om)) > 1e-12):
         raise ValueError("omega must be 34 finite, centred values")
+
+
+def fingerprint(ctx: ContextSpec) -> str:
+    """Identity of a context (all fields incl. the exact omega bits)."""
+    d = asdict(ctx)
+    d["omega"] = [float(x).hex() for x in ctx.omega]
+    return hashlib.sha256(json.dumps(d, sort_keys=True).encode("utf-8")).hexdigest()

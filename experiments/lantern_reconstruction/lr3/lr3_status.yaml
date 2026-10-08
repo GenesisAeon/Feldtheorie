@@ -29,7 +29,7 @@ dev_runtime:
   full_volume_estimate: 2250 episodes x 4 conditions x 20 contexts ~ 80 min -- an estimate; the LR5 benchmark measures it (plan budget 2 h production)
 tests:
   file: tests/test_lr3.py
-  result_all_lantern_tests: 165/165
+  result_all_lantern_tests: 182/182
   run: python -m pytest experiments/lantern_reconstruction/tests
   note: the first LR3 commit f313437 lacked the YAML twin and this count (a failed helper snippet); added in the follow-up commit
 ad_hoc_mutation_check:
@@ -48,3 +48,20 @@ open:
 - decoder metric gate (<= 0.01) and Ridge in LR4
 - runtime benchmark and CI in LR5
 - final master seeds and context list at the freeze (LR6)
+review_fix_REVIEW_LR3:
+  review: D:/mandala/mandala-memory-results/lantern/astra-lr3-review/REVIEW_LR3.md (757e534)
+  reproduced_first:
+    fractional_keys: (context 0.9, episode 1.9) gave the same key as (0, 1)
+    duplicate_episodes: '[1, 1.9] -> ids (1, 1), identical targets'
+    cross_context_batch: a context-0 batch simulated under context 1
+    negative_chunk: chunk=-1 returned the unfilled np.empty buffer
+    iterator: iter([0, 1]) -> two target rows but empty episode_ids
+  R1: every stream-key component (study, context, episode, extra) checked as a non-negative TRUE integer before conversion; episode ids materialised once, unique, non-empty, matched to the rows
+  R2: EpisodeBatch bound to study_id, context_id, context fingerprint and configuration SHA; simulate checks all of it plus shapes/finiteness BEFORE any dynamics; ContextSpec validated structurally (true integers, four disjoint pairs, write/read/reference = stored permutation, finite centred omega)
+  R3: chunk checked as a positive true integer before any allocation; empty batches rejected explicitly; the normal results are not masked by zero-initialisation
+  additions:
+    surrogate_report: coupling_matrices_with_report keeps the invariant report with context, fingerprint, stream key, proposal count and configuration SHA
+    proposals: None = protocol default; any other value must be a positive integer (0 and fractions rejected, not reinterpreted)
+    configuration: streams.defaults() is deeply immutable; config_sha256() binds it to the LF-normalised study_defaults.json
+  after_fix: all five of Astra's cases rejected / the iterator keeps its ids
+  mutation: '13/13 of the new contracts (2 survivors in the first run were a real test gap: coarse negative cases were caught by later checks only; otherwise-valid permutation mismatches added)'
