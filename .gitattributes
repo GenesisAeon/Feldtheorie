@@ -3,3 +3,5 @@ experiments/mandala_memory/protocol/m12_models/*.npz binary
 experiments/mandala_memory/protocol/m12_models/*.json -text
 # Lantern LR0: unchanged review package (SHA256SUMS bind raw bytes) -- never convert line endings
 experiments/lantern_reconstruction/reference/** -text
+# Lantern LR1: snapshot artifacts bind raw bytes (container hash) -- never convert line endings
+experiments/lantern_reconstruction/artifacts/** -text
