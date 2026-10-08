@@ -184,4 +184,5 @@ def test_plan_change_record_trilayer():
     assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == d
     ae = {c["id"]: c for c in d["changes"]}["AE-01"]
     assert ae["title"] == "Lantern-Differentialgleichung mit geprüftem RK4-Verfahren"
-    assert ae["euler_failure_retained"] is True and ae["decoder_metric_gate"] == "open until LR4"
+    assert ae["euler_failure_retained"] is True
+    assert ae["decoder_metric_gate"] == "passed in LR4 (lr4/lr4_decoder_convergence.json)"     # was "open until LR4" up to LR3

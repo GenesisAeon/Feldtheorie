@@ -38,9 +38,10 @@
     "batch independence (size, order, split)",
     "invalid inputs rejected like Euler"
    ],
-   "decoder_metric_gate": "open until LR4",
+   "decoder_metric_gate": "passed in LR4 (lr4/lr4_decoder_convergence.json)",
    "decoder_metric_note": "plan 10.2 also requires a decoder metric change <= 0.01 on the same development test panel; a passed state gate does not close it",
-   "status": "implemented before the freeze; part of the freeze candidate (LR6)"
+   "status": "implemented before the freeze; part of the freeze candidate (LR6)",
+   "decoder_metric_result": "definition fixed before the run (protocol/decoder_convergence_gate.json); development panel study 2026100803, contexts 0 and 1, 1000/250/1000 episodes, 4 conditions, tasks A and B, 7 times: max |G(dt .02) - G(dt .005)| = 8.7e-10 over 112 cells, max |dA| = 2.5e-10 over 16 curves (limit 0.01); no lambda choice changed"
   }
  ]
 }

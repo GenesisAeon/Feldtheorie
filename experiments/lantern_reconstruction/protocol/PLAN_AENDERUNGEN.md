@@ -37,4 +37,10 @@ RK4 kostet pro Schritt etwa das 3,7-Fache. Für die geforderte Genauigkeit ist e
 - Batch-Unabhängigkeit, auch für Euler;
 - Abweisung ungültiger Eingaben.
 
-**Offen:** Die Prüfung der **Decoderkennzahländerung ≤ 0,01** (zweiter Teil von Plan 10.2) bleibt bis LR4 offen. Ein bestandenes Zustandsgate schließt sie nicht automatisch.
+**Bis LR3 offen:** die Prüfung der **Decoderkennzahländerung ≤ 0,01** (zweiter Teil von Plan 10.2). Ein bestandenes Zustandsgate schließt sie nicht automatisch.
+
+**In LR4 bestanden:** Die Definition stand vor dem Lauf fest (`protocol/decoder_convergence_gate.json`). Geprüft wurde auf dem Entwicklungspanel: Studie 2026100803, Kontexte 0 und 1, je 1000/250/1000 Episoden, alle vier Bedingungen, Aufgaben A und B, sieben Zeitpunkte.
+- Die größte Änderung der Kennzahlen zwischen dt = 0,02 und der Referenz dt = 0,005 ist |ΔG| = 8,7·10⁻¹⁰ über 112 Zellen und |ΔA| = 2,5·10⁻¹⁰ über 16 Kurven. Die Grenze liegt bei 0,01.
+- Keine λ-Wahl ändert sich.
+
+Siehe [LR4-Bericht](../lr4/LR4_BERICHT.md).

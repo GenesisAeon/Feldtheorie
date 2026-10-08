@@ -1,0 +1,73 @@
+# YAML twin of lr4_status.json (generated; the JSON is authoritative)
+schema: lantern-lr4-status-v1
+package: LR4 - Ridge und Evaluation
+date: '2026-10-08'
+base: 'after the LR3 follow-up fix 6680618 (re-checked by Astra: astra-fix-6680618)'
+commits:
+  part_1: 027fc0c (code, tests, gate definition fixed BEFORE the run)
+  part_2: gate result and documentation
+modules:
+  training.py: Ridge closed form via NumPy SVD; objective (1/N)||XsW+1b^T-U||^2 + lambda||W||^2, intercept unpenalised; standardisation from train only (ddof 0, zero-SD column scale 1); grid 1e-4..100; selection by projected val MSE, exact tie -> larger lambda; no test argument
+  decoders.py: RidgeDecoder; predict(model, X) sees only features; NPZ without pickle + strict JSON with canonical array identities; the stored lambda is re-derived from the stored val MSEs on load
+  evaluate.py: test scoring; imports no fit function
+  metrics.py: projection, episode losses, S and G separately (G may be negative), fixed grid aggregate A (K21), context inference (one value per context id, df = contexts - 1), t intervals (pointwise), degenerate case, H-B1/H-B2 + Holm, Bonferroni (.9875), permutation p, 12-cell leak alarm
+  runner.py: development-only pipeline; features only via observation.observe(); one RK4 trajectory per split and condition
+  episodes.simulate: optional dt only for the convergence check; default path unchanged
+independent_controls:
+  ridge_1d_fraction: w = 2/(1+lambda), b = 2 exact
+  ridge_general: augmented least squares, normal equations with intercept block, zero gradient, perturbation; <= 1e-8
+  intercept_unpenalised: U + 5 shifts b by 5, W unchanged
+  lambda_convention: 1/N objective; unaveraged form needs alpha = N lambda (plan mutant 13)
+  K19: S = .925, G = 0
+  K20: Holm (.03, .04) -> (.06, .06)
+  K21: closed-form weights ln1.5, ln2 (x4), ln(11/4), ln(11/6) over 2 ln 11; <= 1e-15
+  K22: G = -2.1 valid
+  t_quantiles: 2.093024054 (df 19, .975) and .9875 against own Simpson integration; df 2 closed form
+acceptance_plan_14:
+  analytical_scores: 'perfect: S = 1, G = 3 mean(u^2); zero: G = 0'
+  no_episode_pseudo_replicates: inference takes one value per context id; episode arrays refused
+  artifact_round_trip: bit-identical predictions; tampering (array, extra array, object array, lambda, NaN) detected
+decoder_convergence_gate:
+  definition: protocol/decoder_convergence_gate.json (fixed before the run, committed in 027fc0c)
+  panel: study 2026100803, contexts 0 and 1, 1000/250/1000, 4 conditions, tasks A/B, 7 times
+  dt_0.02_vs_0.005:
+    max_abs_dG: 8.71481664610485e-10
+    max_abs_dA: 2.506293506066015e-10
+    lambda_changes: 0
+  dt_0.01_vs_0.005:
+    max_abs_dG: 5.085931675807842e-11
+    max_abs_dA: 1.4629297773183225e-11
+    lambda_changes: 0
+  result: passed (limit 0.01); maxima recomputed independently from the full results
+  summary_file: lr4/lr4_decoder_convergence.json
+pipeline_gate_plan_10:
+  A_mean_G0: 0.9623201526698182
+  rule: '> 0.90'
+  result: passed
+  B_G0: -5.2e-4 and -4.3e-4 (target-free as expected)
+runtime: 'dev pipeline at dt 0.02: 247 s / 274 s per context (context 0 partly concurrent with mutation tests); 20 contexts ~85 min is an estimate, LR5 measures'
+use_of_values: development values only; not used to choose protocol values; declared known development information
+tests:
+  file: tests/test_lr4.py
+  result_all_lantern_tests: 268/268
+  run: python -m pytest experiments/lantern_reconstruction/tests
+  changed_expectation: 'test_lr2_rk4: decoder_metric_gate ''open until LR4'' -> passed in LR4'
+ad_hoc_mutation_check:
+  result: 29/30 killed, 1 equivalent
+  equivalent: 'solver without re-centring X_s: X_s is centred by the standardisation (column means <= 2e-13); max difference 1.7e-14 over 50 random problems x 7 lambdas'
+  real_gaps_closed:
+  - 'unprojected validation selection survived: no validation prediction left [-1, 1]'
+  - 'leak alarm without Holm survived: no case with raw p <= .01 but adjusted p > .01'
+  found_during_tests: 'np.std of identical values ~1e-17: degenerate context case now exactly SD 0'
+  plan_mutants_covered:
+  - 11
+  - 13
+  - 14
+  - 15
+  - 16
+  plan_mutant_12: MLP only, not applicable to Ridge; analogue (no test data in fit) tested
+evidence: D:/mandala/mandala-memory-results/lantern/lr4/
+open:
+- 'LR5: artifact schemas/DAG, resume, budget, CI, full mutation campaign (18 plan mutants)'
+- 'LR5/LR6: permuted-target control curves, 12-cell leak alarm with 9999 permutations, optional MLP, freeze candidate'
+- 'Astra: review of LR4'

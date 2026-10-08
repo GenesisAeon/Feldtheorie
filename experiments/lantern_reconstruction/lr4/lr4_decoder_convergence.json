@@ -1,0 +1,98 @@
+{
+ "schema": "lantern-lr4-decoder-convergence-v1",
+ "gate_definition": "protocol/decoder_convergence_gate.json (fixed before the run)",
+ "gate_file_sha256": "b82fd3047db905a3dfcc15bf5f0e00ceffc1602d5337bb412413d46c97791c71",
+ "config_sha256": "7ca24901378ffa1c203aeb18d7a933fc03ca592c93790a32c45c2e7e77881d47",
+ "smoke_only": false,
+ "panel": {
+  "study_id": 2026100803,
+  "contexts": [
+   0,
+   1
+  ],
+  "sizes": {
+   "train": 1000,
+   "val": 250,
+   "test": 1000
+  },
+  "conditions": [
+   "lantern",
+   "uncoupled",
+   "uniform_total",
+   "strength_surrogate"
+  ],
+  "tasks": [
+   "A",
+   "B"
+  ],
+  "dt": [
+   0.02,
+   0.01,
+   0.005
+  ]
+ },
+ "comparisons_to_reference_dt": {
+  "0.02": {
+   "max_abs_dG": 8.71481664610485e-10,
+   "max_abs_dA": 2.506293506066015e-10,
+   "max_abs_dS": 8.7148188665509e-10,
+   "lambda_changes": 0
+  },
+  "0.01": {
+   "max_abs_dG": 5.085931675807842e-11,
+   "max_abs_dA": 1.4629297773183225e-11,
+   "max_abs_dS": 5.0859538802683346e-11,
+   "lambda_changes": 0
+  }
+ },
+ "state_max_circular_diff_rad": {
+  "0|0.02": 2.363464979282526e-10,
+  "0|0.01": 1.3790746322683844e-11,
+  "1|0.02": 1.5957235532937375e-10,
+  "1|0.01": 9.312550730555813e-12
+ },
+ "decoder_gate": {
+  "criterion": "max over cells |G(dt 0.02) - G(dt 0.005)| <= 0.01 AND max over curves |A(dt 0.02) - A(dt 0.005)| <= 0.01; the dt 0.01 comparison is reported, not gated",
+  "max_abs_dG": 8.71481664610485e-10,
+  "max_abs_dA": 2.506293506066015e-10,
+  "passed": true
+ },
+ "pipeline_gate_A_t0": {
+  "mean_G0_by_condition": {
+   "lantern": 0.9623201526698182,
+   "uncoupled": 0.9623201526698182,
+   "uniform_total": 0.9623201526698182,
+   "strength_surrogate": 0.9623201526698182
+  },
+  "rule": "> 0.90 for every condition",
+  "passed": true
+ },
+ "B_t0_G_reported": {
+  "lantern": [
+   -0.0005240373318948532,
+   -0.00043131661853052135
+  ],
+  "uncoupled": [
+   -0.0005240373318948532,
+   -0.00043131661853052135
+  ],
+  "uniform_total": [
+   -0.0005240373318948532,
+   -0.00043131661853052135
+  ],
+  "strength_surrogate": [
+   -0.0005240373318948532,
+   -0.00043131661853052135
+  ]
+ },
+ "runtime_seconds": {
+  "0|0.02": 273.5239141000202,
+  "0|0.01": 558.6962929000147,
+  "0|0.005": 694.4336002999917,
+  "1|0.02": 246.8659006000962,
+  "1|0.01": 479.5394728999818,
+  "1|0.005": 615.2351325000636
+ },
+ "use_of_values": "development values only: they are not used to choose any protocol value; contexts 0 and 1 of the development study are not research contexts; no research claim follows from them",
+ "full_results": "D:\\mandala\\mandala-memory-results\\lantern\\lr4\\decoder_convergence\\decoder_convergence_full.json"
+}

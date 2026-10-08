@@ -141,6 +141,15 @@ def test_selection_projected_val_mse_and_tie_to_larger_lambda(ctx):
     for lam, (W, b), mse in zip(training.LAMBDA_GRID, training.ridge_path((Xtr - mean) / scale, Utr, training.LAMBDA_GRID), m.val_mse):
         assert mse == np.mean((np.clip(((Xva - mean) / scale) @ W + b, -1, 1) - Uva) ** 2)
     assert m.lam == decoders.select_lambda(training.LAMBDA_GRID, m.val_mse) and tuple(m.lambda_grid) == training.LAMBDA_GRID
+    # few training episodes, small lambda: raw validation predictions leave [-1, 1], so projection matters
+    # (mutation check: on the data above the clip never acted and an unprojected selection survived)
+    Xs_tr, Xs_va, Us_tr = rng.normal(size=(18, 16)), rng.normal(size=(30, 16)), rng.uniform(-1, 1, (18, 4))
+    m2 = training.fit_ridge(spec, Xs_tr, Us_tr, Xs_va, Uva)
+    mean, scale = training.standardisation(Xs_tr)
+    W, b = training.ridge_path((Xs_tr - mean) / scale, Us_tr, [1e-4])[0]
+    raw = ((Xs_va - mean) / scale) @ W + b
+    assert np.any(np.abs(raw) > 1)
+    assert m2.val_mse[0] == np.mean((np.clip(raw, -1, 1) - Uva) ** 2) != np.mean((raw - Uva) ** 2)
     with pytest.raises(ValueError, match="lambda grid"):
         training.fit_ridge(spec, Xtr, Utr, Xva, Uva, lambda_grid=(0.0, 1.0))
     with pytest.raises(ValueError):
@@ -337,6 +346,8 @@ def test_permutation_p_and_leak_alarm():
     noise = metrics.permutation_gain_test({c: (np.clip(rng.normal(0, .3, (60, 4)), -1, 1), u[c]) for c in u}, np.random.default_rng(2), 199)
     assert noise["p"] > 0.01
     assert not metrics.leak_alarm([.5] * 12)["alarm"] and metrics.leak_alarm([1e-4] + [.5] * 11)["alarm"]
+    held = metrics.leak_alarm([.005] + [.5] * 11)                  # raw p <= .01, Holm-adjusted .06: no alarm
+    assert not held["alarm"] and math.isclose(held["holm_adjusted"][0], .06)
     with pytest.raises(ValueError):
         metrics.leak_alarm([.5] * 11)
     with pytest.raises(ValueError, match="Generator"):
@@ -384,6 +395,29 @@ def test_runner_features_only_through_observe(ctx, lantern, monkeypatch):
         return real(*a, **k)
     monkeypatch.setattr(observation, "features", guarded)
     runner.run_context(ctx, *lantern, sizes=SMALL, conditions=("uncoupled",), tasks=("B",), proposals=200)
+
+
+@pytest.mark.parametrize("stem", ["protocol/decoder_convergence_gate", "lr4/lr4_status"])
+def test_yaml_twins(stem):
+    import yaml
+    p = HERE / stem
+    assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
+
+
+def test_gate_result_bound_to_its_definition_and_consistent():
+    """The stored gate summary must come from THIS gate definition (SHA of the LF-normalised file) and its
+    pass flags must follow from its own numbers."""
+    import hashlib
+    import yaml
+    p = HERE / "lr4" / "lr4_decoder_convergence"
+    s = json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
+    assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == s and not s["smoke_only"]
+    gate = (HERE / "protocol" / "decoder_convergence_gate.json").read_bytes().replace(b"\r\n", b"\n")
+    assert s["gate_file_sha256"] == hashlib.sha256(gate).hexdigest() and s["config_sha256"] == streams.config_sha256()
+    dg = s["decoder_gate"]
+    assert dg["passed"] == (dg["max_abs_dG"] <= 0.01 and dg["max_abs_dA"] <= 0.01)
+    assert s["pipeline_gate_A_t0"]["passed"] == all(v > 0.90 for v in s["pipeline_gate_A_t0"]["mean_G0_by_condition"].values())
+    assert s["panel"]["contexts"] == [0, 1] and s["panel"]["dt"] == [0.02, 0.01, 0.005]
 
 
 def test_simulate_dt_override_only_for_convergence(ctx, lantern):

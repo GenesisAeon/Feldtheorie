@@ -6,9 +6,9 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 |---|---|---|
 | LR0 | Lokaler Bestand: Worktree, Regeln, Hashvergleich der elf Quellen, Inventar, Sicherung | ✅ erledigt, siehe [Bericht](lr0/LR0_BERICHT.md); wartet auf Prüfung |
 | LR1 | Snapshot und Import: separater Legacy-Prozess, kanonische Matrix, Importmanifest | ✅ erledigt, siehe [Bericht](lr1/LR1_BERICHT.md); wartet auf Prüfung |
-| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md). ODE-Gate: Euler nicht bestanden (bleibt dokumentiert), **RK4 bestanden** (Planänderung AE-01); Decoderteil offen bis LR4; wartet auf Prüfung |
-| LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | ✅ erledigt, siehe [Bericht](lr3/LR3_BERICHT.md); wartet auf Prüfung |
-| LR4 | Ridge und Evaluation | offen; vorher Entscheidung LR0-O1 (scikit-learn) |
+| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md). ODE-Gate: Euler nicht bestanden (bleibt dokumentiert), **RK4 bestanden** (Planänderung AE-01); Decoderteil in LR4 bestanden; wartet auf Prüfung |
+| LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | ✅ erledigt, siehe [Bericht](lr3/LR3_BERICHT.md); Fixes nach Astras Nachprüfung, von ihr nachgeprüft (`6680618`) |
+| LR4 | Ridge und Evaluation | ✅ erledigt, siehe [Bericht](lr4/LR4_BERICHT.md). Ridge per NumPy (LR0-O1); Decoder-Konvergenzgate bestanden; wartet auf Prüfung |
 | LR5 | Laufverwaltung und CI | offen |
 | LR6 | Entwicklungsabnahme und Freeze-Kandidat | offen |
 | LR7–LR9 | Forschungsrunde, Bericht, Folgestudien | erst nach der LR6-Freigabe |
@@ -50,4 +50,15 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
   - Leseknoten als echte Ganzzahlen;
   - Stromschlüssel in [0, 2³²).
 
-  Gültige Aufrufe sind alt gegen neu bitgleich (173 Digests). Tests 233/233, Mutation der neuen Wächter 18/18. Astras Nachprüfung dieses Fixes steht aus.
+  Gültige Aufrufe sind alt gegen neu bitgleich (173 Digests). Tests 233/233, Mutation der neuen Wächter 18/18. Astras Nachprüfung (`astra-fix-6680618`): 233/233 und 44/44; keine Blocker für LR4.
+
+## LR4 (2026-10-08)
+
+- **Module:**
+  - `training.py`: Ridge in geschlossener Form per NumPy-SVD;
+  - `decoders.py`: Artefakt, `predict` nur mit Merkmalen, Roundtrip über NPZ ohne Pickle und striktes JSON;
+  - `evaluate.py`: ohne Fit-Import;
+  - `metrics.py`: S/G, Rastermittelwert A, Kontextinferenz, H-B1/B2 mit Holm, Leak-Alarm;
+  - `runner.py`: Entwicklungspipeline, Merkmale nur über `observe()`.
+- **Decoder-Konvergenzgate** (Plan 10.2, Definition vor dem Lauf festgelegt): bestanden mit |ΔG| ≤ 8,7·10⁻¹⁰ und |ΔA| ≤ 2,5·10⁻¹⁰, Grenze 0,01. Das Pipeline-Gate A bei t = 0 ist mit G0 = 0,962 > 0,90 ebenfalls bestanden.
+- **Prüfungen:** Tests 268/268. Gezielte Mutation 29/30: 1 Mutant ist nachweislich äquivalent, 2 echte Testlücken sind geschlossen.
