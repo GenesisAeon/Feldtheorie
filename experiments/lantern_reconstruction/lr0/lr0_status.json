@@ -1,0 +1,74 @@
+{
+ "schema": "lantern-lr0-status-v1",
+ "package": "LR0 - Lokaler Bestand",
+ "date": "2026-10-08",
+ "plan": {
+  "authoritative": ["LANTERN_REAKTIVIERUNG_IMPLEMENTIERUNGSPLAN.md (Version 2.0, sha256 1bf1eab0017bd05d2c2a217915558071e1f539973d09f3cf0208c188e7016ca5)",
+                    "LANTERN_FACHREVIEW.md (sha256 ae76118c2499c5aa58f0700cc176289b76dea6c6e0be42c98e7b11113a2e6dc6)"],
+  "folder": "D:/mandala/mandala-memory-results/lantern-reconstruction-plan (unchanged; historical inputs referenced, not copied over)",
+  "reference_copy": "experiments/lantern_reconstruction/reference/review_package_2026-10-07 (byte-identical package content, SHA256SUMS verified, .gitattributes -text)"
+ },
+ "workplace": {
+  "worktree": "D:/mandala/.worktrees/feldtheorie-lantern-reconstruction",
+  "branch": "lantern-reconstruction",
+  "base_commit": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+  "base_is": "Feldtheorie main (local, intentionally not pushed) = repo_head of QUELLENINVENTAR.json",
+  "area": "experiments/lantern_reconstruction/",
+  "core_autocrlf": "true"
+ },
+ "sources": {
+  "n": 11,
+  "git_blob_sha256_equal_inventory": 11,
+  "main_raw_sha256_equal_inventory": 11,
+  "lf_normalised_equal_blob": {"main": 11, "worktree": 11},
+  "raw_equal_blob": {"main": 0, "worktree": 0},
+  "raw_vs_blob_note": "Windows checkouts carry CRLF (core.autocrlf=true); after LF normalisation all eleven equal their blobs. Raw and blob hashes are kept separate (plan section 12).",
+  "anchors_found": "9/9",
+  "registry": {"ids": 34, "unique": true, "sorted_ids_equal_inventory": true, "yaml_order_is_not_sorted": true, "matrix_calculated_in_lr0": false}
+ },
+ "oracles": {
+  "independent_controls": {"result": "22/22", "file": "lr0/local_control_results.json",
+                           "max_relative_deviation_vs_stored": 5.551115123125783e-17},
+  "source_audit": {"file": "lr0/local_source_audit.json", "source_root": "this worktree",
+                   "exact_equal_to_stored": ["nodes 34", "edges 561", "kappa_clipped_edges 187", "final_edges_at_one 9", "strength_min/max",
+                                             "g", "mean_weight", "matrix_max_abs_error 2.2e-16", "zero_noise_consumes_global_rng true", "canonical_ids"],
+                   "lambda2_abs_diff": 1.339206523454095e-15, "lambda_max_abs_diff": 2.220446049250313e-16,
+                   "phase_200_steps_max_circular_error": 4.163336342344337e-17,
+                   "scope": "selected source methods + analytical controls only; NOT the full loader, import isolation or any memory claim (LR1)"}
+ },
+ "environment": {
+  "venv": "D:/mandala/.venvs/mandala-memory (existing lab venv, read-only use in LR0)",
+  "python": "3.11.9", "numpy": "2.2.6", "scipy": "1.15.3", "pyyaml": "6.0.3", "scikit_learn": "NOT INSTALLED",
+  "pyproject_bounds": {"requires_python": ">=3.10", "numpy": ">=1.26,<2.3", "scipy": ">=1.11,<1.16", "scikit_learn": ">=1.4,<1.8"},
+  "within_bounds": true,
+  "astra_control_environment": "Python 3.12.14, NumPy 2.3.5, SciPy 1.17.0 (partly outside the repo bounds; mathematics agree within 1.4e-15)"
+ },
+ "local_rules": {
+  "claude_md": "none in Feldtheorie",
+  "root_agents_md": "describes itself as narrative/docs charter (as noted in the plan); not changed",
+  "applied": ["Trilayer: JSON authoritative + YAML twin + Markdown narrative", "falsifiability: null models and explicit controls",
+              "tests for new functionality", "seeds/environment documented"],
+  "pytest": "pyproject testpaths = [\"tests\"]: experiments/lantern_reconstruction/tests must be called explicitly (F10 confirmed)",
+  "ci": "ci.yml runs plain `pytest` (3.10/3.11/3.12); validation.yml masks failures with `|| echo` -- new Lantern jobs must not inherit that"
+ },
+ "inventory": {
+  "file": "lr0/lr0_inventory.json",
+  "main_checkout": {"tracked_changes": 0, "untracked_files": 24, "nested_worktrees": 3},
+  "untracked_backup": {"copy_not_move": true, "path": "D:/mandala/backups/feldtheorie-untracked-2026-10-08", "manifest": "MANIFEST.json",
+                       "files": 24, "bytes": 673095, "hashes_equal": true,
+                       "note": "foreign data files from August 2026 (analysis/results, data/experimental/backups, docs/meta, scripts/data); originals untouched"},
+  "other_worktrees_untouched": [
+   "D:/mandala/.worktrees/feldtheorie-mandala-memory (mandala-memory e49f2b1187: Astra's study view, clean, pending my independent review)",
+   "D:/mandala/Feldtheorie/.claude/worktrees/feldtheorie-archaeology (clean)",
+   "D:/mandala/Feldtheorie/.claude/worktrees/feldtheorie-coverage-fix (clean)",
+   "D:/mandala/Feldtheorie/.claude/worktrees/review-g01-g02-independent (locked, 1 uncommitted entry -- foreign, not touched)"]
+ },
+ "deviations_and_open_points": [
+  {"id": "LR0-D1", "kind": "expected", "text": "Raw worktree bytes differ from the blobs for all eleven sources (CRLF); LF-normalised identical. Matches the inventory (worktree_equals_blob=false, after LF true)."},
+  {"id": "LR0-D2", "kind": "environment", "text": "Control environment differs from Astra's; ours is inside the repo bounds; results agree within 1.4e-15."},
+  {"id": "LR0-O1", "kind": "decision needed before LR4", "text": "scikit-learn is not installed in the lab venv. Options: separate Lantern venv on D: within the pyproject bounds, or ridge in closed form with NumPy (no new dependency)."},
+  {"id": "LR0-O2", "kind": "LR5", "text": "Root pytest/CI do not collect experiments/; Lantern tests need explicit jobs; validation.yml failure masking must not be copied."},
+  {"id": "LR0-O3", "kind": "process", "text": "No research computation, no freeze, no merge, no push in LR0. Original modules and M0-M12 unchanged."}
+ ],
+ "not_done_in_lr0": ["no project import", "no coupling matrix from the loader (LR1)", "no simulation", "no decoder", "no research data"]
+}

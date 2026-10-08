@@ -1,3 +1,5 @@
 # M12 model artifacts: never convert line endings -- the model freeze binds their raw bytes
 experiments/mandala_memory/protocol/m12_models/*.npz binary
 experiments/mandala_memory/protocol/m12_models/*.json -text
+# Lantern LR0: unchanged review package (SHA256SUMS bind raw bytes) -- never convert line endings
+experiments/lantern_reconstruction/reference/** -text

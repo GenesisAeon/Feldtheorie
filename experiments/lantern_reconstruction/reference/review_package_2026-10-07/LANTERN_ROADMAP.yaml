@@ -1,0 +1,258 @@
+schema: lantern-reactivation-roadmap-v2
+date: '2026-10-07'
+status: implementation_plan_not_study_freeze
+implementation_specified: true
+production_implementation_created: false
+research_executed: false
+freeze_ready: false
+plan_document: LANTERN_REAKTIVIERUNG_IMPLEMENTIERUNGSPLAN.md
+plan_sha256: 1bf1eab0017bd05d2c2a217915558071e1f539973d09f3cf0208c188e7016ca5
+originals_preserved: true
+source:
+  local_commit_reported: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+  local_commit_intentionally_unpushed: true
+  github_main_checked: 2da5414c8a58ffbcf8a963c9b1f9a96202e3300a
+  matching_inventory_sources: 11
+  full_local_checkout_verified: false
+core:
+  nodes: 34
+  latent_dim: 4
+  contexts: 20
+  sampling_population: frequency and location contexts conditional on one fixed registry
+    matrix; includes learning and surrogate randomness
+  amplitude_rad: 0.35
+  observation_sigma_rad: 0.03
+  process_sigma: 0
+  omega_sd: 0.1
+  dt_candidate: 0.02
+  dt_fallbacks:
+  - 0.01
+  - 0.005
+  times:
+  - 0
+  - 0.5
+  - 1
+  - 2
+  - 3
+  - 5
+  - 10
+  training: 1000
+  validation: 250
+  test: 1000
+  conditions:
+  - lantern
+  - uncoupled
+  - uniform_total
+  - strength_surrogate
+  surrogate_proposals_per_context: 20000
+  primary_decoder: ridge
+  ridge_objective: mean summed coordinate squared residual + lambda * squared Frobenius
+    norm
+  ridge_lambda:
+  - 0.0001
+  - 0.001
+  - 0.01
+  - 0.1
+  - 1
+  - 10
+  - 100
+  mlp_optional: true
+  scaling: g=1/max(row_sum(C_lantern)); same g for all conditions
+  excluded_development_seeds:
+    from: 900000
+    through: 900104
+  stream_roles:
+    locations: 10
+    frequencies: 20
+    targets: 30
+    global_phase: 40
+    measurement: 50
+    surrogate: 60
+    decoder: 70
+  shared_physical_episodes_between_tasks: true
+studies:
+  retention_v2:
+    features: 66
+    role: estimation
+    reference: uncoupled
+  remote_readout_v1:
+    writers: 8
+    receivers_including_reference: 9
+    features: 16
+    disjoint_writers_receivers: true
+    reference_must_be_unwritten: true
+    hypotheses:
+    - id: H-B1
+      quantity: mean(A_lantern_remote)
+      null_at_most: 0.05
+    - id: H-B2
+      quantity: mean(A_lantern_remote-A_strength_surrogate_remote)
+      null_at_most: 0.05
+    test: one-sided context t-tests; approximate
+    multiplicity: Holm, two predeclared tests
+    family_alpha: 0.05
+aggregate:
+  name: A
+  meaning: normalized trapezoid on log1p(time), fixed discrete grid; not certified
+    continuous integral
+  weights:
+  - 0.08454604183671918
+  - 0.1445324131589439
+  - 0.14453241315894394
+  - 0.1445324131589439
+  - 0.14453241315894388
+  - 0.21093517368211218
+  - 0.126389131845393
+control_alarms:
+  controls:
+  - reset
+  - no_impulse
+  - permuted_train_targets
+  tasks:
+  - retention_v2
+  - remote_readout_v1
+  times:
+  - 1
+  - 5
+  decoder: ridge
+  cells: 12
+  permutations: 9999
+  p_formula: (1+b)/(1+B)
+  correction: Holm
+  family_alpha: 0.01
+  negative_gain_is_valid: true
+roadmap:
+- id: LR0
+  title: Lokaler Bestand
+  depends_on: []
+  acceptance:
+  - Lokale Regeln und Worktree prüfen
+  - Elf Quellhashes vergleichen
+  - Bestehende Arbeiten unverändert erfassen
+  outputs:
+  - local_source_audit.json
+  - local_worktree_inventory.json
+  status: planned
+- id: LR1
+  title: Snapshot und Import
+  depends_on:
+  - LR0
+  acceptance:
+  - Isolierter tatsächlicher Legacy-Import
+  - Kanonische ID-Permutation
+  - Clipping- und Matrixstatistik
+  outputs:
+  - registry_snapshot.npz
+  - runtime_import_manifest.json
+  - matrix_report.json
+  status: planned
+- id: LR2
+  title: Numerischer Kern
+  depends_on:
+  - LR1
+  acceptance:
+  - Gebatchte Euler-Dynamik
+  - Original- und analytische Orakel
+  - Konvergenz bis tau=10
+  outputs:
+  - numerics_report.json
+  - linear_diagnostics.json
+  status: planned
+- id: LR3
+  title: Aufgaben und Referenzen
+  depends_on:
+  - LR2
+  acceptance:
+  - Retention und Remote getrennt
+  - Disjunkte Quell-/Lesemengen einschließlich Referenz
+  - Stärke-erhaltende Surrogate und unabhängige Streams
+  outputs:
+  - task_contracts.json
+  - context_manifest.json
+  - surrogate_report.json
+  status: planned
+- id: LR4
+  title: Ridge und Evaluation
+  depends_on:
+  - LR3
+  acceptance:
+  - Train-only Skalierung
+  - S, G und fester Rastermittelwert
+  - Kontextinferenz und Holm
+  outputs:
+  - decoder_roundtrip_report.json
+  - evaluator_control_report.json
+  status: planned
+- id: LR5
+  title: Laufverwaltung und CI
+  depends_on:
+  - LR4
+  acceptance:
+  - Artefakt-DAG und deterministisches Resume
+  - CI sammelt neuen Testpfad explizit
+  - Budget und Mutanten messen
+  outputs:
+  - smoke_report.json
+  - budget_report.json
+  - mutation_report.json
+  status: planned
+- id: LR6
+  title: Entwicklungsabnahme und Freeze-Kandidat
+  depends_on:
+  - LR5
+  acceptance:
+  - Alle lokalen Blocker auflösen
+  - Code und Protokoll unabhängig reviewen
+  - Optionale MLP-Konfiguration schließen oder weglassen
+  outputs:
+  - freeze_candidate.json
+  - pre_freeze_review.md
+  status: planned
+- id: LR7
+  title: Forschungsrunde A/B
+  depends_on:
+  - LR6
+  acceptance:
+  - Dokumentierte Forschungsfreigabe
+  - Training und Modellfreeze vor Test
+  - Alle Kontrollgates und vollständige Kontexte
+  outputs:
+  - training_manifest.json
+  - model_manifest.json
+  - evaluation_report.json
+  status: planned
+- id: LR8
+  title: Ergebnisbericht und SCF-Adapter
+  depends_on:
+  - LR7
+  acceptance:
+  - Positive und negative Befunde berichten
+  - Scope und Grenzen explizit
+  - Optionaler SCF-Berichtimport ohne Dynamikabhängigkeit
+  outputs:
+  - capability_report.md
+  - scf_report_contract.json
+  status: planned
+- id: LR9
+  title: Folgestudien
+  depends_on:
+  - LR8
+  acceptance:
+  - Eigene Protokolle für Diffusion/Interferenz
+  - Streaming vor IPC-Kapazitätsaussagen
+  - Teilhinweisabruf nur mit Lernmechanismus
+  outputs:
+  - followup_proposals.md
+  status: planned
+freeze_blockers:
+- Full local source and runtime dependency inventory
+- Supported environment verification
+- Production adapter and original-loader comparison
+- Production integration and mutation controls
+- Numerical convergence and local budget measurement
+- Complete frozen stream map and expected output grid
+- MLP complete settings if included
+- Independent code/protocol review and recorded research release
+legacy_files_must_remain_unchanged: true
+mandala_m0_m12_must_remain_unchanged: true
+scf_dependency: optional report adapter only after results

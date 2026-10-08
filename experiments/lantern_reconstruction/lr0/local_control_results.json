@@ -1,0 +1,148 @@
+{
+  "schema": "lantern-independent-controls-v1",
+  "scope": "analytical controls; no production integration or study",
+  "python": "3.11.9",
+  "numpy": "2.2.6",
+  "scipy": "1.15.3",
+  "passed": 22,
+  "total": 22,
+  "checks": [
+    {
+      "id": "K01_encoding",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K02_immediate_inverse",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K03_global_rotation",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K04_free_drift",
+      "passed": true,
+      "values": {
+        "max_circular_error": 1.1013412404281553e-13
+      }
+    },
+    {
+      "id": "K05_reference_covariance",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K06_common_reference_cancels_in_pair",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K07_two_oscillator_exact",
+      "passed": true,
+      "values": {
+        "delta": 0.0656648863608956
+      }
+    },
+    {
+      "id": "K08_finite_time_not_erasure",
+      "passed": true,
+      "values": {
+        "derivative": 0.16850183872314728
+      }
+    },
+    {
+      "id": "K09_complete_graph_decay",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K10_uniform_remote_zero",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K11_remote_path_transfer",
+      "passed": true,
+      "values": {
+        "peak_time": 0.6232252401402304,
+        "peak_gain": 0.2875235582736291
+      }
+    },
+    {
+      "id": "K12_remote_peak",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K13_time_rescaling",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K14_symmetric_linear_contraction",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K15_noise_scaling",
+      "passed": true,
+      "values": {
+        "old_variance_dt_002": 3.6e-05,
+        "brownian_variance": 0.0018
+      }
+    },
+    {
+      "id": "K16_strength_preserving_switch",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K17_joint_permutation",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K18_wrong_order_detected",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K19_score_not_gain",
+      "passed": true,
+      "values": {
+        "S": 0.925,
+        "G": 0.0
+      }
+    },
+    {
+      "id": "K20_holm_two_tests",
+      "passed": true,
+      "values": {}
+    },
+    {
+      "id": "K21_fixed_grid_aggregate",
+      "passed": true,
+      "values": {
+        "weights": [
+          0.08454604183671918,
+          0.1445324131589439,
+          0.14453241315894394,
+          0.1445324131589439,
+          0.14453241315894388,
+          0.21093517368211218,
+          0.126389131845393
+        ]
+      }
+    },
+    {
+      "id": "K22_negative_gain_is_valid",
+      "passed": true,
+      "values": {
+        "G": -2.1
+      }
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "schema": "lantern-plan-verification-ledger-v1",
+  "date": "2026-10-07",
+  "inputs": [
+    {
+      "filename": "AEON_REVIEW.md",
+      "sha256": "87419f08e0dc57c126d644c40981108ccb9307bd1f12391c590c636c5b697fc1",
+      "bytes": 21425,
+      "modified": false
+    },
+    {
+      "filename": "CLAUDE_REVIEW.md",
+      "sha256": "33902bbb98b953f9d05a1e0b71f957bbe407caf047a50cde0ed96d4591da0af6",
+      "bytes": 2479,
+      "modified": false
+    },
+    {
+      "filename": "PLAN_LANTERN_REKONSTRUKTION.md",
+      "sha256": "d3faddb5cc5d82d38e8c98153211a72066083e7b6c9cdb2dbba79bd97d4bc085",
+      "bytes": 32756,
+      "modified": false
+    },
+    {
+      "filename": "PLAN_STRUKTUR.json",
+      "sha256": "3eb0b93f362d7abb35e40eae2391c1d10a7af2924cde356fc2d96d81c6cd6fd3",
+      "bytes": 2550,
+      "modified": false
+    },
+    {
+      "filename": "PLAN_STRUKTUR.yaml",
+      "sha256": "43f986f64c095a8f2eebd369611436c1d6c1ee85db24290f0d0ca85d4856bcdf",
+      "bytes": 2102,
+      "modified": false
+    },
+    {
+      "filename": "QUELLENINVENTAR.json",
+      "sha256": "08ce7563259f128fc8ebebc0fc9ac7d0f3c58cf71c1e77a3f2ea8d826297f5e4",
+      "bytes": 7576,
+      "modified": false
+    }
+  ],
+  "source_checks": [
+    {
+      "path": "v9_alpha/api/lantern_bridge.py",
+      "sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/config/lantern_hub.yaml",
+      "sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/models/phase_dynamics.py",
+      "sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/main_simulation.py",
+      "sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/api/__init__.py",
+      "sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/models/__init__.py",
+      "sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "models/__init__.py",
+      "sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "models/collective_field.py",
+      "sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "models/consciousness_integration.py",
+      "sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "models/unified_constants.py",
+      "sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde",
+      "matches_supplied_git_blob_sha256": true
+    },
+    {
+      "path": "v9_alpha/tests/test_lantern_bridge.py",
+      "sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8",
+      "matches_supplied_git_blob_sha256": true
+    }
+  ],
+  "executed": {
+    "independent_controls": {
+      "schema": "lantern-independent-controls-v1",
+      "scope": "analytical controls; no production integration or study",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "passed": 22,
+      "total": 22,
+      "checks": [
+        {
+          "id": "K01_encoding",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K02_immediate_inverse",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K03_global_rotation",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K04_free_drift",
+          "passed": true,
+          "values": {
+            "max_circular_error": 1.1013412404281553e-13
+          }
+        },
+        {
+          "id": "K05_reference_covariance",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K06_common_reference_cancels_in_pair",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K07_two_oscillator_exact",
+          "passed": true,
+          "values": {
+            "delta": 0.0656648863608956
+          }
+        },
+        {
+          "id": "K08_finite_time_not_erasure",
+          "passed": true,
+          "values": {
+            "derivative": 0.16850183872314728
+          }
+        },
+        {
+          "id": "K09_complete_graph_decay",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K10_uniform_remote_zero",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K11_remote_path_transfer",
+          "passed": true,
+          "values": {
+            "peak_time": 0.6232252401402304,
+            "peak_gain": 0.28752355827362913
+          }
+        },
+        {
+          "id": "K12_remote_peak",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K13_time_rescaling",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K14_symmetric_linear_contraction",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K15_noise_scaling",
+          "passed": true,
+          "values": {
+            "old_variance_dt_002": 3.6e-05,
+            "brownian_variance": 0.0018
+          }
+        },
+        {
+          "id": "K16_strength_preserving_switch",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K17_joint_permutation",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K18_wrong_order_detected",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K19_score_not_gain",
+          "passed": true,
+          "values": {
+            "S": 0.925,
+            "G": 0.0
+          }
+        },
+        {
+          "id": "K20_holm_two_tests",
+          "passed": true,
+          "values": {}
+        },
+        {
+          "id": "K21_fixed_grid_aggregate",
+          "passed": true,
+          "values": {
+            "weights": [
+              0.08454604183671918,
+              0.1445324131589439,
+              0.14453241315894394,
+              0.1445324131589439,
+              0.14453241315894388,
+              0.21093517368211218,
+              0.126389131845393
+            ]
+          }
+        },
+        {
+          "id": "K22_negative_gain_is_valid",
+          "passed": true,
+          "values": {
+            "G": -2.1
+          }
+        }
+      ]
+    },
+    "selected_source_audit": {
+      "scope": "selected source methods only; full loader/import and experiment untested",
+      "source_hashes": {
+        "v9_alpha/api/lantern_bridge.py": {
+          "raw_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+          "lf_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4"
+        },
+        "v9_alpha/config/lantern_hub.yaml": {
+          "raw_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+          "lf_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786"
+        },
+        "v9_alpha/models/phase_dynamics.py": {
+          "raw_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+          "lf_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d"
+        }
+      },
+      "nodes": 34,
+      "edges": 561,
+      "kappa_clipped_edges": 187,
+      "final_edges_at_one": 9,
+      "strength_min": 0.8286366711648625,
+      "strength_max": 25.086797192035903,
+      "g": 0.03986160498469138,
+      "lambda2": 0.03403007351083512,
+      "lambda_max": 1.038685843274879,
+      "mean_weight": 0.6410037880529563,
+      "matrix_max_abs_error": 2.220446049250313e-16,
+      "phase_200_steps_max_circular_error": 5.551115123125783e-17,
+      "zero_noise_consumes_global_rng": true,
+      "canonical_ids": [
+        "exp-neuroprofile-001",
+        "exp-phaethon-sim-001",
+        "lantern-experiment-001",
+        "lantern-experiment-002",
+        "lantern-theory-001",
+        "lantern-theory-002",
+        "metaquest-campaign-001",
+        "metaquest-system-001",
+        "model-abm-microscopic-001",
+        "model-adaptive-membrane-001",
+        "model-cosmic-alpha-phi-001",
+        "model-coupled-field-001",
+        "model-logistic-threshold-001",
+        "model-resonant-impedance-001",
+        "model-rg-flow-001",
+        "model-sigmoid-fit-001",
+        "release-mirror-v4-001",
+        "seed-aletheia-001",
+        "seed-entropy-geom-001",
+        "seed-implosive-feedback-001",
+        "seed-klimakluft-001",
+        "seed-klimakluft-process-001",
+        "seed-mirror-machine-001",
+        "seed-morfit-001",
+        "seed-morph-compute-001",
+        "seed-neurokosmos-001",
+        "seed-quantum-alias-001",
+        "seed-type6-001",
+        "seed-wolfmessing-001",
+        "utac-v1_3-ds-001",
+        "utac-v1_3-ds-002",
+        "utac-v1_3-ds-003",
+        "utac-v1_3-ds-004",
+        "utac-v1_3-ds-005"
+      ]
+    }
+  },
+  "not_executed": [
+    "Full project imports",
+    "Complete local disk inspection",
+    "Existing repository tests",
+    "New production integration tests",
+    "Mutation testing of future implementation",
+    "Aeon pilot replication",
+    "Decoder training",
+    "Study A or B"
+  ],
+  "aeon_pilot_status": "third-party exploratory results known before freeze; scripts and episode results not supplied; not independently reproduced",
+  "limitations": [
+    "Selected AST methods, not actual loader",
+    "Control environment NumPy/SciPy partly outside project bounds",
+    "One deterministic 200-step original-method comparison only",
+    "22 analytical groups are not production suites"
+  ],
+  "original_code_modified": false,
+  "github_mutations": false
+}

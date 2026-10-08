@@ -1,0 +1,629 @@
+{
+ "schema": "lantern-lr0-inventory-v1",
+ "created_utc": "2026-10-08T09:31:56Z",
+ "method": "read-only: file bytes, git blobs, YAML parse; no project import, no matrix, no simulation",
+ "main": {
+  "path": "D:\\mandala\\Feldtheorie",
+  "head": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+  "branch": "main",
+  "tracked_changes": 0
+ },
+ "worktree": {
+  "path": "D:\\mandala\\.worktrees\\feldtheorie-lantern-reconstruction",
+  "head": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+  "branch": "lantern-reconstruction",
+  "core_autocrlf": "true"
+ },
+ "inventory_repo_head": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+ "sources": [
+  {
+   "relative_path": "v9_alpha/api/lantern_bridge.py",
+   "expected": {
+    "raw_sha256_main": "a2b4f726d04d71f2c0f6edc0c77c21516496e09c96c7ed692aed6841ae35bb61",
+    "git_blob_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4"
+   },
+   "main": {
+    "raw_sha256": "a2b4f726d04d71f2c0f6edc0c77c21516496e09c96c7ed692aed6841ae35bb61",
+    "lf_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+    "blob_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+    "bytes": 25220,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "a2b4f726d04d71f2c0f6edc0c77c21516496e09c96c7ed692aed6841ae35bb61",
+    "lf_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+    "blob_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4",
+    "bytes": 25220,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": [
+    {
+     "line": 216,
+     "expected": "def load_from_yaml(self, config_path: str) -> None:",
+     "found": true
+    },
+    {
+     "line": 397,
+     "expected": "def _build_coupling_matrix(self) -> None:",
+     "found": true
+    },
+    {
+     "line": 505,
+     "expected": "def _initialize_collective_field(self) -> None:",
+     "found": true
+    },
+    {
+     "line": 516,
+     "expected": "np.random.seed(hash(lantern.domain + lantern.type) % (2**32))",
+     "found": true
+    }
+   ]
+  },
+  {
+   "relative_path": "v9_alpha/config/lantern_hub.yaml",
+   "expected": {
+    "raw_sha256_main": "9ca1664bbb0fbe58ecdc925b9bf53b08b46fd472fbd1eb131b3e575dc14f73ef",
+    "git_blob_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786"
+   },
+   "main": {
+    "raw_sha256": "9ca1664bbb0fbe58ecdc925b9bf53b08b46fd472fbd1eb131b3e575dc14f73ef",
+    "lf_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+    "blob_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+    "bytes": 59356,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "9ca1664bbb0fbe58ecdc925b9bf53b08b46fd472fbd1eb131b3e575dc14f73ef",
+    "lf_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+    "blob_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786",
+    "bytes": 59356,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "v9_alpha/models/phase_dynamics.py",
+   "expected": {
+    "raw_sha256_main": "767a98a4905a27b99baff335a93947401241d1384a06af1e587143200015884e",
+    "git_blob_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d"
+   },
+   "main": {
+    "raw_sha256": "767a98a4905a27b99baff335a93947401241d1384a06af1e587143200015884e",
+    "lf_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+    "blob_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+    "bytes": 4079,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "767a98a4905a27b99baff335a93947401241d1384a06af1e587143200015884e",
+    "lf_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+    "blob_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d",
+    "bytes": 4079,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": [
+    {
+     "line": 52,
+     "expected": "def evolve_phases(",
+     "found": true
+    },
+    {
+     "line": 94,
+     "expected": "def evolve_network(",
+     "found": true
+    }
+   ]
+  },
+  {
+   "relative_path": "v9_alpha/main_simulation.py",
+   "expected": {
+    "raw_sha256_main": "49253adfbb476ae92f67f72cd6dd004cbcc0c1d22926e4485adc749a8db19cbe",
+    "git_blob_sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269"
+   },
+   "main": {
+    "raw_sha256": "49253adfbb476ae92f67f72cd6dd004cbcc0c1d22926e4485adc749a8db19cbe",
+    "lf_sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269",
+    "blob_sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269",
+    "bytes": 14509,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "49253adfbb476ae92f67f72cd6dd004cbcc0c1d22926e4485adc749a8db19cbe",
+    "lf_sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269",
+    "blob_sha256": "3640adac4f470e8e5f562fece5f4f2362bf2d84c5a9f42c9ede812e6ba85a269",
+    "bytes": 14509,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": [
+    {
+     "line": 150,
+     "expected": "stress_push = args.sensor_gain * stress_state[\"combined_stress\"]",
+     "found": true
+    },
+    {
+     "line": 152,
+     "expected": "natural_frequencies = natural_frequencies + args.frequency_gain * stress_push",
+     "found": true
+    },
+    {
+     "line": 317,
+     "expected": "np.random.seed(args.seed)",
+     "found": true
+    }
+   ]
+  },
+  {
+   "relative_path": "v9_alpha/api/__init__.py",
+   "expected": {
+    "raw_sha256_main": "87a14582516550370d4a6ff2aeb91e993c52be0c5ed8ec6c2716d5fdf71ebc52",
+    "git_blob_sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08"
+   },
+   "main": {
+    "raw_sha256": "87a14582516550370d4a6ff2aeb91e993c52be0c5ed8ec6c2716d5fdf71ebc52",
+    "lf_sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08",
+    "blob_sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08",
+    "bytes": 155,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "87a14582516550370d4a6ff2aeb91e993c52be0c5ed8ec6c2716d5fdf71ebc52",
+    "lf_sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08",
+    "blob_sha256": "c217104d6f8e9463e063f12b39d7cdd2540c708f77ed6f8d9bcbf97b4cbc1b08",
+    "bytes": 155,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "v9_alpha/models/__init__.py",
+   "expected": {
+    "raw_sha256_main": "d5f9e3b7b70078c8dd222656a8480f2d938d077521344160b6e9bf30a47ea108",
+    "git_blob_sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61"
+   },
+   "main": {
+    "raw_sha256": "d5f9e3b7b70078c8dd222656a8480f2d938d077521344160b6e9bf30a47ea108",
+    "lf_sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61",
+    "blob_sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61",
+    "bytes": 553,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "d5f9e3b7b70078c8dd222656a8480f2d938d077521344160b6e9bf30a47ea108",
+    "lf_sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61",
+    "blob_sha256": "fc348d7d7a442cfb6c142dd2d91e31ac9f19e02d54796484e1f197c85ea91b61",
+    "bytes": 553,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "models/__init__.py",
+   "expected": {
+    "raw_sha256_main": "5ff4eebff716cf9fae86af630b796403aa9cd23bd2d4577f2a26f69bb5d0d36f",
+    "git_blob_sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b"
+   },
+   "main": {
+    "raw_sha256": "5ff4eebff716cf9fae86af630b796403aa9cd23bd2d4577f2a26f69bb5d0d36f",
+    "lf_sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b",
+    "blob_sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b",
+    "bytes": 2303,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "5ff4eebff716cf9fae86af630b796403aa9cd23bd2d4577f2a26f69bb5d0d36f",
+    "lf_sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b",
+    "blob_sha256": "29ead0d03887d8f96b44f60932a922dfa1359ed414a5e3496ef2ac1ce1be759b",
+    "bytes": 2303,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "models/collective_field.py",
+   "expected": {
+    "raw_sha256_main": "e00eb53c221d14567d3c0e0288edf9943ac6b9a0143d37809a1999f35528ea12",
+    "git_blob_sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e"
+   },
+   "main": {
+    "raw_sha256": "e00eb53c221d14567d3c0e0288edf9943ac6b9a0143d37809a1999f35528ea12",
+    "lf_sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e",
+    "blob_sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e",
+    "bytes": 22392,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "e00eb53c221d14567d3c0e0288edf9943ac6b9a0143d37809a1999f35528ea12",
+    "lf_sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e",
+    "blob_sha256": "abf4fe84fc2826408e919883b24ded2f90b3b6e482b9d247e23a19575971053e",
+    "bytes": 22392,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "models/consciousness_integration.py",
+   "expected": {
+    "raw_sha256_main": "ef80bee125364f50d6b6df1815dae169fee0e4d32fdcb6f232f761fc2f6e201d",
+    "git_blob_sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc"
+   },
+   "main": {
+    "raw_sha256": "ef80bee125364f50d6b6df1815dae169fee0e4d32fdcb6f232f761fc2f6e201d",
+    "lf_sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc",
+    "blob_sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc",
+    "bytes": 28906,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "ef80bee125364f50d6b6df1815dae169fee0e4d32fdcb6f232f761fc2f6e201d",
+    "lf_sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc",
+    "blob_sha256": "7a3224f179db41f522c5eb4521766fa07a1b523f09de79a4b104cb291b01d3dc",
+    "bytes": 28906,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "models/unified_constants.py",
+   "expected": {
+    "raw_sha256_main": "96efcbe986209743bf490d7c8911e69539343e506ceb6494bd63a4442220fa45",
+    "git_blob_sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde"
+   },
+   "main": {
+    "raw_sha256": "96efcbe986209743bf490d7c8911e69539343e506ceb6494bd63a4442220fa45",
+    "lf_sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde",
+    "blob_sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde",
+    "bytes": 10693,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "96efcbe986209743bf490d7c8911e69539343e506ceb6494bd63a4442220fa45",
+    "lf_sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde",
+    "blob_sha256": "e7c76ae6b7edb38f86692f7146d10a9a4342065ecab286b67427f888d7904bde",
+    "bytes": 10693,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  },
+  {
+   "relative_path": "v9_alpha/tests/test_lantern_bridge.py",
+   "expected": {
+    "raw_sha256_main": "daa7b4b41f9b044456d7a4b330412612b614e29224b02ea16bdcd73b6855b55d",
+    "git_blob_sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8"
+   },
+   "main": {
+    "raw_sha256": "daa7b4b41f9b044456d7a4b330412612b614e29224b02ea16bdcd73b6855b55d",
+    "lf_sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8",
+    "blob_sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8",
+    "bytes": 22132,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "worktree": {
+    "raw_sha256": "daa7b4b41f9b044456d7a4b330412612b614e29224b02ea16bdcd73b6855b55d",
+    "lf_sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8",
+    "blob_sha256": "723f60634eb515eede0a6c2db21f8e0a81b305cde56c26c59d6ce788b66248d8",
+    "bytes": 22132,
+    "raw_equals_blob": false,
+    "lf_equals_blob": true
+   },
+   "blob_matches_inventory": true,
+   "main_raw_matches_inventory": true,
+   "anchors": []
+  }
+ ],
+ "sources_summary": {
+  "n": 11,
+  "blob_matches_inventory": 11,
+  "main_raw_matches_inventory": 11,
+  "lf_equals_blob_main": 11,
+  "lf_equals_blob_worktree": 11,
+  "raw_equals_blob_main": 0,
+  "anchors_found": 9,
+  "anchors_total": 9
+ },
+ "registry": {
+  "count": 34,
+  "unique": true,
+  "sorted_equals_inventory": true,
+  "yaml_order_differs_from_sorted": true,
+  "matrix_calculated": false
+ },
+ "planning_inputs": {
+  "folder": "D:\\mandala\\mandala-memory-results\\lantern-reconstruction-plan",
+  "files": {
+   "AEON_REVIEW.md": {
+    "sha256": "87419f08e0dc57c126d644c40981108ccb9307bd1f12391c590c636c5b697fc1",
+    "bytes": 21425
+   },
+   "CLAUDE_REVIEW.md": {
+    "sha256": "33902bbb98b953f9d05a1e0b71f957bbe407caf047a50cde0ed96d4591da0af6",
+    "bytes": 2479
+   },
+   "LANTERN_FACHREVIEW.md": {
+    "sha256": "ae76118c2499c5aa58f0700cc176289b76dea6c6e0be42c98e7b11113a2e6dc6",
+    "bytes": 8912
+   },
+   "LANTERN_REAKTIVIERUNG_CLAUDE_PAKET.zip": {
+    "sha256": "c51d17d0495a4d3f538f359473e95bb40d3dfa08d04ff2770cad29fe59565198",
+    "bytes": 43364
+   },
+   "LANTERN_REAKTIVIERUNG_IMPLEMENTIERUNGSPLAN.md": {
+    "sha256": "1bf1eab0017bd05d2c2a217915558071e1f539973d09f3cf0208c188e7016ca5",
+    "bytes": 46172
+   },
+   "PLAN_LANTERN_REKONSTRUKTION.md": {
+    "sha256": "d3faddb5cc5d82d38e8c98153211a72066083e7b6c9cdb2dbba79bd97d4bc085",
+    "bytes": 32756
+   },
+   "PLAN_STRUKTUR.json": {
+    "sha256": "3eb0b93f362d7abb35e40eae2391c1d10a7af2924cde356fc2d96d81c6cd6fd3",
+    "bytes": 2550
+   },
+   "PLAN_STRUKTUR.yaml": {
+    "sha256": "43f986f64c095a8f2eebd369611436c1d6c1ee85db24290f0d0ca85d4856bcdf",
+    "bytes": 2102
+   },
+   "QUELLENINVENTAR.json": {
+    "sha256": "08ce7563259f128fc8ebebc0fc9ac7d0f3c58cf71c1e77a3f2ea8d826297f5e4",
+    "bytes": 7576
+   }
+  },
+  "authoritative": [
+   "LANTERN_REAKTIVIERUNG_IMPLEMENTIERUNGSPLAN.md",
+   "LANTERN_FACHREVIEW.md"
+  ],
+  "historical_inputs": [
+   "PLAN_LANTERN_REKONSTRUKTION.md",
+   "CLAUDE_REVIEW.md",
+   "AEON_REVIEW.md",
+   "PLAN_STRUKTUR.json",
+   "PLAN_STRUKTUR.yaml",
+   "QUELLENINVENTAR.json"
+  ],
+  "package_sha256sums_checked": {}
+ },
+ "untracked_main": [
+  {
+   "path": ".claude/worktrees/feldtheorie-archaeology/",
+   "bytes": null,
+   "is_nested_worktree": true,
+   "mtime_utc": "2026-07-27T20:08:36Z"
+  },
+  {
+   "path": ".claude/worktrees/feldtheorie-coverage-fix/",
+   "bytes": null,
+   "is_nested_worktree": true,
+   "mtime_utc": "2026-07-21T21:50:30Z"
+  },
+  {
+   "path": ".claude/worktrees/review-g01-g02-independent/",
+   "bytes": null,
+   "is_nested_worktree": true,
+   "mtime_utc": "2026-10-01T08:04:04Z"
+  },
+  {
+   "path": "analysis/results/index_recount_20260829T150233Z.json",
+   "bytes": 5411,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-29T15:02:35Z"
+  },
+  {
+   "path": "analysis/results/index_recount_20260829T150241Z.json",
+   "bytes": 5350,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-29T15:02:42Z"
+  },
+  {
+   "path": "analysis/results/rg_phase2_microscopic_validation.csv",
+   "bytes": 168,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-28T19:53:38Z"
+  },
+  {
+   "path": "analysis/results/rg_phase2_microscopic_validation.json",
+   "bytes": 312,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-28T19:53:38Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260818_201842.csv",
+   "bytes": 12113,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-18T18:18:40Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260819_101103.csv",
+   "bytes": 12113,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-18T17:32:55Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260821_092453.csv",
+   "bytes": 6824,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-19T09:30:27Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260821_093824.csv",
+   "bytes": 6824,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-19T09:30:27Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260822_094909.csv",
+   "bytes": 18959,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-21T07:57:18Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260822_100752.csv",
+   "bytes": 24583,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-22T08:07:42Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260822_102617.csv",
+   "bytes": 30141,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-22T08:26:05Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260823_093721.csv",
+   "bytes": 31641,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-22T08:30:44Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260823_095405.csv",
+   "bytes": 37266,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-23T07:53:55Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260823_100959.csv",
+   "bytes": 42821,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-23T08:09:48Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260823_205113.csv",
+   "bytes": 44878,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-23T08:15:22Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260824_093720.csv",
+   "bytes": 44878,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-23T08:15:22Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260824_125512.csv",
+   "bytes": 44878,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-23T08:15:22Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260824_130903.csv",
+   "bytes": 50500,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-24T11:08:52Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260824_132106.csv",
+   "bytes": 56105,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-24T11:20:56Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260825_135815.csv",
+   "bytes": 57406,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-24T11:24:16Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260825_141608.csv",
+   "bytes": 63006,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-25T12:15:53Z"
+  },
+  {
+   "path": "data/experimental/backups/aletheia_results_20260825_142314.csv",
+   "bytes": 65260,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-25T12:23:02Z"
+  },
+  {
+   "path": "docs/meta/sigillin_index.json",
+   "bytes": 593,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-28T20:46:44Z"
+  },
+  {
+   "path": "scripts/data/experimental/kappa_framing_results.csv",
+   "bytes": 11065,
+   "is_nested_worktree": false,
+   "mtime_utc": "2026-08-18T12:41:27Z"
+  }
+ ],
+ "worktrees": [
+  {
+   "worktree": "D:/mandala/Feldtheorie",
+   "HEAD": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+   "branch": "refs/heads/main",
+   "dirty_entries": 25
+  },
+  {
+   "worktree": "D:/mandala/.worktrees/feldtheorie-lantern-reconstruction",
+   "HEAD": "d1c56267ae81e90f9ebd7d5d195fea818b5f3930",
+   "branch": "refs/heads/lantern-reconstruction",
+   "dirty_entries": 1
+  },
+  {
+   "worktree": "D:/mandala/.worktrees/feldtheorie-mandala-memory",
+   "HEAD": "e49f2b1187f84950cdcc6f65011eaf2f4443cece",
+   "branch": "refs/heads/mandala-memory",
+   "dirty_entries": 0
+  },
+  {
+   "worktree": "D:/mandala/Feldtheorie/.claude/worktrees/feldtheorie-archaeology",
+   "HEAD": "45bf7eee5a83705634672bd3cd2e4ca99a2dd930",
+   "branch": "refs/heads/worktree-feldtheorie-archaeology",
+   "dirty_entries": 0
+  },
+  {
+   "worktree": "D:/mandala/Feldtheorie/.claude/worktrees/feldtheorie-coverage-fix",
+   "HEAD": "607b232e91240948a48354ff9224dc99438c01ec",
+   "branch": "refs/heads/worktree-feldtheorie-coverage-fix",
+   "dirty_entries": 0
+  },
+  {
+   "worktree": "D:/mandala/Feldtheorie/.claude/worktrees/review-g01-g02-independent",
+   "HEAD": "966b28fad12736b7e218855fcdb8cd845747afad",
+   "branch": "refs/heads/review/g01-g02-independent-verification",
+   "locked": "claude session review-g01-g02-independent (pid 6880)",
+   "dirty_entries": 1
+  }
+ ],
+ "python": "3.11.9"
+}

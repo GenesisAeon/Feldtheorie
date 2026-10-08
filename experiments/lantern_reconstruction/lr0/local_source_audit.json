@@ -1,0 +1,66 @@
+{
+  "scope": "selected source methods only; full loader/import and experiment untested",
+  "source_hashes": {
+    "v9_alpha/api/lantern_bridge.py": {
+      "raw_sha256": "a2b4f726d04d71f2c0f6edc0c77c21516496e09c96c7ed692aed6841ae35bb61",
+      "lf_sha256": "db45f76fbae6c1a23be547f5ddf19d64f410f9d54ea4cdb628da2943903c54d4"
+    },
+    "v9_alpha/config/lantern_hub.yaml": {
+      "raw_sha256": "9ca1664bbb0fbe58ecdc925b9bf53b08b46fd472fbd1eb131b3e575dc14f73ef",
+      "lf_sha256": "5622d38e1ab5306fc69b34d87694ee0b4797f7e102dc1f48477fd907ffe16786"
+    },
+    "v9_alpha/models/phase_dynamics.py": {
+      "raw_sha256": "767a98a4905a27b99baff335a93947401241d1384a06af1e587143200015884e",
+      "lf_sha256": "3ad681d428d53e7b73692983904a53f80257c02e48b200b76e6e3982f22f259d"
+    }
+  },
+  "nodes": 34,
+  "edges": 561,
+  "kappa_clipped_edges": 187,
+  "final_edges_at_one": 9,
+  "strength_min": 0.8286366711648625,
+  "strength_max": 25.086797192035903,
+  "g": 0.03986160498469138,
+  "lambda2": 0.03403007351083378,
+  "lambda_max": 1.0386858432748787,
+  "mean_weight": 0.6410037880529563,
+  "matrix_max_abs_error": 2.220446049250313e-16,
+  "phase_200_steps_max_circular_error": 4.163336342344337e-17,
+  "zero_noise_consumes_global_rng": true,
+  "canonical_ids": [
+    "exp-neuroprofile-001",
+    "exp-phaethon-sim-001",
+    "lantern-experiment-001",
+    "lantern-experiment-002",
+    "lantern-theory-001",
+    "lantern-theory-002",
+    "metaquest-campaign-001",
+    "metaquest-system-001",
+    "model-abm-microscopic-001",
+    "model-adaptive-membrane-001",
+    "model-cosmic-alpha-phi-001",
+    "model-coupled-field-001",
+    "model-logistic-threshold-001",
+    "model-resonant-impedance-001",
+    "model-rg-flow-001",
+    "model-sigmoid-fit-001",
+    "release-mirror-v4-001",
+    "seed-aletheia-001",
+    "seed-entropy-geom-001",
+    "seed-implosive-feedback-001",
+    "seed-klimakluft-001",
+    "seed-klimakluft-process-001",
+    "seed-mirror-machine-001",
+    "seed-morfit-001",
+    "seed-morph-compute-001",
+    "seed-neurokosmos-001",
+    "seed-quantum-alias-001",
+    "seed-type6-001",
+    "seed-wolfmessing-001",
+    "utac-v1_3-ds-001",
+    "utac-v1_3-ds-002",
+    "utac-v1_3-ds-003",
+    "utac-v1_3-ds-004",
+    "utac-v1_3-ds-005"
+  ]
+}
