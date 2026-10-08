@@ -1,0 +1,79 @@
+# YAML twin of lr2_status.json (generated; the JSON is authoritative)
+schema: lantern-lr2-status-v1
+package: LR2 - Numerischer Kern
+date: '2026-10-08'
+base: branch lantern-reconstruction after the REVIEW_LR1 fix 7375190
+modules:
+  dynamics.py: batched noise-free Kuramoto drift in difference form theta_j - theta_i, Euler step with the original wrap, strict input checks, no random source
+  linear_diagnostics.py: L, pair write matrix E, difference operator D_O, H(t)=D_O expm(-gLt) aE, R=sigma^2(I+11^T), whitened singular values, Fisher matrix (linear model only)
+  legacy_probe.py: 'new worker mode: the ORIGINAL PhaseEvolver.evolve_phases in a separate process'
+  tools/lr2_make_reference.py: deterministic development reference data, written exclusively
+reference_artifact:
+  path: experiments/lantern_reconstruction/artifacts/lr2_reference/
+  files_sha256:
+    kernel_cases.npz: dcb3874aa4f128c7802d0b62f5464ceb19711fddc46b93eb1b37c7628ee53ad9
+    ode_cases.npz: cf90b1b83423c5a7f5152d4e7282ba43b42e33cdbdbb9294d5870145fa581b60
+    kernel_original.npz: e92896f2b966c3a5a6380609fe5f475d8ac3369d4bd068666870f652ecad9245
+  pins: file hashes pinned in tests/test_lr2.py (reviewed code), not only in the artifact manifest
+  deterministic: regenerated twice with identical file hashes
+  streams: SeedSequence([2026100802, 120, k]) kernel cases, [2026100802, 220, k] ODE cases; never the global RNG
+gates:
+  G1_original_equivalence:
+    spec: 'plan 10.1: >=100 deterministic development states, 500 steps, several sizes/scales incl. zero matrix, circular max <= 1e-12'
+    cases: 100 (Lantern C at g and 5g, zero 34/5, random dense 2..34, uniform 4..12, sparse 20)
+    result: 'PASSED: max circular distance 1.6e-14'
+    live_check: '3 fresh cases in a new legacy process: <= 1e-12'
+  G2_ode_accuracy:
+    spec: 'plan 10.2: >=32 stored synthetic cases, sizes up to 34, times up to 10; dt, dt/2, dt/4 vs a high-accuracy solve_ivp reference; max circular distance <= 0.005 rad'
+    reference: DOP853 rtol 1e-11 atol 1e-12, cross-checked with Radau (< 1e-8 on 3 cases)
+    panel: 32 cases fixed BEFORE the run (not changed afterwards)
+    result: 'NOT PASSED over the full panel: max 0.1165 (dt 0.02), 0.0606 (0.01), 0.0309 (0.005); first-order convergence (ratio ~2)'
+    breakdown:
+      lantern_C_study_g_study_init: 1.57e-3 at dt 0.02
+      lantern_C_5g_study_init: '2.63e-3'
+      dense34_g0.03_study_init: '1.15e-3'
+      uniform8_study_init: '2.16e-3'
+      failing: 'random initial phases on strongly coupled random graphs (g*max row sum 3.4-4.8) and 2-node g=2 cases: up to 0.117'
+    status: OPEN GATE LR2-G1 -- decision needed before the freeze (LR6)
+    options:
+    - restrict the gate panel to the study regime and scale variants (with justification and reviewer approval; the full panel stays reported)
+    - smaller dt for the study (cost ~1/dt; dt 0.005 still fails the full panel)
+    - another integrator (deviates from the original Euler kernel; would need its own equivalence argument)
+    decoder_metric_part: the second half of 10.2 (decoder metric change <= 0.01) needs the decoder (LR4)
+  G3_analytic_oracles:
+    two_node: delta(1.3)=0.0656648863608956 exact; ODE < 1e-10; Euler first order
+    free_drift: exact (<1e-12 after 500 steps)
+    time_rescaling: g/u with u*dt identical (<1e-12)
+    remote_linear_transfer: H(t) = exp(-2t) sinh(sqrt2 t) to 1e-14; peak 0.6232252401402304, gain 0.28752355827362913; nonlinear small amplitude within 0.2 %
+    uniform_complete_graph: unwritten outputs stay exactly equal (nonlinear) and H = 0 (linear)
+  G4_structural:
+  - joint permutation equivariance
+  - global rotation equivariance
+  - coupling axis order (pull towards the neighbour)
+  - inputs never modified
+  - no global RNG use
+  - negative/asymmetric/diagonal/bool/NaN/shape rejected
+  - time grid -> steps 0,25,50,100,150,250,500
+  - lab code imports no legacy module and never calls evolve_network
+observations:
+- id: LR2-B1
+  text: 'The regular package import v9_alpha.models fails in the lab environment: v9_alpha/models/__init__.py imports sensorium -> pandas (not installed). The worker records this and executes the UNCHANGED original file phase_dynamics.py by path (package __init__ bypassed); its raw hash equals the inventory. No environment changed.'
+- id: LR2-B2
+  text: The original kernel consumes the global NumPy RNG in every case even at noise_level=0 (recorded); the lab core has no random source.
+- id: LR2-B3
+  text: The original kernel silently ignores C_ij <= 0 and accepts asymmetric matrices; the lab core rejects both explicitly.
+tests:
+  file: tests/test_lr2.py
+  result_all_lantern_tests: 76/76
+  run: python -m pytest experiments/lantern_reconstruction/tests
+ad_hoc_mutation_check:
+  killed: 12/12
+  includes_plan_mutants:
+  - 3
+  - 4
+  note: full tool with the 18 plan mutants in LR5
+not_done:
+- tangent equation along heterogeneous trajectories (later, plan 5.3)
+- decoder metric part of gate 10.2 (LR4)
+- no episodes, no tasks A/B, no decoder, no research computation
+- no change to original modules or M0-M12; no freeze, merge or push

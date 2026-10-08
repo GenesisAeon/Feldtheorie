@@ -6,7 +6,7 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 |---|---|---|
 | LR0 | Lokaler Bestand: Worktree, Regeln, Hashvergleich der elf Quellen, Inventar, Sicherung | ✅ erledigt, siehe [Bericht](lr0/LR0_BERICHT.md); wartet auf Prüfung |
 | LR1 | Snapshot und Import: separater Legacy-Prozess, kanonische Matrix, Importmanifest | ✅ erledigt, siehe [Bericht](lr1/LR1_BERICHT.md); wartet auf Prüfung |
-| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | offen |
+| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md); **offenes Gate LR2-G1** (ODE-Genauigkeit über das Gesamtpanel); wartet auf Prüfung |
 | LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | offen |
 | LR4 | Ridge und Evaluation | offen; vorher Entscheidung LR0-O1 (scikit-learn) |
 | LR5 | Laufverwaltung und CI | offen |
@@ -28,3 +28,11 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Beobachtet:** Der Aufbau setzt den globalen RNG neu (über `hash()`). NumPy startet beim Import `cmd /c ver`. Der Versuchspfad importiert keinen Legacy-Code.
 - **Nachtrag nach `REVIEW_LR1`:** R1 (Manifestwerte nachgerechnet und gepinnt), R2 (alle Knotenparameter gegen die Registry, Pflicht-Pins) und R3 (unveränderlicher Speicher) sind geschlossen. Dazu das vollständige Importmanifest.
 - **Prüfungen:** Tests 52/52, Ad-hoc-Mutation effektiv 25/25 (ein Überlebender war eine echte Testlücke und ist geschlossen).
+
+## LR2 (2026-10-08)
+
+- **Kern:** gebatchte Euler-Dynamik in Differenzform ohne Zufallsquelle; lineares H(t) mit rauschgewichteten Singulärwerten.
+- **Originaläquivalenz:** 1,6·10⁻¹⁴ über 100 Fälle; der echte Originalkern lief dafür in einem separaten Prozess.
+- **Offenes Gate LR2-G1:** Die ODE-Genauigkeit ≤ 0,005 rad ist über das vorab festgelegte Panel **nicht bestanden** (0,117 bei dt = 0,02). Im Studienregime liegt der Fehler bei 1,6·10⁻³. Entscheidung vor LR6.
+- **Beobachtet:** `v9_alpha.models` braucht pandas, deshalb lief der Originalkern über den Dateipfad. Der Originalkern ignoriert negative Kopplungen und Asymmetrie.
+- **Prüfungen:** Tests 76/76, Ad-hoc-Mutation 12/12.
