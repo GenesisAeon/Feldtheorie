@@ -44,3 +44,10 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Abnahmen:** Referenzknoten-Leak negativ getestet; Reset und Nullimpuls gleich für alle u; Surrogatinvarianten. Dazu die harten Gates aus § 10.
 - **Prüfungen:** Tests 165/165; Ad-hoc-Mutation 13/14 erkannt, 1 äquivalent, 2 echte Testlücken geschlossen.
 - **Nachtrag nach `REVIEW_LR3`:** strikte Stromschlüssel und Episoden-IDs; Batch an Studie, Kontext und Konfiguration gebunden; Chunk geprüft; Surrogatbericht erhalten; unveränderliche Konfiguration. Tests 182/182, Mutation der neuen Verträge 13/13.
+- **Nachtrag nach Astras Nachprüfung** (`LANTERN_LR3_NACHREVIEW_2026-10-08`, Stand `d43427d`): Die ursprünglichen Gegenfälle sind bestätigt behoben. Die neuen Befunde F1, F2, E1 und E2 wurden zuerst reproduziert und dann geschlossen:
+  - Beobachtungsspezifikation vollständig gegen den Kontext geprüft, mit neuem Einstieg `observe()` für LR4;
+  - Messarrays mit exakter Form, endlich, ohne Broadcasting;
+  - Leseknoten als echte Ganzzahlen;
+  - Stromschlüssel in [0, 2³²).
+
+  Gültige Aufrufe sind alt gegen neu bitgleich (173 Digests). Tests 233/233, Mutation der neuen Wächter 18/18. Astras Nachprüfung dieses Fixes steht aus.

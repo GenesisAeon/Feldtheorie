@@ -63,7 +63,11 @@ def check_context(ctx: ContextSpec) -> None:
         raise ValueError("write_pairs must be exactly four pairs of integer node indices")
     if ctx.write_pairs != tuple((perm[2 * k], perm[2 * k + 1]) for k in range(4)):
         raise ValueError("write pairs must be the first eight entries of the stored permutation")
-    if not isinstance(ctx.read_nodes, tuple) or ctx.read_nodes != tuple(perm[8:17]) or not _true_int(ctx.reference) or ctx.reference != ctx.read_nodes[-1]:
+    if (not isinstance(ctx.read_nodes, tuple) or not all(_true_int(i) and 0 <= i < N for i in ctx.read_nodes)
+            or not _true_int(ctx.reference) or not 0 <= ctx.reference < N):
+        # checked one by one BEFORE the tuple comparison: (8.0,) == (8,) is True (review E1)
+        raise ValueError("read nodes and reference must be integer node indices in [0, 34)")
+    if ctx.read_nodes != tuple(perm[8:17]) or ctx.reference != ctx.read_nodes[-1]:
         raise ValueError("read nodes/reference must follow the stored permutation (reference = last read node)")
     w, r = set(ctx.write_nodes), set(ctx.read_nodes)
     if len(w) != 8 or len(r) != 9 or w & r or ctx.reference not in r or ctx.reference in w:

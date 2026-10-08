@@ -61,10 +61,19 @@ class StreamError(ValueError):
     pass
 
 
+KEY_COMPONENT_LIMIT = 2 ** 32
+
+
 def check_index(x, what: str) -> int:
-    """A non-negative TRUE integer (no bool, no float), checked before any conversion."""
-    if isinstance(x, (bool, np.bool_)) or not isinstance(x, (int, np.integer)) or x < 0:
-        raise StreamError(f"{what} must be a non-negative integer (got {x!r})")
+    """A TRUE integer (no bool, no float) with 0 <= x < 2**32, checked before any conversion.
+
+    The upper bound (follow-up review E2) makes each key component exactly one 32-bit SeedSequence
+    word, so different key tuples cannot encode to the same entropy: unbounded integers are split
+    into several words, e.g. (6321068099, 1, ...) and (2026100803, 4294967297, ...) gave identical
+    streams. Keys inside the bound are unchanged, so are all streams. Larger IDs would need a
+    versioned, framed key encoding -- a protocol change, never mixed silently with this one."""
+    if isinstance(x, (bool, np.bool_)) or not isinstance(x, (int, np.integer)) or not 0 <= x < KEY_COMPONENT_LIMIT:
+        raise StreamError(f"{what} must be a non-negative integer below 2**32 (got {x!r})")
     return int(x)
 
 

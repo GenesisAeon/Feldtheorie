@@ -28,8 +28,8 @@ dev_runtime:
   simulation: about 27 ms per episode and condition (RK4, 500 steps, chunk 256, this PC)
   full_volume_estimate: 2250 episodes x 4 conditions x 20 contexts ~ 80 min -- an estimate; the LR5 benchmark measures it (plan budget 2 h production)
 tests:
-  file: tests/test_lr3.py
-  result_all_lantern_tests: 182/182
+  file: tests/test_lr3.py, tests/test_lr3_nachreview.py
+  result_all_lantern_tests: 233/233
   run: python -m pytest experiments/lantern_reconstruction/tests
   note: the first LR3 commit f313437 lacked the YAML twin and this count (a failed helper snippet); added in the follow-up commit
 ad_hoc_mutation_check:
@@ -45,6 +45,7 @@ ad_hoc_mutation_check:
   - 'measurement errors drawn from the target stream (now: each draw from its own role stream)'
   - same surrogate for all contexts through coupling_matrices (now tested on the production path)
 open:
+- 'Astra: re-check of this follow-up fix'
 - decoder metric gate (<= 0.01) and Ridge in LR4
 - runtime benchmark and CI in LR5
 - final master seeds and context list at the freeze (LR6)
@@ -65,3 +66,25 @@ review_fix_REVIEW_LR3:
     configuration: streams.defaults() is deeply immutable; config_sha256() binds it to the LF-normalised study_defaults.json
   after_fix: all five of Astra's cases rejected / the iterator keeps its ids
   mutation: '13/13 of the new contracts (2 survivors in the first run were a real test gap: coarse negative cases were caught by later checks only; otherwise-valid permutation mismatches added)'
+  status_d43427d: verified by Claude; Astra's independent re-check LANTERN_LR3_NACHREVIEW_2026-10-08 confirmed all five original counterexamples fixed (44/44 of her controls) and found new gaps F1/F2 (+ E1/E2) -- see followup_review_LANTERN_LR3_NACHREVIEW
+followup_review_LANTERN_LR3_NACHREVIEW:
+  review: 'D:/mandala/mandala-memory-results/lantern-reconstruction-plan/LANTERN_LR3_NACHREVIEW_2026-10-08.md (+ LANTERN_LR3_NACHREVIEW_CLAUDE_PAKET.zip, SHA256SUMS ok); reviewed: review-repo commit caa0ef82 = Lantern stand d43427d'
+  not_a_claim: 'the review does NOT say that everything is independently verified: the original R1-R3 cases are confirmed fixed, the new findings below were open at d43427d'
+  reproduced_first_at_d43427d:
+    F1a: 'ObservationSpec(''b'', write_nodes, reference) accepted by check_observation; t=0 feature difference u vs -u = 0.4353948827558046 (valid B: 0.0)'
+    F1b: A spec with node -26 (= reference 8 under NumPy indexing) accepted; feature pair constant (sin 0, cos 1), shape still (4, 66)
+    F2: 'eps of shape (4, 1) broadcast and cancelled: difference to noiseless features exactly 0; NaN eps accepted'
+    E1: read_nodes as floats accepted by check_context ((8.0,) == (8,))
+    E2: keys (6321068099, 1, 0, 30, 0) and (2026100803, 4294967297, 0, 30, 0) gave identical draws (NumPy 2.2.6 here, 2.3.5 at Astra)
+    reviewer_script: 'reproduce_lr3_followup.py: 44/44 controls, open F1 F2'
+  fixes:
+    F1: check_observation runs check_context, requires task exactly 'A'/'B', every node/reference a TRUE integer in [0, 34) before use, reference == ctx.reference, A = all non-reference nodes ascending, B = ctx.read_nodes[:-1]; features() checks task and indices context-free; new observe(ctx, spec, states, eps) is the validated research entry point for LR4
+    F2: features() requires states and eps as real (integer or floating, not bool/complex/object), finite, two-dimensional (n, 34) arrays with n >= 1 and IDENTICAL shape, checked before any addition or indexing; arithmetic for valid inputs unchanged
+    E1: check_context checks every read node and the reference as a true integer in [0, 34) before the tuple comparison
+    E2: 'closed by a documented range: every numeric stream-key component in [0, 2**32) (one SeedSequence word each); larger IDs would need a versioned, framed encoding = protocol change'
+  after_fix:
+    reviewer_script_expect_fixed: 44/44 controls, open_required_fixes [], exit 0; F1/F2/E1/E2 rejected with explicit messages
+    old_vs_new: 173 digests of valid calls identical between d43427d and the fix (20 context fingerprints, train/val/test batches, streams up to 2**32-1, surrogates, A/B features for 4 matrices x 3 controls x 2 contexts, int and float32 inputs)
+    targeted_mutation: '18/18 guard mutants killed by test_lr3_nachreview.py (first run 17/18: the width check survived because all shape cases differed between both sides -- a real test gap, closed with same-wrong-width cases)'
+    tests: 233/233 (182 before + 51 in test_lr3_nachreview.py)
+  evidence: D:/mandala/mandala-memory-results/lantern/lr3_nachreview/
