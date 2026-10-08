@@ -6,7 +6,7 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 |---|---|---|
 | LR0 | Lokaler Bestand: Worktree, Regeln, Hashvergleich der elf Quellen, Inventar, Sicherung | ✅ erledigt, siehe [Bericht](lr0/LR0_BERICHT.md); wartet auf Prüfung |
 | LR1 | Snapshot und Import: separater Legacy-Prozess, kanonische Matrix, Importmanifest | ✅ erledigt, siehe [Bericht](lr1/LR1_BERICHT.md); wartet auf Prüfung |
-| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md); **offenes Gate LR2-G1** (ODE-Genauigkeit über das Gesamtpanel); wartet auf Prüfung |
+| LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md). ODE-Gate: Euler nicht bestanden (bleibt dokumentiert), **RK4 bestanden** (Planänderung AE-01); Decoderteil offen bis LR4; wartet auf Prüfung |
 | LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | offen |
 | LR4 | Ridge und Evaluation | offen; vorher Entscheidung LR0-O1 (scikit-learn) |
 | LR5 | Laufverwaltung und CI | offen |
@@ -36,3 +36,4 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Offenes Gate LR2-G1:** Die ODE-Genauigkeit ≤ 0,005 rad ist über das vorab festgelegte Panel **nicht bestanden** (0,117 bei dt = 0,02). Im Studienregime liegt der Fehler bei 1,6·10⁻³. Entscheidung vor LR6.
 - **Beobachtet:** `v9_alpha.models` braucht pandas, deshalb lief der Originalkern über den Dateipfad. Der Originalkern ignoriert negative Kopplungen und Asymmetrie.
 - **Prüfungen:** Tests 77/77, Ad-hoc-Mutation 12/12.
+- **Planänderung AE-01** (Johann/Astra): Die Studie integriert mit **RK4**, dt = 0,02. Auf dem unveränderten Panel liegt der Fehler bei 3,2·10⁻⁷ (vierte Ordnung). Euler bleibt unverändert, sein Fehlschlag dokumentiert. RK4 ist für die geforderte Genauigkeit etwa 6-mal günstiger. Tests 93/93, RK4-Mutation 6/6. Die Decoderkennzahl (≤ 0,01) bleibt bis LR4 offen.

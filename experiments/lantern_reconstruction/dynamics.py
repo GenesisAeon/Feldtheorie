@@ -125,6 +125,49 @@ def steps_for_times(times: Iterable[float], dt: float) -> list:
     return out
 
 
+# --- classical fourth-order Runge-Kutta (plan change AE-01, added before the freeze) -------------
+# Solves the SAME noise-free ODE as above with the SAME validated drift; its discrete steps are
+# NOT expected to equal the original Euler kernel (that equivalence belongs to the Euler path,
+# which stays unchanged).
+def rk4_step(theta: np.ndarray, C: np.ndarray, omega: np.ndarray, g: float, dt: float) -> np.ndarray:
+    k1 = drift(theta, C, omega, g)
+    k2 = drift(theta + 0.5 * dt * k1, C, omega, g)
+    k3 = drift(theta + 0.5 * dt * k2, C, omega, g)
+    k4 = drift(theta + dt * k3, C, omega, g)
+    return theta + (dt / 6.0) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
+
+
+def integrate_rk4(theta0, C, omega, g: float, dt: float, n_steps: int, record_steps: Optional[Sequence[int]] = None,
+                  *, wrap_states: bool = True) -> np.ndarray:
+    """RK4 integration of a batch; same validation, recording and wrap conventions as integrate().
+    Stages use the unwrapped intermediate states (the drift is 2*pi-periodic in every component)."""
+    theta, C, omega, g = check_inputs(theta0, C, omega, g)
+    if not (isinstance(n_steps, (int, np.integer)) and not isinstance(n_steps, bool) and n_steps >= 0):
+        raise DynamicsError("n_steps must be a non-negative integer")
+    if not (np.isfinite(dt) and dt > 0):
+        raise DynamicsError("dt must be finite and positive")
+    rec = [int(n_steps)] if record_steps is None else [int(s) for s in record_steps]
+    if any(s < 0 or s > n_steps for s in rec) or rec != sorted(rec):
+        raise DynamicsError("record_steps must be sorted and within [0, n_steps]")
+    C_ro, om_ro = C.copy(), omega.copy()
+    C_ro.setflags(write=False)
+    om_ro.setflags(write=False)
+    x = theta.copy()
+    out = []
+    want = iter(rec)
+    nxt = next(want, None)
+    for step in range(n_steps + 1):
+        while nxt is not None and nxt == step:
+            out.append(x.copy())
+            nxt = next(want, None)
+        if step == n_steps:
+            break
+        x = rk4_step(x, C_ro, om_ro, g, dt)
+        if wrap_states:
+            x = wrap(x)
+    return np.stack(out)
+
+
 def ode_rhs(C: np.ndarray, omega: np.ndarray, g: float):
     """Right-hand side for scipy.integrate.solve_ivp (single state, unwrapped)."""
     C = check_coupling(C)

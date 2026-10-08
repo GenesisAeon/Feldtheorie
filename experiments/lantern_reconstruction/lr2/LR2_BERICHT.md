@@ -58,3 +58,49 @@ Der zweite Teil von 10.2 (Änderung der Decoderkennzahl ≤ 0,01) braucht den De
 - Episoden, die Aufgaben A und B, Decoder und Forschungsrechnung.
 
 Originalmodule und M0–M12 sind unverändert; es gab keinen Freeze, keinen Merge und keinen Push.
+
+## Nachtrag: Planänderung AE-01 – RK4 (2026-10-08)
+
+**Auftrag:** Johann/Astra. Der Pfad bekommt einen gebatchten klassischen **Runge-Kutta-Integrator vierter Ordnung** dazu. Originalmodule und Euler-Code bleiben unverändert; der Diff von `dynamics.py` hat nur Zusätze. Dokumentiert ist die Änderung in [`protocol/PLAN_AENDERUNGEN.md`](../protocol/PLAN_AENDERUNGEN.md).
+
+**Euler:**
+- Er behält seinen bestandenen Originaläquivalenztest (1,6·10⁻¹⁴).
+- Sein ODE-Fehlschlag **bleibt dokumentiert** und ist durch einen Test festgehalten.
+- RK4 muss die diskreten Euler-Schritte nicht nachbilden.
+
+**RK4 auf dem unveränderten 32-Fälle-Panel:** ✅ **3,2·10⁻⁷ rad bei dt = 0,02** (Grenze 0,005).
+
+| dt | größter Fehler |
+|---|---|
+| 0,02 | 3,2·10⁻⁷ |
+| 0,01 | 2,1·10⁻⁸ |
+| 0,005 | 1,4·10⁻⁹ |
+
+Der Fehler fällt pro Halbierung etwa um den Faktor 16, also vierte Ordnung.
+
+**Weitere RK4-Prüfungen:**
+- Lehrbuchschritt;
+- Zwei-Knoten-Lösung mit vierter Ordnung, freie Drift, Zeitreskalierung;
+- Ferntransfer bei kleiner Amplitude (relativ 10⁻⁶), uniformer Vollgraph;
+- Permutation und Rotation, unveränderte Eingaben, kein globaler RNG;
+- **Batch-Unabhängigkeit** (Größe, Reihenfolge, Aufteilung; auch Euler) und Wrap-Konvention (auch Euler);
+- Abweisung ungültiger Eingaben.
+
+**Laufzeit** (256 Episoden, t = 10):
+
+| Verfahren | dt | Laufzeit | Fehler |
+|---|---|---|---|
+| Euler | 0,02 | 2,5 s | 0,117 |
+| Euler | 0,005 | 10,0 s | 0,031 |
+| Euler | 0,00125 | 39,2 s | ≈ 0,007 |
+| RK4 | 0,02 | 9,2 s | 3,2·10⁻⁷ |
+
+RK4 kostet pro Schritt etwa das 3,7-Fache. Für die geforderte Genauigkeit ist es geschätzt etwa 6-mal günstiger als ein hinreichend kleiner Euler-Schritt.
+
+**Mutation:**
+- RK4: 6/6. Zunächst überlebte `rk4_no_wrap`, eine echte Testlücke, weil nur zirkulär verglichen wurde. Der neue Test der Wrap-Konvention gilt für beide Verfahren.
+- Euler-Kern: unverändert 12/12.
+
+**Tests:** 93/93.
+
+**Offen:** Die **Decoderkennzahländerung ≤ 0,01** (zweiter Teil von Plan 10.2) bleibt bis LR4 offen. Das bestandene Zustandsgate schließt sie nicht.
