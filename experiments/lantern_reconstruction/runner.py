@@ -67,9 +67,10 @@ def training_targets(ctx: ContextSpec, u_train: np.ndarray, control: str, task: 
 
 
 def iter_cells(ctx: ContextSpec, prep: Dict, g: float, condition: str, control: str, tasks: Sequence[str],
-               dt: Optional[float] = None, keep_states: Optional[Dict] = None):
+               dt: Optional[float] = None, keep_states: Optional[Dict] = None, scorer=None):
     """One trajectory per split for (condition, control), then per (task, time) the fitted, cell-bound
-    decoder and its test result. Features ONLY via observation.observe()."""
+    decoder and its test result. Features ONLY via observation.observe(). scorer(model, cell, X_test, U_test)
+    replaces plain scoring (runs.py: persist the model, then score with integrity checks)."""
     d = streams.defaults()
     dt_used = d["integration"]["dt"] if dt is None else float(dt)
     sim_control = "none" if control == "permuted_targets" else control
@@ -85,8 +86,9 @@ def iter_cells(ctx: ContextSpec, prep: Dict, g: float, condition: str, control: 
                                           "task": task, "time": tau, "control": control, "dt": dt_used,
                                           "context_fingerprint": fingerprint(ctx), "config_sha256": streams.config_sha256()})
             check_decoder_for(model, ctx, task, condition=condition, time=tau, control=control, dt=dt_used)
-            yield {"condition": condition, "control": control, "task": task, "time": tau, "time_index": k, "model": model,
-                   "result": score_cell(model, X["test"], batches["test"].u)}
+            cell = {"condition": condition, "control": control, "task": task, "time": tau, "time_index": k, "dt": dt_used}
+            res = score_cell(model, X["test"], batches["test"].u) if scorer is None else scorer(model, cell, X["test"], batches["test"].u)
+            yield {**cell, "model": model, "result": res}
 
 
 def run_context(ctx: ContextSpec, C_lantern: np.ndarray, g: float, *, sizes: Optional[Dict[str, int]] = None,
