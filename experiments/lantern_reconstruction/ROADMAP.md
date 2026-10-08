@@ -24,6 +24,7 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 ## LR1 (2026-10-08)
 
 - **Vollständiger Original-Lader** in einem separaten Prozess (`PYTHONHASHSEED=0`, ohne Bytecode, Audit nur als Beobachtung).
-- **Snapshot:** `artifacts/registry_snapshot_v1`, kanonischer Hash `7237a784…`, IDs sortiert, alle Arrays gemeinsam permutiert. Die Matrix gleicht dem unabhängigen Nachbau bis 2,2·10⁻¹⁶.
+- **Snapshot:** zunächst `artifacts/registry_snapshot_v1`, ersetzt durch **v2** (kanonischer Hash `2d6a2a64…`, Manifest-Pin `5b7aa962…`). IDs sortiert, alle Arrays gemeinsam permutiert. Die Matrix gleicht dem unabhängigen Nachbau bis 2,2·10⁻¹⁶.
 - **Beobachtet:** Der Aufbau setzt den globalen RNG neu (über `hash()`). NumPy startet beim Import `cmd /c ver`. Der Versuchspfad importiert keinen Legacy-Code.
-- **Prüfungen:** Tests 22/22, Ad-hoc-Mutation 11/11.
+- **Nachtrag nach `REVIEW_LR1`:** R1 (Manifestwerte nachgerechnet und gepinnt), R2 (alle Knotenparameter gegen die Registry, Pflicht-Pins) und R3 (unveränderlicher Speicher) sind geschlossen. Dazu das vollständige Importmanifest.
+- **Prüfungen:** Tests 52/52, Ad-hoc-Mutation effektiv 25/25 (ein Überlebender war eine echte Testlücke und ist geschlossen).

@@ -91,14 +91,23 @@ def _worker(repo: str, config: str, out_dir: str) -> int:
     for name, mod in sorted(sys.modules.items()):
         f = getattr(mod, "__file__", None)
         if not f:
-            modules.append({"module": name, "file": None, "inside_repo": False})
+            modules.append({"module": name, "file": None, "inside_repo": False, "origin": "builtin_or_namespace"})
             continue
         p = Path(f).resolve()
         inside = repo_p in p.parents
         row = {"module": name, "file": p.relative_to(repo_p).as_posix() if inside else str(p), "inside_repo": inside}
-        if inside and p.is_file():
+        if p.is_file():
             row["raw_sha256"] = hashlib.sha256(p.read_bytes()).hexdigest()
         modules.append(row)
+    import importlib.metadata as md
+    dist_of = md.packages_distributions()
+    versions = {}
+    for top in sorted({m["module"].split(".")[0] for m in modules if not m["inside_repo"]}):
+        for dist in dist_of.get(top, []):
+            try:
+                versions[dist] = md.version(dist)
+            except md.PackageNotFoundError:
+                pass
     phase[0] = "export"
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -117,8 +126,9 @@ def _worker(repo: str, config: str, out_dir: str) -> int:
                        "consumed_by_construct": rng["after_construct"] != rng["after_import"]},
         "audit": {"kind": "observation (sys.addaudithook); nothing blocked, no isolation enforced or claimed",
                   "phases": {k: v for k, v in events.items() if k != "export"}},
-        "modules": {"count": len(modules), "inside_repo": [m for m in modules if m["inside_repo"]],
-                    "outside_repo_top_level": sorted({m["module"].split(".")[0] for m in modules if not m["inside_repo"]})},
+        "modules": {"count": len(modules), "all": modules, "inside_repo": [m for m in modules if m["inside_repo"]],
+                    "distribution_versions": versions, "python_executable": sys.executable,
+                    "note": "complete module list at the end of the extraction: module, origin file and raw SHA-256 of every file-backed module"},
     }
     fd = os.open(str(out / "probe_raw.json"), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
     with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as fh:

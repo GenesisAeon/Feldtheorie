@@ -1,7 +1,7 @@
 {
  "schema": "lantern-lr1-status-v1",
  "package": "LR1 - Snapshot und Import",
- "date": "2026-10-08",
+ "date": "2026-10-08 (revised after REVIEW_LR1)",
  "base": "branch lantern-reconstruction, after LR0 commit 0fe9f6a",
  "modules": {
   "legacy_probe.py": "full original loader (LanternNetwork) once in a SEPARATE process; audit observation; RNG states; export in YAML order",
@@ -10,14 +10,35 @@
  },
  "probe_process": {
   "isolation_claim": "none: separate process plus observation only; no sandbox, nothing blocked",
-  "environment": {"PYTHONHASHSEED": "0 (fixed)", "PYTHONDONTWRITEBYTECODE": "1", "user_site": "disabled (-s)", "PYTHONPATH": "removed",
-                  "TMP/TEMP/cwd": "D:", "OPENBLAS_NUM_THREADS": "1", "timeout_s": 300},
-  "import_time_s": 1.1, "construct_time_s": 0.14,
+  "environment": {
+   "PYTHONHASHSEED": "0 (fixed)",
+   "PYTHONDONTWRITEBYTECODE": "1",
+   "user_site": "disabled (-s)",
+   "PYTHONPATH": "removed",
+   "TMP/TEMP/cwd": "D:",
+   "OPENBLAS_NUM_THREADS": "1",
+   "timeout_s": 300
+  },
+  "import_time_s": 1.1,
+  "construct_time_s": 0.14,
   "modules_loaded": 708,
-  "repo_modules_loaded": ["v9_alpha/api/__init__.py", "v9_alpha/api/lantern_bridge.py", "models/__init__.py", "models/adaptive_logistic_membrane.py",
-                          "models/coherence_term.py", "models/collective_field.py", "models/consciousness_integration.py", "models/coupled_threshold_field.py",
-                          "models/klimakluft_amplifier.py", "models/logistic_envelope.py", "models/membrane_solver.py", "models/recursive_threshold.py",
-                          "models/resonant_impedance.py", "models/sigmoid_fit.py", "models/unified_constants.py"],
+  "repo_modules_loaded": [
+   "v9_alpha/api/__init__.py",
+   "v9_alpha/api/lantern_bridge.py",
+   "models/__init__.py",
+   "models/adaptive_logistic_membrane.py",
+   "models/coherence_term.py",
+   "models/collective_field.py",
+   "models/consciousness_integration.py",
+   "models/coupled_threshold_field.py",
+   "models/klimakluft_amplifier.py",
+   "models/logistic_envelope.py",
+   "models/membrane_solver.py",
+   "models/recursive_threshold.py",
+   "models/resonant_impedance.py",
+   "models/sigmoid_fit.py",
+   "models/unified_constants.py"
+  ],
   "repo_modules_note": "the broad models/__init__.py import pulls in 11 further model modules; v9_alpha/models is NOT imported by the loader",
   "observed_events": {
    "writes_before_export": "only 'nul' in the import phase (target of the subprocess below); none during construct/extract",
@@ -25,25 +46,54 @@
    "subprocess": "one, during import: cmd.exe /c ver, caller numpy/testing/_private/utils.py:92 platform.machine() -> platform.win32_ver(); a third-party side effect of NumPy on Windows, not Lantern code",
    "label": "observed by sys.addaudithook; NOT a proof of absence and NOT an enforced isolation"
   },
-  "global_rng": {"consumed_by_import": false, "consumed_by_construct": true,
-                 "cause": "LanternNetwork._initialize_collective_field reseeds np.random via hash(domain+type) (lantern_bridge.py:516)",
-                 "depends_on_PYTHONHASHSEED": true, "matrix_depends_on_it": false,
-                 "separation": "research path loads only the snapshot; registry_adapter imports no legacy module and leaves the global RNG untouched (tested in a fresh process)"},
+  "global_rng": {
+   "consumed_by_import": false,
+   "consumed_by_construct": true,
+   "cause": "LanternNetwork._initialize_collective_field reseeds np.random via hash(domain+type) (lantern_bridge.py:516)",
+   "depends_on_PYTHONHASHSEED": true,
+   "matrix_depends_on_it": false,
+   "separation": "research path loads only the snapshot; registry_adapter imports no legacy module and leaves the global RNG untouched (tested in a fresh process)"
+  },
   "coupling_targets": "loaded (68 entries in total) but not used by the matrix: removing them leaves C bit-identical (tested)"
  },
  "snapshot": {
-  "path": "experiments/lantern_reconstruction/artifacts/registry_snapshot_v1/ (snapshot.npz + snapshot.json; .gitattributes -text)",
-  "canonical_sha256": "7237a78427f352e3622dfc9183ecee9878ce895cf9e69522b6dd19b0638dab94",
+  "path": "experiments/lantern_reconstruction/artifacts/registry_snapshot_v2/ (snapshot.npz + snapshot.json; .gitattributes -text)",
+  "canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
   "container_sha256": "f7decf436c4d57674976ed5b655ba8c7704d1ce4dd35f14eef7454d760482ace",
   "order": "lexicographically sorted IDs; C and all node arrays permuted jointly; the permutation from YAML order is stored",
-  "arrays": ["C (34x34)", "beta", "theta_threshold (threshold, never a phase)", "frequency_hz", "impedance_z", "kappa_photonic", "kappa_em",
-             "kappa_metabolic", "wavelength_cm"],
-  "formula_check": {"independent_reconstruction": "own code from the YAML values; constants read (not imported) from models/unified_constants.py",
-                    "max_abs_error_yaml_order": 2.220446049250313e-16, "max_abs_error_canonical": 2.220446049250313e-16, "tolerance": 1e-14},
-  "structure": {"edges_positive": 561, "kappa_clipped_edges": 187, "final_edges_at_one": 9, "strength_min": 0.8286366711648625,
-                "strength_max": 25.086797192035903, "strength_argmin": "seed-morph-compute-001", "strength_argmax": "seed-wolfmessing-001",
-                "g": 0.03986160498469138, "lambda2_gL": 0.034030073510833994, "lambda_max_gL": 1.038685843274878, "mean_weight": 0.6410037880529563},
-  "reproducible": "canonical hash identical across independent probe runs and with PYTHONHASHSEED 0 and 1"
+  "arrays": [
+   "C (34x34)",
+   "beta",
+   "theta_threshold (threshold, never a phase)",
+   "frequency_hz",
+   "impedance_z",
+   "kappa_photonic",
+   "kappa_em",
+   "kappa_metabolic",
+   "wavelength_cm"
+  ],
+  "formula_check": {
+   "independent_reconstruction": "own code from the YAML values; constants read (not imported) from models/unified_constants.py",
+   "max_abs_error_yaml_order": 2.220446049250313e-16,
+   "max_abs_error_canonical": 2.220446049250313e-16,
+   "tolerance": 1e-14
+  },
+  "structure": {
+   "edges_positive": 561,
+   "kappa_clipped_edges": 187,
+   "final_edges_at_one": 9,
+   "strength_min": 0.8286366711648625,
+   "strength_max": 25.086797192035903,
+   "strength_argmin": "seed-morph-compute-001",
+   "strength_argmax": "seed-wolfmessing-001",
+   "g": 0.03986160498469138,
+   "lambda2_gL": 0.034030073510833994,
+   "lambda_max_gL": 1.038685843274878,
+   "mean_weight": 0.6410037880529563
+  },
+  "reproducible": "canonical hash identical across independent probe runs and with PYTHONHASHSEED 0 and 1",
+  "manifest_sha256": "5b7aa962da8b89157f400f50a51f01c45bd861f19deed456bd2c7498f60a04dc",
+  "replaces": "registry_snapshot_v1 (schema v1, canonical 7237a784...; removed from the tree, kept in git history 2a60c2b). Same numbers; the schema name enters the canonical hash, hence the new value."
  },
  "hash_notions": {
   "raw_sha256": "working-tree bytes (CRLF on this checkout)",
@@ -52,20 +102,97 @@
   "container_sha256": "these NPZ bytes; an equal array set saved again may differ",
   "canonical_sha256": "schema + IDs + node metadata + key/shape/'<f8' + C-order data; independent of the container (tested)"
  },
- "rejections_tested": ["missing source file", "blob differing from the baseline", "missing registry file for the probe",
-                       "matrix left in YAML order with sorted IDs (plan mutant 1, hashes made consistent)", "unsorted IDs",
-                       "probe IDs not in YAML order", "node array not permuted jointly", "NPZ byte flip (container)",
-                       "changed value with fixed container (canonical)", "changed value with both hashes fixed (independent formula)",
-                       "pinned canonical hash", "extra file", "float32", "NaN", "asymmetric C", "non-zero diagonal", "wrong shape",
-                       "pickled object array", "bool parameter in the YAML", "duplicate ID", "overwriting probe or snapshot"],
- "tests": {"files": ["tests/test_lr0.py", "tests/test_lr1.py"], "result": "22/22", "run": "python -m pytest experiments/lantern_reconstruction/tests"},
- "ad_hoc_mutation_check": {"killed": "11/11", "note": "in place with byte-exact restore; the full mutation tool with the 18 plan mutants follows in LR5"},
+ "rejections_tested": [
+  "missing source file",
+  "blob differing from the baseline",
+  "missing registry file for the probe",
+  "matrix left in YAML order with sorted IDs (plan mutant 1, hashes made consistent)",
+  "unsorted IDs",
+  "probe IDs not in YAML order",
+  "node array not permuted jointly",
+  "NPZ byte flip (container)",
+  "changed value with fixed container (canonical)",
+  "changed value with both hashes fixed (independent formula)",
+  "pinned canonical hash",
+  "extra file",
+  "float32",
+  "NaN",
+  "asymmetric C",
+  "non-zero diagonal",
+  "wrong shape",
+  "pickled object array",
+  "bool parameter in the YAML",
+  "duplicate ID",
+  "overwriting probe or snapshot"
+ ],
+ "tests": {
+  "files": [
+   "tests/test_lr0.py",
+   "tests/test_lr1.py"
+  ],
+  "result": "52/52",
+  "run": "python -m pytest experiments/lantern_reconstruction/tests"
+ },
+ "ad_hoc_mutation_check": {
+  "mutants": 25,
+  "killed_first_run": 24,
+  "survivor": "container_check_off: a re-packed NPZ with identical arrays was untested -- real test gap; new test added and verified to kill it",
+  "effective": "25/25",
+  "note": "in place with byte-exact restore; the full tool with the 18 plan mutants follows in LR5"
+ },
  "archived_probe": "D:/mandala/mandala-memory-results/lantern/lr1/probe_official/ (probe_raw.json + probe_raw.npz of the official run)",
  "deviations_and_open_points": [
-  {"id": "LR1-B1", "kind": "observation", "text": "NumPy starts cmd.exe /c ver at import (platform.machine on Windows); observed, not prevented; harmless for the snapshot."},
-  {"id": "LR1-B2", "kind": "observation", "text": "The loader reseeds the global NumPy RNG via hash(); the state depends on PYTHONHASHSEED, the matrix does not; kept out of the research path."},
-  {"id": "LR1-O1", "kind": "LR5", "text": "Full mutation tool with the 18 plan mutants (plan mutant 1 already covered ad hoc)."},
-  {"id": "LR1-O2", "kind": "open from LR0", "text": "Ridge implementation decision (NumPy closed form acceptable if regularisation, intercept and numerical stability are checked independently) waits for LR4."}
+  {
+   "id": "LR1-B1",
+   "kind": "observation",
+   "text": "NumPy starts cmd.exe /c ver at import (platform.machine on Windows); observed, not prevented; harmless for the snapshot."
+  },
+  {
+   "id": "LR1-B2",
+   "kind": "observation",
+   "text": "The loader reseeds the global NumPy RNG via hash(); the state depends on PYTHONHASHSEED, the matrix does not; kept out of the research path."
+  },
+  {
+   "id": "LR1-O1",
+   "kind": "LR5",
+   "text": "Full mutation tool with the 18 plan mutants (plan mutant 1 already covered ad hoc)."
+  },
+  {
+   "id": "LR1-O2",
+   "kind": "open from LR0",
+   "text": "Ridge implementation decision (NumPy closed form acceptable if regularisation, intercept and numerical stability are checked independently) waits for LR4."
+  }
  ],
- "not_done": ["no dynamics, no episodes, no decoder, no research computation", "no change to original modules or M0-M12", "no freeze, merge or push"]
+ "not_done": [
+  "no dynamics, no episodes, no decoder, no research computation",
+  "no change to original modules or M0-M12",
+  "no freeze, merge or push"
+ ],
+ "trust_contract": {
+  "research_entry": "registry_adapter.load_verified_snapshot(): pins from SNAPSHOT_PIN in the reviewed code (canonical + manifest SHA-256), full repository checks",
+  "pins": "canonical_pin and manifest_pin are mandatory arguments of load_snapshot (no defaults); the artifact never pins itself",
+  "recomputed_not_trusted": [
+   "all structure values from the verified arrays (strengths, argmin/argmax, g, eigenvalues, edge counts)",
+   "kappa clip count from the independent formula (with repository)",
+   "permutation vs recorded YAML order and vs the registry",
+   "every node array and metadata field vs the registry",
+   "recorded sources: exactly the eleven pinned files; blob = LF = pinned baseline; with repository = current hashes; raw hashes informational only"
+  ],
+  "strict_json": "no duplicate keys, no NaN/Infinity",
+  "exposed": "only recomputed/verified values (structure, sources, ids, arrays, meta, permutation); build-time probe information as recorded_probe (authenticated by the manifest pin, not re-executed)",
+  "immutability": "arrays on immutable byte buffers (write flag cannot be re-enabled), read-only mapping views (also nested), frozen dataclass; working_copy() for the dynamics; verify() recomputes the canonical hash",
+  "development_reader": "read_snapshot_unverified(): labelled UNVERIFIED, no pins, never a research input"
+ },
+ "review_fixes": {
+  "review": "D:/mandala/mandala-memory-results/lantern/astra-lr1-review/REVIEW_LR1.md (2a60c2b)",
+  "reproduced_first": "all three counterexamples reproduced unchanged in a copy (g=100/sources {}/identity permutation accepted with the original pin; beta[0]=999 accepted by the default loader; write flag re-enabled and C[0,1]=123 with unchanged hash)",
+  "after_fix": {
+   "manifest/original_pins": "rejected (manifest pin)",
+   "manifest/attacker_repinned": "rejected (permutation)",
+   "beta/original_pins": "rejected (manifest pin)",
+   "beta/attacker_repinned": "rejected (node array beta differs from the registry)",
+   "immutability": "refused (cannot set WRITEABLE flag)"
+  },
+  "import_manifest": "complete module list (708) with origin files and raw SHA-256, repo files additionally LF and blob, distribution versions"
+ }
 }

@@ -1,6 +1,6 @@
 # LR1 – Snapshot und Import (Bericht)
 
-Trilayer: [`lr1_status.json`](lr1_status.json) (maßgeblich), [`lr1_status.yaml`](lr1_status.yaml), dieser Bericht. Artefakt: [`artifacts/registry_snapshot_v1/`](../artifacts/registry_snapshot_v1/).
+Trilayer: [`lr1_status.json`](lr1_status.json) (maßgeblich), [`lr1_status.yaml`](lr1_status.yaml), dieser Bericht. Artefakt: [`artifacts/registry_snapshot_v2/`](../artifacts/registry_snapshot_v2/); es ersetzt v1, siehe den Nachtrag unten.
 
 ## Was gebaut wurde
 
@@ -79,9 +79,9 @@ Der Audithook ist eine **Beobachtung**. Er blockiert nichts, setzt keine Isolati
   - doppelte ID.
 - **Überschreiben:** Bestehende Probe- oder Snapshot-Ausgaben werden nie überschrieben.
 
-**Tests:** 22/22 (`python -m pytest experiments/lantern_reconstruction/tests`).
+**Tests:** 52/52 (nach dem Nachtrag) (`python -m pytest experiments/lantern_reconstruction/tests`).
 
-**Ad-hoc-Mutationsprüfung:** 11/11 erkannt, darunter Planmutant 1. Die vollständige Prüfung mit den 18 Planmutanten folgt in LR5.
+**Ad-hoc-Mutationsprüfung** (ursprünglicher Stand `2a60c2b`): 11/11 erkannt, darunter Planmutant 1; nach dem Nachtrag effektiv 25/25. Die vollständige Prüfung mit den 18 Planmutanten folgt in LR5.
 
 ## Offen
 
@@ -90,3 +90,33 @@ Der Audithook ist eine **Beobachtung**. Er blockiert nichts, setzt keine Isolati
 - **Archiv:** Die offiziellen Probe-Rohdaten liegen unter `D:/mandala/mandala-memory-results/lantern/lr1/probe_official/`.
 
 In LR1 gab es keine Dynamik, keine Episoden, keinen Decoder und keine Forschungsrechnung. Originalmodule und M0–M12 sind unverändert; es gab keinen Freeze, keinen Merge und keinen Push.
+
+## Nachtrag nach `REVIEW_LR1` (Astra, Stand 2a60c2b)
+
+Alle drei Gegenproben habe ich **zuerst unverändert reproduziert**:
+- `g = 100`, leere Quellenangabe und Identitäts-Permutation wurden **mit dem originalen Array-Pin** akzeptiert;
+- `beta[0] = 999` mit angepassten internen Hashes ging beim Standardaufruf durch;
+- das Write-Flag ließ sich wieder einschalten, `C[0,1] = 123` war möglich, und der Hash blieb gleich.
+
+Die Originalmatrix war nicht betroffen; es ging um die zugesicherten Prüf- und Schutzmechanismen.
+
+| Befund | Korrektur |
+|---|---|
+| **R1** ungeprüfte Manifestwerte | Alle operativen Strukturwerte werden aus den geprüften Arrays **nachgerechnet** und mit dem Manifest verglichen: Knotensummen samt argmin/argmax, g, Eigenwerte und Kantenzahlen. Mit Repository kommt die `kappa`-Begrenzungszahl aus der unabhängigen Formel. Die Permutation wird gegen die aufgezeichnete YAML-Reihenfolge und die Registry geprüft. Die Quellen müssen genau die elf gepinnten Dateien sein, mit Blob = LF = Basis; Rohhashes bleiben nur informativ, weil sie vom Checkout abhängen. Das **ganze Manifest** ist über einen eigenen Manifest-Pin verankert. JSON wird streng geladen (keine doppelten Schlüssel, kein NaN). Die vertrauenswürdige API liefert nur nachgerechnete Werte; die Probe-Angaben stehen getrennt als `recorded_probe` (durch den Pin authentifiziert, nicht neu ausgeführt). |
+| **R2** Knotenparameter | Beim Laden werden **alle** Knotenarrays und Metadaten gegen die Registry geprüft. Beide Pins sind **Pflichtargumente** ohne Vorgabe. Der Forschungseinstieg ist `load_verified_snapshot()` mit den Pins aus `SNAPSHOT_PIN` im geprüften Code. Der ungeprüfte Entwicklungs-Leser `read_snapshot_unverified()` ist getrennt und als UNVERIFIED gekennzeichnet. |
+| **R3** Unveränderlichkeit | Die Arrays liegen auf **unveränderlichem Bytespeicher**; das Write-Flag lässt sich nicht wieder setzen. Alle Mappings, auch verschachtelte, sind schreibgeschützte Ansichten in einer eingefrorenen Dataclass. `working_copy()` liefert unabhängige Kopien für die Dynamik, `verify()` rechnet den kanonischen Hash nach und erkennt auch eine bewusste Umgehung. |
+| **Importmanifest** | vollständige Modulliste (708) mit Ursprungsdatei und Roh-SHA-256; Repo-Dateien zusätzlich mit LF- und Blob-Hash; Paketversionen |
+
+**Snapshot v2:**
+- Kanonischer Hash `2d6a2a64…`, Manifest-Pin `5b7aa962…`.
+- Die Zahlenwerte sind gleich v1. Der Schemaname geht in den kanonischen Hash ein, deshalb ist der Wert neu.
+- v1 ist aus dem Baum entfernt und bleibt in der Git-Historie (`2a60c2b`).
+
+**Gegenprobe danach:**
+- Astras Manipulationen werden mit den Original-Pins abgewiesen (Manifest-Pin).
+- Selbst mit vom Angreifer neu berechneten Pins werden sie abgewiesen: über die Permutation bzw. weil `beta` von der Registry abweicht.
+- Das Write-Flag wird verweigert.
+
+**Tests:** 52/52.
+
+**Ad-hoc-Mutation:** 25 Mutanten, davon 14 neu für R1–R3. Im ersten Lauf wurden 24 erkannt. Überlebt hat `container_check_off`; das war eine echte Testlücke, denn ein inhaltsgleich neu verpacktes NPZ war ungetestet. Der neue Test erkennt ihn nachweislich, damit sind effektiv **25/25** erkannt.
