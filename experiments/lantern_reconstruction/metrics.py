@@ -22,8 +22,7 @@ from experiments.lantern_reconstruction import streams
 
 MARGIN_B = 0.05          # plan 9: H-B1 / H-B2 minimum value (a declared evaluation choice, not proven relevance)
 FAMILY_ALPHA_B = 0.05
-LEAK_ALPHA = 0.01        # plan 10: Holm over the 12 leak-alarm cells
-N_LEAK_CELLS = 12
+LEAK_ALPHA = 0.01        # plan 10: Holm over the 12 control-alarm cells (protocol/control_alarms.json)
 
 
 # --- per episode / per cell ------------------------------------------------------------------------
@@ -182,8 +181,10 @@ def permutation_p(b: int, B: int) -> float:
 
 
 def permutation_gain_test(cells: Mapping[int, tuple], rng: np.random.Generator, n_perm: int = 9999) -> Dict:
-    """One leak-alarm cell: statistic = mean over contexts of G; test targets permuted WITHIN each context,
-    predictions fixed. cells: context_id -> (projected predictions (n, 4), targets (n, 4))."""
+    """One control-alarm cell: statistic = mean over contexts of G; test targets permuted WITHIN each context,
+    predictions fixed. cells: context_id -> (projected predictions (n, 4), targets (n, 4)).
+    This tests DEPENDENCE of the predictions on the test targets, not G > 0 (LR5-A1): combine the observed
+    G and p in control_alarms()."""
     if not isinstance(rng, np.random.Generator):
         raise ValueError("an explicit numpy Generator is required (no global RNG)")
     _context_values({k: 0.0 for k in cells})
@@ -200,10 +201,47 @@ def permutation_gain_test(cells: Mapping[int, tuple], rng: np.random.Generator, 
     return {"observed_mean_G": observed, "b": int(b), "B": int(n_perm), "p": permutation_p(int(b), int(n_perm))}
 
 
-def leak_alarm(pvalues: Sequence[float], alpha: float = LEAK_ALPHA) -> Dict:
-    """Holm over exactly the 12 predefined control cells; any adjusted p <= alpha raises the alarm, which
-    blocks the scientific release until investigated. Strongly negative G is no leak alarm."""
-    if len(pvalues) != N_LEAK_CELLS:
-        raise ValueError(f"the leak alarm uses exactly {N_LEAK_CELLS} predefined cells")
-    adj = holm(pvalues)
-    return {"holm_adjusted": adj, "alarm": any(a <= alpha for a in adj), "alpha": alpha}
+def control_alarm_cells() -> tuple:
+    """The 12 predefined cell names '{control}|{task}|{tau}' in the protocol's Holm-family order."""
+    c = control_alarm_protocol()["cells"]
+    names = tuple(f"{ctl}|{task}|{float(tau)}" for ctl in c["controls"] for task in c["tasks"] for tau in c["times"])
+    if len(names) != c["count"] or len(set(names)) != len(names):
+        raise ValueError("control alarm protocol does not define the declared number of distinct cells")
+    return names
+
+
+def control_alarm_protocol():
+    from experiments.lantern_reconstruction.registry_adapter import strict_json
+    return strict_json((streams.HERE / "protocol" / "control_alarms.json").read_bytes().replace(b"\r\n", b"\n").decode("utf-8"))
+
+
+def control_alarms(cells: Mapping[str, Mapping], alpha: float = LEAK_ALPHA) -> Dict:
+    """LR5-A1 (review LANTERN_LR4_NACHREVIEW_25ba293): every one of the 12 named control cells delivers its
+    observed mean G AND its permutation p together. Holm runs over ALL 12 cells, always. Two alarms with
+    separate names, never merged:
+      positive_spurious_success  -- observed G > 0 and Holm p <= alpha (the plan's alarm on positive G);
+      target_dependence          -- Holm p <= alpha whatever the sign of G (a recognisable dependence on the
+                                    test target; a negative G does not make it harmless).
+    A p-value alone is a dependence test, not a test of G > 0 (review counterexample: G = -1.685, p = 1e-4)."""
+    names = control_alarm_cells()
+    if not isinstance(cells, Mapping) or set(cells) != set(names) or len(cells) != len(names):
+        missing, extra = sorted(set(names) - set(cells)), sorted(set(cells) - set(names))
+        raise ValueError(f"control alarms need exactly the {len(names)} named cells (missing {missing}, unexpected {extra})")
+    G, p = [], []
+    for n in names:
+        cell = cells[n]
+        if not isinstance(cell, Mapping) or set(cell) - {"G", "p", "b", "B"} or not {"G", "p"} <= set(cell):
+            raise ValueError(f"cell {n!r} must carry its observed G and its p-value")
+        g, pv = cell["G"], cell["p"]
+        if any(isinstance(x, (bool, np.bool_)) or not isinstance(x, (int, float, np.integer, np.floating)) for x in (g, pv)) \
+                or not math.isfinite(g) or not 0.0 <= pv <= 1.0:
+            raise ValueError(f"cell {n!r}: G must be finite and p in [0, 1]")
+        G.append(float(g))
+        p.append(float(pv))
+    adj = holm(p)
+    rows = {n: {"G": g, "p": pv, "holm_p": a, "positive_spurious_success": g > 0 and a <= alpha, "target_dependence": a <= alpha}
+            for n, g, pv, a in zip(names, G, p, adj)}
+    return {"cells": rows, "alpha": alpha, "holm_family_size": len(names),
+            "positive_spurious_success_alarm": any(r["positive_spurious_success"] for r in rows.values()),
+            "target_dependence_alarm": any(r["target_dependence"] for r in rows.values()),
+            "release_rule": control_alarm_protocol()["release_rule"]}

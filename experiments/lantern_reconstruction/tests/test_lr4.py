@@ -334,7 +334,7 @@ def test_k20_holm_and_hypotheses_B():
     assert h["bonferroni_intervals"]["H_B1"]["level"] == 0.975 and "not simultaneous" in h["raw_intervals_95"]["H_B1"]["interval_kind"]
 
 
-def test_permutation_p_and_leak_alarm():
+def test_permutation_p_and_control_alarm_holm():
     assert metrics.permutation_p(0, 9999) == 1e-4 and metrics.permutation_p(9999, 9999) == 1.0
     for b, B in ((-1, 10), (11, 10), (True, 10), (1, 0), (1.0, 10)):
         with pytest.raises(ValueError):
@@ -345,11 +345,14 @@ def test_permutation_p_and_leak_alarm():
     assert perfect["b"] == 0 and perfect["p"] == 1 / 200
     noise = metrics.permutation_gain_test({c: (np.clip(rng.normal(0, .3, (60, 4)), -1, 1), u[c]) for c in u}, np.random.default_rng(2), 199)
     assert noise["p"] > 0.01
-    assert not metrics.leak_alarm([.5] * 12)["alarm"] and metrics.leak_alarm([1e-4] + [.5] * 11)["alarm"]
-    held = metrics.leak_alarm([.005] + [.5] * 11)                  # raw p <= .01, Holm-adjusted .06: no alarm
-    assert not held["alarm"] and math.isclose(held["holm_adjusted"][0], .06)
+    names = metrics.control_alarm_cells()                          # LR5: leak_alarm replaced by control_alarms
+    cells = lambda first: {n: ({"G": 0.2, "p": first} if k == 0 else {"G": 0.2, "p": .5}) for k, n in enumerate(names)}
+    assert not metrics.control_alarms(cells(.5))["positive_spurious_success_alarm"]
+    assert metrics.control_alarms(cells(1e-4))["positive_spurious_success_alarm"]
+    held = metrics.control_alarms(cells(.005))                     # raw p <= .01, Holm-adjusted .06: no alarm
+    assert not held["target_dependence_alarm"] and math.isclose(held["cells"][names[0]]["holm_p"], .06)
     with pytest.raises(ValueError):
-        metrics.leak_alarm([.5] * 11)
+        metrics.control_alarms({n: {"G": 0.0, "p": .5} for n in names[:11]})
     with pytest.raises(ValueError, match="Generator"):
         metrics.permutation_gain_test({0: (u[0], u[0]), 1: (u[1], u[1])}, None, 9)
 

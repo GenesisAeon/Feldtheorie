@@ -1,0 +1,36 @@
+# YAML twin of control_alarms.json (generated; the JSON is authoritative)
+schema: lantern-control-alarms-v1
+status: development protocol (NOT frozen); fixed before any run of these cells (LR5, 2026-10-08)
+source: plan v2.0 section 10 (empirical controls); review LANTERN_LR4_NACHREVIEW_25ba293 LR5-A1
+cells:
+  rule: control x task x tau, decoder Ridge, coupling condition lantern
+  controls:
+  - reset
+  - zero_impulse
+  - permuted_targets
+  tasks:
+  - A
+  - B
+  times:
+  - 1.0
+  - 5.0
+  condition: lantern
+  names: '''{control}|{task}|{tau}'', in exactly this nested order (controls, tasks, times) = Holm family order'
+  count: 12
+controls:
+  reset: write, then reset to phi * 1 at once (encoding control 'reset'); full 7-time curves are reported
+  zero_impulse: nothing is written (encoding control 'zero_impulse'); full 7-time curves are reported
+  permuted_targets: states and features as in the main condition; the TRAINING targets are permuted by the decoder stream (study, context, split train, role decoder, episode 0, extra 2, task index, time index) before the fit; validation and test targets stay unpermuted; full 7-time curves are reported
+statistic:
+  per_cell: observed mean over the contexts of G (projected test predictions of the fitted decoder, fixed)
+  permutation: test targets permuted WITHIN each context, predictions fixed; B = 9999; p = (1 + b) / (1 + B), b = number of permutation statistics >= observed
+  stream: 'one generator per cell: (study, context 0, split test, role decoder, episode 0, extra 1, cell index); the context-0 key is only a namespace, every context is permuted from this one generator in ascending context order'
+  multiplicity: Holm over ALL 12 cells at 0.01, always; never only over a selected subset (e.g. the positive cells)
+alarms:
+  positive_spurious_success: any cell with observed G > 0 AND Holm-adjusted p <= 0.01 (the plan's alarm on unexpectedly positive G)
+  target_dependence: any cell with Holm-adjusted p <= 0.01 regardless of the sign of G (a control decoder that depends recognisably on the test target, even when it is worse than the zero prediction)
+  reported: both alarms with every cell's G, p and Holm p, under these two separate names; never merged into one flag
+release_rule:
+  status: PROPOSAL -- must be decided explicitly by Johann/Astra before the research freeze
+  proposal: either alarm sets scientifically_interpretable = false and blocks the scientific release until a documented investigation; a negative G does not make a target dependence harmless; technically_complete is unaffected by the alarms
+  implemented_default: the release gate applies the proposal (both alarms block) until a decision replaces it
