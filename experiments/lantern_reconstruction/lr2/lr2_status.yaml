@@ -64,7 +64,7 @@ observations:
   text: The original kernel silently ignores C_ij <= 0 and accepts asymmetric matrices; the lab core rejects both explicitly.
 tests:
   file: tests/test_lr2.py
-  result_all_lantern_tests: 76/76
+  result_all_lantern_tests: 77/77
   run: python -m pytest experiments/lantern_reconstruction/tests
 ad_hoc_mutation_check:
   killed: 12/12

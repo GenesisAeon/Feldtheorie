@@ -81,7 +81,7 @@
  ],
  "tests": {
   "file": "tests/test_lr2.py",
-  "result_all_lantern_tests": "76/76",
+  "result_all_lantern_tests": "77/77",
   "run": "python -m pytest experiments/lantern_reconstruction/tests"
  },
  "ad_hoc_mutation_check": {

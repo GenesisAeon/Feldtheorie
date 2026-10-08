@@ -35,4 +35,4 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Originaläquivalenz:** 1,6·10⁻¹⁴ über 100 Fälle; der echte Originalkern lief dafür in einem separaten Prozess.
 - **Offenes Gate LR2-G1:** Die ODE-Genauigkeit ≤ 0,005 rad ist über das vorab festgelegte Panel **nicht bestanden** (0,117 bei dt = 0,02). Im Studienregime liegt der Fehler bei 1,6·10⁻³. Entscheidung vor LR6.
 - **Beobachtet:** `v9_alpha.models` braucht pandas, deshalb lief der Originalkern über den Dateipfad. Der Originalkern ignoriert negative Kopplungen und Asymmetrie.
-- **Prüfungen:** Tests 76/76, Ad-hoc-Mutation 12/12.
+- **Prüfungen:** Tests 77/77, Ad-hoc-Mutation 12/12.

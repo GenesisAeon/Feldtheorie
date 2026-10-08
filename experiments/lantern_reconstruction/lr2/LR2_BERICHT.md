@@ -50,7 +50,7 @@ Der zweite Teil von 10.2 (Änderung der Decoderkennzahl ≤ 0,01) braucht den De
 
 ## Prüfungen
 
-- **Tests:** 76/76 über alle Lantern-Tests (`python -m pytest experiments/lantern_reconstruction/tests`).
+- **Tests:** 77/77 über alle Lantern-Tests (`python -m pytest experiments/lantern_reconstruction/tests`).
 - **Ad-hoc-Mutation:** 12/12 erkannt, darunter die Planmutanten 3 (Sinusargument umgekehrt) und 4 (g doppelt angewendet). Das vollständige Werkzeug folgt in LR5.
 
 **Nicht enthalten:**
