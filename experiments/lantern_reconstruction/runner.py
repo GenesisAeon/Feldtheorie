@@ -17,6 +17,7 @@ import numpy as np
 
 from experiments.lantern_reconstruction import episodes, observation, streams
 from experiments.lantern_reconstruction.contexts import ContextSpec, check_context, fingerprint
+from experiments.lantern_reconstruction.decoders import check_decoder_for
 from experiments.lantern_reconstruction.evaluate import score_cell
 from experiments.lantern_reconstruction.metrics import curve_aggregate
 from experiments.lantern_reconstruction.training import fit_ridge
@@ -62,6 +63,7 @@ def run_context(ctx: ContextSpec, C_lantern: np.ndarray, g: float, *, sizes: Opt
                                   provenance={"study_id": ctx.study_id, "context_id": ctx.context_id, "condition": cond,
                                               "task": task, "time": tau, "control": control, "dt": out["dt"],
                                               "context_fingerprint": out["context_fingerprint"], "config_sha256": out["config_sha256"]})
+                check_decoder_for(model, ctx, task, condition=cond, time=tau, control=control, dt=out["dt"])
                 res = score_cell(model, X["test"], batches["test"].u)
                 G[tau], S[tau], lam[tau], outside[tau] = res["G"], res["S"], model.lam, res["n_raw_outside_unit_box"]
                 if keep_models:

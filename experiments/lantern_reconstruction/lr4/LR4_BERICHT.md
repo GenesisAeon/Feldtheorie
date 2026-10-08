@@ -8,8 +8,8 @@ Es gab keine Forschungsrechnung, keinen Freeze, keinen Merge und keinen Push. Or
 
 | Modul | Inhalt |
 |---|---|
-| `training.py` | **Ridge in geschlossener Form mit NumPy** (LR0-O1: kein scikit-learn). Zielfunktion (Plan 8): (1/N)‖XₛW + 1bᵀ − U‖² + λ‖W‖². Der **Interzept b ist unbestraft**. Gelöst wird über die SVD der zentrierten, standardisierten Trainingsmerkmale: W = Q·diag(s/(s² + Nλ))·Pᵀ·U_c und b = Ū − X̄ₛW. Das ist stabil für jedes λ > 0, auch bei konstanten oder kollinearen Spalten, und eine SVD reicht für das ganze Raster. Die **Standardisierung** stammt nur aus dem Training (Mittelwert, Populations-SD mit ddof 0); eine Spalte mit SD exakt 0 bekommt die Skala 1. **λ-Raster** 1e-4 … 100. **Auswahl:** kleinster Validierungs-MSE der *projizierten* Vorhersagen, bei exaktem Gleichstand das größere λ. Die Funktion `fit_ridge` hat **kein Testargument**. |
-| `decoders.py` | `RidgeDecoder` mit Merkmalsdefinition, Skalierung, Gewichten, Interzept, λ, Raster, Validierungs-MSE, Herkunft und Softwareversionen. `predict(model, X)` sieht **nur** die Merkmale. Gespeichert wird als NPZ mit rein numerischen Arrays (geladen mit `allow_pickle=False`) plus striktem JSON. Jedes Array hat eine kanonische Identität (Name, dtype mit Byteorder, Shape, Bytes in C-Ordnung). Beim Laden wird außerdem geprüft, dass das gespeicherte λ genau die Wahl der Auswahlregel ist. |
+| `training.py` | **Ridge in geschlossener Form mit NumPy** (LR0-O1: kein scikit-learn). Zielfunktion (Plan 8): (1/N)‖XₛW + 1bᵀ − U‖² + λ‖W‖². Der **Interzept b ist unbestraft**. Gelöst wird über die SVD der zentrierten, standardisierten Trainingsmerkmale: W = Q·diag(s/(s² + Nλ))·Pᵀ·U_c und b = Ū − X̄ₛW. Das ist stabil für jedes λ > 0, auch bei konstanten oder kollinearen Spalten, und eine SVD reicht für das ganze Raster. Die **Standardisierung** stammt nur aus dem Training (Mittelwert, Populations-SD mit ddof 0); eine Spalte mit SD exakt 0 bekommt die Skala 1. *(Nach `REVIEW_LR4` R1: Exakt konstante Spalten werden jetzt über ihre Werte erkannt; siehe Nachtrag.)* **λ-Raster** 1e-4 … 100. **Auswahl:** kleinster Validierungs-MSE der *projizierten* Vorhersagen, bei exaktem Gleichstand das größere λ. Die Funktion `fit_ridge` hat **kein Testargument**. |
+| `decoders.py` | `RidgeDecoder` mit Merkmalsdefinition, Skalierung, Gewichten, Interzept, λ, Raster, Validierungs-MSE, Herkunft und Softwareversionen. `predict(model, X)` sieht **nur** die Merkmale. Gespeichert wird als NPZ mit rein numerischen Arrays (geladen mit `allow_pickle=False`) plus striktem JSON. Jedes Array hat eine kanonische Identität (Name, dtype mit Byteorder, Shape, Bytes in C-Ordnung). Beim Laden wird außerdem geprüft, dass das gespeicherte λ genau die Wahl der Auswahlregel ist. *(Nach `REVIEW_LR4` erweitert: vollständige Metadatenprüfung, Bindung an die Zelle, unveränderliche Arrays; siehe Nachtrag.)* |
 | `evaluate.py` | Test-Scoring eines fertigen Decoders. Importiert **keine** Fit-Funktion (Plan 11, per AST geprüft). |
 | `metrics.py` | Projektion auf [−1, 1]; Verlust je Episode und Nullvergleich. S und G werden **getrennt** geführt, G darf negativ sein. A ist ein fester Rastermittelwert (Trapez auf log(1 + τ), K21). **Kontextinferenz:** genau ein Wert je Kontext-ID, df = Kontexte − 1. Dazu t-Intervalle (punktweise, nicht simultan), ein entarteter Fall bei identischen Werten, H-B1/H-B2 einseitig mit Holm über zwei Tests, Bonferroni-Intervalle (Quantil 0,9875), Permutations-p = (1 + b)/(1 + B) und der Leak-Alarm über genau 12 Zellen (Holm, Grenze 0,01). |
 | `runner.py` | Entwicklungspipeline für einen Kontext. Sie verweigert jede Studien-ID außer `development_study_id`. Pro Split und Bedingung wird **eine** RK4-Trajektorie berechnet. **Merkmale kommen nur über `observation.observe()`** (Vorgabe aus Astras Nachprüfung). Je Zelle folgt Fit auf train, λ auf val, Scoring auf test, und A aus den sieben G-Werten. |
@@ -32,7 +32,7 @@ Es gab keine Forschungsrechnung, keinen Freeze, keinen Merge und keinen Push. Or
 **Abnahme laut Plan § 14:**
 - analytische Scores: perfekte Vorhersage ergibt S = 1 und G = 3·mean(u²), Nullvorhersage ergibt G = 0;
 - keine Episoden als Pseudoreplikate (Plan-Mutant 15): Episodenarrays werden abgewiesen;
-- Artefakt-Roundtrip mit bitgleichen Vorhersagen, Manipulationen werden erkannt.
+- Artefakt-Roundtrip mit bitgleichen Vorhersagen; die getesteten Manipulationen an Arrays und am λ werden erkannt. **Korrektur nach `REVIEW_LR4`:** Das war kein vollständiger Manipulationsschutz. Ungültige Metadaten wie n_train = −5 oder die Referenz −1 wurden akzeptiert. Siehe den Nachtrag unten.
 
 **Zusätzlich geprüft:**
 - Eine fehlende Rasterzelle ist ein Fehler, nicht null (Plan-Mutant 16).
@@ -76,8 +76,47 @@ Die Definition wurde **vor** dem Lauf festgelegt und committet (`protocol/decode
 
 **Belege** (Volldatei, Laufprotokoll, Mutationsskript und -protokoll, Äquivalenz- und Nachrechenskript): `D:/mandala/mandala-memory-results/lantern/lr4/`.
 
+## Nachtrag nach `REVIEW_LR4` (Astra; geprüft `027fc0c` / `18a89c3`)
+
+**Bestätigt:**
+- 268/268 Tests;
+- die Konvergenzwerte aus der Volldatei nachgerechnet (112 Zellen und 16 Kurven je Vergleich);
+- Ridge-Formel, `observe()`-Pfad, Trennung der Splits und ein Evaluator ohne Fit-Import.
+
+**Zuerst reproduziert** (am Stand `18a89c3`, mit eigenem Skript; Astras Reviewordner blieb unverändert):
+- **R1:** `np.full((1000, 1), 0.1)` ergab die Skala **1,3877787807814457·10⁻¹⁷** statt 1. Dasselbe passiert bei n = 3 und n = 7, nicht bei n = 10. Auch der Mittelwert weicht um 1,4·10⁻¹⁷ ab.
+- **R2:** n_train = −5, Referenz −1 und context_id 999 im JSON wurden geladen.
+- **Zusatz:** `W.setflags(write=True)` gelang, danach änderte sich `predict`.
+
+| Befund | Korrektur |
+|---|---|
+| **R1** konstante Trainingsspalte | Exakt konstante Spalten werden **über ihre Werte** erkannt (`np.all(x == x[0])`), nicht über die berechnete SD und ohne Epsilon-Schwelle. Sie erhalten Mittelwert = ihr Wert und Skala = 1 und standardisieren damit exakt zu 0. Variable Spalten, auch fast konstante (SD ≈ 3·10⁻¹⁴), werden **bitgleich wie vorher** behandelt. |
+| **R2** Metadaten | `check_decoder` prüft bei der Konstruktion **und** beim Laden: <br>• n_train und n_val als echte positive Ganzzahlen; <br>• die Merkmalsdefinition mit genau den Schlüsseln task/nodes/reference/order; <br>• Knoten als eindeutige Ganzzahlen in [0, 34), 33 für A bzw. 8 für B; <br>• die Referenz in [0, 34) und außerhalb der Knoten; <br>• bei A die feste Reihenfolge; die Reihenfolge-Angabe gleich `FEATURE_ORDER`; Dimension = 2 × Knotenzahl; <br>• das λ-Raster positiv und eindeutig, die Validierungs-MSE in [0, 4]; <br>• Herkunft und Software nur mit JSON-Skalaren; <br>• λ im JSON als Zahl (`true` ist kein λ = 1). <br>Neu ist **`check_decoder_for(model, ctx, task, **zelle)`**: Es bindet das Modell an die Beobachtungsdefinition des erwarteten Kontexts (Knotenfolge, Referenz) und an Studie, Kontext, Fingerabdruck, Konfiguration und Zelle. Der Runner ruft es vor jedem Scoring auf. |
+| **Zusatz** (laut Review LR5, schon jetzt mitgenommen) | Wie beim LR1-Fix liegen die Modellarrays auf **unveränderlichen Byte-Puffern**; `setflags(write=True)` wird abgewiesen. Merkmalsdefinition, Herkunft und Software sind tief eingefroren (`MappingProxyType`). |
+
+**Ehrliche Grenze:** Eine *andere*, syntaktisch gültige context_id (999) kann der Loader allein aus dem JSON **nicht** als falsch erkennen. Die Array-Prüfsummen liegen neben den Arrays und authentifizieren die Metadatei nicht. Abgewiesen wird so ein Modell erst von `check_decoder_for` gegen die *erwartete* Zelle. Eine in sich stimmige Fälschung erkennt erst die externe Manifestidentität aus LR5. `save()` ist ausdrücklich ein Entwicklungshelfer: Es überschreibt Dateien und schreibt kein Manifest.
+
+**Bleibt R1 ohne Wirkung auf das Konvergenzgate?**
+- Unter den 4592 Trainingsmerkmalsspalten des Gate-Panels (2 Kontexte × 4 Bedingungen × 2 Aufgaben × 7 Zeiten) ist **keine** exakt konstant; die kleinste SD ist 1,1·10⁻³.
+- Für variable Spalten ist die Standardisierung bitgleich.
+- Eine Alt-gegen-neu-Pipeline (`18a89c3` gegen den Fix) über 2 Kontexte, 4 Bedingungen, A/B und 200/60/200 Episoden liefert für alle 16 Kurven **exakt** dieselben G-, S-, A- und λ-Werte.
+
+Das bestandene Gate bleibt damit gültig; ein neuer langer Lauf ist nicht nötig. Die Änderung der Standardisierungsregel steht vor dem Freeze dokumentiert (`decoders.STANDARDISATION`).
+
+**Danach:**
+- Gezielte Mutation der neuen Wächter: **23/23** werden von `test_lr4_review.py` erkannt. Im ersten Lauf waren es 22/23: `true` als λ fiel nur zufällig über die Auswahlregel auf, weil das Testmodell λ = 100 hatte. Das war eine echte Testlücke; jetzt gibt es einen Fall mit λ = 1,0.
+- Im eigenen Test korrigiert: Der Vergleichswert für die SD einer herausgeschnittenen Spalte hatte eine andere Summationsreihenfolge als die Regel.
+
+**Tests:** 295/295 (bisher 268, dazu 27 in `tests/test_lr4_review.py`).
+
+**Belege:** `D:/mandala/mandala-memory-results/lantern/lr4_review/`.
+
 ## Offen
 
-- **LR5:** Schemas und DAG der Artefakte, deterministisches Resume, Budgetmessung, CI-Jobs, die vollständige Mutationskampagne mit den 18 Plan-Mutanten (Mutant 6 ist bis LR9 `not_applicable`).
-- **LR5/LR6:** Kontrollkurven mit permutierten Trainingszielen; die 12 Leak-Alarm-Zellen mit 9999 Permutationen (die Funktionen sind fertig und getestet, aber noch nicht im Lauf); das optionale MLP; der Freeze-Kandidat mit Masterseeds und Kontextliste.
-- Astras Prüfung von LR4.
+- **LR5:** Schemas und DAG der Artefakte, deterministisches Resume, Budgetmessung, CI-Jobs, die vollständige Mutationskampagne mit den 18 Plan-Mutanten (Mutant 6 ist bis LR9 `not_applicable`). **Verbindlich aus `REVIEW_LR4`:**
+  - Modellintegrität mit Hashprüfung vor und nach der Auswertung;
+  - exklusive und atomare Speicherung ohne Überschreiben;
+  - ein vollständiges Manifest mit externer Modell- und Herkunftsidentität samt erwarteter Zelle;
+  - eine Ergebnisfreigabe, die das genaue Kontext- und Zellenraster sowie alle Kontrollalarme prüft. Die generischen Statistikfunktionen sind noch kein Forschungsgate.
+- **LR5/LR6:** Kontrollkurven mit permutierten Trainingszielen; die 12 Leak-Alarm-Zellen mit 9999 Permutationen (die Funktionen sind fertig, aber noch nicht im Lauf); das optionale MLP; der Freeze-Kandidat mit Masterseeds und Kontextliste.
+- Astras Nachprüfung dieses Fixes.

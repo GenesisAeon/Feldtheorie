@@ -19,7 +19,7 @@ from typing import Dict, Optional, Sequence
 
 import numpy as np
 
-from experiments.lantern_reconstruction.decoders import RidgeDecoder, predict, select_lambda
+from experiments.lantern_reconstruction.decoders import FEATURE_ORDER, RidgeDecoder, predict, select_lambda
 from experiments.lantern_reconstruction.metrics import project
 from experiments.lantern_reconstruction.observation import ObservationSpec
 
@@ -35,10 +35,18 @@ def _real_matrix(x, what: str, cols: Optional[int] = None) -> np.ndarray:
 
 
 def standardisation(X_train) -> tuple:
-    """mean and population SD (ddof 0) of the training features; SD exactly 0 -> scale 1."""
+    """mean and population SD (ddof 0) of the training features.
+
+    An EXACTLY constant column (all values identical) is recognised by its values, not by its computed SD:
+    NumPy can return a tiny positive SD there (review REVIEW_LR4 R1: 1000 x 0.1 gave 1.39e-17, which would
+    blow up any later deviation). Such a column gets mean = its value and scale = 1, so it standardises to
+    exactly 0. No epsilon threshold: a nearly constant but varying column keeps its true SD. Non-constant
+    columns are computed exactly as before."""
     x = _real_matrix(X_train, "X_train")
     mean, sd = x.mean(axis=0), x.std(axis=0, ddof=0)
-    return mean, np.where(sd == 0.0, 1.0, sd)
+    const = np.all(x == x[0], axis=0)
+    mean = np.where(const, x[0], mean)
+    return mean, np.where(const, 1.0, sd)
 
 
 def ridge_path(Xs: np.ndarray, U: np.ndarray, lambdas: Sequence[float]):
@@ -75,7 +83,7 @@ def fit_ridge(spec: ObservationSpec, X_train, U_train, X_val, U_val, lambda_grid
     mean, scale = standardisation(Xtr)
     path = ridge_path((Xtr - mean) / scale, Utr, grid)
     feature_definition = {"task": spec.task, "nodes": [int(i) for i in spec.nodes], "reference": int(spec.reference),
-                          "order": "[sin(d_1..d_m), cos(d_1..d_m)], d_k = y_node_k - y_reference (observation.observe)"}
+                          "order": FEATURE_ORDER}
     val_mse = []
     for W, b in path:          # a provisional decoder per lambda, only to predict the validation split
         probe = RidgeDecoder(spec.task, feature_definition, mean, scale, W, b, max(grid), np.array(grid), np.zeros(len(grid)), 1, 1)
