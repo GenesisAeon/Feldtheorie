@@ -87,7 +87,8 @@ tests:
   files:
   - tests/test_lr2.py
   - tests/test_lr2_rk4.py
-  result_all_lantern_tests: 93/93
+  - tests/test_lr2_inputs.py
+  result_all_lantern_tests: 146/146
   run: python -m pytest experiments/lantern_reconstruction/tests
 ad_hoc_mutation_check:
   euler_core: 12/12 (plan mutants 3, 4)
@@ -103,7 +104,14 @@ runtime_euler_vs_rk4:
   euler_dt_0.005_s: 10.01
   euler_dt_0.00125_s: 39.2
   rk4_dt_0.02_s: 9.16
-  assessment: RK4 ~3.7x per step, ~6x cheaper than a Euler step small enough for the gate (estimate)
+  assessment: RK4 ~3.7x per step. The ~6x saving for the required accuracy is an EXTRAPOLATION from first-order Euler scaling, not a measured comparison of two sufficiently accurate methods (no Euler run met the gate)
 open:
 - decoder metric change <= 0.01 (second part of plan 10.2) stays open until LR4; a passed state gate does not close it
 - tangent equation (plan 5.3) later
+input_contract_fix:
+  review: D:/mandala/mandala-memory-results/lantern/astra-lr2-review/REVIEW_LR1_RK4.md (0be528e)
+  reproduced_first: 'record_steps=[1.9] silently became step 1 and dt=True was used as step 1, in Euler and RK4; additionally found: empty record_steps raised an unclear NumPy error, steps_for_times accepted a negative time (-> step -1), dt=True and gave no DynamicsError for NaN'
+  fix: shared check_dt (finite positive numeric scalar, no bool/np.bool_) and check_steps (true integers checked BEFORE conversion, non-empty, sorted, within [0, n_steps]) for both integrators; steps_for_times validates dt and finite non-negative numeric times
+  arithmetic: unchanged (only the input check got stricter; Euler original equivalence and RK4 panel tests still pass)
+  tests: tests/test_lr2_inputs.py (Astra's two cases verbatim for both methods plus invalid dt/record_steps/n_steps/times)
+  mutation: 6/6 of the new checks

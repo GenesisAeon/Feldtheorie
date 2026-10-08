@@ -23,7 +23,7 @@
     "euler_dt_0.005_s": 10.01,
     "euler_dt_0.00125_s": 39.2,
     "rk4_dt_0.02_s": 9.16,
-    "assessment": "RK4 costs ~3.7x Euler per step at the same dt; Euler would need dt ~ 0.0009 (~24x the steps) for the gate, so RK4 is ~6x cheaper for the required accuracy (estimate from first-order scaling, Euler at dt 0.00125 still ~0.007)"
+    "assessment": "RK4 costs ~3.7x Euler per step at the same dt; Euler would need dt ~ 0.0009 (~24x the steps) for the gate, so RK4 is ~6x cheaper for the required accuracy (estimate from first-order scaling, Euler at dt 0.00125 still ~0.007) -- an extrapolation, not a measured comparison of two sufficiently accurate methods (review REVIEW_LR1_RK4)"
    },
    "checks_for_rk4": [
     "unchanged 32-case panel <= 0.005 rad at dt 0.02",

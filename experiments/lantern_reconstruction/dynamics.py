@@ -72,6 +72,35 @@ def check_inputs(theta, C, omega, g) -> Tuple[np.ndarray, np.ndarray, np.ndarray
     return theta, C, omega, float(g)
 
 
+def _is_bool(x) -> bool:
+    return isinstance(x, (bool, np.bool_))
+
+
+def check_dt(dt) -> float:
+    """Finite positive numeric scalar; bool/np.bool_ rejected (review REVIEW_LR1_RK4)."""
+    if _is_bool(dt) or not isinstance(dt, (int, float, np.integer, np.floating)) or not np.isfinite(dt) or float(dt) <= 0.0:
+        raise DynamicsError(f"dt must be a finite positive number (got {dt!r})")
+    return float(dt)
+
+
+def check_steps(n_steps, record_steps) -> list:
+    """n_steps: non-negative true integer; record_steps: non-empty, sorted true integers within
+    [0, n_steps] -- checked BEFORE any conversion, nothing is silently truncated."""
+    if _is_bool(n_steps) or not isinstance(n_steps, (int, np.integer)) or n_steps < 0:
+        raise DynamicsError("n_steps must be a non-negative integer")
+    if record_steps is None:
+        return [int(n_steps)]
+    rec = list(record_steps)
+    if not rec:
+        raise DynamicsError("record_steps must not be empty")
+    if any(_is_bool(s) or not isinstance(s, (int, np.integer)) for s in rec):
+        raise DynamicsError(f"record_steps must be integers (got {rec!r})")
+    rec = [int(s) for s in rec]
+    if any(s < 0 or s > n_steps for s in rec) or rec != sorted(rec):
+        raise DynamicsError("record_steps must be sorted and within [0, n_steps]")
+    return rec
+
+
 def drift(theta: np.ndarray, C: np.ndarray, omega: np.ndarray, g: float) -> np.ndarray:
     """omega_i + g * sum_j C_ij sin(theta_j - theta_i) for a batch theta (B, N). No validation (hot path)."""
     diff = theta[:, None, :] - theta[:, :, None]          # [b, i, j] = theta_j - theta_i
@@ -88,13 +117,8 @@ def integrate(theta0, C, omega, g: float, dt: float, n_steps: int, record_steps:
     shape (len(record_steps), B, N). `wrap_states=False` integrates the unwrapped continuous phases
     (for comparisons with an ODE solver); the drift itself is wrap-invariant."""
     theta, C, omega, g = check_inputs(theta0, C, omega, g)
-    if not (isinstance(n_steps, (int, np.integer)) and not isinstance(n_steps, bool) and n_steps >= 0):
-        raise DynamicsError("n_steps must be a non-negative integer")
-    if not (np.isfinite(dt) and dt > 0):
-        raise DynamicsError("dt must be finite and positive")
-    rec = [int(n_steps)] if record_steps is None else [int(s) for s in record_steps]
-    if any(s < 0 or s > n_steps for s in rec) or rec != sorted(rec):
-        raise DynamicsError("record_steps must be sorted and within [0, n_steps]")
+    dt = check_dt(dt)
+    rec = check_steps(n_steps, record_steps)
     C_ro, om_ro = C.copy(), omega.copy()
     C_ro.setflags(write=False)
     om_ro.setflags(write=False)
@@ -116,8 +140,11 @@ def integrate(theta0, C, omega, g: float, dt: float, n_steps: int, record_steps:
 
 def steps_for_times(times: Iterable[float], dt: float) -> list:
     """Integer step indices for model times; rejects times that are not multiples of dt."""
+    dt = check_dt(dt)
     out = []
     for t in times:
+        if _is_bool(t) or not isinstance(t, (int, float, np.integer, np.floating)) or not np.isfinite(t) or t < 0:
+            raise DynamicsError(f"time {t!r} must be a finite non-negative number")
         s = round(float(t) / dt)
         if abs(s * dt - float(t)) > 1e-9 * max(1.0, abs(float(t))):
             raise DynamicsError(f"time {t} is not a multiple of dt={dt}")
@@ -142,13 +169,8 @@ def integrate_rk4(theta0, C, omega, g: float, dt: float, n_steps: int, record_st
     """RK4 integration of a batch; same validation, recording and wrap conventions as integrate().
     Stages use the unwrapped intermediate states (the drift is 2*pi-periodic in every component)."""
     theta, C, omega, g = check_inputs(theta0, C, omega, g)
-    if not (isinstance(n_steps, (int, np.integer)) and not isinstance(n_steps, bool) and n_steps >= 0):
-        raise DynamicsError("n_steps must be a non-negative integer")
-    if not (np.isfinite(dt) and dt > 0):
-        raise DynamicsError("dt must be finite and positive")
-    rec = [int(n_steps)] if record_steps is None else [int(s) for s in record_steps]
-    if any(s < 0 or s > n_steps for s in rec) or rec != sorted(rec):
-        raise DynamicsError("record_steps must be sorted and within [0, n_steps]")
+    dt = check_dt(dt)
+    rec = check_steps(n_steps, record_steps)
     C_ro, om_ro = C.copy(), omega.copy()
     C_ro.setflags(write=False)
     om_ro.setflags(write=False)

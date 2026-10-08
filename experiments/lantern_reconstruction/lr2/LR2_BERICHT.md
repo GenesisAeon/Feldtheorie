@@ -104,3 +104,25 @@ RK4 kostet pro Schritt etwa das 3,7-Fache. Für die geforderte Genauigkeit ist e
 **Tests:** 93/93.
 
 **Offen:** Die **Decoderkennzahländerung ≤ 0,01** (zweiter Teil von Plan 10.2) bleibt bis LR4 offen. Das bestandene Zustandsgate schließt sie nicht.
+
+## Nachtrag: strikte Zeitargumente (nach `REVIEW_LR1_RK4`)
+
+**Zuerst reproduziert**, für Euler und RK4:
+- `record_steps=[1.9]` wurde still zu Schritt 1;
+- `dt=True` wurde als Schrittweite 1 verwendet.
+
+**Zusätzlich gefunden:**
+- Ein leeres `record_steps` führte zu einem unklaren NumPy-Fehler.
+- `steps_for_times` machte aus einer negativen Zeit Schritt −1 und akzeptierte `dt=True`.
+- NaN führte zu keinem `DynamicsError`.
+
+**Korrektur:**
+- Gemeinsame Prüfungen für beide Integratoren:
+  - `check_dt`: endlicher positiver numerischer Skalar, kein bool;
+  - `check_steps`: echte Ganzzahlen, geprüft **vor** jeder Umwandlung, nicht leer, sortiert, innerhalb [0, n_steps].
+- `steps_for_times` prüft dt sowie endliche, nichtnegative Zeiten.
+- Die **Rechenvorschrift ist unverändert**. Euler-Originaläquivalenz und RK4-Panel bestehen weiter.
+
+**Tests:** `tests/test_lr2_inputs.py` enthält Astras zwei Fälle wörtlich für beide Verfahren und dazu ungültige Werte für dt, `record_steps`, `n_steps` und Zeiten. Gesamt 146/146. Die Mutationsprobe der neuen Prüfungen erkennt 6/6.
+
+**Präzisierung zur Laufzeit:** Die etwa 6-fache Ersparnis von RK4 ist eine **Hochrechnung** aus der Skalierung erster Ordnung bei Euler. Sie ist kein gemessener Vergleich zweier hinreichend genauer Verfahren: Kein Euler-Lauf hat das Gate erreicht.

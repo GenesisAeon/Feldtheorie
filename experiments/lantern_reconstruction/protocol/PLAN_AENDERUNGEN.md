@@ -28,7 +28,7 @@ Trilayer: [`plan_changes.json`](plan_changes.json) (maßgeblich), [`plan_changes
 | Euler | 0,00125 | 39,2 s | ≈ 0,007, besteht noch nicht |
 | RK4 | 0,02 | 9,2 s | 3,2·10⁻⁷ |
 
-RK4 kostet pro Schritt etwa das 3,7-Fache. Für die geforderte Genauigkeit ist es aber geschätzt etwa 6-mal günstiger als ein hinreichend kleiner Euler-Schritt.
+RK4 kostet pro Schritt etwa das 3,7-Fache. Für die geforderte Genauigkeit ist es geschätzt etwa 6-mal günstiger als ein hinreichend kleiner Euler-Schritt. Das ist eine **Hochrechnung** aus der Skalierung erster Ordnung und kein gemessener Vergleich zweier hinreichend genauer Verfahren.
 
 **Prüfungen für RK4:**
 - unverändertes Panel und die Lehrbuchformel des Schritts;
