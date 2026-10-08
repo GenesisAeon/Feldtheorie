@@ -97,16 +97,20 @@ def coupling_matrices(C_lantern: np.ndarray, ctx: ContextSpec, proposals: Option
     return coupling_matrices_with_report(C_lantern, ctx, proposals)[0]
 
 
-def simulate(ctx: ContextSpec, batch: EpisodeBatch, C: np.ndarray, g: float, control: str = "none", chunk: int = 256) -> np.ndarray:
+def simulate(ctx: ContextSpec, batch: EpisodeBatch, C: np.ndarray, g: float, control: str = "none", chunk: int = 256,
+             dt: Optional[float] = None) -> np.ndarray:
     """States at the 7 grid times, (n, 7, 34); chunked (results independent of the chunk size).
-    Everything is validated BEFORE any allocation or dynamics (review R2, R3)."""
+    Everything is validated BEFORE any allocation or dynamics (review R2, R3).
+
+    dt=None is the protocol step (study_defaults, AE-01). Another dt is ONLY for the LR4 decoder
+    convergence check (plan 10.2: dt, dt/2, dt/4); every grid time must be a multiple of it."""
     if isinstance(chunk, (bool, np.bool_)) or not isinstance(chunk, (int, np.integer)) or chunk < 1:
         raise ValueError(f"chunk must be a positive integer (got {chunk!r})")
     check_batch(ctx, batch)
     d = streams.defaults()
     if d["integration"]["method"] != "rk4":
         raise ValueError("the study integrates with RK4 (plan change AE-01)")
-    dt = d["integration"]["dt"]
+    dt = d["integration"]["dt"] if dt is None else dyn.check_dt(dt)
     steps = dyn.steps_for_times(d["time_grid"], dt)
     theta0 = initial_state(ctx, batch.u, batch.phi, d["content"]["impulse_rad"], control)
     out = np.empty((theta0.shape[0], len(steps), N))

@@ -1,0 +1,30 @@
+{
+ "schema": "lantern-decoder-convergence-gate-v1",
+ "status": "fixed BEFORE the run (LR4, 2026-10-08); development check, not a research run",
+ "source": "plan v2.0 section 10.2 (decoder metric change <= .01 on the development test panel); plan change AE-01 left this part open until LR4",
+ "panel": {
+  "study_id": "study_defaults.development_study_id (2026100803)",
+  "contexts": [0, 1],
+  "sizes": "study_defaults.data_per_context (train 1000 / val 250 / test 1000), episode ids 0..n-1 per split",
+  "conditions": ["lantern", "uncoupled", "uniform_total", "strength_surrogate"],
+  "control": "none",
+  "tasks": ["A", "B"],
+  "times": "the 7 protocol grid times",
+  "surrogate_proposals": "protocol default (20000)",
+  "pipeline": "runner.run_context: RK4 trajectories, features via observation.observe, Ridge fit on train with lambda on val, test scoring; one complete pipeline per dt"
+ },
+ "dt": {"protocol": 0.02, "half": 0.01, "reference": 0.005},
+ "reference_reason": "RK4 at dt/4 = 0.005 had 1.4e-9 rad maximum error on the LR2 ODE panel against solve_ivp (AE-01); the same RK4 code at a quarter step is the reference for the full decoder pipeline",
+ "metrics": {
+  "G": "per (context, condition, task, time): 2 x 4 x 2 x 7 = 112 cells",
+  "A": "per (context, condition, task): 16 curves",
+  "also_reported": "S per cell, the selected lambda per cell, the maximum circular state difference over all episodes and times"
+ },
+ "criterion": "max over cells |G(dt 0.02) - G(dt 0.005)| <= 0.01 AND max over curves |A(dt 0.02) - A(dt 0.005)| <= 0.01; the dt 0.01 comparison is reported, not gated",
+ "pipeline_gate_plan_10": {
+  "A": "immediate readout: mean over the development contexts of G(task A, t = 0) > 0.90 for every condition (at t = 0 all conditions share the same states)",
+  "B": "immediate readout must be target-independent: structurally tested in LR3 (identical B features for u and -u at t = 0); G(task B, t = 0) is reported, no 0.90 rule"
+ },
+ "use_of_values": "development values only: they are not used to choose any protocol value; contexts 0 and 1 of the development study are not research contexts; no research claim follows from them",
+ "expected_runtime": "about 55 min on this PC (25 ms per episode and condition at dt 0.02, measured; 4x at dt 0.005)"
+}
