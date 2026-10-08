@@ -1,0 +1,90 @@
+# YAML twin of study_defaults.json (generated; the JSON is authoritative)
+schema: lantern-study-defaults-v1
+status: development defaults (NOT frozen); final master seeds and context list are fixed at the freeze (LR6)
+source: plan v2.0 section 6 'Gemeinsame Defaults', sections 7, 11; plan change AE-01 (RK4)
+registry:
+  entry: registry_adapter.load_verified_snapshot()
+  n_nodes: 34
+coupling_scale:
+  rule: g = 1 / max(row_sum(C_lantern))
+  same_for_all_conditions_of_a_context: true
+time_grid:
+- 0.0
+- 0.5
+- 1.0
+- 2.0
+- 3.0
+- 5.0
+- 10.0
+integration:
+  method: rk4
+  dt: 0.02
+  plan_change: AE-01
+content:
+  dim: 4
+  distribution: independent Uniform([-1, 1])
+  impulse_rad: 0.35
+  write: 'theta(0) = phi * 1 + a * E u; E: four disjoint node pairs with +-1/sqrt(2)'
+  global_phase: phi ~ Uniform([-pi, pi)) per episode
+frequencies:
+  distribution: N(0, 0.1^2) per context, then centred
+measurement:
+  sigma_rad: 0.03
+  addressing: per episode, node and readout time; shared between tasks on common nodes and between conditions
+  process_noise: 0.0
+contexts:
+  n: 20
+  content: frequencies, location permutation, surrogate draw and all learning random sources
+data_per_context:
+  train: 1000
+  val: 250
+  test: 1000
+tasks:
+  A:
+    name: retention_v2
+    observed: all 34 nodes
+    reference: the context's reference node (same as B)
+    features: 66
+  B:
+    name: remote_readout_v1
+    location_rule: 'per context a permutation of the 34 sorted IDs: first 8 = write nodes (4 pairs), next 9 = read nodes, the last of these 9 = reference'
+    observed: 8 read nodes + reference, all unwritten
+    features: 16
+conditions:
+  lantern: original matrix with g
+  uncoupled: zero matrix
+  uniform_total: C_ij = sum(C)/(n(n-1)) for i != j
+  strength_surrogate: four-node switches from the original C keeping symmetry, zero diagonal, node strengths and [0,1]
+strength_surrogate:
+  proposals: 20000
+  start: original C
+  stream_role: surrogate
+controls:
+  zero_impulse: u is not written
+  reset: state reset to phi * 1 right after the write
+streams:
+  bitgenerator: PCG64
+  key: (study_id, context_id, split_id, role_id, episode_id[, extra])
+  roles:
+    locations: 10
+    frequencies: 20
+    targets: 30
+    global_phase: 40
+    measurement: 50
+    surrogate: 60
+    decoder: 70
+  splits:
+    context: 9
+    train: 0
+    val: 1
+    test: 2
+  rules:
+  - no Python hash() seeds
+  - one stream per episode and role (independent of batch size and order)
+  - train/val/test never share a stream
+  - conditions share targets and measurement errors within a context
+  excluded_master_seeds:
+    from: 900000
+    to: 900104
+    reason: Aeon's known development seeds
+development_study_id: 2026100803
