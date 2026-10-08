@@ -66,16 +66,44 @@ def training_targets(ctx: ContextSpec, u_train: np.ndarray, control: str, task: 
     return u_train[perm]
 
 
+def simulation_key(condition: str, control: str) -> tuple:
+    """Which trajectory a unit needs: 'permuted_targets' uses EXACTLY the states of its condition without
+    control, so it never integrates again (plan 13: one trajectory per context, split and coupling)."""
+    return condition, ("none" if control == "permuted_targets" else control)
+
+
+def initial_state_key(ctx: ContextSpec, prep: Dict, condition: str, control: str, dt: Optional[float] = None) -> tuple:
+    """Content address of a trajectory: condition, dt and the SHA-256 of the initial states of all splits.
+    Units with bit-identical inputs (e.g. 'reset' and 'zero_impulse', both phi * 1) integrate once; if the
+    encoding ever made them differ, they would get different keys automatically."""
+    import hashlib
+    from experiments.lantern_reconstruction.encoding import initial_state
+
+    a = streams.defaults()["content"]["impulse_rad"]
+    h = hashlib.sha256()
+    for s in SPLITS:
+        b = prep["batches"][s]
+        h.update(np.ascontiguousarray(initial_state(ctx, b.u, b.phi, a, simulation_key(condition, control)[1])).tobytes())
+    return condition, dt, h.hexdigest()
+
+
 def iter_cells(ctx: ContextSpec, prep: Dict, g: float, condition: str, control: str, tasks: Sequence[str],
-               dt: Optional[float] = None, keep_states: Optional[Dict] = None, scorer=None):
+               dt: Optional[float] = None, keep_states: Optional[Dict] = None, scorer=None, state_cache: Optional[Dict] = None):
     """One trajectory per split for (condition, control), then per (task, time) the fitted, cell-bound
     decoder and its test result. Features ONLY via observation.observe(). scorer(model, cell, X_test, U_test)
-    replaces plain scoring (runs.py: persist the model, then score with integrity checks)."""
+    replaces plain scoring (runs.py: persist the model, then score with integrity checks). state_cache
+    (dict) reuses trajectories across units of the same context and simulation key."""
     d = streams.defaults()
     dt_used = d["integration"]["dt"] if dt is None else float(dt)
-    sim_control = "none" if control == "permuted_targets" else control
+    sim_control = simulation_key(condition, control)[1]
     batches, specs = prep["batches"], prep["specs"]
-    states = {s: episodes.simulate(ctx, batches[s], prep["mats"][condition], g, sim_control, dt=dt) for s in SPLITS}
+    key = initial_state_key(ctx, prep, condition, control, dt) if state_cache is not None else None
+    if key is not None and key in state_cache:
+        states = state_cache[key]
+    else:
+        states = {s: episodes.simulate(ctx, batches[s], prep["mats"][condition], g, sim_control, dt=dt) for s in SPLITS}
+        if key is not None:
+            state_cache[key] = states
     if keep_states is not None:
         keep_states[condition] = states
     for task in tasks:

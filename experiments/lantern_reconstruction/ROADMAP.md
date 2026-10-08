@@ -8,8 +8,8 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 | LR1 | Snapshot und Import: separater Legacy-Prozess, kanonische Matrix, Importmanifest | ✅ erledigt, siehe [Bericht](lr1/LR1_BERICHT.md); wartet auf Prüfung |
 | LR2 | Numerischer Kern: gebatchte Dynamik, lineares H(t), Orakel | ✅ erledigt, siehe [Bericht](lr2/LR2_BERICHT.md). ODE-Gate: Euler nicht bestanden (bleibt dokumentiert), **RK4 bestanden** (Planänderung AE-01); Decoderteil in LR4 bestanden; wartet auf Prüfung |
 | LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | ✅ erledigt, siehe [Bericht](lr3/LR3_BERICHT.md); Fixes nach Astras Nachprüfung, von ihr nachgeprüft (`6680618`) |
-| LR4 | Ridge und Evaluation | ✅ erledigt, siehe [Bericht](lr4/LR4_BERICHT.md). Ridge per NumPy (LR0-O1); Decoder-Konvergenzgate bestanden; wartet auf Prüfung |
-| LR5 | Laufverwaltung und CI | offen |
+| LR4 | Ridge und Evaluation | ✅ erledigt, siehe [Bericht](lr4/LR4_BERICHT.md). Ridge per NumPy (LR0-O1); Decoder-Konvergenzgate bestanden; R1/R2 nach `REVIEW_LR4` geschlossen und von Astra nachgeprüft (`25ba293`, GO für LR5) |
+| LR5 | Laufverwaltung und CI | ✅ erledigt, siehe [Bericht](lr5/LR5_BERICHT.md). LR5-A1, Artefaktkette, Resume, Freigabe-Gate, Budget, CI-Workflow, Mutationskampagne; wartet auf Prüfung. Freigaberegel LR5-A1 vor dem Freeze zu entscheiden |
 | LR6 | Entwicklungsabnahme und Freeze-Kandidat | offen |
 | LR7–LR9 | Forschungsrunde, Bericht, Folgestudien | erst nach der LR6-Freigabe |
 
@@ -63,4 +63,23 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Decoder-Konvergenzgate** (Plan 10.2, Definition vor dem Lauf festgelegt): bestanden mit |ΔG| ≤ 8,7·10⁻¹⁰ und |ΔA| ≤ 2,5·10⁻¹⁰, Grenze 0,01. Das Pipeline-Gate A bei t = 0 ist mit G0 = 0,962 > 0,90 ebenfalls bestanden.
 - **Prüfungen:** Tests 268/268. Gezielte Mutation 29/30: 1 Mutant ist nachweislich äquivalent, 2 echte Testlücken sind geschlossen.
 - **Nachtrag nach `REVIEW_LR4`:** Konstante Trainingsspalten werden über ihre Werte erkannt (Skala 1, R1). Die Decoder-Metadaten werden vollständig geprüft, `check_decoder_for` bindet jedes Modell an seine Zelle (R2), und die Modellarrays sind unveränderlich. Das Konvergenzgate ist nicht betroffen: Das Panel enthält keine konstante Spalte, und die Pipeline ist alt gegen neu bitgleich. Tests 295/295, Mutation 23/23.
-- **Verbindlich für LR5** (aus `REVIEW_LR4`): Modellintegrität mit Hashprüfung vor und nach der Auswertung; exklusive, atomare Speicherung ohne Überschreiben; externes Manifest mit Modell- und Herkunftsidentität samt erwarteter Zelle; eine Ergebnisfreigabe, die das genaue Raster und alle Kontrollalarme prüft.
+- **Verbindlich für LR5** (aus `REVIEW_LR4`): Modellintegrität mit Hashprüfung vor und nach der Auswertung; exklusive, atomare Speicherung ohne Überschreiben; externes Manifest mit Modell- und Herkunftsidentität samt erwarteter Zelle; eine Ergebnisfreigabe, die das genaue Raster und alle Kontrollalarme prüft. → in LR5 umgesetzt.
+- **Astras Nachprüfung** (`LANTERN_LR4_NACHREVIEW_25ba293`): R1/R2 im geprüften Umfang geschlossen, GO für LR5; neuer Abnahmefall LR5-A1.
+
+## LR5 (2026-10-08/09)
+
+- **LR5-A1:**
+  - zwölf benannte Kontrollzellen (`protocol/control_alarms.json`);
+  - Holm immer über alle 12;
+  - getrennte Alarme `positive_spurious_success` (G > 0 und Holm-p ≤ 0,01) und `target_dependence` (jedes Vorzeichen);
+  - die Kontrolle `permuted_targets`;
+  - die Freigaberegel als **Vorschlag**, vor dem Freeze zu entscheiden.
+- **Artefaktkette und Laufverwaltung** (`artifacts.py`, `runs.py`):
+  - Lauf- und Modellidentitäten;
+  - exklusive, atomare Speicherung;
+  - studienweite Sperre, Ereignisprotokoll mit Schlaferkennung, Status;
+  - deterministisches Resume, verweigert bei geändertem Code, Konfiguration oder Snapshot; Unterbrechung plus Resume ergibt den ununterbrochenen Lauf.
+- **Freigabe-Gate** (`release.py`): technisch vollständig, wissenschaftlich interpretierbar und Hypothese als getrennte Felder; Scores und Strukturprüfung werden nachgerechnet.
+- **Budget:** hochgerechnet 1,66 h Produktion bei 2 h Entwurfsbudget. Die erste Messung lag bei 2,25 h, bis die Trajektorien-Wiederverwendung nach Plan § 13 kam. Spitzen-RAM 115 MB, Artefakte 202 MB.
+- **CI:** drei explizite Jobs, Python 3.11 und 3.12, ohne Maskierung; noch nicht auf GitHub gelaufen.
+- **Mutationskampagne:** 34 ausgeführt, 33 erkannt, 1 äquivalent. Alle ausführbaren Plan-Mutanten werden erkannt; 6 und 12 sind `not_applicable`.

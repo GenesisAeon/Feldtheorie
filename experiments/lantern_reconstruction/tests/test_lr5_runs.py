@@ -48,6 +48,19 @@ def test_write_exclusive_never_overwrites_and_leaves_no_temp(tmp_path):
     assert p.read_bytes() == b"first" and [q.name for q in tmp_path.iterdir()] == ["a.bin"]
 
 
+def test_write_exclusive_holds_under_a_race(tmp_path, monkeypatch):
+    """The name appears between the existence check and the final step (another writer): os.link must refuse.
+    (Mutation check: with os.replace the second writer silently overwrote -- the sequential test missed it.)"""
+    p = tmp_path / "race.bin"
+    artifacts.write_exclusive(p, b"first")
+    real_exists = Path.exists
+    monkeypatch.setattr(artifacts.Path, "exists", lambda self: False if self == p else real_exists(self))
+    with pytest.raises(FileExistsError):
+        artifacts.write_exclusive(p, b"second")
+    monkeypatch.undo()
+    assert p.read_bytes() == b"first" and [q.name for q in tmp_path.iterdir()] == ["race.bin"]
+
+
 def test_model_identity_binds_arrays_and_metadata_and_integrity_before_after(monkeypatch):
     ctx = contexts.make_context(streams.defaults()["development_study_id"], 0)
     spec = observation.observation_spec(ctx, "B")
@@ -164,7 +177,8 @@ def _first_cell(rd):
     return sorted((rd / "cells").iterdir())[0]
 
 
-@pytest.mark.parametrize("attack", ["score", "model_npz_swap", "model_json", "predictions", "delete_cell", "extra_cell", "foreign_record"])
+@pytest.mark.parametrize("attack", ["score", "model_npz_swap", "model_json", "predictions", "delete_cell", "extra_cell", "foreign_record",
+                                    "record_run_identity", "record_cell"])
 def test_release_detects_manipulated_artifacts(complete_run, tmp_path, attack):
     rd = _copy(complete_run, tmp_path)
     cells = sorted((rd / "cells").iterdir())
@@ -190,6 +204,12 @@ def test_release_detects_manipulated_artifacts(complete_run, tmp_path, attack):
     elif attack == "foreign_record":
         (a / "record.json").unlink()
         shutil.copy(b / "record.json", a / "record.json")
+    elif attack in ("record_run_identity", "record_cell"):      # only the record's binding can catch these
+        if attack == "record_run_identity":                      # (mutation check: a gap that survived first)
+            rec["run_identity"] = "0" * 64                       # a record that claims another run
+        else:
+            rec["cell"]["context_fingerprint"] = "0" * 64       # a record that claims another cell definition
+        (a / "record.json").write_text(json.dumps(rec), encoding="utf-8")
     rep = release.release_report(rd)
     assert not rep["technically_complete"] and not rep["scientifically_interpretable"] and rep["problems"]
 
@@ -215,6 +235,31 @@ def test_failed_reset_control_blocks_release_plan_mutant_17(complete_run, tmp_pa
     monkeypatch.setattr(runs, "_structure_check", failing)
     rep = release.release_report(rd)
     assert not rep["scientifically_interpretable"] and any("reset" in b for b in rep["scientific_blocks"])
+
+
+# --- trajectory reuse (plan 13; LR5 budget) ----------------------------------------------------------------
+def test_permuted_targets_reuses_the_trajectories_bit_identically(monkeypatch):
+    from experiments.lantern_reconstruction import episodes, registry_adapter as ra, runner
+    s = ra.load_verified_snapshot()
+    ctx = contexts.make_context(streams.defaults()["development_study_id"], 0)
+    prep = runner.prepare_context(ctx, np.array(s.C), {"train": 30, "val": 12, "test": 20}, 100)
+    g = float(s.structure["g"])
+    fresh = [c["result"]["projected"] for c in runner.iter_cells(ctx, prep, g, "lantern", "permuted_targets", ("A", "B"))]
+    calls, real = [], episodes.simulate
+    monkeypatch.setattr(episodes, "simulate", lambda *a, **k: calls.append(a[4] if len(a) > 4 else k.get("control")) or real(*a, **k))
+    cache = {}
+    list(runner.iter_cells(ctx, prep, g, "lantern", "none", ("A", "B"), state_cache=cache))
+    cached = [c["result"]["projected"] for c in runner.iter_cells(ctx, prep, g, "lantern", "permuted_targets", ("A", "B"), state_cache=cache)]
+    assert len(calls) == 3 and all(np.array_equal(a, b) for a, b in zip(fresh, cached))       # 3 splits, once
+    # reset and zero impulse start from the same phi * 1: integrated once, results bit-identical to fresh runs
+    zi_fresh = [c["result"]["projected"] for c in runner.iter_cells(ctx, prep, g, "lantern", "zero_impulse", ("A",))]
+    calls.clear()
+    list(runner.iter_cells(ctx, prep, g, "lantern", "reset", ("A",), state_cache=cache))
+    zi = [c["result"]["projected"] for c in runner.iter_cells(ctx, prep, g, "lantern", "zero_impulse", ("A",), state_cache=cache)]
+    assert len(calls) == 3 and all(np.array_equal(a, b) for a, b in zip(zi_fresh, zi))
+    assert runner.initial_state_key(ctx, prep, "lantern", "reset") == runner.initial_state_key(ctx, prep, "lantern", "zero_impulse")
+    assert runner.initial_state_key(ctx, prep, "lantern", "none") != runner.initial_state_key(ctx, prep, "lantern", "reset")
+    assert runner.initial_state_key(ctx, prep, "lantern", "none") != runner.initial_state_key(ctx, prep, "uncoupled", "none")
 
 
 # --- lock, status, kinds, clock ---------------------------------------------------------------------------

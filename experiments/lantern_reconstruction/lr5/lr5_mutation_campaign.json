@@ -1,0 +1,530 @@
+{
+ "schema": "lantern-lr5-mutation-campaign-v1",
+ "plan_mutants": [
+  {
+   "id": "1",
+   "description": "YAML order emitted as sorted order",
+   "file": "registry_adapter.py",
+   "tests": [
+    "test_lr1.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr1.py::test_verified_snapshot_loads_and_recomputes_the_plan_values"
+   ],
+   "seconds": 2.1
+  },
+  {
+   "id": "3",
+   "description": "sine argument reversed",
+   "file": "dynamics.py",
+   "tests": [
+    "test_lr2.py",
+    "test_lr2_rk4.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr2.py::test_batched_euler_equals_the_original_kernel_on_100_states"
+   ],
+   "seconds": 3.8
+  },
+  {
+   "id": "4",
+   "description": "g applied twice",
+   "file": "dynamics.py",
+   "tests": [
+    "test_lr2.py",
+    "test_lr2_rk4.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr2.py::test_batched_euler_equals_the_original_kernel_on_100_states"
+   ],
+   "seconds": 3.4
+  },
+  {
+   "id": "5",
+   "description": "theta_threshold overwrites the phase",
+   "file": "encoding.py",
+   "tests": [
+    "test_lr3.py",
+    "test_lr3_nachreview.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr3.py::test_writing_is_exact_and_controls_remove_the_content"
+   ],
+   "seconds": 3.6
+  },
+  {
+   "id": "7",
+   "description": "target-dependent frequency",
+   "file": "episodes.py",
+   "tests": [
+    "test_lr3.py",
+    "test_lr3_nachreview.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr3.py::test_controls_give_identical_states_for_different_u_at_all_times[zero_impulse]"
+   ],
+   "seconds": 3.0
+  },
+  {
+   "id": "8",
+   "description": "write again during the pause",
+   "file": "episodes.py",
+   "tests": [
+    "test_lr3.py",
+    "test_lr3_nachreview.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr3.py::test_controls_give_identical_states_for_different_u_at_all_times[zero_impulse]"
+   ],
+   "seconds": 2.9
+  },
+  {
+   "id": "9",
+   "description": "written reference node allowed in B",
+   "file": "observation.py",
+   "tests": [
+    "test_lr3.py",
+    "test_lr3_nachreview.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr3.py::test_task_views"
+   ],
+   "seconds": 3.2
+  },
+  {
+   "id": "10",
+   "description": "source-node feature in B",
+   "file": "observation.py",
+   "tests": [
+    "test_lr3.py",
+    "test_lr3_nachreview.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr3.py::test_task_views"
+   ],
+   "seconds": 3.1
+  },
+  {
+   "id": "11",
+   "description": "standardisation fitted beyond the training split (fit never sees test: train+val)",
+   "file": "training.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_standardisation_train_only_constant_column_ddof0_plan_mutant_11"
+   ],
+   "seconds": 3.1
+  },
+  {
+   "id": "12-analog",
+   "description": "model selection on the test split (Ridge analogue of plan mutant 12)",
+   "file": "runner.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_runner_uses_observe_and_keeps_splits_apart"
+   ],
+   "seconds": 10.7
+  },
+  {
+   "id": "13",
+   "description": "lambda convention without the factor N",
+   "file": "training.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_ridge_one_dimensional_exact_by_fractions"
+   ],
+   "seconds": 2.8
+  },
+  {
+   "id": "14",
+   "description": "negative G discarded (clipped to 0)",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_k19_score_is_not_gain_and_k22_negative_gain_is_valid_plan_mutant_14"
+   ],
+   "seconds": 6.6
+  },
+  {
+   "id": "15",
+   "description": "episodes counted as independent contexts",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_no_episode_pseudo_replicates_plan_mutant_15"
+   ],
+   "seconds": 3.7
+  },
+  {
+   "id": "16a",
+   "description": "missing grid cell replaced by zero (curve)",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr4.py",
+    "test_lr4_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr4.py::test_curve_aggregate_requires_the_complete_grid[bad0]"
+   ],
+   "seconds": 2.9
+  },
+  {
+   "id": "16b",
+   "description": "missing grid cell ignored (release gate)",
+   "file": "release.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_release_detects_manipulated_artifacts[delete_cell]"
+   ],
+   "seconds": 192.5
+  },
+  {
+   "id": "17",
+   "description": "release despite a failed reset control",
+   "file": "release.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_failed_reset_control_blocks_release_plan_mutant_17"
+   ],
+   "seconds": 195.3
+  },
+  {
+   "id": "18a",
+   "description": "resume with changed code/configuration/seed",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_resume_refused_after_code_or_configuration_change"
+   ],
+   "seconds": 207.1
+  },
+  {
+   "id": "18b",
+   "description": "resume adopts a different (orphan) model",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_resume_with_a_changed_model_is_an_integrity_failure_and_terminal"
+   ],
+   "seconds": 212.0
+  }
+ ],
+ "not_applicable": {
+  "2": "only C permuted, not E/omega/observation: a property of an invariance TEST, not of production code; the detection is the executed test test_lr3::test_joint_permutation_of_all_node_objects_keeps_the_features (it also shows that permuting only C changes the features) -- run below as a detection check",
+  "6": "process noise with dt instead of sqrt(dt): the SDE module comes only in LR9 (plan: not_applicable before LR9)",
+  "12": "best MLP initialisation chosen by test MSE: the optional MLP is not implemented (LR6 decision); the Ridge analogue 12-analog is executed"
+ },
+ "lr5_mutants": [
+  {
+   "id": "L1",
+   "description": "artifact overwrite allowed",
+   "file": "artifacts.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_write_exclusive_holds_under_a_race"
+   ],
+   "seconds": 6.8,
+   "history": [
+    {
+     "id": "L1",
+     "description": "artifact overwrite allowed",
+     "file": "artifacts.py",
+     "tests": [
+      "test_lr5_runs.py"
+     ],
+     "result": "SURVIVED",
+     "killed_by": [],
+     "seconds": 210.4
+    }
+   ]
+  },
+  {
+   "id": "L2",
+   "description": "existence check before writing removed",
+   "file": "artifacts.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "SURVIVED",
+   "killed_by": [],
+   "seconds": 213.8,
+   "history": [
+    {
+     "id": "L2",
+     "description": "existence check before writing removed",
+     "file": "artifacts.py",
+     "tests": [
+      "test_lr5_runs.py"
+     ],
+     "result": "SURVIVED",
+     "killed_by": [],
+     "seconds": 204.1
+    }
+   ]
+  },
+  {
+   "id": "L3",
+   "description": "model integrity after evaluation unchecked",
+   "file": "artifacts.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_model_identity_binds_arrays_and_metadata_and_integrity_before_after"
+   ],
+   "seconds": 4.1
+  },
+  {
+   "id": "L4",
+   "description": "record scores not recomputed",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_release_detects_manipulated_artifacts[score]"
+   ],
+   "seconds": 175.6
+  },
+  {
+   "id": "L5",
+   "description": "structure record not recomputed",
+   "file": "release.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_edited_structure_record_is_detected"
+   ],
+   "seconds": 206.1
+  },
+  {
+   "id": "L6",
+   "description": "study lock not exclusive",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_study_lock_is_exclusive"
+   ],
+   "seconds": 250.6
+  },
+  {
+   "id": "L7",
+   "description": "status transitions unchecked",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_status_transitions"
+   ],
+   "seconds": 210.5
+  },
+  {
+   "id": "L8",
+   "description": "run.json identity not checked",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_run_json_tampering_is_detected"
+   ],
+   "seconds": 167.4
+  },
+  {
+   "id": "L9",
+   "description": "foreign record accepted (cell binding off)",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_release_detects_manipulated_artifacts[record_run_identity]"
+   ],
+   "seconds": 200.2,
+   "history": [
+    {
+     "id": "L9",
+     "description": "foreign record accepted (cell binding off)",
+     "file": "runs.py",
+     "tests": [
+      "test_lr5_runs.py"
+     ],
+     "result": "SURVIVED",
+     "killed_by": [],
+     "seconds": 210.4
+    }
+   ]
+  },
+  {
+   "id": "L10",
+   "description": "cells outside the grid ignored",
+   "file": "release.py",
+   "tests": [
+    "test_lr5_runs.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_release_detects_manipulated_artifacts[extra_cell]"
+   ],
+   "seconds": 196.8
+  },
+  {
+   "id": "A1a",
+   "description": "positive alarm without the G > 0 condition (p-only)",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_review_counterexample_negative_G_small_p_is_dependence_not_positive_success"
+   ],
+   "seconds": 3.3
+  },
+  {
+   "id": "A1b",
+   "description": "Holm over a subset only (the positive cells)",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_review_counterexample_negative_G_small_p_is_dependence_not_positive_success"
+   ],
+   "seconds": 3.2
+  },
+  {
+   "id": "A1c",
+   "description": "dependence alarm merged into the positive alarm",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_review_counterexample_negative_G_small_p_is_dependence_not_positive_success"
+   ],
+   "seconds": 3.4
+  },
+  {
+   "id": "A1d",
+   "description": "control alarm accepts a missing cell",
+   "file": "metrics.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_missing_extra_or_misnamed_cells_are_refused[bad0]"
+   ],
+   "seconds": 3.3
+  },
+  {
+   "id": "A1e",
+   "description": "permuted-target control trains on the real targets",
+   "file": "runner.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_permuted_training_targets_control"
+   ],
+   "seconds": 18.7
+  },
+  {
+   "id": "A1f",
+   "description": "alarm with too few permutations (B = 999 allowed)",
+   "file": "runner.py",
+   "tests": [
+    "test_lr5_alarms.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_alarm_inputs_end_to_end_with_streams"
+   ],
+   "seconds": 19.7
+  }
+ ],
+ "plan_mutant_2_detection_test": {
+  "command": "pytest test_lr3.py -k joint_permutation",
+  "passed": true,
+  "summary": "1 passed, 35 deselected, 1 warning in 2.02s"
+ },
+ "summary": {
+  "executed": 34,
+  "killed": 33,
+  "survived": [],
+  "equivalent": [
+   "L2"
+  ],
+  "first_run_survivors_closed_by_new_tests": [
+   "L1",
+   "L9"
+  ],
+  "invalid_targets": [],
+  "not_applicable": [
+   "12",
+   "2",
+   "6"
+  ]
+ },
+ "equivalent": {
+  "L2": "removing the early existence check is equivalent in outcome: os.link still refuses an existing name (FileExistsError, nothing overwritten); the check only avoids writing a temp file. Confirmed by the race test and the overwrite test both passing under this mutant."
+ }
+}

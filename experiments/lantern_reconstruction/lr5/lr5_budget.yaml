@@ -1,0 +1,37 @@
+# YAML twin of lr5_budget.json (generated; the JSON is authoritative)
+schema: lantern-lr5-budget-v1
+status: development measurement; full-study values are EXTRAPOLATIONS
+machine:
+  python: 3.11.9
+  numpy: 2.2.6
+  platform: Windows-10-10.0.19045-SP0
+  processor: Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+measured:
+  prepare_context_s: 0.81624059996102
+  dynamics_one_unit_s: 59.18163710006047
+  ridge_14_cells_s: 0.15711019991431385
+  persist_and_score_14_cells_s: 0.21959740004967898
+  bytes_per_cell: 103243.92857142857
+  alarm_one_cell_20_contexts_s: 17.236154700047337
+  peak_working_set_bytes: 120942592
+measurement_scope:
+  dynamics_one_unit: 2250 episodes, one condition, RK4 dt 0.02
+  ridge: 2 tasks x 7 times on those states
+  persistence: '14 cells: model + predictions + record, exclusive'
+  alarm: one control cell, 20 synthetic contexts x 1000 episodes, B = 9999
+extrapolated_full_study:
+  grid: 20 contexts x 7 units x 2 tasks x 7 times = 1960 cells
+  trajectory_simulations_per_context: 5
+  production_training_s: 5987.227586000226
+  evaluation_s: 237.5774924075231
+  artifacts_bytes: 202358100.0
+budget_draft:
+  production_training_s: 7200
+  evaluation_s: 1800
+  ram_bytes: 1073741824
+  artifacts_bytes: 1073741824
+within_budget:
+  production_training: true
+  evaluation: true
+  ram_measured_peak: true
+  artifacts: true

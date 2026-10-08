@@ -129,7 +129,29 @@ def test_permuted_targets_run_destroys_the_trained_information():
     assert len(perm["predictions"]) == 7
 
 
-def test_control_alarm_protocol_yaml_twin():
+@pytest.mark.parametrize("stem", ["protocol/control_alarms", "lr5/lr5_budget", "lr5/lr5_mutation_campaign", "lr5/lr5_status"])
+def test_lr5_yaml_twins(stem):
     import yaml
-    p = streams.HERE / "protocol" / "control_alarms"
+    p = streams.HERE / stem
     assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
+
+
+def test_mutation_campaign_record_is_consistent():
+    """Every applicable plan mutant (1-18 without 2, 6, 12) was executed and killed; 2/6/12 carry a reason;
+    survivors are only the documented equivalent ones."""
+    d = json.loads((streams.HERE / "lr5" / "lr5_mutation_campaign.json").read_text(encoding="utf-8"))
+    ids = {m["id"].split("-")[0].rstrip("ab") for m in d["plan_mutants"]}
+    assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
+    assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
+    surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] if m["result"] != "killed"]
+    assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
+
+
+def test_budget_record_separates_measurement_and_extrapolation():
+    d = json.loads((streams.HERE / "lr5" / "lr5_budget.json").read_text(encoding="utf-8"))
+    assert "EXTRAPOLATION" in d["status"] and d["measured"]["peak_working_set_bytes"] and d["measured"]["peak_working_set_bytes"] > 0
+    ex, b = d["extrapolated_full_study"], d["budget_draft"]
+    assert d["within_budget"] == {"production_training": ex["production_training_s"] <= b["production_training_s"],
+                                  "evaluation": ex["evaluation_s"] <= b["evaluation_s"],
+                                  "ram_measured_peak": d["measured"]["peak_working_set_bytes"] <= b["ram_bytes"],
+                                  "artifacts": ex["artifacts_bytes"] <= b["artifacts_bytes"]}

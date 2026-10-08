@@ -1,0 +1,172 @@
+"""LR5 mutation campaign (plan section 15: at least the 18 plan mutants, each with an executed proof; plus the
+LR5 interruption/manipulation mutants). Each mutant changes production code in place, runs the responsible
+test files (stop at the first failure) and restores the file byte-exactly. Results:
+lr5/lr5_mutation_campaign.json (+ .yaml). Survivors and equivalent mutants are listed separately.
+
+    python experiments/lantern_reconstruction/tools/lr5_mutation_campaign.py
+"""
+from __future__ import annotations
+
+import json
+import os
+import re
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parents[1]
+ROOT = HERE.parents[1]
+T = "experiments/lantern_reconstruction/tests/"
+LR1, LR2, LR3 = [T + "test_lr1.py"], [T + "test_lr2.py", T + "test_lr2_rk4.py"], [T + "test_lr3.py", T + "test_lr3_nachreview.py"]
+LR4, ALARM, RUNS = [T + "test_lr4.py", T + "test_lr4_review.py"], [T + "test_lr5_alarms.py"], [T + "test_lr5_runs.py"]
+SNAP = '__import__("experiments.lantern_reconstruction.registry_adapter", fromlist=["x"]).load_verified_snapshot()'
+ENC = '__import__("experiments.lantern_reconstruction.encoding", fromlist=["x"])'
+
+PLAN = [
+    ("1", "YAML order emitted as sorted order", "registry_adapter.py", 'ids = [r["id"] for r in rows]', 'ids = sorted(r["id"] for r in rows)', LR1),
+    ("3", "sine argument reversed", "dynamics.py", "diff = theta[:, None, :] - theta[:, :, None]", "diff = theta[:, :, None] - theta[:, None, :]", LR2),
+    ("4", "g applied twice", "dynamics.py", 'return omega + g * np.einsum("ij,bij->bi", C, np.sin(diff))',
+     'return omega + g * g * np.einsum("ij,bij->bi", C, np.sin(diff))', LR2),
+    ("5", "theta_threshold overwrites the phase", "encoding.py", "base = np.repeat(phi[:, None], N, axis=1)",
+     f'base = np.repeat(phi[:, None], N, axis=1) + np.asarray({SNAP}.arrays["theta_threshold"])', LR3),
+    ("7", "target-dependent frequency", "episodes.py", "dyn.integrate_rk4(theta0[s:s + chunk], C, ctx.omega_array(), g,",
+     "dyn.integrate_rk4(theta0[s:s + chunk], C, ctx.omega_array() + 0.05 * float(batch.u[s, 0]), g,", LR3),
+    ("8", "write again during the pause", "episodes.py", "steps[-1], steps), (1, 0, 2))\n    return out",
+     f"steps[-1], steps), (1, 0, 2))\n        out[s:s + chunk, 1:] += 0.35 * (batch.u[s:s + chunk] @ {ENC}.write_matrix(ctx).T)[:, None, :]\n    return out", LR3),
+    ("9", "written reference node allowed in B", "observation.py", "    if spec.reference in ctx.write_nodes:\n        raise", "    if False:\n        raise", LR3),
+    ("10", "source-node feature in B", "observation.py", 'spec = ObservationSpec("B", tuple(ctx.read_nodes[:-1]), ctx.reference)',
+     'spec = ObservationSpec("B", tuple(ctx.read_nodes[:-2]) + (ctx.write_nodes[0],), ctx.reference)', LR3),
+    ("11", "standardisation fitted beyond the training split (fit never sees test: train+val)", "training.py",
+     "mean, scale = standardisation(Xtr)", "mean, scale = standardisation(np.vstack([Xtr, Xva]))", LR4),
+    ("12-analog", "model selection on the test split (Ridge analogue of plan mutant 12)", "runner.py",
+     'X["val"], batches["val"].u,', 'X["test"], batches["test"].u,', LR4),
+    ("13", "lambda convention without the factor N", "training.py", "s ** 2 + N * lam", "s ** 2 + lam", LR4),
+    ("14", "negative G discarded (clipped to 0)", "metrics.py", '"G": float(3.0 * np.mean(loss_zero - loss))',
+     '"G": max(0.0, float(3.0 * np.mean(loss_zero - loss)))', LR4),
+    ("15", "episodes counted as independent contexts", "metrics.py",
+     '    if not isinstance(values, Mapping):\n        raise ValueError("inference needs ONE value per context: a mapping context_id -> value")\n',
+     "    if not isinstance(values, Mapping):\n        values = dict(enumerate(values))\n", LR4),
+    ("16a", "missing grid cell replaced by zero (curve)", "metrics.py",
+     '    if keys != grid or len(G_by_time) != len(grid):\n        raise ValueError(f"the curve needs exactly the grid times {grid} (got {keys}); a missing cell is not zero")\n    g = np.array([G_by_time[k] for k in grid], dtype=np.float64)',
+     "    g = np.array([G_by_time.get(k, 0.0) for k in grid], dtype=np.float64)", LR4),
+    ("16b", "missing grid cell ignored (release gate)", "release.py", '            problems.append(f"missing cell {name}")\n', "", RUNS),
+    ("17", "release despite a failed reset control", "release.py",
+     "    if failed_structure or len(structure) != len(grid[\"contexts\"]):", "    if False:", RUNS),
+    ("18a", "resume with changed code/configuration/seed", "runs.py", "    if diffs:\n        raise ResumeRefused", "    if False:\n        raise ResumeRefused", RUNS),
+    ("18b", "resume adopts a different (orphan) model", "runs.py", "        if artifacts.identity(meta) != ident:", "        if False:", RUNS),
+]
+NOT_APPLICABLE = {
+    "2": "only C permuted, not E/omega/observation: a property of an invariance TEST, not of production code; the detection is the "
+         "executed test test_lr3::test_joint_permutation_of_all_node_objects_keeps_the_features (it also shows that "
+         "permuting only C changes the features) -- run below as a detection check",
+    "6": "process noise with dt instead of sqrt(dt): the SDE module comes only in LR9 (plan: not_applicable before LR9)",
+    "12": "best MLP initialisation chosen by test MSE: the optional MLP is not implemented (LR6 decision); the Ridge analogue 12-analog is executed",
+}
+LR5 = [
+    ("L1", "artifact overwrite allowed", "artifacts.py", "        os.link(tmp, path)", "        os.replace(tmp, path)", RUNS),
+    ("L2", "existence check before writing removed", "artifacts.py",
+     '    if path.exists():\n        raise FileExistsError(f"{path} exists already (artifacts are never overwritten)")\n', "", RUNS),
+    ("L3", "model integrity after evaluation unchecked", "artifacts.py", '    if model_identity(model) != expected_identity:\n        raise IntegrityError("model changed during evaluation")',
+     '    if False:\n        raise IntegrityError("model changed during evaluation")', RUNS),
+    ("L4", "record scores not recomputed", "runs.py", "        raise IntegrityError(f\"scores of {cell_dir_name(c)} do not follow", "        pass  # (f\"scores of {cell_dir_name(c)} do not follow", RUNS),
+    ("L5", "structure record not recomputed", "release.py", "        if {k: s[k] for k in again} != again:", "        if False:", RUNS),
+    ("L6", "study lock not exclusive", "runs.py", "fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)", "fd = os.open(self.path, os.O_CREAT | os.O_WRONLY)", RUNS),
+    ("L7", "status transitions unchecked", "runs.py", "    if new not in RUN_STATES or (cur is not None and new not in TRANSITIONS[cur]):", "    if new not in RUN_STATES:", RUNS),
+    ("L8", "run.json identity not checked", "runs.py", '    if run.get("schema") != RUN_SCHEMA or run_identity(run) != run.get("run_identity"):', '    if run.get("schema") != RUN_SCHEMA:', RUNS),
+    ("L9", "foreign record accepted (cell binding off)", "runs.py",
+     '    if rec.get("schema") != RECORD_SCHEMA or rec.get("run_identity") != run["run_identity"] or rec.get("cell") != expected_cell:',
+     '    if rec.get("schema") != RECORD_SCHEMA:', RUNS),
+    ("L10", "cells outside the grid ignored", "release.py", '        problems.append(f"cells outside the grid: {sorted(present - expected_dirs)}")', "        pass", RUNS),
+    ("A1a", "positive alarm without the G > 0 condition (p-only)", "metrics.py", '"positive_spurious_success": g > 0 and a <= alpha', '"positive_spurious_success": a <= alpha', ALARM),
+    ("A1b", "Holm over a subset only (the positive cells)", "metrics.py", "    adj = holm(p)\n", "    adj = [min(1.0, x * max(1, sum(gg > 0 for gg in G))) for x in p]\n", ALARM),
+    ("A1c", "dependence alarm merged into the positive alarm", "metrics.py", '"target_dependence": a <= alpha}', '"target_dependence": g > 0 and a <= alpha}', ALARM),
+    ("A1d", "control alarm accepts a missing cell", "metrics.py", "    if not isinstance(cells, Mapping) or set(cells) != set(names) or len(cells) != len(names):",
+     "    if not isinstance(cells, Mapping) or not set(cells) <= set(names):", ALARM),
+    ("A1e", "permuted-target control trains on the real targets", "runner.py", '    if control != "permuted_targets":\n        return u_train', "    if True:\n        return u_train", ALARM),
+    ("A1f", "alarm with too few permutations (B = 999 allowed)", "runner.py", "    if n_perm != ALARM_PERMUTATIONS or isinstance(n_perm, (bool, np.bool_)):", "    if isinstance(n_perm, (bool, np.bool_)):", ALARM),
+]
+
+
+def run_mutant(mid, desc, fname, old, new, tests, env):
+    p = HERE / fname
+    orig = p.read_bytes()
+    text = orig.decode("utf-8")
+    nl = "\r\n" if "\r\n" in text else "\n"
+    o, n = old.replace("\n", nl), new.replace("\n", nl)
+    if text.count(o) != 1:
+        return {"id": mid, "description": desc, "file": fname, "result": f"TARGET NOT UNIQUE ({text.count(o)})"}
+    t0 = time.perf_counter()
+    try:
+        p.write_bytes(text.replace(o, n).encode("utf-8"))
+        r = subprocess.run([sys.executable, "-B", "-m", "pytest", "-x", "-q", "-p", "no:cacheprovider", "--color=no", "-rf", *tests],
+                           cwd=ROOT, env=env, capture_output=True, text=True)
+    finally:
+        p.write_bytes(orig)
+        assert p.read_bytes() == orig, f"{fname} not restored"
+    failed = [re.sub(r" - .*", "", l[7:]) for l in r.stdout.splitlines() if l.startswith(("FAILED", "ERROR"))]
+    return {"id": mid, "description": desc, "file": fname, "tests": [t.split("/")[-1] for t in tests],
+            "result": "killed" if r.returncode else "SURVIVED", "killed_by": failed[:3], "seconds": round(time.perf_counter() - t0, 1)}
+
+
+def rerun(ids):
+    """Re-run selected mutants after a test fix; the earlier result is kept in 'history' (nothing silently replaced)."""
+    env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
+    js = HERE / "lr5" / "lr5_mutation_campaign.json"
+    out = json.loads(js.read_text(encoding="utf-8"))
+    for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5)):
+        for i, m in enumerate(out[group]):
+            if m["id"] in ids:
+                new = run_mutant(*next(d for d in defs if d[0] == m["id"]), env)
+                new["history"] = m.get("history", []) + [{k: v for k, v in m.items() if k != "history"}]
+                out[group][i] = new
+                print(new["id"], new["result"], new.get("killed_by", [])[:1], flush=True)
+    return out
+
+
+def main():
+    env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
+    if len(sys.argv) > 2 and sys.argv[1] == "--only":
+        return finish(rerun(set(sys.argv[2].split(","))))
+    out = {"schema": "lantern-lr5-mutation-campaign-v1", "plan_mutants": [], "not_applicable": NOT_APPLICABLE, "lr5_mutants": []}
+    for m in PLAN:
+        out["plan_mutants"].append(run_mutant(*m, env))
+        print(out["plan_mutants"][-1]["id"], out["plan_mutants"][-1]["result"], flush=True)
+    det = subprocess.run([sys.executable, "-B", "-m", "pytest", "-q", "-p", "no:cacheprovider", "--color=no", T + "test_lr3.py", "-k", "joint_permutation"],
+                         cwd=ROOT, env=env, capture_output=True, text=True)
+    out["plan_mutant_2_detection_test"] = {"command": "pytest test_lr3.py -k joint_permutation", "passed": det.returncode == 0,
+                                           "summary": det.stdout.strip().splitlines()[-1] if det.stdout.strip() else ""}
+    for m in LR5:
+        out["lr5_mutants"].append(run_mutant(*m, env))
+        print(out["lr5_mutants"][-1]["id"], out["lr5_mutants"][-1]["result"], flush=True)
+    return finish(out)
+
+
+EQUIVALENT = {
+    "L2": "removing the early existence check is equivalent in outcome: os.link still refuses an existing name "
+          "(FileExistsError, nothing overwritten); the check only avoids writing a temp file. Confirmed by the "
+          "race test and the overwrite test both passing under this mutant.",
+}
+
+
+def finish(out):
+    out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
+    allm = out["plan_mutants"] + out["lr5_mutants"]
+    out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
+                      "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
+                      "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],
+                      "first_run_survivors_closed_by_new_tests": sorted(m["id"] for m in allm if m.get("history") and m["result"] == "killed"),
+                      "invalid_targets": [m["id"] for m in allm if m["result"].startswith("TARGET")],
+                      "not_applicable": sorted(NOT_APPLICABLE)}
+    js = HERE / "lr5" / "lr5_mutation_campaign.json"
+    js.parent.mkdir(exist_ok=True)
+    js.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    import yaml
+    js.with_suffix(".yaml").write_text("# YAML twin of lr5_mutation_campaign.json (generated; the JSON is authoritative)\n"
+                                       + yaml.safe_dump(out, sort_keys=False, allow_unicode=True, width=10 ** 6), encoding="utf-8")
+    print(json.dumps(out["summary"], indent=1))
+    return 0 if not out["summary"]["survived"] and not out["summary"]["invalid_targets"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

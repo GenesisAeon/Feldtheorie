@@ -297,8 +297,8 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
                 sp = run_dir / "structure" / f"c{cid:03d}.json"
                 if not sp.exists():
                     artifacts.write_json_exclusive(sp, {"run_identity": run["run_identity"], **_structure_check(ctx, C, g, grid["sizes"])})
-                prep = None
-                units = [(cond, "none") for cond in grid["conditions"]] + [(CONTROL_CONDITION, c) for c in grid["controls"]]
+                prep, state_cache = None, {}
+                units =[(cond, "none") for cond in grid["conditions"]] + [(CONTROL_CONDITION, c) for c in grid["controls"]]
                 for cond, ctl in units:
                     todo = [c for c in expected_cells(grid) if c["context_id"] == cid and c["condition"] == cond and c["control"] == ctl]
                     done = [c for c in todo if _record_path(run_dir, c).exists()]
@@ -315,7 +315,8 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
                              "time": cell["time"], "time_index": cell["time_index"]}
                         return _persist_cell(run_dir, run, ctx, c, model, X_test, U_test)
 
-                    for res in runner.iter_cells(ctx, prep, g, cond, ctl, grid["tasks"], None if grid["dt"] == streams.defaults()["integration"]["dt"] else grid["dt"], scorer=scorer):
+                    for res in runner.iter_cells(ctx, prep, g, cond, ctl, grid["tasks"], None if grid["dt"] == streams.defaults()["integration"]["dt"] else grid["dt"],
+                                               scorer=scorer, state_cache=state_cache):
                         if res["result"].get("newly_written"):
                             written += 1
                             log.append("cell_completed", cell=res["result"]["cell_dir"])

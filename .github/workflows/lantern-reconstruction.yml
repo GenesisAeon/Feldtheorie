@@ -1,0 +1,91 @@
+# Lantern reconstruction lab (experiments/lantern_reconstruction), plan v2.0 section 13 / LR5.
+# Explicit jobs: the root pytest only collects tests/, so these tests are invoked by path.
+# No failure masking (no "|| echo", no continue-on-error): a failing test fails the job (LR0-O2).
+# Never runs a research study: development/smoke runs only (runs.py refuses anything else).
+name: lantern-reconstruction
+
+on:
+  push:
+    paths: ["experiments/lantern_reconstruction/**", "v9_alpha/**", "models/**", ".github/workflows/lantern-reconstruction.yml"]
+  pull_request:
+    paths: ["experiments/lantern_reconstruction/**", "v9_alpha/**", "models/**", ".github/workflows/lantern-reconstruction.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONPATH: "."
+
+jobs:
+  core:
+    name: Core controls (LR2-LR4, LR5-A1) - Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned lab dependencies
+        run: python -m pip install numpy==2.2.6 scipy==1.15.3 PyYAML==6.0.3 pytest
+      - name: Core controls
+        run: >-
+          python -m pytest -p no:cacheprovider
+          experiments/lantern_reconstruction/tests/test_lr2.py
+          experiments/lantern_reconstruction/tests/test_lr2_rk4.py
+          experiments/lantern_reconstruction/tests/test_lr2_inputs.py
+          experiments/lantern_reconstruction/tests/test_lr3.py
+          experiments/lantern_reconstruction/tests/test_lr3_nachreview.py
+          experiments/lantern_reconstruction/tests/test_lr4.py
+          experiments/lantern_reconstruction/tests/test_lr4_review.py
+          experiments/lantern_reconstruction/tests/test_lr5_alarms.py
+
+  legacy-import:
+    name: Legacy adapter and import (LR0-LR1) - Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # the snapshot checks compare against the Git history of the legacy sources
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned lab dependencies
+        run: python -m pip install numpy==2.2.6 scipy==1.15.3 PyYAML==6.0.3 pytest
+      - name: Legacy probe, snapshot and import manifest
+        run: >-
+          python -m pytest -p no:cacheprovider
+          experiments/lantern_reconstruction/tests/test_lr0.py
+          experiments/lantern_reconstruction/tests/test_lr1.py
+
+  smoke:
+    name: Run management and release gate smoke (LR5) - Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install pinned lab dependencies
+        run: python -m pip install numpy==2.2.6 scipy==1.15.3 PyYAML==6.0.3 pytest
+      - name: Smoke runs, resume, manipulation detection, release gate
+        run: python -m pytest -p no:cacheprovider experiments/lantern_reconstruction/tests/test_lr5_runs.py

@@ -1,0 +1,103 @@
+{
+ "schema": "lantern-lr5-status-v1",
+ "package": "LR5 - Laufverwaltung und CI",
+ "date": "2026-10-09",
+ "basis": "LANTERN_LR4_NACHREVIEW_25ba293_2026-10-08 (GO for LR5; LR5-A1) + binding LR5 duties of REVIEW_LR4",
+ "commits": {
+  "part_1": "dba1f1e LR5-A1",
+  "part_2": "fff9dd7 artifact chain, run management, resume, release gate",
+  "part_3": "trajectory reuse, budget, CI, mutation campaign, report"
+ },
+ "no_research": "no research freeze, no research run; only development/smoke runs on the development study and synthetic control data",
+ "lr5_a1": {
+  "reproduced_first": "G -1.6851777777777779, b 0, p 1e-4, Holm 0.0012; old p-only alarm fired (hand derivation G = 3(0.19 m2 - 0.5625), m2 = 0.01*11/27)",
+  "cells": "protocol/control_alarms.json: reset, zero_impulse, permuted_targets x A/B x tau 1, 5 on lantern; 12 names = Holm family",
+  "alarms": {
+   "positive_spurious_success": "G > 0 and Holm p <= .01",
+   "target_dependence": "Holm p <= .01, any sign of G"
+  },
+  "holm": "always over all 12 cells",
+  "release_rule": "PROPOSAL (decide before freeze): either alarm blocks scientifically_interpretable until a documented investigation",
+  "found": "B = 999 could never fire (min Holm p 0.012 > 0.01); alarm_inputs enforces B = 9999"
+ },
+ "artifact_chain": {
+  "identity": "run.json run identity over grid, code (every module/protocol file hash), config, snapshot, software; cell record binds model identity (arrays + metadata), file hashes, prediction identities and scores to run and expected cell",
+  "writes": "exclusive and atomic (temp + fsync + os.link; never overwrite, also under a race)",
+  "resume": "same run id only with unchanged code/protocol/config/snapshot/grid; every recomputed cell compared with records and orphan files; mismatch -> failed_integrity (terminal); interrupted + resume == uninterrupted run",
+  "integrity": "model identity before and after evaluation; records verified on read; G, S, lambda recomputed from verified predictions",
+  "management": "study/phase lock, append-only event log with clock-gap (sleep) detection, run status transitions, lifecycle; development/smoke only",
+  "release_gate": "technically_complete / scientifically_interpretable / hypothesis (not_evaluated for development) separate; structure check recomputed; missing controls block"
+ },
+ "budget": {
+  "measured": {
+   "prepare_context_s": 0.81624059996102,
+   "dynamics_one_unit_s": 59.18163710006047,
+   "ridge_14_cells_s": 0.15711019991431385,
+   "persist_and_score_14_cells_s": 0.21959740004967898,
+   "bytes_per_cell": 103243.92857142857,
+   "alarm_one_cell_20_contexts_s": 17.236154700047337,
+   "peak_working_set_bytes": 120942592
+  },
+  "extrapolated_full_study": {
+   "grid": "20 contexts x 7 units x 2 tasks x 7 times = 1960 cells",
+   "trajectory_simulations_per_context": 5,
+   "production_training_s": 5987.227586000226,
+   "evaluation_s": 237.5774924075231,
+   "artifacts_bytes": 202358100.0
+  },
+  "within_budget": {
+   "production_training": true,
+   "evaluation": true,
+   "ram_measured_peak": true,
+   "artifacts": true
+  },
+  "history": "first measurement 8083 s (2.25 h) over the 2 h draft: permuted_targets re-integrated the lantern trajectories; content-addressed trajectory cache (initial-state hash) -> 5 instead of 7 simulations per context, bit-identical; first RAM reading 0 from missing 64-bit ctypes signatures now reported as None if it fails"
+ },
+ "ci": {
+  "file": ".github/workflows/lantern-reconstruction.yml",
+  "jobs": [
+   "core (LR2-LR4, LR5-A1)",
+   "legacy-import (LR0-LR1, full history)",
+   "smoke (LR5 runs, release)"
+  ],
+  "matrix": [
+   "3.11",
+   "3.12"
+  ],
+  "masking": "none",
+  "locally_checked": "valid YAML; all 11 test files exactly once",
+  "not_executed": "never ran on GitHub (branch not pushed); no local Python 3.12"
+ },
+ "mutation_campaign": {
+  "executed": 34,
+  "killed": 33,
+  "survived": [],
+  "equivalent": [
+   "L2"
+  ],
+  "first_run_survivors_closed_by_new_tests": [
+   "L1",
+   "L9"
+  ],
+  "invalid_targets": [],
+  "not_applicable": [
+   "12",
+   "2",
+   "6"
+  ],
+  "first_run_gaps": "L1 (os.replace survived: race test added), L9 (record binding off survived: binding-only attacks added)",
+  "equivalent_reason": "L2: without the early existence check os.link still refuses (nothing overwritten)"
+ },
+ "tests": {
+  "result_all_lantern_tests": "349/349",
+  "new": "54 in test_lr5_alarms.py and test_lr5_runs.py",
+  "run": "python -m pytest experiments/lantern_reconstruction/tests"
+ },
+ "evidence": "D:/mandala/mandala-memory-results/lantern/lr5/",
+ "open": [
+  "decision on the LR5-A1 release rule before the freeze (proposal: both alarms block)",
+  "LR6: development acceptance and freeze candidate (master seeds, context list, MLP decision, full development run with all control curves)",
+  "CI on GitHub once pushing the branch is allowed",
+  "Astra: review of LR5"
+ ]
+}
