@@ -38,6 +38,8 @@ Trilayer: [`lr3_status.json`](lr3_status.json) (maßgeblich), [`lr3_status.yaml`
 
 ## Prüfungen
 
+**Tests:** 165/165 über alle Lantern-Tests.
+
 **Ad-hoc-Mutation:** 13/14 erkannt, darunter die Planmutanten 7, 8, 9 und 10.
 - **Äquivalent:** die Schreibknotenprüfung in B. Sie ist ein doppelter Schutz neben „genau die Leseknoten“ und der disjunkten Kontextprüfung.
 - **Zwei echte Testlücken** sind geschlossen:

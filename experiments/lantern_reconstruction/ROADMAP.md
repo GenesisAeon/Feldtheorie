@@ -42,4 +42,4 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 
 - **Module:** benannte Ströme, Kontexte, Schreiben mit Kontrollen, getrennte Sichten A (66 Merkmale) und B (16 Merkmale, unbeschriebene Referenz), Vergleichsnetze, Episoden mit RK4. Die Parameter stehen in `protocol/study_defaults.json`.
 - **Abnahmen:** Referenzknoten-Leak negativ getestet; Reset und Nullimpuls gleich für alle u; Surrogatinvarianten. Dazu die harten Gates aus § 10.
-- **Ad-hoc-Mutation:** 13/14 erkannt, 1 äquivalent, 2 echte Testlücken geschlossen.
+- **Prüfungen:** Tests 165/165; Ad-hoc-Mutation 13/14 erkannt, 1 äquivalent, 2 echte Testlücken geschlossen.

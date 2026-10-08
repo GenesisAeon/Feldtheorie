@@ -33,8 +33,9 @@
  },
  "tests": {
   "file": "tests/test_lr3.py",
-  "result_all_lantern_tests": null,
-  "run": "python -m pytest experiments/lantern_reconstruction/tests"
+  "result_all_lantern_tests": "165/165",
+  "run": "python -m pytest experiments/lantern_reconstruction/tests",
+  "note": "the first LR3 commit f313437 lacked the YAML twin and this count (a failed helper snippet); added in the follow-up commit"
  },
  "ad_hoc_mutation_check": {
   "result": "13/14 killed, 1 equivalent",

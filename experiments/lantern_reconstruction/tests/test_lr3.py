@@ -242,3 +242,10 @@ def test_information_free_B_baseline_is_one_third():
     ctx = contexts.make_context(SID, 2)
     u = episodes.make_batch(ctx, "train", range(3000)).u
     assert np.mean(u ** 2) == pytest.approx(1 / 3, abs=0.01) and abs(float(np.mean(u))) < 0.02
+
+
+def test_lr3_status_yaml_twin_equals_json():
+    import yaml
+    p = ra.HERE / "lr3" / "lr3_status"
+    assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
+
