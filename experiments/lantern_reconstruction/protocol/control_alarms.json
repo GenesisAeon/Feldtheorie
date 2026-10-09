@@ -28,8 +28,10 @@
   "reported": "both alarms with every cell's G, p and Holm p, under these two separate names; never merged into one flag"
  },
  "release_rule": {
-  "status": "PROPOSAL -- must be decided explicitly by Johann/Astra before the research freeze",
+  "status": "ENDORSED by Johann and Astra (REVIEW_LR5, 2026-10-09); becomes binding with the research freeze (LR6)",
   "proposal": "either alarm sets scientifically_interpretable = false and blocks the scientific release until a documented investigation; a negative G does not make a target dependence harmless; technically_complete is unaffected by the alarms",
-  "implemented_default": "the release gate applies the proposal (both alarms block) until a decision replaces it"
+  "investigation": "an investigation is no automatic override: finding, cause, consequences and, if needed, a new protocol version are documented",
+  "interpretation": "both names denote the same directional permutation test, with and without the additional condition G > 0; a missing alarm does not prove independence",
+  "implemented_default": "the release gate applies this rule (both alarms block)"
  }
 }

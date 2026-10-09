@@ -17,7 +17,7 @@
    "target_dependence": "Holm p <= .01, any sign of G"
   },
   "holm": "always over all 12 cells",
-  "release_rule": "PROPOSAL (decide before freeze): either alarm blocks scientifically_interpretable until a documented investigation",
+  "release_rule": "ENDORSED by Johann and Astra (REVIEW_LR5); binding with the research freeze; investigation is no automatic override",
   "found": "B = 999 could never fire (min Holm p 0.012 > 0.01); alarm_inputs enforces B = 9999"
  },
  "artifact_chain": {
@@ -69,11 +69,12 @@
   "not_executed": "never ran on GitHub (branch not pushed); no local Python 3.12"
  },
  "mutation_campaign": {
-  "executed": 34,
-  "killed": 33,
+  "executed": 45,
+  "killed": 43,
   "survived": [],
   "equivalent": [
-   "L2"
+   "L2",
+   "R4b"
   ],
   "first_run_survivors_closed_by_new_tests": [
    "L1",
@@ -86,18 +87,34 @@
    "6"
   ],
   "first_run_gaps": "L1 (os.replace survived: race test added), L9 (record binding off survived: binding-only attacks added)",
-  "equivalent_reason": "L2: without the early existence check os.link still refuses (nothing overwritten)"
+  "equivalent_reason": "L2: os.link still refuses without the early check; R4b: {} never equals the expected identities, the orphan is still rejected"
  },
  "tests": {
-  "result_all_lantern_tests": "349/349",
-  "new": "54 in test_lr5_alarms.py and test_lr5_runs.py",
+  "result_all_lantern_tests": "372/372",
+  "new": "54 in test_lr5_alarms.py/test_lr5_runs.py, 23 in test_lr5_review.py",
   "run": "python -m pytest experiments/lantern_reconstruction/tests"
  },
  "evidence": "D:/mandala/mandala-memory-results/lantern/lr5/",
  "open": [
-  "decision on the LR5-A1 release rule before the freeze (proposal: both alarms block)",
   "LR6: development acceptance and freeze candidate (master seeds, context list, MLP decision, full development run with all control curves)",
   "CI on GitHub once pushing the branch is allowed",
-  "Astra: review of LR5"
- ]
+  "Astra: re-check of the REVIEW_LR5 fixes"
+ ],
+ "review_fix_REVIEW_LR5": {
+  "review": "D:/mandala/mandala-memory-results/lantern/astra-lr5-review/REVIEW_LR5.md (reviewed 1c24292)",
+  "reproduced_first": {
+   "R1": "status running -> ValueError running -> running, run stays running",
+   "R2": "n_train/n_val 2/2 with consistently renewed hashes accepted, technically_complete true",
+   "R3": "python/numpy 0.0.changed passed check_resumable",
+   "R4": "lone NPZ wrong=[123.] passed, renamed and replaced"
+  },
+  "fixes": {
+   "R1": "execute refuses running; explicit runs.recover(): holding process from the run's lock_acquired event (lock, pid, host), refuses foreign host / possibly alive / undecidable pid / lock now held by others, removes only that process's stale lock (logged), sets interrupted under the study lock; loss between lock and status handled; unexpected exceptions -> interrupted; truncated last log line terminated + log_line_truncated event (append-only), unacknowledged unparsable line -> integrity error",
+   "R2": "check_model_against_run on write and read: n_train/n_val vs grid sizes, lambda grid vs protocol, model python/numpy vs run software",
+   "R3": "strict equality of python, numpy, scipy on resume (no compatibility rule)",
+   "R4": "every existing orphan file compared with the recomputed model on its own (JSON identity; NPZ names, dtype, array identities; unreadable/pickle NPZ); deviation -> failed_integrity, nothing renamed or replaced; a valid half is completed exclusively"
+  },
+  "regressions": "test_lr5_review.py: 23 tests incl. a REAL killed child process (the lock-holding worker; on Windows the venv python.exe is a launcher), truncated log, unexpected exception, alive pid / foreign host, each size, software, every NPZ/JSON orphan case, end-to-end NPZ-only crash; resumed results identical to the uninterrupted run",
+  "mutation": "11 guard mutants: 10 killed, R4b equivalent"
+ }
 }

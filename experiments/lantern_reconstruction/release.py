@@ -46,7 +46,10 @@ def release_report(run_dir: Path) -> Dict:
         return {"technically_complete": False, "scientifically_interpretable": False,
                 "hypothesis": {"status": "not_evaluated"}, "problems": [f"run identity: {e}"]}
     grid = run["grid"]
-    st = runs.status(run_dir)
+    try:
+        st = runs.status(run_dir)
+    except Exception as e:                                   # noqa: BLE001 -- e.g. an unacknowledged truncated log
+        st = f"unreadable ({type(e).__name__})"
     if st != "complete":
         problems.append(f"run status is {st}, not complete")
     expected = runs.expected_cells(grid)

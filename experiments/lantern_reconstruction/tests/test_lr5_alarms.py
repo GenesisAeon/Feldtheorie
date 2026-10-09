@@ -81,9 +81,11 @@ def test_each_cell_needs_finite_G_and_valid_p_together(cell):
         metrics.control_alarms(_cells(**{NAMES[0]: cell}))
 
 
-def test_release_rule_is_documented_as_proposal():
+def test_release_rule_is_documented_as_endorsed_not_yet_frozen():
     rule = metrics.control_alarms(_cells())["release_rule"]
-    assert rule["status"].startswith("PROPOSAL") and "negative G does not make a target dependence harmless" in rule["proposal"]
+    assert rule["status"].startswith("ENDORSED") and "binding with the research freeze" in rule["status"]
+    assert "negative G does not make a target dependence harmless" in rule["proposal"]
+    assert "no automatic override" in rule["investigation"] and "does not prove independence" in rule["interpretation"]
 
 
 def test_alarm_inputs_end_to_end_with_streams():
@@ -143,7 +145,7 @@ def test_mutation_campaign_record_is_consistent():
     ids = {m["id"].split("-")[0].rstrip("ab") for m in d["plan_mutants"]}
     assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
     assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
-    surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] if m["result"] != "killed"]
+    surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) if m["result"] != "killed"]
     assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
 
 

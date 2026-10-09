@@ -83,3 +83,10 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Budget:** hochgerechnet 1,66 h Produktion bei 2 h Entwurfsbudget. Die erste Messung lag bei 2,25 h, bis die Trajektorien-Wiederverwendung nach Plan § 13 kam. Spitzen-RAM 115 MB, Artefakte 202 MB.
 - **CI:** drei explizite Jobs, Python 3.11 und 3.12, ohne Maskierung; noch nicht auf GitHub gelaufen.
 - **Mutationskampagne:** 34 ausgeführt, 33 erkannt, 1 äquivalent. Alle ausführbaren Plan-Mutanten werden erkannt; 6 und 12 sind `not_applicable`.
+- **Nachtrag nach `REVIEW_LR5`:**
+  - R1: ausdrückliches `recover()` nach Prozessverlust; es prüft die PID, entfernt die tote Sperre protokolliert und behandelt abgeschnittene Protokollzeilen.
+  - R2: Trainings- und Validierungsgrößen, λ-Raster und Software an den Lauf gebunden.
+  - R3: strikt gleiche Software beim Fortsetzen.
+  - R4: jede verwaiste Modelldatei wird geprüft; Abweichung bedeutet Integritätsfehler, nichts wird ersetzt.
+
+  Regression mit einem echten, hart getöteten Kindprozess. Freigaberegel befürwortet. Tests 372/372; Mutation insgesamt 45, davon 43 erkannt und 2 äquivalent.

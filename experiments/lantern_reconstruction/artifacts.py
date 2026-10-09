@@ -83,12 +83,16 @@ def array_identity(name: str, a: np.ndarray) -> str:
     return decoders.array_identity(name, np.asarray(a))
 
 
+def model_npz_bytes(model: decoders.RidgeDecoder) -> bytes:
+    buf = io.BytesIO()
+    np.savez(buf, **{k: np.ascontiguousarray(getattr(model, k)) for k in decoders.ARRAYS})
+    return buf.getvalue()
+
+
 def save_model_exclusive(model: decoders.RidgeDecoder, folder: Path, stem: str) -> Dict:
     """NPZ (numeric arrays, no pickle) + JSON metadata, each written exclusively; returns the record part."""
     folder = Path(folder)
-    buf = io.BytesIO()
-    np.savez(buf, **{k: np.ascontiguousarray(getattr(model, k)) for k in decoders.ARRAYS})
-    npz_sha = write_exclusive(folder / f"{stem}.npz", buf.getvalue())
+    npz_sha = write_exclusive(folder / f"{stem}.npz", model_npz_bytes(model))
     meta = decoders._json_meta(model)
     json_sha = write_json_exclusive(folder / f"{stem}.json", meta)
     return {"model_identity": identity(meta), "npz": f"{stem}.npz", "npz_sha256": npz_sha, "json": f"{stem}.json", "json_sha256": json_sha}

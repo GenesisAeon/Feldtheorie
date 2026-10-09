@@ -507,11 +507,12 @@
   "summary": "1 passed, 35 deselected, 1 warning in 2.02s"
  },
  "summary": {
-  "executed": 34,
-  "killed": 33,
+  "executed": 45,
+  "killed": 43,
   "survived": [],
   "equivalent": [
-   "L2"
+   "L2",
+   "R4b"
   ],
   "first_run_survivors_closed_by_new_tests": [
    "L1",
@@ -525,6 +526,150 @@
   ]
  },
  "equivalent": {
-  "L2": "removing the early existence check is equivalent in outcome: os.link still refuses an existing name (FileExistsError, nothing overwritten); the check only avoids writing a temp file. Confirmed by the race test and the overwrite test both passing under this mutant."
- }
+  "L2": "removing the early existence check is equivalent in outcome: os.link still refuses an existing name (FileExistsError, nothing overwritten); the check only avoids writing a temp file. Confirmed by the race test and the overwrite test both passing under this mutant.",
+  "R4b": "returning {} for an unreadable NPZ instead of raising is equivalent in outcome: {} never equals the expected array identities, so the orphan is still rejected as an integrity failure (only the message differs); test_r4_other_wrong_lone_npz_files[garbage_bytes] passes under the mutant for that reason."
+ },
+ "review_lr5_mutants": [
+  {
+   "id": "R1a",
+   "description": "execute accepts status running",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_review_state_running_is_not_a_value_error_and_needs_an_identifiable_process"
+   ],
+   "seconds": 9.8
+  },
+  {
+   "id": "R1b",
+   "description": "recover does not check whether the process is alive",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_recover_refuses_a_possibly_alive_or_foreign_process"
+   ],
+   "seconds": 217.1
+  },
+  {
+   "id": "R1c",
+   "description": "recover ignores the host",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_recover_refuses_a_possibly_alive_or_foreign_process"
+   ],
+   "seconds": 217.1
+  },
+  {
+   "id": "R1d",
+   "description": "unexpected exception leaves status running",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_unexpected_exception_leaves_a_resumable_state"
+   ],
+   "seconds": 175.4
+  },
+  {
+   "id": "R1e",
+   "description": "unparsable log lines silently skipped",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_an_unparsable_line_without_acknowledgement_is_an_integrity_error"
+   ],
+   "seconds": 186.8
+  },
+  {
+   "id": "R2a",
+   "description": "training/validation sizes not bound to the run",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r2_wrong_training_or_validation_size_is_refused[change0]"
+   ],
+   "seconds": 230.5
+  },
+  {
+   "id": "R2b",
+   "description": "model software not bound to the run",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r2_model_software_must_be_the_runs"
+   ],
+   "seconds": 246.1
+  },
+  {
+   "id": "R2c",
+   "description": "sizes checked only on read, not before writing",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r2_wrong_sizes_refused_before_anything_is_written"
+   ],
+   "seconds": 247.5
+  },
+  {
+   "id": "R3",
+   "description": "software not compared on resume",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r3_changed_software_refuses_resume[python]"
+   ],
+   "seconds": 264.8
+  },
+  {
+   "id": "R4a",
+   "description": "lone NPZ not compared",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r4_review_wrong_lone_npz_is_an_integrity_failure_not_replaced"
+   ],
+   "seconds": 256.9
+  },
+  {
+   "id": "R4b",
+   "description": "unreadable NPZ accepted",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "SURVIVED",
+   "killed_by": [],
+   "seconds": 299.9
+  }
+ ]
 }

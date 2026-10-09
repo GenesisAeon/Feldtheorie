@@ -107,9 +107,47 @@ Gemessen wurde auf diesem Rechner, jeder Messblock unter 5 Minuten. Die Werte f�
 
 **Belege:** `D:/mandala/mandala-memory-results/lantern/lr5/` (Kampagnenprotokoll, Messausgaben).
 
+## Nachtrag nach `REVIEW_LR5` (Astra, geprüft `1c24292`)
+
+**Ergebnis der Prüfung:** 349/349 bestätigt, aber vier reproduzierte Lücken. Beide Alarme sollen sperren; das befürworten Johann und Astra.
+
+**Zuerst reproduziert** (Kopie von Astras Skript, Arbeitsordner im Temp; ihr Reviewordner blieb unverändert; ein eigener Fixture-Lauf mit 30/12/20):
+- **R1:** Status `running` ergab `ValueError: status transition running -> running`; der Lauf blieb `running`.
+- **R2:** n_train = 2 und n_val = 2 mit konsistent erneuerten Prüfsummen wurden akzeptiert (`technically_complete = true`).
+- **R3:** Die Versionen `0.0.changed` für Python und NumPy hielten das Fortsetzen nicht auf.
+- **R4:** Eine NPZ mit nur `wrong = [123.]` wurde umbenannt und ersetzt.
+
+Alle Werte stimmten mit Astras Werten überein, bis hin zur neuen Modellidentität.
+
+| Befund | Korrektur |
+|---|---|
+| **R1** Prozessverlust | `execute()` verweigert bei `running` mit Hinweis; es gibt **kein** `running → running`. Der ausdrückliche Weg ist **`runs.recover()`**: <br>• Sie bestimmt den haltenden Prozess aus dem lauf-eigenen Ereignis `lock_acquired` (Sperrpfad, PID, Host). <br>• Sie verweigert bei fremdem Host, bei möglicherweise noch lebender oder nicht entscheidbarer PID (Windows `OpenProcess`/`GetExitCodeProcess`; eine wiederverwendete PID gilt konservativ als lebendig) und bei einer Sperre, die inzwischen jemand anderem gehört. <br>• Sie entfernt nur die tote Sperre **dieses** Prozesses und protokolliert deren Inhalt. <br>• Unter der Studiensperre setzt sie `interrupted`; danach setzt `execute()` dieselbe Laufidentität fort, alle Artefakte bleiben, jede Zelle wird erneut verifiziert. <br>Auch ein Verlust zwischen Sperre und Status wird erkannt. **Unerwartete Ausnahmen** führen fest zu `interrupted`. Eine **abgeschnittene letzte Protokollzeile** wird nur durch Anhängen abgeschlossen (Zeilenumbruch, dann ein Ereignis `log_line_truncated` mit SHA-256 und Länge des Fragments); eine unlesbare Zeile ohne diese Quittung ist ein Integritätsfehler. |
+| **R2** Größen | `check_model_against_run` prüft **beim Schreiben und beim Lesen** unabhängig gegen den Lauf bzw. das Protokoll: `n_train` und `n_val` gegen die Größen des Rasters, das λ-Raster gegen `training.LAMBDA_GRID`, Python und NumPy des Modells gegen die Software des Laufs. |
+| **R3** Software | `check_resumable` verlangt **strikt gleiche** Versionen von Python, NumPy und SciPy, die jetzt alle im Lauf festgehalten sind. Eine Kompatibilitätsregel gibt es nicht. |
+| **R4** Teilmodell | `_adopt_orphans` prüft **jede** vorhandene Datei für sich gegen das neu berechnete Modell: JSON-Identität; NPZ-Namen, dtype und Array-Identitäten, auch ohne JSON; unlesbare oder pickle-pflichtige NPZ. Abweichung bedeutet `failed_integrity`; nichts wird umbenannt oder ersetzt. Eine **gültige** Hälfte wird kontrolliert ergänzt (nur die fehlende Datei, exklusiv). |
+
+**Regressionen** (`tests/test_lr5_review.py`, 23 Tests, positive Referenzen zuerst):
+- Astras Zustand `running` ohne Prozess: Verweigerung statt `ValueError`.
+- **Echter Kindprozess**, der mitten im Lauf hart getötet wird: Es wird der Prozess getötet, der die Sperre hält. Unter Windows ist die `python.exe` des venv nur ein Starter mit dem eigentlichen Interpreter als Kindprozess; den Starter allein zu töten wäre nicht der getestete Prozessverlust. `recover()` erkennt die PID als tot, und die Fortsetzung ergibt **exakt den ununterbrochenen Lauf**.
+- Abgeschnittene Protokollzeile, unquittierte unlesbare Zeile, unerwartete Ausnahme, lebende PID und fremder Host.
+- R2 mit jeder Größe einzeln und mit geänderter Modellsoftware, dazu die Abweisung vor jedem Schreiben.
+- R3 für Python, NumPy und SciPy einzeln, unveränderte Umgebung als Positivkontrolle.
+- R4: Astras NPZ (Datei unverändert, nichts Neues geschrieben), richtige Namen mit falschen Werten, Müll-Bytes, Objekt-Arrays, gültige NPZ allein, JSON allein gültig und falsch, und Ende-zu-Ende (nur `model.npz` überlebt, Fortsetzung ergibt den ununterbrochenen Lauf).
+
+**Mutation der neuen Wächter:** 11 Mutanten, 10 erkannt. **R4b** ist äquivalent: Liefert eine unlesbare NPZ `{}` statt eines Fehlers, stimmt `{}` nie mit den erwarteten Identitäten überein, und die Datei wird weiterhin abgewiesen; nur die Meldung ändert sich. **Gesamt: 45 ausgeführt, 43 erkannt, 2 äquivalent (L2, R4b), 0 offene Überlebende.**
+
+**Freigaberegel:** von Johann und Astra **befürwortet**; sie wird mit dem Forschungs-Freeze verbindlich (`protocol/control_alarms.json`). Astras Präzisierungen sind übernommen:
+- Eine Untersuchung ist kein automatisches Aufheben der Sperre.
+- Befund, Ursache, Konsequenzen und gegebenenfalls eine neue Protokollfassung werden dokumentiert.
+- Beide Namen bezeichnen denselben gerichteten Permutationstest, mit und ohne die Bedingung G > 0.
+- Ein ausbleibender Alarm beweist keine Unabhängigkeit.
+
+**Tests:** 372/372 (bisher 349, dazu 23 in `tests/test_lr5_review.py`).
+
+**Belege:** `D:/mandala/mandala-memory-results/lantern/lr5_review/`.
+
 ## Offen
 
-- **Entscheidung vor dem Freeze:** die LR5-A1-Freigaberegel. Der Vorschlag lautet, dass beide Alarme sperren.
 - **LR6:** Entwicklungsabnahme und Freeze-Kandidat. Dazu gehören Masterseeds und Kontextliste, das optionale MLP (oder dessen ausdrücklicher Verzicht), vollständig entschiedene Protokollwerte und ein voller Entwicklungslauf mit allen Kontrollkurven auf der Entwicklungsstudie.
 - **CI auf GitHub** erst, wenn der Branch gepusht werden darf.
-- Astras Prüfung von LR5.
+- Astras Nachprüfung der REVIEW_LR5-Fixes.

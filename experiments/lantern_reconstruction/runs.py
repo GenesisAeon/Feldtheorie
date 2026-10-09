@@ -66,6 +66,46 @@ class Interrupted(RuntimeError):
     pass
 
 
+class TruncatedLogError(RuntimeError):
+    pass
+
+
+def process_alive(pid: int):
+    """True / False if decidable, None if not (then a recovery must refuse). A reused PID reads as alive:
+    the conservative error is refusing a recovery, never overlapping two processes."""
+    if not isinstance(pid, int) or isinstance(pid, bool) or pid <= 0:
+        return None
+    if pid == os.getpid():
+        return True
+    if platform.system() == "Windows":
+        import ctypes
+        k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        k32.OpenProcess.restype = ctypes.c_void_p
+        k32.OpenProcess.argtypes = [ctypes.c_ulong, ctypes.c_int, ctypes.c_ulong]
+        h = k32.OpenProcess(0x1000, False, pid)                     # PROCESS_QUERY_LIMITED_INFORMATION
+        if not h:
+            err = ctypes.get_last_error()
+            return False if err == 87 else (True if err == 5 else None)   # 87 no such process, 5 access denied
+        try:
+            code = ctypes.c_ulong()
+            k32.GetExitCodeProcess.argtypes = [ctypes.c_void_p, ctypes.POINTER(ctypes.c_ulong)]
+            if not k32.GetExitCodeProcess(ctypes.c_void_p(h), ctypes.byref(code)):
+                return None
+            return code.value == 259                                 # STILL_ACTIVE
+        finally:
+            k32.CloseHandle.argtypes = [ctypes.c_void_p]
+            k32.CloseHandle(ctypes.c_void_p(h))
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return None
+    return True
+
+
 # --- identity ------------------------------------------------------------------------------------------
 def code_identity() -> Dict:
     """SHA-256 (LF-normalised) of every production module and protocol file of the lab; tests excluded."""
@@ -129,7 +169,13 @@ def _current(grid: Dict, kind: str) -> Dict:
     code = code_identity()
     return {"schema": RUN_SCHEMA, "kind": kind, "grid": grid, "code": code, "config_sha256": streams.config_sha256(),
             "snapshot": {"canonical_sha256": snap.canonical_sha256, "manifest_sha256": snap.manifest_sha256},
-            "software": {"python": platform.python_version(), "numpy": np.__version__}}, snap
+            "software": software()}, snap
+
+
+def software() -> Dict:
+    """The numerical environment a run is bound to; resume demands it unchanged (review REVIEW_LR5 R3)."""
+    import scipy
+    return {"python": platform.python_version(), "numpy": np.__version__, "scipy": scipy.__version__}
 
 
 # --- event log, status, lock ----------------------------------------------------------------------------
@@ -156,9 +202,52 @@ class EventLog:
             os.fsync(f.fileno())
 
     def read(self) -> list:
+        """Strict: an unparsable line is only tolerated if the NEXT line is the 'log_line_truncated' event that
+        recover() appends after a process loss; an unacknowledged broken line raises TruncatedLogError."""
         if not self.path.exists():
             return []
-        return [json.loads(line) for line in self.path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        events, broken = [], None
+        for i, line in enumerate(self.path.read_bytes().split(b"\n")):
+            if not line.strip():
+                continue
+            try:
+                e = json.loads(line.decode("utf-8"))
+            except (ValueError, UnicodeDecodeError):
+                if broken is not None:
+                    raise IntegrityError(f"{self.path}: two unparsable event lines") from None
+                broken = i
+                continue
+            if broken is not None:
+                if e.get("event") != "log_line_truncated":
+                    raise IntegrityError(f"{self.path}: unparsable event line {broken + 1} without a recorded truncation")
+                broken = None
+            events.append(e)
+        if broken is not None:
+            raise TruncatedLogError(f"{self.path}: the last event line is incomplete (process loss?); use runs.recover()")
+        return events
+
+    def acknowledge_truncation(self):
+        """Append-only repair after a process loss: terminate an incomplete last line with a newline and record
+        its bytes (SHA-256, length) in a 'log_line_truncated' event. Nothing is rewritten or removed."""
+        if not self.path.exists():
+            return None
+        raw = self.path.read_bytes()
+        last = raw.rstrip(b"\n").split(b"\n")[-1] if raw.strip() else b""
+        try:
+            json.loads(last.decode("utf-8"))
+            if raw.endswith(b"\n") or not raw:
+                return None
+        except (ValueError, UnicodeDecodeError):
+            pass
+        with open(self.path, "ab") as f:
+            if not raw.endswith(b"\n"):
+                f.write(b"\n")
+            f.flush()
+            os.fsync(f.fileno())
+        info = {"fragment_sha256": artifacts.sha256(last), "fragment_bytes": len(last)}
+        self._write({"utc": dtm.datetime.now(dtm.timezone.utc).isoformat(), "monotonic": time.monotonic(),
+                     "event": "log_line_truncated", **info})
+        return info
 
 
 def status(run_dir: Path) -> Optional[str]:
@@ -230,12 +319,31 @@ def check_resumable(run: Dict) -> None:
         changed = sorted(k for k in set(cur["code"]["files"]) | set(run["code"]["files"])
                          if cur["code"]["files"].get(k) != run["code"]["files"].get(k))
         diffs.append(f"code {changed}")
+    if cur["software"] != run["software"]:                 # strict equality, no compatibility rule (REVIEW_LR5 R3)
+        diffs.append(f"software {run['software']} -> {cur['software']}")
     if diffs:
         raise ResumeRefused(f"run {run['run_id']} cannot be resumed: changed {diffs} (a new study version needs a new run)")
 
 
 def _record_path(run_dir: Path, c: Dict) -> Path:
     return Path(run_dir) / "cells" / cell_dir_name(c) / "record.json"
+
+
+def check_model_against_run(model, run: Dict, where: str) -> None:
+    """Expected model parameters come from the RUN and the protocol, not from the model's own manifest
+    (review REVIEW_LR5 R2): training/validation sizes, the lambda grid and the numerical environment."""
+    from experiments.lantern_reconstruction import training
+
+    sizes, sw = run["grid"]["sizes"], run["software"]
+    wrong = {}
+    if (model.n_train, model.n_val) != (sizes["train"], sizes["val"]):
+        wrong["sizes"] = {"model": [model.n_train, model.n_val], "run": [sizes["train"], sizes["val"]]}
+    if tuple(model.lambda_grid.tolist()) != training.LAMBDA_GRID:
+        wrong["lambda_grid"] = model.lambda_grid.tolist()
+    if (model.software.get("python"), model.software.get("numpy")) != (sw["python"], sw["numpy"]):
+        wrong["software"] = dict(model.software)
+    if wrong:
+        raise IntegrityError(f"model of {where} does not match the run's expected parameters: {wrong}")
 
 
 def verify_record(run_dir: Path, run: Dict, c: Dict, ctx) -> Dict:
@@ -249,6 +357,7 @@ def verify_record(run_dir: Path, run: Dict, c: Dict, ctx) -> Dict:
         raise IntegrityError(f"record of {cell_dir_name(c)} does not belong to this run and cell")
     model = artifacts.load_model_verified(folder, rec["model"], ctx, c["task"], condition=c["condition"], time=c["time"],
                                           control=c["control"], dt=run["grid"]["dt"])
+    check_model_against_run(model, run, cell_dir_name(c))
     arr = artifacts.load_arrays_verified(folder, rec["predictions"])
     n = run["grid"]["sizes"]["test"]
     if arr["projected"].shape != (n, 4) or arr["targets"].shape != (n, 4) or not all(np.all(np.isfinite(a)) for a in arr.values()):
@@ -280,16 +389,20 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
     run_dir = Path(run_dir)
     run = load_run(run_dir)
     log = EventLog(run_dir / "events.jsonl")
-    cur = status(run_dir)
+    cur = status(run_dir)                                   # TruncatedLogError after a process loss -> recover()
     if cur in TERMINAL or cur == "complete":
         raise ResumeRefused(f"run status is {cur}: nothing to resume, nothing is overwritten")
+    if cur == "running":
+        raise ResumeRefused("run status is running: another process may still be active, or one was lost; "
+                            "runs.recover() checks that and makes the run resumable")
     check_resumable(run)
     grid = run["grid"]
     snap = ra.load_verified_snapshot()
     C, g = np.array(snap.C), float(snap.structure["g"])
     written = 0
     lock_root = Path(lock_root) if lock_root is not None else RESULTS / "runs" / "_locks"
-    with StudyLock(lock_root, grid["study_id"], run["kind"], run["run_id"]):
+    with StudyLock(lock_root, grid["study_id"], run["kind"], run["run_id"]) as lock:
+        log.append("lock_acquired", lock=str(lock.path.resolve()), pid=os.getpid(), host=platform.node())
         set_status(log, "running", "start" if cur is None else f"resume from {cur}")
         try:
             for cid in grid["contexts"]:
@@ -332,8 +445,64 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
         except FloatingPointError as e:
             set_status(log, "numerically_invalid", str(e))
             raise
-        missing = [cell_dir_name(c) for c in expected_cells(grid) if not _record_path(run_dir, c).exists()]
+        except Exception as e:                              # any other failure: a defined, resumable state
+            set_status(log, "interrupted", f"unexpected {type(e).__name__}: {e}")
+            raise
+        missing =[cell_dir_name(c) for c in expected_cells(grid) if not _record_path(run_dir, c).exists()]
         set_status(log, "incomplete" if missing else "complete", f"{len(missing)} cells missing" if missing else "all cells present")
+    return status(run_dir)
+
+
+def recover(run_dir: Path) -> str:
+    """Explicit recovery after a process loss (review REVIEW_LR5 R1). Only for a run left in status 'running':
+      1. an incomplete last event line is terminated and recorded (append-only, nothing rewritten);
+      2. the process that held the run is identified from the run's own 'lock_acquired' event (lock path, pid,
+         host) -- recovery refuses if that host is another machine, the pid may still be alive or its state is
+         undecidable, or the lock now belongs to someone else;
+      3. a stale lock of THAT process is removed and its content logged;
+      4. under the study lock the status becomes 'interrupted'; execute() then resumes the same run identity
+         with all artifacts kept (every existing cell re-verified, orphans checked)."""
+    run_dir = Path(run_dir)
+    run = load_run(run_dir)
+    log = EventLog(run_dir / "events.jsonl")
+    truncated = log.acknowledge_truncation()
+    cur = status(run_dir)
+    if cur in TERMINAL or cur == "complete":
+        raise ResumeRefused(f"run status is {cur}: nothing to recover")
+    events = log.read()
+    acquired = [e for e in events if e["event"] == "lock_acquired"]
+    if not acquired:
+        if cur == "running":
+            raise ResumeRefused("status running but no lock_acquired event: the holding process cannot be identified")
+        raise ResumeRefused(f"nothing to recover (status {cur}, no lock was ever taken)")
+    last = acquired[-1]
+    stale_lock = Path(last["lock"]).exists()
+    released_after = any(e["event"] == "status" and e["to"] != "running" for e in events[events.index(last) + 1:])
+    if cur != "running" and (released_after or not stale_lock):
+        raise ResumeRefused(f"nothing to recover (status {cur}, no stale lock of this run)")
+    if last.get("host") != platform.node():
+        raise ResumeRefused(f"the run was held on host {last.get('host')!r}: its process cannot be checked from here")
+    alive = process_alive(last.get("pid"))
+    if alive is not False:
+        raise ResumeRefused(f"process {last.get('pid')} may still be active (alive={alive}); not recovered")
+    lock_path = Path(last["lock"])
+    if lock_path.exists():
+        try:
+            held = json.loads(lock_path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            raise ResumeRefused(f"{lock_path} is unreadable; check it manually") from None
+        if held.get("run_id") != run["run_id"] or held.get("pid") != last.get("pid"):
+            raise ResumeRefused(f"{lock_path} is now held by {held}; not recovered")
+        lock_path.unlink()
+        log.append("stale_lock_removed", lock=str(lock_path), content=held)
+    with StudyLock(lock_path.parent, run["grid"]["study_id"], run["kind"], run["run_id"]) as lock:
+        if lock.path.resolve() != lock_path.resolve():
+            raise ResumeRefused("lock path of the run does not match the study lock")
+        reason = f"recovered after process loss of pid {last.get('pid')}" + (f"; truncated event line {truncated}" if truncated else "")
+        if cur == "running":
+            set_status(log, "interrupted", reason)
+        else:
+            log.append("recovered", reason=reason + f"; status stays {cur} (lost before it became running)")
     return status(run_dir)
 
 
@@ -341,6 +510,7 @@ def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test)
     """New cell: model, predictions, record (last), all exclusive. Existing record or orphan files: the
     recomputed cell must have the same model identity and prediction identities -- else integrity failure."""
     folder = Path(run_dir) / "cells" / cell_dir_name(c)
+    check_model_against_run(model, run, cell_dir_name(c))           # also before anything is written
     ident = artifacts.model_identity(model)
     res = artifacts.evaluate_with_integrity(model, ident, X_test, U_test)
     arrays = {"projected": res["projected"], "raw": res["raw"], "targets": np.asarray(U_test, dtype=np.float64)}
@@ -352,8 +522,7 @@ def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test)
             raise IntegrityError(f"recomputed {cell_dir_name(c)} differs from its record (changed model, seed or code?)")
         return {**res, "cell_dir": folder.name, "newly_written": False}
     folder.mkdir(parents=True, exist_ok=True)
-    if (folder / "model.json").exists() or (folder / "model.npz").exists() or (folder / "predictions.npz").exists():
-        _adopt_orphans(folder, ident, pred_ids)
+    _adopt_orphans(folder, model, pred_ids)
     model_rec = _existing_or_save_model(folder, model)
     pred_rec = _existing_or_save_arrays(folder, arrays, pred_ids)
     record = {"schema": RECORD_SCHEMA, "run_identity": run["run_identity"],
@@ -368,32 +537,51 @@ def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test)
     return {**res, "cell_dir": folder.name, "newly_written": True}
 
 
-def _adopt_orphans(folder: Path, ident: str, pred_ids: Dict) -> None:
-    """Files of an interrupted cell without record: they may only be adopted if they ARE the recomputed cell."""
+def _npz_identities(path: Path, where: str) -> Dict[str, str]:
+    try:
+        with np.load(path, allow_pickle=False) as z:
+            out = {}
+            for k in z.files:
+                a = z[k]
+                if a.dtype != np.float64:
+                    raise IntegrityError(f"{where}: array {k!r} is {a.dtype}, not float64")
+                out[k] = artifacts.array_identity(k, a)
+            return out
+    except IntegrityError:
+        raise
+    except Exception as e:                                       # unreadable / not an NPZ / needs pickle
+        raise IntegrityError(f"{where}: unreadable NPZ ({type(e).__name__}: {e})") from None
+
+
+def _adopt_orphans(folder: Path, model, pred_ids: Dict) -> None:
+    """Files of an interrupted cell without record may only be adopted if they ARE the recomputed cell, EACH
+    file on its own (review REVIEW_LR5 R4: an NPZ without JSON is compared too). Any deviation is an
+    integrity failure; nothing is renamed, replaced or overwritten."""
+    expected = decoders._json_meta(model)
     if (folder / "model.json").exists():
-        meta = ra.strict_json((folder / "model.json").read_text(encoding="utf-8"))
-        if artifacts.identity(meta) != ident:
+        try:
+            meta = ra.strict_json((folder / "model.json").read_text(encoding="utf-8"))
+        except Exception as e:                                   # noqa: BLE001
+            raise IntegrityError(f"orphan model.json in {folder.name} is unreadable ({e})") from None
+        if artifacts.identity(meta) != artifacts.identity(expected):
             raise IntegrityError(f"orphan model in {folder.name} differs from the recomputed one")
-        if (folder / "model.npz").exists():
-            with np.load(folder / "model.npz", allow_pickle=False) as z:
-                if any(decoders.array_identity(k, z[k]) != meta["arrays"][k] for k in decoders.ARRAYS):
-                    raise IntegrityError(f"orphan model arrays in {folder.name} differ from the recomputed ones")
+    if (folder / "model.npz").exists():
+        if _npz_identities(folder / "model.npz", f"orphan model.npz in {folder.name}") != expected["arrays"]:
+            raise IntegrityError(f"orphan model arrays in {folder.name} differ from the recomputed ones")
     if (folder / "predictions.npz").exists():
-        with np.load(folder / "predictions.npz", allow_pickle=False) as z:
-            if sorted(z.files) != sorted(pred_ids) or any(artifacts.array_identity(k, z[k]) != pred_ids[k] for k in z.files):
-                raise IntegrityError(f"orphan predictions in {folder.name} differ from the recomputed ones")
+        if _npz_identities(folder / "predictions.npz", f"orphan predictions in {folder.name}") != pred_ids:
+            raise IntegrityError(f"orphan predictions in {folder.name} differ from the recomputed ones")
 
 
 def _existing_or_save_model(folder: Path, model) -> Dict:
-    if (folder / "model.npz").exists() and (folder / "model.json").exists():
-        meta = (folder / "model.json").read_bytes()
-        return {"model_identity": artifacts.identity(json.loads(meta)), "npz": "model.npz",
-                "npz_sha256": artifacts.sha256((folder / "model.npz").read_bytes()), "json": "model.json", "json_sha256": artifacts.sha256(meta)}
-    if (folder / "model.npz").exists() or (folder / "model.json").exists():
-        for name in ("model.npz", "model.json"):                     # half a model: keep it visible, never overwrite
-            if (folder / name).exists():
-                (folder / name).rename(folder / f"{name}.orphan-{uuid.uuid4().hex[:8]}")
-    return artifacts.save_model_exclusive(model, folder, "model")
+    """After _adopt_orphans verified any existing half: write only the MISSING part (exclusively)."""
+    if not (folder / "model.npz").exists():
+        artifacts.write_exclusive(folder / "model.npz", artifacts.model_npz_bytes(model))
+    if not (folder / "model.json").exists():
+        artifacts.write_json_exclusive(folder / "model.json", decoders._json_meta(model))
+    meta = (folder / "model.json").read_bytes()
+    return {"model_identity": artifacts.identity(json.loads(meta)), "npz": "model.npz",
+            "npz_sha256": artifacts.sha256((folder / "model.npz").read_bytes()), "json": "model.json", "json_sha256": artifacts.sha256(meta)}
 
 
 def _existing_or_save_arrays(folder: Path, arrays: Dict, pred_ids: Dict) -> Dict:

@@ -88,6 +88,26 @@ LR5 = [
 ]
 
 
+REVIEW_LR5 = [   # guards added after REVIEW_LR5 (R1-R4); responsible tests: test_lr5_review.py
+    ("R1a", "execute accepts status running", "runs.py", '    if cur == "running":\n        raise ResumeRefused("run status is running',
+     '    if False:\n        raise ResumeRefused("run status is running', [T + "test_lr5_review.py"]),
+    ("R1b", "recover does not check whether the process is alive", "runs.py", "    if alive is not False:\n        raise ResumeRefused(f\"process",
+     "    if False:\n        raise ResumeRefused(f\"process", [T + "test_lr5_review.py"]),
+    ("R1c", "recover ignores the host", "runs.py", '    if last.get("host") != platform.node():', "    if False:", [T + "test_lr5_review.py"]),
+    ("R1d", "unexpected exception leaves status running", "runs.py",
+     '        except Exception as e:                              # any other failure: a defined, resumable state\n            set_status(log, "interrupted", f"unexpected {type(e).__name__}: {e}")\n            raise\n',
+     "", [T + "test_lr5_review.py"]),
+    ("R1e", "unparsable log lines silently skipped", "runs.py",
+     '                if e.get("event") != "log_line_truncated":\n                    raise IntegrityError', '                if False:\n                    raise IntegrityError', [T + "test_lr5_review.py"]),
+    ("R2a", "training/validation sizes not bound to the run", "runs.py", "    if (model.n_train, model.n_val) != (sizes[\"train\"], sizes[\"val\"]):", "    if False:", [T + "test_lr5_review.py"]),
+    ("R2b", "model software not bound to the run", "runs.py", '    if (model.software.get("python"), model.software.get("numpy")) != (sw["python"], sw["numpy"]):', "    if False:", [T + "test_lr5_review.py"]),
+    ("R2c", "sizes checked only on read, not before writing", "runs.py", "    check_model_against_run(model, run, cell_dir_name(c))           # also before anything is written\n", "", [T + "test_lr5_review.py"]),
+    ("R3", "software not compared on resume", "runs.py", '    if cur["software"] != run["software"]:', "    if False:", [T + "test_lr5_review.py"]),
+    ("R4a", "lone NPZ not compared", "runs.py", '        if _npz_identities(folder / "model.npz", f"orphan model.npz in {folder.name}") != expected["arrays"]:', "        if False:", [T + "test_lr5_review.py"]),
+    ("R4b", "unreadable NPZ accepted", "runs.py", '        raise IntegrityError(f"{where}: unreadable NPZ', '        return {}  # (f"{where}: unreadable NPZ', [T + "test_lr5_review.py"]),
+]
+
+
 def run_mutant(mid, desc, fname, old, new, tests, env):
     p = HERE / fname
     orig = p.read_bytes()
@@ -128,6 +148,14 @@ def main():
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         return finish(rerun(set(sys.argv[2].split(","))))
+    if len(sys.argv) > 1 and sys.argv[1] == "--review-lr5":
+        js = HERE / "lr5" / "lr5_mutation_campaign.json"
+        out = json.loads(js.read_text(encoding="utf-8"))
+        out["review_lr5_mutants"] = []
+        for m in REVIEW_LR5:
+            out["review_lr5_mutants"].append(run_mutant(*m, env))
+            print(out["review_lr5_mutants"][-1]["id"], out["review_lr5_mutants"][-1]["result"], out["review_lr5_mutants"][-1].get("killed_by", [])[:1], flush=True)
+        return finish(out)
     out = {"schema": "lantern-lr5-mutation-campaign-v1", "plan_mutants": [], "not_applicable": NOT_APPLICABLE, "lr5_mutants": []}
     for m in PLAN:
         out["plan_mutants"].append(run_mutant(*m, env))
@@ -146,12 +174,15 @@ EQUIVALENT = {
     "L2": "removing the early existence check is equivalent in outcome: os.link still refuses an existing name "
           "(FileExistsError, nothing overwritten); the check only avoids writing a temp file. Confirmed by the "
           "race test and the overwrite test both passing under this mutant.",
+    "R4b": "returning {} for an unreadable NPZ instead of raising is equivalent in outcome: {} never equals the "
+           "expected array identities, so the orphan is still rejected as an integrity failure (only the message "
+           "differs); test_r4_other_wrong_lone_npz_files[garbage_bytes] passes under the mutant for that reason.",
 }
 
 
 def finish(out):
     out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
-    allm = out["plan_mutants"] + out["lr5_mutants"]
+    allm = out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", [])
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],
