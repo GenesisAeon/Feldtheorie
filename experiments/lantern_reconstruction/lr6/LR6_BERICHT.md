@@ -97,7 +97,7 @@ Astra hat den Kandidaten geprüft (`LANTERN_LR6_REVIEW_29af52f`): **noch nicht e
 - **R3:** Die Neufit-Null ist über ihre Herkunft an Lauf, Zelle, Modell und Testziele gebunden.
 - **R4:** Die Tests hängen weder vom Rechner noch vom Freeze-Zustand ab; die Bereitschaftsprüfung `tools/lr7_readiness.py` ist getrennt.
 
-Die **dritte Entwicklungsabnahme** (`lr6-acceptance-20261009T192821Z`, reparierter Code) ist bitgleich zu Abnahme 2. Die Alarme sind still; die neue Regel ändert dort nichts.
+Die **dritte Entwicklungsabnahme** (`lr6-acceptance-20261009T192821Z`, reparierter Code) stimmt mit Abnahme 2 überein. Alle 392 Modell- und Vorhersagearchive (dazu `model.json`) sowie alle 16 Nullarchive sind byte-identisch. Die `record.json` sind es **nicht**, weil sie die neuen Herkunfts- und Prüfmetadaten tragen; ihre Scores sind gleich. (Zuerst stand hier pauschal „bitgleich“; präzisiert nach Astras Nachreview `987d9fc`.) Die Alarme sind still; die neue Regel ändert dort nichts.
 
 Der **neue Kandidat** löst den alten ab; der alte liegt in `lr6/superseded/`.
 - Der Masterseed 1431972670 wurde übernommen.
@@ -106,8 +106,19 @@ Der **neue Kandidat** löst den alten ab; der alte liegt in `lr6/superseded/`.
 
 **Prüfungen:** volle Suite 466/466; Mutation 81 ausgeführt, 79 erkannt, 2 äquivalent, 0 Überlebende.
 
+## Nachtrag: Astras Nachreview `987d9fc`
+
+Astra bestätigt R1–R3 als geschlossen. Offen blieb bei R4 der Testfehler **F1**: Die „fremde“ Version war als Literal `3.12.14` gesetzt und galt deshalb unter echtem 3.12.14 nicht als fremd.
+- F1 ist mit simuliertem 3.12.14 nachvollzogen (2 fehlgeschlagen, 65 bestanden).
+- Astras Testpatch ist unverändert übernommen.
+- `test_lr6.py`: 67/67 unter echtem 3.11.9 und unter simuliertem 3.12.14.
+- Produktionscode, Protokoll und Kandidat sind unverändert (Code-Identität `670d9352…`, Kandidat `68fac7fa…`).
+- „bitgleich“ ist präzisiert (siehe oben).
+- Eigene Linkprüfung: ein defekter relativer Link in `lr5/LR5_BERICHT.md` ist behoben.
+
+Einzelheiten stehen in `lr6/review_987d9fc/ABSCHLUSS.md`. Astra hat für diesen Kandidaten mit genau dieser Testkorrektur **keinen weiteren Einwand gegen den formalen Freeze**. Eine Freeze-Freigabe ist das nicht.
+
 ## Offen
 
-- **Astras gezielte Nachprüfung** des neuen Kandidaten.
-- **Freeze-Entscheidung** durch Johann und Astra (`protocol/freeze.json` als eigener, dokumentierter Schritt), einschließlich der Reserve von 5,3 % beim Betriebsfenster von 2,5 h. Der MLP-Verzicht wird mit der Freigabe bindend.
+- **Freeze-Entscheidung durch Johann** (`protocol/freeze.json` als eigener, dokumentierter Schritt): MLP-Verzicht (wird mit der Freigabe bindend) und Betriebsrahmen von mindestens 2,5 h (Reserve gegen reine 2 h Ausführung 5,3 %, im 2,5-h-Fenster etwa 22,6 %).
 - Danach LR7 (Forschungsrunde) nur nach einer **separaten Prüfung vor dem Forschungsstart**.

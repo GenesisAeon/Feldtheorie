@@ -116,5 +116,6 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
   - Herkunft der Neufit-Null;
   - Testvertrag.
 
-  Die dritte Abnahme ist bitgleich zu Abnahme 2. Der neue Kandidat übernimmt den Seed 1431972670; der alte liegt in `lr6/superseded/`. Tests 466/466; Mutation 81, davon 79 erkannt und 2 äquivalent. Bericht: `lr6/review_29af52f/NACHBERICHT.md`.
-- **Offen:** Astras Nachprüfung, Freeze-Entscheidung (Reserve 5,3 %, Fenster 2,5 h); LR7 erst nach separater Prüfung vor dem Forschungsstart.
+  Die dritte Abnahme stimmt mit Abnahme 2 überein: Modell-, Vorhersage- und Nullarchive sind byte-identisch, die Records wegen neuer Metadaten nicht. Der neue Kandidat übernimmt den Seed 1431972670; der alte liegt in `lr6/superseded/`. Tests 466/466; Mutation 81, davon 79 erkannt und 2 äquivalent. Bericht: `lr6/review_29af52f/NACHBERICHT.md`.
+- **Astras Nachreview `987d9fc`:** R1–R3 geschlossen. Testfehler F1 (fremde Version als Literal) nachvollzogen und mit ihrem Patch behoben; `test_lr6.py` 67/67 unter 3.11.9 und unter simuliertem 3.12.14. Produktion und Kandidat unverändert. Keine weiteren Einwände gegen den formalen Freeze. Bericht: `lr6/review_987d9fc/ABSCHLUSS.md`.
+- **Offen:** Freeze-Entscheidung durch Johann (MLP-Verzicht, Fenster ≥ 2,5 h); LR7 erst nach separater Prüfung vor dem Forschungsstart.

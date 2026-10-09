@@ -5,7 +5,7 @@
 - Teil 2 `fff9dd7`: Artefaktkette, Laufverwaltung, Resume, Freigabe-Gate.
 - Teil 3: Trajektorien-Wiederverwendung, Budget, CI, Mutationskampagne und dieser Bericht.
 
-Maßgeblich ist [`LANTERN_LR4_NACHREVIEW_25ba293_2026-10-08`](../../../../mandala-memory-results/lantern-reconstruction-plan/LANTERN_LR4_NACHREVIEW_25ba293_2026-10-08.md), mitsamt den verbindlichen LR5-Pflichten aus `REVIEW_LR4`.
+Maßgeblich ist `LANTERN_LR4_NACHREVIEW_25ba293_2026-10-08` (`D:/mandala/mandala-memory-results/lantern-reconstruction-plan/`, im Review-Paket `results/lantern-reconstruction-plan/`), mitsamt den verbindlichen LR5-Pflichten aus `REVIEW_LR4`.
 
 Es gab **keinen Forschungs-Freeze und keinen Forschungslauf**, außerdem keinen Merge und keinen Push. Gelaufen sind nur Entwicklungs- und Smoke-Läufe auf der Entwicklungsstudie, dazu synthetische Kontrolldaten.
 

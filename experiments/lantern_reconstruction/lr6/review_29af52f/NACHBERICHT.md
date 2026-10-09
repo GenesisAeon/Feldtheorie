@@ -89,7 +89,7 @@ Dritte Entwicklungsabnahme `lr6-acceptance-20261009T192821Z` am reparierten Code
 | Status / Zellen | `complete`, 392/392, keine Uhrenlücke |
 | technisch vollständig / interpretierbar | ja / ja |
 | Alarme | beide still; die zwölf Alarmzellen sind **identisch** zu Abnahme 2 (G, p, Holm-p), kleinster Holm-p 0,6492 |
-| Bitgleichheit mit Abnahme 2 | alle 392 Scores und Modellidentitäten, alle 16 Nullarrays |
+| Vergleich mit Abnahme 2 | Scores und Modellidentitäten aller 392 Zellen gleich. Byte-identisch sind alle 392 `model.npz`, `model.json` und `predictions.npz` sowie alle 16 `null.npz`. Die 392 `record.json` sind **nicht** byte-identisch (neue Herkunfts- und Prüfmetadaten). Präzisiert nach Astras Nachreview `987d9fc`; Beleg `compare_acceptance_2_3_files.txt`. |
 | Refit-Pfad-Abweichung | höchstens 7,5·10⁻¹⁸ (16 Zellen) |
 | G0 Aufgabe A | 0,978 |
 | Laufzeit | Ausführung 1364 s (Abnahme 2: 1341 s), Freigabebericht 30 s |

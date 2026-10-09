@@ -7,10 +7,11 @@
   "99e6480": "research mode only with a freeze; study evaluation in the release gate",
   "f9ea14d": "runbook BETRIEB.md",
   "5905dcd": "control-alarm protocol v2 (refit null for permuted targets)",
-  "this commit": "new freeze candidate, follow-up report",
+  "this commit": "F1 test fix (Astra's patch), closing report, wording 'bit-identical' corrected",
   "29af52f": "acceptance, first freeze candidate, report (superseded)",
   "b0da0c7": "review 29af52f fix R1-R4: software binding, control-alarm protocol v3 (tie rule, refit-path check), null provenance, test contract",
-  "df3065b": "first candidate moved to lr6/superseded/, review evidence"
+  "df3065b": "first candidate moved to lr6/superseded/, review evidence",
+  "987d9fc": "new freeze candidate, follow-up report"
  },
  "no_research": "no freeze, no research run, no public push",
  "acceptance_1": {
@@ -111,9 +112,9 @@
   ]
  },
  "open": [
-  "Astra: targeted re-check of the new candidate",
-  "Johann/Astra: the freeze (protocol/freeze.json, documented step), incl. the 5.3 % reserve with the 2.5 h window; MLP waiver binding with it",
-  "LR7 only after a separate review before the research start"
+  "Johann: the freeze decision (protocol/freeze.json, documented step), MLP waiver, operating window >= 2.5 h",
+  "LR7 only after readiness in the exact environment and the separate pre-start review",
+  "GitHub CI never ran; no real Python 3.12 run locally"
  ],
  "review_29af52f": {
   "verdict": "do not freeze yet (Astra, 2026-10-09)",
@@ -138,8 +139,24 @@
    "positive_spurious_success_alarm": false,
    "target_dependence_alarm": false
   },
-  "bit_identical_to_acceptance_2": "all 392 scores and model identities, all 16 null arrays (lr6/review_29af52f/compare_acceptance_2_3.txt)",
+  "compared_with_acceptance_2": "equal scores and model identities in all 392 cells; byte-identical: all 392 model.npz, model.json, predictions.npz and all 16 null.npz; NOT the 392 record.json (new provenance/check metadata) -- lr6/review_29af52f/compare_acceptance_2_3*.txt",
   "execute_seconds": 1363.9117000999395,
   "release_seconds": 30.121635999996215
+ },
+ "nachreview_987d9fc": {
+  "verdict": "R1-R3 closed; F1 (test fixture used the literal 3.12.14 as the 'foreign' version) open -> fixed",
+  "f1_reproduced": "SIMULATED Python 3.12.14 (platform.python_version only; real interpreter 3.11.9): 2 failed, 65 passed",
+  "fix": "Astra's F1_test_fixture.patch applied unchanged (tests only)",
+  "test_lr6": {
+   "real_python_3.11.9": "67/67",
+   "simulated_python_3.12.14": "67/67"
+  },
+  "production_and_candidate_unchanged": {
+   "code_identity": "670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c",
+   "candidate_sha256_lf": "68fac7fa0ddc43a2133af417c4fb8ccf64717ab52fe31ca02af7aa259b79b690"
+  },
+  "links": "no repo link check exists in Feldtheorie (the --category links rule belongs to the SCF repo); own relative-link check: 1 broken link in lr5/LR5_BERICHT.md fixed, 40/40 ok",
+  "astra": "no further objection to the formal freeze of this candidate with exactly this test fix; NOT a freeze approval",
+  "report": "lr6/review_987d9fc/ABSCHLUSS.md"
  }
 }

@@ -339,7 +339,9 @@ def test_r1_software_is_checked_again_before_start(freeze_files, tmp_path, monke
     freeze_files()
     rd = runs.create_research_run(tmp_path / "runs", run_id="r")
     real = runs.software()
-    monkeypatch.setattr(runs, "software", lambda: {**real, "python": "3.12.14"})
+    wrong = {**real, "python": real["python"] + ".review-mismatch"}
+    assert wrong != real
+    monkeypatch.setattr(runs, "software", lambda: dict(wrong))
     with pytest.raises(runs.ResumeRefused, match="software"):
         runs.execute(rd, lock_root=tmp_path / "locks")
     assert runs.status(rd) is None and not (rd / "structure" / "c000.json").exists()
@@ -350,7 +352,8 @@ def test_r1_a_manifest_made_in_the_wrong_environment_never_legitimises_it(freeze
     environment. Neither the same wrong environment nor the frozen one may start it."""
     cand = freeze_files()
     real = runs.software()
-    wrong = {**real, "python": "3.12.14"}
+    wrong = {**real, "python": real["python"] + ".review-mismatch"}
+    assert wrong != real
     monkeypatch.setattr(runs, "software", lambda: dict(wrong))
     rd = runs._create(tmp_path / "runs", "research", runs.research_grid(cand), "made-elsewhere")   # bypasses the gate
     assert runs.load_run(rd)["software"] == wrong
@@ -377,11 +380,12 @@ def real_candidate_frozen(tmp_path, monkeypatch):
 
 
 def test_r4_real_candidate_refused_in_a_foreign_environment(real_candidate_frozen, monkeypatch, tmp_path):
-    monkeypatch.setattr(runs, "software", lambda: {**real_candidate_frozen["software"], "python": "3.12.14"})
+    wrong_python = real_candidate_frozen["software"]["python"] + ".review-mismatch"
+    monkeypatch.setattr(runs, "software", lambda: {**real_candidate_frozen["software"], "python": wrong_python})
     with pytest.raises(ValueError, match="software differs"):
         runs.create_research_run(tmp_path / "runs")
     r = runs.research_readiness()
-    assert r["research_start_allowed"] is False and "3.12.14" in r["refusal"] and r["software_problems"]
+    assert r["research_start_allowed"] is False and wrong_python in r["refusal"] and r["software_problems"]
 
 
 def test_r4_real_candidate_accepted_in_its_own_environment(real_candidate_frozen, monkeypatch):

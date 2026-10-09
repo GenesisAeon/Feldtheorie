@@ -1,0 +1,17 @@
+F1 baseline at 987d9fc (before Astra's test patch), test_lr6.py via run_lr6.py --sim312
+SIMULATION: platform.python_version() returns "3.12.14"; the real interpreter was Python 3.11.9 (NumPy 2.2.6, SciPy 1.15.3).
+No real Python 3.12 interpreter is installed on this machine (py -0: 3.13, 3.11); the environment was not changed.
+
+Output (copied from the run):
+SIMULATED platform.python_version() = 3.12.14 (real interpreter: 3.11.9)
+E       Failed: DID NOT RAISE ResumeRefused
+E       Failed: DID NOT RAISE ResumeRefused
+FAILED experiments/lantern_reconstruction/tests/test_lr6.py::test_r1_software_is_checked_again_before_start
+FAILED experiments/lantern_reconstruction/tests/test_lr6.py::test_r1_a_manifest_made_in_the_wrong_environment_never_legitimises_it
+2 failed, 65 passed, 1 warning in 221.99s (0:03:41)
+
+= Astra's result under real Python 3.12.14 (2 failed, 65 passed, DID NOT RAISE ResumeRefused).
+
+After the patch (F1_test_fixture.patch, applied unchanged; result byte-equal to Astra's proposed/test_lr6.py after CRLF normalisation):
+  real Python 3.11.9:                67 passed  (lr6_tests_real_py3119.xml)
+  SIMULATED Python 3.12.14:          67 passed  (lr6_tests_SIMULATED_py31214.xml)

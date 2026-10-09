@@ -1,0 +1,5 @@
+model.json       pairs  392  byte-identical  392
+model.npz        pairs  392  byte-identical  392
+null.npz         pairs   16  byte-identical   16
+predictions.npz  pairs  392  byte-identical  392
+record.json      pairs  392  byte-identical    0
