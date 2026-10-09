@@ -1,0 +1,349 @@
+{
+ "budget": {
+  "draft": {
+   "artifacts_bytes": 1073741824,
+   "evaluation_s": 1800,
+   "production_training_s": 7200,
+   "ram_bytes": 1073741824
+  },
+  "extrapolated_research": {
+   "artifact_bytes": 209953335.0,
+   "execute_seconds": 6819.558500499697,
+   "note": "linear extrapolation from the measured acceptance run, no guaranteed upper bound; the release gate's permutations grow with the contexts as well (see lr5/lr5_budget.json)",
+   "release_seconds": 150.60817999998108,
+   "reserve_vs_draft_training_s": 380.4414995003026
+  },
+  "measured_development_acceptance": {
+   "artifact_bytes": 41990667,
+   "contexts": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "execute_seconds": 1363.9117000999395,
+   "release_seconds": 30.121635999996215
+  },
+  "operating_window": {
+   "basis": "Astra, review LANTERN_LR6_REVIEW_29af52f sections 1 and 9: at least 2.5 h including the release report and a possible resume",
+   "recommended_s": 9000,
+   "rule": "the 20 contexts and the evaluation rules are fixed; a runtime problem is never a reason to drop contexts after results were seen"
+  }
+ },
+ "claims_scope": "a positive result concerns the documented dynamics, measurement map, Ridge readability and the concrete structural reference; it shows no biological or physical transfer. 20 contexts are a resource decision, not a demonstrated power: a negative result is reported as not reaching the prespecified evidence.",
+ "code_files": {
+  "__init__.py": "2a15f6ba517e641d0ca6394707c667091919b7baa9e63352e2de074c3c87e95a",
+  "artifacts.py": "df24be8a1083e619aa9d51558a0d3493a84bcbda242da0dc67ed27ce78a174cb",
+  "contexts.py": "8e406b4dee8ccfc06a7035b069a3b1281c7dac47b9d4558cdee0f1462cbfd97c",
+  "decoders.py": "dd3933b5eaabd50d357703b44228229bf11a5687f1d752883b4605e3d3938bc3",
+  "dynamics.py": "2e99fc7df5a10a82db632db7296ccf9b7f1f707badd2b84afb53acc855d21e03",
+  "encoding.py": "810e69a90b71fb8eeca8962c3d7276a8809b6688bd8fa082130c7be79904ad00",
+  "episodes.py": "f2c7b24af5d55a31427ee7d5c58b454919aa2384d67f32786775e24d47816e51",
+  "evaluate.py": "6048fffc9dc9b220df816e31b69c058d5ec85c81601fa5ade435f7920a7d2561",
+  "legacy_probe.py": "cfa80d5ec1bf5b445f94661d5ce0d9810ca74408832d1069c4dbf4058f28eb03",
+  "linear_diagnostics.py": "ecf303170df98d0c93b6da538bd02fa19ef2eeba80654141904eecc6a9b340f9",
+  "metrics.py": "ef1fd2e3d2da4cf4ca86bd777150e86159cb65e100f00524389cb2dd1aab7225",
+  "observation.py": "36bf485d35f570339460e923aca82b6336d7b1e18fb518e67defbeabfe1aaad8",
+  "protocol/PLAN_AENDERUNGEN.md": "5989620000b963667335c3848e4b7675fa03d305d130e1c8b5cd8b2a8741acb8",
+  "protocol/control_alarms.json": "fa07cbcd8d45b0586025ec1317628bcaebd9389fd85786130f99da0f8b54940a",
+  "protocol/control_alarms.yaml": "162eda03d3b2a508c0335dccd69c1ed5b50fac20460f83d0b6af96c3ddcaaca2",
+  "protocol/decoder_convergence_gate.json": "b82fd3047db905a3dfcc15bf5f0e00ceffc1602d5337bb412413d46c97791c71",
+  "protocol/decoder_convergence_gate.yaml": "15dc043e9349b551f187ebe324e963a95085225141f8fa4ce3a7dbfcc7d55687",
+  "protocol/plan_changes.json": "d5b7536ea73884e3fea5554e0f316a34e1eb6d9c0092e7a203d170394f2cbc7b",
+  "protocol/plan_changes.yaml": "85c3fb90ed7d406dd78af299f049f094961160d4af0eea1e3b4051579e2b1628",
+  "protocol/study_defaults.json": "7ca24901378ffa1c203aeb18d7a933fc03ca592c93790a32c45c2e7e77881d47",
+  "protocol/study_defaults.yaml": "db7d4aa21e47f470e3085e0d81008490fee8f90c897a7492c5e7509ebf3463ba",
+  "registry_adapter.py": "06dc4779b4305de06eff3d0ad0ecf487c3a73c5f8dc20dad81951fd95b350a6a",
+  "release.py": "92a25a8ecabc947568ce80f5c7f11282af02df8a7984897ad7df368842cd1ac8",
+  "runner.py": "9d763f31b1f737afe428c06c278b9a7cfbdf94078757c84fe73810a8a7b7b842",
+  "runs.py": "67a1626f97b208a540b1383b086a24213ad75ac1e47b2b1f4f8450b137bc6da3",
+  "streams.py": "f3d42ffb46dcd37e2ceb7055535f26439a4fa63a035ba7adde08ddc5c3a26f2c",
+  "surrogates.py": "4bbda215ed833964b370974f24af4dccbb35a38df8ae69b3fe6d139f9e8c1def",
+  "training.py": "f8725c60d3ee2050b50e3eebb6f9d4a0dee52594c59aefad1a8fe0323db04aac"
+ },
+ "code_identity": "670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c",
+ "control_rules": {
+  "control_alarms": {
+   "alarms": {
+    "positive_spurious_success": "any cell with observed G > 0 AND Holm-adjusted p <= 0.01 (the plan's alarm on unexpectedly positive G)",
+    "reported": "both alarms with every cell's G, p and Holm p, under these two separate names; never merged into one flag",
+    "target_dependence": "any cell with Holm-adjusted p <= 0.01 regardless of the sign of G (reset/zero impulse: a control decoder that depends recognisably on the test target; permuted targets: a control decoder better than label-free refits, even when worse than the zero prediction)"
+   },
+   "cells": {
+    "condition": "lantern",
+    "controls": [
+     "reset",
+     "zero_impulse",
+     "permuted_targets"
+    ],
+    "count": 12,
+    "names": "'{control}|{task}|{tau}', in exactly this nested order (controls, tasks, times) = Holm family order",
+    "rule": "control x task x tau, decoder Ridge, coupling condition lantern",
+    "tasks": [
+     "A",
+     "B"
+    ],
+    "times": [
+     1.0,
+     5.0
+    ]
+   },
+   "controls": {
+    "permuted_targets": "states and features as in the main condition; the TRAINING targets are permuted by the decoder stream (study, context, train, decoder, 0, extra 2, task index, time index) and the VALIDATION targets by (study, context, val, decoder, 0, extra 3, task index, time index) before fit and lambda selection; test targets stay real; full 7-time curves are reported",
+    "reset": "write, then reset to phi * 1 at once (encoding control 'reset'); full 7-time curves are reported",
+    "zero_impulse": "nothing is written (encoding control 'zero_impulse'); full 7-time curves are reported"
+   },
+   "release_rule": {
+    "implemented_default": "the release gate applies this rule (both alarms block)",
+    "interpretation": "both names denote the same directional test (per cell family its own null), with and without the additional condition G > 0; a missing alarm does not prove independence",
+    "investigation": "an investigation is no automatic override: finding, cause, consequences and, if needed, a new protocol version are documented",
+    "proposal": "either alarm sets scientifically_interpretable = false and blocks the scientific release until a documented investigation; a negative G does not make a target dependence harmless; technically_complete is unaffected by the alarms",
+    "status": "ENDORSED by Johann and Astra (REVIEW_LR5, 2026-10-09); becomes binding with the research freeze (LR6)"
+   },
+   "revision": {
+    "v2": "investigation results/lantern/lr6_acceptance_investigation/UNTERSUCHUNG.md: the test predictions of a label-permuted decoder CAN depend on the test targets because its features carry target information (shown in the diagnosed case: task A, early times), so the fixed-prediction null was the wrong comparison for these cells and fired there (only in permuted_targets|A|1.0); in addition lambda selection on REAL validation targets is a weak channel of target information. v2: validation targets are permuted too, and the four permuted-target cells use a refit null; reset and zero_impulse are unchanged",
+    "v3": "review LANTERN_LR6_REVIEW_29af52f R2: with constant features the observed fit and every refit give mathematically the SAME gain, but fit_ridge + scoring and the vectorised refits differed by round-off (4.16e-17); the exact comparison counted 0 of 9999 ties and reported p = 0.0001 (Holm 0.0012, target-dependence alarm) instead of p = 1. v3 adds the tie rule and the refit-path check (statistic.tie_rule, statistic.refit_path_check); cells, streams, B and the alarms are unchanged"
+   },
+   "schema": "lantern-control-alarms-v3",
+   "source": "plan v2.0 section 10 (empirical controls); review LANTERN_LR4_NACHREVIEW_25ba293 LR5-A1",
+   "statistic": {
+    "multiplicity": "Holm over ALL 12 cells at 0.01, always; never only over a selected subset (e.g. the positive cells)",
+    "p_value": "p = (1 + b) / (1 + B), b = number of null statistics >= observed - tie_rule.absolute_tolerance (ties count toward the upper tail)",
+    "per_cell": "observed mean over the contexts of G (projected test predictions of the fitted control decoder)",
+    "permuted_targets": "refit null: per context B = 9999 gains of the COMPLETE procedure with NEW train and val permutations (refit, lambda selection, test on the real targets), stream (study, context, train, decoder, 0, extra 4, task index, time index), computed during the run and stored as the cell's null.npz; null statistic of draw b = mean over contexts of the b-th gains",
+    "refit_path_check": {
+     "absolute_tolerance": 1e-12,
+     "rule": "per permuted-target alarm cell and context, the observed gain is computed twice: by the cell's fitted decoder (fit_ridge + scoring, the value that is recorded and enters the statistic) and by the SAME vectorised refit code as the null draws (training.refit_gains) with the cell's own train and val permutations; their absolute difference must be <= 1e-12, else the cell is refused (the numerical contract behind the tie rule does not hold). Both values and the difference are stored with the cell's null provenance"
+    },
+    "reset_and_zero_impulse": "their features carry no target information: test targets permuted WITHIN each context, predictions fixed; B = 9999; one generator per cell (study, context 0, test, decoder, 0, extra 1, cell index), the contexts permuted from it in ascending order",
+    "tie_rule": {
+     "absolute_tolerance": 1e-10,
+     "applies_to": "every control-alarm cell: the refit null of the permuted-target cells AND the fixed-prediction null of reset/zero_impulse",
+     "direction": "conservative: a null statistic within the tolerance BELOW the observed one counts as a tie, i.e. toward the upper tail; this can only raise p, never lower it",
+     "reason": "G is a mean of bounded losses (targets and projected predictions in [-1, 1], so -12 <= G <= 3). Mathematically equal statistics computed along different floating-point paths differ only by round-off; the refit-path check below bounds the fit-versus-refit difference per cell at 1e-12 and refuses the cell otherwise, so 1e-10 is 100 times that checked bound. It is absolute, not relative, because G can be 0. Measured on development data (dev contexts 0-3, the four refit cells): fit-versus-refit at most 7.5e-18, refit draws versus fit_ridge at most 8.7e-18. The spread of real null statistics is far larger (second development acceptance run: SD of the cell's null statistic 3.8e-5 to 2.5e-3; in none of the 12 cells was a null statistic within 1e-10 of the observed one, smallest distance 1.3e-9), so the band changes the expected count by about B x density x 1e-10 << 1. Fixed from the error bound, before any research run; not chosen from a p-value."
+    }
+   },
+   "status": "development protocol (NOT frozen); v1 fixed before any run of these cells (LR5, 2026-10-08); v2 = correction of the permuted-target cells, decided by Johann on 2026-10-09 after the LR6 development acceptance alarm; v3 = numerical tie rule and refit-path check after Astra's review LANTERN_LR6_REVIEW_29af52f (R2)"
+  },
+  "convergence_gate": "lr4/lr4_decoder_convergence.json (bound to protocol/decoder_convergence_gate.json): passed",
+  "permutations": 9999,
+  "pipeline_gate_A_G0": "mean over contexts of G(task A, t = 0) > 0.90 for every condition",
+  "structure_check": "reset and zero impulse identical for u and -u (first 8 test episodes per context, lantern)"
+ },
+ "created_utc": "2026-10-09T19:52:27.425510+00:00",
+ "declared_known_information": [
+  "Aeon's development pilot (seeds 900000-900104): known before this protocol; those seeds are excluded",
+  "development study 2026100803: contexts 0 and 1 (LR4 decoder convergence gate, full G curves) were seen",
+  {
+   "LR6 development acceptance runs (all seen; development study only)": [
+    {
+     "contexts": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "git_commit": "99e64809205ee29378c926c6a9517191d0a42c70",
+     "run_id": "lr6-acceptance-20261009T151633Z",
+     "study_id": 2026100803
+    },
+    {
+     "contexts": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "git_commit": "5905dcdf374dc6f7eea2e7194bac298bd1717f0e",
+     "run_id": "lr6-acceptance-20261009T165010Z",
+     "study_id": 2026100803
+    },
+    {
+     "contexts": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "git_commit": "29af52f03b1f8ffd68c168e58578034abc5ea529",
+     "run_id": "lr6-acceptance-20261009T192821Z",
+     "study_id": 2026100803
+    }
+   ]
+  },
+  "numerical study parameters (grid, sizes, seed, B, thresholds, lambda grid) were not chosen from any research result (no research run exists); the CONTROL TEST was revised after documented development diagnoses: the first acceptance run's alarm led to control-alarm protocol v2 (refit null), review R2 led to v3 (numerical tie rule)"
+ ],
+ "decoder": {
+  "lambda_grid": [
+   0.0001,
+   0.001,
+   0.01,
+   0.1,
+   1.0,
+   10.0,
+   100.0
+  ],
+  "mlp": {
+   "basis": "proposed by Claude (first candidate, 29af52f); endorsed by Astra (review LANTERN_LR6_REVIEW_29af52f, section 1); binding only with the freeze approval",
+   "decision": "WAIVED for this study",
+   "reason": "plan 6/8: Ridge is primary and does not block on the MLP; the MLP was never implemented or validated (initialisation, regularisation and early stopping are unspecified in code), and plan 13 names it as the first item to drop under budget pressure. A later MLP needs its own protocol version.",
+   "scope_of_statements": "every statement is limited to the examined Ridge readability; a negative result proves no general non-readability by other decoders"
+  },
+  "objective": "(1/N) ||X_s W + 1 b^T - U||_F^2 + lambda ||W||_F^2  (X_s standardised features; intercept b unpenalised)",
+  "primary": "Ridge (NumPy closed form, training.py)",
+  "projection": "main loss on predictions clipped to [-1, 1]; raw predictions are kept",
+  "selection": "smallest validation MSE of the PROJECTED predictions; on an exactly equal value the larger lambda",
+  "standardisation": "mean and population SD (ddof 0) of the TRAINING features only; an exactly constant column (all values identical) gets mean = its value and scale 1"
+ },
+ "git": {
+  "commit": "df3065beb992ec8d91e2e61b0143928683831da5",
+  "dirty": false
+ },
+ "grid": {
+  "cells": 1960,
+  "conditions": [
+   "lantern",
+   "uncoupled",
+   "uniform_total",
+   "strength_surrogate"
+  ],
+  "contexts": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "controls": [
+   "reset",
+   "zero_impulse",
+   "permuted_targets"
+  ],
+  "dt": 0.02,
+  "integrator": "rk4 (AE-01)",
+  "proposals": 20000,
+  "sizes": {
+   "test": 1000,
+   "train": 1000,
+   "val": 250
+  },
+  "tasks": [
+   "A",
+   "B"
+  ],
+  "times": [
+   0.0,
+   0.5,
+   1.0,
+   2.0,
+   3.0,
+   5.0,
+   10.0
+  ]
+ },
+ "inference": {
+  "grid_aggregate": "trapezoid on log(1+tau) / log(11) (K21)",
+  "task_A": "estimation: mean, SD, pointwise two-sided 95% t interval of A_lantern, A_uncoupled and their paired difference",
+  "task_B": {
+   "H_B1": "E[A_lantern] > 0.05",
+   "H_B2": "E[A_lantern - A_strength_surrogate] > 0.05",
+   "allowed_statements": {
+    "False|False": "the pre-specified evidence was not reached; this is no general impossibility proof",
+    "False|True": "H-B2 alone without H-B1: no statement of distributed readability; report descriptively",
+    "True|False": "distributed readability shown; no demonstrated specific advantage over the structural reference",
+    "True|True": "distributed readability and an advantage over this strength surrogate under the protocol"
+   },
+   "test": "one-sided t on context values minus margin; Holm over exactly these two at 0.05; Bonferroni intervals at t .9875, df = contexts - 1"
+  },
+  "unit": "context"
+ },
+ "model": {
+  "coupling_scale": "g = 1 / max(row_sum(C_lantern))",
+  "frequencies": "N(0, 0.1^2) per context, then centred",
+  "impulse_rad": 0.35,
+  "process_noise": 0.0,
+  "sigma_rad": 0.03
+ },
+ "open_findings": [
+  "the GitHub CI workflow has never run (branch not pushed); Python 3.12 was not available locally",
+  "left-over administration locks are handled manually by design (never auto-removed)",
+  "the research run is bound to the software of the freeze: strict equality of Python, NumPy and SciPy before a research run folder is created and before every start/resume (review R1); tools/lr7_readiness.py reports it locally"
+ ],
+ "operations": "lr6/BETRIEB.md (start, monitoring, recovery after a process loss, MANUAL handling of left-over administration locks, release report, review package)",
+ "release": "release.py: technically_complete, scientifically_interpretable (structure checks, both LR5-A1 alarms, convergence and pipeline gates) and hypothesis (only for an interpretable research run) as separate fields",
+ "schema": "lantern-freeze-candidate-v1",
+ "software": {
+  "numpy": "2.2.6",
+  "python": "3.11.9",
+  "scipy": "1.15.3"
+ },
+ "sources": {
+  "config_sha256": "7ca24901378ffa1c203aeb18d7a933fc03ca592c93790a32c45c2e7e77881d47",
+  "plan": "reference/review_package_2026-10-07/LANTERN_REAKTIVIERUNG_IMPLEMENTIERUNGSPLAN.md (v2.0) + plan change AE-01",
+  "registry_snapshot": {
+   "canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
+   "manifest_sha256": "5b7aa962da8b89157f400f50a51f01c45bd861f19deed456bd2c7498f60a04dc",
+   "pin": {
+    "canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
+    "directory": "artifacts/registry_snapshot_v2",
+    "manifest_sha256": "5b7aa962da8b89157f400f50a51f01c45bd861f19deed456bd2c7498f60a04dc"
+   }
+  }
+ },
+ "status": "CANDIDATE -- not frozen. Needs a separate review; the freeze is a documented release by Johann/Astra (protocol/freeze.json), after which runs.create_research_run() is the only research entry point.",
+ "streams": {
+  "decoder_extras": {
+   "1": "control-alarm permutation, fixed-prediction null of reset/zero_impulse: (study, context 0, test, decoder, 0, 1, cell index)",
+   "2": "permuted training targets: (study, context, train, decoder, 0, 2, task index, time index)",
+   "3": "permuted validation targets: (study, context, val, decoder, 0, 3, task index, time index)",
+   "4": "refit null of the permuted-target alarm cells: (study, context, train, decoder, 0, 4, task index, time index)"
+  },
+  "key": "(study_id, context_id, split_id, role_id, episode_id[, extra])",
+  "key_component_limit": "every numeric key component in [0, 2**32)",
+  "roles": {
+   "decoder": 70,
+   "frequencies": 20,
+   "global_phase": 40,
+   "locations": 10,
+   "measurement": 50,
+   "surrogate": 60,
+   "targets": 30
+  },
+  "splits": {
+   "context": 9,
+   "test": 2,
+   "train": 0,
+   "val": 1
+  }
+ },
+ "study": {
+  "draws": [],
+  "method": "KEPT from the superseded candidate lr6/superseded/freeze_candidate_29af52f.json (sha256 3250764564d828f1a2eca0f857a177e3e57386af4e72c98eacb3bd5fa7c08ddf), never drawn again; originally: secrets.randbelow(2**32), drawn once at candidate creation; redrawn only if in the excluded range 900000-900104 or equal to the development study 2026100803; never chosen by any result (draws [1431972670])",
+  "research_study_id": 1431972670
+ },
+ "supersedes": {
+  "code_identity": "1a00ff9ee4d2dd05f5034793271aaf227dd92242a7df992cc2f2dee817748bc8",
+  "file": "lr6/superseded/freeze_candidate_29af52f.json",
+  "git": {
+   "commit": "5905dcdf374dc6f7eea2e7194bac298bd1717f0e",
+   "dirty": false
+  },
+  "reason": "review LANTERN_LR6_REVIEW_29af52f (Astra, 2026-10-09): do not freeze yet; R1 software binding at the research start, R2 numerical tie rule (control-alarm protocol v3), R3 provenance of the refit null, R4 test contract; editorial corrections. The production code changed, so the code identity changed.",
+  "sha256": "3250764564d828f1a2eca0f857a177e3e57386af4e72c98eacb3bd5fa7c08ddf"
+ }
+}

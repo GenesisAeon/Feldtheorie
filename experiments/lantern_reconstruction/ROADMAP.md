@@ -110,4 +110,11 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Zweite Entwicklungsabnahme:** technisch vollständig und wissenschaftlich interpretierbar; alle 12 Alarmzellen unauffällig; G0 = 0,978.
 - **Freeze-Kandidat:** Masterseed 1431972670 (per `secrets`), 20 Kontexte, 1960 Zellen; MLP-Verzicht als Vorschlag; hochgerechnet 1,86 h bei 2 h Budget. Er ist an den Code `5905dcd` gebunden.
 - **Prüfungen:** Tests 425; Mutation 68, davon 66 erkannt und 2 äquivalent.
-- **Offen:** Prüfung des Kandidaten, Entscheidungen zu MLP und Budgetreserve, der Freeze; LR7 erst nach separater Prüfung vor dem Forschungsstart.
+- **Astras Review `29af52f`:** noch kein Freeze; R1–R4 reproduziert und behoben (`b0da0c7`):
+  - Softwarebindung beim Forschungsstart;
+  - Kontrollprotokoll v3 mit Gleichstandsregel;
+  - Herkunft der Neufit-Null;
+  - Testvertrag.
+
+  Die dritte Abnahme ist bitgleich zu Abnahme 2. Der neue Kandidat übernimmt den Seed 1431972670; der alte liegt in `lr6/superseded/`. Tests 466/466; Mutation 81, davon 79 erkannt und 2 äquivalent. Bericht: `lr6/review_29af52f/NACHBERICHT.md`.
+- **Offen:** Astras Nachprüfung, Freeze-Entscheidung (Reserve 5,3 %, Fenster 2,5 h); LR7 erst nach separater Prüfung vor dem Forschungsstart.

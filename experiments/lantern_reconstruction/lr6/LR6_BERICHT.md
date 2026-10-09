@@ -88,8 +88,26 @@ Der Kandidat ist an den Code gebunden. Ein Test schlägt fehl, sobald ein Produk
   - Kontrollprotokoll v2: 6/6, V4–V6 erst nach neuen Tests.
 - **CI-Workflow:** um `test_lr6.py` erweitert (13 Testdateien, durch einen Test erzwungen).
 
+## Nachtrag: Astras Review `29af52f` und neuer Kandidat
+
+Astra hat den Kandidaten geprüft (`LANTERN_LR6_REVIEW_29af52f`): **noch nicht einfrieren**, vier Befunde. Alle vier wurden vor der Änderung reproduziert und in `b0da0c7` behoben; Einzelheiten stehen in `lr6/review_29af52f/NACHBERICHT.md`.
+
+- **R1:** Die Software wird beim Anlegen und vor jedem Start eines Forschungslaufs exakt gegen den Freeze geprüft.
+- **R2:** Kontrollalarm-Protokoll v3 mit Gleichstandsregel (10⁻¹⁰, konservativ) und Refit-Pfad-Prüfung (≤ 10⁻¹²).
+- **R3:** Die Neufit-Null ist über ihre Herkunft an Lauf, Zelle, Modell und Testziele gebunden.
+- **R4:** Die Tests hängen weder vom Rechner noch vom Freeze-Zustand ab; die Bereitschaftsprüfung `tools/lr7_readiness.py` ist getrennt.
+
+Die **dritte Entwicklungsabnahme** (`lr6-acceptance-20261009T192821Z`, reparierter Code) ist bitgleich zu Abnahme 2. Die Alarme sind still; die neue Regel ändert dort nichts.
+
+Der **neue Kandidat** löst den alten ab; der alte liegt in `lr6/superseded/`.
+- Der Masterseed 1431972670 wurde übernommen.
+- MLP-Verzicht (von Astra befürwortet), Ströme 1–4, alle drei Abnahmen als bekannte Information.
+- Hochgerechnet 6820 s ≈ 1,89 h; Reserve 5,3 %; Betriebsfenster mindestens 2,5 h.
+
+**Prüfungen:** volle Suite 466/466; Mutation 81 ausgeführt, 79 erkannt, 2 äquivalent, 0 Überlebende.
+
 ## Offen
 
-- **Eigene Prüfung des Freeze-Kandidaten** durch Astra.
-- **Entscheidungen von Johann und Astra:** MLP-Verzicht (Vorschlag); die Budgetreserve von rund 7 %; der Freeze selbst (`protocol/freeze.json` als eigener, dokumentierter Schritt).
+- **Astras gezielte Nachprüfung** des neuen Kandidaten.
+- **Freeze-Entscheidung** durch Johann und Astra (`protocol/freeze.json` als eigener, dokumentierter Schritt), einschließlich der Reserve von 5,3 % beim Betriebsfenster von 2,5 h. Der MLP-Verzicht wird mit der Freigabe bindend.
 - Danach LR7 (Forschungsrunde) nur nach einer **separaten Prüfung vor dem Forschungsstart**.

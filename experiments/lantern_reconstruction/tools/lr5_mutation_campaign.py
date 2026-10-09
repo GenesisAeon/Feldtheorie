@@ -328,7 +328,10 @@ def finish(out):
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],
-                      "first_run_survivors_closed_by_new_tests": sorted(m["id"] for m in allm if m.get("history") and m["result"] == "killed"),
+                      "first_run_survivors_closed_by_new_tests": sorted(m["id"] for m in allm if m["result"] == "killed"
+                                                                        and any(h.get("result") == "SURVIVED" for h in m.get("history", []))),
+                      "rerun_after_target_change": sorted(m["id"] for m in allm if m.get("history")
+                                                          and not any(h.get("result") == "SURVIVED" for h in m["history"])),
                       "invalid_targets": [m["id"] for m in allm if m["result"].startswith("TARGET")],
                       "not_applicable": sorted(NOT_APPLICABLE)}
     js = HERE / "lr5" / "lr5_mutation_campaign.json"

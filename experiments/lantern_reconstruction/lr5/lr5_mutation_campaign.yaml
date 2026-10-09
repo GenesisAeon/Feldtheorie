@@ -356,8 +356,8 @@ plan_mutant_2_detection_test:
   passed: true
   summary: 1 passed, 35 deselected, 1 warning in 2.02s
 summary:
-  executed: 68
-  killed: 66
+  executed: 81
+  killed: 79
   survived: []
   equivalent:
   - L2
@@ -370,6 +370,8 @@ summary:
   - V4
   - V5
   - V6
+  rerun_after_target_change:
+  - V3
   invalid_targets: []
   not_applicable:
   - '12'
@@ -677,10 +679,24 @@ control_v2_mutants:
   file: runner.py
   tests:
   - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
   result: killed
   killed_by:
   - experiments/lantern_reconstruction/tests/test_lr6.py::test_alarm_inputs_refit_p_by_hand
-  seconds: 19.2
+  seconds: 18.9
+  history:
+  - id: V3
+    description: refit-null ties not counted
+    file: runner.py
+    tests:
+    - test_lr6.py
+    result: killed
+    killed_by:
+    - experiments/lantern_reconstruction/tests/test_lr6.py::test_alarm_inputs_refit_p_by_hand
+    seconds: 19.2
 - id: V4
   description: missing refit null accepted on read
   file: runs.py
@@ -707,7 +723,7 @@ control_v2_mutants:
   result: killed
   killed_by:
   - experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_persist_cell_refuses_a_null_where_the_protocol_has_none_and_vice_versa
-  seconds: 273.0
+  seconds: 247.3
   history:
   - id: V5
     description: refit null presence not checked before writing
@@ -717,6 +733,15 @@ control_v2_mutants:
     result: SURVIVED
     killed_by: []
     seconds: 223.9
+  - id: V5
+    description: refit null presence not checked before writing
+    file: runs.py
+    tests:
+    - test_lr5_runs.py
+    result: killed
+    killed_by:
+    - experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_persist_cell_refuses_a_null_where_the_protocol_has_none_and_vice_versa
+    seconds: 273.0
 - id: V6
   description: orphan refit null not compared
   file: runs.py
@@ -735,3 +760,173 @@ control_v2_mutants:
     result: SURVIVED
     killed_by: []
     seconds: 225.4
+review_lr6_29af52f_mutants:
+- id: T1
+  description: refit null compared exactly again (the reviewed state)
+  file: runner.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r2_review_tie_case_gives_p_1_and_no_alarm
+  seconds: 36.0
+- id: T2
+  description: fixed-prediction null compared exactly
+  file: metrics.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r2_fixed_prediction_null_counts_round_off_ties_too
+  seconds: 43.7
+- id: T3
+  description: tie tolerance applied anti-conservatively
+  file: metrics.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_alarm_inputs_refit_p_by_hand
+  seconds: 26.4
+- id: T4
+  description: protocol tie tolerance ignored by default
+  file: metrics.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r2_review_tie_case_gives_p_1_and_no_alarm
+  seconds: 34.8
+- id: T5
+  description: refit-path check not enforced
+  file: runner.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r2_refit_path_check_refuses_a_deviating_path
+  seconds: 47.5
+- id: T6
+  description: refit-path check compares the refit with itself
+  file: runner.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r2_refit_path_check_holds_and_records_the_inputs
+  seconds: 47.9
+- id: P1
+  description: software not compared at the research start
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r1_each_software_deviation_refuses_before_any_run_folder[python]
+  seconds: 25.0
+- id: P2
+  description: incomplete software block accepted
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r1_missing_or_incomplete_software_block_is_refused[sw3]
+  seconds: 25.1
+- id: N1
+  description: null provenance not checked on read
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r3_foreign_null_with_its_valid_record_block_is_refused[context]
+  seconds: 83.0
+- id: N2
+  description: expected provenance taken from the null record itself
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r3_foreign_null_with_its_valid_record_block_is_refused[context]
+  seconds: 84.0
+- id: N3
+  description: refit-path check fields not verified on read
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r3_edited_null_block_is_refused[deviation]
+  seconds: 91.7
+- id: N4
+  description: resume ignores the recorded null provenance and inputs
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r3_resume_compares_the_recorded_null_inputs
+  seconds: 110.0
+- id: N5
+  description: persist accepts a path check made for another observed gain
+  file: runs.py
+  tests:
+  - test_lr6.py
+  - --deselect
+  - test_lr6.py::test_candidate_is_bound_to_the_current_code
+  - --deselect
+  - test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_r3_persist_refuses_a_path_check_for_another_observed_gain
+  seconds: 97.1

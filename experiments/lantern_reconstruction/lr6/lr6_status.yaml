@@ -7,7 +7,10 @@ commits:
   99e6480: research mode only with a freeze; study evaluation in the release gate
   f9ea14d: runbook BETRIEB.md
   5905dcd: control-alarm protocol v2 (refit null for permuted targets)
-  this commit: acceptance, freeze candidate, report
+  this commit: new freeze candidate, follow-up report
+  29af52f: acceptance, first freeze candidate, report (superseded)
+  b0da0c7: 'review 29af52f fix R1-R4: software binding, control-alarm protocol v3 (tie rule, refit-path check), null provenance, test contract'
+  df3065b: first candidate moved to lr6/superseded/, review evidence
 no_research: no freeze, no research run, no public push
 acceptance_1:
   run: runs/lr6-acceptance-20261009T151633Z
@@ -31,8 +34,9 @@ acceptance_2:
   artifact_bytes: 41966320
 freeze_candidate:
   file: lr6/freeze_candidate.json (+ yaml)
+  supersedes: lr6/superseded/freeze_candidate_29af52f.json
   research_study_id: 1431972670
-  seed_method: secrets.randbelow(2**32), drawn once at candidate creation; redrawn only if in the excluded range 900000-900104 or equal to the development study 2026100803; never chosen by any result
+  seed: kept, not redrawn
   contexts:
   - 0
   - 1
@@ -55,23 +59,24 @@ freeze_candidate:
   - 18
   - 19
   cells: 1960
-  code_identity: 1a00ff9ee4d2dd05f5034793271aaf227dd92242a7df992cc2f2dee817748bc8
+  code_identity: 670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c
   git:
-    commit: 5905dcdf374dc6f7eea2e7194bac298bd1717f0e
+    commit: df3065beb992ec8d91e2e61b0143928683831da5
     dirty: false
   software:
     numpy: 2.2.6
     python: 3.11.9
     scipy: 1.15.3
-  mlp: 'PROPOSAL: waived for this study'
+  mlp: WAIVED for this study
   budget:
-    extrapolated_execute_seconds: 6704.782507499913
-    draft_seconds: 7200
+    extrapolated_execute_seconds: 6819.558500499697
+    reserve_vs_7200_s: 380.4414995003026
+    operating_window_s: 9000
 tests:
-  result_all_lantern_tests: 425 (full suite 422/422 at 5905dcd; afterwards only the 3 candidate tests, test_lr6.py 26/26)
+  result_all_lantern_tests: 466/466 (full suite at the candidate state; test_lr6.py 67)
 mutation_campaign:
-  executed: 68
-  killed: 66
+  executed: 81
+  killed: 79
   survived: []
   equivalent:
   - L2
@@ -84,12 +89,37 @@ mutation_campaign:
   - V4
   - V5
   - V6
+  rerun_after_target_change:
+  - V3
   invalid_targets: []
   not_applicable:
   - '12'
   - '2'
   - '6'
 open:
-- 'Astra: review of the freeze candidate'
-- 'Johann/Astra: MLP waiver (proposal), budget reserve about 7 %, the freeze itself (protocol/freeze.json, documented step)'
+- 'Astra: targeted re-check of the new candidate'
+- 'Johann/Astra: the freeze (protocol/freeze.json, documented step), incl. the 5.3 % reserve with the 2.5 h window; MLP waiver binding with it'
 - LR7 only after a separate review before the research start
+review_29af52f:
+  verdict: do not freeze yet (Astra, 2026-10-09)
+  findings:
+  - R1
+  - R2
+  - R3
+  - R4
+  reproduced_before_change: true
+  fixed_in: b0da0c7
+  report: lr6/review_29af52f/NACHBERICHT.md
+acceptance_3:
+  run: runs/lr6-acceptance-20261009T192821Z
+  code_identity: 670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c
+  status: complete
+  cells: 392
+  technically_complete: true
+  scientifically_interpretable: true
+  alarms:
+    positive_spurious_success_alarm: false
+    target_dependence_alarm: false
+  bit_identical_to_acceptance_2: all 392 scores and model identities, all 16 null arrays (lr6/review_29af52f/compare_acceptance_2_3.txt)
+  execute_seconds: 1363.9117000999395
+  release_seconds: 30.121635999996215
