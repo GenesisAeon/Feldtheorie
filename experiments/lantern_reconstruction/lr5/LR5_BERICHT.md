@@ -146,6 +146,37 @@ Alle Werte stimmten mit Astras Werten überein, bis hin zur neuen Modellidentit�
 
 **Belege:** `D:/mandala/mandala-memory-results/lantern/lr5_review/`.
 
+## Nachtrag nach Astras Nachprüfung von `b9c405b`
+
+**Ergebnis der Nachprüfung:**
+- R2, R3 und R4 sind bestätigt geschlossen.
+- Die 23 Regressionstests bestehen, einschließlich des echten Prozessabbruchs.
+- Offen blieben zwei Punkte:
+  - **F1:** `recover()` schrieb beim Quittieren einer abgeschnittenen Zeile ins Log, *bevor* es prüfte, ob der Besitzer noch lebt. Nach der korrekten Ablehnung war das Log verändert und, sobald der lebende Schreiber seine Zeile abschloss, nicht mehr lesbar.
+  - **F2:** Der Workflow führte `test_lr5_review.py` nicht aus.
+
+**Zuerst reproduziert** (Kopie von Astras Skript, Arbeitsordner im Temp): `owner_alive = true`, `log_changed_despite_refusal = true`, danach `TruncatedLogError`. Dabei fiel mir zusätzlich auf, dass die angehängte Zeile auf `\r\n` endete: `EventLog` schrieb im Textmodus.
+
+| Befund | Korrektur |
+|---|---|
+| **F1** | `recover()` beginnt mit einer **rein lesenden Diagnose** (`_recovery_diagnosis`, `EventLog.read_tolerating_tail`). Das unvollständige Ende wird erkannt, aber nicht verändert. Status, haltender Prozess, Host, PID-Zustand und Sperrbesitz werden **vor jedem Schreiben** entschieden; jede Ablehnung lässt Log und Sperre bytegleich. Erst danach folgen: **exklusive Recovery-Sperre** (`<sperre>.recover`, `O_EXCL`; ein paralleles Recovery wird abgewiesen), **erneute Diagnose unter dieser Sperre** (abweichende Lage führt zur Ablehnung), dann die anhängende Reparatur der Zeile, das Entfernen der toten Sperre und der Statuswechsel. |
+| **F2** | `test_lr5_review.py` steht im Smoke-Job. Der lokale Vollständigkeitscheck ist jetzt ein **Test** (`test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking`): Die Dateilisten aller Jobs müssen zusammen genau den 12 Testdateien des Labors entsprechen, ohne Maskierung. Der Workflow ist auf GitHub weiterhin **nie gelaufen**. |
+| **Zusatz** | `EventLog` schreibt binär mit `\n`, auf jeder Plattform gleich (Test). |
+
+**Regressionen:**
+- Abgelehnte Recovery mit unvollständiger Zeile, je Fall bytegleiches Log und bytegleiche Sperre: lebender Besitzer (danach schließt der Schreiber seine Zeile ab und das Log bleibt lesbar), fremder Host, nicht entscheidbarer Prozesszustand, Sperre eines anderen Laufs, laufende zweite Recovery.
+- Eine **Wettlaufsituation** zwischen Diagnose und Recovery-Sperre: Ein anderer Lauf übernimmt die Sperre, die erneute Prüfung verweigert, die fremde Sperre bleibt unberührt.
+- Positivfall: toter Besitzer und unvollständige Zeile. Die Recovery gelingt, die ursprünglichen Bytes bleiben Präfix des Logs, und die Fortsetzung ergibt den ununterbrochenen Lauf.
+
+**Mutation der neuen Wächter:**
+- **Erkannt:** F1a (Reparatur vor der Besitzerprüfung, also die geprüfte alte Reihenfolge), F1b (Recovery-Sperre nicht exklusiv), F2 (Datei aus dem Workflow entfernt) und LF (Textmodus).
+- **F1c** (keine erneute Prüfung unter der Sperre) überlebte zunächst, weil kein Test das Zeitfenster zwischen Diagnose und Sperre abdeckte. Diese echte Testlücke ist mit dem Wettlauftest geschlossen.
+- **Gesamtkampagne:** 50 ausgeführt, 48 erkannt, 2 äquivalent (L2, R4b), 0 offene Überlebende.
+
+**Tests:** 381/381 (bisher 372, dazu 8 in `test_lr5_review.py` und der CI-Auswahltest).
+
+**Belege:** `D:/mandala/mandala-memory-results/lantern/lr5_followup_b9c405b/`.
+
 ## Offen
 
 - **LR6:** Entwicklungsabnahme und Freeze-Kandidat. Dazu gehören Masterseeds und Kontextliste, das optionale MLP (oder dessen ausdrücklicher Verzicht), vollständig entschiedene Protokollwerte und ein voller Entwicklungslauf mit allen Kontrollkurven auf der Entwicklungsstudie.

@@ -196,18 +196,27 @@ class EventLog:
         self._write(rec)
 
     def _write(self, rec) -> None:
-        with open(self.path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(rec, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n")
+        # binary with b"\n": the same bytes on every platform (text mode wrote CRLF on Windows)
+        with open(self.path, "ab") as f:
+            f.write(json.dumps(rec, sort_keys=True, ensure_ascii=False, allow_nan=False).encode("utf-8") + b"\n")
             f.flush()
             os.fsync(f.fileno())
 
     def read(self) -> list:
         """Strict: an unparsable line is only tolerated if the NEXT line is the 'log_line_truncated' event that
         recover() appends after a process loss; an unacknowledged broken line raises TruncatedLogError."""
+        events, tail = self.read_tolerating_tail()
+        if tail is not None:
+            raise TruncatedLogError(f"{self.path}: the last event line is incomplete (process loss?); use runs.recover()")
+        return events
+
+    def read_tolerating_tail(self):
+        """READ-ONLY diagnosis (review of b9c405b, F1): the complete events plus a description of an
+        incomplete or unparsable LAST line, which is neither repaired nor removed here."""
         if not self.path.exists():
-            return []
-        events, broken = [], None
-        for i, line in enumerate(self.path.read_bytes().split(b"\n")):
+            return [], None
+        events, broken, lines = [], None, self.path.read_bytes().split(b"\n")
+        for i, line in enumerate(lines):
             if not line.strip():
                 continue
             try:
@@ -223,8 +232,8 @@ class EventLog:
                 broken = None
             events.append(e)
         if broken is not None:
-            raise TruncatedLogError(f"{self.path}: the last event line is incomplete (process loss?); use runs.recover()")
-        return events
+            return events, {"fragment_sha256": artifacts.sha256(lines[broken]), "fragment_bytes": len(lines[broken])}
+        return events, None
 
     def acknowledge_truncation(self):
         """Append-only repair after a process loss: terminate an incomplete last line with a newline and record
@@ -465,45 +474,71 @@ def recover(run_dir: Path) -> str:
     run_dir = Path(run_dir)
     run = load_run(run_dir)
     log = EventLog(run_dir / "events.jsonl")
-    truncated = log.acknowledge_truncation()
-    cur = status(run_dir)
+    diag = _recovery_diagnosis(run, log)                    # READ-ONLY: every refusal leaves log and lock byte-identical
+    lock_path = Path(diag["last"]["lock"])
+    guard = lock_path.parent / (lock_path.name + ".recover")
+    try:
+        fd = os.open(guard, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        raise ResumeRefused(f"another recovery holds {guard}; not recovered") from None
+    except FileNotFoundError:
+        raise ResumeRefused(f"lock folder {lock_path.parent} is missing; check it manually") from None
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps({"run_id": run["run_id"], "pid": os.getpid(), "host": platform.node()}))
+        if _recovery_diagnosis(run, log) != diag:           # re-check under exclusive recovery access
+            raise ResumeRefused("the run changed while recovery was being prepared; not recovered")
+        # only now: append-only repairs, stale lock of the dead process, status
+        truncated = log.acknowledge_truncation() if diag["tail"] is not None else None
+        if diag["lock_holder"] is not None:
+            lock_path.unlink()
+            log.append("stale_lock_removed", lock=str(lock_path), content=diag["lock_holder"])
+        with StudyLock(lock_path.parent, run["grid"]["study_id"], run["kind"], run["run_id"]) as lock:
+            if lock.path.resolve() != lock_path.resolve():
+                raise ResumeRefused("lock path of the run does not match the study lock")
+            reason = f"recovered after process loss of pid {diag['last'].get('pid')}" + (f"; truncated event line {truncated}" if truncated else "")
+            if diag["status"] == "running":
+                set_status(log, "interrupted", reason)
+            else:
+                log.append("recovered", reason=reason + f"; status stays {diag['status']} (lost before it became running)")
+    finally:
+        guard.unlink(missing_ok=True)
+    return status(run_dir)
+
+
+def _recovery_diagnosis(run: Dict, log: EventLog) -> Dict:
+    """Everything recover() needs, by READING only (review of b9c405b, F1): an incomplete last line is
+    recognised, not repaired; host, process state and lock ownership are decided before any write.
+    Raises ResumeRefused for every situation that must not be recovered."""
+    events, tail = log.read_tolerating_tail()
+    st = [e["to"] for e in events if e["event"] == "status"]
+    cur = st[-1] if st else None
     if cur in TERMINAL or cur == "complete":
         raise ResumeRefused(f"run status is {cur}: nothing to recover")
-    events = log.read()
     acquired = [e for e in events if e["event"] == "lock_acquired"]
     if not acquired:
         if cur == "running":
             raise ResumeRefused("status running but no lock_acquired event: the holding process cannot be identified")
         raise ResumeRefused(f"nothing to recover (status {cur}, no lock was ever taken)")
     last = acquired[-1]
-    stale_lock = Path(last["lock"]).exists()
+    lock_path = Path(last["lock"])
     released_after = any(e["event"] == "status" and e["to"] != "running" for e in events[events.index(last) + 1:])
-    if cur != "running" and (released_after or not stale_lock):
+    if cur != "running" and tail is None and (released_after or not lock_path.exists()):
         raise ResumeRefused(f"nothing to recover (status {cur}, no stale lock of this run)")
     if last.get("host") != platform.node():
         raise ResumeRefused(f"the run was held on host {last.get('host')!r}: its process cannot be checked from here")
     alive = process_alive(last.get("pid"))
     if alive is not False:
         raise ResumeRefused(f"process {last.get('pid')} may still be active (alive={alive}); not recovered")
-    lock_path = Path(last["lock"])
+    holder = None
     if lock_path.exists():
         try:
-            held = json.loads(lock_path.read_text(encoding="utf-8"))
+            holder = json.loads(lock_path.read_text(encoding="utf-8"))
         except (ValueError, OSError):
             raise ResumeRefused(f"{lock_path} is unreadable; check it manually") from None
-        if held.get("run_id") != run["run_id"] or held.get("pid") != last.get("pid"):
-            raise ResumeRefused(f"{lock_path} is now held by {held}; not recovered")
-        lock_path.unlink()
-        log.append("stale_lock_removed", lock=str(lock_path), content=held)
-    with StudyLock(lock_path.parent, run["grid"]["study_id"], run["kind"], run["run_id"]) as lock:
-        if lock.path.resolve() != lock_path.resolve():
-            raise ResumeRefused("lock path of the run does not match the study lock")
-        reason = f"recovered after process loss of pid {last.get('pid')}" + (f"; truncated event line {truncated}" if truncated else "")
-        if cur == "running":
-            set_status(log, "interrupted", reason)
-        else:
-            log.append("recovered", reason=reason + f"; status stays {cur} (lost before it became running)")
-    return status(run_dir)
+        if holder.get("run_id") != run["run_id"] or holder.get("pid") != last.get("pid"):
+            raise ResumeRefused(f"{lock_path} is now held by {holder}; not recovered")
+    return {"status": cur, "last": last, "tail": tail, "lock_holder": holder}
 
 
 def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test) -> Dict:

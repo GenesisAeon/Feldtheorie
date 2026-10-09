@@ -87,5 +87,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install pinned lab dependencies
         run: python -m pip install numpy==2.2.6 scipy==1.15.3 PyYAML==6.0.3 pytest
-      - name: Smoke runs, resume, manipulation detection, release gate
-        run: python -m pytest -p no:cacheprovider experiments/lantern_reconstruction/tests/test_lr5_runs.py
+      - name: Smoke runs, resume, recovery after process loss, manipulation detection, release gate
+        run: >-
+          python -m pytest -p no:cacheprovider
+          experiments/lantern_reconstruction/tests/test_lr5_runs.py
+          experiments/lantern_reconstruction/tests/test_lr5_review.py

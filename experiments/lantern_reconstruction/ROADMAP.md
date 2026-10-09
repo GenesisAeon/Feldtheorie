@@ -90,3 +90,9 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
   - R4: jede verwaiste Modelldatei wird geprüft; Abweichung bedeutet Integritätsfehler, nichts wird ersetzt.
 
   Regression mit einem echten, hart getöteten Kindprozess. Freigaberegel befürwortet. Tests 372/372; Mutation insgesamt 45, davon 43 erkannt und 2 äquivalent.
+- **Nachtrag nach Astras Nachprüfung von `b9c405b`:**
+  - F1: `recover()` diagnostiziert zuerst nur lesend; eine Ablehnung lässt Log und Sperre bytegleich. Danach kommen eine exklusive Recovery-Sperre und eine erneute Prüfung, erst dann wird geschrieben.
+  - F2: `test_lr5_review.py` steht im CI; die Vollständigkeit der CI-Auswahl ist jetzt ein Test.
+  - Das Log ist durchgehend LF.
+
+  Tests 381/381; Mutation 50, davon 48 erkannt und 2 äquivalent.

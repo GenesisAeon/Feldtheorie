@@ -356,13 +356,14 @@ plan_mutant_2_detection_test:
   passed: true
   summary: 1 passed, 35 deselected, 1 warning in 2.02s
 summary:
-  executed: 45
-  killed: 43
+  executed: 50
+  killed: 48
   survived: []
   equivalent:
   - L2
   - R4b
   first_run_survivors_closed_by_new_tests:
+  - F1c
   - L1
   - L9
   invalid_targets: []
@@ -472,3 +473,58 @@ review_lr5_mutants:
   result: SURVIVED
   killed_by: []
   seconds: 299.9
+followup_b9c405b_mutants:
+- id: F1a
+  description: log repaired before the owner check (the reviewed order)
+  file: runs.py
+  tests:
+  - test_lr5_review.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_refused_recovery_leaves_log_and_lock_byte_identical[alive_owner]
+  seconds: 173.1
+- id: F1b
+  description: recovery guard not exclusive
+  file: runs.py
+  tests:
+  - test_lr5_review.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_refused_recovery_leaves_log_and_lock_byte_identical[recovery_in_progress]
+  seconds: 186.5
+- id: F1c
+  description: no re-check under the recovery guard
+  file: runs.py
+  tests:
+  - test_lr5_review.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_change_between_diagnosis_and_guard_is_caught
+  seconds: 179.4
+  history:
+  - id: F1c
+    description: no re-check under the recovery guard
+    file: runs.py
+    tests:
+    - test_lr5_review.py
+    result: SURVIVED
+    killed_by: []
+    seconds: 363.2
+- id: F2
+  description: workflow without test_lr5_review.py
+  file: ../../.github/workflows/lantern-reconstruction.yml
+  tests:
+  - test_lr5_alarms.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking
+  seconds: 36.8
+- id: LF
+  description: event log written in text mode (CRLF on Windows)
+  file: runs.py
+  tests:
+  - test_lr5_review.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_review.py::test_event_log_lines_end_with_lf_on_every_platform
+  seconds: 231.5

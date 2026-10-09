@@ -118,6 +118,101 @@ def test_r1_truncated_last_log_line_is_acknowledged_append_only(tmp_path):
     assert runs.execute(rd, lock_root=tmp_path / "locks") == "complete"
 
 
+def _running_with_incomplete_line(tmp_path, run_id, pid, host):
+    """A run whose holder took the real study lock and is 'running'; the log ends mid-way in a JSON event."""
+    rd = runs.create_run(tmp_path / "runs", "smoke", [0, 1], run_id=run_id, conditions=("lantern",), sizes={"train": 2, "val": 2, "test": 2}, proposals=1)
+    locks = tmp_path / "locks"
+    lock = runs.StudyLock(locks, runs.load_run(rd)["grid"]["study_id"], "smoke", run_id).__enter__()
+    held = json.loads(lock.path.read_text(encoding="utf-8"))
+    held["pid"] = pid
+    lock.path.write_text(json.dumps(held), encoding="utf-8")
+    log = runs.EventLog(rd / "events.jsonl")
+    log.append("lock_acquired", lock=str(lock.path.resolve()), pid=pid, host=host)
+    runs.set_status(log, "running", "a writer between two writes")
+    with open(log.path, "ab") as f:
+        f.write(b'{"event":"unit_')
+    return rd, lock
+
+
+@pytest.mark.parametrize("case", ["alive_owner", "foreign_host", "undecidable", "lock_of_another_run", "recovery_in_progress"])
+def test_r1_refused_recovery_leaves_log_and_lock_byte_identical(tmp_path, monkeypatch, case):
+    """Review of b9c405b (F1): recover() appended a repair BEFORE it found the owner alive; the writer's
+    completed line then made the log unreadable. Every refusal must now leave log and lock untouched."""
+    pid, host = (os.getpid(), platform.node()) if case == "alive_owner" else (99999999, platform.node())
+    if case == "foreign_host":
+        host = "another-machine"
+    rd, lock = _running_with_incomplete_line(tmp_path, case, pid, host)
+    if case == "undecidable":
+        monkeypatch.setattr(runs, "process_alive", lambda p: None)
+    if case == "lock_of_another_run":
+        held = json.loads(lock.path.read_text(encoding="utf-8"))
+        held["run_id"] = "someone-else"
+        lock.path.write_text(json.dumps(held), encoding="utf-8")
+    guard = lock.path.parent / (lock.path.name + ".recover")
+    if case == "recovery_in_progress":
+        guard.write_text("{}", encoding="utf-8")
+    log_before, lock_before = (rd / "events.jsonl").read_bytes(), lock.path.read_bytes()
+    with pytest.raises(runs.ResumeRefused):
+        runs.recover(rd)
+    assert (rd / "events.jsonl").read_bytes() == log_before and lock.path.read_bytes() == lock_before
+    assert guard.exists() == (case == "recovery_in_progress")
+    if case == "alive_owner":                                   # the live writer completes its line: still readable
+        with open(rd / "events.jsonl", "ab") as f:
+            f.write(b'completed"}\n')
+        assert runs.status(rd) == "running"
+
+
+def test_r1_change_between_diagnosis_and_guard_is_caught(tmp_path, monkeypatch):
+    """Race window: after the read-only diagnosis, another run takes over the study lock just as the recovery
+    guard is created. The re-check under the guard must refuse -- the other run's lock and the log stay
+    byte-identical. (Mutation check: without the re-check the foreign lock was deleted.)"""
+    rd, lock = _running_with_incomplete_line(tmp_path, "race", 99999999, platform.node())
+    real_open, foreign = os.open, json.dumps({"run_id": "other-run", "pid": os.getpid(), "utc": "now"})
+
+    def open_with_race(path, *a, **k):
+        if str(path).endswith(".recover"):
+            lock.path.write_text(foreign, encoding="utf-8")     # the other run wins the lock in this window
+        return real_open(path, *a, **k)
+    monkeypatch.setattr(runs.os, "open", open_with_race)
+    log_before = (rd / "events.jsonl").read_bytes()
+    with pytest.raises(runs.ResumeRefused, match="held by"):
+        runs.recover(rd)
+    assert lock.path.read_text(encoding="utf-8") == foreign and (rd / "events.jsonl").read_bytes() == log_before
+    assert not (lock.path.parent / (lock.path.name + ".recover")).exists()
+
+
+def test_r1_dead_owner_incomplete_line_recovers_and_keeps_the_original_bytes(reference, tmp_path):
+    """Positive counterpart: a really dead owner (pid that no longer exists), incomplete line: recovery
+    succeeds, the original bytes stay the prefix of the log, the run resumes to the uninterrupted result."""
+    rd = runs.create_run(tmp_path / "runs", "smoke", [0, 1], run_id="deadowner", **GRID)
+    locks = tmp_path / "locks"
+    with pytest.raises(runs.Interrupted):
+        runs.execute(rd, lock_root=locks, stop_after=3)
+    lock = runs.StudyLock(locks, runs.load_run(rd)["grid"]["study_id"], "smoke", "deadowner").__enter__()
+    held = json.loads(lock.path.read_text(encoding="utf-8"))
+    held["pid"] = 99999999
+    lock.path.write_text(json.dumps(held), encoding="utf-8")
+    log = runs.EventLog(rd / "events.jsonl")
+    log.append("lock_acquired", lock=str(lock.path.resolve()), pid=99999999, host=platform.node())
+    runs.set_status(log, "running", "resume")
+    with open(log.path, "ab") as f:
+        f.write(b'{"event":"cell_')
+    original = (rd / "events.jsonl").read_bytes()
+    assert runs.process_alive(99999999) is False
+    assert runs.recover(rd) == "interrupted"
+    assert (rd / "events.jsonl").read_bytes().startswith(original) and not lock.path.exists()
+    assert not (lock.path.parent / (lock.path.name + ".recover")).exists()
+    assert runs.execute(rd, lock_root=locks) == "complete"
+    assert _identities(rd) == _identities(reference)
+
+
+def test_event_log_lines_end_with_lf_on_every_platform(tmp_path):
+    log = runs.EventLog(tmp_path / "e.jsonl")
+    log.append("a")
+    log.append("b")
+    assert b"\r" not in (tmp_path / "e.jsonl").read_bytes()
+
+
 def test_r1_an_unparsable_line_without_acknowledgement_is_an_integrity_error(tmp_path):
     log = runs.EventLog(tmp_path / "e.jsonl")
     log.append("a")

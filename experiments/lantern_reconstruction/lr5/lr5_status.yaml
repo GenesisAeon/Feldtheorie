@@ -55,16 +55,17 @@ ci:
   - '3.11'
   - '3.12'
   masking: none
-  locally_checked: valid YAML; all 11 test files exactly once
+  locally_checked: a test asserts that the jobs together run every one of the 12 lab test files exactly once, without masking
   not_executed: never ran on GitHub (branch not pushed); no local Python 3.12
 mutation_campaign:
-  executed: 45
-  killed: 43
+  executed: 50
+  killed: 48
   survived: []
   equivalent:
   - L2
   - R4b
   first_run_survivors_closed_by_new_tests:
+  - F1c
   - L1
   - L9
   invalid_targets: []
@@ -72,17 +73,17 @@ mutation_campaign:
   - '12'
   - '2'
   - '6'
-  first_run_gaps: 'L1 (os.replace survived: race test added), L9 (record binding off survived: binding-only attacks added)'
+  first_run_gaps: L1 (race), L9 (record binding), F1c (window between diagnosis and recovery guard) -- closed with new tests
   equivalent_reason: 'L2: os.link still refuses without the early check; R4b: {} never equals the expected identities, the orphan is still rejected'
 tests:
-  result_all_lantern_tests: 372/372
-  new: 54 in test_lr5_alarms.py/test_lr5_runs.py, 23 in test_lr5_review.py
+  result_all_lantern_tests: 381/381
+  new: 54 in test_lr5_alarms.py/test_lr5_runs.py, 23 + 8 in test_lr5_review.py, 1 CI-selection test
   run: python -m pytest experiments/lantern_reconstruction/tests
 evidence: D:/mandala/mandala-memory-results/lantern/lr5/
 open:
 - 'LR6: development acceptance and freeze candidate (master seeds, context list, MLP decision, full development run with all control curves)'
 - CI on GitHub once pushing the branch is allowed
-- 'Astra: re-check of the REVIEW_LR5 fixes'
+- 'Astra: re-check of the b9c405b follow-up fixes'
 review_fix_REVIEW_LR5:
   review: D:/mandala/mandala-memory-results/lantern/astra-lr5-review/REVIEW_LR5.md (reviewed 1c24292)
   reproduced_first:
@@ -97,3 +98,14 @@ review_fix_REVIEW_LR5:
     R4: every existing orphan file compared with the recomputed model on its own (JSON identity; NPZ names, dtype, array identities; unreadable/pickle NPZ); deviation -> failed_integrity, nothing renamed or replaced; a valid half is completed exclusively
   regressions: 'test_lr5_review.py: 23 tests incl. a REAL killed child process (the lock-holding worker; on Windows the venv python.exe is a launcher), truncated log, unexpected exception, alive pid / foreign host, each size, software, every NPZ/JSON orphan case, end-to-end NPZ-only crash; resumed results identical to the uninterrupted run'
   mutation: '11 guard mutants: 10 killed, R4b equivalent'
+followup_b9c405b:
+  review: D:/mandala/mandala-memory-results/lantern/astra-lr5-b9c405b-review/REVIEW.md (R2-R4 confirmed; 23/23 incl. real process kill)
+  reproduced_first:
+    F1: 'owner alive, recover refused, but the log was already extended; after the writer completed its line: TruncatedLogError'
+    F2: test_lr5_review.py missing in the workflow
+  fixes:
+    F1: 'read-only diagnosis first (read_tolerating_tail, _recovery_diagnosis): status, owner, host, pid state, lock ownership decided before any write; every refusal leaves log and lock byte-identical; then exclusive recovery guard (<lock>.recover, O_EXCL), re-diagnosis under the guard, only then append-only repair, stale-lock removal, status'
+    F2: test_lr5_review.py in the smoke job; CI selection is now a test (12 files, each exactly once, no masking)
+    extra: event log written in binary with LF (text mode wrote CRLF on Windows)
+  regressions: refusals with incomplete line (alive owner + later completed line still readable, foreign host, undecidable, foreign lock, concurrent recovery) byte-identical; race between diagnosis and guard; dead owner positive case resumes to the uninterrupted result
+  mutation: F1a, F1b, F2, LF killed; F1c survived first (no test for the window) -> race test added -> killed

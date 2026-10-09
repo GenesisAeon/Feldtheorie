@@ -138,6 +138,24 @@ def test_lr5_yaml_twins(stem):
     assert yaml.safe_load(p.with_suffix(".yaml").read_text(encoding="utf-8")) == json.loads(p.with_suffix(".json").read_text(encoding="utf-8"))
 
 
+def test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking():
+    """Review of b9c405b (F2): test_lr5_review.py was missing from the workflow. The explicit file lists of
+    all jobs together must equal the test files of the lab -- a new test file cannot be forgotten again."""
+    import re
+    import yaml
+    wf_path = streams.HERE.parents[1] / ".github" / "workflows" / "lantern-reconstruction.yml"
+    wf = yaml.safe_load(wf_path.read_text(encoding="utf-8"))
+    selected = []
+    for job in wf["jobs"].values():
+        assert "continue-on-error" not in job and job["strategy"]["matrix"]["python-version"] == ["3.11", "3.12"]
+        for step in job["steps"]:
+            run = step.get("run", "")
+            assert "continue-on-error" not in step and "||" not in run and "exit 0" not in run
+            selected += re.findall(r"experiments/lantern_reconstruction/tests/(test_\w+\.py)", run)
+    present = sorted(p.name for p in (streams.HERE / "tests").glob("test_*.py"))
+    assert sorted(selected) == present and len(selected) == len(set(selected)) and len(present) == 12
+
+
 def test_mutation_campaign_record_is_consistent():
     """Every applicable plan mutant (1-18 without 2, 6, 12) was executed and killed; 2/6/12 carry a reason;
     survivors are only the documented equivalent ones."""
@@ -145,7 +163,8 @@ def test_mutation_campaign_record_is_consistent():
     ids = {m["id"].split("-")[0].rstrip("ab") for m in d["plan_mutants"]}
     assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
     assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
-    surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) if m["result"] != "killed"]
+    surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) + d.get("followup_b9c405b_mutants", [])
+            if m["result"] != "killed"]
     assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
 
 

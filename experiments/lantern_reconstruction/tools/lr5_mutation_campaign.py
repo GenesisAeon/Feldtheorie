@@ -106,6 +106,18 @@ REVIEW_LR5 = [   # guards added after REVIEW_LR5 (R1-R4); responsible tests: tes
     ("R4a", "lone NPZ not compared", "runs.py", '        if _npz_identities(folder / "model.npz", f"orphan model.npz in {folder.name}") != expected["arrays"]:', "        if False:", [T + "test_lr5_review.py"]),
     ("R4b", "unreadable NPZ accepted", "runs.py", '        raise IntegrityError(f"{where}: unreadable NPZ', '        return {}  # (f"{where}: unreadable NPZ', [T + "test_lr5_review.py"]),
 ]
+FOLLOWUP_B9C405B = [   # review of b9c405b: F1 recovery writes only after the read-only diagnosis; F2 CI selection
+    ("F1a", "log repaired before the owner check (the reviewed order)", "runs.py",
+     '    diag = _recovery_diagnosis(run, log)                    # READ-ONLY',
+     '    log.acknowledge_truncation()\n    diag = _recovery_diagnosis(run, log)                    # READ-ONLY', [T + "test_lr5_review.py"]),
+    ("F1b", "recovery guard not exclusive", "runs.py", "        fd = os.open(guard, os.O_CREAT | os.O_EXCL | os.O_WRONLY)",
+     "        fd = os.open(guard, os.O_CREAT | os.O_WRONLY)", [T + "test_lr5_review.py"]),
+    ("F1c", "no re-check under the recovery guard", "runs.py", "        if _recovery_diagnosis(run, log) != diag:", "        if False:", [T + "test_lr5_review.py"]),
+    ("F2", "workflow without test_lr5_review.py", "../../.github/workflows/lantern-reconstruction.yml",
+     "          experiments/lantern_reconstruction/tests/test_lr5_review.py\n", "", [T + "test_lr5_alarms.py"]),
+    ("LF", "event log written in text mode (CRLF on Windows)", "runs.py", '        with open(self.path, "ab") as f:\n            f.write(json.dumps(rec, sort_keys=True, ensure_ascii=False, allow_nan=False).encode("utf-8") + b"\\n")',
+     '        with open(self.path, "a", encoding="utf-8") as f:\n            f.write(json.dumps(rec, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\\n")', [T + "test_lr5_review.py"]),
+]
 
 
 def run_mutant(mid, desc, fname, old, new, tests, env):
@@ -134,8 +146,9 @@ def rerun(ids):
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     js = HERE / "lr5" / "lr5_mutation_campaign.json"
     out = json.loads(js.read_text(encoding="utf-8"))
-    for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5)):
-        for i, m in enumerate(out[group]):
+    for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5), ("review_lr5_mutants", REVIEW_LR5),
+                        ("followup_b9c405b_mutants", FOLLOWUP_B9C405B)):
+        for i, m in enumerate(out.get(group, [])):
             if m["id"] in ids:
                 new = run_mutant(*next(d for d in defs if d[0] == m["id"]), env)
                 new["history"] = m.get("history", []) + [{k: v for k, v in m.items() if k != "history"}]
@@ -148,6 +161,15 @@ def main():
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         return finish(rerun(set(sys.argv[2].split(","))))
+    if len(sys.argv) > 1 and sys.argv[1] == "--followup-b9c405b":
+        js = HERE / "lr5" / "lr5_mutation_campaign.json"
+        out = json.loads(js.read_text(encoding="utf-8"))
+        out["followup_b9c405b_mutants"] = []
+        for m in FOLLOWUP_B9C405B:
+            out["followup_b9c405b_mutants"].append(run_mutant(*m, env))
+            r = out["followup_b9c405b_mutants"][-1]
+            print(r["id"], r["result"], r.get("killed_by", [])[:1], flush=True)
+        return finish(out)
     if len(sys.argv) > 1 and sys.argv[1] == "--review-lr5":
         js = HERE / "lr5" / "lr5_mutation_campaign.json"
         out = json.loads(js.read_text(encoding="utf-8"))
@@ -182,7 +204,7 @@ EQUIVALENT = {
 
 def finish(out):
     out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
-    allm = out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", [])
+    allm = out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", []) + out.get("followup_b9c405b_mutants", [])
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],
