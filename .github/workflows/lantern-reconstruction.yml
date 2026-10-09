@@ -46,6 +46,7 @@ jobs:
           experiments/lantern_reconstruction/tests/test_lr4.py
           experiments/lantern_reconstruction/tests/test_lr4_review.py
           experiments/lantern_reconstruction/tests/test_lr5_alarms.py
+          experiments/lantern_reconstruction/tests/test_lr6.py
 
   legacy-import:
     name: Legacy adapter and import (LR0-LR1) - Python ${{ matrix.python-version }}

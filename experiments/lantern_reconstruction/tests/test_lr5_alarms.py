@@ -153,7 +153,7 @@ def test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking():
             assert "continue-on-error" not in step and "||" not in run and "exit 0" not in run
             selected += re.findall(r"experiments/lantern_reconstruction/tests/(test_\w+\.py)", run)
     present = sorted(p.name for p in (streams.HERE / "tests").glob("test_*.py"))
-    assert sorted(selected) == present and len(selected) == len(set(selected)) and len(present) == 12
+    assert sorted(selected) == present and len(selected) == len(set(selected)) and len(present) == 13
 
 
 def test_mutation_campaign_record_is_consistent():
@@ -164,7 +164,7 @@ def test_mutation_campaign_record_is_consistent():
     assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
     assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
     surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) + d.get("followup_b9c405b_mutants", [])
-            + d.get("nachreview_9b52d95_mutants", []) if m["result"] != "killed"]
+            + d.get("nachreview_9b52d95_mutants", []) + d.get("lr6_mutants", []) if m["result"] != "killed"]
     assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
 
 

@@ -18,8 +18,9 @@ every recomputed cell is compared with an existing record or orphan files (ident
 container); a mismatch is an integrity failure and nothing is overwritten.
 
 Study lifecycle (plan 12): development -> smoke_passed -> code_protocol_frozen -> trained -> model_frozen ->
-evaluated -> reviewed. This module runs only 'development' and 'smoke' runs on the development study; a
-research run needs the frozen protocol of LR6 and is refused."""
+evaluated -> reviewed. 'development' and 'smoke' runs use the development study. A 'research' run exists only
+through create_research_run(): it needs protocol/freeze.json (written at a separate, documented freeze) bound to
+lr6/freeze_candidate.json and to the current code identity; all its parameters come from that candidate."""
 from __future__ import annotations
 
 import datetime as dtm
@@ -107,10 +108,12 @@ def process_alive(pid: int):
 
 
 # --- identity ------------------------------------------------------------------------------------------
-def code_identity() -> Dict:
-    """SHA-256 (LF-normalised) of every production module and protocol file of the lab; tests excluded."""
+def code_identity(exclude: Sequence[str] = ()) -> Dict:
+    """SHA-256 (LF-normalised) of every production module and protocol file of the lab; tests excluded.
+    `exclude` names files left out (the freeze record itself, which cannot contain its own hash)."""
     files = sorted([p for p in HERE.glob("*.py")] + [p for p in (HERE / "protocol").glob("*") if p.suffix in (".json", ".yaml", ".md")])
-    hashes = {p.relative_to(HERE).as_posix(): artifacts.sha256(p.read_bytes().replace(b"\r\n", b"\n")) for p in files}
+    hashes = {p.relative_to(HERE).as_posix(): artifacts.sha256(p.read_bytes().replace(b"\r\n", b"\n")) for p in files
+              if p.relative_to(HERE).as_posix() not in exclude}
     git = {}
     try:
         repo = HERE.parents[1]
@@ -120,6 +123,39 @@ def code_identity() -> Dict:
     except (OSError, subprocess.CalledProcessError):
         git = {"commit": None, "dirty": None}
     return {"files": hashes, "identity": artifacts.identity(hashes), "git": git}
+
+
+FREEZE_FILE = HERE / "protocol" / "freeze.json"
+CANDIDATE_FILE = HERE / "lr6" / "freeze_candidate.json"
+CANDIDATE_SCHEMA = "lantern-freeze-candidate-v1"
+FREEZE_SCHEMA = "lantern-freeze-v1"
+
+
+def frozen_candidate() -> Dict:
+    """The research protocol -- ONLY a frozen candidate (plan 12, LR6/LR7). protocol/freeze.json is written at
+    the freeze by a separate, documented release (never by this lab code). It must have schema and status
+    'frozen', name who approved it, and bind the SHA-256 of the LF-normalised candidate file and the candidate's
+    code identity; that identity must equal the current code (freeze.json itself excluded). Anything else: refused."""
+    if not FREEZE_FILE.exists():
+        raise ValueError("research runs need the frozen protocol (protocol/freeze.json); LR6 delivers only a candidate")
+    freeze = ra.strict_json(FREEZE_FILE.read_bytes().replace(b"\r\n", b"\n").decode("utf-8"))
+    cand_bytes = CANDIDATE_FILE.read_bytes().replace(b"\r\n", b"\n")
+    cand = ra.strict_json(cand_bytes.decode("utf-8"))
+    current = code_identity(exclude=("protocol/freeze.json",))["identity"]
+    problems = []
+    if freeze.get("schema") != FREEZE_SCHEMA or freeze.get("status") != "frozen":
+        problems.append("freeze record is not a frozen lantern-freeze-v1 record")
+    if not isinstance(freeze.get("approved_by"), list) or not freeze["approved_by"]:
+        problems.append("freeze record names no approval")
+    if freeze.get("candidate_sha256") != artifacts.sha256(cand_bytes):
+        problems.append("freeze record is bound to a different candidate file")
+    if cand.get("schema") != CANDIDATE_SCHEMA:
+        problems.append("candidate schema unknown")
+    if cand.get("code_identity") != current or freeze.get("code_identity") != current:
+        problems.append("the code differs from the frozen code identity")
+    if problems:
+        raise ValueError(f"research run refused: {problems}")
+    return cand
 
 
 def _grid(kind, contexts_, conditions, tasks, sizes, dt, proposals) -> Dict:
@@ -361,7 +397,28 @@ class StudyLock:
 def create_run(runs_root: Path, kind: str, contexts_: Sequence[int], *, conditions: Sequence[str] = episodes.CONDITIONS,
                tasks: Sequence[str] = runner.TASKS, sizes: Optional[Dict] = None, dt: Optional[float] = None,
                proposals: Optional[int] = None, run_id: Optional[str] = None) -> Path:
-    grid = _grid(kind, contexts_, conditions, tasks, sizes, dt, proposals)
+    return _create(runs_root, kind, _grid(kind, contexts_, conditions, tasks, sizes, dt, proposals), run_id)
+
+
+def research_grid(cand: Dict) -> Dict:
+    """The exact research grid, taken ONLY from the frozen candidate; validated like any grid, and the research
+    study must differ from the development study and from Aeon's excluded seeds."""
+    g = cand["grid"]
+    grid = _grid("development", g["contexts"], tuple(g["conditions"]), tuple(g["tasks"]), g["sizes"], g["dt"], g["proposals"])
+    sid = streams.check_study_id(cand["study"]["research_study_id"])
+    if sid == streams.defaults()["development_study_id"]:
+        raise ValueError("the research study must not be the development study")
+    if grid["times"] != [float(t) for t in g["times"]] or grid["controls"] != list(g["controls"]):
+        raise ValueError("candidate times/controls differ from the protocol")
+    return {**grid, "study_id": sid}
+
+
+def create_research_run(runs_root: Path, run_id: Optional[str] = None) -> Path:
+    """LR7 entry point: only with a valid freeze (frozen_candidate); no parameter can be passed in."""
+    return _create(runs_root, "research", research_grid(frozen_candidate()), run_id)
+
+
+def _create(runs_root: Path, kind: str, grid: Dict, run_id: Optional[str]) -> Path:
     run, _ = _current(grid, kind)
     run_id = run_id or f"{kind}-{dtm.datetime.now(dtm.timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
     run_dir = Path(runs_root) / run_id
@@ -467,6 +524,12 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
         raise ResumeRefused("run status is running: another process may still be active, or one was lost; "
                             "runs.recover() checks that and makes the run resumable")
     check_resumable(run)
+    if run["kind"] == "research":                          # the freeze must still be valid and be THIS grid
+        try:
+            if research_grid(frozen_candidate()) != run["grid"]:
+                raise ResumeRefused("the research run's grid differs from the frozen candidate")
+        except ValueError as e:
+            raise ResumeRefused(str(e)) from None
     grid = run["grid"]
     snap = ra.load_verified_snapshot()
     C, g = np.array(snap.C), float(snap.structure["g"])

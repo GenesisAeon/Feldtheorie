@@ -7,8 +7,9 @@ Three SEPARATE fields, never one flag:
   scientifically_interpretable technically complete AND every structure check (reset / zero impulse) passed
                                AND neither LR5-A1 alarm (proposal rule, protocol/control_alarms.json) AND the
                                numerical gates (decoder convergence gate bound and passed; task-A G0 > 0.90);
-  hypothesis                   only for research runs (H-B1/H-B2 of plan 9); a development or smoke run
-                               reports 'not_evaluated' -- never a hypothesis decision from development data.
+  hypothesis                   only for an interpretable RESEARCH run (study_evaluation: task A estimation,
+                               task B H-B1/H-B2 with Holm + the allowed statement of plan 9); a development or smoke
+                               run, or a blocked research run, reports 'not_evaluated' with the reason.
 Missing controls BLOCK; they are never treated as passed. Nothing here reads a score to change a status."""
 from __future__ import annotations
 
@@ -110,7 +111,7 @@ def release_report(run_dir: Path) -> Dict:
             if alarms["positive_spurious_success_alarm"]:
                 blocks.append("LR5-A1 positive spurious success alarm")
             if alarms["target_dependence_alarm"]:
-                blocks.append("LR5-A1 target dependence alarm (proposal rule: blocks until investigated)")
+                blocks.append("LR5-A1 target dependence alarm (endorsed rule: blocks until a documented investigation)")
         g0 = {cond: float(np.mean([records[runs.cell_dir_name({"context_id": cid, "condition": cond, "control": "none", "task": "A",
                                                                 "time": grid["times"][0], "time_index": 0})]["scores"]["G"]
                                    for cid in grid["contexts"]])) for cond in grid["conditions"]} if "A" in grid["tasks"] else {}
@@ -122,10 +123,62 @@ def release_report(run_dir: Path) -> Dict:
     conv = _convergence_gate()
     if not conv["passed"]:
         blocks.append("decoder convergence gate not passed or not bound")
+    interpretable = technically_complete and not blocks
+    hypothesis = hypothesis_section(run["kind"], interpretable, grid, records)
     report.update(structure_checks={str(k): v["checks"] for k, v in structure.items()}, control_alarms=alarms, convergence_gate=conv,
-                  scientific_blocks=blocks, scientifically_interpretable=technically_complete and not blocks,
-                  hypothesis={"status": "not_evaluated", "reason": f"{run['kind']} run: no hypothesis decision from development data"})
+                  scientific_blocks=blocks, scientifically_interpretable=interpretable, hypothesis=hypothesis)
     return report
+
+
+def hypothesis_section(kind: str, interpretable: bool, grid: Dict, records: Dict) -> Dict:
+    """Plan 9: only an interpretable RESEARCH run is evaluated; otherwise the reason is stated and nothing is
+    computed (a development run never yields a hypothesis decision; a blocked run is not interpreted)."""
+    if kind != "research":
+        return {"status": "not_evaluated", "reason": f"{kind} run: no hypothesis decision from development data"}
+    if not interpretable:
+        return {"status": "not_evaluated", "reason": "research run not scientifically interpretable: technically invalid or "
+                                                     "blocked runs are not interpreted, whatever their p-values (plan 9)"}
+    return {"status": "evaluated", **study_evaluation(grid, records)}
+
+
+def curve_values(grid: Dict, records: Dict, task: str, condition: str) -> Dict[int, float]:
+    """A per context (fixed grid aggregate of the 7 G values) for one task and coupling condition, control none."""
+    out = {}
+    for cid in grid["contexts"]:
+        G = {tau: records[runs.cell_dir_name({"context_id": cid, "condition": condition, "control": "none", "task": task,
+                                               "time": tau, "time_index": k})]["scores"]["G"] for k, tau in enumerate(grid["times"])}
+        out[cid] = metrics.curve_aggregate(G)
+    return out
+
+
+ALLOWED_STATEMENTS = {   # plan 9, result table (only for an interpretable run)
+    (True, True): "distributed readability and an advantage over this strength surrogate under the protocol",
+    (True, False): "distributed readability shown; no demonstrated specific advantage over the structural reference",
+    (False, True): "H-B2 alone without H-B1: no statement of distributed readability; report descriptively",
+    (False, False): "the pre-specified evidence was not reached; this is no general impossibility proof",
+}
+
+
+def study_evaluation(grid: Dict, records: Dict) -> Dict:
+    """Plan 9 on an interpretable RESEARCH run: task A as estimation without a success threshold (A_lantern,
+    A_uncoupled, paired difference: mean, SD, pointwise 95% t intervals over the contexts); task B with the two
+    confirmatory statements H-B1/H-B2 (one-sided t, Holm over exactly these two, Bonferroni intervals) and
+    descriptive A values of every condition. The context is the unit; no episode is a replicate."""
+    out = {}
+    if "A" in grid["tasks"] and {"lantern", "uncoupled"} <= set(grid["conditions"]):
+        al, au = curve_values(grid, records, "A", "lantern"), curve_values(grid, records, "A", "uncoupled")
+        out["task_A_estimation"] = {"kind": "estimation without a success threshold (plan 9, A)",
+                                    "A_lantern": metrics.summarize(al), "A_uncoupled": metrics.summarize(au),
+                                    "paired_difference": metrics.summarize(metrics.paired_differences(al, au)),
+                                    "per_context": {"lantern": al, "uncoupled": au}}
+    if "B" in grid["tasks"] and {"lantern", "strength_surrogate"} <= set(grid["conditions"]):
+        bl, bs = curve_values(grid, records, "B", "lantern"), curve_values(grid, records, "B", "strength_surrogate")
+        h = metrics.hypotheses_B(bl, bs)
+        decided = h["rejected"] is not None
+        out["task_B_hypotheses"] = {**h, "allowed_statement": ALLOWED_STATEMENTS[tuple(h["rejected"])] if decided else
+                                    "degenerate context SD: descriptive case, no test decision"}
+        out["task_B_descriptive"] = {c: metrics.summarize(curve_values(grid, records, "B", c)) for c in grid["conditions"]}
+    return out
 
 
 def write_release_report(run_dir: Path) -> Dict:

@@ -135,6 +135,20 @@ NACHREVIEW_9B52D95 = [   # Astra's re-review of 9b52d95: N1 log framing, N2 shar
 ]
 
 
+LR6 = [   # LR6: research mode gated by the freeze; study evaluation only for interpretable research runs
+    ("S1", "freeze status not checked", "runs.py", '    if freeze.get("schema") != FREEZE_SCHEMA or freeze.get("status") != "frozen":', "    if False:", [T + "test_lr6.py"]),
+    ("S2", "approval not required", "runs.py", '    if not isinstance(freeze.get("approved_by"), list) or not freeze["approved_by"]:', "    if False:", [T + "test_lr6.py"]),
+    ("S3", "freeze not bound to the candidate bytes", "runs.py", '    if freeze.get("candidate_sha256") != artifacts.sha256(cand_bytes):', "    if False:", [T + "test_lr6.py"]),
+    ("S4", "frozen code identity not compared", "runs.py", '    if cand.get("code_identity") != current or freeze.get("code_identity") != current:', "    if False:", [T + "test_lr6.py"]),
+    ("S5", "research may use the development study", "runs.py", '    if sid == streams.defaults()["development_study_id"]:', "    if False:", [T + "test_lr6.py"]),
+    ("S6", "execute does not re-check the freeze", "runs.py", '    if run["kind"] == "research":                          # the freeze must still be valid',
+     '    if False:                          # the freeze must still be valid', [T + "test_lr6.py"]),
+    ("S7", "hypotheses evaluated although not interpretable", "release.py", "    if not interpretable:\n        return {\"status\": \"not_evaluated\", \"reason\": \"research run",
+     "    if False:\n        return {\"status\": \"not_evaluated\", \"reason\": \"research run", [T + "test_lr6.py"]),
+    ("S8", "allowed statements swapped", "release.py", '    (True, False): "distributed readability shown;', '    (False, True): "distributed readability shown;', [T + "test_lr6.py"]),
+]
+
+
 def run_mutant(mid, desc, fname, old, new, tests, env):
     p = HERE / fname
     orig = p.read_bytes()
@@ -162,7 +176,8 @@ def rerun(ids):
     js = HERE / "lr5" / "lr5_mutation_campaign.json"
     out = json.loads(js.read_text(encoding="utf-8"))
     for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5), ("review_lr5_mutants", REVIEW_LR5),
-                        ("followup_b9c405b_mutants", FOLLOWUP_B9C405B), ("nachreview_9b52d95_mutants", NACHREVIEW_9B52D95)):
+                        ("followup_b9c405b_mutants", FOLLOWUP_B9C405B), ("nachreview_9b52d95_mutants", NACHREVIEW_9B52D95),
+                        ("lr6_mutants", LR6)):
         for i, m in enumerate(out.get(group, [])):
             if m["id"] in ids:
                 new = run_mutant(*next(d for d in defs if d[0] == m["id"]), env)
@@ -176,6 +191,15 @@ def main():
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         return finish(rerun(set(sys.argv[2].split(","))))
+    if len(sys.argv) > 1 and sys.argv[1] == "--lr6":
+        js = HERE / "lr5" / "lr5_mutation_campaign.json"
+        out = json.loads(js.read_text(encoding="utf-8"))
+        out["lr6_mutants"] = []
+        for m in LR6:
+            out["lr6_mutants"].append(run_mutant(*m, env))
+            r = out["lr6_mutants"][-1]
+            print(r["id"], r["result"], r.get("killed_by", [])[:1], flush=True)
+        return finish(out)
     if len(sys.argv) > 1 and sys.argv[1] == "--nachreview-9b52d95":
         js = HERE / "lr5" / "lr5_mutation_campaign.json"
         out = json.loads(js.read_text(encoding="utf-8"))
@@ -229,7 +253,7 @@ EQUIVALENT = {
 def finish(out):
     out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
     allm = (out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", []) + out.get("followup_b9c405b_mutants", [])
-            + out.get("nachreview_9b52d95_mutants", []))
+            + out.get("nachreview_9b52d95_mutants", []) + out.get("lr6_mutants", []))
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],

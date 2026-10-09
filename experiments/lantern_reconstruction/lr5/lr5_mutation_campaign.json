@@ -507,8 +507,8 @@
   "summary": "1 passed, 35 deselected, 1 warning in 2.02s"
  },
  "summary": {
-  "executed": 54,
-  "killed": 52,
+  "executed": 62,
+  "killed": 60,
   "survived": [],
   "equivalent": [
    "L2",
@@ -517,7 +517,8 @@
   "first_run_survivors_closed_by_new_tests": [
    "F1c",
    "L1",
-   "L9"
+   "L9",
+   "S7"
   ],
   "invalid_targets": [],
   "not_applicable": [
@@ -805,6 +806,126 @@
     "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_change_between_diagnosis_and_guard_is_caught"
    ],
    "seconds": 183.0
+  }
+ ],
+ "lr6_mutants": [
+  {
+   "id": "S1",
+   "description": "freeze status not checked",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_defective_freeze_records_are_refused[defect0-not a frozen]"
+   ],
+   "seconds": 7.1
+  },
+  {
+   "id": "S2",
+   "description": "approval not required",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_defective_freeze_records_are_refused[defect2-no approval]"
+   ],
+   "seconds": 6.7
+  },
+  {
+   "id": "S3",
+   "description": "freeze not bound to the candidate bytes",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_defective_freeze_records_are_refused[defect3-different candidate]"
+   ],
+   "seconds": 6.4
+  },
+  {
+   "id": "S4",
+   "description": "frozen code identity not compared",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_defective_freeze_records_are_refused[defect4-frozen code identity]"
+   ],
+   "seconds": 6.9
+  },
+  {
+   "id": "S5",
+   "description": "research may use the development study",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_research_study_id_must_be_new_and_not_excluded[2026100803-development study]"
+   ],
+   "seconds": 7.9
+  },
+  {
+   "id": "S6",
+   "description": "execute does not re-check the freeze",
+   "file": "runs.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_execute_rechecks_the_freeze_before_anything_runs"
+   ],
+   "seconds": 52.3
+  },
+  {
+   "id": "S7",
+   "description": "hypotheses evaluated although not interpretable",
+   "file": "release.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_hypothesis_section_only_for_an_interpretable_research_run"
+   ],
+   "seconds": 13.9,
+   "history": [
+    {
+     "id": "S7",
+     "description": "hypotheses evaluated although not interpretable",
+     "file": "release.py",
+     "tests": [
+      "test_lr6.py",
+      "test_lr5_runs.py"
+     ],
+     "result": "SURVIVED",
+     "killed_by": [],
+     "seconds": 245.7
+    }
+   ]
+  },
+  {
+   "id": "S8",
+   "description": "allowed statements swapped",
+   "file": "release.py",
+   "tests": [
+    "test_lr6.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr6.py::test_study_evaluation_only_B1_and_none"
+   ],
+   "seconds": 9.7
   }
  ]
 }
