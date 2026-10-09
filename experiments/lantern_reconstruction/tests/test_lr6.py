@@ -248,6 +248,38 @@ def test_alarm_inputs_refit_p_by_hand():
         _runner.alarm_inputs(per, DEV, nulls=bad)
 
 
+## --- the freeze candidate in this repository ------------------------------------------------------------------
+def _real_candidate():
+    return json.loads(runs.CANDIDATE_FILE.read_text(encoding="utf-8"))
+
+
+def test_candidate_is_bound_to_the_current_code_and_is_no_freeze():
+    """Fails as soon as a production module or protocol file changes after the candidate: a stale candidate must
+    be replaced by a new, documented one -- it can never silently cover other code."""
+    c = _real_candidate()
+    assert c["schema"] == runs.CANDIDATE_SCHEMA and c["status"].startswith("CANDIDATE") and not runs.FREEZE_FILE.exists()
+    assert c["code_identity"] == runs.code_identity(exclude=("protocol/freeze.json",))["identity"]
+    assert c["git"]["dirty"] is False
+
+
+def test_candidate_values_come_from_the_protocol():
+    c, d = _real_candidate(), streams.defaults()
+    g = runs.research_grid(c)
+    assert g["study_id"] == c["study"]["research_study_id"] != d["development_study_id"]
+    assert not d["streams"]["excluded_master_seeds"]["from"] <= g["study_id"] <= d["streams"]["excluded_master_seeds"]["to"]
+    assert g["contexts"] == list(range(20)) and g["sizes"] == dict(d["data_per_context"]) and g["dt"] == d["integration"]["dt"]
+    assert g["proposals"] == d["strength_surrogate"]["proposals"] and c["grid"]["cells"] == len(runs.expected_cells(g)) == 1960
+    assert c["control_rules"]["control_alarms"] == metrics.control_alarm_protocol() and c["control_rules"]["permutations"] == 9999
+    assert c["decoder"]["lambda_grid"] == [1e-4, 1e-3, 1e-2, 1e-1, 1.0, 10.0, 100.0]
+    assert c["decoder"]["mlp"]["decision"].startswith("PROPOSAL") and c["study"]["method"].startswith("secrets.randbelow")
+    assert c["software"] == runs.software()
+
+
+def test_candidate_yaml_twin():
+    import yaml
+    assert yaml.safe_load(runs.CANDIDATE_FILE.with_suffix(".yaml").read_text(encoding="utf-8")) == _real_candidate()
+
+
 def test_study_evaluation_missing_cell_is_an_error_not_zero():
     grid, records = _grid_records(lambda cid, cond, task: 0.2)
     records.pop(next(iter(records)))

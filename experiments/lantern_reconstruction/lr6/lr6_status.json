@@ -1,0 +1,110 @@
+{
+ "schema": "lantern-lr6-status-v1",
+ "package": "LR6 - Entwicklungsabnahme und Freeze-Kandidat",
+ "date": "2026-10-09",
+ "basis": "astra-lr5-93f4b95-review (recovery gate closed, GO for LR6); plan 12, 14, 19.5",
+ "commits": {
+  "99e6480": "research mode only with a freeze; study evaluation in the release gate",
+  "f9ea14d": "runbook BETRIEB.md",
+  "5905dcd": "control-alarm protocol v2 (refit null for permuted targets)",
+  "this commit": "acceptance, freeze candidate, report"
+ },
+ "no_research": "no freeze, no research run, no public push",
+ "acceptance_1": {
+  "run": "runs/lr6-acceptance-20261009T151633Z",
+  "technically_complete": true,
+  "scientifically_interpretable": false,
+  "alarm": "both LR5-A1 alarms, only permuted_targets|A|1.0 (G +0.0048, Holm p 0.0012)",
+  "investigation": "results/lantern/lr6_acceptance_investigation/UNTERSUCHUNG.md: construction error of the permuted-target cells (fixed-prediction null wrong for a label-permuted decoder whose features encode u); weak extra channel via lambda selection on real val targets; no pipeline leak",
+  "decision": "Johann 2026-10-09: refit null (option 'Passende Nullverteilung')"
+ },
+ "control_protocol_v2": "val targets permuted too; refit null B=9999 per permuted alarm cell (exact fit_ridge + scoring, < 1e-12; 5.9 s per cell and context), stored as null.npz, bound and verified; synthetic: old null fires (seeds 4, 9), refit null not; real leak still caught",
+ "acceptance_2": {
+  "run": "runs/lr6-acceptance-20261009T165010Z",
+  "code": "5905dcd",
+  "status": "complete",
+  "cells": 392,
+  "technically_complete": true,
+  "scientifically_interpretable": true,
+  "alarms": "both silent; all 12 cells Holm p >= 0.65, G < 0",
+  "pipeline_gate_A_G0": 0.9776577304022198,
+  "execute_seconds": 1340.96,
+  "release_seconds": 32.67,
+  "artifact_bytes": 41966320
+ },
+ "freeze_candidate": {
+  "file": "lr6/freeze_candidate.json (+ yaml)",
+  "research_study_id": 1431972670,
+  "seed_method": "secrets.randbelow(2**32), drawn once at candidate creation; redrawn only if in the excluded range 900000-900104 or equal to the development study 2026100803; never chosen by any result",
+  "contexts": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "cells": 1960,
+  "code_identity": "1a00ff9ee4d2dd05f5034793271aaf227dd92242a7df992cc2f2dee817748bc8",
+  "git": {
+   "commit": "5905dcdf374dc6f7eea2e7194bac298bd1717f0e",
+   "dirty": false
+  },
+  "software": {
+   "numpy": "2.2.6",
+   "python": "3.11.9",
+   "scipy": "1.15.3"
+  },
+  "mlp": "PROPOSAL: waived for this study",
+  "budget": {
+   "extrapolated_execute_seconds": 6704.782507499913,
+   "draft_seconds": 7200
+  }
+ },
+ "tests": {
+  "result_all_lantern_tests": "425 (full suite 422/422 at 5905dcd; afterwards only the 3 candidate tests, test_lr6.py 26/26)"
+ },
+ "mutation_campaign": {
+  "executed": 68,
+  "killed": 66,
+  "survived": [],
+  "equivalent": [
+   "L2",
+   "R4b"
+  ],
+  "first_run_survivors_closed_by_new_tests": [
+   "F1c",
+   "L1",
+   "L9",
+   "S7",
+   "V4",
+   "V5",
+   "V6"
+  ],
+  "invalid_targets": [],
+  "not_applicable": [
+   "12",
+   "2",
+   "6"
+  ]
+ },
+ "open": [
+  "Astra: review of the freeze candidate",
+  "Johann/Astra: MLP waiver (proposal), budget reserve about 7 %, the freeze itself (protocol/freeze.json, documented step)",
+  "LR7 only after a separate review before the research start"
+ ]
+}

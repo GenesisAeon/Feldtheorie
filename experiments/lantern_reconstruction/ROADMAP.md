@@ -10,7 +10,7 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 | LR3 | Aufgaben A/B und Referenzen: Beobachtungen, Ströme, Surrogate | ✅ erledigt, siehe [Bericht](lr3/LR3_BERICHT.md); Fixes nach Astras Nachprüfung, von ihr nachgeprüft (`6680618`) |
 | LR4 | Ridge und Evaluation | ✅ erledigt, siehe [Bericht](lr4/LR4_BERICHT.md). Ridge per NumPy (LR0-O1); Decoder-Konvergenzgate bestanden; R1/R2 nach `REVIEW_LR4` geschlossen und von Astra nachgeprüft (`25ba293`, GO für LR5) |
 | LR5 | Laufverwaltung und CI | ✅ erledigt, siehe [Bericht](lr5/LR5_BERICHT.md). LR5-A1, Artefaktkette, Resume, Freigabe-Gate, Budget, CI-Workflow, Mutationskampagne; wartet auf Prüfung. Freigaberegel LR5-A1 vor dem Freeze zu entscheiden |
-| LR6 | Entwicklungsabnahme und Freeze-Kandidat | offen |
+| LR6 | Entwicklungsabnahme und Freeze-Kandidat | ✅ erledigt, siehe [Bericht](lr6/LR6_BERICHT.md). Entwicklungsabnahme sauber (nach Kontrollprotokoll v2); Freeze-Kandidat `lr6/freeze_candidate.json`; wartet auf Prüfung und Freeze-Entscheidung |
 | LR7–LR9 | Forschungsrunde, Bericht, Folgestudien | erst nach der LR6-Freigabe |
 
 ## LR0 (2026-10-08)
@@ -101,3 +101,13 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
   - N2: Recovery und normale Starts teilen eine gemeinsame Verwaltungssperre.
 
   Regression mit echten Kindprozessen. Tests 393/393; Mutation 54, davon 52 erkannt und 2 äquivalent.
+- **Astras Abschlussprüfung:** Das Recovery-Gate ist geschlossen; GO für LR6.
+
+## LR6 (2026-10-09)
+
+- **Forschungsmodus** nur über `create_research_run` mit `protocol/freeze.json`, das an den Kandidaten und die Code-Identität gebunden ist. Die **Studienauswertung** nach Plan § 9 erfolgt nur für interpretierbare Forschungsläufe. Dazu kommt das Betriebshandbuch `lr6/BETRIEB.md`.
+- **Erste Entwicklungsabnahme:** Beide LR5-A1-Alarme schlugen an, nur in `permuted_targets|A|1.0`. Die Untersuchung fand einen Konstruktionsfehler dieser Kontrollzellen, kein Pipeline-Leck. Johann entschied sich für **Kontrollprotokoll v2** mit Neufit-Nullverteilung und permutierten Validierungszielen.
+- **Zweite Entwicklungsabnahme:** technisch vollständig und wissenschaftlich interpretierbar; alle 12 Alarmzellen unauffällig; G0 = 0,978.
+- **Freeze-Kandidat:** Masterseed 1431972670 (per `secrets`), 20 Kontexte, 1960 Zellen; MLP-Verzicht als Vorschlag; hochgerechnet 1,86 h bei 2 h Budget. Er ist an den Code `5905dcd` gebunden.
+- **Prüfungen:** Tests 425; Mutation 68, davon 66 erkannt und 2 äquivalent.
+- **Offen:** Prüfung des Kandidaten, Entscheidungen zu MLP und Budgetreserve, der Freeze; LR7 erst nach separater Prüfung vor dem Forschungsstart.
