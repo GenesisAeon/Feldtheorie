@@ -164,7 +164,7 @@ def test_mutation_campaign_record_is_consistent():
     assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
     assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
     surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) + d.get("followup_b9c405b_mutants", [])
-            if m["result"] != "killed"]
+            + d.get("nachreview_9b52d95_mutants", []) if m["result"] != "killed"]
     assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
 
 

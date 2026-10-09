@@ -177,8 +177,45 @@ Alle Werte stimmten mit Astras Werten überein, bis hin zur neuen Modellidentit�
 
 **Belege:** `D:/mandala/mandala-memory-results/lantern/lr5_followup_b9c405b/`.
 
+## Nachtrag nach Astras Nachreview zu `9b52d95` (`LANTERN_LR5_NACHREVIEW_9b52d95_2026-10-09`)
+
+**Ergebnis des Nachreviews:** geprüft wurde das private Paket `26ffbdf`.
+- F1 (Beschädigung bei lebendem Schreiber) und F2 (CI-Auswahl) sind behoben.
+- Zwei verbleibende Lücken des Recovery-Gates:
+  - **N1:** Gültiges JSON am Dateiende **ohne** LF galt als sauber. Recovery hängte das nächste Ereignis direkt daran, es entstand eine unlesbare Zeile (`TruncatedLogError`), und die alte Sperre war schon entfernt.
+  - **N2:** Die `.recover`-Sperre koordinierte nur Recovery-Aufrufe. Ein normaler `StudyLock`-Erwerb in einem zweiten Prozess bekam die Studiensperre zwischen dem Entfernen der alten und der neuen Übernahme; Recovery scheiterte danach mit bereits vorgenommenen Änderungen.
+
+**Zuerst reproduziert** mit Astras Skript, unverändert gegen den lokalen Checkout von `26ffbdf` und erstmals unter Windows (Astra prüfte unter Linux):
+- N1: `diagnosed_tail: null`, danach `TruncatedLogError`.
+- N2: Der Konkurrent meldete `acquired: true, guard_exists: true`, Recovery scheiterte mit `LockError`, der Lauf blieb `running`.
+- Die Positivkontrollen (unvollständiges Objekt; gültiges Objekt mit LF) verliefen wie bei Astra.
+
+| Befund | Korrektur |
+|---|---|
+| **N1** | `EventLog.read_tolerating_tail` beurteilt **JSON-Syntax und Zeilenabschluss getrennt**. Es gibt drei Zustände: sauber (leer oder LF-abgeschlossen); `unterminated_event`, ein gültiges Ereignis ohne LF, das **in der Ereignisliste bleibt**; `incomplete`, eine unlesbare letzte Zeile, auch mit abgeschnittenem UTF-8. Striktes Lesen verlangt ein LF-abgeschlossenes Ende. `repair_tail` ergänzt erst unter der Verwaltungssperre durch Anhängen das LF und ein Ereignis (`log_line_terminated` bzw. `log_line_truncated`). |
+| **N2** | Es gibt eine **gemeinsame Verwaltungssperre** (`AdminLock`, `<sperre>.admin`, `O_EXCL`, mit Token). **Jeder** normale `StudyLock`-Erwerb nimmt sie kurz um das Prüfen und Anlegen. `recover()` hält sie über die erneute Diagnose, die Reparatur, das Entfernen der toten Sperre, die neue Übernahme (`StudyLock(..., admin=...)`, ohne blockierenden Wiedereintritt, Besitz über das Token geprüft) und den Statuswechsel. Ein Konkurrent wird **sofort abgewiesen**, nicht blockiert. Eine liegengebliebene Verwaltungssperre wird nie automatisch gelöscht; ihr Inhalt (Zweck, PID, Host, Zeit) dient der Prüfung von Hand. Die bisherige `.recover`-Sperre ist ersetzt. |
+| Docstring | `recover()` beschreibt jetzt die tatsächliche Reihenfolge (lesende Diagnose, dann Verwaltungssperre, dann erneute Diagnose, dann Schreiben). |
+
+**Regressionen**, mit echten Kindprozessen wie in Astras Szenarien:
+- **N1-Dateienden:** gültiges JSON ohne LF, gültiges JSON mit LF, unvollständiges Objekt, abgeschnittenes UTF-8 und leeres Ende. Der Besitzer ist jeweils ein echter, beendeter Kindprozess. Die Recovery gelingt, die alten Bytes bleiben Präfix, striktes Lesen funktioniert, und das gültige Ereignis steht weiter in der Liste. Es bleiben weder die tote Sperre noch eine Verwaltungssperre zurück.
+- **N1 bei lebendem bzw. unklarem Besitzer** mit gültigem Ereignis ohne LF: Log und Sperre bleiben bytegleich.
+- **N2, Recovery gegen normalen Start** als getrennte Prozesse, an zwei Synchronisationspunkten (nach dem Entfernen der toten Sperre; unmittelbar vor der neuen Übernahme): Der Start wird abgewiesen, Recovery schließt ab, danach gelingt der Start.
+- **Normaler Start vor Recovery** (vor der letzten Diagnose): Recovery verweigert **vor** jeder Logänderung, und die lebende Sperre bleibt unberührt.
+- **Recovery gegen Recovery** als getrennte Prozesse: Abweisung ohne Änderung, danach gelingt sie.
+- Eine fremde Verwaltungssperre wird nie entfernt, und eine nicht gehaltene wird für `StudyLock` abgewiesen.
+
+**Nachher-Beleg:** Astras vier Szenarien, ohne die Pinprüfung gegen den reparierten Code ausgeführt:
+- unvollständiges Objekt, gültiges JSON ohne LF und gültiges JSON mit LF enden alle in `interrupted` und sind lesbar;
+- der gleichzeitige Start wird mit „administration … in progress“ abgewiesen, Recovery endet in `interrupted`, es bleibt keine Sperre zurück.
+
+**Mutation:** N1 (gültiges JSON ohne LF wieder als sauber), N2a (normale Starts ohne Verwaltungssperre), N2b (Verwaltungssperre nicht exklusiv) und N2c (keine erneute Diagnose unter ihr) werden **alle erkannt**. **Gesamtkampagne: 54 ausgeführt, 52 erkannt, 2 äquivalent (L2, R4b), 0 offene Überlebende.** Die Einträge F1a bis F1c beschreiben die frühere `.recover`-Fassung und bleiben als Verlauf stehen.
+
+**Tests:** 393/393 (bisher 381, dazu 12 in `test_lr5_review.py`).
+
+**Belege:** `D:/mandala/mandala-memory-results/lantern/lr5_nachreview_9b52d95/`.
+
 ## Offen
 
 - **LR6:** Entwicklungsabnahme und Freeze-Kandidat. Dazu gehören Masterseeds und Kontextliste, das optionale MLP (oder dessen ausdrücklicher Verzicht), vollständig entschiedene Protokollwerte und ein voller Entwicklungslauf mit allen Kontrollkurven auf der Entwicklungsstudie.
 - **CI auf GitHub** erst, wenn der Branch gepusht werden darf.
-- Astras Nachprüfung der REVIEW_LR5-Fixes.
+- Astras gezielte Nachprüfung von N1 und N2 (Entscheidung über das Recovery-Gate).

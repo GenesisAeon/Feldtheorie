@@ -96,3 +96,8 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
   - Das Log ist durchgehend LF.
 
   Tests 381/381; Mutation 50, davon 48 erkannt und 2 äquivalent.
+- **Nachtrag nach Astras Nachreview zu `9b52d95`:**
+  - N1: Das Log-Ende wird nach JSON-Syntax und Zeilenabschluss getrennt beurteilt; ein gültiges Ereignis ohne LF bleibt erhalten und wird nur durch Anhängen abgeschlossen.
+  - N2: Recovery und normale Starts teilen eine gemeinsame Verwaltungssperre.
+
+  Regression mit echten Kindprozessen. Tests 393/393; Mutation 54, davon 52 erkannt und 2 äquivalent.

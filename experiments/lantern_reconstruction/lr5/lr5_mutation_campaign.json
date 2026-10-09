@@ -507,8 +507,8 @@
   "summary": "1 passed, 35 deselected, 1 warning in 2.02s"
  },
  "summary": {
-  "executed": 50,
-  "killed": 48,
+  "executed": 54,
+  "killed": 52,
   "survived": [],
   "equivalent": [
    "L2",
@@ -751,6 +751,60 @@
     "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_event_log_lines_end_with_lf_on_every_platform"
    ],
    "seconds": 231.5
+  }
+ ],
+ "nachreview_9b52d95_mutants": [
+  {
+   "id": "N1",
+   "description": "valid JSON without LF treated as a clean log end",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_n1_log_end_recovered_with_valid_events_kept[valid_without_lf-{\"event\":\"unit_completed\"}-unterminated_event]"
+   ],
+   "seconds": 365.5
+  },
+  {
+   "id": "N2a",
+   "description": "normal StudyLock acquisition bypasses the administration lock",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_n2_normal_start_cannot_interleave_with_recovery[after_stale_lock_removed]"
+   ],
+   "seconds": 382.5
+  },
+  {
+   "id": "N2b",
+   "description": "administration lock not exclusive",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_refused_recovery_leaves_log_and_lock_byte_identical[recovery_in_progress]"
+   ],
+   "seconds": 187.6
+  },
+  {
+   "id": "N2c",
+   "description": "no re-diagnosis under the administration lock",
+   "file": "runs.py",
+   "tests": [
+    "test_lr5_review.py"
+   ],
+   "result": "killed",
+   "killed_by": [
+    "experiments/lantern_reconstruction/tests/test_lr5_review.py::test_r1_change_between_diagnosis_and_guard_is_caught"
+   ],
+   "seconds": 183.0
   }
  ]
 }

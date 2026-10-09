@@ -203,20 +203,27 @@ class EventLog:
             os.fsync(f.fileno())
 
     def read(self) -> list:
-        """Strict: an unparsable line is only tolerated if the NEXT line is the 'log_line_truncated' event that
-        recover() appends after a process loss; an unacknowledged broken line raises TruncatedLogError."""
+        """Strict: the file must END with an LF (a complete JSONL frame) and an unparsable line is only tolerated
+        if the NEXT line is the 'log_line_truncated' event of recover(); anything else at the end raises
+        TruncatedLogError (use runs.recover())."""
         events, tail = self.read_tolerating_tail()
         if tail is not None:
-            raise TruncatedLogError(f"{self.path}: the last event line is incomplete (process loss?); use runs.recover()")
+            raise TruncatedLogError(f"{self.path}: the event log does not end with a complete line ({tail['kind']}); "
+                                    "process loss? use runs.recover()")
         return events
 
     def read_tolerating_tail(self):
-        """READ-ONLY diagnosis (review of b9c405b, F1): the complete events plus a description of an
-        incomplete or unparsable LAST line, which is neither repaired nor removed here."""
+        """READ-ONLY diagnosis (reviews of b9c405b F1 and 9b52d95 N1). JSON syntax and line framing are judged
+        SEPARATELY. Returns (events, tail) with tail None (clean: empty or LF-terminated) or
+          {"kind": "unterminated_event", ...}  a valid JSON event without its LF -- it IS in the event list;
+          {"kind": "incomplete", "terminated": bool, ...}  an unparsable last line (incl. cut UTF-8),
+        neither repaired nor removed here."""
         if not self.path.exists():
             return [], None
-        events, broken, lines = [], None, self.path.read_bytes().split(b"\n")
-        for i, line in enumerate(lines):
+        raw = self.path.read_bytes()
+        *framed, last_seg = raw.split(b"\n")                   # last_seg == b"" exactly when raw ends with LF (or is empty)
+        events, broken = [], None
+        for i, line in enumerate(framed):
             if not line.strip():
                 continue
             try:
@@ -231,32 +238,38 @@ class EventLog:
                     raise IntegrityError(f"{self.path}: unparsable event line {broken + 1} without a recorded truncation")
                 broken = None
             events.append(e)
-        if broken is not None:
-            return events, {"fragment_sha256": artifacts.sha256(lines[broken]), "fragment_bytes": len(lines[broken])}
+        if last_seg:
+            info = {"fragment_sha256": artifacts.sha256(last_seg), "fragment_bytes": len(last_seg)}
+            if broken is not None:
+                raise IntegrityError(f"{self.path}: two unparsable event lines")
+            try:
+                e = json.loads(last_seg.decode("utf-8"))
+            except (ValueError, UnicodeDecodeError):
+                return events, {"kind": "incomplete", "terminated": False, **info}
+            if not isinstance(e, dict) or "event" not in e:
+                return events, {"kind": "incomplete", "terminated": False, **info}
+            events.append(e)                                   # a valid event stays an event
+            return events, {"kind": "unterminated_event", **info}
+        if broken is not None:                                 # terminated, unparsable, not yet acknowledged
+            return events, {"kind": "incomplete", "terminated": True,
+                            "fragment_sha256": artifacts.sha256(framed[broken]), "fragment_bytes": len(framed[broken])}
         return events, None
 
-    def acknowledge_truncation(self):
-        """Append-only repair after a process loss: terminate an incomplete last line with a newline and record
-        its bytes (SHA-256, length) in a 'log_line_truncated' event. Nothing is rewritten or removed."""
-        if not self.path.exists():
+    def repair_tail(self, tail):
+        """Append-only repair after a process loss, ONLY under recover()'s exclusive administration:
+        'unterminated_event' -> append the missing LF + a 'log_line_terminated' event (the valid event is kept);
+        'incomplete' -> append LF (if missing) + a 'log_line_truncated' event. Nothing is rewritten or removed."""
+        if tail is None:
             return None
-        raw = self.path.read_bytes()
-        last = raw.rstrip(b"\n").split(b"\n")[-1] if raw.strip() else b""
-        try:
-            json.loads(last.decode("utf-8"))
-            if raw.endswith(b"\n") or not raw:
-                return None
-        except (ValueError, UnicodeDecodeError):
-            pass
         with open(self.path, "ab") as f:
-            if not raw.endswith(b"\n"):
+            if not tail.get("terminated", False):
                 f.write(b"\n")
             f.flush()
             os.fsync(f.fileno())
-        info = {"fragment_sha256": artifacts.sha256(last), "fragment_bytes": len(last)}
-        self._write({"utc": dtm.datetime.now(dtm.timezone.utc).isoformat(), "monotonic": time.monotonic(),
-                     "event": "log_line_truncated", **info})
-        return info
+        event = "log_line_terminated" if tail["kind"] == "unterminated_event" else "log_line_truncated"
+        info = {k: tail[k] for k in ("fragment_sha256", "fragment_bytes")}
+        self._write({"utc": dtm.datetime.now(dtm.timezone.utc).isoformat(), "monotonic": time.monotonic(), "event": event, **info})
+        return {"kind": tail["kind"], **info}
 
 
 def status(run_dir: Path) -> Optional[str]:
@@ -272,15 +285,65 @@ def set_status(log: EventLog, new: str, reason: str) -> None:
     log.append("status", to=new, reason=reason, **({} if cur is None else {"from": cur}))
 
 
-class StudyLock:
-    """One exclusive lock per (study, phase), independent of the run folder."""
+class AdminLock:
+    """Short administration lock '<study lock>.admin' (review of 9b52d95, N2). EVERY change of a study lock
+    happens under it: a normal StudyLock acquisition takes it around check-and-create; recover() holds it over
+    re-diagnosis, repair, removal of the dead lock, the new acquisition and the status transition. Atomic via
+    O_EXCL; a contender is refused at once (no waiting). A left-over admin lock (process lost during
+    administration) is NEVER removed automatically: its content names pid/host/purpose for a manual check."""
 
-    def __init__(self, lock_root: Path, study_id: int, phase: str, run_id: str):
-        self.path = Path(lock_root) / f"study-{study_id}-{phase}.lock"
-        self.run_id = run_id
+    def __init__(self, study_lock_path: Path, purpose: str):
+        self.path = Path(str(study_lock_path) + ".admin")
+        self.purpose = purpose
+        self.token = None
 
     def __enter__(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            raise LockError(f"administration of {self.path.with_suffix('')} in progress ({self.path.read_text(encoding='utf-8', errors='replace')}); "
+                            "retry later, or remove it manually only after checking that its process is gone") from None
+        self.token = uuid.uuid4().hex
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(json.dumps({"purpose": self.purpose, "pid": os.getpid(), "host": platform.node(), "token": self.token,
+                                "utc": dtm.datetime.now(dtm.timezone.utc).isoformat()}))
+        return self
+
+    def holds(self) -> bool:
+        try:
+            return self.token is not None and json.loads(self.path.read_text(encoding="utf-8")).get("token") == self.token
+        except (OSError, ValueError):
+            return False
+
+    def __exit__(self, *exc):
+        if self.holds():
+            self.path.unlink()
+        return False
+
+
+class StudyLock:
+    """One exclusive lock per (study, phase), independent of the run folder. Created only under the study's
+    AdminLock: acquired here for a normal start, or passed in (admin=...) by recover(), which already holds it
+    -- no re-entrant blocking, and ownership of the admin lock is checked by its token."""
+
+    def __init__(self, lock_root: Path, study_id: int, phase: str, run_id: str, admin: Optional["AdminLock"] = None):
+        self.path = Path(lock_root) / f"study-{study_id}-{phase}.lock"
+        self.run_id = run_id
+        self.admin = admin
+
+    def __enter__(self):
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        if self.admin is not None:
+            if self.admin.path != Path(str(self.path) + ".admin") or not self.admin.holds():
+                raise LockError("the given administration lock is not held for this study lock")
+            self._create()
+        else:
+            with AdminLock(self.path, f"start {self.run_id}"):
+                self._create()
+        return self
+
+    def _create(self):
         try:
             fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
@@ -288,7 +351,6 @@ class StudyLock:
                             "remove it manually only after checking that no run is active") from None
         with os.fdopen(fd, "w", encoding="utf-8") as f:
             f.write(json.dumps({"run_id": self.run_id, "pid": os.getpid(), "utc": dtm.datetime.now(dtm.timezone.utc).isoformat()}))
-        return self
 
     def __exit__(self, *exc):
         self.path.unlink(missing_ok=True)
@@ -463,52 +525,50 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
 
 
 def recover(run_dir: Path) -> str:
-    """Explicit recovery after a process loss (review REVIEW_LR5 R1). Only for a run left in status 'running':
-      1. an incomplete last event line is terminated and recorded (append-only, nothing rewritten);
-      2. the process that held the run is identified from the run's own 'lock_acquired' event (lock path, pid,
-         host) -- recovery refuses if that host is another machine, the pid may still be alive or its state is
-         undecidable, or the lock now belongs to someone else;
-      3. a stale lock of THAT process is removed and its content logged;
-      4. under the study lock the status becomes 'interrupted'; execute() then resumes the same run identity
-         with all artifacts kept (every existing cell re-verified, orphans checked)."""
+    """Explicit recovery after a process loss (reviews REVIEW_LR5 R1, b9c405b F1, 9b52d95 N1/N2).
+      1. READ-ONLY diagnosis: status, the holding process from the run's own 'lock_acquired' event (lock path,
+         pid, host), its state, the ownership of the study lock and the state of the log's end (clean, valid
+         event without LF, incomplete). Recovery refuses for a foreign host, a pid that may be alive or is
+         undecidable, a lock that now belongs to someone else -- every refusal leaves log and lock byte-identical.
+      2. Only then the study's AdminLock -- the same administration lock every normal StudyLock acquisition takes,
+         so neither a second recovery nor a normal start can interleave; a contender is refused, not blocked.
+      3. Under it: the diagnosis again (any change -> refusal before writing), then the append-only repair of the
+         log's end, the removal of THAT dead process's stale lock (content logged), the study lock taken with the
+         held admin lock, and the status 'interrupted'. execute() then resumes the same run identity with all
+         artifacts kept (every existing cell re-verified, orphans checked)."""
     run_dir = Path(run_dir)
     run = load_run(run_dir)
     log = EventLog(run_dir / "events.jsonl")
     diag = _recovery_diagnosis(run, log)                    # READ-ONLY: every refusal leaves log and lock byte-identical
     lock_path = Path(diag["last"]["lock"])
-    guard = lock_path.parent / (lock_path.name + ".recover")
     try:
-        fd = os.open(guard, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-    except FileExistsError:
-        raise ResumeRefused(f"another recovery holds {guard}; not recovered") from None
-    except FileNotFoundError:
-        raise ResumeRefused(f"lock folder {lock_path.parent} is missing; check it manually") from None
+        admin = AdminLock(lock_path, f"recover {run['run_id']}").__enter__()
+    except LockError as e:
+        raise ResumeRefused(f"not recovered: {e}") from None
     try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            f.write(json.dumps({"run_id": run["run_id"], "pid": os.getpid(), "host": platform.node()}))
-        if _recovery_diagnosis(run, log) != diag:           # re-check under exclusive recovery access
-            raise ResumeRefused("the run changed while recovery was being prepared; not recovered")
-        # only now: append-only repairs, stale lock of the dead process, status
-        truncated = log.acknowledge_truncation() if diag["tail"] is not None else None
-        if diag["lock_holder"] is not None:
+        if _recovery_diagnosis(run, log) != diag:           # re-check under the administration lock
+            raise ResumeRefused("the run or its lock changed while recovery was being prepared; not recovered")
+        repaired = log.repair_tail(diag["tail"])            # only now: append-only repairs ...
+        if diag["lock_holder"] is not None:                 # ... the stale lock of the dead process ...
             lock_path.unlink()
             log.append("stale_lock_removed", lock=str(lock_path), content=diag["lock_holder"])
-        with StudyLock(lock_path.parent, run["grid"]["study_id"], run["kind"], run["run_id"]) as lock:
+        with StudyLock(lock_path.parent, run["grid"]["study_id"], run["kind"], run["run_id"], admin=admin) as lock:
             if lock.path.resolve() != lock_path.resolve():
                 raise ResumeRefused("lock path of the run does not match the study lock")
-            reason = f"recovered after process loss of pid {diag['last'].get('pid')}" + (f"; truncated event line {truncated}" if truncated else "")
+            reason = f"recovered after process loss of pid {diag['last'].get('pid')}" + (f"; repaired log end {repaired}" if repaired else "")
             if diag["status"] == "running":
-                set_status(log, "interrupted", reason)
+                set_status(log, "interrupted", reason)       # ... and the status
             else:
                 log.append("recovered", reason=reason + f"; status stays {diag['status']} (lost before it became running)")
     finally:
-        guard.unlink(missing_ok=True)
+        admin.__exit__(None, None, None)
     return status(run_dir)
 
 
 def _recovery_diagnosis(run: Dict, log: EventLog) -> Dict:
-    """Everything recover() needs, by READING only (review of b9c405b, F1): an incomplete last line is
-    recognised, not repaired; host, process state and lock ownership are decided before any write.
+    """Everything recover() needs, by READING only (reviews of b9c405b F1, 9b52d95 N1): the log's end is
+    recognised (valid event without LF, incomplete), not repaired; host, process state and lock ownership are
+    decided before any write.
     Raises ResumeRefused for every situation that must not be recovered."""
     events, tail = log.read_tolerating_tail()
     st = [e["to"] for e in events if e["event"] == "status"]

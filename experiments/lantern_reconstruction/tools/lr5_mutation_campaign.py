@@ -120,6 +120,21 @@ FOLLOWUP_B9C405B = [   # review of b9c405b: F1 recovery writes only after the re
 ]
 
 
+NACHREVIEW_9B52D95 = [   # Astra's re-review of 9b52d95: N1 log framing, N2 shared administration lock
+    ("N1", "valid JSON without LF treated as a clean log end", "runs.py",
+     '            events.append(e)                                   # a valid event stays an event\n            return events, {"kind": "unterminated_event", **info}',
+     '            events.append(e)                                   # a valid event stays an event\n            return events, None', [T + "test_lr5_review.py"]),
+    ("N2a", "normal StudyLock acquisition bypasses the administration lock", "runs.py",
+     '            with AdminLock(self.path, f"start {self.run_id}"):\n                self._create()',
+     '            self._create()', [T + "test_lr5_review.py"]),
+    ("N2b", "administration lock not exclusive", "runs.py",
+     '            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)\n        except FileExistsError:\n            raise LockError(f"administration',
+     '            fd = os.open(self.path, os.O_CREAT | os.O_WRONLY)\n        except FileExistsError:\n            raise LockError(f"administration', [T + "test_lr5_review.py"]),
+    ("N2c", "no re-diagnosis under the administration lock", "runs.py", "        if _recovery_diagnosis(run, log) != diag:           # re-check under the administration lock",
+     "        if False:", [T + "test_lr5_review.py"]),
+]
+
+
 def run_mutant(mid, desc, fname, old, new, tests, env):
     p = HERE / fname
     orig = p.read_bytes()
@@ -147,7 +162,7 @@ def rerun(ids):
     js = HERE / "lr5" / "lr5_mutation_campaign.json"
     out = json.loads(js.read_text(encoding="utf-8"))
     for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5), ("review_lr5_mutants", REVIEW_LR5),
-                        ("followup_b9c405b_mutants", FOLLOWUP_B9C405B)):
+                        ("followup_b9c405b_mutants", FOLLOWUP_B9C405B), ("nachreview_9b52d95_mutants", NACHREVIEW_9B52D95)):
         for i, m in enumerate(out.get(group, [])):
             if m["id"] in ids:
                 new = run_mutant(*next(d for d in defs if d[0] == m["id"]), env)
@@ -161,6 +176,15 @@ def main():
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         return finish(rerun(set(sys.argv[2].split(","))))
+    if len(sys.argv) > 1 and sys.argv[1] == "--nachreview-9b52d95":
+        js = HERE / "lr5" / "lr5_mutation_campaign.json"
+        out = json.loads(js.read_text(encoding="utf-8"))
+        out["nachreview_9b52d95_mutants"] = []
+        for m in NACHREVIEW_9B52D95:
+            out["nachreview_9b52d95_mutants"].append(run_mutant(*m, env))
+            r = out["nachreview_9b52d95_mutants"][-1]
+            print(r["id"], r["result"], r.get("killed_by", [])[:1], flush=True)
+        return finish(out)
     if len(sys.argv) > 1 and sys.argv[1] == "--followup-b9c405b":
         js = HERE / "lr5" / "lr5_mutation_campaign.json"
         out = json.loads(js.read_text(encoding="utf-8"))
@@ -204,7 +228,8 @@ EQUIVALENT = {
 
 def finish(out):
     out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
-    allm = out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", []) + out.get("followup_b9c405b_mutants", [])
+    allm = (out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", []) + out.get("followup_b9c405b_mutants", [])
+            + out.get("nachreview_9b52d95_mutants", []))
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],

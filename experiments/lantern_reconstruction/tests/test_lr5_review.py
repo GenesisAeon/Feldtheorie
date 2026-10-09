@@ -148,7 +148,7 @@ def test_r1_refused_recovery_leaves_log_and_lock_byte_identical(tmp_path, monkey
         held = json.loads(lock.path.read_text(encoding="utf-8"))
         held["run_id"] = "someone-else"
         lock.path.write_text(json.dumps(held), encoding="utf-8")
-    guard = lock.path.parent / (lock.path.name + ".recover")
+    guard = lock.path.parent / (lock.path.name + ".admin")
     if case == "recovery_in_progress":
         guard.write_text("{}", encoding="utf-8")
     log_before, lock_before = (rd / "events.jsonl").read_bytes(), lock.path.read_bytes()
@@ -170,7 +170,7 @@ def test_r1_change_between_diagnosis_and_guard_is_caught(tmp_path, monkeypatch):
     real_open, foreign = os.open, json.dumps({"run_id": "other-run", "pid": os.getpid(), "utc": "now"})
 
     def open_with_race(path, *a, **k):
-        if str(path).endswith(".recover"):
+        if str(path).endswith(".admin"):
             lock.path.write_text(foreign, encoding="utf-8")     # the other run wins the lock in this window
         return real_open(path, *a, **k)
     monkeypatch.setattr(runs.os, "open", open_with_race)
@@ -178,7 +178,7 @@ def test_r1_change_between_diagnosis_and_guard_is_caught(tmp_path, monkeypatch):
     with pytest.raises(runs.ResumeRefused, match="held by"):
         runs.recover(rd)
     assert lock.path.read_text(encoding="utf-8") == foreign and (rd / "events.jsonl").read_bytes() == log_before
-    assert not (lock.path.parent / (lock.path.name + ".recover")).exists()
+    assert not (lock.path.parent / (lock.path.name + ".admin")).exists()
 
 
 def test_r1_dead_owner_incomplete_line_recovers_and_keeps_the_original_bytes(reference, tmp_path):
@@ -201,7 +201,7 @@ def test_r1_dead_owner_incomplete_line_recovers_and_keeps_the_original_bytes(ref
     assert runs.process_alive(99999999) is False
     assert runs.recover(rd) == "interrupted"
     assert (rd / "events.jsonl").read_bytes().startswith(original) and not lock.path.exists()
-    assert not (lock.path.parent / (lock.path.name + ".recover")).exists()
+    assert not (lock.path.parent / (lock.path.name + ".admin")).exists()
     assert runs.execute(rd, lock_root=locks) == "complete"
     assert _identities(rd) == _identities(reference)
 
@@ -395,3 +395,219 @@ def test_r4_end_to_end_crash_after_the_npz(reference, tmp_path):
         (rd / "cells" / last / name).unlink()
     assert runs.execute(rd, lock_root=tmp_path / "locks") == "complete"
     assert _identities(rd) == _identities(reference)
+
+
+# --- Nachreview 9b52d95 (Astra): N1 log framing, N2 one administration lock for recovery and normal starts --
+_CHILD_TAIL = """
+import os, sys, platform
+from pathlib import Path
+from experiments.lantern_reconstruction import runs
+rd, root, tail = Path(sys.argv[1]), Path(sys.argv[2]), bytes.fromhex(sys.argv[3])
+r = runs.load_run(rd)
+lock = runs.StudyLock(root, r['grid']['study_id'], r['kind'], r['run_id']).__enter__()
+log = runs.EventLog(rd / 'events.jsonl')
+log.append('lock_acquired', lock=str(lock.path.resolve()), pid=os.getpid(), host=platform.node())
+runs.set_status(log, 'running', 'synthetic recovery control')
+with open(log.path, 'ab') as f:
+    f.write(tail); f.flush(); os.fsync(f.fileno())
+os._exit(0)
+"""
+_CONTENDER = """
+import json, sys
+from pathlib import Path
+from experiments.lantern_reconstruction import runs
+root, sid, phase = Path(sys.argv[1]), int(sys.argv[2]), sys.argv[3]
+try:
+    lock = runs.StudyLock(root, sid, phase, 'contender').__enter__()
+except runs.LockError as e:
+    print(json.dumps({'acquired': False, 'error': str(e)[:200]}), flush=True)
+    sys.exit(0)
+print(json.dumps({'acquired': True}), flush=True)
+sys.stdin.readline()
+lock.__exit__(None, None, None)
+"""
+_ENV = dict(os.environ, PYTHONPATH=str(REPO), PYTHONDONTWRITEBYTECODE="1")
+
+
+def _small_run(tmp_path, name):
+    return runs.create_run(tmp_path / "runs", "smoke", [0, 1], run_id=name, conditions=("lantern",), tasks=("A",),
+                           sizes={"train": 2, "val": 2, "test": 2}, proposals=1)
+
+
+def _dead_owner(tmp_path, name, tail):
+    """A REAL child process takes the production StudyLock, logs lock_acquired + running, writes `tail`
+    (fsync) and dies without releasing anything."""
+    rd = _small_run(tmp_path, name)
+    p = subprocess.run([sys.executable, "-c", _CHILD_TAIL, str(rd), str(tmp_path / "locks"), tail.hex()], env=_ENV, cwd=REPO, timeout=120)
+    assert p.returncode == 0
+    pid = [e for e in runs.EventLog(rd / "events.jsonl").read_tolerating_tail()[0] if e["event"] == "lock_acquired"][-1]["pid"]
+    assert runs.process_alive(pid) is False
+    return rd
+
+
+@pytest.mark.parametrize("name, tail, kind", [
+    ("valid_without_lf", b'{"event":"unit_completed"}', "unterminated_event"),
+    ("valid_with_lf", b'{"event":"unit_completed"}\n', None),
+    ("incomplete_object", b'{"event":"unit_', "incomplete"),
+    ("cut_utf8", b'{"event":"unit_\xc3', "incomplete"),
+    ("empty_tail", b"", None),
+])
+def test_n1_log_end_recovered_with_valid_events_kept(tmp_path, name, tail, kind):
+    """Review 9b52d95 N1: a valid JSON object WITHOUT its LF was diagnosed clean; recovery appended the next
+    event onto it -> unreadable line, TruncatedLogError, lock already gone. Syntax and framing are now judged
+    separately; the valid event stays an event before and after the repair."""
+    rd = _dead_owner(tmp_path, name, tail)
+    log = runs.EventLog(rd / "events.jsonl")
+    before = log.path.read_bytes()
+    diag = runs._recovery_diagnosis(runs.load_run(rd), log)
+    assert (diag["tail"] or {}).get("kind") == kind
+    if kind == "unterminated_event":
+        assert {"event": "unit_completed"} in log.read_tolerating_tail()[0]
+        with pytest.raises(runs.TruncatedLogError):            # strict read demands the complete frame
+            log.read()
+    assert runs.recover(rd) == "interrupted"
+    after = log.path.read_bytes()
+    assert after.startswith(before) and after.endswith(b"\n")
+    events = log.read()                                         # strict read works again
+    assert runs.status(rd) == "interrupted"
+    if tail.startswith(b'{"event":"unit_completed"}'):
+        assert {"event": "unit_completed"} in events
+    if kind == "unterminated_event":
+        assert any(e["event"] == "log_line_terminated" and e["fragment_bytes"] == len(tail) for e in events)
+    if kind == "incomplete":
+        assert any(e["event"] == "log_line_truncated" and e["fragment_bytes"] == len(tail) for e in events)
+    assert not any((tmp_path / "locks").glob("*"))              # neither the dead lock nor an admin lock is left
+
+
+@pytest.mark.parametrize("owner", ["alive", "undecidable"])
+def test_n1_unterminated_valid_event_with_live_or_unclear_owner_stays_byte_identical(tmp_path, monkeypatch, owner):
+    rd, lock = _running_with_incomplete_line(tmp_path, f"n1-{owner}", os.getpid() if owner == "alive" else 99999999, platform.node())
+    with open(rd / "events.jsonl", "ab") as f:                 # make the incomplete tail a complete event without LF
+        f.write(b'completed"}')
+    if owner == "undecidable":
+        monkeypatch.setattr(runs, "process_alive", lambda p: None)
+    log_before, lock_before = (rd / "events.jsonl").read_bytes(), lock.path.read_bytes()
+    with pytest.raises(runs.ResumeRefused, match="may still be active"):
+        runs.recover(rd)
+    assert (rd / "events.jsonl").read_bytes() == log_before and lock.path.read_bytes() == lock_before
+
+
+def _start_contender(lock_root, sid, phase):
+    p = subprocess.Popen([sys.executable, "-c", _CONTENDER, str(lock_root), str(sid), phase], env=_ENV, cwd=REPO,
+                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    line = p.stdout.readline()
+    assert line, p.stderr.read()
+    return p, json.loads(line)
+
+
+def _finish(p):
+    p.communicate("release\n", timeout=60)
+    assert p.returncode == 0
+
+
+@pytest.mark.parametrize("sync_point", ["after_stale_lock_removed", "right_before_new_acquisition"])
+def test_n2_normal_start_cannot_interleave_with_recovery(tmp_path, monkeypatch, sync_point):
+    """Review 9b52d95 N2: a normal StudyLock acquisition in a SECOND PROCESS, started inside recovery's
+    critical section, got the study lock (the .recover guard was ignored); recovery then failed after its
+    changes. Now both share the AdminLock: the contender is refused, recovery finishes, the start can
+    follow afterwards."""
+    rd = _dead_owner(tmp_path, f"n2-{sync_point}", b'{"event":"unit_')
+    run = runs.load_run(rd)
+    sid, phase, locks = run["grid"]["study_id"], run["kind"], tmp_path / "locks"
+    seen, procs = [], []
+    if sync_point == "after_stale_lock_removed":
+        real_append = runs.EventLog.append
+
+        def hook(self, event, **data):
+            real_append(self, event, **data)
+            if event == "stale_lock_removed":
+                p, obs = _start_contender(locks, sid, phase)
+                procs.append(p)
+                seen.append(obs)
+        monkeypatch.setattr(runs.EventLog, "append", hook)
+    else:
+        real_create = runs.StudyLock._create
+
+        def hook(self):
+            if self.admin is not None:                          # recovery's own acquisition, admin held
+                p, obs = _start_contender(locks, sid, phase)
+                procs.append(p)
+                seen.append(obs)
+            return real_create(self)
+        monkeypatch.setattr(runs.StudyLock, "_create", hook)
+    try:
+        assert runs.recover(rd) == "interrupted"
+    finally:
+        for p in procs:
+            _finish(p)
+    assert seen and seen[0]["acquired"] is False and "administration" in seen[0]["error"]
+    assert runs.status(rd) == "interrupted" and not any(locks.glob("*"))
+    monkeypatch.undo()
+    p, obs = _start_contender(locks, sid, phase)                # afterwards a normal start proceeds
+    _finish(p)
+    assert obs["acquired"] is True
+
+
+def test_n2_normal_start_before_recovery_wins_and_recovery_changes_nothing(tmp_path, monkeypatch):
+    """Sync point before the last diagnosis: a normal start (second process) takes the study lock first ->
+    recovery's re-diagnosis under the admin lock refuses BEFORE any log change; the live lock is untouched."""
+    rd = _dead_owner(tmp_path, "n2-start-first", b'{"event":"unit_')
+    run = runs.load_run(rd)
+    locks = tmp_path / "locks"
+    lock_path = locks / f"study-{run['grid']['study_id']}-{run['kind']}.lock"
+    lock_path.unlink()                                          # the dead lock was cleared by an operator ...
+    real_diag, calls, procs = runs._recovery_diagnosis, [], []
+
+    def diag(run_, log_):
+        out = real_diag(run_, log_)
+        calls.append(1)
+        if len(calls) == 1:                                     # ... and a normal start wins before recovery's admin lock
+            p, obs = _start_contender(locks, run["grid"]["study_id"], run["kind"])
+            procs.append(p)
+            assert obs["acquired"] is True
+        return out
+    monkeypatch.setattr(runs, "_recovery_diagnosis", diag)
+    log_before = (rd / "events.jsonl").read_bytes()
+    try:
+        with pytest.raises(runs.ResumeRefused, match="changed|held by"):
+            runs.recover(rd)
+        assert (rd / "events.jsonl").read_bytes() == log_before
+        assert json.loads(lock_path.read_text(encoding="utf-8"))["run_id"] == "contender"
+    finally:
+        for p in procs:
+            _finish(p)
+
+
+def test_n2_recovery_against_recovery_in_two_processes(tmp_path):
+    """A second recovery (separate process) while the first holds the admin lock is refused without changes."""
+    rd = _dead_owner(tmp_path, "n2-rr", b'{"event":"unit_')
+    run = runs.load_run(rd)
+    lock_path = tmp_path / "locks" / f"study-{run['grid']['study_id']}-{run['kind']}.lock"
+    holder = subprocess.Popen([sys.executable, "-c",
+                               "import sys; from pathlib import Path; from experiments.lantern_reconstruction import runs; "
+                               "a = runs.AdminLock(Path(sys.argv[1]), 'recover other').__enter__(); print('held', flush=True); "
+                               "sys.stdin.readline(); a.__exit__(None, None, None)", str(lock_path)],
+                              env=_ENV, cwd=REPO, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    assert holder.stdout.readline().strip() == "held"
+    log_before, lock_before = (rd / "events.jsonl").read_bytes(), lock_path.read_bytes()
+    try:
+        with pytest.raises(runs.ResumeRefused, match="administration"):
+            runs.recover(rd)
+        assert (rd / "events.jsonl").read_bytes() == log_before and lock_path.read_bytes() == lock_before
+    finally:
+        _finish(holder)
+    assert runs.recover(rd) == "interrupted"                     # after the other one released
+
+
+def test_n2_admin_lock_is_never_removed_by_someone_else(tmp_path):
+    lock_path = tmp_path / "study-1-smoke.lock"
+    a = runs.AdminLock(lock_path, "x").__enter__()
+    other = runs.AdminLock(lock_path, "y")
+    with pytest.raises(runs.LockError, match="administration"):
+        other.__enter__()
+    other.__exit__(None, None, None)                            # a non-holder never deletes it
+    assert a.path.exists()
+    with pytest.raises(runs.LockError, match="not held"):
+        runs.StudyLock(tmp_path, 1, "smoke", "r", admin=other).__enter__()
+    a.__exit__(None, None, None)
+    assert not a.path.exists()

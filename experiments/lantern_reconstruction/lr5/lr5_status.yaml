@@ -58,8 +58,8 @@ ci:
   locally_checked: a test asserts that the jobs together run every one of the 12 lab test files exactly once, without masking
   not_executed: never ran on GitHub (branch not pushed); no local Python 3.12
 mutation_campaign:
-  executed: 50
-  killed: 48
+  executed: 54
+  killed: 52
   survived: []
   equivalent:
   - L2
@@ -75,15 +75,16 @@ mutation_campaign:
   - '6'
   first_run_gaps: L1 (race), L9 (record binding), F1c (window between diagnosis and recovery guard) -- closed with new tests
   equivalent_reason: 'L2: os.link still refuses without the early check; R4b: {} never equals the expected identities, the orphan is still rejected'
+  history_note: F1a-F1c describe the former .recover guard and stay as history
 tests:
-  result_all_lantern_tests: 381/381
-  new: 54 in test_lr5_alarms.py/test_lr5_runs.py, 23 + 8 in test_lr5_review.py, 1 CI-selection test
+  result_all_lantern_tests: 393/393
+  new: 54 in test_lr5_alarms.py/test_lr5_runs.py, 23 + 8 + 12 in test_lr5_review.py, 1 CI-selection test
   run: python -m pytest experiments/lantern_reconstruction/tests
 evidence: D:/mandala/mandala-memory-results/lantern/lr5/
 open:
+- 'Astra: targeted re-check of N1/N2 (decision on the recovery gate)'
 - 'LR6: development acceptance and freeze candidate (master seeds, context list, MLP decision, full development run with all control curves)'
 - CI on GitHub once pushing the branch is allowed
-- 'Astra: re-check of the b9c405b follow-up fixes'
 review_fix_REVIEW_LR5:
   review: D:/mandala/mandala-memory-results/lantern/astra-lr5-review/REVIEW_LR5.md (reviewed 1c24292)
   reproduced_first:
@@ -109,3 +110,16 @@ followup_b9c405b:
     extra: event log written in binary with LF (text mode wrote CRLF on Windows)
   regressions: refusals with incomplete line (alive owner + later completed line still readable, foreign host, undecidable, foreign lock, concurrent recovery) byte-identical; race between diagnosis and guard; dead owner positive case resumes to the uninterrupted result
   mutation: F1a, F1b, F2, LF killed; F1c survived first (no test for the window) -> race test added -> killed
+nachreview_9b52d95:
+  review: D:/mandala/mandala-memory-results/lantern-reconstruction-plan/LANTERN_LR5_NACHREVIEW_9b52d95_2026-10-09.md (+ ZIP; package 26ffbdf)
+  confirmed: F1 concrete damage fixed, F2 CI selection fixed
+  reproduced_first:
+    N1: 'valid JSON without LF diagnosed clean (tail None); recovery appended onto it -> TruncatedLogError, stale lock already removed (Windows; Astra: Linux)'
+    N2: contender in a second process acquired the study lock with the .recover guard present; recovery then LockError after changes, run stayed running
+  fixes:
+    N1: 'read_tolerating_tail judges JSON syntax and LF framing separately: clean / unterminated_event (valid event kept in the list) / incomplete (incl. cut UTF-8); strict read demands an LF-terminated end; repair_tail appends LF + log_line_terminated or log_line_truncated only under the admin lock'
+    N2: 'shared AdminLock (<lock>.admin, O_EXCL, token): every normal StudyLock acquisition takes it around check-and-create; recover holds it over re-diagnosis, repair, stale-lock removal, the new acquisition (StudyLock(admin=...), token-checked, no re-entrant blocking) and the status transition; contenders are refused at once; a left-over admin lock is never removed automatically'
+    docstring: recover() describes the actual order
+  regressions: 'real child processes: 5 log ends (valid without/with LF, incomplete, cut UTF-8, empty), live/undecidable owner byte-identical, recovery vs normal start at two sync points, start-before-recovery refusal before any change, recovery vs recovery, foreign admin lock never removed'
+  after_fix_reproduction: 'Astra''s four scenarios on the repaired code (pin removed in a copy): all interrupted and readable; contender refused with ''administration ... in progress'''
+  mutation: N1, N2a, N2b, N2c killed
