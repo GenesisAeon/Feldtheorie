@@ -7,11 +7,12 @@
   "99e6480": "research mode only with a freeze; study evaluation in the release gate",
   "f9ea14d": "runbook BETRIEB.md",
   "5905dcd": "control-alarm protocol v2 (refit null for permuted targets)",
-  "this commit": "F1 test fix (Astra's patch), closing report, wording 'bit-identical' corrected",
   "29af52f": "acceptance, first freeze candidate, report (superseded)",
   "b0da0c7": "review 29af52f fix R1-R4: software binding, control-alarm protocol v3 (tie rule, refit-path check), null provenance, test contract",
   "df3065b": "first candidate moved to lr6/superseded/, review evidence",
-  "987d9fc": "new freeze candidate, follow-up report"
+  "987d9fc": "new freeze candidate, follow-up report",
+  "d1cb936": "F1 test fix (Astra's patch), closing report, wording 'bit-identical' corrected",
+  "5ccad90": "FREEZE: protocol/freeze.json only (decision Johann 2026-10-09)"
  },
  "no_research": "no freeze, no research run, no public push",
  "acceptance_1": {
@@ -112,9 +113,8 @@
   ]
  },
  "open": [
-  "Johann: the freeze decision (protocol/freeze.json, documented step), MLP waiver, operating window >= 2.5 h",
-  "LR7 only after readiness in the exact environment and the separate pre-start review",
-  "GitHub CI never ran; no real Python 3.12 run locally"
+  "separate LR7 pre-start review (lr7/LR7_VORSTART.md); no research run before it",
+  "GitHub CI never ran; no real Python 3.12 run locally (3.11.9 is frozen)"
  ],
  "review_29af52f": {
   "verdict": "do not freeze yet (Astra, 2026-10-09)",
@@ -158,5 +158,27 @@
   "links": "no repo link check exists in Feldtheorie (the --category links rule belongs to the SCF repo); own relative-link check: 1 broken link in lr5/LR5_BERICHT.md fixed, 40/40 ok",
   "astra": "no further objection to the formal freeze of this candidate with exactly this test fix; NOT a freeze approval",
   "report": "lr6/review_987d9fc/ABSCHLUSS.md"
+ },
+ "freeze": {
+  "commit": "5ccad90",
+  "file": "protocol/freeze.json",
+  "approved_by": [
+   "Johann"
+  ],
+  "candidate_sha256_lf": "68fac7fa0ddc43a2133af417c4fb8ccf64717ab52fe31ca02af7aa259b79b690",
+  "code_identity": "670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c",
+  "research_study_id": 1431972670,
+  "binding": {
+   "mlp": "waived for this study",
+   "operating_window_s": 9000,
+   "runtime_estimate": "no guarantee"
+  },
+  "no_yaml_twin": "code_identity() excludes only protocol/freeze.json"
+ },
+ "lr7_preparation": {
+  "readiness": "met in the frozen environment (lr7/readiness_frozen_environment.json)",
+  "start_tool": "tools/lr7_research_run.py (dry run by default; --start --confirm-study <id>)",
+  "pre_start_review": "OPEN (lr7/LR7_VORSTART.md)",
+  "research_run": "none"
  }
 }

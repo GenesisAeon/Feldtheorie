@@ -1,0 +1,57 @@
+{
+ "readiness": {
+  "freeze_file": "D:\\mandala\\.worktrees\\feldtheorie-lantern-reconstruction\\experiments\\lantern_reconstruction\\protocol\\freeze.json",
+  "freeze_present": true,
+  "current_software": {
+   "python": "3.11.9",
+   "numpy": "2.2.6",
+   "scipy": "1.15.3"
+  },
+  "candidate_software": {
+   "numpy": "2.2.6",
+   "python": "3.11.9",
+   "scipy": "1.15.3"
+  },
+  "software_problems": [],
+  "code_matches_candidate": true,
+  "research_start_allowed": true,
+  "refusal": null
+ },
+ "plan": {
+  "research_study_id": 1431972670,
+  "contexts": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "cells": 1960,
+  "runs_root": "D:\\mandala\\mandala-memory-results\\lantern\\runs",
+  "software": {
+   "numpy": "2.2.6",
+   "python": "3.11.9",
+   "scipy": "1.15.3"
+  },
+  "extrapolated_execute_s": 6819.558500499697,
+  "extrapolated_release_s": 150.60817999998108,
+  "operating_window_s": 9000,
+  "note": "linear extrapolation, no guarantee; plan at least 2.5 h"
+ }
+}
+DRY RUN: nothing created or started (use --start --confirm-study <id> after the pre-start review)

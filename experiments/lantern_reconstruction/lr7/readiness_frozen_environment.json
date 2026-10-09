@@ -1,0 +1,50 @@
+{
+ "readiness": {
+  "freeze_file": "D:\\mandala\\.worktrees\\feldtheorie-lantern-reconstruction\\experiments\\lantern_reconstruction\\protocol\\freeze.json",
+  "freeze_present": true,
+  "current_software": {
+   "python": "3.11.9",
+   "numpy": "2.2.6",
+   "scipy": "1.15.3"
+  },
+  "candidate_software": {
+   "numpy": "2.2.6",
+   "python": "3.11.9",
+   "scipy": "1.15.3"
+  },
+  "software_problems": [],
+  "code_matches_candidate": true,
+  "research_start_allowed": true,
+  "refusal": null
+ },
+ "disk_D": {
+  "free_bytes": 237746614272,
+  "extrapolated_artifacts_bytes": 209953335.0,
+  "ratio_free_to_needed": 1132.4
+ },
+ "ram": {
+  "total_bytes": 25706790912,
+  "available_bytes": 8822304768,
+  "draft_budget_bytes": 1073741824
+ },
+ "power": {
+  "ac_line": "online",
+  "battery_percent": 255
+ },
+ "locks": [],
+ "existing_runs": [
+  "lr6-acceptance-20261009T151633Z",
+  "lr6-acceptance-20261009T165010Z",
+  "lr6-acceptance-20261009T192821Z"
+ ],
+ "research_runs_existing": [],
+ "registry_snapshot": {
+  "canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
+  "matches_candidate": true,
+  "check": "load_verified_snapshot() with the default repo (Git history check active)"
+ },
+ "host": {
+  "node": "DESKTOP-L9EKD8D",
+  "platform": "Windows-10-10.0.19045-SP0"
+ }
+}

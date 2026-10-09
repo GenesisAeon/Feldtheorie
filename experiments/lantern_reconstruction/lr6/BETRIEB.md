@@ -30,7 +30,10 @@ Fehlt etwas davon oder weicht es ab, wird der Lauf verweigert, auch beim Fortset
 ## Einen Lauf durchführen
 
 1. Netzteil anschließen. Das Werkzeug verhindert den Ruhezustand nur für den eigenen Prozess (`SetThreadExecutionState`), ohne dauerhafte Systemänderung.
-2. Starten: Entwicklungsabnahme über `tools/lr6_development_acceptance.py`, Forschung (erst nach dem Freeze) über ein entsprechendes LR7-Werkzeug.
+2. Starten: Entwicklungsabnahme über `tools/lr6_development_acceptance.py`. Forschung nur über `tools/lr7_research_run.py`, und zwar erst nach dem Vorstartreview (`lr7/LR7_VORSTART.md`).
+   - Ohne Argumente ist es ein Probelauf.
+   - Start mit `--start --confirm-study <Forschungsstudie>`.
+   - Fortsetzen mit `--resume <Laufordner>`.
 3. **Überwachen:** `events.jsonl` im Laufordner, nur anhängend. `cell_completed` zeigt den Fortschritt, `clock_gap` eine vermutete Schlafunterbrechung. Den Status liefert `runs.status(run_dir)`.
 4. **Freigabebericht:** `release.write_release_report(run_dir)` erzeugt `release_report.json` einmalig mit drei getrennten Feldern.
 

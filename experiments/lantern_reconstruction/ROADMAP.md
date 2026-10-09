@@ -118,4 +118,13 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 
   Die dritte Abnahme stimmt mit Abnahme 2 überein: Modell-, Vorhersage- und Nullarchive sind byte-identisch, die Records wegen neuer Metadaten nicht. Der neue Kandidat übernimmt den Seed 1431972670; der alte liegt in `lr6/superseded/`. Tests 466/466; Mutation 81, davon 79 erkannt und 2 äquivalent. Bericht: `lr6/review_29af52f/NACHBERICHT.md`.
 - **Astras Nachreview `987d9fc`:** R1–R3 geschlossen. Testfehler F1 (fremde Version als Literal) nachvollzogen und mit ihrem Patch behoben; `test_lr6.py` 67/67 unter 3.11.9 und unter simuliertem 3.12.14. Produktion und Kandidat unverändert. Keine weiteren Einwände gegen den formalen Freeze. Bericht: `lr6/review_987d9fc/ABSCHLUSS.md`.
-- **Offen:** Freeze-Entscheidung durch Johann (MLP-Verzicht, Fenster ≥ 2,5 h); LR7 erst nach separater Prüfung vor dem Forschungsstart.
+- **FREEZE (`5ccad90`, Entscheidung Johann 2026-10-09):**
+  - `protocol/freeze.json` bindet den unveränderten Kandidaten (`68fac7fa…`) und den Code (`670d9352…`).
+  - Der MLP-Verzicht ist verbindlich; Betriebsfenster ≥ 2,5 h; die Laufzeit ist keine Garantie.
+
+## LR7 (Vorbereitung)
+
+- Die **Bereitschaft in der eingefrorenen Umgebung** ist geprüft und erfüllt: Software exakt, Registry voll verifiziert, Platz, RAM und Strom ausreichend, keine Sperren.
+- **Startwerkzeug** `tools/lr7_research_run.py`: standardmäßig ein Probelauf; der Start verlangt `--confirm-study`.
+- Unterlagen: `lr7/LR7_VORSTART.md`.
+- **Offen:** das gesonderte Vorstartreview. **Kein Forschungslauf vor diesem Review.**
