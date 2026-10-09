@@ -63,9 +63,13 @@ def training_targets(ctx: ContextSpec, u_train: np.ndarray, control: str, task: 
     decoder stream (study, context, train, decoder, 0, 2, task index, time index). Test targets stay real."""
     if control != "permuted_targets":
         return u_train
-    perm = streams.generator(ctx.study_id, ctx.context_id, "train", "decoder", 0, PERMUTED_TARGETS_PURPOSE,
-                             TASK_INDEX[task], time_index).permutation(u_train.shape[0])
-    return u_train[perm]
+    return u_train[target_permutation(ctx, "train", u_train.shape[0], task, time_index)]
+
+
+def target_permutation(ctx: ContextSpec, split: str, n: int, task: str, time_index: int) -> np.ndarray:
+    """The permutation of the permuted-target control: train from decoder extra 2, val from extra 3."""
+    purpose = {"train": PERMUTED_TARGETS_PURPOSE, "val": PERMUTED_VAL_PURPOSE}[split]
+    return streams.generator(ctx.study_id, ctx.context_id, split, "decoder", 0, purpose, TASK_INDEX[task], time_index).permutation(n)
 
 
 def validation_targets(ctx: ContextSpec, u_val: np.ndarray, control: str, task: str, time_index: int) -> np.ndarray:
@@ -75,9 +79,7 @@ def validation_targets(ctx: ContextSpec, u_val: np.ndarray, control: str, task: 
     task index, time index)."""
     if control != "permuted_targets":
         return u_val
-    perm = streams.generator(ctx.study_id, ctx.context_id, "val", "decoder", 0, PERMUTED_VAL_PURPOSE,
-                             TASK_INDEX[task], time_index).permutation(u_val.shape[0])
-    return u_val[perm]
+    return u_val[target_permutation(ctx, "val", u_val.shape[0], task, time_index)]
 
 
 def needs_refit_null(control: str, task: str, time: float) -> bool:
@@ -94,6 +96,33 @@ def refit_null(ctx: ContextSpec, task: str, time_index: int, X: Dict, batches: D
     rng = streams.generator(ctx.study_id, ctx.context_id, "train", "decoder", 0, NULL_PURPOSE, TASK_INDEX[task], time_index)
     return permuted_null_gains(X["train"], batches["train"].u, X["val"], batches["val"].u, X["test"], batches["test"].u,
                                rng, ALARM_PERMUTATIONS)
+
+
+def refit_path_tolerance() -> float:
+    from experiments.lantern_reconstruction.metrics import control_alarm_protocol
+    return float(control_alarm_protocol()["statistic"]["refit_path_check"]["absolute_tolerance"])
+
+
+def refit_path_check(ctx: ContextSpec, task: str, time_index: int, X: Dict, batches: Dict, model) -> Dict:
+    """Protocol v3 (review LANTERN_LR6_REVIEW_29af52f R2): the observed gain of a permuted-target alarm cell by its
+    fitted decoder (fit_ridge + scoring, the recorded value) and by the SAME vectorised code as the null draws with
+    the cell's own permutations must agree within the protocol's bound; otherwise the numerical contract behind the
+    tie rule does not hold and the cell is refused. Returns both values and the identities of the null's inputs."""
+    from experiments.lantern_reconstruction.artifacts import array_identity
+    from experiments.lantern_reconstruction.training import refit_gains
+
+    u = {s: batches[s].u for s in SPLITS}
+    perms = (target_permutation(ctx, "train", u["train"].shape[0], task, time_index),
+             target_permutation(ctx, "val", u["val"].shape[0], task, time_index))
+    g_refit = float(refit_gains(X["train"], u["train"], X["val"], u["val"], X["test"], u["test"], [perms])[0])
+    g_fit = float(score_cell(model, X["test"], u["test"])["G"])
+    tol = refit_path_tolerance()
+    dev = abs(g_fit - g_refit)
+    if not dev <= tol:
+        raise ValueError(f"refit-path check failed for {task} at time index {time_index}: |G_fit - G_refit| = {dev!r} > {tol!r}")
+    inputs = {f"{a}_{s}": array_identity(f"{a}_{s}", np.asarray(v, dtype=np.float64))
+              for s in SPLITS for a, v in (("X", X[s]), ("U", u[s]))}
+    return {"observed_G_fit_path": g_fit, "observed_G_refit_path": g_refit, "abs_deviation": dev, "tolerance": tol, "inputs": inputs}
 
 
 def simulation_key(condition: str, control: str) -> tuple:
@@ -147,6 +176,7 @@ def iter_cells(ctx: ContextSpec, prep: Dict, g: float, condition: str, control: 
             check_decoder_for(model, ctx, task, condition=condition, time=tau, control=control, dt=dt_used)
             cell = {"condition": condition, "control": control, "task": task, "time": tau, "time_index": k, "dt": dt_used}
             if needs_refit_null(control, task, tau):
+                cell["null_meta"] = refit_path_check(ctx, task, k, X, batches, model)     # before the B refits
                 cell["null_G"] = refit_null(ctx, task, k, X, batches)
             res = score_cell(model, X["test"], batches["test"].u) if scorer is None else scorer(model, cell, X["test"], batches["test"].u)
             yield {**cell, "model": model, "result": res}
@@ -190,15 +220,17 @@ def alarm_inputs(per_context: Dict[int, Dict[str, tuple]], study_id: int, n_perm
     targets). The output feeds metrics.control_alarms (G AND p together). Two null distributions:
       reset / zero_impulse: the features carry no target information, so the test targets are permuted with the
         predictions fixed (one stream per cell);
-      permuted_targets: the predictions of a label-permuted decoder DO depend on the test targets through the
-        features (LR6 acceptance alarm, investigation 2026-10-09), so that null is wrong there. Instead
+      permuted_targets: the predictions of a label-permuted decoder CAN depend on the test targets through the
+        features (shown in the diagnosed case: LR6 acceptance alarm, investigation 2026-10-09), so that null is the
+        wrong comparison there. Instead
         nulls[context_id][cell_name] holds B gains of the complete procedure refitted with NEW train and val
         permutations (runner.refit_null); the statistic is the mean over contexts, compared with the means of the
-        paired draws: p = (1 + #{null mean >= observed}) / (1 + B).
+        paired draws: p = (1 + #{null mean >= observed - tie tolerance}) / (1 + B) (protocol v3 tie rule, review
+        LANTERN_LR6_REVIEW_29af52f R2: an exact comparison turned a round-off difference of 4e-17 into p = 1e-4).
     B is the protocol's 9999 and nothing else: the smallest Holm p over 12 cells is 12 / (B + 1), so with
     B = 999 (0.012) the alarm could NEVER fire at 0.01 -- a silently powerless control (found in LR5 tests)."""
     from experiments.lantern_reconstruction.metrics import (control_alarm_cells, episode_losses, permutation_gain_test,
-                                                            permutation_p, scores)
+                                                            permutation_p, scores, upper_tail_count)
 
     if n_perm != ALARM_PERMUTATIONS or isinstance(n_perm, (bool, np.bool_)):
         raise ValueError(f"the control alarm uses exactly B = {ALARM_PERMUTATIONS} permutations (protocol/control_alarms.json)")
@@ -213,7 +245,7 @@ def alarm_inputs(per_context: Dict[int, Dict[str, tuple]], study_id: int, n_perm
             if any(a.shape != (n_perm,) or not np.all(np.isfinite(a)) for a in arrs):
                 raise ValueError(f"refit null of {name} must hold {n_perm} finite gains per context")
             obs = float(np.mean([scores(*episode_losses(*per_context[cid][name]))["G"] for cid in cids]))
-            b = int(np.sum(np.mean(arrs, axis=0) >= obs))
+            b = upper_tail_count(np.mean(arrs, axis=0), obs)
             out[name] = {"G": obs, "p": permutation_p(b, n_perm), "b": b, "B": n_perm}
         else:
             rng = streams.generator(study_id, 0, "test", "decoder", 0, ALARM_PURPOSE, idx)

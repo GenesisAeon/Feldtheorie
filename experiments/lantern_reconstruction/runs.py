@@ -43,7 +43,7 @@ from experiments.lantern_reconstruction.artifacts import IntegrityError
 HERE = streams.HERE
 RESULTS = Path("D:/mandala/mandala-memory-results/lantern")
 RUN_SCHEMA = "lantern-run-v1"
-RECORD_SCHEMA = "lantern-cell-record-v1"
+RECORD_SCHEMA = "lantern-cell-record-v2"     # v2: the refit null carries its provenance (review LANTERN_LR6_REVIEW_29af52f R3)
 KINDS = ("development", "smoke")
 LIFECYCLE = ("development", "smoke_passed", "code_protocol_frozen", "trained", "model_frozen", "evaluated", "reviewed")
 RUN_STATES = ("running", "complete", "interrupted", "incomplete", "failed_integrity", "numerically_invalid")
@@ -153,9 +153,45 @@ def frozen_candidate() -> Dict:
         problems.append("candidate schema unknown")
     if cand.get("code_identity") != current or freeze.get("code_identity") != current:
         problems.append("the code differs from the frozen code identity")
+    problems += software_problems(cand.get("software"))
     if problems:
         raise ValueError(f"research run refused: {problems}")
     return cand
+
+
+SOFTWARE_KEYS = ("python", "numpy", "scipy")
+
+
+def software_problems(frozen) -> list:
+    """Review LANTERN_LR6_REVIEW_29af52f R1: the frozen environment is enforced BEFORE a research run folder exists
+    (and again before every start/resume, via frozen_candidate in execute). Strict equality of the Python, NumPy and
+    SciPy versions; a missing or incomplete software block is refused, never silently accepted."""
+    if not isinstance(frozen, dict) or set(frozen) != set(SOFTWARE_KEYS) or \
+            not all(isinstance(frozen[k], str) and frozen[k] for k in SOFTWARE_KEYS):
+        return [f"the candidate names no complete software environment {SOFTWARE_KEYS} (got {frozen!r})"]
+    cur = software()
+    diffs = {k: {"frozen": frozen[k], "current": cur.get(k)} for k in SOFTWARE_KEYS if frozen[k] != cur.get(k)}
+    return [f"the software differs from the frozen environment: {diffs}"] if diffs else []
+
+
+def research_readiness() -> Dict:
+    """Local readiness report for the research start (LR7); never raises. It names the freeze, the code binding and
+    the EXACT frozen software. The general CI tests do not depend on this machine's environment (review R4); this
+    report does, by design, and names every deviation."""
+    out = {"freeze_file": str(FREEZE_FILE), "freeze_present": FREEZE_FILE.exists(), "current_software": software()}
+    try:
+        cand = ra.strict_json(CANDIDATE_FILE.read_bytes().replace(b"\r\n", b"\n").decode("utf-8"))
+        out["candidate_software"] = cand.get("software")
+        out["software_problems"] = software_problems(cand.get("software"))
+        out["code_matches_candidate"] = cand.get("code_identity") == code_identity(exclude=("protocol/freeze.json",))["identity"]
+    except (OSError, ValueError) as e:
+        out["candidate_error"] = f"{type(e).__name__}: {e}"
+    try:
+        frozen_candidate()
+        out["research_start_allowed"], out["refusal"] = True, None
+    except ValueError as e:
+        out["research_start_allowed"], out["refusal"] = False, str(e)
+    return out
 
 
 def _grid(kind, contexts_, conditions, tasks, sizes, dt, proposals) -> Dict:
@@ -493,6 +529,7 @@ def verify_record(run_dir: Path, run: Dict, c: Dict, ctx) -> Dict:
         nul = artifacts.load_arrays_verified(folder, rec["null"])["null_G"]
         if nul.shape != (runner.ALARM_PERMUTATIONS,) or not np.all(np.isfinite(nul)) or rec["null"].get("B") != runner.ALARM_PERMUTATIONS:
             raise IntegrityError(f"refit null of {cell_dir_name(c)} must hold {runner.ALARM_PERMUTATIONS} finite gains")
+        _check_null_binding(rec, run, c, ctx)
     elif "null" in rec:
         raise IntegrityError(f"{cell_dir_name(c)} carries a refit null although it is no permuted-target alarm cell")
     n = run["grid"]["sizes"]["test"]
@@ -505,6 +542,44 @@ def verify_record(run_dir: Path, run: Dict, c: Dict, ctx) -> Dict:
             (sc["G"], sc["S"], sc["n_episodes"], model.lam) != (rec["scores"]["G"], rec["scores"]["S"], rec["scores"]["n_episodes"], rec["scores"]["lambda"]):
         raise IntegrityError(f"scores of {cell_dir_name(c)} do not follow from its verified predictions and model")
     return rec
+
+
+NULL_ALGORITHM = "training.permuted_null_gains: refit with new train and val permutations (runner.refit_null)"
+
+
+def null_provenance(run: Dict, c: Dict, ctx, model_identity: str, targets_identity: str) -> Dict:
+    """The EXPECTED origin of a cell's refit null (review LANTERN_LR6_REVIEW_29af52f R3), built from the run, the
+    expected cell, the context and the cell's own verified model and test targets -- never from the null record."""
+    from experiments.lantern_reconstruction.metrics import control_alarm_protocol
+
+    return {"run_identity": run["run_identity"], "study_id": run["grid"]["study_id"], "context_id": c["context_id"],
+            "context_fingerprint": contexts.fingerprint(ctx), "condition": c["condition"], "control": c["control"],
+            "task": c["task"], "time": c["time"], "time_index": c["time_index"], "B": runner.ALARM_PERMUTATIONS,
+            "stream": [run["grid"]["study_id"], c["context_id"], "train", "decoder", 0, runner.NULL_PURPOSE,
+                       runner.TASK_INDEX[c["task"]], c["time_index"]],
+            "algorithm": NULL_ALGORITHM, "protocol_schema": control_alarm_protocol()["schema"],
+            "model_identity": model_identity, "test_targets": targets_identity}
+
+
+_NULL_INPUTS = tuple(f"{a}_{s}" for s in runner.SPLITS for a in ("X", "U"))
+
+
+def _check_null_binding(rec: Dict, run: Dict, c: Dict, ctx) -> None:
+    """A valid null file with its valid checksums is not enough: it must belong to THIS run, context, cell, model
+    and test targets, carry the protocol's B, stream, algorithm and protocol version, and its recorded refit-path
+    check must hold for the recorded score."""
+    nul = rec["null"]
+    expected = null_provenance(run, c, ctx, rec["model"]["model_identity"], rec["predictions"]["arrays"]["targets"])
+    if nul.get("provenance") != expected:
+        got = nul.get("provenance") if isinstance(nul.get("provenance"), dict) else {}
+        wrong = sorted(k for k in set(expected) | set(got) if got.get(k) != expected.get(k))
+        raise IntegrityError(f"refit null of {cell_dir_name(c)} does not belong to this cell (provenance differs in {wrong})")
+    chk = nul.get("refit_path_check")
+    if not isinstance(chk, dict) or not isinstance(chk.get("inputs"), dict) or set(chk["inputs"]) != set(_NULL_INPUTS) \
+            or chk.get("observed_G_fit_path") != rec["scores"]["G"] or chk.get("tolerance") != runner.refit_path_tolerance() \
+            or not isinstance(chk.get("abs_deviation"), float) or not chk["abs_deviation"] <= chk["tolerance"] \
+            or chk["abs_deviation"] != abs(chk["observed_G_fit_path"] - chk.get("observed_G_refit_path", float("nan"))):
+        raise IntegrityError(f"refit null of {cell_dir_name(c)}: refit-path check missing, inconsistent or not met")
 
 
 def _structure_check(ctx, C, g, sizes) -> Dict:
@@ -534,6 +609,9 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
     check_resumable(run)
     if run["kind"] == "research":                          # the freeze must still be valid and be THIS grid
         try:
+            # frozen_candidate() compares the CURRENT software with the freeze (R1) and check_resumable() above the
+            # current with the manifest: together the manifest must equal the freeze -- a manifest written in a
+            # wrong environment can never be started, neither there nor in the frozen one.
             if research_grid(frozen_candidate()) != run["grid"]:
                 raise ResumeRefused("the research run's grid differs from the frozen candidate")
         except ValueError as e:
@@ -568,7 +646,8 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
                     def scorer(model, cell, X_test, U_test, cid=cid, ctx=ctx):
                         c = {"context_id": cid, "condition": cell["condition"], "control": cell["control"], "task": cell["task"],
                              "time": cell["time"], "time_index": cell["time_index"]}
-                        return _persist_cell(run_dir, run, ctx, c, model, X_test, U_test, null_G=cell.get("null_G"))
+                        return _persist_cell(run_dir, run, ctx, c, model, X_test, U_test, null_G=cell.get("null_G"),
+                                             null_meta=cell.get("null_meta"))
 
                     for res in runner.iter_cells(ctx, prep, g, cond, ctl, grid["tasks"], None if grid["dt"] == streams.defaults()["integration"]["dt"] else grid["dt"],
                                                scorer=scorer, state_cache=state_cache):
@@ -672,25 +751,35 @@ def _recovery_diagnosis(run: Dict, log: EventLog) -> Dict:
     return {"status": cur, "last": last, "tail": tail, "lock_holder": holder}
 
 
-def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test, null_G=None) -> Dict:
+def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test, null_G=None, null_meta=None) -> Dict:
     """New cell: model, predictions, (refit null of a permuted-target alarm cell), record (last), all exclusive.
     Existing record or orphan files: the recomputed cell must have the same model, prediction and null
-    identities -- else integrity failure."""
+    identities and the same null provenance -- else integrity failure. null_meta is runner.refit_path_check's
+    result (refit-path check and input identities); the null's provenance is built here from the run and cell."""
     folder = Path(run_dir) / "cells" / cell_dir_name(c)
     check_model_against_run(model, run, cell_dir_name(c))           # also before anything is written
-    if (null_G is not None) != runner.needs_refit_null(c["control"], c["task"], c["time"]):
-        raise IntegrityError(f"{cell_dir_name(c)}: refit null present/absent against the control-alarm protocol")
+    if (null_G is not None) != runner.needs_refit_null(c["control"], c["task"], c["time"]) or (null_G is None) != (null_meta is None):
+        raise IntegrityError(f"{cell_dir_name(c)}: refit null (with its refit-path check) present/absent against the control-alarm protocol")
     ident = artifacts.model_identity(model)
     res = artifacts.evaluate_with_integrity(model, ident, X_test, U_test)
     arrays = {"projected": res["projected"], "raw": res["raw"], "targets": np.asarray(U_test, dtype=np.float64)}
     pred_ids = {k: artifacts.array_identity(k, v) for k, v in arrays.items()}
     null_ids = None if null_G is None else {"null_G": artifacts.array_identity("null_G", np.asarray(null_G, dtype=np.float64))}
+    null_extra = None
+    if null_G is not None:
+        if null_meta.get("observed_G_fit_path") != res["G"]:
+            raise IntegrityError(f"{cell_dir_name(c)}: refit-path check was made for a different observed gain")
+        null_extra = {"provenance": null_provenance(run, c, ctx, ident, pred_ids["targets"]),
+                      "refit_path_check": {k: null_meta[k] for k in ("observed_G_fit_path", "observed_G_refit_path", "abs_deviation",
+                                                                     "tolerance", "inputs")}}
     rec_path = folder / "record.json"
     if rec_path.exists():
         rec = ra.strict_json(rec_path.read_text(encoding="utf-8"))
+        old_null = rec.get("null") or {}
         if (rec["model"]["model_identity"] != ident or rec["predictions"]["arrays"] != pred_ids
-                or (rec.get("null") or {}).get("arrays") != null_ids):
-            raise IntegrityError(f"recomputed {cell_dir_name(c)} differs from its record (changed model, seed or code?)")
+                or old_null.get("arrays") != null_ids
+                or (null_extra is not None and {k: old_null.get(k) for k in null_extra} != null_extra)):
+            raise IntegrityError(f"recomputed {cell_dir_name(c)} differs from its record (changed model, seed, inputs or code?)")
         return {**res, "cell_dir": folder.name, "newly_written": False}
     folder.mkdir(parents=True, exist_ok=True)
     _adopt_orphans(folder, model, pred_ids, null_ids)
@@ -698,7 +787,8 @@ def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test,
     pred_rec = _existing_or_save_arrays(folder, arrays, pred_ids)
     null_rec = None if null_G is None else {**_existing_or_save_arrays(folder, {"null_G": np.asarray(null_G, dtype=np.float64)}, null_ids,
                                                                        name="null.npz"),
-                                             "B": int(len(null_G)), "kind": "refit with new train and val permutations (runner.refit_null)"}
+                                             "B": int(len(null_G)), "kind": "refit with new train and val permutations (runner.refit_null)",
+                                             **null_extra}
     record = {"schema": RECORD_SCHEMA, "run_identity": run["run_identity"],
               "cell": {"study_id": run["grid"]["study_id"], "context_id": c["context_id"], "context_fingerprint": contexts.fingerprint(ctx),
                        "condition": c["condition"], "control": c["control"], "task": c["task"], "time": c["time"],

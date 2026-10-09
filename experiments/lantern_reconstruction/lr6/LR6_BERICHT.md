@@ -34,9 +34,9 @@ Es gab **keinen Freeze, keinen Forschungslauf, keinen Merge und keinen Push öff
 - wissenschaftlich **gesperrt**: Beide LR5-A1-Alarme schlugen an, **nur** in `permuted_targets|A|1.0` (G = +0,0048, Holm-p = 0,0012).
 
 **Untersuchung** (`results/lantern/lr6_acceptance_investigation/UNTERSUCHUNG.md`):
-- Ein Decoder mit permutierten Labels ist eine zufällige Abbildung von Merkmalen, die u kodieren. Seine Vorhersagen hängen daher **zwangsläufig** von den Testzielen ab. Der Test mit festen Vorhersagen war für diese Zellen die falsche Nullhypothese; den Konstruktionsfehler habe ich in LR5 gemacht.
+- Ein Decoder mit permutierten Labels ist eine zufällige Abbildung von Merkmalen, die u kodieren. Seine Vorhersagen **können** daher von den Testzielen abhängen; im Diagnosefall war das nachgewiesen. (Eine konstante Abbildung wäre ein Gegenbeispiel zu „zwangsläufig“, so stand es zuerst hier; korrigiert nach Astras Review `29af52f`.) Der Test mit festen Vorhersagen war für diese Zellen der unpassende Vergleich; den Konstruktionsfehler habe ich in LR5 gemacht.
 - Ein schwacher Zusatzkanal war die λ-Wahl auf echten Validierungszielen.
-- Reset und Nullimpuls blieben unauffällig. **Kein Pipeline-Leck.**
+- Reset und Nullimpuls blieben unauffällig. Die Untersuchung hat einen unpassenden Nullvergleich nachgewiesen und **keinen zusätzlichen Befund eines Pipeline-Lecks** ergeben. Aus unauffälligen Kontrollen folgt kein allgemeiner Beweis, dass es kein Leck gibt.
 
 **Entscheidung Johann** (Variante „Passende Nullverteilung“) führte zum **Protokoll v2** (`5905dcd`, `protocol/control_alarms.json`):
 - Bei `permuted_targets` werden Trainings- **und** Validierungsziele permutiert.
@@ -50,7 +50,7 @@ Es gab **keinen Freeze, keinen Forschungslauf, keinen Merge und keinen Push öff
 | Status / Zellen | `complete`, 392/392 verifiziert, keine Uhrenlücke |
 | technisch vollständig | **ja** |
 | wissenschaftlich interpretierbar | **ja**, keine Sperre |
-| LR5-A1-Alarme | **beide still**; alle 12 Zellen mit Holm-p ≥ 0,65 und G < 0 (`permuted_targets|A|1.0`: G = −0,0006, p = 0,53) |
+| LR5-A1-Alarme | **beide still**; alle 12 Zellen mit G < 0, kleinster Holm-p **0,6492** (≈ 0,65; zuerst zu scharf als „≥ 0,65“ gerundet) (`permuted_targets|A|1.0`: G = −0,0006, p = 0,53) |
 | Strukturprüfungen (Reset/Nullimpuls) | bestanden und nachgerechnet |
 | Pipeline-Gate A, G0 | 0,978 > 0,90 |
 | Konvergenzgate | gebunden, bestanden |

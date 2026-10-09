@@ -12,9 +12,14 @@ Dieses Handbuch beschreibt, wie Läufe gestartet, überwacht, nach Abbrüchen fo
 Ein Forschungslauf verlangt `protocol/freeze.json`:
 - Status `frozen` und die Namen der Freigebenden;
 - den SHA-256 der LF-normierten Kandidatendatei;
-- dieselbe Code-Identität wie der aktuelle Code (die Freeze-Datei selbst ausgenommen).
+- dieselbe Code-Identität wie der aktuelle Code (die Freeze-Datei selbst ausgenommen);
+- **genau die Software des Kandidaten** (Python, NumPy und SciPy, jeweils exakte Version). Das wird geprüft, bevor ein Laufordner entsteht, und vor jedem Start und jeder Fortsetzung erneut (Review `29af52f`, R1).
 
 Fehlt etwas davon oder weicht es ab, wird der Lauf verweigert, auch beim Fortsetzen.
+
+**Bereitschaftsprüfung vor dem Forschungsstart:** `python experiments/lantern_reconstruction/tools/lr7_readiness.py`. Sie benennt jede Abweichung (Freeze, Code, Software) und endet nur mit 0, wenn der Start erlaubt wäre. Sie hängt absichtlich von diesem Rechner ab; die allgemeinen CI-Tests tun das nicht.
+
+**Zeitfenster:** mindestens 2,5 Stunden einschließlich Freigabebericht und möglicher Wiederaufnahme (Astra, Review `29af52f`). Die 20 Kontexte und die Auswertungsregeln bleiben fest. Ein Laufzeitproblem ist nie ein Grund, nach Sichtung von Ergebnissen Kontexte wegzulassen.
 
 ## Freeze (Ablauf, nicht durch den Code)
 

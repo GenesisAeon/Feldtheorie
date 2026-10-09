@@ -83,33 +83,62 @@ def permuted_null_gains(X_train, U_train, X_val, U_val, X_test, U_test, rng: np.
         raise ValueError("an explicit numpy Generator is required")
     if isinstance(n_perm, (bool, np.bool_)) or not isinstance(n_perm, (int, np.integer)) or n_perm < 1:
         raise ValueError("n_perm must be a positive integer")
-    grid = np.array(_check_grid(lambda_grid))
-    Xtr, Xva, Xte = (_real_matrix(x, n) for x, n in ((X_train, "X_train"), (X_val, "X_val"), (X_test, "X_test")))
-    Utr, Uva, Ute = (_real_matrix(u, n, 4) for u, n in ((U_train, "U_train"), (U_val, "U_val"), (U_test, "U_test")))
-    mean, scale = standardisation(Xtr)
-    Xs, Xvs, Xts = (Xtr - mean) / scale, (Xva - mean) / scale, (Xte - mean) / scale
-    N, Nv = Xs.shape[0], Xvs.shape[0]
-    xbar, ubar = Xs.mean(axis=0), Utr.mean(axis=0)
-    P, s, Qt = np.linalg.svd(Xs - xbar, full_matrices=False)
-    Uc = Utr - ubar
-    shrink = s[None, :] / (s[None, :] ** 2 + N * grid[:, None])                 # (L, r)
-    loss_zero = np.mean(Ute ** 2, axis=1)
+    core = _RefitCore(X_train, U_train, X_val, U_val, X_test, U_test, lambda_grid)
     out = np.empty(n_perm)
     for start in range(0, n_perm, chunk):
         k = min(chunk, n_perm - start)
-        perms = [(rng.permutation(N), rng.permutation(Nv)) for _ in range(k)]
-        Ucb = np.stack([Uc[pt] for pt, _ in perms])                               # (k, N, 4)
-        Uvb = np.stack([Uva[pv] for _, pv in perms])                              # (k, Nv, 4)
-        PtU = np.matmul(P.T, Ucb)                                                 # (k, r, 4)
-        W = np.matmul(Qt.T, shrink[None, :, :, None] * PtU[:, None, :, :])       # (k, L, d, 4)
-        b = ubar - np.matmul(xbar, W)                                             # (k, L, 4)
-        pv = np.clip(np.matmul(Xvs, W) + b[:, :, None, :], -1.0, 1.0)            # (k, L, Nv, 4)
-        mse = np.mean((pv - Uvb[:, None]) ** 2, axis=(2, 3))                       # (k, L)
-        best = np.argmax(np.where(mse == mse.min(axis=1, keepdims=True), grid[None, :], -np.inf), axis=1)
-        Wsel, bsel = W[np.arange(k), best], b[np.arange(k), best]
-        pt = np.clip(np.matmul(Xts, Wsel) + bsel[:, None, :], -1.0, 1.0)
-        out[start:start + k] = 3.0 * np.mean(loss_zero[None, :] - np.mean((pt - Ute[None]) ** 2, axis=2), axis=1)
+        out[start:start + k] = core.gains([(rng.permutation(core.N), rng.permutation(core.Nv)) for _ in range(k)])
     return out
+
+
+def refit_gains(X_train, U_train, X_val, U_val, X_test, U_test, permutations,
+                lambda_grid: Sequence[float] = LAMBDA_GRID) -> np.ndarray:
+    """The refit gain for EXPLICIT (train permutation, val permutation) pairs, by exactly the code of the null draws.
+    Protocol v3 refit-path check (review LANTERN_LR6_REVIEW_29af52f R2): the observed permuted-target cell is
+    recomputed here with its own permutations and must agree with fit_ridge + scoring."""
+    core = _RefitCore(X_train, U_train, X_val, U_val, X_test, U_test, lambda_grid)
+    perms = []
+    for pt, pv in permutations:
+        pt, pv = np.asarray(pt), np.asarray(pv)
+        if not (np.array_equal(np.sort(pt), np.arange(core.N)) and np.array_equal(np.sort(pv), np.arange(core.Nv))):
+            raise ValueError("refit_gains needs permutations of the training and validation episodes")
+        perms.append((pt, pv))
+    if not perms:
+        raise ValueError("refit_gains needs at least one permutation pair")
+    return core.gains(perms)
+
+
+class _RefitCore:
+    """Shared body of permuted_null_gains and refit_gains: train-only standardisation and ONE SVD of the centred
+    standardised training features (a permutation keeps the target mean); then per batch of permutation pairs the
+    whole lambda path, projected validation MSE, selection (exact tie -> larger lambda) and the test gain."""
+
+    def __init__(self, X_train, U_train, X_val, U_val, X_test, U_test, lambda_grid):
+        self.grid = np.array(_check_grid(lambda_grid))
+        Xtr, Xva, Xte = (_real_matrix(x, n) for x, n in ((X_train, "X_train"), (X_val, "X_val"), (X_test, "X_test")))
+        Utr, self.Uva, self.Ute = (_real_matrix(u, n, 4) for u, n in ((U_train, "U_train"), (U_val, "U_val"), (U_test, "U_test")))
+        mean, scale = standardisation(Xtr)
+        Xs, self.Xvs, self.Xts = (Xtr - mean) / scale, (Xva - mean) / scale, (Xte - mean) / scale
+        self.N, self.Nv = Xs.shape[0], self.Xvs.shape[0]
+        self.xbar, self.ubar = Xs.mean(axis=0), Utr.mean(axis=0)
+        self.P, s, self.Qt = np.linalg.svd(Xs - self.xbar, full_matrices=False)
+        self.Uc = Utr - self.ubar
+        self.shrink = s[None, :] / (s[None, :] ** 2 + self.N * self.grid[:, None])      # (L, r)
+        self.loss_zero = np.mean(self.Ute ** 2, axis=1)
+
+    def gains(self, perms) -> np.ndarray:
+        k = len(perms)
+        Ucb = np.stack([self.Uc[pt] for pt, _ in perms])                                 # (k, N, 4)
+        Uvb = np.stack([self.Uva[pv] for _, pv in perms])                                # (k, Nv, 4)
+        PtU = np.matmul(self.P.T, Ucb)                                                   # (k, r, 4)
+        W = np.matmul(self.Qt.T, self.shrink[None, :, :, None] * PtU[:, None, :, :])    # (k, L, d, 4)
+        b = self.ubar - np.matmul(self.xbar, W)                                          # (k, L, 4)
+        pv = np.clip(np.matmul(self.Xvs, W) + b[:, :, None, :], -1.0, 1.0)              # (k, L, Nv, 4)
+        mse = np.mean((pv - Uvb[:, None]) ** 2, axis=(2, 3))                             # (k, L)
+        best = np.argmax(np.where(mse == mse.min(axis=1, keepdims=True), self.grid[None, :], -np.inf), axis=1)
+        Wsel, bsel = W[np.arange(k), best], b[np.arange(k), best]
+        pt = np.clip(np.matmul(self.Xts, Wsel) + bsel[:, None, :], -1.0, 1.0)
+        return 3.0 * np.mean(self.loss_zero[None, :] - np.mean((pt - self.Ute[None]) ** 2, axis=2), axis=1)
 
 
 def fit_ridge(spec: ObservationSpec, X_train, U_train, X_val, U_val, lambda_grid: Sequence[float] = LAMBDA_GRID,

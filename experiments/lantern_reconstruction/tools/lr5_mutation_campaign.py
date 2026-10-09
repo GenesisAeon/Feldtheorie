@@ -20,6 +20,10 @@ ROOT = HERE.parents[1]
 T = "experiments/lantern_reconstruction/tests/"
 LR1, LR2, LR3 = [T + "test_lr1.py"], [T + "test_lr2.py", T + "test_lr2_rk4.py"], [T + "test_lr3.py", T + "test_lr3_nachreview.py"]
 LR4, ALARM, RUNS = [T + "test_lr4.py", T + "test_lr4_review.py"], [T + "test_lr5_alarms.py"], [T + "test_lr5_runs.py"]
+# a mutant changes the code identity: the two tests bound to it (candidate binding, real candidate accepted)
+# would kill EVERY mutant trivially, so they are deselected; killed_by is checked per mutant
+L6 = [T + "test_lr6.py", "--deselect", T + "test_lr6.py::test_candidate_is_bound_to_the_current_code",
+      "--deselect", T + "test_lr6.py::test_r4_real_candidate_accepted_in_its_own_environment"]
 SNAP = '__import__("experiments.lantern_reconstruction.registry_adapter", fromlist=["x"]).load_verified_snapshot()'
 ENC = '__import__("experiments.lantern_reconstruction.encoding", fromlist=["x"])'
 
@@ -154,13 +158,45 @@ CONTROL_V2 = [   # control-alarm protocol v2 (decision 2026-10-09): permuted val
      '    if control != "permuted_targets":\n        return u_val', "    if True:\n        return u_val", [T + "test_lr6.py"]),
     ("V2", "permuted-target cells silently fall back to the fixed-prediction null", "runner.py",
      '        if name.startswith("permuted_targets|"):', '        if name.startswith("permuted_targets|") and nulls is not None:', [T + "test_lr5_alarms.py", T + "test_lr6.py"]),
-    ("V3", "refit-null ties not counted", "runner.py", "            b = int(np.sum(np.mean(arrs, axis=0) >= obs))", "            b = int(np.sum(np.mean(arrs, axis=0) > obs))", [T + "test_lr6.py"]),
+    # V3/V5 targets follow the code of the LR6 review fix (tie rule, refit-path check); re-run, history kept
+    ("V3", "refit-null ties not counted", "runner.py", "            b = upper_tail_count(np.mean(arrs, axis=0), obs)", "            b = int(np.sum(np.mean(arrs, axis=0) > obs))", L6),
     ("V4", "missing refit null accepted on read", "runs.py",
      '        if "null" not in rec:\n            raise IntegrityError(f"{cell_dir_name(c)} lacks its refit null', '        if False:\n            raise IntegrityError(f"{cell_dir_name(c)} lacks its refit null', [T + "test_lr5_runs.py"]),
     ("V5", "refit null presence not checked before writing", "runs.py",
-     '    if (null_G is not None) != runner.needs_refit_null(c["control"], c["task"], c["time"]):', "    if False:", [T + "test_lr5_runs.py"]),
+     '    if (null_G is not None) != runner.needs_refit_null(c["control"], c["task"], c["time"]) or (null_G is None) != (null_meta is None):',
+     "    if False:", [T + "test_lr5_runs.py"]),
     ("V6", "orphan refit null not compared", "runs.py",
      '        if null_ids is None or _npz_identities(folder / "null.npz", f"orphan null in {folder.name}") != null_ids:', "        if False:", [T + "test_lr5_runs.py"]),
+]
+
+
+REVIEW_LR6_29AF52F = [   # review LANTERN_LR6_REVIEW_29af52f: R1 software binding, R2 ties, R3 null provenance
+    ("T1", "refit null compared exactly again (the reviewed state)", "runner.py", "            b = upper_tail_count(np.mean(arrs, axis=0), obs)",
+     "            b = int(np.sum(np.mean(arrs, axis=0) >= obs))", L6),
+    ("T2", "fixed-prediction null compared exactly", "metrics.py",
+     "    b = upper_tail_count([stat([rng.permutation(len(d[1])) for d in data]) for _ in range(n_perm)], observed)",
+     "    b = sum(stat([rng.permutation(len(d[1])) for d in data]) >= observed for _ in range(n_perm))", L6),
+    ("T3", "tie tolerance applied anti-conservatively", "metrics.py", "    return int(np.sum(a >= observed - tol))",
+     "    return int(np.sum(a >= observed + tol))", L6),
+    ("T4", "protocol tie tolerance ignored by default", "metrics.py", "    tol = tie_tolerance() if tol is None else float(tol)",
+     "    tol = 0.0 if tol is None else float(tol)", L6),
+    ("T5", "refit-path check not enforced", "runner.py", "    if not dev <= tol:\n        raise ValueError(f\"refit-path check failed",
+     "    if False:\n        raise ValueError(f\"refit-path check failed", L6),
+    ("T6", "refit-path check compares the refit with itself", "runner.py", '    g_fit = float(score_cell(model, X["test"], u["test"])["G"])',
+     "    g_fit = g_refit", L6),
+    ("P1", "software not compared at the research start", "runs.py", '    problems += software_problems(cand.get("software"))', "    pass", L6),
+    ("P2", "incomplete software block accepted", "runs.py",
+     "            not all(isinstance(frozen[k], str) and frozen[k] for k in SOFTWARE_KEYS):", "            False:", L6),
+    ("N1", "null provenance not checked on read", "runs.py", "        _check_null_binding(rec, run, c, ctx)", "        pass", L6),
+    ("N2", "expected provenance taken from the null record itself", "runs.py",
+     '    expected = null_provenance(run, c, ctx, rec["model"]["model_identity"], rec["predictions"]["arrays"]["targets"])',
+     '    expected = nul.get("provenance")', L6),
+    ("N3", "refit-path check fields not verified on read", "runs.py",
+     '        raise IntegrityError(f"refit null of {cell_dir_name(c)}: refit-path check missing, inconsistent or not met")', "        pass", L6),
+    ("N4", "resume ignores the recorded null provenance and inputs", "runs.py",
+     "                or (null_extra is not None and {k: old_null.get(k) for k in null_extra} != null_extra)):", "                ):", L6),
+    ("N5", "persist accepts a path check made for another observed gain", "runs.py",
+     '        if null_meta.get("observed_G_fit_path") != res["G"]:', "        if False:", L6),
 ]
 
 
@@ -192,7 +228,8 @@ def rerun(ids):
     out = json.loads(js.read_text(encoding="utf-8"))
     for group, defs in (("plan_mutants", PLAN), ("lr5_mutants", LR5), ("review_lr5_mutants", REVIEW_LR5),
                         ("followup_b9c405b_mutants", FOLLOWUP_B9C405B), ("nachreview_9b52d95_mutants", NACHREVIEW_9B52D95),
-                        ("lr6_mutants", LR6), ("control_v2_mutants", CONTROL_V2)):
+                        ("lr6_mutants", LR6), ("control_v2_mutants", CONTROL_V2),
+                        ("review_lr6_29af52f_mutants", REVIEW_LR6_29AF52F)):
         for i, m in enumerate(out.get(group, [])):
             if m["id"] in ids:
                 new = run_mutant(*next(d for d in defs if d[0] == m["id"]), env)
@@ -206,6 +243,15 @@ def main():
     env = dict(os.environ, PYTHONPATH=".", PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
     if len(sys.argv) > 2 and sys.argv[1] == "--only":
         return finish(rerun(set(sys.argv[2].split(","))))
+    if len(sys.argv) > 1 and sys.argv[1] == "--review-lr6-29af52f":
+        js = HERE / "lr5" / "lr5_mutation_campaign.json"
+        out = json.loads(js.read_text(encoding="utf-8"))
+        out["review_lr6_29af52f_mutants"] = []
+        for m in REVIEW_LR6_29AF52F:
+            out["review_lr6_29af52f_mutants"].append(run_mutant(*m, env))
+            r = out["review_lr6_29af52f_mutants"][-1]
+            print(r["id"], r["result"], r.get("killed_by", [])[:1], flush=True)
+        return finish(out)
     if len(sys.argv) > 1 and sys.argv[1] == "--control-v2":
         js = HERE / "lr5" / "lr5_mutation_campaign.json"
         out = json.loads(js.read_text(encoding="utf-8"))
@@ -277,7 +323,8 @@ EQUIVALENT = {
 def finish(out):
     out["equivalent"] = {k: v for k, v in EQUIVALENT.items()}
     allm = (out["plan_mutants"] + out["lr5_mutants"] + out.get("review_lr5_mutants", []) + out.get("followup_b9c405b_mutants", [])
-            + out.get("nachreview_9b52d95_mutants", []) + out.get("lr6_mutants", []) + out.get("control_v2_mutants", []))
+            + out.get("nachreview_9b52d95_mutants", []) + out.get("lr6_mutants", []) + out.get("control_v2_mutants", [])
+            + out.get("review_lr6_29af52f_mutants", []))
     out["summary"] = {"executed": len(allm), "killed": sum(m["result"] == "killed" for m in allm),
                       "survived": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] not in EQUIVALENT],
                       "equivalent": [m["id"] for m in allm if m["result"] == "SURVIVED" and m["id"] in EQUIVALENT],

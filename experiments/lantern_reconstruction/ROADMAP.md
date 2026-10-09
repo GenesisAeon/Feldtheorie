@@ -106,7 +106,7 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 ## LR6 (2026-10-09)
 
 - **Forschungsmodus** nur über `create_research_run` mit `protocol/freeze.json`, das an den Kandidaten und die Code-Identität gebunden ist. Die **Studienauswertung** nach Plan § 9 erfolgt nur für interpretierbare Forschungsläufe. Dazu kommt das Betriebshandbuch `lr6/BETRIEB.md`.
-- **Erste Entwicklungsabnahme:** Beide LR5-A1-Alarme schlugen an, nur in `permuted_targets|A|1.0`. Die Untersuchung fand einen Konstruktionsfehler dieser Kontrollzellen, kein Pipeline-Leck. Johann entschied sich für **Kontrollprotokoll v2** mit Neufit-Nullverteilung und permutierten Validierungszielen.
+- **Erste Entwicklungsabnahme:** Beide LR5-A1-Alarme schlugen an, nur in `permuted_targets|A|1.0`. Die Untersuchung wies einen Konstruktionsfehler dieser Kontrollzellen nach (unpassender Nullvergleich) und ergab keinen zusätzlichen Befund eines Pipeline-Lecks. Johann entschied sich für **Kontrollprotokoll v2** mit Neufit-Nullverteilung und permutierten Validierungszielen.
 - **Zweite Entwicklungsabnahme:** technisch vollständig und wissenschaftlich interpretierbar; alle 12 Alarmzellen unauffällig; G0 = 0,978.
 - **Freeze-Kandidat:** Masterseed 1431972670 (per `secrets`), 20 Kontexte, 1960 Zellen; MLP-Verzicht als Vorschlag; hochgerechnet 1,86 h bei 2 h Budget. Er ist an den Code `5905dcd` gebunden.
 - **Prüfungen:** Tests 425; Mutation 68, davon 66 erkannt und 2 äquivalent.

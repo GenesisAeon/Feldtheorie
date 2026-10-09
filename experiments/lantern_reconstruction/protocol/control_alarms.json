@@ -1,9 +1,10 @@
 {
- "schema": "lantern-control-alarms-v2",
- "status": "development protocol (NOT frozen); v1 fixed before any run of these cells (LR5, 2026-10-08); v2 = correction of the permuted-target cells, decided by Johann on 2026-10-09 after the LR6 development acceptance alarm",
+ "schema": "lantern-control-alarms-v3",
+ "status": "development protocol (NOT frozen); v1 fixed before any run of these cells (LR5, 2026-10-08); v2 = correction of the permuted-target cells, decided by Johann on 2026-10-09 after the LR6 development acceptance alarm; v3 = numerical tie rule and refit-path check after Astra's review LANTERN_LR6_REVIEW_29af52f (R2)",
  "source": "plan v2.0 section 10 (empirical controls); review LANTERN_LR4_NACHREVIEW_25ba293 LR5-A1",
  "revision": {
-  "v2": "investigation results/lantern/lr6_acceptance_investigation/UNTERSUCHUNG.md: a label-permuted decoder is a random map of features that encode the target (task A, early times), so its test predictions depend on the test targets and the fixed-prediction test fired by construction (only in permuted_targets|A|1.0); in addition lambda selection on REAL validation targets is a weak channel of target information. v2: validation targets are permuted too, and the four permuted-target cells use a refit null; reset and zero_impulse are unchanged"
+  "v2": "investigation results/lantern/lr6_acceptance_investigation/UNTERSUCHUNG.md: the test predictions of a label-permuted decoder CAN depend on the test targets because its features carry target information (shown in the diagnosed case: task A, early times), so the fixed-prediction null was the wrong comparison for these cells and fired there (only in permuted_targets|A|1.0); in addition lambda selection on REAL validation targets is a weak channel of target information. v2: validation targets are permuted too, and the four permuted-target cells use a refit null; reset and zero_impulse are unchanged",
+  "v3": "review LANTERN_LR6_REVIEW_29af52f R2: with constant features the observed fit and every refit give mathematically the SAME gain, but fit_ridge + scoring and the vectorised refits differed by round-off (4.16e-17); the exact comparison counted 0 of 9999 ties and reported p = 0.0001 (Holm 0.0012, target-dependence alarm) instead of p = 1. v3 adds the tie rule and the refit-path check (statistic.tie_rule, statistic.refit_path_check); cells, streams, B and the alarms are unchanged"
  },
  "cells": {
   "rule": "control x task x tau, decoder Ridge, coupling condition lantern",
@@ -23,7 +24,17 @@
   "per_cell": "observed mean over the contexts of G (projected test predictions of the fitted control decoder)",
   "reset_and_zero_impulse": "their features carry no target information: test targets permuted WITHIN each context, predictions fixed; B = 9999; one generator per cell (study, context 0, test, decoder, 0, extra 1, cell index), the contexts permuted from it in ascending order",
   "permuted_targets": "refit null: per context B = 9999 gains of the COMPLETE procedure with NEW train and val permutations (refit, lambda selection, test on the real targets), stream (study, context, train, decoder, 0, extra 4, task index, time index), computed during the run and stored as the cell's null.npz; null statistic of draw b = mean over contexts of the b-th gains",
-  "p_value": "p = (1 + b) / (1 + B), b = number of null statistics >= observed",
+  "p_value": "p = (1 + b) / (1 + B), b = number of null statistics >= observed - tie_rule.absolute_tolerance (ties count toward the upper tail)",
+  "tie_rule": {
+   "absolute_tolerance": 1e-10,
+   "applies_to": "every control-alarm cell: the refit null of the permuted-target cells AND the fixed-prediction null of reset/zero_impulse",
+   "direction": "conservative: a null statistic within the tolerance BELOW the observed one counts as a tie, i.e. toward the upper tail; this can only raise p, never lower it",
+   "reason": "G is a mean of bounded losses (targets and projected predictions in [-1, 1], so -12 <= G <= 3). Mathematically equal statistics computed along different floating-point paths differ only by round-off; the refit-path check below bounds the fit-versus-refit difference per cell at 1e-12 and refuses the cell otherwise, so 1e-10 is 100 times that checked bound. It is absolute, not relative, because G can be 0. Measured on development data (dev contexts 0-3, the four refit cells): fit-versus-refit at most 7.5e-18, refit draws versus fit_ridge at most 8.7e-18. The spread of real null statistics is far larger (second development acceptance run: SD of the cell's null statistic 3.8e-5 to 2.5e-3; in none of the 12 cells was a null statistic within 1e-10 of the observed one, smallest distance 1.3e-9), so the band changes the expected count by about B x density x 1e-10 << 1. Fixed from the error bound, before any research run; not chosen from a p-value."
+  },
+  "refit_path_check": {
+   "absolute_tolerance": 1e-12,
+   "rule": "per permuted-target alarm cell and context, the observed gain is computed twice: by the cell's fitted decoder (fit_ridge + scoring, the value that is recorded and enters the statistic) and by the SAME vectorised refit code as the null draws (training.refit_gains) with the cell's own train and val permutations; their absolute difference must be <= 1e-12, else the cell is refused (the numerical contract behind the tie rule does not hold). Both values and the difference are stored with the cell's null provenance"
+  },
   "multiplicity": "Holm over ALL 12 cells at 0.01, always; never only over a selected subset (e.g. the positive cells)"
  },
  "alarms": {

@@ -13,7 +13,7 @@ and refuse anything else; episodes, times and output coordinates are never count
 from __future__ import annotations
 
 import math
-from typing import Dict, Mapping, Sequence
+from typing import Dict, Mapping, Optional, Sequence
 
 import numpy as np
 from scipy import stats
@@ -180,6 +180,25 @@ def permutation_p(b: int, B: int) -> float:
     return (1 + int(b)) / (1 + int(B))
 
 
+def tie_tolerance() -> float:
+    """Absolute tie tolerance of the control-alarm protocol (v3, review LANTERN_LR6_REVIEW_29af52f R2)."""
+    tol = control_alarm_protocol()["statistic"]["tie_rule"]["absolute_tolerance"]
+    if isinstance(tol, bool) or not isinstance(tol, (int, float)) or not math.isfinite(tol) or tol < 0:
+        raise ValueError("protocol tie tolerance must be a finite non-negative number")
+    return float(tol)
+
+
+def upper_tail_count(null_stats, observed: float, tol: Optional[float] = None) -> int:
+    """Number of null statistics >= observed - tol: mathematically equal statistics computed along different
+    floating-point paths (review R2: 4.16e-17 apart) count as ties, and ties count toward the upper tail. The
+    tolerance only ever RAISES the count (conservative); it is the protocol's, never chosen per result."""
+    tol = tie_tolerance() if tol is None else float(tol)
+    a = np.asarray(null_stats, dtype=np.float64)
+    if a.ndim != 1 or not np.all(np.isfinite(a)) or not math.isfinite(observed) or not (math.isfinite(tol) and tol >= 0):
+        raise ValueError("upper_tail_count needs finite 1-D null statistics, a finite observed value and tolerance")
+    return int(np.sum(a >= observed - tol))
+
+
 def permutation_gain_test(cells: Mapping[int, tuple], rng: np.random.Generator, n_perm: int = 9999) -> Dict:
     """One control-alarm cell: statistic = mean over contexts of G; test targets permuted WITHIN each context,
     predictions fixed. cells: context_id -> (projected predictions (n, 4), targets (n, 4)).
@@ -197,7 +216,7 @@ def permutation_gain_test(cells: Mapping[int, tuple], rng: np.random.Generator, 
         return float(np.mean([3.0 * np.mean(lz[pi] - np.mean((p - u[pi]) ** 2, axis=1)) for (p, u, lz), pi in zip(data, perms)]))
 
     observed = stat([np.arange(len(d[1])) for d in data])
-    b = sum(stat([rng.permutation(len(d[1])) for d in data]) >= observed for _ in range(n_perm))
+    b = upper_tail_count([stat([rng.permutation(len(d[1])) for d in data]) for _ in range(n_perm)], observed)
     return {"observed_mean_G": observed, "b": int(b), "B": int(n_perm), "p": permutation_p(int(b), int(n_perm))}
 
 
