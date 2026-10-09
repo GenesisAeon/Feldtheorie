@@ -1,0 +1,33 @@
+{
+ "approved_by": [
+  "Johann"
+ ],
+ "approved_utc": "2026-10-09T21:37:47.423977+00:00",
+ "binding_decisions": {
+  "fixed": "20 contexts, seed, statistics and control rules are fixed; no context is dropped after results were seen, no scientific threshold is changed for budget reasons; technical delays are resumed by protocol or reported openly",
+  "mlp": "WAIVED for this study (binding); statements are limited to the examined Ridge readability",
+  "operating_window_s": 9000,
+  "runtime_estimate": "linear extrapolation (about 6820 s execute + 151 s release); NOT a guarantee and no upper bound"
+ },
+ "candidate_file": "lr6/freeze_candidate.json",
+ "candidate_sha256": "68fac7fa0ddc43a2133af417c4fb8ccf64717ab52fe31ca02af7aa259b79b690",
+ "code_git_at_freeze": {
+  "commit": "d1cb9369ae3cae9c1bb1886ed52294351ecc18f4",
+  "dirty": false
+ },
+ "code_identity": "670d9352e7fb6f7291318cbd36f0b2df2a17cdbd1cd84acf1e404cf16681ea2c",
+ "decision": "Johann, 2026-10-09: freeze the reviewed candidate UNCHANGED; the MLP waiver is binding for this study; plan an operating window of at least 2.5 h -- the runtime estimate is no guarantee; then the LR7 readiness check in the frozen environment and a separate pre-start review; no research run yet",
+ "next": "LR7: readiness check in the exact frozen environment (tools/lr7_readiness.py), then a separate pre-start review; the research run is started only after that review",
+ "research_study_id": 1431972670,
+ "review_basis": [
+  "LANTERN_LR6_REVIEW_29af52f (Astra): R1-R4, fixed in b0da0c7",
+  "LANTERN_LR6_NACHREVIEW_987d9fc (Astra): R1-R3 closed, F1 fixed in d1cb936; no further objection to the formal freeze"
+ ],
+ "schema": "lantern-freeze-v1",
+ "software": {
+  "numpy": "2.2.6",
+  "python": "3.11.9",
+  "scipy": "1.15.3"
+ },
+ "status": "frozen"
+}
