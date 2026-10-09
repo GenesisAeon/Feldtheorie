@@ -1,0 +1,8 @@
+{
+ "note": "stdout of repro_r1_r4_baseline.py at 29af52f (code identity 1a00ff9e...), copied verbatim; synthetic freeze fixture in a temp folder, execute() never called",
+ "code_identity": "1a00ff9ee4d2dd05f5034793271aaf227dd92242a7df992cc2f2dee817748bc8",
+ "candidate_software": {"numpy": "2.2.6", "python": "3.11.9", "scipy": "1.15.3"},
+ "actual": {"python": "3.11.9", "numpy": "2.2.6", "scipy": "1.15.3"},
+ "R1": {"created": true, "manifest_software": {"numpy": "2.2.6", "python": "3.12.14", "scipy": "1.15.3"}, "check_resumable": "accepted", "status": null},
+ "R4": {"candidate_software_equals_runtime_under_3.12": false}
+}

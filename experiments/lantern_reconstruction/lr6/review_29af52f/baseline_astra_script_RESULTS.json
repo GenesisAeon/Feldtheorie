@@ -1,0 +1,89 @@
+{
+  "package_commit": "0091f9650b581ae948f24112a81ed28308c24348",
+  "lantern_commit": "29af52f03b1f8ffd68c168e58578034abc5ea529",
+  "runtime": {
+    "python": "3.11.9",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "candidate_software": {
+    "numpy": "2.2.6",
+    "python": "3.11.9",
+    "scipy": "1.15.3"
+  },
+  "registry_canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
+  "adaptation": "registry repo=None omits original Git-history checks only; synthetic freeze paths redirected to output",
+  "cases": {
+    "software_mismatch": {
+      "candidate_accepted": true,
+      "manifest_created": true,
+      "frozen_software": {
+        "numpy": "2.2.6",
+        "python": "3.11.9",
+        "scipy": "1.15.3"
+      },
+      "run_software": {
+        "numpy": "2.2.6",
+        "python": "3.11.9",
+        "scipy": "1.15.3"
+      },
+      "mismatch": false,
+      "check_resumable_accepted": true,
+      "status": null,
+      "research_execute_called": false
+    },
+    "roundoff_tie": {
+      "contexts": [
+        {
+          "seed": 0,
+          "observed_G": -0.011351993312996786,
+          "null_min": -0.011351993312996828,
+          "null_max": -0.011351993312996828,
+          "null_unique": 1,
+          "observed_minus_null": 4.163336342344337e-17
+        },
+        {
+          "seed": 1,
+          "observed_G": -0.02302293107535973,
+          "null_min": -0.02302293107535973,
+          "null_max": -0.02302293107535973,
+          "null_unique": 1,
+          "observed_minus_null": 0.0
+        }
+      ],
+      "features": "observe of zero states/measurement errors: sin=0, cos=1; all columns constant",
+      "exact_mathematical_p": 1.0,
+      "cell": {
+        "G": -0.017187462194178257,
+        "p": 0.0001,
+        "b": 0,
+        "B": 9999
+      },
+      "alarm_cell": {
+        "G": -0.017187462194178257,
+        "p": 0.0001,
+        "holm_p": 0.0012000000000000001,
+        "positive_spurious_success": false,
+        "target_dependence": true
+      },
+      "positive_alarm": false,
+      "dependence_alarm": true
+    },
+    "independent_refit_reference": {
+      "draws": 20,
+      "max_abs_error": 1.3791051634015616e-16
+    },
+    "cross_context_null_with_its_record": {
+      "source_context": 1,
+      "destination_context": 0,
+      "original_null_sha256": "391006c4e0edae25213ac091af40c139bf0ae795e3d693d858670f1a94b8d10e",
+      "substituted_null_sha256": "fb2a107fa9b8e5814a0ed01748e4d02837778f32150f7504b67c290e7dad9937",
+      "different_null": true,
+      "verify_record": {
+        "accepted": true
+      },
+      "model_predictions_cell_and_run_metadata_unchanged": true
+    }
+  },
+  "original_freeze_still_absent": true
+}
