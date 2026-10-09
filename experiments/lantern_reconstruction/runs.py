@@ -487,6 +487,14 @@ def verify_record(run_dir: Path, run: Dict, c: Dict, ctx) -> Dict:
                                           control=c["control"], dt=run["grid"]["dt"])
     check_model_against_run(model, run, cell_dir_name(c))
     arr = artifacts.load_arrays_verified(folder, rec["predictions"])
+    if runner.needs_refit_null(c["control"], c["task"], c["time"]):
+        if "null" not in rec:
+            raise IntegrityError(f"{cell_dir_name(c)} lacks its refit null (permuted-target control-alarm cell)")
+        nul = artifacts.load_arrays_verified(folder, rec["null"])["null_G"]
+        if nul.shape != (runner.ALARM_PERMUTATIONS,) or not np.all(np.isfinite(nul)) or rec["null"].get("B") != runner.ALARM_PERMUTATIONS:
+            raise IntegrityError(f"refit null of {cell_dir_name(c)} must hold {runner.ALARM_PERMUTATIONS} finite gains")
+    elif "null" in rec:
+        raise IntegrityError(f"{cell_dir_name(c)} carries a refit null although it is no permuted-target alarm cell")
     n = run["grid"]["sizes"]["test"]
     if arr["projected"].shape != (n, 4) or arr["targets"].shape != (n, 4) or not all(np.all(np.isfinite(a)) for a in arr.values()):
         raise IntegrityError(f"predictions of {cell_dir_name(c)} have the wrong sample count or are not finite")
@@ -560,7 +568,7 @@ def execute(run_dir: Path, *, lock_root: Optional[Path] = None, stop_after: Opti
                     def scorer(model, cell, X_test, U_test, cid=cid, ctx=ctx):
                         c = {"context_id": cid, "condition": cell["condition"], "control": cell["control"], "task": cell["task"],
                              "time": cell["time"], "time_index": cell["time_index"]}
-                        return _persist_cell(run_dir, run, ctx, c, model, X_test, U_test)
+                        return _persist_cell(run_dir, run, ctx, c, model, X_test, U_test, null_G=cell.get("null_G"))
 
                     for res in runner.iter_cells(ctx, prep, g, cond, ctl, grid["tasks"], None if grid["dt"] == streams.defaults()["integration"]["dt"] else grid["dt"],
                                                scorer=scorer, state_cache=state_cache):
@@ -664,25 +672,33 @@ def _recovery_diagnosis(run: Dict, log: EventLog) -> Dict:
     return {"status": cur, "last": last, "tail": tail, "lock_holder": holder}
 
 
-def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test) -> Dict:
-    """New cell: model, predictions, record (last), all exclusive. Existing record or orphan files: the
-    recomputed cell must have the same model identity and prediction identities -- else integrity failure."""
+def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test, null_G=None) -> Dict:
+    """New cell: model, predictions, (refit null of a permuted-target alarm cell), record (last), all exclusive.
+    Existing record or orphan files: the recomputed cell must have the same model, prediction and null
+    identities -- else integrity failure."""
     folder = Path(run_dir) / "cells" / cell_dir_name(c)
     check_model_against_run(model, run, cell_dir_name(c))           # also before anything is written
+    if (null_G is not None) != runner.needs_refit_null(c["control"], c["task"], c["time"]):
+        raise IntegrityError(f"{cell_dir_name(c)}: refit null present/absent against the control-alarm protocol")
     ident = artifacts.model_identity(model)
     res = artifacts.evaluate_with_integrity(model, ident, X_test, U_test)
     arrays = {"projected": res["projected"], "raw": res["raw"], "targets": np.asarray(U_test, dtype=np.float64)}
     pred_ids = {k: artifacts.array_identity(k, v) for k, v in arrays.items()}
+    null_ids = None if null_G is None else {"null_G": artifacts.array_identity("null_G", np.asarray(null_G, dtype=np.float64))}
     rec_path = folder / "record.json"
     if rec_path.exists():
         rec = ra.strict_json(rec_path.read_text(encoding="utf-8"))
-        if rec["model"]["model_identity"] != ident or rec["predictions"]["arrays"] != pred_ids:
+        if (rec["model"]["model_identity"] != ident or rec["predictions"]["arrays"] != pred_ids
+                or (rec.get("null") or {}).get("arrays") != null_ids):
             raise IntegrityError(f"recomputed {cell_dir_name(c)} differs from its record (changed model, seed or code?)")
         return {**res, "cell_dir": folder.name, "newly_written": False}
     folder.mkdir(parents=True, exist_ok=True)
-    _adopt_orphans(folder, model, pred_ids)
+    _adopt_orphans(folder, model, pred_ids, null_ids)
     model_rec = _existing_or_save_model(folder, model)
     pred_rec = _existing_or_save_arrays(folder, arrays, pred_ids)
+    null_rec = None if null_G is None else {**_existing_or_save_arrays(folder, {"null_G": np.asarray(null_G, dtype=np.float64)}, null_ids,
+                                                                       name="null.npz"),
+                                             "B": int(len(null_G)), "kind": "refit with new train and val permutations (runner.refit_null)"}
     record = {"schema": RECORD_SCHEMA, "run_identity": run["run_identity"],
               "cell": {"study_id": run["grid"]["study_id"], "context_id": c["context_id"], "context_fingerprint": contexts.fingerprint(ctx),
                        "condition": c["condition"], "control": c["control"], "task": c["task"], "time": c["time"],
@@ -691,6 +707,8 @@ def _persist_cell(run_dir: Path, run: Dict, ctx, c: Dict, model, X_test, U_test)
               "scores": {"G": res["G"], "S": res["S"], "n_episodes": res["n_episodes"], "lambda": model.lam,
                          "n_raw_outside_unit_box": res["n_raw_outside_unit_box"]},
               "integrity": {"model_identity_checked_before_and_after_evaluation": True}}
+    if null_rec is not None:
+        record["null"] = null_rec
     artifacts.write_json_exclusive(rec_path, record)
     return {**res, "cell_dir": folder.name, "newly_written": True}
 
@@ -711,7 +729,7 @@ def _npz_identities(path: Path, where: str) -> Dict[str, str]:
         raise IntegrityError(f"{where}: unreadable NPZ ({type(e).__name__}: {e})") from None
 
 
-def _adopt_orphans(folder: Path, model, pred_ids: Dict) -> None:
+def _adopt_orphans(folder: Path, model, pred_ids: Dict, null_ids: Optional[Dict] = None) -> None:
     """Files of an interrupted cell without record may only be adopted if they ARE the recomputed cell, EACH
     file on its own (review REVIEW_LR5 R4: an NPZ without JSON is compared too). Any deviation is an
     integrity failure; nothing is renamed, replaced or overwritten."""
@@ -729,6 +747,9 @@ def _adopt_orphans(folder: Path, model, pred_ids: Dict) -> None:
     if (folder / "predictions.npz").exists():
         if _npz_identities(folder / "predictions.npz", f"orphan predictions in {folder.name}") != pred_ids:
             raise IntegrityError(f"orphan predictions in {folder.name} differ from the recomputed ones")
+    if (folder / "null.npz").exists():
+        if null_ids is None or _npz_identities(folder / "null.npz", f"orphan null in {folder.name}") != null_ids:
+            raise IntegrityError(f"orphan refit null in {folder.name} differs from the recomputed one")
 
 
 def _existing_or_save_model(folder: Path, model) -> Dict:
@@ -742,7 +763,7 @@ def _existing_or_save_model(folder: Path, model) -> Dict:
             "npz_sha256": artifacts.sha256((folder / "model.npz").read_bytes()), "json": "model.json", "json_sha256": artifacts.sha256(meta)}
 
 
-def _existing_or_save_arrays(folder: Path, arrays: Dict, pred_ids: Dict) -> Dict:
-    if (folder / "predictions.npz").exists():
-        return {"file": "predictions.npz", "sha256": artifacts.sha256((folder / "predictions.npz").read_bytes()), "arrays": pred_ids}
-    return artifacts.save_arrays_exclusive(folder / "predictions.npz", **arrays)
+def _existing_or_save_arrays(folder: Path, arrays: Dict, ids: Dict, name: str = "predictions.npz") -> Dict:
+    if (folder / name).exists():
+        return {"file": name, "sha256": artifacts.sha256((folder / name).read_bytes()), "arrays": ids}
+    return artifacts.save_arrays_exclusive(folder / name, **arrays)

@@ -26,8 +26,10 @@ SPLITS = ("train", "val", "test")
 TASKS = ("A", "B")
 CONTROLS = ("none", "reset", "zero_impulse", "permuted_targets")
 TASK_INDEX = {"A": 0, "B": 1}
-PERMUTED_TARGETS_PURPOSE = 2      # decoder-stream extra component (protocol/control_alarms.json)
+PERMUTED_TARGETS_PURPOSE = 2      # decoder-stream extra components (protocol/control_alarms.json)
 ALARM_PURPOSE = 1
+PERMUTED_VAL_PURPOSE = 3
+NULL_PURPOSE = 4
 
 
 def development_sizes() -> Dict[str, int]:
@@ -58,12 +60,40 @@ def prepare_context(ctx: ContextSpec, C_lantern: np.ndarray, sizes: Dict[str, in
 
 def training_targets(ctx: ContextSpec, u_train: np.ndarray, control: str, task: str, time_index: int) -> np.ndarray:
     """The training targets of a cell: unchanged, or for the 'permuted_targets' control permuted by the
-    decoder stream (study, context, train, decoder, 0, 2, task index, time index). Val/test stay unpermuted."""
+    decoder stream (study, context, train, decoder, 0, 2, task index, time index). Test targets stay real."""
     if control != "permuted_targets":
         return u_train
     perm = streams.generator(ctx.study_id, ctx.context_id, "train", "decoder", 0, PERMUTED_TARGETS_PURPOSE,
                              TASK_INDEX[task], time_index).permutation(u_train.shape[0])
     return u_train[perm]
+
+
+def validation_targets(ctx: ContextSpec, u_val: np.ndarray, control: str, task: str, time_index: int) -> np.ndarray:
+    """For 'permuted_targets' the VALIDATION targets are permuted too (decision 2026-10-09 after the LR6
+    acceptance alarm): lambda selection on real validation targets would otherwise pick, among label-free fits,
+    the one that happens to match the true feature-target relation. Stream (study, context, val, decoder, 0, 3,
+    task index, time index)."""
+    if control != "permuted_targets":
+        return u_val
+    perm = streams.generator(ctx.study_id, ctx.context_id, "val", "decoder", 0, PERMUTED_VAL_PURPOSE,
+                             TASK_INDEX[task], time_index).permutation(u_val.shape[0])
+    return u_val[perm]
+
+
+def needs_refit_null(control: str, task: str, time: float) -> bool:
+    """The four permuted-target control-alarm cells get the refit null distribution (protocol/control_alarms.json)."""
+    from experiments.lantern_reconstruction.metrics import control_alarm_protocol
+    c = control_alarm_protocol()["cells"]
+    return control == "permuted_targets" and task in c["tasks"] and float(time) in [float(t) for t in c["times"]]
+
+
+def refit_null(ctx: ContextSpec, task: str, time_index: int, X: Dict, batches: Dict) -> np.ndarray:
+    """B = 9999 gains of the complete label-permuted procedure (new train AND val permutations, refit, test on the
+    real targets) from the stream (study, context, train, decoder, 0, 4, task index, time index)."""
+    from experiments.lantern_reconstruction.training import permuted_null_gains
+    rng = streams.generator(ctx.study_id, ctx.context_id, "train", "decoder", 0, NULL_PURPOSE, TASK_INDEX[task], time_index)
+    return permuted_null_gains(X["train"], batches["train"].u, X["val"], batches["val"].u, X["test"], batches["test"].u,
+                               rng, ALARM_PERMUTATIONS)
 
 
 def simulation_key(condition: str, control: str) -> tuple:
@@ -109,12 +139,15 @@ def iter_cells(ctx: ContextSpec, prep: Dict, g: float, condition: str, control: 
     for task in tasks:
         for k, tau in enumerate(float(t) for t in d["time_grid"]):
             X = {s: observation.observe(ctx, specs[task], states[s][:, k], batches[s].eps[:, k]) for s in SPLITS}
-            model = fit_ridge(specs[task], X["train"], training_targets(ctx, batches["train"].u, control, task, k), X["val"], batches["val"].u,
+            model = fit_ridge(specs[task], X["train"], training_targets(ctx, batches["train"].u, control, task, k), X["val"],
+                              validation_targets(ctx, batches["val"].u, control, task, k),
                               provenance={"study_id": ctx.study_id, "context_id": ctx.context_id, "condition": condition,
                                           "task": task, "time": tau, "control": control, "dt": dt_used,
                                           "context_fingerprint": fingerprint(ctx), "config_sha256": streams.config_sha256()})
             check_decoder_for(model, ctx, task, condition=condition, time=tau, control=control, dt=dt_used)
             cell = {"condition": condition, "control": control, "task": task, "time": tau, "time_index": k, "dt": dt_used}
+            if needs_refit_null(control, task, tau):
+                cell["null_G"] = refit_null(ctx, task, k, X, batches)
             res = score_cell(model, X["test"], batches["test"].u) if scorer is None else scorer(model, cell, X["test"], batches["test"].u)
             yield {**cell, "model": model, "result": res}
 
@@ -151,21 +184,39 @@ def run_context(ctx: ContextSpec, C_lantern: np.ndarray, g: float, *, sizes: Opt
 ALARM_PERMUTATIONS = 9999
 
 
-def alarm_inputs(per_context: Dict[int, Dict[str, tuple]], study_id: int, n_perm: int = ALARM_PERMUTATIONS) -> Dict[str, Dict]:
-    """Permutation result of every named control cell from the projected test predictions and targets of
-    each context: per_context[context_id][cell_name] = (projected predictions, test targets). One stream
-    per cell (protocol/control_alarms.json); the output feeds metrics.control_alarms (G AND p together).
-
+def alarm_inputs(per_context: Dict[int, Dict[str, tuple]], study_id: int, n_perm: int = ALARM_PERMUTATIONS,
+                 nulls: Optional[Dict[int, Dict[str, np.ndarray]]] = None) -> Dict[str, Dict]:
+    """Result of every named control cell; per_context[context_id][cell_name] = (projected predictions, test
+    targets). The output feeds metrics.control_alarms (G AND p together). Two null distributions:
+      reset / zero_impulse: the features carry no target information, so the test targets are permuted with the
+        predictions fixed (one stream per cell);
+      permuted_targets: the predictions of a label-permuted decoder DO depend on the test targets through the
+        features (LR6 acceptance alarm, investigation 2026-10-09), so that null is wrong there. Instead
+        nulls[context_id][cell_name] holds B gains of the complete procedure refitted with NEW train and val
+        permutations (runner.refit_null); the statistic is the mean over contexts, compared with the means of the
+        paired draws: p = (1 + #{null mean >= observed}) / (1 + B).
     B is the protocol's 9999 and nothing else: the smallest Holm p over 12 cells is 12 / (B + 1), so with
     B = 999 (0.012) the alarm could NEVER fire at 0.01 -- a silently powerless control (found in LR5 tests)."""
-    from experiments.lantern_reconstruction.metrics import control_alarm_cells, permutation_gain_test
+    from experiments.lantern_reconstruction.metrics import (control_alarm_cells, episode_losses, permutation_gain_test,
+                                                            permutation_p, scores)
 
     if n_perm != ALARM_PERMUTATIONS or isinstance(n_perm, (bool, np.bool_)):
         raise ValueError(f"the control alarm uses exactly B = {ALARM_PERMUTATIONS} permutations (protocol/control_alarms.json)")
     names = control_alarm_cells()
     out = {}
     for idx, name in enumerate(names):
-        rng = streams.generator(study_id, 0, "test", "decoder", 0, ALARM_PURPOSE, idx)
-        r = permutation_gain_test({cid: per_context[cid][name] for cid in sorted(per_context)}, rng, n_perm)
-        out[name] = {"G": r["observed_mean_G"], "p": r["p"], "b": r["b"], "B": r["B"]}
+        cids = sorted(per_context)
+        if name.startswith("permuted_targets|"):
+            if nulls is None or any(name not in nulls.get(cid, {}) for cid in cids):
+                raise ValueError(f"cell {name} needs the refit null of every context")
+            arrs = [np.asarray(nulls[cid][name], dtype=np.float64) for cid in cids]
+            if any(a.shape != (n_perm,) or not np.all(np.isfinite(a)) for a in arrs):
+                raise ValueError(f"refit null of {name} must hold {n_perm} finite gains per context")
+            obs = float(np.mean([scores(*episode_losses(*per_context[cid][name]))["G"] for cid in cids]))
+            b = int(np.sum(np.mean(arrs, axis=0) >= obs))
+            out[name] = {"G": obs, "p": permutation_p(b, n_perm), "b": b, "B": n_perm}
+        else:
+            rng = streams.generator(study_id, 0, "test", "decoder", 0, ALARM_PURPOSE, idx)
+            r = permutation_gain_test({cid: per_context[cid][name] for cid in cids}, rng, n_perm)
+            out[name] = {"G": r["observed_mean_G"], "p": r["p"], "b": r["b"], "B": r["B"]}
     return out

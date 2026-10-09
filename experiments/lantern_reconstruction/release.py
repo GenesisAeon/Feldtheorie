@@ -99,15 +99,18 @@ def release_report(run_dir: Path) -> Dict:
         if len(grid["contexts"]) < 2:
             blocks.append("control alarms need at least two contexts")
         else:
-            per = {cid: {} for cid in grid["contexts"]}
+            per, nulls = {cid: {} for cid in grid["contexts"]}, {cid: {} for cid in grid["contexts"]}
             for name in metrics.control_alarm_cells():
                 ctl, task, tau = name.split("|")
                 k = grid["times"].index(float(tau))
                 for cid in grid["contexts"]:
                     c = {"context_id": cid, "condition": runs.CONTROL_CONDITION, "control": ctl, "task": task, "time": float(tau), "time_index": k}
-                    arr = artifacts.load_arrays_verified(run_dir / "cells" / runs.cell_dir_name(c), records[runs.cell_dir_name(c)]["predictions"])
+                    folder, rec = run_dir / "cells" / runs.cell_dir_name(c), records[runs.cell_dir_name(c)]
+                    arr = artifacts.load_arrays_verified(folder, rec["predictions"])
                     per[cid][name] = (arr["projected"], arr["targets"])
-            alarms = metrics.control_alarms(runner.alarm_inputs(per, grid["study_id"]))
+                    if "null" in rec:                                # permuted-target cells: refit null (verified)
+                        nulls[cid][name] = artifacts.load_arrays_verified(folder, rec["null"])["null_G"]
+            alarms = metrics.control_alarms(runner.alarm_inputs(per, grid["study_id"], nulls=nulls))
             if alarms["positive_spurious_success_alarm"]:
                 blocks.append("LR5-A1 positive spurious success alarm")
             if alarms["target_dependence_alarm"]:

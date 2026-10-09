@@ -356,8 +356,8 @@ plan_mutant_2_detection_test:
   passed: true
   summary: 1 passed, 35 deselected, 1 warning in 2.02s
 summary:
-  executed: 62
-  killed: 60
+  executed: 68
+  killed: 66
   survived: []
   equivalent:
   - L2
@@ -367,6 +367,9 @@ summary:
   - L1
   - L9
   - S7
+  - V4
+  - V5
+  - V6
   invalid_targets: []
   not_applicable:
   - '12'
@@ -649,3 +652,86 @@ lr6_mutants:
   killed_by:
   - experiments/lantern_reconstruction/tests/test_lr6.py::test_study_evaluation_only_B1_and_none
   seconds: 9.7
+control_v2_mutants:
+- id: V1
+  description: validation targets not permuted in the permuted-target control
+  file: runner.py
+  tests:
+  - test_lr6.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_validation_targets_permuted_only_for_the_permuted_control
+  seconds: 16.0
+- id: V2
+  description: permuted-target cells silently fall back to the fixed-prediction null
+  file: runner.py
+  tests:
+  - test_lr5_alarms.py
+  - test_lr6.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_alarms.py::test_alarm_inputs_end_to_end_with_streams
+  seconds: 21.2
+- id: V3
+  description: refit-null ties not counted
+  file: runner.py
+  tests:
+  - test_lr6.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr6.py::test_alarm_inputs_refit_p_by_hand
+  seconds: 19.2
+- id: V4
+  description: missing refit null accepted on read
+  file: runs.py
+  tests:
+  - test_lr5_runs.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_resume_with_a_record_lacking_its_null_is_an_integrity_failure
+  seconds: 228.6
+  history:
+  - id: V4
+    description: missing refit null accepted on read
+    file: runs.py
+    tests:
+    - test_lr5_runs.py
+    result: SURVIVED
+    killed_by: []
+    seconds: 220.5
+- id: V5
+  description: refit null presence not checked before writing
+  file: runs.py
+  tests:
+  - test_lr5_runs.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_persist_cell_refuses_a_null_where_the_protocol_has_none_and_vice_versa
+  seconds: 273.0
+  history:
+  - id: V5
+    description: refit null presence not checked before writing
+    file: runs.py
+    tests:
+    - test_lr5_runs.py
+    result: SURVIVED
+    killed_by: []
+    seconds: 223.9
+- id: V6
+  description: orphan refit null not compared
+  file: runs.py
+  tests:
+  - test_lr5_runs.py
+  result: killed
+  killed_by:
+  - experiments/lantern_reconstruction/tests/test_lr5_runs.py::test_resume_with_a_different_orphan_null_is_an_integrity_failure
+  seconds: 313.6
+  history:
+  - id: V6
+    description: orphan refit null not compared
+    file: runs.py
+    tests:
+    - test_lr5_runs.py
+    result: SURVIVED
+    killed_by: []
+    seconds: 225.4

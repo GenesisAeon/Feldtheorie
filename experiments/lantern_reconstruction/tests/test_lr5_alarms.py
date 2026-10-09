@@ -99,10 +99,14 @@ def test_alarm_inputs_end_to_end_with_streams():
         for n in NAMES:
             u = rng.uniform(-1, 1, (10, 4))
             per[cid][n] = rev if n == NAMES[2] else (np.clip(rng.normal(0, .2, (10, 4)), -1, 1), u)
-    a1 = runner.alarm_inputs(per, SID)
-    assert a1 == runner.alarm_inputs(per, SID)                                    # reproducible
+    # v2: the permuted-target cells need their refit null; here every null gain is +1 (never exceeded)
+    nulls = {cid: {n: np.ones(9999) for n in NAMES if n.startswith("permuted_targets|")} for cid in (0, 1)}
+    a1 = runner.alarm_inputs(per, SID, nulls=nulls)
+    assert a1 == runner.alarm_inputs(per, SID, nulls=nulls)                       # reproducible
     with pytest.raises(ValueError, match="9999"):
-        runner.alarm_inputs(per, SID, n_perm=999)          # min Holm p 12/1000 = .012 > .01: could never fire
+        runner.alarm_inputs(per, SID, n_perm=999, nulls=nulls)  # min Holm p 12/1000 = .012 > .01: could never fire
+    with pytest.raises(ValueError, match="refit null"):
+        runner.alarm_inputs(per, SID)                                              # v2: no silent fallback to the wrong null
     assert a1[NAMES[2]]["G"] == -1.6851777777777779 and a1[NAMES[2]]["b"] == 0
     out = metrics.control_alarms(a1)
     assert out["target_dependence_alarm"] and not out["positive_spurious_success_alarm"]
@@ -164,7 +168,8 @@ def test_mutation_campaign_record_is_consistent():
     assert ids | set(d["not_applicable"]) == {str(i) for i in range(1, 19)}
     assert all(m["result"] == "killed" for m in d["plan_mutants"]) and d["plan_mutant_2_detection_test"]["passed"]
     surv = [m["id"] for m in d["plan_mutants"] + d["lr5_mutants"] + d.get("review_lr5_mutants", []) + d.get("followup_b9c405b_mutants", [])
-            + d.get("nachreview_9b52d95_mutants", []) + d.get("lr6_mutants", []) if m["result"] != "killed"]
+            + d.get("nachreview_9b52d95_mutants", []) + d.get("lr6_mutants", []) + d.get("control_v2_mutants", [])
+            if m["result"] != "killed"]
     assert surv == sorted(d["equivalent"]) and d["summary"]["survived"] == []
 
 

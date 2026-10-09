@@ -214,6 +214,80 @@ def test_release_detects_manipulated_artifacts(complete_run, tmp_path, attack):
     assert not rep["technically_complete"] and not rep["scientifically_interpretable"] and rep["problems"]
 
 
+def test_refit_nulls_present_exactly_for_the_permuted_alarm_cells(complete_run):
+    with_null = sorted(p.parent.name for p in (complete_run[1] / "cells").glob("*/null.npz"))
+    expected = sorted(f"c{c:03d}__lantern__permuted_targets__{t}__t{k}" for c in (0, 1) for t in ("A", "B") for k in (2, 5))
+    assert with_null == expected
+    rec = json.loads((complete_run[1] / "cells" / expected[0] / "record.json").read_text(encoding="utf-8"))
+    assert rec["null"]["B"] == 9999 and set(rec["null"]["arrays"]) == {"null_G"}
+
+
+@pytest.mark.parametrize("attack", ["null_swapped", "null_removed_with_record_entry"])
+def test_manipulated_refit_null_is_detected(complete_run, tmp_path, attack):
+    rd = _copy(complete_run, tmp_path)
+    a = rd / "cells" / "c000__lantern__permuted_targets__A__t2"
+    b = rd / "cells" / "c001__lantern__permuted_targets__A__t2"
+    if attack == "null_swapped":
+        (a / "null.npz").unlink()
+        shutil.copy(b / "null.npz", a / "null.npz")
+    else:
+        rec = json.loads((a / "record.json").read_text(encoding="utf-8"))
+        rec.pop("null")
+        (a / "record.json").write_text(json.dumps(rec), encoding="utf-8")
+        (a / "null.npz").unlink()
+    rep = release.release_report(rd)
+    assert not rep["technically_complete"] and any("null" in p for p in rep["problems"])
+
+
+ALARM_CELL = "c000__lantern__permuted_targets__A__t2"     # cell 59 of context 0 (4 units x 14 cells, then A t0..t2)
+
+
+def _interrupted_after_first_alarm_cell(tmp_path, name):
+    rd = runs.create_run(tmp_path / "runs", "smoke", [0, 1], run_id=name, **GRID)
+    with pytest.raises(runs.Interrupted):
+        runs.execute(rd, lock_root=tmp_path / "locks", stop_after=59)
+    assert (rd / "cells" / ALARM_CELL / "null.npz").exists()
+    return rd
+
+
+def test_resume_with_a_record_lacking_its_null_is_an_integrity_failure(tmp_path):
+    """Mutation check (V4 survived): the release gate caught it only as a KeyError; on resume it must be an
+    integrity failure, not an 'unexpected exception -> interrupted'."""
+    rd = _interrupted_after_first_alarm_cell(tmp_path, "nonull")
+    rec = json.loads((rd / "cells" / ALARM_CELL / "record.json").read_text(encoding="utf-8"))
+    rec.pop("null")
+    (rd / "cells" / ALARM_CELL / "record.json").write_text(json.dumps(rec), encoding="utf-8")
+    with pytest.raises(IntegrityError, match="refit null"):
+        runs.execute(rd, lock_root=tmp_path / "locks")
+    assert runs.status(rd) == "failed_integrity"
+
+
+def test_resume_with_a_different_orphan_null_is_an_integrity_failure(tmp_path):
+    """Mutation check (V6 survived): an orphan null.npz that is not the recomputed one must not be adopted."""
+    rd = _interrupted_after_first_alarm_cell(tmp_path, "orphannull")
+    (rd / "cells" / ALARM_CELL / "record.json").unlink()
+    (rd / "cells" / ALARM_CELL / "null.npz").unlink()
+    np.savez(rd / "cells" / ALARM_CELL / "null.npz", null_G=np.zeros(9999))
+    with pytest.raises(IntegrityError, match="orphan refit null"):
+        runs.execute(rd, lock_root=tmp_path / "locks")
+    assert runs.status(rd) == "failed_integrity"
+
+
+def test_persist_cell_refuses_a_null_where_the_protocol_has_none_and_vice_versa(complete_run, tmp_path):
+    """Mutation check (V5 survived): presence of the refit null is checked against the protocol before writing."""
+    rd = complete_run[1]
+    run = runs.load_run(rd)
+    ctx = contexts.make_context(run["grid"]["study_id"], 0)
+    for name, null in ((ALARM_CELL, None), ("c000__lantern__none__A__t2", np.zeros(9999))):
+        folder = rd / "cells" / name
+        rec = json.loads((folder / "record.json").read_text(encoding="utf-8"))
+        model = artifacts.load_model_verified(folder, rec["model"])
+        c = {"context_id": 0, "condition": "lantern", "control": rec["cell"]["control"], "task": "A", "time": 1.0, "time_index": 2}
+        with pytest.raises(IntegrityError, match="refit null"):
+            runs._persist_cell(tmp_path / "x", run, ctx, c, model, np.zeros((20, 66)), np.zeros((20, 4)), null_G=null)
+        assert not (tmp_path / "x").exists()
+
+
 def test_edited_structure_record_is_detected(complete_run, tmp_path):
     rd = _copy(complete_run, tmp_path)
     p = rd / "structure" / "c000.json"

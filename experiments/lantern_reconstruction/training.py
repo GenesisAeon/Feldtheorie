@@ -71,6 +71,47 @@ def _check_grid(lambda_grid) -> tuple:
     return tuple(float(v) for v in grid)
 
 
+def permuted_null_gains(X_train, U_train, X_val, U_val, X_test, U_test, rng: np.random.Generator, n_perm: int,
+                        lambda_grid: Sequence[float] = LAMBDA_GRID, chunk: int = 128) -> np.ndarray:
+    """Null distribution of the permuted-target control (decision Johann 2026-10-09, LR6 acceptance alarm): for
+    each of n_perm draws, NEW permutations of the training targets and then of the validation targets (in this
+    order, from `rng`), the complete fit_ridge procedure (train-only standardisation, unpenalised intercept,
+    lambda by projected validation MSE with the larger lambda on an exact tie) and the test gain
+    G = 3 mean(loss_zero - loss) on the REAL test targets. Exactly fit_ridge + scoring, vectorised: the SVD of
+    the centred standardised training features is computed once (a permutation keeps the target mean)."""
+    if not isinstance(rng, np.random.Generator):
+        raise ValueError("an explicit numpy Generator is required")
+    if isinstance(n_perm, (bool, np.bool_)) or not isinstance(n_perm, (int, np.integer)) or n_perm < 1:
+        raise ValueError("n_perm must be a positive integer")
+    grid = np.array(_check_grid(lambda_grid))
+    Xtr, Xva, Xte = (_real_matrix(x, n) for x, n in ((X_train, "X_train"), (X_val, "X_val"), (X_test, "X_test")))
+    Utr, Uva, Ute = (_real_matrix(u, n, 4) for u, n in ((U_train, "U_train"), (U_val, "U_val"), (U_test, "U_test")))
+    mean, scale = standardisation(Xtr)
+    Xs, Xvs, Xts = (Xtr - mean) / scale, (Xva - mean) / scale, (Xte - mean) / scale
+    N, Nv = Xs.shape[0], Xvs.shape[0]
+    xbar, ubar = Xs.mean(axis=0), Utr.mean(axis=0)
+    P, s, Qt = np.linalg.svd(Xs - xbar, full_matrices=False)
+    Uc = Utr - ubar
+    shrink = s[None, :] / (s[None, :] ** 2 + N * grid[:, None])                 # (L, r)
+    loss_zero = np.mean(Ute ** 2, axis=1)
+    out = np.empty(n_perm)
+    for start in range(0, n_perm, chunk):
+        k = min(chunk, n_perm - start)
+        perms = [(rng.permutation(N), rng.permutation(Nv)) for _ in range(k)]
+        Ucb = np.stack([Uc[pt] for pt, _ in perms])                               # (k, N, 4)
+        Uvb = np.stack([Uva[pv] for _, pv in perms])                              # (k, Nv, 4)
+        PtU = np.matmul(P.T, Ucb)                                                 # (k, r, 4)
+        W = np.matmul(Qt.T, shrink[None, :, :, None] * PtU[:, None, :, :])       # (k, L, d, 4)
+        b = ubar - np.matmul(xbar, W)                                             # (k, L, 4)
+        pv = np.clip(np.matmul(Xvs, W) + b[:, :, None, :], -1.0, 1.0)            # (k, L, Nv, 4)
+        mse = np.mean((pv - Uvb[:, None]) ** 2, axis=(2, 3))                       # (k, L)
+        best = np.argmax(np.where(mse == mse.min(axis=1, keepdims=True), grid[None, :], -np.inf), axis=1)
+        Wsel, bsel = W[np.arange(k), best], b[np.arange(k), best]
+        pt = np.clip(np.matmul(Xts, Wsel) + bsel[:, None, :], -1.0, 1.0)
+        out[start:start + k] = 3.0 * np.mean(loss_zero[None, :] - np.mean((pt - Ute[None]) ** 2, axis=2), axis=1)
+    return out
+
+
 def fit_ridge(spec: ObservationSpec, X_train, U_train, X_val, U_val, lambda_grid: Sequence[float] = LAMBDA_GRID,
               provenance: Optional[Dict] = None) -> RidgeDecoder:
     """Fit on train, choose lambda on val (projected MSE; exact tie -> larger lambda). No test argument."""

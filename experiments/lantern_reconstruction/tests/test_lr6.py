@@ -166,6 +166,88 @@ def test_hypothesis_section_only_for_an_interpretable_research_run(monkeypatch):
     assert h["status"] == "evaluated" and "task_B_hypotheses" in h and calls == [1]
 
 
+## --- control alarm v2: permuted-target cells with a refit null (decision 2026-10-09) -------------------------
+from experiments.lantern_reconstruction import contexts as _contexts, observation as _observation, runner as _runner, training as _training
+from experiments.lantern_reconstruction.decoders import predict as _predict
+
+
+def _synthetic(seed):
+    rng = np.random.default_rng(seed)
+    U = {s: rng.uniform(-1, 1, (n, 4)) for s, n in (("tr", 300), ("va", 80), ("te", 300))}
+    M = rng.normal(size=(4, 16))
+    X = {s: U[s] @ M * 0.5 + rng.normal(0, 1, (U[s].shape[0], 16)) for s in U}   # features encode the target
+    return rng, U, X
+
+
+def test_refit_null_equals_the_complete_fit_procedure():
+    spec = _observation.observation_spec(_contexts.make_context(DEV, 0), "B")
+    _, U, X = _synthetic(3)
+    null = _training.permuted_null_gains(X["tr"], U["tr"], X["va"], U["va"], X["te"], U["te"], np.random.default_rng(9), 25)
+    r = np.random.default_rng(9)
+    ref = []
+    for _ in range(25):                                         # documented draw order: train permutation, then val
+        pt, pv = r.permutation(300), r.permutation(80)
+        m = _training.fit_ridge(spec, X["tr"], U["tr"][pt], X["va"], U["va"][pv])
+        ref.append(metrics.scores(*metrics.episode_losses(metrics.project(_predict(m, X["te"])), U["te"]))["G"])
+    assert np.max(np.abs(null - np.array(ref))) < 1e-12
+
+
+@pytest.mark.parametrize("seed", [4, 9])
+def test_old_null_fired_by_construction_refit_null_does_not(seed):
+    """LR6 acceptance alarm, reproduced on synthetic features that encode u: a label-permuted control decoder
+    (train AND val permuted) gives p <= .01 under the old fixed-prediction null, but not under the refit null."""
+    spec = _observation.observation_spec(_contexts.make_context(DEV, 0), "B")
+    rng, U, X = _synthetic(seed)
+    m = _training.fit_ridge(spec, X["tr"], U["tr"][rng.permutation(300)], X["va"], U["va"][rng.permutation(80)])
+    proj = metrics.project(_predict(m, X["te"]))
+    G = metrics.scores(*metrics.episode_losses(proj, U["te"]))["G"]
+    old = metrics.permutation_gain_test({0: (proj, U["te"]), 1: (proj, U["te"])}, np.random.default_rng(100 + seed), 999)["p"]
+    null = _training.permuted_null_gains(X["tr"], U["tr"], X["va"], U["va"], X["te"], U["te"], np.random.default_rng(200 + seed), 999)
+    assert old <= 0.01 and (1 + np.sum(null >= G)) / 1000 > 0.01
+
+
+def test_refit_null_keeps_its_power_against_a_real_leak():
+    """A 'control' that in truth learned from the real targets is caught by the refit null (G > 0, p = 1/(B+1))."""
+    spec = _observation.observation_spec(_contexts.make_context(DEV, 0), "B")
+    _, U, X = _synthetic(0)
+    m = _training.fit_ridge(spec, X["tr"], U["tr"], X["va"], U["va"])
+    G = metrics.scores(*metrics.episode_losses(metrics.project(_predict(m, X["te"])), U["te"]))["G"]
+    null = _training.permuted_null_gains(X["tr"], U["tr"], X["va"], U["va"], X["te"], U["te"], np.random.default_rng(1), 999)
+    assert G > 0.3 and np.sum(null >= G) == 0
+
+
+def test_validation_targets_permuted_only_for_the_permuted_control():
+    ctx = _contexts.make_context(DEV, 0)
+    u = np.arange(40, dtype=float).reshape(10, 4)
+    pv = _runner.validation_targets(ctx, u, "permuted_targets", "A", 2)
+    assert sorted(map(tuple, pv)) == sorted(map(tuple, u)) and not np.array_equal(pv, u)
+    assert np.array_equal(pv, u[streams.generator(DEV, 0, "val", "decoder", 0, 3, 0, 2).permutation(10)])
+    assert not np.array_equal(pv, _runner.training_targets(ctx, u, "permuted_targets", "A", 2))   # its own stream
+    for control in ("none", "reset", "zero_impulse"):
+        assert _runner.validation_targets(ctx, u, control, "A", 2) is u
+
+
+def test_refit_null_cells_are_exactly_the_four_permuted_alarm_cells():
+    cells = [(c, t, tau) for c in _runner.CONTROLS for t in ("A", "B") for tau in (0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 10.0)
+             if _runner.needs_refit_null(c, t, tau)]
+    assert cells == [("permuted_targets", "A", 1.0), ("permuted_targets", "A", 5.0), ("permuted_targets", "B", 1.0), ("permuted_targets", "B", 5.0)]
+
+
+def test_alarm_inputs_refit_p_by_hand():
+    names = metrics.control_alarm_cells()
+    rng = np.random.default_rng(2)
+    per = {cid: {n: (np.zeros((6, 4)), rng.uniform(-1, 1, (6, 4))) for n in names} for cid in (0, 1)}   # zero prediction: G = 0
+    low = {cid: {n: np.full(9999, -0.5) for n in names if n.startswith("permuted")} for cid in (0, 1)}
+    high = {cid: {n: np.full(9999, 0.0) for n in names if n.startswith("permuted")} for cid in (0, 1)}
+    a_low, a_high = _runner.alarm_inputs(per, DEV, nulls=low), _runner.alarm_inputs(per, DEV, nulls=high)
+    p = "permuted_targets|A|1.0"
+    assert a_low[p]["G"] == 0.0 and a_low[p]["b"] == 0 and a_low[p]["p"] == 1 / 10000           # null always below
+    assert a_high[p]["b"] == 9999 and a_high[p]["p"] == 1.0                                      # ties count as >=
+    bad = {cid: {n: np.full(999, 0.0) for n in names if n.startswith("permuted")} for cid in (0, 1)}
+    with pytest.raises(ValueError, match="9999 finite gains"):
+        _runner.alarm_inputs(per, DEV, nulls=bad)
+
+
 def test_study_evaluation_missing_cell_is_an_error_not_zero():
     grid, records = _grid_records(lambda cid, cond, task: 0.2)
     records.pop(next(iter(records)))
