@@ -115,7 +115,7 @@
       "title": "Universumsverzweigung budgetieren",
       "dependency_note": "R00",
       "completion_condition": "Gleiche Zeit je Modell und begrenzte Gesamtpopulation",
-      "status": "planned",
+      "status": "delivered_pending_acceptance",
       "realized_by": "V2"
     },
     {
@@ -123,7 +123,7 @@
       "title": "Vererbung und Vielfalt vergleichen",
       "dependency_note": "S00",
       "completion_condition": "Neutralität, Selektion und Mutation nachvollziehbar getrennt",
-      "status": "planned",
+      "status": "delivered_pending_acceptance",
       "realized_by": "V2"
     },
     {
@@ -180,14 +180,14 @@
       "title": "Rechenkern und Laufverträge reparieren",
       "dependency_note": "V0-Freigabe",
       "completion_condition": "Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen, Import, Abbruch. Tests: tests/test_stellar_forge_v1.py.",
-      "status": "delivered_pending_acceptance"
+      "status": "delivered"
     },
     {
       "id": "V2",
       "title": "S00/S01 durchführen",
       "dependency_note": "V1",
-      "completion_condition": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung.",
-      "status": "planned"
+      "completion_condition": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung. Protokoll experiments/kosmische_vererbung/sf001/protocol_v2.json; Ergebnis runs/v2_s00_s01/RESULTS.md; Tests experiments/kosmische_vererbung/tests/test_v2_sf001.py.",
+      "status": "delivered_pending_acceptance"
     },
     {
       "id": "V3",
@@ -436,6 +436,12 @@
       "package": "V1",
       "scope": "F2, F3, F4, N1, N2, N4 behoben; cosmic_cycle_demo stillgelegt; Entscheidungen zu F6, F7, N3 eingetragen.",
       "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-11",
+      "package": "V2",
+      "scope": "S00/S01 als künstliche Verzweigungspopulationen ausgeführt (Protokoll SF-001-V2, 7 Bedingungen x 30 Replikate). Erwartungen aus den Regeln bestätigt; E3 trennt Selektion und Neutralität schlecht; kein Aussterben beobachtet.",
+      "approval": "pending (SCF-Koordination)"
     }
   ],
   "cosmic_inheritance": {
@@ -460,7 +466,8 @@
         "reproduced_locally",
         "confirmed_by_code_reading",
         "open",
-        "fixed"
+        "fixed",
+        "addressed_by_alternative"
       ],
       "results": [
         "evaluated",
@@ -512,10 +519,11 @@
             "contains": "return agents # In V4"
           }
         ],
-        "status": "reproduced_locally",
+        "status": "addressed_by_alternative",
         "evidence": "reproduce_review.py (Plan-Beilage) am 2026-10-11 gegen d1c56267ae: Signale 0/1/1 für 0/1/2 Schwarze Löcher nach zwei Schritten; Startmassen [25.0].",
         "next_step": "Multiverse-Demopfad als Demo kennzeichnen; S00/S01 (V2) mit eigener, ausdrücklich künstlicher Reproduktionsregel und Nullkontrollen statt Schwarzloch-Fitness.",
-        "fix_package": "V2"
+        "fix_package": "V2",
+        "resolution": "V2: S00/S01 nutzen ein eigenes, ausdrücklich künstliches Reproduktionsmodell mit neutraler und vererbungsgelöschter Nullkontrolle (experiments/kosmische_vererbung/sf001). Der Multiverse-Demopfad bleibt unverändert eine Demo mit eingesetztem Schwarzen Loch."
       },
       {
         "id": "F2",
@@ -795,10 +803,11 @@
             "contains": "expect(true).toBe(true);"
           }
         ],
-        "status": "confirmed_by_code_reading",
+        "status": "addressed_by_alternative",
         "evidence": "Gelesen am Plan-Stand a7605284; die Dateien sind bis unified-mandala 1e310caa unverändert. Nicht ausgeführt.",
         "next_step": "Als historischen Kontrollfall bewahren; in V2 als Zufallsfitness-Kontrolle mit fairer, reihenfolgeunabhängiger Auswahl vergleichen.",
-        "fix_package": "V2"
+        "fix_package": "V2",
+        "resolution": "V2: Neutrale Bedingungen N0/N1 sind die faire, reihenfolgeunabhängige Zufallskontrolle (Obergrenze per multivariat hypergeometrischer Ziehung über Zählungen). Der historische Mandala-Baum selbst wurde nicht ausgeführt und bleibt unverändert."
       }
     ],
     "observations": [
@@ -1151,7 +1160,7 @@
           "N2",
           "N4"
         ],
-        "status": "delivered_pending_acceptance",
+        "status": "delivered",
         "acceptance": "Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen, Import, Abbruch. Tests: tests/test_stellar_forge_v1.py."
       },
       {
@@ -1166,8 +1175,8 @@
           "F1",
           "F8"
         ],
-        "status": "planned",
-        "acceptance": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung."
+        "status": "delivered_pending_acceptance",
+        "acceptance": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung. Protokoll experiments/kosmische_vererbung/sf001/protocol_v2.json; Ergebnis runs/v2_s00_s01/RESULTS.md; Tests experiments/kosmische_vererbung/tests/test_v2_sf001.py."
       },
       {
         "id": "V3",
@@ -1231,8 +1240,8 @@
     ],
     "jwst_note": "Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine Aussage, JWST stütze kosmologische Vererbung.",
     "next": [
-      "V1-Abnahme durch SCF-Koordination",
-      "V2 und V3"
+      "V2-Abnahme durch SCF-Koordination",
+      "V3"
     ],
     "decisions": [
       {
@@ -1254,6 +1263,11 @@
         "date": "2026-10-11",
         "by": "Johann",
         "decision": "Cosmic Loop nicht als Vergleichsmodell in S01; historischer Kontrollfall; Importzyklus nicht auflösen."
+      },
+      {
+        "date": "2026-10-11",
+        "by": "SCF-Koordination",
+        "decision": "V1 (76aa224551) abgenommen; GO für V2."
       }
     ]
   }

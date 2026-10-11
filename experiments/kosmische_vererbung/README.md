@@ -2,7 +2,7 @@
 
 Arbeitsort für die Pakete V2–V6 des Plans „Kosmische Vererbung, chemische Anreicherung und SCF“ (27. September 2026). Planung, Befunde und Status stehen **nicht** hier, sondern in der gemeinsamen Roadmap: [ROADMAP.md, Abschnitt „Kosmische Vererbung“](../research_roadmap_2026/ROADMAP.md) sowie `roadmap.json`/`roadmap.yaml` unter `cosmic_inheritance`.
 
-Stand: Nur V0 ist geliefert (Register und Test); die Freigabe durch Johann steht aus. Es gibt noch keinen Simulationscode und keine Ergebnisse.
+Stand 11. Oktober 2026: V0 und V1 sind abgenommen. V2 (S00/S01) liegt in [sf001/](sf001/README.md) und wartet auf die Abnahme.
 
 Tests laufen ausdrücklich, weil das Root-`pytest` nur `tests/` sammelt:
 

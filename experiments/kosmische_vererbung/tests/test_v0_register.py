@@ -24,7 +24,7 @@ REPO = Path(__file__).resolve().parents[3]
 ROADMAP_DIR = REPO / "experiments" / "research_roadmap_2026"
 FINDINGS = [f"F{i}" for i in range(1, 9)]
 PACKAGES = [f"V{i}" for i in range(8)] + ["T6"]
-FINDING_STATUS = {"reproduced_locally", "confirmed_by_code_reading", "open", "fixed"}
+FINDING_STATUS = {"reproduced_locally", "confirmed_by_code_reading", "open", "fixed", "addressed_by_alternative"}
 
 
 def _load_json():
@@ -88,7 +88,7 @@ def test_every_entry_has_source_status_and_next_step(register, group):
         assert item["next_step"].strip(), item["id"]
         assert item["evidence"].strip(), item["id"]
         assert item["fix_package"] in package_ids | {"open_decision", "none_by_decision"}, item["id"]
-        if item["status"] == "fixed":
+        if item["status"] in ("fixed", "addressed_by_alternative"):
             assert item["resolution"].strip(), item["id"]
 
 

@@ -1,0 +1,45 @@
+{
+  "protocol_id": "SF-001-V2",
+  "title": "S00/S01: neutrale, selektive und mutationsbehaftete Modellpopulationen",
+  "date": "2026-10-11",
+  "status": "fixed_before_run",
+  "scope": "Künstliche Modellpopulationen (Plan §5.2, Bedeutung 2). Keine kosmologische oder astrophysikalische Aussage. Typen sind abstrakte Merkmale ohne physikalische Zuordnung.",
+  "root_seed": 3226149665,
+  "seed_rule": "Replikat r nutzt numpy SeedSequence(root_seed, spawn_key=(r,)) in allen Bedingungen (gemeinsame Zufallszahlen).",
+  "reproduction_rule": "Individuum vom Typ i: Poisson(b_i) Nachkommen; jeder Nachkomme erhält unabhängig Typ j mit Wahrscheinlichkeit M[j][i] (spaltenstochastisch).",
+  "extinction_rule": "Eine Population mit 0 Individuen ist ausgestorben. Sie bleibt ausgestorben; Neustarts sind nicht erlaubt (restarts = 0).",
+  "cap_rule": "Übersteigt eine Nachkommengeneration cap Individuen, überleben cap davon, gleichverteilt ohne Zurücklegen gezogen (multivariat hypergeometrisch über Linie x Typ).",
+  "types": 5,
+  "founders_per_type": [20, 20, 20, 20, 20],
+  "generations": 60,
+  "cap": 200,
+  "replicates": 30,
+  "b_neutral": [1.4, 1.4, 1.4, 1.4, 1.4],
+  "b_selective": [1.0, 1.5, 2.0, 1.5, 1.0],
+  "fairness": "Alle Bedingungen: gleiche Gründer, gleiche Generationenzahl, gleiche Obergrenze, gleiche Replikat-Seeds. Mittleres b bei gleichverteilter Zusammensetzung ist in neutralen und selektiven Bedingungen gleich (1,4). Verbrauchte Individuen-Generationen werden je Lauf berichtet.",
+  "conditions": [
+    {"id": "N0", "label": "neutral, ohne Mutation", "b": "b_neutral", "inheritance": {"kind": "mutation", "mu": 0.0}},
+    {"id": "N1", "label": "neutral, Mutation 0,05", "b": "b_neutral", "inheritance": {"kind": "mutation", "mu": 0.05}},
+    {"id": "S0", "label": "selektiv, ohne Mutation", "b": "b_selective", "inheritance": {"kind": "mutation", "mu": 0.0}},
+    {"id": "S1", "label": "selektiv, Mutation 0,01", "b": "b_selective", "inheritance": {"kind": "mutation", "mu": 0.01}},
+    {"id": "S2", "label": "selektiv, Mutation 0,05", "b": "b_selective", "inheritance": {"kind": "mutation", "mu": 0.05}},
+    {"id": "S3", "label": "selektiv, Mutation 0,2", "b": "b_selective", "inheritance": {"kind": "mutation", "mu": 0.2}},
+    {"id": "E", "label": "selektiv, gelöschte Typvererbung (M = pi 1^T, pi gleichverteilt)", "b": "b_selective", "inheritance": {"kind": "erasure", "pi": [0.2, 0.2, 0.2, 0.2, 0.2]}}
+  ],
+  "metrics": {
+    "E1_misfit": {"definition": "Mittlerer Abstand |k - 2| der Individuen zum Typ mit maximalem b_selective in der letzten Generation.", "independent_of_selection": false, "note": "Durch die Konstruktion an die Selektionsregel gebunden; zeigt nur, ob die Regel wirkt."},
+    "E2_type_entropy_bits": {"definition": "Shannon-Entropie der Typverteilung in der letzten Generation (Bit).", "independent_of_selection": true},
+    "E3_lineages_alive": {"definition": "Anzahl überlebender Gründerlinien (von 100) in der letzten Generation.", "independent_of_selection": true},
+    "E4_extinct_fraction": {"definition": "Anteil ausgestorbener Replikate.", "independent_of_selection": true},
+    "E5_individual_generations": {"definition": "Summe der Elternzahlen über alle Generationen (verbrauchtes Budget).", "independent_of_selection": true}
+  },
+  "reference": "Deterministische Frequenzrekursion p_{g+1} = M diag(b) p_g / 1^T diag(b) p_g ab gleichverteilter Zusammensetzung. Sie ist nur eine Referenz: Für endliche Populationen mit Obergrenze ist sie nicht der Erwartungswert der Frequenzen (Plan §7).",
+  "expectations_from_rules": [
+    "N0: Typanteile driften zufällig; die Zahl der Gründerlinien sinkt (Koaleszenz), die Typentropie bleibt im Mittel hoch, sinkt aber je Replikat durch Drift.",
+    "S0: Typ 2 setzt sich durch; Typentropie und Linienzahl fallen stark.",
+    "S1-S3: Mutations-Selektions-Gleichgewicht; mit steigendem mu steigt die Typentropie und die Fehlanpassung E1.",
+    "E: Die Typverteilung bleibt nahe pi; Selektion erzeugt keine Anpassung, weil die Typvererbung gelöscht ist.",
+    "Diese Erwartungen folgen aus den Regeln selbst. Ihre Bestätigung ist eine Prüfung der Implementierung, keine Entdeckung."
+  ],
+  "result_states": ["evaluated", "not_evaluated", "numerical_failure", "outside_scope"]
+}

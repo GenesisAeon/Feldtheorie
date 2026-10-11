@@ -377,3 +377,18 @@ Prüfung des Registers: `python -m pytest -q -p no:cacheprovider experiments/kos
 - Das eingesetzte Schwarze Loch bleibt (F1). Der Manager ist damit weiterhin eine Demo der Maschinerie, kein Selektionsversuch.
 
 Tests: `python -m pytest -q -p no:cacheprovider tests/test_stellar_forge_v1.py`. Diese Datei liegt in `tests/` und wird daher auch vom Root-`pytest` gesammelt.
+
+### Stand nach V2 (11. Oktober 2026)
+
+V1 ist abgenommen (SCF-Koordination). V2 setzt S00/S01 um, im Ordner `experiments/kosmische_vererbung/sf001/`. Es sind künstliche Modellpopulationen: Typ i hat Poisson(b_i) Nachkommen, der Typ des Nachkommen folgt der Spalte i von M. Die Obergrenze beträgt 200, Aussterben ist endgültig und Neustarts sind nicht erlaubt. Es gibt sieben Bedingungen mit gemeinsamen Replikat-Seeds: neutral, selektiv, Mutation 0 bis 0,2 und gelöschte Vererbung. Die Handfälle K1–K5 aus Plan §7 sind exakt mit Brüchen geprüft, dazu das Galton-Watson-Orakel q = 0,2031878699799799.
+
+| ID | Stand |
+|---|---|
+| F1 | Durch eine Alternative bearbeitet: eigenes künstliches Modell mit Nullkontrollen. Die Demo bleibt eine Demo. |
+| F8 | Durch eine Alternative bearbeitet: neutrale Bedingungen als faire Zufallskontrolle. Der Mandala-Baum selbst wurde nicht ausgeführt. |
+
+**Ergebnis:**
+- Die aus den Regeln folgenden Erwartungen treffen ein. Die Fehlanpassung steigt monoton mit der Mutationsrate (0 / 0,038 / 0,189 / 0,552). Gelöschte Vererbung (1,208) liegt auf Neutralniveau (1,204).
+- Abweichend von der vorab notierten Erwartung trennt die Zahl überlebender Gründerlinien Selektion und Neutralität kaum: 5,1 gegenüber 6,7 von 100.
+- Aussterben trat nicht auf. Die Regel ist nur durch Tests belegt.
+- Das sind Eigenschaften künstlicher Evolution, keine Aussage über Kosmologie. Einzelheiten stehen in `experiments/kosmische_vererbung/sf001/README.md` und `runs/v2_s00_s01/RESULTS.md`.

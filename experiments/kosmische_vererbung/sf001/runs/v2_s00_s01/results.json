@@ -1,0 +1,393 @@
+{
+  "protocol_id": "SF-001-V2",
+  "root_seed": 3226149665,
+  "raw_provenance": {
+    "code_sha256": {
+      "branching.py": "28bac8391836890d5b84a99f2c00ea3a397d9cd299af3136c5f24c78b1bb954c",
+      "run_v2.py": "1d1de01435101d658077fe34ae9b34e2833543f7be609be1c5bb4338ce41093e"
+    },
+    "numpy": "2.4.6",
+    "protocol_sha256": "243ede8d8433bab5a2a6be5b2358fce0a348090cefdaeb69909312f75e8d064b",
+    "python": "3.11.9"
+  },
+  "conditions": {
+    "N0": {
+      "label": "neutral, ohne Mutation",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 1.204,
+        "sd": 0.3869807978841256,
+        "min": 0.415,
+        "max": 1.92
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 1.5249980312083489,
+        "sd": 0.3348467270803111,
+        "min": 0.8032566997760641,
+        "max": 2.199591655805209
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 6.7,
+        "sd": 1.6640208884630565,
+        "min": 4.0,
+        "max": 11.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11827.733333333334,
+        "sd": 23.225926852569728,
+        "min": 11763.0,
+        "max": 11859.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.24083333333333334,
+        0.22199999999999998,
+        0.21949999999999997,
+        0.13499999999999998,
+        0.18266666666666664
+      ],
+      "reference_final_frequencies": [
+        0.19999999999999998,
+        0.19999999999999998,
+        0.19999999999999998,
+        0.19999999999999998,
+        0.19999999999999998
+      ],
+      "reference_E1_misfit": 1.2,
+      "reference_E2_type_entropy_bits": 2.321928094887362
+    },
+    "N1": {
+      "label": "neutral, Mutation 0,05",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.9836666666666667,
+        "sd": 0.14363467387866305,
+        "min": 0.64,
+        "max": 1.275
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 2.072091636724255,
+        "sd": 0.15154475500190248,
+        "min": 1.6425756017693594,
+        "max": 2.2827304014212775
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 6.533333333333333,
+        "sd": 1.279367659898984,
+        "min": 4.0,
+        "max": 9.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11826.333333333334,
+        "sd": 23.730285223351387,
+        "min": 11768.0,
+        "max": 11859.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.11466666666666665,
+        0.21416666666666667,
+        0.258,
+        0.2861666666666667,
+        0.127
+      ],
+      "reference_final_frequencies": [
+        0.12734841520684548,
+        0.2499101494850043,
+        0.24548287061630053,
+        0.24991014948500426,
+        0.12734841520684548
+      ],
+      "reference_E1_misfit": 1.0092139597973904,
+      "reference_E2_type_entropy_bits": 2.254574293755217
+    },
+    "S0": {
+      "label": "selektiv, ohne Mutation",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.0,
+        "sd": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.0,
+        "sd": 0.0,
+        "min": -0.0,
+        "max": -0.0
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 5.133333333333334,
+        "sd": 1.3829836145670416,
+        "min": 2.0,
+        "max": 8.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11835.366666666667,
+        "sd": 18.510916319526313,
+        "min": 11777.0,
+        "max": 11860.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "reference_final_frequencies": [
+        8.673616826653643e-19,
+        3.1891560895347836e-08,
+        0.9999999362168783,
+        3.1891560895347836e-08,
+        8.673616826653643e-19
+      ],
+      "reference_E1_misfit": 6.378312179416512e-08,
+      "reference_E2_type_entropy_bits": 1.6803628385419288e-06
+    },
+    "S1": {
+      "label": "selektiv, Mutation 0,01",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.038,
+        "sd": 0.019502431324996558,
+        "min": 0.015,
+        "max": 0.08
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.25747235427257786,
+        "sd": 0.10838922316149006,
+        "min": 0.11236071009937675,
+        "max": 0.47386224880503736
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 5.266666666666667,
+        "sd": 1.3373502709187435,
+        "min": 2.0,
+        "max": 8.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11834.933333333332,
+        "sd": 18.918943860099834,
+        "min": 11782.0,
+        "max": 11860.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.0,
+        0.02166666666666667,
+        0.9621666666666668,
+        0.016000000000000004,
+        0.00016666666666666666
+      ],
+      "reference_final_frequencies": [
+        0.00014694949540695873,
+        0.019403238712884935,
+        0.9608996235834162,
+        0.01940323871288493,
+        0.00014694949540695873
+      ],
+      "reference_E1_misfit": 0.039394275407397705,
+      "reference_E2_type_entropy_bits": 0.27974858899332095
+    },
+    "S2": {
+      "label": "selektiv, Mutation 0,05",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.18883333333333335,
+        "sd": 0.04547988060923077,
+        "min": 0.09,
+        "max": 0.285
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.8881262090406488,
+        "sd": 0.15401126385794214,
+        "min": 0.5118930877015564,
+        "max": 1.20098363941768
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 4.933333333333334,
+        "sd": 1.3879613761229797,
+        "min": 2.0,
+        "max": 8.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11835.9,
+        "sd": 17.2293854834678,
+        "min": 11782.0,
+        "max": 11860.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.004,
+        0.08850000000000002,
+        0.8186666666666664,
+        0.08533333333333333,
+        0.0035000000000000005
+      ],
+      "reference_final_frequencies": [
+        0.0033477428545996874,
+        0.08550569654682152,
+        0.8222931211971576,
+        0.08550569654682154,
+        0.003347742854599688
+      ],
+      "reference_E1_misfit": 0.1844023645120418,
+      "reference_E2_type_entropy_bits": 0.8938876543365089
+    },
+    "S3": {
+      "label": "selektiv, Mutation 0,2",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 0.5516666666666666,
+        "sd": 0.04896045788982786,
+        "min": 0.46,
+        "max": 0.63
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 1.7390702958959237,
+        "sd": 0.07872637233975778,
+        "min": 1.5416426165593338,
+        "max": 1.8653160843364318
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 5.133333333333334,
+        "sd": 1.0080138659874618,
+        "min": 3.0,
+        "max": 7.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11836.066666666668,
+        "sd": 17.71602300925261,
+        "min": 11780.0,
+        "max": 11860.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.03133333333333335,
+        0.1993333333333334,
+        0.5151666666666667,
+        0.21866666666666668,
+        0.035500000000000004
+      ],
+      "reference_final_frequencies": [
+        0.03405457465829883,
+        0.20942734810834485,
+        0.5130361544667127,
+        0.20942734810834485,
+        0.03405457465829883
+      ],
+      "reference_E1_misfit": 0.555072994849885,
+      "reference_E2_type_entropy_bits": 1.770804272506924
+    },
+    "E": {
+      "label": "selektiv, gelöschte Typvererbung (M = pi 1^T, pi gleichverteilt)",
+      "replicates": 30,
+      "E1_misfit": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 1.2085,
+        "sd": 0.05544724115521114,
+        "min": 1.105,
+        "max": 1.33
+      },
+      "E2_type_entropy_bits": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 2.3095476877265373,
+        "sd": 0.007878999131455065,
+        "min": 2.2892906247629985,
+        "max": 2.3206697792970874
+      },
+      "E3_lineages_alive": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 6.233333333333333,
+        "sd": 1.304721752165845,
+        "min": 4.0,
+        "max": 10.0
+      },
+      "E4_extinct_fraction": 0.0,
+      "E5_individual_generations": {
+        "state": "evaluated",
+        "n": 30,
+        "mean": 11828.433333333332,
+        "sd": 22.800005041338423,
+        "min": 11773.0,
+        "max": 11860.0
+      },
+      "restarts": 0,
+      "mean_final_type_frequencies": [
+        0.1996666666666667,
+        0.2016666666666667,
+        0.1905,
+        0.20883333333333332,
+        0.19933333333333333
+      ],
+      "reference_final_frequencies": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "reference_E1_misfit": 1.2000000000000002,
+      "reference_E2_type_entropy_bits": 2.321928094887362
+    }
+  }
+}
