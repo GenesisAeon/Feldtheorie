@@ -396,6 +396,13 @@ progress_notes:
     und event (ereignisgenauer Schwellenübergang per Bisektion), Konvergenz mit atol
     und rtol, Bilanztoleranz 1e-9, Handwerte und Erwartungen.'
   approval: pending (SCF-Koordination)
+- date: '2026-10-12'
+  package: V5c-Lauf
+  scope: 'Ereignisgenau ist die Pop-III-Masse aufgelöst (500,25 / 50,025 M_sun). r(P3,
+    k > 0) ist ereignisgenau etwa zehnfach kleiner als in V5: k = 0,01 positiv 4-7e-4
+    fern der Rückgabesprünge; k = 0,1 nicht von 0 unterscheidbar; an den Sprungzeitpunkten
+    nicht aufgelöst. Die V5-Aussage ''P3 r > 0 bei k > 0'' gilt nur noch eingeschränkt.'
+  approval: pending (SCF-Koordination)
 cosmic_inheritance:
   id: SF-001-KV
   title: 'Kosmische Vererbung: Erweiterung von SF-001'
@@ -1090,7 +1097,7 @@ cosmic_inheritance:
   jwst_note: Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine
     Aussage, JWST stütze kosmologische Vererbung.
   next:
-  - 'V5c: GO der SCF-Koordination für den Lauf'
+  - V5c-Abnahme durch SCF-Koordination
   - 'V4/V6: Johann'
   decisions:
   - date: '2026-10-11'
@@ -1129,3 +1136,6 @@ cosmic_inheritance:
     by: Johann (über SCF-Koordination), Empfehlung Astra
     decision: V5c Auflösungsstudie als neue Protokollversion; KV-V5 bleibt unverändert.
       Protokoll-Commit zuerst, Lauf erst nach GO.
+  - date: '2026-10-12'
+    by: SCF-Koordination
+    decision: V5c-Protokoll (c63688884d) abgenommen; GO für den Lauf.

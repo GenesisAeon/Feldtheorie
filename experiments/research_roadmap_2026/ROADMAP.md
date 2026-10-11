@@ -462,3 +462,14 @@ Auftrag von Johann über die SCF-Koordination, auf Empfehlung von Astra. KV-V5 b
 - Ohne Austausch (k = 0): 29 554,47 M☉ im Kontinuumsgrenzfall.
 
 Der Lauf folgt erst nach dem GO.
+
+### V5c: Ergebnis der Auflösungsstudie (12. Oktober 2026)
+
+Lauf nach `chem/protocol_v5c.json`. Die Einzelbewertung steht in `chem/runs/v5c_resolution/ASSESSMENT.md`.
+- **Pop-III-Masse:** Ereignisgenau ist sie aufgelöst (500,25 bzw. 50,025 M☉, gleich bei allen dt). Im Raster bleibt sie ein Artefakt, proportional zu dt.
+- **V5-Aussage „P3: r > 0 bei k > 0“:** Sie gilt nur noch eingeschränkt.
+  - Ereignisgenau ist r etwa zehnfach kleiner als in V5.
+  - Bei k = 0,01 ist r fern der Rückgabesprünge positiv (4–7·10⁻⁴) und konvergiert.
+  - Bei k = 0,1 ist r nicht von 0 unterscheidbar.
+  - An den Sprungzeitpunkten (Vielfache von 10 Myr) ist r nicht aufgelöst; ursächlich ist eine um t* versetzte Rückgabe, siehe die nachträgliche Analyse.
+- **Unverändert belastbar:** P3 bei k = 0, S bei allen k und L.
