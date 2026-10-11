@@ -392,3 +392,19 @@ V1 ist abgenommen (SCF-Koordination). V2 setzt S00/S01 um, im Ordner `experiment
 - Abweichend von der vorab notierten Erwartung trennt die Zahl überlebender Gründerlinien Selektion und Neutralität kaum: 5,1 gegenüber 6,7 von 100.
 - Aussterben trat nicht auf. Die Regel ist nur durch Tests belegt.
 - Das sind Eigenschaften künstlicher Evolution, keine Aussage über Kosmologie. Einzelheiten stehen in `experiments/kosmische_vererbung/sf001/README.md` und `runs/v2_s00_s01/RESULTS.md`.
+
+### Stand nach V3 (11. Oktober 2026)
+
+V2 ist abgenommen. Ab jetzt gilt die Auflage: Ein Protokoll wird in einem eigenen Commit festgelegt, bevor sein Lauf startet. V3 liefert den chemischen Basiskern `experiments/kosmische_vererbung/chem/kernel.py` mit einer wohlgemischten Zone. Ein Versuchslauf gehört nicht zu V3.
+
+| ID | Stand |
+|---|---|
+| F5 | Durch eine Alternative bearbeitet. Der eigene Bilanzkern rechnet in M☉ und Myr, nutzt die Netto-Ertragskonvention, gibt Material exakt nach der Lebensdauer zurück und führt Herkunftsmarken. Das Toy-Modell bleibt unverändert. |
+| N5 | Durch eine Alternative bearbeitet. Die Elementliste ist verbindlich: H, He, C, O, Si, REST. |
+
+**Orakel:**
+- Orakel 1, 2 und 3 sind exakt mit Brüchen geprüft. Die Handwerte stehen im Kopf von `test_v3_chem.py`.
+- Orakel 4: Die exakte diskrete Rekursion stimmt. Gegen Z = Z0 + y·ln(M_g0/M_g) konvergiert der Kern mit erster Ordnung, bei 800 Schritten mit einem Fehler unter 10⁻⁵. Mit verzögerter Rückgabe gilt die Formel nachweislich nicht.
+- Orakel 7: Derselbe Versuch in Jahren und in Myr liefert bis 10⁻¹² relativ dieselben Werte.
+
+Grenzen: nur synthetische Erträge und eine Zone. Die Mischung mehrerer Zonen folgt in V5. Für V4 (reale Ertragstabellen) braucht es vorher Johanns OK.

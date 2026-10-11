@@ -115,7 +115,7 @@
       "title": "Universumsverzweigung budgetieren",
       "dependency_note": "R00",
       "completion_condition": "Gleiche Zeit je Modell und begrenzte Gesamtpopulation",
-      "status": "delivered_pending_acceptance",
+      "status": "delivered",
       "realized_by": "V2"
     },
     {
@@ -123,7 +123,7 @@
       "title": "Vererbung und Vielfalt vergleichen",
       "dependency_note": "S00",
       "completion_condition": "Neutralität, Selektion und Mutation nachvollziehbar getrennt",
-      "status": "delivered_pending_acceptance",
+      "status": "delivered",
       "realized_by": "V2"
     },
     {
@@ -187,14 +187,14 @@
       "title": "S00/S01 durchführen",
       "dependency_note": "V1",
       "completion_condition": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung. Protokoll experiments/kosmische_vererbung/sf001/protocol_v2.json; Ergebnis runs/v2_s00_s01/RESULTS.md; Tests experiments/kosmische_vererbung/tests/test_v2_sf001.py.",
-      "status": "delivered_pending_acceptance"
+      "status": "delivered"
     },
     {
       "id": "V3",
       "title": "Chemischer Basiskern",
       "dependency_note": "V1",
-      "completion_condition": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7.",
-      "status": "planned"
+      "completion_condition": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7. Kern experiments/kosmische_vererbung/chem/kernel.py; Tests experiments/kosmische_vererbung/tests/test_v3_chem.py. Kein Versuchslauf in V3.",
+      "status": "delivered_pending_acceptance"
     },
     {
       "id": "V4",
@@ -441,6 +441,12 @@
       "date": "2026-10-11",
       "package": "V2",
       "scope": "S00/S01 als künstliche Verzweigungspopulationen ausgeführt (Protokoll SF-001-V2, 7 Bedingungen x 30 Replikate). Erwartungen aus den Regeln bestätigt; E3 trennt Selektion und Neutralität schlecht; kein Aussterben beobachtet.",
+      "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-11",
+      "package": "V3",
+      "scope": "Chemischer Basiskern mit Orakeln 1-4 und 7; F5 und N5 durch Alternative bearbeitet; kein Versuchslauf.",
       "approval": "pending (SCF-Koordination)"
     }
   ],
@@ -690,10 +696,11 @@
             "contains": "granted = min(amount, available)"
           }
         ],
-        "status": "reproduced_locally",
+        "status": "addressed_by_alternative",
         "evidence": "Probe 2026-10-11 (random.seed(0)): Pop III verbraucht 400 Einheiten Wasserstoff und gibt 161 Einheiten zurück; Pop II verbraucht 310 und gibt 101 zurück. Der Rest wird nirgends als Stern- oder Remnantmasse geführt.",
         "next_step": "Eigenen instanzbasierten Bilanzkern (V3) mit Einheiten, Erträgen und Rückgabezeiten bauen; StellarLifecycle bleibt als gekennzeichnetes Toy-Modell erhalten und wird nicht als Anreicherungsvorhersage verwendet.",
-        "fix_package": "V3"
+        "fix_package": "V3",
+        "resolution": "V3: eigener instanzbasierter Bilanzkern experiments/kosmische_vererbung/chem/kernel.py (M_sun, Myr, Netto-Ertragskonvention, Rückgabe exakt nach Lebensdauer, Herkunftsmarken). StellarLifecycle/TheChronicle bleiben unverändert als gekennzeichnete Toy-Modelle."
       },
       {
         "id": "F6",
@@ -934,10 +941,11 @@
             "contains": "required = {\"HYDROGEN\": hydrogen_cost, \"HEAVY_METALS\": metal_cost}"
           }
         ],
-        "status": "confirmed_by_code_reading",
+        "status": "addressed_by_alternative",
         "evidence": "Gelesen.",
         "next_step": "V3 definiert eine verbindliche Elementliste (H, He, C, O, Si, Rest) mit Massenbilanz; die alten Bezeichner bleiben im Toy-Modell.",
-        "fix_package": "V3"
+        "fix_package": "V3",
+        "resolution": "V3: verbindliche Elementliste H, He, C, O, Si, REST mit Massenbilanz im neuen Kern; die alten Bezeichner bleiben im Toy-Modell."
       }
     ],
     "entry_points": [
@@ -1175,7 +1183,7 @@
           "F1",
           "F8"
         ],
-        "status": "delivered_pending_acceptance",
+        "status": "delivered",
         "acceptance": "Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere Seeds, unabhängige Auswertung. Protokoll experiments/kosmische_vererbung/sf001/protocol_v2.json; Ergebnis runs/v2_s00_s01/RESULTS.md; Tests experiments/kosmische_vererbung/tests/test_v2_sf001.py."
       },
       {
@@ -1186,8 +1194,8 @@
           "F5",
           "N5"
         ],
-        "status": "planned",
-        "acceptance": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7."
+        "status": "delivered_pending_acceptance",
+        "acceptance": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7. Kern experiments/kosmische_vererbung/chem/kernel.py; Tests experiments/kosmische_vererbung/tests/test_v3_chem.py. Kein Versuchslauf in V3."
       },
       {
         "id": "V4",
@@ -1240,8 +1248,8 @@
     ],
     "jwst_note": "Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine Aussage, JWST stütze kosmologische Vererbung.",
     "next": [
-      "V2-Abnahme durch SCF-Koordination",
-      "V3"
+      "V3-Abnahme durch SCF-Koordination",
+      "V5 (V4 erst nach Johanns OK)"
     ],
     "decisions": [
       {
@@ -1268,6 +1276,11 @@
         "date": "2026-10-11",
         "by": "SCF-Koordination",
         "decision": "V1 (76aa224551) abgenommen; GO für V2."
+      },
+      {
+        "date": "2026-10-11",
+        "by": "SCF-Koordination",
+        "decision": "V2 (5e34c8df2e) abgenommen; GO für V3. Auflage: Protokolle künftig in eigenem Commit vor dem Lauf."
       }
     ]
   }
