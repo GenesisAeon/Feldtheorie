@@ -207,8 +207,8 @@
       "id": "V5",
       "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
       "dependency_note": "V3",
-      "completion_condition": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt.",
-      "status": "protocol_fixed_before_run"
+      "completion_condition": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt. Ergebnis chem/runs/v5_mean_vs_distribution (RESULTS.md, ASSESSMENT.md, timeseries.json für SCF).",
+      "status": "delivered_pending_acceptance"
     },
     {
       "id": "V6",
@@ -453,6 +453,12 @@
       "date": "2026-10-11",
       "package": "V5a",
       "scope": "Mehrzonenkern (zones.py), Ertragsregeln L/P3/S (rules.py), Runner und Auswertung, Protokoll KV-V5 vor dem Lauf festgelegt; Orakel 5 und 6 grün.",
+      "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-12",
+      "package": "V5b",
+      "scope": "Lauf KV-V5 nach Protokoll. L: Mittelwert exakt hinreichend; P3 r > 0, S r < 0 (entgegengesetzte Vorzeichen, kein Mechanismusbeleg). Pop-III-Masse bei k > 0 numerical_failure; nachträglich: r(P3, k > 0) nicht aufgelöst.",
       "approval": "pending (SCF-Koordination)"
     }
   ],
@@ -1216,8 +1222,8 @@
         "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
         "where": "experiments/kosmische_vererbung/",
         "findings": [],
-        "status": "protocol_fixed_before_run",
-        "acceptance": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt."
+        "status": "delivered_pending_acceptance",
+        "acceptance": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt. Ergebnis chem/runs/v5_mean_vs_distribution (RESULTS.md, ASSESSMENT.md, timeseries.json für SCF)."
       },
       {
         "id": "V6",
@@ -1254,8 +1260,9 @@
     ],
     "jwst_note": "Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine Aussage, JWST stütze kosmologische Vererbung.",
     "next": [
-      "V5b: Lauf nach protocol_v5.json",
-      "V4 nach Johanns Entscheidung"
+      "V5b-Abnahme durch SCF-Koordination",
+      "V4 nach Johanns Entscheidung",
+      "V6 nur nach Johanns OK"
     ],
     "decisions": [
       {
@@ -1292,6 +1299,11 @@
         "date": "2026-10-11",
         "by": "SCF-Koordination",
         "decision": "V3 (bb776b57e0) abgenommen; V5 vor V4; V4 liegt bei Johann. f0 = Massenanteil der Pakete/Zonen mit Z < z_crit; f_primordial_origin getrennt."
+      },
+      {
+        "date": "2026-10-11",
+        "by": "SCF-Koordination",
+        "decision": "V5a (bec0d1bc5b) abgenommen; GO für den V5b-Lauf exakt nach protocol_v5.json."
       }
     ]
   }

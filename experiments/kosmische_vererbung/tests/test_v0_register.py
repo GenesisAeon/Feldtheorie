@@ -108,7 +108,10 @@ def test_packages_cover_plan_and_map_to_existing_tasks(register):
 
 def test_delivery_claims_follow_package_order(register):
     # Packages are delivered in order; nothing after the first undelivered one.
-    statuses = [p["status"] for p in register["packages"] if p["id"].startswith("V")]
+    # Packages waiting for Johann's approval (V4, V6) or owned elsewhere (V7)
+    # may be skipped deliberately.
+    skippable = {"planned_requires_approval", "external_owner"}
+    statuses = [p["status"] for p in register["packages"] if p["id"].startswith("V") and p["status"] not in skippable]
     delivered = ["delivered" in s for s in statuses]
     assert delivered[0]
     assert delivered == sorted(delivered, reverse=True)

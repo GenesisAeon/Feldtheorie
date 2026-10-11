@@ -417,3 +417,16 @@ V3 ist abgenommen. V5 kommt vor V4; über V4 entscheidet Johann.
 - **Protokoll:** `chem/protocol_v5.json` ist in diesem Commit **vor** dem Lauf festgelegt.
 - **Orakel 5** (exakt mit Brüchen) und **Orakel 6** (geschlossene Zwei-Zustands-Lösung) sind grün.
 - **Lauf:** Lauf und Ergebnisse folgen in einem eigenen späteren Commit (V5b).
+
+### V5b: Lauf und Ergebnis (12. Oktober 2026)
+
+Der Lauf folgt exakt `chem/protocol_v5.json`. Das Protokoll wurde in `bec0d1bc5b` vor dem Lauf festgelegt. Die Bewertung jeder Erwartung steht in `chem/runs/v5_mean_vs_distribution/ASSESSMENT.md`.
+- **L (linear):** Der Mittelwert Z̄ ist exakt hinreichend; der Unterschied zwischen A und B beträgt höchstens 4·10⁻¹⁵.
+- **P3 und S:** Beide brechen die Suffizienz mit **entgegengesetztem Vorzeichen**. P3 reichert heterogen schneller an (r bis +3,9·10⁻²), S langsamer (r bis −2,5·10⁻²). Eine Mittelwert-Unzureichendheit ist deshalb kein Beleg für einen bestimmten Mechanismus und insbesondere keiner für Pop-III-Physik.
+- **Auflösung:**
+  - Die Pop-III-Masse ist bei k > 0 nicht aufgelöst (`numerical_failure`, wie vorab erwartet).
+  - Nachträglich festgestellt: Auch r für P3 bei k > 0 hängt an dieser Größe und ist nicht belastbar.
+  - Eine feinere Auflösung wäre ein neues Protokoll.
+- **f₀ und Herkunft:** f₀ und f_primordial_origin trennen sich wie erwartet. f₀ = 0 bei 5 Myr, während noch etwa 37 % des Gases primordialer Herkunft sind.
+- **Zeitreihen für SCF (KV3):** `timeseries.json`.
+- **Reichweite:** synthetisch; zwei Zonen; keine Sternphysik und keine Beobachtung.
