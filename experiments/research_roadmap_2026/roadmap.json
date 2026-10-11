@@ -194,7 +194,7 @@
       "title": "Chemischer Basiskern",
       "dependency_note": "V1",
       "completion_condition": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7. Kern experiments/kosmische_vererbung/chem/kernel.py; Tests experiments/kosmische_vererbung/tests/test_v3_chem.py. Kein Versuchslauf in V3.",
-      "status": "delivered_pending_acceptance"
+      "status": "delivered"
     },
     {
       "id": "V4",
@@ -207,8 +207,8 @@
       "id": "V5",
       "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
       "dependency_note": "V3",
-      "completion_condition": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md.",
-      "status": "planned"
+      "completion_condition": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt.",
+      "status": "protocol_fixed_before_run"
     },
     {
       "id": "V6",
@@ -447,6 +447,12 @@
       "date": "2026-10-11",
       "package": "V3",
       "scope": "Chemischer Basiskern mit Orakeln 1-4 und 7; F5 und N5 durch Alternative bearbeitet; kein Versuchslauf.",
+      "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-11",
+      "package": "V5a",
+      "scope": "Mehrzonenkern (zones.py), Ertragsregeln L/P3/S (rules.py), Runner und Auswertung, Protokoll KV-V5 vor dem Lauf festgelegt; Orakel 5 und 6 grün.",
       "approval": "pending (SCF-Koordination)"
     }
   ],
@@ -1194,7 +1200,7 @@
           "F5",
           "N5"
         ],
-        "status": "delivered_pending_acceptance",
+        "status": "delivered",
         "acceptance": "Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1-4 und 7. Kern experiments/kosmische_vererbung/chem/kernel.py; Tests experiments/kosmische_vererbung/tests/test_v3_chem.py. Kein Versuchslauf in V3."
       },
       {
@@ -1210,8 +1216,8 @@
         "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
         "where": "experiments/kosmische_vererbung/",
         "findings": [],
-        "status": "planned",
-        "acceptance": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md."
+        "status": "protocol_fixed_before_run",
+        "acceptance": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt."
       },
       {
         "id": "V6",
@@ -1248,8 +1254,8 @@
     ],
     "jwst_note": "Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine Aussage, JWST stütze kosmologische Vererbung.",
     "next": [
-      "V3-Abnahme durch SCF-Koordination",
-      "V5 (V4 erst nach Johanns OK)"
+      "V5b: Lauf nach protocol_v5.json",
+      "V4 nach Johanns Entscheidung"
     ],
     "decisions": [
       {
@@ -1281,6 +1287,11 @@
         "date": "2026-10-11",
         "by": "SCF-Koordination",
         "decision": "V2 (5e34c8df2e) abgenommen; GO für V3. Auflage: Protokolle künftig in eigenem Commit vor dem Lauf."
+      },
+      {
+        "date": "2026-10-11",
+        "by": "SCF-Koordination",
+        "decision": "V3 (bb776b57e0) abgenommen; V5 vor V4; V4 liegt bei Johann. f0 = Massenanteil der Pakete/Zonen mit Z < z_crit; f_primordial_origin getrennt."
       }
     ]
   }

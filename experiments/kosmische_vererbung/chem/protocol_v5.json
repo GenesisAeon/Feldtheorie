@@ -1,0 +1,66 @@
+{
+  "protocol_id": "KV-V5",
+  "title": "Mittelwert gegen Verteilung: ein vs. zwei Reservoire mit verzögerter Rückführung",
+  "date": "2026-10-11",
+  "status": "fixed_before_run",
+  "question": "Reicht die mittlere Metallizität Z̄ eines Zwei-Zonen-Systems, um seine weitere Entwicklung vorherzusagen, oder braucht es zusätzlich den unberührten Anteil f0 bzw. die Verteilung (Plan §6.2)?",
+  "scope": "Synthetisches Modell mit vorab deklarierten Erträgen. Keine Sternphysik, keine Beobachtungsaussage, kein JWST-Bezug. Explorativ.",
+  "seeds": "Keine. Das Modell ist deterministisch.",
+  "units": {"mass": "M_sun", "time": "Myr"},
+  "zone_gas_mass": 1000000.0,
+  "primordial_mass_fractions": {"H": 0.75, "He": 0.25},
+  "metal_carrier": "O (alle Metalle als O geführt); Z = C+O+Si+REST",
+  "initial_states": {
+    "A": {"label": "heterogen: zwei Zonen mit Z = 0 und Z = 0,02", "zones": [0.0, 0.02]},
+    "B": {"label": "homogen: zwei Zonen mit Z = 0,01", "zones": [0.01, 0.01]},
+    "C": {"label": "eine Zone mit Z = 0,01 und doppelter Masse", "zones": [0.01], "mass_factor": 2}
+  },
+  "initial_tags": "Zonen mit Z = 0 tragen die Herkunftsmarke 'primordial', angereicherte Anfangszonen 'initial'.",
+  "star_formation": {"rule": "In jeder Zone und jedem Schritt bildet sich die Sternmasse eps * M_gas * dt aus dem gemischten Gas der Zone; der Ertrag hängt von der Zonenmetallizität bei der Bildung ab (Regel).", "eps_per_myr": 0.01},
+  "step_order": "Zu t_n: (1) fällige Rückgaben bis t_n, (2) Beobachtung, falls t_n ein Beobachtungszeitpunkt ist, (3) Sternbildung in jeder Zone, (4) Austausch über [t_n, t_n + dt] als Matrixexponential.",
+  "rules": {
+    "L": {"kind": "linear", "return_fraction": 0.3, "net_o": 0.01, "lifetime_myr": 10.0},
+    "P3": {"kind": "pop3", "return_fraction": 0.3, "z_crit": 1e-05, "pop3_net_o": 0.03, "pop3_lifetime_myr": 3.0, "pop2_net_o": 0.01, "pop2_lifetime_myr": 10.0},
+    "S": {"kind": "saturation", "return_fraction": 0.3, "y": 0.03333333333333333, "z_max": 0.04, "lifetime_myr": 10.0}
+  },
+  "exchange_rates_per_myr": [0.0, 0.01, 0.1],
+  "exchange_rule": "Zwei Zonen tauschen symmetrisch aus: Anteil k des Gases je Myr in jede Richtung.",
+  "duration_myr": 100.0,
+  "observe_every_myr": 5.0,
+  "dt_myr": [0.5, 0.25],
+  "primary_dt_myr": 0.5,
+  "observables": {
+    "mean_Z": "Massengewichtete Metallizität über das Gas aller Zonen.",
+    "f0": "Massenanteil des Gases in Zonen mit Z < f0_z_crit (Schnittstelle mit SCF).",
+    "f0_z_crit": 1e-05,
+    "f_primordial_origin": "Massenanteil der Herkunftsmarke 'primordial'. Ausdrücklich nicht f0.",
+    "pop3_mass_formed": "Kumulativ gebildete Sternmasse mit Regel-Zweig pop3.",
+    "synthesized_O": "Kumulativ synthetisierte O-Masse."
+  },
+  "metrics": {
+    "D1": "r(t) = (mean_Z_A - mean_Z_B) / mean_Z_B zu allen Beobachtungszeiten; max |r| und t_sep = erster Zeitpunkt mit |r| > delta.",
+    "delta": 0.01,
+    "D2": "max relative Abweichung von mean_Z_B gegen mean_Z_C (zwei identische Zonen gegen eine Zone).",
+    "D3": "f0, f_primordial_origin und pop3_mass_formed für A und B.",
+    "D4": "Auflösungsprüfung: max relative Abweichung von mean_Z und pop3_mass_formed zwischen dt 0,5 und 0,25. Über 5 % gilt die Größe als numerical_failure.",
+    "D4_tolerance": 0.05,
+    "D5": "max relative Bilanzabweichung je Lauf (Toleranz 1e-9)."
+  },
+  "hand_values": {
+    "initial_net_O_per_formed_mass": {"L": [0.01, 0.01, 0.01], "P3": [0.03, 0.01, 0.01], "S": [0.01, 0.009, 0.006], "at_Z": [0.0, 0.01, 0.02]},
+    "initial_synthesis_ratio_A_over_B": {"L": 1, "P3": 2, "S": 0.8888888888888888},
+    "oracle5": "mean_Z_A(0) = mean_Z_B(0) = 0,01; f0_A(0) = 1/2, f0_B(0) = 0",
+    "oracle6": "Zwei Zonen, Raten a (1 -> 2) und b (2 -> 1): P(t) = 1/(a+b) [[b + a e^{-(a+b)t}, b(1-e^{-(a+b)t})], [a(1-e^{-(a+b)t}), a + b e^{-(a+b)t}]]"
+  },
+  "expectations_from_rules": [
+    "L: |r(t)| <= 1e-12 zu allen Zeiten und für alle k; der Mittelwert ist exakt hinreichend.",
+    "Alle Regeln: B und C stimmen bis 1e-12 überein (zwei identische homogene Zonen = eine Zone).",
+    "P3: r > 0, solange sich der Effekt der ersten Pop-III-Rückgaben auswirkt; |r| sinkt mit wachsendem k. Pop-III-Masse nur in A, in B gleich 0.",
+    "S: r < 0 (die heterogene Verteilung erzeugt weniger Metalle, Konkavität); |r| sinkt mit wachsendem k.",
+    "P3 und S brechen die Mittelwert-Suffizienz mit entgegengesetztem Vorzeichen. Aus Z̄ allein lässt sich ohne Kenntnis der Regel nicht entscheiden, welcher Mechanismus wirkt.",
+    "f0_A fällt bei k > 0 im ersten Austauschschritt auf 0; f_primordial_origin bleibt > 0.",
+    "Bei k > 0 überschreitet Zone 0 in A die Schwelle z_crit nach etwa z_crit/(0,02 k) Myr, also unterhalb von dt. Die Pop-III-Masse ist dann durch dt bestimmt und voraussichtlich nicht aufgelöst (D4 -> numerical_failure für diese Größe).",
+    "Bestätigungen dieser Erwartungen prüfen die Regeln und ihre Umsetzung; sie sind keine Aussage über reale Sternpopulationen."
+  ],
+  "result_states": ["evaluated", "not_evaluated", "numerical_failure", "outside_scope"]
+}

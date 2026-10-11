@@ -408,3 +408,12 @@ V2 ist abgenommen. Ab jetzt gilt die Auflage: Ein Protokoll wird in einem eigene
 - Orakel 7: Derselbe Versuch in Jahren und in Myr liefert bis 10⁻¹² relativ dieselben Werte.
 
 Grenzen: nur synthetische Erträge und eine Zone. Die Mischung mehrerer Zonen folgt in V5. Für V4 (reale Ertragstabellen) braucht es vorher Johanns OK.
+
+### V5a: Protokoll vor dem Lauf (11. Oktober 2026)
+
+V3 ist abgenommen. V5 kommt vor V4; über V4 entscheidet Johann.
+- **Festlegung mit der SCF-Session:** f₀ ist der Massenanteil der Zonen mit Z < z_crit (deklariert: 10⁻⁵). Getrennt davon wird `f_primordial_origin` geführt, der Anteil der Herkunftsmarke `primordial`.
+- **Neuer Code:** `chem/zones.py` (mehrere Zonen, Austausch als Matrixexponential), `chem/rules.py` mit den Regeln L (linear, Nullmodell), P3 (Schwelle mit Pop-III-Sonderertrag) und S (Sättigung ohne Pop-III-Sonderertrag; Gegenmodell auf Wunsch der SCF-Session) sowie Runner und Auswertung.
+- **Protokoll:** `chem/protocol_v5.json` ist in diesem Commit **vor** dem Lauf festgelegt.
+- **Orakel 5** (exakt mit Brüchen) und **Orakel 6** (geschlossene Zwei-Zustands-Lösung) sind grün.
+- **Lauf:** Lauf und Ergebnisse folgen in einem eigenen späteren Commit (V5b).
