@@ -93,8 +93,45 @@ def test_missing_pointer_prevents_numbers(copy_data, monkeypatch):
     with pytest.raises(studies.IntegrityError): studies.load_study("m12", copy_data)
 
 
+@pytest.mark.parametrize("mutation", ["above_one", "reversed", "decision_int", "null", "assertion_int"])
+def test_value_semantics_fail_closed(copy_data, monkeypatch, mutation):
+    """Byte-valid (re-pinned) but semantically invalid values must not be displayed."""
+    p = copy_data / "sources/m12-evaluation.json"
+    d = json.loads(p.read_bytes())
+    t = d["confirmatory"]["tests"]["R-a"]
+    if mutation == "above_one": d["descriptive"]["conditions"]["c0"]["B"] = 1.5
+    if mutation == "reversed": t["ci95_t"] = t["ci95_t"][::-1]
+    if mutation == "decision_int": t["rejected"] = 1
+    if mutation == "null": t["mean"] = None                  # field is not nullable
+    if mutation == "assertion_int": d["release"]["released"] = 1  # 1 == True, but not a bool
+    p.write_text(json.dumps(d), encoding="utf-8")
+    repin(copy_data, monkeypatch)
+    with pytest.raises(studies.IntegrityError): studies.load_study("m12", copy_data)
+
+
+def test_sources_outside_snapshot_are_rejected(copy_data, monkeypatch):
+    outside = copy_data.parent / "outside.md"
+    outside.write_bytes((copy_data / "sources/m9-erratum.md").read_bytes())
+    repin(copy_data, monkeypatch, lambda m: m["sources"]["m9-erratum"].update(file="../outside.md"))
+    with pytest.raises(studies.IntegrityError): studies.load_study("m9", copy_data)
+    with pytest.raises(studies.IntegrityError): studies.source_bytes("m9", "m9-erratum", copy_data)
+
+
+def test_lf_binding_accepts_crlf_pinned_target(copy_data, monkeypatch):
+    """sha256_lf bindings compare line-ending-normalised bytes; the raw pin still guards the copy."""
+    p = copy_data / "sources/m9-prediction.json"
+    p.write_bytes(p.read_bytes().replace(b"\n", b"\r\n"))
+    repin(copy_data, monkeypatch)
+    assert studies.load_study("m9", copy_data)["integrity"] == "verified"
+
+
+def test_catalog_has_no_numbers():
+    assert [set(entry) for entry in studies.catalog()] == [{"id", "title"}] * len(studies.IDS)
+    assert [entry["id"] for entry in studies.catalog()] == list(studies.IDS)
+
+
 def test_loader_has_no_research_imports():
-    tree = ast.parse(__import__("pathlib").Path(studies.__file__).read_text())
+    tree = ast.parse(__import__("pathlib").Path(studies.__file__).read_text(encoding="utf-8"))
     imports = [n.module for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)]
     imports += [a.name for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names]
     assert set(imports) <= {"__future__", "hashlib", "json", "math", "pathlib"}
