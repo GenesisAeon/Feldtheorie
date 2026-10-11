@@ -134,13 +134,13 @@ tasks:
   dependency_note: R00, Plan Kosmische Vererbung
   completion_condition: Jede Aussage mit Quellpfad, Status und nächstem Schritt; kein
     zweites Roadmap-System; F1-F8 eingeordnet.
-  status: delivered_pending_approval
+  status: delivered
 - id: V1
   title: Rechenkern und Laufverträge reparieren
   dependency_note: V0-Freigabe
-  completion_condition: Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
-    Import, Abbruch.
-  status: planned
+  completion_condition: 'Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
+    Import, Abbruch. Tests: tests/test_stellar_forge_v1.py.'
+  status: delivered_pending_acceptance
 - id: V2
   title: S00/S01 durchführen
   dependency_note: V1
@@ -182,7 +182,7 @@ tasks:
   dependency_note: Johanns Entscheidung
   completion_condition: Johann entscheidet ob und wo; Fixpunkt, Integrator, Übergang
     und E-Faltungs-Begriff gemeinsam korrigieren.
-  status: open_decision
+  status: deferred_other_session
 sources:
   u_matrix:
     label: Binary Existence Matrix
@@ -351,6 +351,11 @@ progress_notes:
     F1-F8 und N1-N5 mit Quelle, Status und nächstem Schritt.
   base_commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
   approval: pending (Johann)
+- date: '2026-10-11'
+  package: V1
+  scope: F2, F3, F4, N1, N2, N4 behoben; cosmic_cycle_demo stillgelegt; Entscheidungen
+    zu F6, F7, N3 eingetragen.
+  approval: pending (SCF-Koordination)
 cosmic_inheritance:
   id: SF-001-KV
   title: 'Kosmische Vererbung: Erweiterung von SF-001'
@@ -456,13 +461,17 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/big_bang_renderer.py
       line: 14
       contains: x=random.gauss(0, 1.0),
-    status: reproduced_locally
+    status: fixed
     evidence: 'reproduce_review.py: Fusionsradius 0,5->20 und Entropierate 0,001->0,7
       ergeben bit-identische Zustände über fünf Schritte; gravity_const 0,10 als Positivkontrolle
       verändert sie.'
     next_step: Aktive/inaktive Parameter im Code ausweisen (Vertrag + Test); Seed-Hierarchie
       von einem Wurzel-Seed bis in Mutation und Anfangszustand führen; Wiederholbarkeitstest.
     fix_package: V1
+    resolution: 'V1: PARAMETER_CONTRACT in physics_engine.py weist aktive/inaktive
+      DNA-Felder aus (Verhalten unverändert, per Test geprüft); Seed-Hierarchie Wurzel-Seed
+      -> Abstammungs-ID -> getrennte Ströme für Mutation und Anfangszustand; Renderer
+      --seed.'
   - id: F3
     priority: P1
     kind: numerischer Bug
@@ -480,13 +489,16 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/physics_engine.py
       line: 87
       contains: a.x += a.vx
-    status: reproduced_locally
+    status: fixed
     evidence: 'Zwei gleiche Teilchen bei x=-1/+1 in Ruhe: Gesamtimpuls nach einem
       Schritt -0.00015595164086283989, bei umgekehrter Liste +0.00015595164086283989
       (Python 3.11.9, NumPy 2.4.6).'
     next_step: 'Alle Kräfte aus demselben alten Zustand berechnen, danach alle Zustände
       aktualisieren; Tests: Impulserhaltung und Permutationsinvarianz.'
     fix_package: V1
+    resolution: 'V1: gravity_step berechnet alle Kräfte aus dem alten Zustand, dann
+      Update. Impuls des Review-Gegenbeispiels exakt 0 in beiden Reihenfolgen; Reihenfolgeunabhängigkeit
+      bis auf Rundung (1 Schritt 1e-13, 10 Schritte 1e-9).'
   - id: F4
     priority: P2
     kind: Schnittstellenbruch
@@ -509,7 +521,7 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/run_multiverse.py
       line: 19
       contains: manager.terminate_all()
-    status: reproduced_locally
+    status: fixed
     evidence: Import scheitert an accretion_step (ausgeführt); MultiverseManager hat
       kein terminate_all (hasattr). Der unbeschränkte Managerlauf wurde nicht gestartet;
       der Abbruchfehler ist aus dem Code abgeleitet.
@@ -517,6 +529,9 @@ cosmic_inheritance:
       oder begründet stilllegen (Reparatur wäre neue Physik-API); terminate_all mit
       terminate/wait/kill; begrenzte Gesamtläufe.
     fix_package: V1
+    resolution: 'V1: cosmic_cycle_demo begründet stillgelegt (RetiredDemoError beim
+      Import, Originalcode erhalten); terminate_all (terminate/wait/kill); run() begrenzt
+      durch max_universes und max_seconds und räumt immer auf.'
   - id: F5
     priority: P1
     kind: physikalischer Scope
@@ -592,10 +607,10 @@ cosmic_inheritance:
     status: confirmed_by_code_reading
     evidence: 'Nur gelesen, nicht ausgeführt: Endlosschleife; zusätzlich ist das Modul
       eigenständig nicht importierbar (N3).'
-    next_step: 'Nur falls Cosmic Loop in S01 verwendet wird: Vererbungsoperator und
-      Fehlversuchssemantik (Aussterben vs. erlaubter Neustart) festlegen und getrennt
-      zählen; sonst als historischer Kontrollfall bewahren.'
-    fix_package: V2
+    next_step: 'Entscheidung 2026-10-11: Cosmic Loop wird nicht als Vergleichsmodell
+      in S01 genutzt; bleibt historischer Kontrollfall. S01 erhält ein eigenes schlankes
+      Modell mit fairen Budgets.'
+    fix_package: none_by_decision
   - id: F7
     priority: P1
     kind: analytischer Bug (Nachbarrepo)
@@ -622,8 +637,8 @@ cosmic_inheritance:
     evidence: 'reproduce_review.py: Rückgabe 0.00019310099346675974, Ableitung dort
       +0.00018937219409897478; wahrer Fixpunkt 0.01; numerisch H(1000)=0.010000003992621851,
       exakt 0.010000004067856305.'
-    next_step: Eigenes Paket T6 im Repo implosive-origin-utac; Johann entscheidet
-      ob und wo. Nicht nebenbei in Feldtheorie reparieren.
+    next_step: 'Entscheidung 2026-10-11: nicht in dieser Session; bleibt als T6 registriert
+      und wird später separat in implosive-origin-utac bearbeitet.'
     fix_package: T6
   - id: F8
     priority: P2
@@ -676,12 +691,15 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/multiverse_manager.py
       line: 87
       contains: uni_id = str(uuid.uuid4())[:8]
-    status: reproduced_locally
+    status: fixed
     evidence: 'Probe 2026-10-11: zwei Signaldateien, ein Scan -> child_number [1,
       1], Zähler 0.'
     next_step: Eindeutige, aus der Seed-Hierarchie abgeleitete Kind-IDs; Eltern-Kind-Kante
       mit beiden IDs protokollieren.
     fix_package: V1
+    resolution: 'V1: Kind-IDs aus der Abstammung (u, u.0, u.0.1 ...), eindeutige child_number,
+      child_id und Status im Protokoll; Signaldateien deterministisch benannt und
+      atomar geschrieben.'
   - id: N2
     kind: Parametervertrag
     summary: 'clumping_factor wirkt erst ab 0,5: darunter wird die Glättungslänge
@@ -692,11 +710,13 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/physics_engine.py
       line: 63
       contains: self.softening_length = max(0.05, 0.1 * self.clumping_factor)
-    status: reproduced_locally
+    status: fixed
     evidence: 'Probe: clumping 0,1/0,3/0,5/1,0 -> softening 0,05/0,05/0,05/0,1.'
     next_step: Im Parametervertrag als 'aktiv nur für clumping_factor >= 0,5' ausweisen
       und testen; keine stille Änderung der Klemme.
     fix_package: V1
+    resolution: 'V1: Im PARAMETER_CONTRACT als active_from_0.5 ausgewiesen und getestet;
+      Klemme bewusst unverändert.'
   - id: N3
     kind: Importzyklus
     summary: 'level_7_cosmic_loop ist eigenständig nicht importierbar: cosmic_physics
@@ -722,9 +742,9 @@ cosmic_inheritance:
     status: reproduced_locally
     evidence: 'Probe 2026-10-11: ImportError ''partially initialized module'' für
       cosmic_physics und run_eternal_cycle; mit vorherigem import src.core erfolgreich.'
-    next_step: Johann entscheidet, ob Cosmic Loop in S01 genutzt wird; nur dann Zyklus
-      auflösen (eigenes Paket, nicht Teil von V1).
-    fix_package: open_decision
+    next_step: 'Entscheidung 2026-10-11: Importzyklus wird nicht aufgelöst; Cosmic
+      Loop bleibt historischer Kontrollfall.'
+    fix_package: none_by_decision
   - id: N4
     kind: Einstiegspunkte
     summary: 'Zwei Einstiegspunkte für denselben Manager mit verschiedenem Abbruchverhalten:
@@ -741,11 +761,13 @@ cosmic_inheritance:
       path: simulation/v4_stellar_forge/run_multiverse.py
       line: 19
       contains: manager.terminate_all()
-    status: confirmed_by_code_reading
+    status: fixed
     evidence: Gelesen; kein Managerlauf gestartet.
     next_step: In V1 einen Abbruchvertrag im Manager (terminate_all) und beide Einstiegspunkte
       darauf umstellen.
     fix_package: V1
+    resolution: 'V1: Beide Einstiegspunkte nutzen MultiverseManager.run() mit denselben
+      Grenzen und demselben Abbruchvertrag.'
   - id: N5
     kind: Ressourcenbezeichner
     summary: stellar_death verlangt METALS, StellarLifecycle verlangt und liefert
@@ -772,24 +794,24 @@ cosmic_inheritance:
     kind: CLI (python -m)
     import: ok
     status: demo
-    note: Eingesetztes Schwarzes Loch (F1), ungeseedet (F2), schreibt nach ./output
-      im Arbeitsverzeichnis, braucht matplotlib.
+    note: 'Eingesetztes Schwarzes Loch (F1), ungeseedet (F2), schreibt nach ./output
+      im Arbeitsverzeichnis, braucht matplotlib. Seit V1: --seed für den Anfangszustand.'
   - path: simulation/v4_stellar_forge/run_multiverse.py
     kind: CLI
     import: ok
-    status: unbounded_broken_shutdown
-    note: Endlosschleife; Abbruch scheitert an terminate_all (F4, aus Code abgeleitet);
-      Kindprozesse laufen weiter.
+    status: bounded
+    note: 'Seit V1: begrenzt (--max-universes 16, --max-seconds 600), Seed-Hierarchie
+      (--seed), sauberer Abbruch über terminate_all.'
   - path: simulation/v4_stellar_forge/run_recursive_cosmos.py
     kind: CLI
     import: ok
-    status: unbounded
-    note: Endlosschleife; beendet Kindprozesse ohne wait (N4).
+    status: bounded
+    note: 'Seit V1: gleiche Grenzen und Abbruch wie run_multiverse.'
   - path: simulation/v4_stellar_forge/cosmic_cycle_demo.py
     kind: Demo
-    import: ImportError
-    status: broken
-    note: accretion_step u. a. fehlen; andere AtomAgent-API (F4).
+    import: RetiredDemoError
+    status: retired
+    note: Seit V1 begründet stillgelegt (F4); Originalcode erhalten.
   - path: simulation/v4_stellar_forge/protostar_demo.py
     kind: Demo (anderer Kern)
     import: ok
@@ -926,7 +948,7 @@ cosmic_inheritance:
     - F6
     - F7
     - F8
-    status: delivered_pending_approval
+    status: delivered
     acceptance: Jede Aussage mit Quellpfad, Status und nächstem Schritt; kein zweites
       Roadmap-System; F1-F8 eingeordnet.
   - id: V1
@@ -939,9 +961,9 @@ cosmic_inheritance:
     - N1
     - N2
     - N4
-    status: planned
-    acceptance: Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
-      Import, Abbruch.
+    status: delivered_pending_acceptance
+    acceptance: 'Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
+      Import, Abbruch. Tests: tests/test_stellar_forge_v1.py.'
   - id: V2
     title: S00/S01 durchführen
     where: experiments/kosmische_vererbung/
@@ -950,7 +972,6 @@ cosmic_inheritance:
     - S01
     findings:
     - F1
-    - F6
     - F8
     status: planned
     acceptance: Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere
@@ -997,7 +1018,7 @@ cosmic_inheritance:
     where: Repo implosive-origin-utac
     findings:
     - F7
-    status: open_decision
+    status: deferred_other_session
     acceptance: Johann entscheidet ob und wo; Fixpunkt, Integrator, Übergang und E-Faltungs-Begriff
       gemeinsam korrigieren.
   order: V0 -> V1 -> V2 und V3 -> V4/V5 -> V6 (nur bei ehrlichem Beobachtungsvergleich)
@@ -1008,5 +1029,20 @@ cosmic_inheritance:
   jwst_note: Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine
     Aussage, JWST stütze kosmologische Vererbung.
   next:
-  - V0-Freigabe durch Johann
-  - V1
+  - V1-Abnahme durch SCF-Koordination
+  - V2 und V3
+  decisions:
+  - date: '2026-10-11'
+    by: Johann / SCF-Koordination
+    decision: V0 freigegeben; V1 begonnen.
+  - date: '2026-10-11'
+    by: Johann / SCF-Koordination
+    decision: cosmic_cycle_demo begründet stilllegen (Datei bleibt, klarer Abbruch,
+      Roadmap-Vermerk, Test).
+  - date: '2026-10-11'
+    by: Johann
+    decision: F7/T6 nicht in dieser Session; später separat in implosive-origin-utac.
+  - date: '2026-10-11'
+    by: Johann
+    decision: Cosmic Loop nicht als Vergleichsmodell in S01; historischer Kontrollfall;
+      Importzyklus nicht auflösen.

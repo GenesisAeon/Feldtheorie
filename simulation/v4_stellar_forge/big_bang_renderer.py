@@ -6,15 +6,22 @@ import matplotlib.pyplot as plt
 from .universe_dna import UniverseDNA
 from .physics_engine import AtomAgent, ElementTypes, PhysicsEngine
 
-def initialize_bang(dna):
+def initialize_bang(dna, rng=None):
+    """Create the demo initial state.
+
+    ``rng`` is a ``random.Random`` instance from the seed hierarchy (finding
+    F2); without it the global ``random`` module is used as before.
+    The seed black hole is a demo device, not a formed object (finding F1).
+    """
+    rng = rng or random
     agents = []
     # Create a dense core that will collapse or expand based on G
     for _ in range(50):
         a = AtomAgent(
-            x=random.gauss(0, 1.0),
-            y=random.gauss(0, 1.0),
-            vx=random.gauss(0, 0.5), # Explosion
-            vy=random.gauss(0, 0.5),
+            x=rng.gauss(0, 1.0),
+            y=rng.gauss(0, 1.0),
+            vx=rng.gauss(0, 0.5), # Explosion
+            vy=rng.gauss(0, 0.5),
             element_type=ElementTypes.HYDROGEN
         )
         agents.append(a)
@@ -73,6 +80,8 @@ if __name__ == "__main__":
     parser.add_argument("--id", type=str, default="root")
     parser.add_argument("--frames", type=int, default=200)
     parser.add_argument("--output", type=str, default="output/frames")
+    parser.add_argument("--seed", type=int, default=None,
+                        help="Initial-state seed from the manager's seed hierarchy")
     args = parser.parse_args()
 
     # DNA laden oder Default nutzen
@@ -86,7 +95,7 @@ if __name__ == "__main__":
     engine = PhysicsEngine(dna, args.id, args.gen)
     
     # Big Bang Setup
-    agents = initialize_bang(dna)
+    agents = initialize_bang(dna, random.Random(args.seed) if args.seed is not None else None)
     
     # Run
     # print(f"Universum {args.id} (Gen {args.gen}) running...")

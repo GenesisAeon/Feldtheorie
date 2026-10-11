@@ -1,5 +1,4 @@
 import math
-import uuid
 import json
 import os
 from dataclasses import asdict, dataclass
@@ -12,6 +11,17 @@ GRAVITATIONAL_CONSTANT = 0.05
 FUSION_DISTANCE = 0.5
 FUSION_THRESHOLD = 0.5
 HAWKING_DECAY_RATE = 0.001
+
+# Which UniverseDNA fields influence the active PhysicsEngine path (finding F2,
+# observation N2). Checked by tests/test_stellar_forge_v1.py; inactive fields
+# only reach the legacy module constants above via apply_universe_dna().
+PARAMETER_CONTRACT = {
+    "gravity_const": "active",            # PhysicsEngine.G in gravity_step
+    "fusion_threshold": "inactive",       # legacy FUSION_DISTANCE/FUSION_THRESHOLD only
+    "entropy_rate": "inactive",           # legacy HAWKING_DECAY_RATE only
+    "mutation_scale": "mutation_only",    # UniverseDNA.mutate
+    "clumping_factor": "active_from_0.5", # softening_length = max(0.05, 0.1 * c)
+}
 
 
 def apply_universe_dna(dna) -> None:
@@ -55,6 +65,7 @@ class PhysicsEngine:
         self.universe_id = universe_id
         self.generation = generation
         self.signal_sent = False
+        self.signals_written = 0
 
         # Konstanten aus DNA
         self.G = self.dna.gravity_strength
@@ -63,11 +74,19 @@ class PhysicsEngine:
         self.softening_length = max(0.05, 0.1 * self.clumping_factor)
         
     def gravity_step(self, agents):
+        """Advance all agents by one model time unit (semi-implicit Euler).
+
+        All forces are computed from the same old state first; only then are
+        velocities and positions updated. The result therefore does not depend
+        on list order and conserves total momentum up to rounding (finding F3:
+        the earlier version moved each agent inside the force loop).
+        """
+        forces = []
         for i, a in enumerate(agents):
-            fx, fy = 0, 0
+            fx, fy = 0.0, 0.0
             for j, b in enumerate(agents):
                 if i == j: continue
-                
+
                 dx = b.x - a.x
                 dy = b.y - a.y
                 dist_sq = dx*dx + dy*dy
@@ -76,13 +95,15 @@ class PhysicsEngine:
 
                 # F = G * m1 * m2 / r^2
                 f = self.G * (a.mass * b.mass) / softened_dist_sq
-                
+
                 fx += f * (dx / dist)
                 fy += f * (dy / dist)
-            
+            forces.append((fx, fy))
+
+        for a, (fx, fy) in zip(agents, forces):
             a.vx += fx / a.mass
             a.vy += fy / a.mass
-            
+
             # Update Position
             a.x += a.vx
             a.y += a.vy
@@ -149,8 +170,14 @@ class PhysicsEngine:
             "parent_dna": asdict(self.dna)
         }
         
-        filename = f"output/signals/genesis_{uuid.uuid4()}.json"
-        with open(filename, 'w') as f:
+        # Deterministic name (universe id + sequence number) and atomic write,
+        # so the manager never reads a half-written signal and can process
+        # signals in a reproducible order.
+        signal_data["signal_index"] = self.signals_written
+        filename = f"output/signals/genesis_{self.universe_id}_{self.signals_written:04d}.json"
+        self.signals_written += 1
+        with open(filename + ".tmp", 'w', encoding="utf-8") as f:
             json.dump(signal_data, f)
+        os.replace(filename + ".tmp", filename)
         
         # print(f"🌑 SINGULARITY REACHED in {self.universe_id}! DNA Transmitted.")

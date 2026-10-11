@@ -348,3 +348,32 @@ Die Reihenfolge ist V0 → V1 → V2 und V3 → V4/V5 → V6, und V6 nur bei ein
 Was an Zhu et al. (2026, JWST) entwickelt wird, ist **explorativ bzw. retrospektiv**. Der Befund hat die Idee mit angestoßen; ein echter Vorhersagetest bräuchte eingefrorene Regeln und neue Daten. Es wird keine Aussage getroffen, JWST stütze kosmologische Vererbung.
 
 Prüfung des Registers: `python -m pytest -q -p no:cacheprovider experiments/kosmische_vererbung/tests`. Root-`pytest` sammelt nur `tests/`; dieser Aufruf muss daher ausdrücklich erfolgen.
+
+### Stand nach V1 (11. Oktober 2026)
+
+**Entscheidungen** (Johann bzw. SCF-Koordination, 11. Oktober 2026):
+- V0 ist freigegeben.
+- `cosmic_cycle_demo` wird begründet stillgelegt. Die Datei bleibt erhalten; ein Aufruf bricht mit `RetiredDemoError` und Begründung ab.
+- F7/T6 wird nicht in dieser Session bearbeitet. Es bleibt registriert und wird später separat in implosive-origin-utac erledigt.
+- Cosmic Loop (F6, N3) dient nicht als Vergleichsmodell in S01. Er bleibt historischer Kontrollfall; der Importzyklus wird nicht aufgelöst. S01 erhält ein eigenes schlankes Modell.
+
+| ID | Behebung in V1 |
+|---|---|
+| F2 | `PARAMETER_CONTRACT` in `physics_engine.py` weist aktive und inaktive DNA-Felder aus; das Verhalten ist unverändert und per Test geprüft. Seed-Hierarchie: Wurzel-Seed → Abstammungs-ID (`u`, `u.0`, `u.0.1` …) → getrennte Ströme für Mutation und Anfangszustand. Der Renderer hat dafür `--seed`. |
+| F3 | Alle Kräfte werden aus dem alten Zustand berechnet, danach werden alle Agenten aktualisiert. Das Review-Gegenbeispiel hat in beiden Reihenfolgen exakt Impuls 0. Die Reihenfolgeunabhängigkeit gilt bis auf Rundung: 10⁻¹³ nach einem Schritt, 10⁻⁹ nach zehn. |
+| F4 | `cosmic_cycle_demo` ist stillgelegt. `terminate_all` beendet Kindprozesse mit terminate, wait und notfalls kill. `run()` ist durch `max_universes` und `max_seconds` begrenzt und räumt immer auf. |
+| N1 | Kind-IDs ergeben sich aus der Abstammung. `child_number` ist eindeutig; `child_id` und Status stehen im Protokoll. Signaldateien sind deterministisch benannt und werden atomar geschrieben. |
+| N2 | Als `active_from_0.5` ausgewiesen und getestet; die Klemme ist unverändert. |
+| N4 | Beide Einstiegspunkte nutzen `MultiverseManager.run()` mit denselben Grenzen. |
+
+**Verhaltensänderungen bestehender Demos:**
+- Läufe sind standardmäßig begrenzt: 16 Universen und 600 s.
+- Universums-IDs sind jetzt Abstammungs-IDs statt uuid-Präfixe.
+- Signaldateien heißen `genesis_<id>_<nnnn>.json`.
+- Das Protokoll enthält zusätzlich `root_seed`, `child_id`, `generation`, `status` und `child_dna`.
+- Kindprozesse erhalten den Repository-Pfad über `PYTHONPATH`.
+- Unbekannte oder defekte Signale werden nach `output/signals/rejected/` verschoben, statt bei jedem Durchlauf erneut zu scheitern.
+- Die Gravitationsbahnen ändern sich gegenüber früher, weil der Reihenfolgefehler behoben ist.
+- Das eingesetzte Schwarze Loch bleibt (F1). Der Manager ist damit weiterhin eine Demo der Maschinerie, kein Selektionsversuch.
+
+Tests: `python -m pytest -q -p no:cacheprovider tests/test_stellar_forge_v1.py`. Diese Datei liegt in `tests/` und wird daher auch vom Root-`pytest` gesammelt.

@@ -7,6 +7,27 @@ slowly evaporates.
 
 from __future__ import annotations
 
+# --- Retired (package V1, finding F4, decision 2026-10-11) -------------------
+# This demo was written against an older physics API (free functions
+# accretion_step/fusion_step/gravity_step/hawking_process, keyword AtomAgent
+# with position=/velocity=/element=, and elements such as HELIUM). None of that
+# exists in physics_engine.py any more. Repairing it would mean adding new
+# physics, not fixing a bug. The original code below is kept unchanged for the
+# record and is never executed.
+RETIREMENT_NOTE = (
+    "simulation.v4_stellar_forge.cosmic_cycle_demo ist stillgelegt (Paket V1, Befund F4): "
+    "die Demo verlangt eine nicht mehr vorhandene Physik-API (accretion_step, hawking_process, "
+    "AtomAgent(position=..., element=...), ElementTypes.HELIUM). Eine Reparatur waere neue Physik. "
+    "Siehe experiments/research_roadmap_2026/ROADMAP.md, Abschnitt 'Kosmische Vererbung'."
+)
+
+
+class RetiredDemoError(RuntimeError):
+    """Raised when the retired demo is imported or run."""
+
+
+raise RetiredDemoError(RETIREMENT_NOTE)
+
 from typing import Dict, List
 
 import numpy as np

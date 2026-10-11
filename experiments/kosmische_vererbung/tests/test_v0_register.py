@@ -87,7 +87,9 @@ def test_every_entry_has_source_status_and_next_step(register, group):
         assert item["status"] in FINDING_STATUS, item["id"]
         assert item["next_step"].strip(), item["id"]
         assert item["evidence"].strip(), item["id"]
-        assert item["fix_package"] in package_ids | {"open_decision"}, item["id"]
+        assert item["fix_package"] in package_ids | {"open_decision", "none_by_decision"}, item["id"]
+        if item["status"] == "fixed":
+            assert item["resolution"].strip(), item["id"]
 
 
 def test_packages_cover_plan_and_map_to_existing_tasks(register):
@@ -104,10 +106,19 @@ def test_packages_cover_plan_and_map_to_existing_tasks(register):
     assert v2["realizes"] == ["S00", "S01"]
 
 
-def test_only_v0_claims_delivery(register):
-    for package in register["packages"]:
-        if package["id"] != "V0":
-            assert "delivered" not in package["status"], package["id"]
+def test_delivery_claims_follow_package_order(register):
+    # Packages are delivered in order; nothing after the first undelivered one.
+    statuses = [p["status"] for p in register["packages"] if p["id"].startswith("V")]
+    delivered = ["delivered" in s for s in statuses]
+    assert delivered[0]
+    assert delivered == sorted(delivered, reverse=True)
+
+
+def test_decisions_are_recorded(register):
+    by_id = {i["id"]: i for i in register["findings"] + register["observations"]}
+    assert by_id["F6"]["fix_package"] == by_id["N3"]["fix_package"] == "none_by_decision"
+    assert next(p for p in register["packages"] if p["id"] == "T6")["status"] == "deferred_other_session"
+    assert len(register["decisions"]) >= 4
 
 
 def test_each_finding_is_assigned_to_its_fix_package(register):
