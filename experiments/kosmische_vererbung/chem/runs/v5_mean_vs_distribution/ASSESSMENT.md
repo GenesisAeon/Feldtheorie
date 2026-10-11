@@ -1,5 +1,14 @@
 # Bewertung KV-V5: Mittelwert gegen Verteilung
 
+> **Korrektur-Vermerk (12. Oktober 2026): durch V5c eingeschränkt.** Siehe [`../v5c_resolution/ASSESSMENT.md`](../v5c_resolution/ASSESSMENT.md); Protokoll `c63688884d`, Lauf `34e44de295`. Dieser V5-Bericht, die Daten und die Ergebnisdateien bleiben unverändert.
+>
+> - **Die P3-Werte bei k > 0 sind Rasterartefakte.** Das betrifft r_max = 6,95e-3 und die Pop-III-Masse von 5000 M☉. Ereignisgenau beträgt die Pop-III-Masse 500,25 bzw. 50,025 M☉, und r ist etwa zehnfach kleiner.
+> - **P3 bei k = 0,01:** r ist fern der Rückgabesprünge klein positiv (4–7e-4).
+> - **P3 bei k = 0,1:** r ist nicht von 0 unterscheidbar.
+> - **An den Rückgabesprüngen** (Vielfache von 10 Myr) ist r nicht aufgelöst.
+> - **„Entgegengesetzte Vorzeichen P3/S“ gilt belastbar nur für k = 0.** Unberührt bleiben P3 bei k = 0, S und L.
+> - **timeseries.json:** Die Werte für P3 bei k > 0 sind nicht als P3-Signal zu verwenden.
+
 Lauf nach `protocol_v5.json`, festgelegt in Commit `bec0d1bc5b` vor dem Lauf. Daten: `raw.json`, Auswertung `results.json`/`results.yaml`/`RESULTS.md`, Zeitreihen für SCF in `timeseries.json`. Das Modell ist synthetisch: keine Sternphysik, keine Beobachtungsaussage, kein JWST-Bezug.
 
 r(t) = (Z̄_A − Z̄_B)/Z̄_B. A ist heterogen (Zonen mit Z = 0 und 0,02), B homogen (0,01 und 0,01), C eine Zone mit 0,01. Die Primärauflösung ist dt = 0,5 Myr.
