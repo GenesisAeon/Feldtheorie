@@ -430,3 +430,14 @@ Der Lauf folgt exakt `chem/protocol_v5.json`. Das Protokoll wurde in `bec0d1bc5b
 - **f₀ und Herkunft:** f₀ und f_primordial_origin trennen sich wie erwartet. f₀ = 0 bei 5 Myr, während noch etwa 37 % des Gases primordialer Herkunft sind.
 - **Zeitreihen für SCF (KV3):** `timeseries.json`.
 - **Reichweite:** synthetisch; zwei Zonen; keine Sternphysik und keine Beobachtung.
+
+### Abschluss der Feldtheorie-Session (12. Oktober 2026)
+
+**Abgenommen** (SCF-Koordination): V0, V1, V2, V3 und V5.
+
+**Offen:**
+- V4 (reale Ertragstabellen, Lizenzen) und V6 (Beobachtungsanschluss) liegen bei Johann.
+- V7 übernimmt die SCF-Session; der Adapter KV3 baut auf `timeseries.json` auf.
+- T6 (Type-6-Fixpunkt) wird separat in implosive-origin-utac bearbeitet.
+
+**Wichtigste Aussagegrenze:** Das r von P3 bei k > 0 aus V5 ist nicht belastbar, weil es von der nicht aufgelösten Pop-III-Masse abhängt.

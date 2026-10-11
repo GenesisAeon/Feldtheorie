@@ -208,7 +208,7 @@
       "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
       "dependency_note": "V3",
       "completion_condition": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt. Ergebnis chem/runs/v5_mean_vs_distribution (RESULTS.md, ASSESSMENT.md, timeseries.json für SCF).",
-      "status": "delivered_pending_acceptance"
+      "status": "delivered"
     },
     {
       "id": "V6",
@@ -460,6 +460,12 @@
       "package": "V5b",
       "scope": "Lauf KV-V5 nach Protokoll. L: Mittelwert exakt hinreichend; P3 r > 0, S r < 0 (entgegengesetzte Vorzeichen, kein Mechanismusbeleg). Pop-III-Masse bei k > 0 numerical_failure; nachträglich: r(P3, k > 0) nicht aufgelöst.",
       "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-12",
+      "package": "Abschluss",
+      "scope": "V0, V1, V2, V3, V5 abgenommen. Offen: V4, V6 (Johann), V7 (SCF), T6 (separat). r(P3, k > 0) aus V5 nicht belastbar.",
+      "approval": "SCF-Koordination"
     }
   ],
   "cosmic_inheritance": {
@@ -1222,7 +1228,7 @@
         "title": "Mischung und Beobachtbarkeit (Feldtheorie-Seite)",
         "where": "experiments/kosmische_vererbung/",
         "findings": [],
-        "status": "delivered_pending_acceptance",
+        "status": "delivered",
         "acceptance": "Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md. Protokoll experiments/kosmische_vererbung/chem/protocol_v5.json (Commit vor dem Lauf); f0 = Massenanteil der Zonen mit Z < z_crit, f_primordial_origin getrennt. Ergebnis chem/runs/v5_mean_vs_distribution (RESULTS.md, ASSESSMENT.md, timeseries.json für SCF)."
       },
       {
@@ -1260,9 +1266,9 @@
     ],
     "jwst_note": "Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine Aussage, JWST stütze kosmologische Vererbung.",
     "next": [
-      "V5b-Abnahme durch SCF-Koordination",
-      "V4 nach Johanns Entscheidung",
-      "V6 nur nach Johanns OK"
+      "V4: Entscheidung Johann (Empfehlung SCF-Koordination: zurückstellen)",
+      "V6: nur nach Johanns OK",
+      "V7: SCF-Session (KV3 auf timeseries.json)"
     ],
     "decisions": [
       {
@@ -1304,6 +1310,11 @@
         "date": "2026-10-11",
         "by": "SCF-Koordination",
         "decision": "V5a (bec0d1bc5b) abgenommen; GO für den V5b-Lauf exakt nach protocol_v5.json."
+      },
+      {
+        "date": "2026-10-12",
+        "by": "SCF-Koordination",
+        "decision": "V5b (671cfd3006) abgenommen. Feldtheorie-Session schließt ab; V4 und V6 liegen bei Johann."
       }
     ]
   }
