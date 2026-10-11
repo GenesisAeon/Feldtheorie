@@ -441,3 +441,24 @@ Der Lauf folgt exakt `chem/protocol_v5.json`. Das Protokoll wurde in `bec0d1bc5b
 - T6 (Type-6-Fixpunkt) wird separat in implosive-origin-utac bearbeitet.
 
 **Wichtigste Aussagegrenze:** Das r von P3 bei k > 0 aus V5 ist nicht belastbar, weil es von der nicht aufgelösten Pop-III-Masse abhängt.
+
+### V5c: Auflösungsstudie, Protokoll vor dem Lauf (12. Oktober 2026)
+
+Auftrag von Johann über die SCF-Koordination, auf Empfehlung von Astra. KV-V5 bleibt unverändert; V5c ist die neue Protokollversion `chem/protocol_v5c.json` mit dem Runner `chem/run_v5c.py`.
+
+**Zwei Schemata:**
+- **grid:** genau der KV-V5-Schritt.
+- **event:** Jeder Schritt wird an Sterntoden und am exakten Schwellenübergang geteilt. Den Übergang findet eine Bisektion auf der exakten Austauschlösung.
+
+**Vorab festgelegt:**
+- Schrittweiten 0,5 / 0,25 / 0,125 / 0,0625 Myr.
+- Konvergenz über die beiden feinsten Schrittweiten mit absoluter und relativer Toleranz: Pop-III-Masse 10 M☉ + 2 %, r 10⁻⁴ + 2 %.
+- Bilanztoleranz 10⁻⁹.
+- Status je Größe: evaluated, numerical_failure oder not_evaluated.
+
+**Handwerte:**
+- Schwellenübergang bei t* = 0,050025 Myr (k = 0,01) bzw. 0,0050025 Myr (k = 0,1).
+- Pop-III-Masse ereignisgenau 500,25 bzw. 50,025 M☉; im Raster 10⁴·dt.
+- Ohne Austausch (k = 0): 29 554,47 M☉ im Kontinuumsgrenzfall.
+
+Der Lauf folgt erst nach dem GO.

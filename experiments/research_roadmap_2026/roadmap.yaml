@@ -390,6 +390,12 @@ progress_notes:
   scope: 'V0, V1, V2, V3, V5 abgenommen. Offen: V4, V6 (Johann), V7 (SCF), T6 (separat).
     r(P3, k > 0) aus V5 nicht belastbar.'
   approval: SCF-Koordination
+- date: '2026-10-12'
+  package: V5c-Protokoll
+  scope: 'protocol_v5c.json vor dem Lauf: dt 0,5/0,25/0,125/0,0625, Schemata grid
+    und event (ereignisgenauer Schwellenübergang per Bisektion), Konvergenz mit atol
+    und rtol, Bilanztoleranz 1e-9, Handwerte und Erwartungen.'
+  approval: pending (SCF-Koordination)
 cosmic_inheritance:
   id: SF-001-KV
   title: 'Kosmische Vererbung: Erweiterung von SF-001'
@@ -1084,9 +1090,8 @@ cosmic_inheritance:
   jwst_note: Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine
     Aussage, JWST stütze kosmologische Vererbung.
   next:
-  - 'V4: Entscheidung Johann (Empfehlung SCF-Koordination: zurückstellen)'
-  - 'V6: nur nach Johanns OK'
-  - 'V7: SCF-Session (KV3 auf timeseries.json)'
+  - 'V5c: GO der SCF-Koordination für den Lauf'
+  - 'V4/V6: Johann'
   decisions:
   - date: '2026-10-11'
     by: Johann / SCF-Koordination
@@ -1120,3 +1125,7 @@ cosmic_inheritance:
     by: SCF-Koordination
     decision: V5b (671cfd3006) abgenommen. Feldtheorie-Session schließt ab; V4 und
       V6 liegen bei Johann.
+  - date: '2026-10-12'
+    by: Johann (über SCF-Koordination), Empfehlung Astra
+    decision: V5c Auflösungsstudie als neue Protokollversion; KV-V5 bleibt unverändert.
+      Protokoll-Commit zuerst, Lauf erst nach GO.
