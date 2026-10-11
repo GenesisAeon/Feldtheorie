@@ -1,6 +1,6 @@
 id: genesis-experimental-roadmap-2026-09
-version: 1.2.0
-updated: '2026-09-11'
+version: 1.3.0
+updated: '2026-10-11'
 language: de
 owner: GenesisAeon / Johann Benjamin Römer
 base_commits:
@@ -90,11 +90,13 @@ tasks:
   dependency_note: R00
   completion_condition: Gleiche Zeit je Modell und begrenzte Gesamtpopulation
   status: planned
+  realized_by: V2
 - id: S01
   title: Vererbung und Vielfalt vergleichen
   dependency_note: S00
   completion_condition: Neutralität, Selektion und Mutation nachvollziehbar getrennt
   status: planned
+  realized_by: V2
 - id: F00
   title: Begriffe und Formeln registrieren
   dependency_note: R00
@@ -127,6 +129,60 @@ tasks:
   completion_condition: Neuheitsprüfung, Methoden, Gegenbefunde und reproduzierbare
     Belege
   status: planned
+- id: V0
+  title: Bestand verbindlich machen
+  dependency_note: R00, Plan Kosmische Vererbung
+  completion_condition: Jede Aussage mit Quellpfad, Status und nächstem Schritt; kein
+    zweites Roadmap-System; F1-F8 eingeordnet.
+  status: delivered_pending_approval
+- id: V1
+  title: Rechenkern und Laufverträge reparieren
+  dependency_note: V0-Freigabe
+  completion_condition: Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
+    Import, Abbruch.
+  status: planned
+- id: V2
+  title: S00/S01 durchführen
+  dependency_note: V1
+  completion_condition: Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel,
+    mehrere Seeds, unabhängige Auswertung.
+  status: planned
+- id: V3
+  title: Chemischer Basiskern
+  dependency_note: V1
+  completion_condition: Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe
+    vor der Lebensdauer; Orakel 1-4 und 7.
+  status: planned
+- id: V4
+  title: Physikalische Referenzen anbinden
+  dependency_note: V3, Johanns OK
+  completion_condition: Manifest, Netto- vs. Gesamtertrag, Interpolation, Lizenz;
+    fehlende Daten -> not_evaluated. Vorher Johanns OK.
+  status: planned_requires_approval
+- id: V5
+  title: Mischung und Beobachtbarkeit (Feldtheorie-Seite)
+  dependency_note: V3
+  completion_condition: Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil,
+    verzögerte Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag
+    (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md.
+  status: planned
+- id: V6
+  title: Beobachtungsanschluss
+  dependency_note: V5, Johanns OK
+  completion_condition: Erst synthetische Messdaten; real nur nach Johanns OK; keine
+    Gleichsetzung von Gesamtmetallizität und Ionenlinien; explorativ/retrospektiv.
+  status: planned_requires_approval
+- id: V7
+  title: SCF-Bericht und Entscheidung
+  dependency_note: SCF-Session
+  completion_condition: Wird von der SCF-Session bearbeitet; hier nur Verweis.
+  status: external_owner
+- id: T6
+  title: Type-6-Fixpunkt (F7)
+  dependency_note: Johanns Entscheidung
+  completion_condition: Johann entscheidet ob und wo; Fixpunkt, Integrator, Übergang
+    und E-Faltungs-Begriff gemeinsam korrigieren.
+  status: open_decision
 sources:
   u_matrix:
     label: Binary Existence Matrix
@@ -289,3 +345,668 @@ progress_notes:
   G02: implemented; 25 checks and 576-state development audit passed
   G03: requires independent G01 and implementation reviews; no test data generated
   implementation_commit: 584b79500e912dffc17e03832802ac6a94f7bb45
+- date: '2026-10-11'
+  package: V0
+  scope: Kosmische Vererbung als Erweiterung von SF-001 (S00/S01) registriert; Befunde
+    F1-F8 und N1-N5 mit Quelle, Status und nächstem Schritt.
+  base_commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+  approval: pending (Johann)
+cosmic_inheritance:
+  id: SF-001-KV
+  title: 'Kosmische Vererbung: Erweiterung von SF-001'
+  added: '2026-10-11'
+  plan:
+    path: scoped-correspondence-formalism/prompts/Answers/nicht_stationäre_Treiber/KOSMISCHE_VERERBUNG_BESTANDSAUFNAHME_UND_PLAN.md
+    plan_reviewed_commit: 2da5414c8a58ffbcf8a963c9b1f9a96202e3300a
+    plan_date: '2026-09-27'
+  base_commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+  branch: kosmische-vererbung
+  strands:
+    material: Materielle Weitergabe zwischen Sterngenerationen (V3-V6).
+    model_population: Parametervererbung in künstlichen Modellpopulationen (V1-V2,
+      S00/S01).
+    cosmological: 'Kosmologische Vererbung (Smolin/CNS): nicht modelliert; braucht
+      eigene physikalische Zuordnung.'
+  id_note: F1-F8 sind Plan-Befunde, N1-N5 eigene Zusatzbeobachtungen; nicht zu verwechseln
+    mit den Roadmap-Aufgaben F00/F01 (Formelregister).
+  status_vocabulary:
+    findings:
+    - reproduced_locally
+    - confirmed_by_code_reading
+    - open
+    - fixed
+    results:
+    - evaluated
+    - not_evaluated
+    - numerical_failure
+    - outside_scope
+  findings:
+  - id: F1
+    priority: P1
+    kind: Aussagegrenze
+    summary: Der Renderer setzt jedem Universum ein Schwarzes Loch der Masse 25 ein;
+      der Physikkern sendet ab Masse > 20 höchstens ein Signal pro Universum; fusion_step
+      bildet keine Sterne oder Schwarzen Löcher.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/big_bang_renderer.py
+      line: 24
+      contains: seed_bh = AtomAgent(0,0,0,0, ElementTypes.BLACK_HOLE)
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/big_bang_renderer.py
+      line: 25
+      contains: seed_bh.mass = 25.0
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 97
+      contains: agent.mass > 20.0
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 98
+      contains: 'if not self.signal_sent:'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 101
+      contains: 'return agents # In V4'
+    status: reproduced_locally
+    evidence: 'reproduce_review.py (Plan-Beilage) am 2026-10-11 gegen d1c56267ae:
+      Signale 0/1/1 für 0/1/2 Schwarze Löcher nach zwei Schritten; Startmassen [25.0].'
+    next_step: Multiverse-Demopfad als Demo kennzeichnen; S00/S01 (V2) mit eigener,
+      ausdrücklich künstlicher Reproduktionsregel und Nullkontrollen statt Schwarzloch-Fitness.
+    fix_package: V2
+  - id: F2
+    priority: P1
+    kind: Parametervertrag
+    summary: fusion_threshold und entropy_rate wirken im aktiven Pfad (PhysicsEngine)
+      nicht; nur die Legacy-Modulglobalen werden gesetzt. Mutation und Anfangszustände
+      verwenden ungeseedete Zufallsquellen.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 23
+      contains: FUSION_DISTANCE = float(dna.fusion_threshold)
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 25
+      contains: HAWKING_DECAY_RATE = float(dna.entropy_rate)
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 61
+      contains: self.FUSION_DIST = 0.5
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/universe_dna.py
+      line: 54
+      contains: generator = rng or np.random.default_rng()
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/multiverse_manager.py
+      line: 69
+      contains: child_dna = parent_dna.mutate()
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/big_bang_renderer.py
+      line: 14
+      contains: x=random.gauss(0, 1.0),
+    status: reproduced_locally
+    evidence: 'reproduce_review.py: Fusionsradius 0,5->20 und Entropierate 0,001->0,7
+      ergeben bit-identische Zustände über fünf Schritte; gravity_const 0,10 als Positivkontrolle
+      verändert sie.'
+    next_step: Aktive/inaktive Parameter im Code ausweisen (Vertrag + Test); Seed-Hierarchie
+      von einem Wurzel-Seed bis in Mutation und Anfangszustand führen; Wiederholbarkeitstest.
+    fix_package: V1
+  - id: F3
+    priority: P1
+    kind: numerischer Bug
+    summary: gravity_step aktualisiert Positionen innerhalb der Kraftschleife; spätere
+      Teilchen sehen bereits verschobene Positionen. Impuls hängt von der Listenreihenfolge
+      ab.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 65
+      contains: 'def gravity_step(self, agents):'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 87
+      contains: a.x += a.vx
+    status: reproduced_locally
+    evidence: 'Zwei gleiche Teilchen bei x=-1/+1 in Ruhe: Gesamtimpuls nach einem
+      Schritt -0.00015595164086283989, bei umgekehrter Liste +0.00015595164086283989
+      (Python 3.11.9, NumPy 2.4.6).'
+    next_step: 'Alle Kräfte aus demselben alten Zustand berechnen, danach alle Zustände
+      aktualisieren; Tests: Impulserhaltung und Permutationsinvarianz.'
+    fix_package: V1
+  - id: F4
+    priority: P2
+    kind: Schnittstellenbruch
+    summary: cosmic_cycle_demo importiert nicht vorhandene freie Funktionen und nutzt
+      eine andere AtomAgent-API (position=, element=, HELIUM); run_multiverse ruft
+      beim Abbruch ein fehlendes terminate_all() auf.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/cosmic_cycle_demo.py
+      line: 17
+      contains: accretion_step,
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/cosmic_cycle_demo.py
+      line: 36
+      contains: element=ElementTypes.HELIUM,
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/run_multiverse.py
+      line: 19
+      contains: manager.terminate_all()
+    status: reproduced_locally
+    evidence: Import scheitert an accretion_step (ausgeführt); MultiverseManager hat
+      kein terminate_all (hasattr). Der unbeschränkte Managerlauf wurde nicht gestartet;
+      der Abbruchfehler ist aus dem Code abgeleitet.
+    next_step: Unterstützte Einstiegspunkte festlegen; cosmic_cycle_demo reparieren
+      oder begründet stilllegen (Reparatur wäre neue Physik-API); terminate_all mit
+      terminate/wait/kill; begrenzte Gesamtläufe.
+    fix_package: V1
+  - id: F5
+    priority: P1
+    kind: physikalischer Scope
+    summary: 'StellarLifecycle: illustrative Ressourcen-, Lebensdauer- und Ertragsregeln
+      ohne geschlossene Bilanz; Chronicle ist ein globaler Singleton, der Anforderungen
+      still kappt.'
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 50
+      contains: mass=max(1.0, consumed / 120.0),
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 53
+      contains: lifespan=random.randint(2, 4),
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 75
+      contains: metallicity=0.15,
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 94
+      contains: 'yields: dict[str, int] = {"HELIUM": int(star.mass * 40)}'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/core/chronicle.py
+      line: 38
+      contains: 'def __new__(cls) -> TheChronicle:'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/core/chronicle.py
+      line: 120
+      contains: granted = min(amount, available)
+    status: reproduced_locally
+    evidence: 'Probe 2026-10-11 (random.seed(0)): Pop III verbraucht 400 Einheiten
+      Wasserstoff und gibt 161 Einheiten zurück; Pop II verbraucht 310 und gibt 101
+      zurück. Der Rest wird nirgends als Stern- oder Remnantmasse geführt.'
+    next_step: Eigenen instanzbasierten Bilanzkern (V3) mit Einheiten, Erträgen und
+      Rückgabezeiten bauen; StellarLifecycle bleibt als gekennzeichnetes Toy-Modell
+      erhalten und wird nicht als Anreicherungsvorhersage verwendet.
+    fix_package: V3
+  - id: F6
+    priority: P2
+    kind: Versuchsbedeutung
+    summary: Cosmic Loop vererbt Score und Variationsbreite; das neue G wird um 1
+      gezogen, nicht um den Elternwert. Fehlversuche werden mit demselben Samen wiederholt;
+      Kollaps-Universen zählen als Fehlversuch.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/cosmic_physics.py
+      line: 51
+      contains: success_prob = base_chance + (self.ancestor_ecm_score * 0.2)
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/cosmic_physics.py
+      line: 65
+      contains: '''G'': 1.0 + random.uniform(-self.dna_mutation_rate, self.dna_mutation_rate),'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/run_eternal_cycle.py
+      line: 128
+      contains: 'if existed and universe.is_alive and universe.final_ecm > 0:'
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/run_eternal_cycle.py
+      line: 177
+      contains: '# Generation NICHT erhöhen'
+    status: confirmed_by_code_reading
+    evidence: 'Nur gelesen, nicht ausgeführt: Endlosschleife; zusätzlich ist das Modul
+      eigenständig nicht importierbar (N3).'
+    next_step: 'Nur falls Cosmic Loop in S01 verwendet wird: Vererbungsoperator und
+      Fehlversuchssemantik (Aussterben vs. erlaubter Neustart) festlegen und getrennt
+      zählen; sonst als historischer Kontrollfall bewahren.'
+    fix_package: V2
+  - id: F7
+    priority: P1
+    kind: analytischer Bug (Nachbarrepo)
+    summary: Type6ODE.fixed_point() liefert K_min*tanh(sigma*gamma); die implementierte
+      ODE dH/dt = -a(H - K_min) hat den positiven Fixpunkt H* = K_min. Der Klassen-Docstring
+      nennt eine andere Gleichung.
+    sources:
+    - repo: implosive-origin-utac
+      commit: cb073719e99700413e482945a6d2da8e8a19dfdc
+      path: src/implosive_origin/type6_ode.py
+      line: 59
+      contains: return -self.p.r * H * (1.0 - self.p.K_min / H) * activation
+    - repo: implosive-origin-utac
+      commit: cb073719e99700413e482945a6d2da8e8a19dfdc
+      path: src/implosive_origin/type6_ode.py
+      line: 63
+      contains: return self.p.K_min * math.tanh(self.p.sigma * self.p.gamma)
+    - repo: implosive-origin-utac
+      commit: cb073719e99700413e482945a6d2da8e8a19dfdc
+      path: src/implosive_origin/type6_ode.py
+      line: 33
+      contains: 'Type-6 reversal: dH/dt = -r·H·(1 - H/K_min)·tanh(σΓ)'
+    status: reproduced_locally
+    evidence: 'reproduce_review.py: Rückgabe 0.00019310099346675974, Ableitung dort
+      +0.00018937219409897478; wahrer Fixpunkt 0.01; numerisch H(1000)=0.010000003992621851,
+      exakt 0.010000004067856305.'
+    next_step: Eigenes Paket T6 im Repo implosive-origin-utac; Johann entscheidet
+      ob und wo. Nicht nebenbei in Feldtheorie reparieren.
+    fix_package: T6
+  - id: F8
+    priority: P2
+    kind: Kontrollmodell
+    summary: 'Mandala-Universumsbaum: Fitness aus Zufallsplatzhaltern (evc, crep),
+      Breitenbegrenzung behält die ersten Kinder der Liste; --epi/--abundance sind
+      unbenutzt; der BH-Flächentest prüft nichts.'
+    sources:
+    - repo: unified-mandala
+      commit: a76052842cbb9e6cb5ba70b36b1350feb35ad70a
+      path: sims/fractal_universe_tree.py
+      line: 36
+      contains: evc = random.random()
+    - repo: unified-mandala
+      commit: a76052842cbb9e6cb5ba70b36b1350feb35ad70a
+      path: sims/fractal_universe_tree.py
+      line: 54
+      contains: frontier = next_frontier[:max_width]
+    - repo: unified-mandala
+      commit: a76052842cbb9e6cb5ba70b36b1350feb35ad70a
+      path: sims/fractal_universe_tree.py
+      line: 71
+      contains: --epi
+    - repo: unified-mandala
+      commit: a76052842cbb9e6cb5ba70b36b1350feb35ad70a
+      path: tests/unit/cosmo.bh.test.ts
+      line: 6
+      contains: expect(true).toBe(true);
+    status: confirmed_by_code_reading
+    evidence: Gelesen am Plan-Stand a7605284; die Dateien sind bis unified-mandala
+      1e310caa unverändert. Nicht ausgeführt.
+    next_step: Als historischen Kontrollfall bewahren; in V2 als Zufallsfitness-Kontrolle
+      mit fairer, reihenfolgeunabhängiger Auswahl vergleichen.
+    fix_package: V2
+  observations:
+  - id: N1
+    kind: Abstammungsprotokoll
+    summary: Mehrere Signale in einem Scan erhalten dieselbe child_number (universe_counter
+      wird erst beim Start erhöht); die ID des Kinduniversums wird nicht protokolliert;
+      IDs sind uuid4-Präfixe und nicht reproduzierbar.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/multiverse_manager.py
+      line: 78
+      contains: self._log_birth(data['universe_id'], self.universe_counter + 1, parent_dna,
+        child_dna)
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/multiverse_manager.py
+      line: 87
+      contains: uni_id = str(uuid.uuid4())[:8]
+    status: reproduced_locally
+    evidence: 'Probe 2026-10-11: zwei Signaldateien, ein Scan -> child_number [1,
+      1], Zähler 0.'
+    next_step: Eindeutige, aus der Seed-Hierarchie abgeleitete Kind-IDs; Eltern-Kind-Kante
+      mit beiden IDs protokollieren.
+    fix_package: V1
+  - id: N2
+    kind: Parametervertrag
+    summary: 'clumping_factor wirkt erst ab 0,5: darunter wird die Glättungslänge
+      auf 0,05 geklemmt.'
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 63
+      contains: self.softening_length = max(0.05, 0.1 * self.clumping_factor)
+    status: reproduced_locally
+    evidence: 'Probe: clumping 0,1/0,3/0,5/1,0 -> softening 0,05/0,05/0,05/0,1.'
+    next_step: Im Parametervertrag als 'aktiv nur für clumping_factor >= 0,5' ausweisen
+      und testen; keine stille Änderung der Klemme.
+    fix_package: V1
+  - id: N3
+    kind: Importzyklus
+    summary: 'level_7_cosmic_loop ist eigenständig nicht importierbar: cosmic_physics
+      -> brain_physics -> src.core -> ouroboros_engine -> cosmic_physics. run_eternal_cycle
+      scheitert daher beim Import; nach vorherigem ''import src.core'' gelingt er.'
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/cosmic_physics.py
+      line: 19
+      contains: from src.scenarios.level_6_consciousness.brain_physics import HiveMind
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/core/__init__.py
+      line: 13
+      contains: from .ouroboros_engine import OuroborosEngine, get_engine
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/core/ouroboros_engine.py
+      line: 22
+      contains: from src.scenarios.level_7_cosmic_loop.cosmic_physics import CosmicSeed,
+        UniverseRunner
+    status: reproduced_locally
+    evidence: 'Probe 2026-10-11: ImportError ''partially initialized module'' für
+      cosmic_physics und run_eternal_cycle; mit vorherigem import src.core erfolgreich.'
+    next_step: Johann entscheidet, ob Cosmic Loop in S01 genutzt wird; nur dann Zyklus
+      auflösen (eigenes Paket, nicht Teil von V1).
+    fix_package: open_decision
+  - id: N4
+    kind: Einstiegspunkte
+    summary: 'Zwei Einstiegspunkte für denselben Manager mit verschiedenem Abbruchverhalten:
+      run_recursive_cosmos beendet Kindprozesse (ohne wait), run_multiverse scheitert
+      an terminate_all.'
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/run_recursive_cosmos.py
+      line: 28
+      contains: p.terminate()
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/run_multiverse.py
+      line: 19
+      contains: manager.terminate_all()
+    status: confirmed_by_code_reading
+    evidence: Gelesen; kein Managerlauf gestartet.
+    next_step: In V1 einen Abbruchvertrag im Manager (terminate_all) und beide Einstiegspunkte
+      darauf umstellen.
+    fix_package: V1
+  - id: N5
+    kind: Ressourcenbezeichner
+    summary: stellar_death verlangt METALS, StellarLifecycle verlangt und liefert
+      HEAVY_METALS; beide Prototypen buchen in denselben Chronicle-Singleton mit unvereinbaren
+      Metallbezeichnern.
+    sources:
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_3_galactic/stellar_death.py
+      line: 26
+      contains: cost["METALS"] = 50
+    - repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 61
+      contains: 'required = {"HYDROGEN": hydrogen_cost, "HEAVY_METALS": metal_cost}'
+    status: confirmed_by_code_reading
+    evidence: Gelesen.
+    next_step: V3 definiert eine verbindliche Elementliste (H, He, C, O, Si, Rest)
+      mit Massenbilanz; die alten Bezeichner bleiben im Toy-Modell.
+    fix_package: V3
+  entry_points:
+  - path: simulation/v4_stellar_forge/big_bang_renderer.py
+    kind: CLI (python -m)
+    import: ok
+    status: demo
+    note: Eingesetztes Schwarzes Loch (F1), ungeseedet (F2), schreibt nach ./output
+      im Arbeitsverzeichnis, braucht matplotlib.
+  - path: simulation/v4_stellar_forge/run_multiverse.py
+    kind: CLI
+    import: ok
+    status: unbounded_broken_shutdown
+    note: Endlosschleife; Abbruch scheitert an terminate_all (F4, aus Code abgeleitet);
+      Kindprozesse laufen weiter.
+  - path: simulation/v4_stellar_forge/run_recursive_cosmos.py
+    kind: CLI
+    import: ok
+    status: unbounded
+    note: Endlosschleife; beendet Kindprozesse ohne wait (N4).
+  - path: simulation/v4_stellar_forge/cosmic_cycle_demo.py
+    kind: Demo
+    import: ImportError
+    status: broken
+    note: accretion_step u. a. fehlen; andere AtomAgent-API (F4).
+  - path: simulation/v4_stellar_forge/protostar_demo.py
+    kind: Demo (anderer Kern)
+    import: ok
+    status: not_examined
+    note: atomic_kernel/universal_forces; nicht identisch mit dem Renderer-Kern; für
+      V0 nicht weiter geprüft.
+  - path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+    kind: Bibliothek
+    import: ok
+    status: toy
+    note: Illustrative Regeln (F5); globaler random ungeseedet.
+  - path: src/scenarios/level_3_galactic/stellar_death.py
+    kind: Skript
+    import: ok
+    status: toy
+    note: Drei feste Generationen, time.sleep(1) je Generation, METALS-Bezeichner
+      (N5).
+  - path: src/scenarios/level_7_cosmic_loop/run_eternal_cycle.py
+    kind: CLI
+    import: ImportError
+    status: broken
+    note: Importzyklus (N3); Endlosschleife; F6.
+  - path: tests/test_universe_dna.py
+    kind: Tests
+    import: ok
+    status: passing
+    note: python -m pytest -q -p no:cacheprovider tests/test_universe_dna.py -> 5
+      passed (2026-10-11).
+  parameters:
+  - name: gravity_const
+    active_in: PhysicsEngine.gravity_step
+    status: active
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 60
+      contains: self.G = self.dna.gravity_strength
+  - name: clumping_factor
+    active_in: PhysicsEngine (Glättungslänge)
+    status: active_from_0.5
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 63
+      contains: self.softening_length = max(0.05, 0.1 * self.clumping_factor)
+  - name: mutation_scale
+    active_in: UniverseDNA.mutate
+    status: active
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/universe_dna.py
+      line: 57
+      contains: factor = generator.uniform(1.0 - self.mutation_scale, 1.0 + self.mutation_scale)
+  - name: fusion_threshold
+    active_in: nur Legacy-Modulglobale
+    status: inactive_in_active_path
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 23
+      contains: FUSION_DISTANCE = float(dna.fusion_threshold)
+  - name: entropy_rate
+    active_in: nur Legacy-Modulglobale
+    status: inactive_in_active_path
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 25
+      contains: HAWKING_DECAY_RATE = float(dna.entropy_rate)
+  - name: BH-Signalschwelle 20,0 (fest)
+    active_in: PhysicsEngine.fusion_step
+    status: hardcoded
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 97
+      contains: agent.mass > 20.0
+  units:
+  - scope: Stellar Forge (physics_engine)
+    statement: Dimensionslose Modelleinheiten für Länge, Masse, Geschwindigkeit; ein
+      Schritt = eine Zeiteinheit (x += v ohne dt); G = 0,05 Modellwert.
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: simulation/v4_stellar_forge/physics_engine.py
+      line: 87
+      contains: a.x += a.vx
+  - scope: StellarLifecycle
+    statement: Ganzzahlige Ressourceneinheiten; die Anzeige 'M☉' ist ein Etikett ohne
+      deklarierte Umrechnung (Masse = Verbrauch/120); Zeit in Ticks.
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_2_stellar/stellar_lifecycle.py
+      line: 119
+      contains: M☉
+  - scope: TheChronicle
+    statement: cycle zählt Todesereignisse und ist keine kosmische Zeit.
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/core/chronicle.py
+      line: 78
+      contains: self.cycle += 1
+  - scope: Cosmic Loop
+    statement: G und FINE_STRUCTURE sind dimensionslose Etiketten (G um 1 normiert);
+      keine physikalische Zuordnung.
+    source:
+      repo: Feldtheorie
+      commit: d1c56267ae81e90f9ebd7d5d195fea818b5f3930
+      path: src/scenarios/level_7_cosmic_loop/cosmic_physics.py
+      line: 69
+      contains: '''FINE_STRUCTURE'': 0.007'
+  - scope: V3 ff. (neu)
+    statement: 'Deklariert: Masse in Sonnenmassen, Zeit in Myr; Orakel 7 prüft Jahre
+      gegen Myr.'
+    source: null
+  packages:
+  - id: V0
+    title: Bestand verbindlich machen
+    where: experiments/research_roadmap_2026 (diese Erweiterung)
+    findings:
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - F7
+    - F8
+    status: delivered_pending_approval
+    acceptance: Jede Aussage mit Quellpfad, Status und nächstem Schritt; kein zweites
+      Roadmap-System; F1-F8 eingeordnet.
+  - id: V1
+    title: Rechenkern und Laufverträge reparieren
+    where: simulation/v4_stellar_forge + tests/
+    findings:
+    - F2
+    - F3
+    - F4
+    - N1
+    - N2
+    - N4
+    status: planned
+    acceptance: Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen,
+      Import, Abbruch.
+  - id: V2
+    title: S00/S01 durchführen
+    where: experiments/kosmische_vererbung/
+    realizes:
+    - S00
+    - S01
+    findings:
+    - F1
+    - F6
+    - F8
+    status: planned
+    acceptance: Exakte Handfälle aus Plan §7, faire Budgets, Aussterberegel, mehrere
+      Seeds, unabhängige Auswertung.
+  - id: V3
+    title: Chemischer Basiskern
+    where: experiments/kosmische_vererbung/
+    findings:
+    - F5
+    - N5
+    status: planned
+    acceptance: Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der
+      Lebensdauer; Orakel 1-4 und 7.
+  - id: V4
+    title: Physikalische Referenzen anbinden
+    where: experiments/kosmische_vererbung/
+    findings: []
+    status: planned_requires_approval
+    acceptance: Manifest, Netto- vs. Gesamtertrag, Interpolation, Lizenz; fehlende
+      Daten -> not_evaluated. Vorher Johanns OK.
+  - id: V5
+    title: Mischung und Beobachtbarkeit (Feldtheorie-Seite)
+    where: experiments/kosmische_vererbung/
+    findings: []
+    status: planned
+    acceptance: Ein vs. zwei Reservoire, Mittelwert vs. unberührter Anteil, verzögerte
+      Rückführung; Orakel 5 und 6; Gegenmodell mit Sättigung ohne Pop-III-Sonderertrag
+      (Hinweis SCF-Session); Abstimmung über KOSMISCHE_VERERBUNG_KOORDINATION.md.
+  - id: V6
+    title: Beobachtungsanschluss
+    where: experiments/kosmische_vererbung/
+    findings: []
+    status: planned_requires_approval
+    acceptance: Erst synthetische Messdaten; real nur nach Johanns OK; keine Gleichsetzung
+      von Gesamtmetallizität und Ionenlinien; explorativ/retrospektiv.
+  - id: V7
+    title: SCF-Bericht und Entscheidung
+    where: Repo scoped-correspondence-formalism (SCF-Session)
+    findings: []
+    status: external_owner
+    acceptance: Wird von der SCF-Session bearbeitet; hier nur Verweis.
+  - id: T6
+    title: Type-6-Fixpunkt (F7)
+    where: Repo implosive-origin-utac
+    findings:
+    - F7
+    status: open_decision
+    acceptance: Johann entscheidet ob und wo; Fixpunkt, Integrator, Übergang und E-Faltungs-Begriff
+      gemeinsam korrigieren.
+  order: V0 -> V1 -> V2 und V3 -> V4/V5 -> V6 (nur bei ehrlichem Beobachtungsvergleich)
+  gates:
+  - 'Nach V0: Johanns Freigabe vor V1'
+  - 'Vor V4: Johanns OK (externe Daten)'
+  - 'Vor V6: Johanns OK (reale Beobachtung)'
+  jwst_note: Alles an Zhu et al. 2026 Entwickelte ist explorativ/retrospektiv; keine
+    Aussage, JWST stütze kosmologische Vererbung.
+  next:
+  - V0-Freigabe durch Johann
+  - V1

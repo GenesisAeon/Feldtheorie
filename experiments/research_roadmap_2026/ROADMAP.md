@@ -263,3 +263,88 @@ Die ursprüngliche Roadmap bleibt als Planungsstand erhalten. Der aktuelle näch
 Aktueller Stand 11. September 2026: Der gestufte Runner ist implementiert, 25 Prüfungen sind grün, und ein [Entwicklungslauf mit 576 Zuständen](../geometric_waste_predictive_v2/DEVELOPMENT.md) samt vollständiger Zustandsprüfung und Wiederaufnahme ist abgeschlossen. Protokoll und Parameter bleiben unverändert. Die Entwicklungswerte sind keine Bestätigung der Hypothese; beide Testsplits und die unbekannten Familien bleiben unbenutzt.
 
 Für G03 stehen die unabhängige G01-Nachrechnung und der dokumentierte Implementierungsabgleich an. Anschließend können alle zwanzig Fits eingefroren und die Testdaten erzeugt werden. Die Rohdaten und Prüfnachweise sind im Entwicklungsbericht verlinkt.
+
+## Kosmische Vererbung: Erweiterung von SF-001 (V0, 11. Oktober 2026)
+
+Dieser Abschnitt erweitert Abschnitt 9 und die Aufgaben S00/S01. Er setzt Paket V0 aus dem Plan „Kosmische Vererbung, chemische Anreicherung und SCF" vom 27. September 2026 um (`scoped-correspondence-formalism/prompts/Answers/nicht_stationäre_Treiber/KOSMISCHE_VERERBUNG_BESTANDSAUFNAHME_UND_PLAN.md`). Es entsteht kein zweites Roadmap-System. Die maschinenlesbare Fassung steht in `roadmap.json` und `roadmap.yaml` unter `cosmic_inheritance`. Die neuen Aufgaben V0–V7 und T6 stehen im gemeinsamen Aufgabenregister. Basis ist Feldtheorie `d1c56267ae`, Branch `kosmische-vererbung`. Der Plan wurde gegen `2da5414` geschrieben; in den betroffenen Code-Pfaden hat sich seither nichts geändert.
+
+**Drei getrennte Stränge** (Plan §5.2):
+1. *Materielle Weitergabe* zwischen Sterngenerationen. Sie wird in V3–V6 bearbeitet.
+2. *Parametervererbung in künstlichen Modellpopulationen*. Sie wird in V1–V2 bearbeitet; V2 setzt S00/S01 um.
+3. *Kosmologische Vererbung* im Sinne von Smolins Hypothese (CNS). Sie wird hier nicht modelliert und braucht eine eigene physikalische Zuordnung.
+
+Ergebnisse aus Strang 2 sind Aussagen über künstliche Evolution, nicht über Kosmologie.
+
+### Befunde des Plans
+
+Alle Quellangaben beziehen sich auf den genannten Stand. Für Feldtheorie ist das `d1c56267ae`; für die Nachbarrepos stehen die Stände in der JSON-Fassung. Jede Angabe trägt dort einen Textanker, den der V0-Test per `git show` nachprüft. „Reproduziert" heißt: am 11. Oktober 2026 lokal ausgeführt, mit Python 3.11.9 und NumPy 2.4.6. Grundlage war die Plan-Beilage `reproduce_review.py` oder eine eigene kleine Probe. Die Zahlen stimmen bitgenau mit `findings.json` der Beilage überein.
+
+| ID | Prio | Befund | Quelle | Status | Nächster prüfbarer Schritt | Paket |
+|---|---|---|---|---|---|---|
+| F1 | P1 | Der Renderer setzt jedem Universum ein Schwarzes Loch der Masse 25 ein. Ab Masse > 20 gibt es höchstens ein Signal. `fusion_step` bildet nichts. | `simulation/v4_stellar_forge/big_bang_renderer.py:24-25`, `physics_engine.py:97-101` | reproduziert: 0/1/1 Signale bei 0/1/2 Schwarzen Löchern | Demopfad kennzeichnen; S00/S01 mit eigener künstlicher Reproduktionsregel und Nullkontrollen | V2 |
+| F2 | P1 | `fusion_threshold` und `entropy_rate` wirken im aktiven Pfad nicht. Mutation und Anfangszustände sind ungeseedet. | `physics_engine.py:23,25,61`, `universe_dna.py:54`, `multiverse_manager.py:69`, `big_bang_renderer.py:14` | reproduziert: bitgleiche Zustände; `gravity_const` als Positivkontrolle wirkt | Parametervertrag mit Test; Seed-Hierarchie von einem Wurzel-Seed bis in Mutation und Anfangszustand | V1 |
+| F3 | P1 | `gravity_step` verschiebt Positionen innerhalb der Kraftschleife. | `physics_engine.py:65,87` | reproduziert: Impuls −1,5595164086283989·10⁻⁴, bei umgekehrter Liste +1,5595…·10⁻⁴ | Kräfte aus einem gemeinsamen alten Zustand; Tests auf Impulserhaltung und Permutationsinvarianz | V1 |
+| F4 | P2 | `cosmic_cycle_demo` importiert fehlende Funktionen und nutzt eine andere AtomAgent-API. `run_multiverse` ruft das fehlende `terminate_all()` auf. | `cosmic_cycle_demo.py:17,36`, `run_multiverse.py:19` | Import reproduziert; Abbruchfehler aus dem Code abgeleitet (Managerlauf nicht gestartet) | Einstiegspunkte festlegen; Demo stilllegen oder reparieren; `terminate_all` mit terminate/wait/kill; begrenzte Läufe | V1 |
+| F5 | P1 | StellarLifecycle hat keine geschlossene Bilanz. Pop III: 400 Einheiten hinein, 161 zurück. Pop II: 310 hinein, 101 zurück. Pop II hat fest Z = 0,15. Chronicle ist ein Singleton und kürzt Anforderungen still. | `src/scenarios/level_2_stellar/stellar_lifecycle.py:50,53,75,94`, `src/core/chronicle.py:38,120` | reproduziert (Probe mit Seed 0) | Eigener instanzbasierter Bilanzkern; Toy-Modell bleibt gekennzeichnet erhalten | V3 |
+| F6 | P2 | Cosmic Loop vererbt Score und Variationsbreite; G wird um 1 gezogen. Fehlversuche werden mit demselben Samen wiederholt. | `src/scenarios/level_7_cosmic_loop/cosmic_physics.py:51,65`, `run_eternal_cycle.py:128,177` | nur gelesen (Endlosschleife; Import scheitert, siehe N3) | Nur bei Nutzung in S01: Vererbungsoperator und Fehlversuchssemantik festlegen, getrennt zählen | V2 |
+| F7 | P1 | `Type6ODE.fixed_point()` ist keine Nullstelle der implementierten ODE. Der wahre positive Fixpunkt ist H* = K_min. | implosive-origin-utac `cb07371`: `src/implosive_origin/type6_ode.py:33,59,63` | reproduziert: Rückgabe 1,931·10⁻⁴, Ableitung dort +1,894·10⁻⁴; wahr 0,01 | Eigenes Paket T6 im Nachbarrepo; Johann entscheidet, ob und wo | T6 |
+| F8 | P2 | Der Mandala-Universumsbaum nutzt Zufallsfitness. Die Breitenbegrenzung folgt der Listenreihenfolge. Platzhalter-Optionen; der BH-Test prüft nichts. | unified-mandala `a760528`: `sims/fractal_universe_tree.py:36,54,71`, `tests/unit/cosmo.bh.test.ts:6` | nur gelesen; bis `1e310ca` unverändert | Als historischen Kontrollfall bewahren; in V2 als Zufallsfitness-Kontrolle mit reihenfolgeunabhängiger Auswahl | V2 |
+
+### Zusätzliche eigene Beobachtungen
+
+Diese Punkte stehen nicht im Plan; sie sind bei der V0-Prüfung aufgefallen.
+
+| ID | Beobachtung | Quelle | Status | Nächster Schritt | Paket |
+|---|---|---|---|---|---|
+| N1 | Mehrere Signale in einem Scan erhalten dieselbe `child_number`. Die ID des Kinduniversums wird nicht protokolliert. IDs sind nicht reproduzierbare uuid4-Präfixe. | `multiverse_manager.py:78,87` | reproduziert: [1, 1] | Eindeutige, aus der Seed-Hierarchie abgeleitete Kind-IDs; Kante Eltern→Kind mit beiden IDs | V1 |
+| N2 | `clumping_factor` wirkt erst ab 0,5; darunter wird die Glättung auf 0,05 geklemmt. | `physics_engine.py:63` | reproduziert | Im Parametervertrag ausweisen und testen | V1 |
+| N3 | `level_7_cosmic_loop` hat einen Importzyklus über `src.core.ouroboros_engine`. `run_eternal_cycle` ist so nicht startbar. | `cosmic_physics.py:19`, `src/core/__init__.py:13`, `src/core/ouroboros_engine.py:22` | reproduziert | Johann entscheidet, ob Cosmic Loop in S01 genutzt wird; nur dann eigenes Reparaturpaket | offen |
+| N4 | Zwei Einstiegspunkte für denselben Manager mit verschiedenem Abbruchverhalten. | `run_recursive_cosmos.py:28`, `run_multiverse.py:19` | nur gelesen | Abbruchvertrag im Manager; beide Einstiegspunkte darauf umstellen | V1 |
+| N5 | `stellar_death` verlangt `METALS`, StellarLifecycle `HEAVY_METALS`, im selben Chronicle-Singleton. | `src/scenarios/level_3_galactic/stellar_death.py:26`, `stellar_lifecycle.py:61` | nur gelesen | V3 definiert eine verbindliche Elementliste mit Massenbilanz | V3 |
+
+### Einstiegspunkte, Parameter und Einheiten
+
+Für Forschungsaussagen ist derzeit **kein** Einstiegspunkt unterstützt.
+- `big_bang_renderer` ist eine Demo.
+- `run_multiverse` und `run_recursive_cosmos` laufen unbegrenzt; `run_multiverse` hat zusätzlich einen defekten Abbruch.
+- `cosmic_cycle_demo` und `run_eternal_cycle` scheitern beim Import.
+- `stellar_lifecycle` und `stellar_death` sind Toy-Modelle.
+- `protostar_demo` mit `atomic_kernel`/`universal_forces` ist ein anderer Kern und wurde in V0 nicht weiter geprüft.
+- `tests/test_universe_dna.py`: 5 passed.
+
+Nach V1 sollen `PhysicsEngine` und ein begrenzter Managerlauf unterstützt sein. V2 bekommt einen eigenen kleinen CPU-Runner; der Renderer bleibt optional.
+
+| UniverseDNA-Parameter | Wirkung im aktiven Pfad |
+|---|---|
+| `gravity_const` | aktiv (`physics_engine.py:60`) |
+| `clumping_factor` | aktiv erst ab 0,5 (N2) |
+| `mutation_scale` | aktiv in `mutate()` (`universe_dna.py:57`) |
+| `fusion_threshold`, `entropy_rate` | inaktiv; nur Legacy-Modulglobale (F2) |
+| BH-Signalschwelle 20,0 | fest im Code, kein DNA-Parameter (`physics_engine.py:97`) |
+
+**Einheiten:**
+- *Stellar Forge:* dimensionslose Modelleinheiten. Ein Schritt ist eine Zeiteinheit (`x += v` ohne dt).
+- *StellarLifecycle:* ganzzahlige Ressourceneinheiten. „M☉" ist nur ein Anzeigeetikett ohne Umrechnung; die Zeit läuft in Ticks.
+- *Chronicle:* `cycle` zählt Todesereignisse und ist keine kosmische Zeit.
+- *Cosmic Loop:* G und `FINE_STRUCTURE` sind dimensionslose Etiketten.
+- *Ab V3:* Masse in Sonnenmassen und Zeit in Myr, ausdrücklich deklariert. Orakel 7 prüft die Umrechnung in Jahre.
+
+### Pakete und Reihenfolge
+
+| ID | Paket | Ort | Abnahme | Status |
+|---|---|---|---|---|
+| V0 | Bestand verbindlich machen | dieser Abschnitt + `roadmap.json/yaml` | Quelle, Status und nächster Schritt je Aussage; F1–F8 eingeordnet | geliefert, Freigabe durch Johann ausstehend |
+| V1 | Rechenkern und Laufverträge reparieren (F2–F4, N1, N2, N4) | `simulation/v4_stellar_forge`, `tests/` | Permutation/Impuls, Wiederholbarkeit, Parameter-Positivkontrollen, Import, Abbruch | geplant |
+| V2 | S00/S01 durchführen (F1, F6, F8) | `experiments/kosmische_vererbung/` | Handfälle aus Plan §7; faire Budgets; Aussterberegel; mehrere Seeds | geplant |
+| V3 | Chemischer Basiskern (F5, N5) | `experiments/kosmische_vererbung/` | Bilanzerhalt, Nichtnegativität, Einheiten, keine Rückgabe vor der Lebensdauer; Orakel 1–4 und 7 | geplant |
+| V4 | Ertragstabellen / SYGMA-Vergleich | `experiments/kosmische_vererbung/` | Manifest, Netto- vs. Gesamtertrag, Lizenz; fehlende Daten → `not_evaluated` | geplant, **vorher Johanns OK** |
+| V5 | Mischung und Beobachtbarkeit, Feldtheorie-Seite | `experiments/kosmische_vererbung/` | Orakel 5 und 6. Gegenmodell mit gesättigtem, Z-blindem Ertrag und ohne Pop-III-Sonderertrag (Hinweis der SCF-Session). Abstimmung über `D:\mandala\KOSMISCHE_VERERBUNG_KOORDINATION.md` | geplant |
+| V6 | Beobachtungsanschluss | `experiments/kosmische_vererbung/` | erst synthetische Messdaten; keine Gleichsetzung von Gesamtmetallizität und Ionenlinien | geplant, **vorher Johanns OK** |
+| V7 | SCF-Bericht | Repo SCF (SCF-Session) | dort festgelegt | externe Verantwortung |
+| T6 | Type-6-Fixpunkt (F7) | Repo implosive-origin-utac | Fixpunkt, Integrator, Übergang und E-Faltungen gemeinsam | Entscheidung offen |
+
+Die Reihenfolge ist V0 → V1 → V2 und V3 → V4/V5 → V6, und V6 nur bei einem ehrlichen Beobachtungsvergleich. Ergebniszustände bleiben getrennt: `evaluated`, `not_evaluated`, `numerical_failure` und `outside_scope`. Eine fehlende Auswertung ist kein negativer Befund.
+
+Was an Zhu et al. (2026, JWST) entwickelt wird, ist **explorativ bzw. retrospektiv**. Der Befund hat die Idee mit angestoßen; ein echter Vorhersagetest bräuchte eingefrorene Regeln und neue Daten. Es wird keine Aussage getroffen, JWST stütze kosmologische Vererbung.
+
+Prüfung des Registers: `python -m pytest -q -p no:cacheprovider experiments/kosmische_vererbung/tests`. Root-`pytest` sammelt nur `tests/`; dieser Aufruf muss daher ausdrücklich erfolgen.
