@@ -48,7 +48,25 @@ Dies ist der einzige Startweg. Es ist ein neues Werkzeug, nicht Teil der Code-Id
   - Ohne oder mit falscher Studien-ID wird verweigert, bevor etwas angelegt wird. Geprüft mit `1` und ohne ID; kein Laufordner entstanden.
   - Danach `runs.create_research_run` (ohne Parameter, alles aus dem Kandidaten), Lauf-ID `lr7-research-<UTC>`, dann `runs.execute` und `release.write_release_report`.
   - `execute` prüft Freeze, Code und Software vor jedem Start erneut.
-- **Fortsetzen:** `--resume <Laufordner>`, nach `runs.recover()` gemäß `lr6/BETRIEB.md`.
+- **Fortsetzen / Abschließen:** `--resume <Laufordner>` (optional `--confirm-study 1431972670`), nach `runs.recover()` gemäß `lr6/BETRIEB.md`.
+  - **Zielprüfung vor jeder Wirkung** (Vorstartreview LR7-F2, Fix in diesem Stand). Vor `keep_awake`, vor neuen Ereignissen und vor Ausführung oder Bericht wird geprüft:
+    - gültiger Freeze;
+    - intaktes Manifest;
+    - Lauftyp `research`;
+    - Studie und gesamtes Raster gleich dem Freeze;
+    - unveränderte Code-, Snapshot- und Softwarebindung (`check_resumable`);
+    - eine angegebene `--confirm-study` muss stimmen. Ein falscher Wert wird nie ignoriert.
+  - Entwicklungs- und Smoke-Läufe werden abgewiesen.
+  - **Zustand bestimmt die Aktion** (LR7-F1):
+    - neu, `interrupted` oder `incomplete`: rechnen, dann Bericht;
+    - `running`: abweisen, auf `runs.recover()` verweisen; das Werkzeug entfernt keine Sperren;
+    - `complete` ohne Bericht: **nur** den Bericht erzeugen;
+    - `complete` mit Bericht: lesend nachrechnen und vergleichen, nie überschreiben;
+    - `failed_integrity` oder `numerically_invalid`: abweisen, kein automatischer Ersatzlauf.
+  - Ein fehlender Bericht verlangt weder einen neuen Forschungsseed noch einen neuen Lauf.
+- **Zweiter Erststart** (Vorstartreview Abschnitt 6): `--start` wird abgewiesen, wenn unter dem Laufordner schon ein Forschungsmanifest dieser Studie und dieses Rasters liegt, oder ein unlesbares Manifest. Die Meldung nennt Lauf und Zustand.
+  - Die Prüfung ist **nicht atomar**. Gleichzeitige Rechnung derselben Studie verhindert weiterhin die bestehende Studiensperre.
+  - Ein Ersatz nach endgültigem technischem Fehler braucht eine dokumentierte Entscheidung.
 - Der Ruhezustand wird nur für den eigenen Prozess verhindert. Nichts wird gelöscht oder überschrieben.
 - Die Ausgabe auf der Konsole ist rein technisch. Die wissenschaftliche Auswertung steht nur in `release_report.json`; Hypothesen werden nur bei einem interpretierbaren Forschungslauf ausgewertet.
 
@@ -63,6 +81,9 @@ Dies ist der einzige Startweg. Es ist ein neues Werkzeug, nicht Teil der Code-Id
 
 ## 5. Offene Punkte für das Review
 
-- **Das Startwerkzeug selbst:** Es hat keinen eigenen Test, weil der CI-Vertrag genau 13 Testdateien vorschreibt. Geprüft sind der Probelauf und die beiden Verweigerungen von Hand.
+- **Das Startwerkzeug selbst:** ~~kein eigener Test~~ → behoben nach dem Vorstartreview `LANTERN_LR7_VORSTARTREVIEW_2822141`.
+  - 17 Regressionstests (`test_lr7_*`) stehen in der **bestehenden** `tests/test_lr6.py`. Der 13-Dateien-Vertrag und der CI-Workflow bleiben unverändert.
+  - Am Stand `2822141` schlagen 11 davon fehl. Die 6 übrigen prüfen Verhalten, das schon korrekt war.
+  - Nachbericht: `lr7/review_2822141/NACHBERICHT.md`.
 - **Laufzeit:** Die Hochrechnung aus vier Kontexten ist linear und keine Obergrenze. Ein Problem wird nach Protokoll fortgesetzt oder offen berichtet.
 - **Nicht geprüft:** Der GitHub-CI-Workflow ist nie gelaufen. Ein echter Python-3.12-Lauf fehlt; er ist für den Forschungslauf irrelevant, weil 3.11.9 eingefroren ist.

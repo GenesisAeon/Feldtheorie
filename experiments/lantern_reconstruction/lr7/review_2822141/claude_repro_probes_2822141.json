@@ -1,0 +1,64 @@
+{
+  "dry_run": {
+    "result": 0,
+    "created_root": false
+  },
+  "valid_start_dispatch_only": [
+    [
+      "create",
+      "D:\\mandala\\mandala-memory-results\\lantern\\runs",
+      "lr7-research-20261011T182002Z"
+    ],
+    [
+      "run",
+      "D:\\mandala\\.tmp\\lr7repro\\test_valid_start_is_only_route0\\not-created"
+    ]
+  ],
+  "completed_without_report": {
+    "result": {
+      "exception": "ResumeRefused",
+      "message": "run status is complete: nothing to resume, nothing is overwritten"
+    },
+    "calls": [
+      [
+        "awake",
+        true
+      ],
+      [
+        "awake",
+        false
+      ]
+    ],
+    "events_unchanged": true,
+    "simulation_called": false
+  },
+  "resume_routing": {
+    "result": 0,
+    "path_passed_to_run": [
+      "D:\\mandala\\.tmp\\lr7repro\\test_resume_ignores_confirmati0\\not-even-a-run"
+    ],
+    "confirmation_1_ignored": true,
+    "note": "execute still validates a manifest; wrapper itself checks neither research kind nor study"
+  },
+  "resume_nonresearch_real_manifest": {
+    "kind": "smoke",
+    "study": 2026100803,
+    "wrong_confirmation": 1,
+    "reached_first_work": true,
+    "state_after_deliberate_stop": "interrupted",
+    "trajectories_calculated": false,
+    "result": {
+      "exception": "RuntimeError",
+      "message": "REVIEW STOP: reached development work; no trajectories calculated"
+    }
+  },
+  "repeated_start_metadata_only": {
+    "folders": [
+      "D:\\mandala\\.tmp\\lr7repro\\test_repeated_start_creates_tw0\\metadata-only\\lr7-research-21000101T000000Z",
+      "D:\\mandala\\.tmp\\lr7repro\\test_repeated_start_creates_tw0\\metadata-only\\lr7-research-21000101T000001Z"
+    ],
+    "same_study": true,
+    "execute_called": false,
+    "note": "Sequential repeated invocation: no claim that the existing StudyLock permits concurrent execution"
+  }
+}

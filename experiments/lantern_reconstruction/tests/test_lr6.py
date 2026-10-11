@@ -648,3 +648,209 @@ def test_r3_persist_refuses_a_path_check_for_another_observed_gain(r3_runs, tmp_
         runs._persist_cell(tmp_path / "x", run, _contexts.make_context(DEV, 0), R3_CELL, model, np.zeros((20, 66)),
                            np.zeros((20, 4)), null_G=np.zeros(9999))            # null without its path check
     assert not (tmp_path / "x").exists()
+
+
+# Pre-start review LANTERN_LR7_VORSTARTREVIEW_2822141 (LR7-F1, LR7-F2, section 6): the start tool. No numerical
+# execution here: runs.execute and (where noted) the report writer are replaced by recorders; research manifests are
+# created from the synthetic freeze fixture (2 contexts), never from the real candidate.
+import contextlib  # noqa: E402
+import importlib.util  # noqa: E402
+import io  # noqa: E402
+import sys  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+_TOOL_PATH = runs.HERE / "tools" / "lr7_research_run.py"
+_spec = importlib.util.spec_from_file_location("lr7_research_run_under_test", _TOOL_PATH)
+lr7 = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(lr7)
+_BUDGET = {"extrapolated_research": {"execute_seconds": 1.0, "release_seconds": 1.0}, "operating_window": {"recommended_s": 9000}}
+SID = 1234567890
+_REAL_WRITE_REPORT = release.write_release_report     # captured before any fixture replaces it
+
+
+@pytest.fixture()
+def tool_env(freeze_files, tmp_path, monkeypatch):
+    """A valid synthetic freeze, an isolated runs root, recorders for every effect."""
+    freeze_files(_candidate(budget=_BUDGET))
+    calls = []
+    monkeypatch.setattr(lr7, "RUNS_ROOT", tmp_path / "runs")
+    monkeypatch.setattr(lr7, "keep_awake", lambda on: calls.append(("awake", on)))
+
+    def fake_execute(rd, **kw):
+        calls.append(("execute", Path(rd).name))
+        return "complete"
+
+    def fake_report(rd):
+        calls.append(("report", Path(rd).name))
+        return {"technically_complete": True, "scientifically_interpretable": True, "n_verified_cells": 0, "scientific_blocks": []}
+    monkeypatch.setattr(runs, "execute", fake_execute)
+    monkeypatch.setattr(lr7.release, "write_release_report", fake_report)
+    return calls
+
+
+def _invoke(monkeypatch, *argv):
+    monkeypatch.setattr(sys, "argv", [str(_TOOL_PATH), *argv])
+    out = io.StringIO()
+    with contextlib.redirect_stdout(out):
+        try:
+            return lr7.main(), out.getvalue()
+        except SystemExit as e:
+            return ("exit", str(e.code)), out.getvalue()
+
+
+def _research_run(tmp_path, name="r1"):
+    return runs.create_research_run(tmp_path / "runs", run_id=name)
+
+
+def _events(rd):
+    return (Path(rd) / "events.jsonl").read_bytes()
+
+
+def _to_complete(rd):
+    log = runs.EventLog(Path(rd) / "events.jsonl")
+    runs.set_status(log, "running", "SYNTHETIC TEST STATUS")
+    runs.set_status(log, "complete", "SYNTHETIC TEST STATUS; no simulation executed")
+
+
+def test_lr7_dry_run_creates_and_runs_nothing(tool_env, tmp_path, monkeypatch):
+    res, text = _invoke(monkeypatch)
+    assert res == 0 and "DRY RUN" in text and not (tmp_path / "runs").exists() and tool_env == []
+
+
+@pytest.mark.parametrize("args", [["--start"], ["--start", "--confirm-study", "1"]])
+def test_lr7_start_without_or_with_wrong_confirmation_refused_before_creation(tool_env, tmp_path, monkeypatch, args):
+    res, _ = _invoke(monkeypatch, *args)
+    assert res[0] == "exit" and "--confirm-study" in res[1] and not (tmp_path / "runs").exists() and tool_env == []
+
+
+def test_lr7_start_and_resume_exclude_each_other(tool_env, monkeypatch):
+    res, _ = _invoke(monkeypatch, "--start", "--resume", "unused")
+    assert res[0] == "exit" and "exclude" in res[1] and tool_env == []
+
+
+def test_lr7_valid_start_order_create_execute_report(tool_env, tmp_path, monkeypatch):
+    res, _ = _invoke(monkeypatch, "--start", "--confirm-study", str(SID))
+    created = [p.name for p in (tmp_path / "runs").iterdir()]
+    assert res == 0 and len(created) == 1
+    assert tool_env == [("awake", True), ("execute", created[0]), ("report", created[0]), ("awake", False)]
+    assert runs.load_run(tmp_path / "runs" / created[0])["kind"] == "research"
+
+
+def test_lr7_f2_development_run_refused_as_resume_target(tool_env, tmp_path, monkeypatch):
+    rd = runs.create_run(tmp_path / "dev", "smoke", [0, 1], run_id="dev")
+    before = _events(rd)
+    res, _ = _invoke(monkeypatch, "--resume", str(rd))
+    assert res[0] == "exit" and "not a research run" in res[1]
+    assert tool_env == [] and _events(rd) == before
+
+
+def test_lr7_f2_wrong_explicit_confirmation_refused_on_resume(tool_env, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+    before = _events(rd)
+    res, _ = _invoke(monkeypatch, "--resume", str(rd), "--confirm-study", "1")
+    assert res[0] == "exit" and "--confirm-study 1" in res[1] and tool_env == [] and _events(rd) == before
+    res, _ = _invoke(monkeypatch, "--resume", str(rd), "--confirm-study", str(SID))     # the right value is accepted
+    assert res == 0 and [c[0] for c in tool_env] == ["awake", "execute", "report", "awake"]
+
+
+def test_lr7_f2_research_manifest_with_other_grid_or_software_refused(tool_env, freeze_files, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+    before = _events(rd)
+    freeze_files(_candidate(budget=_BUDGET, grid={**_candidate()["grid"], "contexts": [0, 2]}))   # a different frozen grid
+    res, _ = _invoke(monkeypatch, "--resume", str(rd))
+    assert res[0] == "exit" and "grid" in res[1] and tool_env == [] and _events(rd) == before
+    freeze_files(_candidate(budget=_BUDGET))
+    real_software = runs.software()
+    monkeypatch.setattr(runs, "software", lambda: {**real_software, "numpy": "0.0.0-review"})
+    res, _ = _invoke(monkeypatch, "--resume", str(rd))
+    assert res[0] == "exit" and "software" in res[1] and tool_env == [] and _events(rd) == before
+
+
+def test_lr7_execution_failure_releases_keep_awake(tool_env, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+
+    def boom(rd, **kw):
+        tool_env.append(("execute", "boom"))
+        raise RuntimeError("injected before numerical execution")
+    monkeypatch.setattr(runs, "execute", boom)
+    with pytest.raises(RuntimeError, match="injected"):
+        lr7.run(rd)
+    assert tool_env == [("awake", True), ("execute", "boom"), ("awake", False)] and runs.status(rd) is None
+
+
+def test_lr7_f1_complete_without_report_writes_report_only(tool_env, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+    _to_complete(rd)
+    monkeypatch.setattr(lr7.release, "write_release_report", _REAL_WRITE_REPORT)   # the real exclusive writer
+    res = lr7.run(rd)
+    assert tool_env == [("awake", True), ("awake", False)]          # no execute
+    assert (rd / "release_report.json").exists() and runs.status(rd) == "complete"
+    assert res == 1          # an empty synthetic run is honestly not technically complete
+
+
+def test_lr7_f1_complete_with_report_never_overwritten_nor_recomputed(tool_env, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+    _to_complete(rd)
+    _REAL_WRITE_REPORT(rd)
+    before = (rd / "release_report.json").read_bytes()
+    assert lr7.run(rd) == 1 and tool_env == [] and (rd / "release_report.json").read_bytes() == before
+    tampered = json.loads(before)
+    tampered["technically_complete"] = not tampered["technically_complete"]
+    (rd / "release_report.json").write_text(json.dumps(tampered), encoding="utf-8")
+    kept = (rd / "release_report.json").read_bytes()
+    with pytest.raises(SystemExit, match="differs from a read-only recomputation"):
+        lr7.run(rd)
+    assert tool_env == [] and (rd / "release_report.json").read_bytes() == kept
+
+
+def test_lr7_f1_report_failure_can_be_finished_later(tool_env, tmp_path, monkeypatch):
+    rd = _research_run(tmp_path)
+    _to_complete(rd)
+    cells_before = sorted(p.name for p in (rd / "cells").iterdir())
+
+    def fail(rd):
+        raise RuntimeError("injected report failure")
+    monkeypatch.setattr(lr7.release, "write_release_report", fail)
+    with pytest.raises(RuntimeError, match="injected report failure"):
+        lr7.run(rd)
+    assert tool_env[-1] == ("awake", False) and not (rd / "release_report.json").exists() and runs.status(rd) == "complete"
+    monkeypatch.setattr(lr7.release, "write_release_report", _REAL_WRITE_REPORT)
+    lr7.run(rd)
+    assert (rd / "release_report.json").exists() and sorted(p.name for p in (rd / "cells").iterdir()) == cells_before
+    assert not any(c[0] == "execute" for c in tool_env)
+
+
+@pytest.mark.parametrize("final", list(runs.TERMINAL))
+def test_lr7_final_states_refused_without_new_attempt(tool_env, tmp_path, final):
+    rd = _research_run(tmp_path)
+    log = runs.EventLog(rd / "events.jsonl")
+    runs.set_status(log, "running", "SYNTHETIC TEST STATUS")
+    runs.set_status(log, final, "SYNTHETIC TEST STATUS")
+    before = _events(rd)
+    with pytest.raises(SystemExit, match="final"):
+        lr7.run(rd)
+    assert tool_env == [] and _events(rd) == before
+
+
+def test_lr7_running_refers_to_recover_and_removes_no_lock(tool_env, tmp_path):
+    rd = _research_run(tmp_path)
+    runs.set_status(runs.EventLog(rd / "events.jsonl"), "running", "SYNTHETIC TEST STATUS")
+    before = _events(rd)
+    with pytest.raises(SystemExit, match="recover"):
+        lr7.run(rd)
+    assert tool_env == [] and _events(rd) == before
+
+
+def test_lr7_report_present_but_run_not_complete_refused(tool_env, tmp_path):
+    rd = _research_run(tmp_path)
+    (rd / "release_report.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(SystemExit, match="inspect manually"):
+        lr7.run(rd)
+    assert tool_env == []
+
+
+def test_lr7_section6_second_first_start_refused(tool_env, tmp_path, monkeypatch):
+    first = _research_run(tmp_path, "existing")
+    res, _ = _invoke(monkeypatch, "--start", "--confirm-study", str(SID))
+    assert res[0] == "exit" and "already exists" in res[1] and first.name in res[1]
+    assert [p.name for p in (tmp_path / "runs").iterdir()] == ["existing"] and tool_env == []

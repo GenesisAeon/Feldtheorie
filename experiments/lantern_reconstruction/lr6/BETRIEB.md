@@ -47,6 +47,9 @@ Fehlt etwas davon oder weicht es ab, wird der Lauf verweigert, auch beim Fortset
 | `recover` verweigert wegen eines anderen Hosts | Recovery nur auf dem Rechner, der den Lauf hielt. |
 | Status `failed_integrity` oder `numerically_invalid` | Endgültig. Der Lauf wird nicht fortgesetzt, nichts wird überschrieben. Ursache dokumentieren; ein neuer Lauf bekommt eine neue Lauf-ID. |
 | `TruncatedLogError` beim Lesen | Das Log-Ende ist unvollständig. Nur `runs.recover` repariert es, und zwar nur bei totem Besitzer. |
+| Status `complete`, `release_report.json` fehlt (Abbruch zwischen Rechnung und Bericht) | `tools/lr7_research_run.py --resume <Laufordner>` erzeugt **nur** den Bericht, mit dem exklusiven Schreiber. Es wird nicht gerechnet, nicht trainiert, kein neuer Seed und kein neuer Lauf. `complete` bleibt `complete`. Schlägt die Berichtserzeugung fehl, kann derselbe Aufruf wiederholt werden; die Zellen bleiben unverändert (Vorstartreview LR7-F1). |
+| Status `complete`, `release_report.json` vorhanden | `--resume` rechnet den Bericht nur lesend nach und vergleicht. Stimmt er überein, wird er angezeigt. Weicht er ab, hält das Werkzeug an und lässt die Datei unverändert. Es überschreibt nie und rechnet nie neu. |
+| `release_report.json` vorhanden, Status aber nicht `complete` | Verweigert; von Hand prüfen. |
 
 ## Verwaiste Verwaltungssperre `<studiensperre>.admin` (immer manuell)
 
