@@ -2,12 +2,13 @@
 
 > **Korrektur-Vermerk (12. Oktober 2026): durch V5c eingeschränkt.** Siehe [`../v5c_resolution/ASSESSMENT.md`](../v5c_resolution/ASSESSMENT.md); Protokoll `c63688884d`, Lauf `34e44de295`. Dieser V5-Bericht, die Daten und die Ergebnisdateien bleiben unverändert.
 >
-> - **Die P3-Werte bei k > 0 sind Rasterartefakte.** Das betrifft r_max = 6,95e-3 und die Pop-III-Masse von 5000 M☉. Ereignisgenau beträgt die Pop-III-Masse 500,25 bzw. 50,025 M☉, und r ist etwa zehnfach kleiner.
+> - **Die P3-Werte bei k > 0 sind Rasterartefakte.** Das betrifft r_max = 6,95e-3 und die Pop-III-Masse von 5000 M☉. Ereignisgenau beträgt die Pop-III-Masse 500,25 bzw. 50,025 M☉, und r ist etwa zehnfach kleiner. Diese Massen sind Werte der im Runner gewählten Bündelung (gültig für dt ≥ t*), keine kontinuierlichen Integrale; kontinuierlich wären es 500,125 bzw. 50,024 M☉.
 > - **P3 bei k = 0,01:** r ist fern der Rückgabesprünge klein positiv (4–7e-4).
-> - **P3 bei k = 0,1:** r ist nicht von 0 unterscheidbar.
-> - **An den Rückgabesprüngen** (Vielfache von 10 Myr) ist r nicht aufgelöst.
+> - **P3 bei k = 0,1:** r ist fern der Rückgabesprünge nicht von 0 unterscheidbar. Gemeint ist die vorab gesetzte numerische Auflösung (|r| ≤ atol = 10⁻⁴), kein statistischer Test.
+> - **An den Rückgabesprüngen** (Vielfache von 10 Myr) ist r nicht aufgelöst, bei k = 0,01 wie bei k = 0,1.
 > - **„Entgegengesetzte Vorzeichen P3/S“ gilt belastbar nur für k = 0.** Unberührt bleiben P3 bei k = 0, S und L.
 > - **timeseries.json:** Die Werte für P3 bei k > 0 sind nicht als P3-Signal zu verwenden.
+> - **Mittelwert-Suffizienz (Ergänzung nach Astras Review ASTRA-2026-10-12-03):** Der Satz unten, Z̄ sei bei L „exakt hinreichend“, gilt nur für die hier verglichenen Anfangszustände A, B und C mit derselben festgelegten (leeren) Vorgeschichte. Er ist keine allgemeine Suffizienz von Z̄. Die SCF-Kontrolle KV2 zeigt, dass bei veränderter Rückgabevorgeschichte selbst unter L derselbe heutige Mittelwert zu verschiedenen nächsten Mittelwerten führt.
 
 Lauf nach `protocol_v5.json`, festgelegt in Commit `bec0d1bc5b` vor dem Lauf. Daten: `raw.json`, Auswertung `results.json`/`results.yaml`/`RESULTS.md`, Zeitreihen für SCF in `timeseries.json`. Das Modell ist synthetisch: keine Sternphysik, keine Beobachtungsaussage, kein JWST-Bezug.
 

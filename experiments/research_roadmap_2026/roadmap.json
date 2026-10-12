@@ -476,7 +476,13 @@
     {
       "date": "2026-10-12",
       "package": "V5c-Lauf",
-      "scope": "Ereignisgenau ist die Pop-III-Masse aufgelöst (500,25 / 50,025 M_sun). r(P3, k > 0) ist ereignisgenau etwa zehnfach kleiner als in V5: k = 0,01 positiv 4-7e-4 fern der Rückgabesprünge; k = 0,1 nicht von 0 unterscheidbar; an den Sprungzeitpunkten nicht aufgelöst. Die V5-Aussage 'P3 r > 0 bei k > 0' gilt nur noch eingeschränkt.",
+      "scope": "Ereignisgenau ist die Pop-III-Masse aufgelöst (500,25 / 50,025 M_sun; Werte der Bündelung, dt >= t*). r(P3, k > 0) ist ereignisgenau etwa zehnfach kleiner als in V5: k = 0,01 positiv 4-7e-4 fern der Rückgabesprünge; k = 0,1 fern der Sprünge nicht von 0 unterscheidbar (numerische Auflösung atol, kein statistischer Test); an den Sprungzeitpunkten nicht aufgelöst. Die V5-Aussage 'P3 r > 0 bei k > 0' gilt nur noch eingeschränkt.",
+      "approval": "pending (SCF-Koordination)"
+    },
+    {
+      "date": "2026-10-12",
+      "package": "Nacharbeit-Astra-03",
+      "scope": "Nach ASTRA-2026-10-12-03 nur Wortlaut, Doku und Tests: C2 (numerische Auflösung statt Test; k = 0,1 nur fern der Sprünge; r_max_signed über 21 Beobachtungszeiten), C3 (Pop-III-Werte der Bündelung, kontinuierlich 500,125 / 50,0238 M_sun; dt >= t*), V5-Suffizienz nur bei festgelegter Vorgeschichte (KV2), C5 (Bitgleichheit an Originalumgebung gebunden plus enge Toleranz je Größe). Keine neuen Läufe.",
       "approval": "pending (SCF-Koordination)"
     }
   ],

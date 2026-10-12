@@ -421,7 +421,7 @@ V3 ist abgenommen. V5 kommt vor V4; über V4 entscheidet Johann.
 ### V5b: Lauf und Ergebnis (12. Oktober 2026)
 
 Der Lauf folgt exakt `chem/protocol_v5.json`. Das Protokoll wurde in `bec0d1bc5b` vor dem Lauf festgelegt. Die Bewertung jeder Erwartung steht in `chem/runs/v5_mean_vs_distribution/ASSESSMENT.md`.
-- **L (linear):** Der Mittelwert Z̄ ist exakt hinreichend; der Unterschied zwischen A und B beträgt höchstens 4·10⁻¹⁵.
+- **L (linear):** Der Mittelwert Z̄ ist exakt hinreichend; der Unterschied zwischen A und B beträgt höchstens 4·10⁻¹⁵. (Präzisiert nach ASTRA-2026-10-12-03: Das gilt nur für die verglichenen Anfangszustände mit derselben, leeren Vorgeschichte, nicht allgemein; siehe KV2.)
 - **P3 und S:** Beide brechen die Suffizienz mit **entgegengesetztem Vorzeichen**. P3 reichert heterogen schneller an (r bis +3,9·10⁻²), S langsamer (r bis −2,5·10⁻²). Eine Mittelwert-Unzureichendheit ist deshalb kein Beleg für einen bestimmten Mechanismus und insbesondere keiner für Pop-III-Physik.
 - **Auflösung:**
   - Die Pop-III-Masse ist bei k > 0 nicht aufgelöst (`numerical_failure`, wie vorab erwartet).
@@ -458,7 +458,7 @@ Auftrag von Johann über die SCF-Koordination, auf Empfehlung von Astra. KV-V5 b
 
 **Handwerte:**
 - Schwellenübergang bei t* = 0,050025 Myr (k = 0,01) bzw. 0,0050025 Myr (k = 0,1).
-- Pop-III-Masse ereignisgenau 500,25 bzw. 50,025 M☉; im Raster 10⁴·dt.
+- Pop-III-Masse ereignisgenau 500,25 bzw. 50,025 M☉ (Wert der gewählten Bündelung, gültig für dt ≥ t*); im Raster 10⁴·dt.
 - Ohne Austausch (k = 0): 29 554,47 M☉ im Kontinuumsgrenzfall.
 
 Der Lauf folgt erst nach dem GO.
@@ -467,9 +467,19 @@ Der Lauf folgt erst nach dem GO.
 
 Lauf nach `chem/protocol_v5c.json`. Die Einzelbewertung steht in `chem/runs/v5c_resolution/ASSESSMENT.md`.
 - **Pop-III-Masse:** Ereignisgenau ist sie aufgelöst (500,25 bzw. 50,025 M☉, gleich bei allen dt). Im Raster bleibt sie ein Artefakt, proportional zu dt.
+  - Die Werte gehören zur gewählten Bündelung, sie sind keine kontinuierlichen Integrale; kontinuierlich M₀(1 − e^(−εt*)) = 500,125… bzw. 50,0238… M☉.
+  - Alle dt sind größer als t*. Die Gleichheit über dt belegt deshalb nicht, dass die Sternbildungsquadratur den kontinuierlichen Grenzwert trifft.
 - **V5-Aussage „P3: r > 0 bei k > 0“:** Sie gilt nur noch eingeschränkt.
   - Ereignisgenau ist r etwa zehnfach kleiner als in V5.
   - Bei k = 0,01 ist r fern der Rückgabesprünge positiv (4–7·10⁻⁴) und konvergiert.
-  - Bei k = 0,1 ist r nicht von 0 unterscheidbar.
+  - Bei k = 0,1 ist r fern der Rückgabesprünge nicht von 0 unterscheidbar. Gemeint ist die vorab gesetzte numerische Auflösung (|r| ≤ 10⁻⁴), kein statistischer Test.
   - An den Sprungzeitpunkten (Vielfache von 10 Myr) ist r nicht aufgelöst; ursächlich ist eine um t* versetzte Rückgabe, siehe die nachträgliche Analyse.
 - **Unverändert belastbar:** P3 bei k = 0, S bei allen k und L.
+
+### Nacharbeit nach Astras Review ASTRA-2026-10-12-03 (12. Oktober 2026)
+
+Nur Wortlaut, Dokumentation und Tests; keine neuen Läufe und kein neues Protokoll.
+- **C2:** „Nicht von 0 unterscheidbar“ bezeichnet die vorab gesetzte numerische Auflösung atol, keinen statistischen Test. Für P3 bei k = 0,1 gilt es nur fern der Rückgabesprünge; an den Sprüngen ist der Status „nicht aufgelöst“. `r_max_signed` ist der vorzeichenbehaftete Wert von r am Beobachtungszeitpunkt mit dem größten |r| unter den 21 Zeitpunkten.
+- **C3:** Die Pop-III-Kontrollwerte 500,25 und 50,025 M☉ gehören zur gewählten Bündelung. Der kontinuierliche Vergleichswert beträgt 500,125… bzw. 50,0238… M☉. Die Bedingung dt ≥ t* bleibt genannt.
+- **V5-Vermerk:** Der Suffizienzsatz zu L gilt nur für die verglichenen Anfangszustände mit festgelegter Vorgeschichte. Die SCF-Kontrolle KV2 widerlegt eine allgemeine Suffizienz von Z̄ bei veränderter Vorgeschichte.
+- **C5:** Die Reproduktionstests prüfen jetzt zweistufig. Bitgleichheit wird nur in der aufgezeichneten Originalumgebung verlangt, sonst sichtbar übersprungen. Daneben gilt immer ein enger Vergleich je Größe. Zeitachsen, Schlüssel, Längen und diskrete Größen werden exakt geprüft. Die Konvergenzkriterien bleiben unverändert.
