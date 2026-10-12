@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pytest
 
+import kv_repro
+
 from experiments.kosmische_vererbung.chem import evaluate_v5, export_v5_timeseries, run_v5
 
 HERE = Path(__file__).resolve().parents[1] / "chem"
@@ -38,10 +40,31 @@ def test_run_covers_every_condition(raw):
     assert len(keys) == len(raw["runs"]) == 2 * 3 * 7
 
 
-@pytest.mark.parametrize("rule, init, k, dt", [("P3", "A", 0.01, 0.5), ("S", "A", 0.0, 0.5), ("L", "B", 0.1, 0.25)])
-def test_selected_runs_reproduce_bit_identically(raw, rule, init, k, dt):
-    committed = next(r["series"] for r in raw["runs"] if (r["rule"], r["init"], r["k"], r["dt"]) == (rule, init, k, dt))
-    assert run_v5.simulate(PROTOCOL, rule, init, k, dt) == json.loads(json.dumps(committed))
+REPRO_CASES = [("P3", "A", 0.01, 0.5), ("S", "A", 0.0, 0.5), ("L", "B", 0.1, 0.25)]
+_SIMULATED = {}
+
+
+def _simulate(raw, rule, init, k, dt):
+    key = (rule, init, k, dt)
+    if key not in _SIMULATED:
+        committed = next(r["series"] for r in raw["runs"] if (r["rule"], r["init"], r["k"], r["dt"]) == (rule, init, k, dt))
+        _SIMULATED[key] = (run_v5.simulate(PROTOCOL, rule, init, k, dt), json.loads(json.dumps(committed)))
+    return _SIMULATED[key]
+
+
+@pytest.mark.parametrize("rule, init, k, dt", REPRO_CASES)
+def test_selected_runs_reproduce_bit_identically_in_original_environment(raw, rule, init, k, dt):
+    reason = kv_repro.environment_mismatch(raw["provenance"])
+    if reason:
+        pytest.skip(reason)
+    new, committed = _simulate(raw, rule, init, k, dt)
+    assert new == committed
+
+
+@pytest.mark.parametrize("rule, init, k, dt", REPRO_CASES)
+def test_selected_runs_reproduce_within_declared_tolerances(raw, rule, init, k, dt):
+    new, committed = _simulate(raw, rule, init, k, dt)
+    assert kv_repro.compare_series(json.loads(json.dumps(new)), committed) == []
 
 
 def test_results_and_timeseries_are_current(raw):

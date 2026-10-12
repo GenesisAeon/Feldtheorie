@@ -9,6 +9,8 @@ from pathlib import Path
 
 import pytest
 
+import kv_repro
+
 from experiments.kosmische_vererbung.chem import evaluate_v5c, run_v5c
 
 HERE = Path(__file__).resolve().parents[1] / "chem"
@@ -32,10 +34,31 @@ def test_run_is_complete(raw):
     assert all(r["state"] == "completed" for r in raw["runs"])
 
 
-@pytest.mark.parametrize("scheme, rule, init, k, dt", [("event", "P3", "A", 0.01, 0.5), ("event", "P3", "B", 0.1, 0.5), ("grid", "S", "A", 0.01, 0.5)])
-def test_selected_runs_reproduce_bit_identically(raw, scheme, rule, init, k, dt):
-    committed = next(r["series"] for r in raw["runs"] if (r["scheme"], r["rule"], r["init"], r["k"], r["dt"]) == (scheme, rule, init, k, dt))
-    assert run_v5c.simulate(PROTOCOL, rule, init, k, dt, scheme) == json.loads(json.dumps(committed))
+REPRO_CASES = [("event", "P3", "A", 0.01, 0.5), ("event", "P3", "B", 0.1, 0.5), ("grid", "S", "A", 0.01, 0.5)]
+_SIMULATED = {}
+
+
+def _simulate(raw, scheme, rule, init, k, dt):
+    key = (scheme, rule, init, k, dt)
+    if key not in _SIMULATED:
+        committed = next(r["series"] for r in raw["runs"] if (r["scheme"], r["rule"], r["init"], r["k"], r["dt"]) == (scheme, rule, init, k, dt))
+        _SIMULATED[key] = (run_v5c.simulate(PROTOCOL, rule, init, k, dt, scheme), json.loads(json.dumps(committed)))
+    return _SIMULATED[key]
+
+
+@pytest.mark.parametrize("scheme, rule, init, k, dt", REPRO_CASES)
+def test_selected_runs_reproduce_bit_identically_in_original_environment(raw, scheme, rule, init, k, dt):
+    reason = kv_repro.environment_mismatch(raw["provenance"])
+    if reason:
+        pytest.skip(reason)
+    new, committed = _simulate(raw, scheme, rule, init, k, dt)
+    assert new == committed
+
+
+@pytest.mark.parametrize("scheme, rule, init, k, dt", REPRO_CASES)
+def test_selected_runs_reproduce_within_declared_tolerances(raw, scheme, rule, init, k, dt):
+    new, committed = _simulate(raw, scheme, rule, init, k, dt)
+    assert kv_repro.compare_series(json.loads(json.dumps(new)), committed) == []
 
 
 def test_results_are_current_and_key_numbers_hold(raw):
