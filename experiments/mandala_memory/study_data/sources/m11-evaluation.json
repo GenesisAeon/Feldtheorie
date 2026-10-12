@@ -1,0 +1,1333 @@
+{
+ "run_id": "m11-research-20261005T114106-e996e301",
+ "mode": "research",
+ "release": {
+  "released": true,
+  "reasons": []
+ },
+ "confirmatory": {
+  "delta": 0.01,
+  "alpha": 0.05,
+  "n_seeds": 20,
+  "contrasts": {
+   "C-Daten": {
+    "mean": 0.0016824735691207849,
+    "sd": 0.0009059136441702751,
+    "t": -41.060325393667114,
+    "p": 1.0,
+    "ci95_t": [
+     0.0012584929326767366,
+     0.002106454205564833
+    ],
+    "p_holm": 1.0,
+    "rejected": false,
+    "bootstrap95": [
+     0.0013524023352744336,
+     0.0021131465949925984
+    ],
+    "wording": "nicht bestaetigt"
+   },
+   "C-Modell": {
+    "mean": 0.021967249999999983,
+    "sd": 0.013953444535593914,
+    "t": 3.835552495367457,
+    "p": 0.0005577335143799703,
+    "ci95_t": [
+     0.015436836938160869,
+     0.028497663061839096
+    ],
+    "p_holm": 0.0011154670287599406,
+    "rejected": true,
+    "bootstrap95": [
+     0.015890143749999978,
+     0.027825775000000004
+    ],
+    "wording": "bestaetigt"
+   }
+  },
+  "assumption": "one-sided t test of (mean paired seed difference - delta), df = 19; normality of the seed differences is an ASSUMPTION; whole-seed bootstrap intervals reported alongside"
+ },
+ "confirmatory_label": "confirmatory (released)",
+ "descriptive": {
+  "modular_N": {
+   "B": 0.9115818840370391,
+   "B_se": 8.900134234001578e-05,
+   "L_found": 0.7775103382152313,
+   "acc_nm_inf": 0.6346290271023163,
+   "acc_lda_inf": 0.7774037857497784,
+   "rows": {
+    "nm@250": {
+     "mean": 0.6351387212096025,
+     "bootstrap95": [
+      0.6330084198876401,
+      0.6371353473806949
+     ],
+     "gap_to_B": 0.27644316282743664,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.14288131111291502,
+      "sampling_inf_minus_n (signed)": -0.0005096941072861849,
+      "sampling_ci95_conditional_on_references": [
+       -0.0025063202783786043,
+       0.0016206072146761619
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.2744465366563442,
+      0.278573464149399
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -1.0334763460970209,
+      "bootstrap95": [
+       -1.0502908193727936,
+       -1.0174134074460741
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "lda@250": {
+     "mean": 0.7716482488762046,
+     "bootstrap95": [
+      0.7706281677022387,
+      0.7726936500356771
+     ],
+     "gap_to_B": 0.13993363516083446,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.00010655246545288044,
+      "sampling_inf_minus_n (signed)": 0.005755536873573774,
+      "sampling_ci95_conditional_on_references": [
+       0.004710135714101282,
+       0.006775618047539678
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.13888823400136197,
+      0.14095371633480036
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -0.029331795413410987,
+      "bootstrap95": [
+       -0.03593710132737415,
+       -0.02280160258182498
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "mlp@250": {
+     "mean": 0.7664895,
+     "bootstrap95": [
+      0.764361775,
+      0.7685667375
+     ],
+     "gap_to_B": 0.14509238403703906,
+     "B_se_separate": 8.900134234001578e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.14301514653703906,
+      0.14722010903703908
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -0.06727881391777135,
+      "bootstrap95": [
+       -0.08358651394668724,
+       -0.05104459311892283
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "nm@1000": {
+     "mean": 0.6342955471538505,
+     "bootstrap95": [
+      0.633289265262477,
+      0.6352199052114816
+     ],
+     "gap_to_B": 0.2772863368831886,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.14288131111291502,
+      "sampling_inf_minus_n (signed)": 0.0003334799484657758,
+      "sampling_ci95_conditional_on_references": [
+       -0.0005908781091653603,
+       0.001339761839839304
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.27636197882555746,
+      0.27829261877456213
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -1.0396786137909577,
+      "bootstrap95": [
+       -1.0486519291984635,
+       -1.0302537746854024
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "lda@1000": {
+     "mean": 0.7756357918397871,
+     "bootstrap95": [
+      0.7752151197042421,
+      0.7759617079066843
+     ],
+     "gap_to_B": 0.13594609219725196,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.00010655246545288044,
+      "sampling_inf_minus_n (signed)": 0.0017679939099912723,
+      "sampling_ci95_conditional_on_references": [
+       0.0014420778430941361,
+       0.0021886660455363582
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.13562017613035482,
+      0.13636676433279704
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.0,
+      "bootstrap95": [
+       0.0,
+       0.0
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "mlp@1000": {
+     "mean": 0.79767725,
+     "bootstrap95": [
+      0.7916589812499999,
+      0.80345354375
+     ],
+     "gap_to_B": 0.1139046340370391,
+     "B_se_separate": 8.900134234001578e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.1081283402870391,
+      0.11992290278703921
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.16213381204243552,
+      "bootstrap95": [
+       0.11787454744538149,
+       0.2044383329234224
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "nm@4000": {
+     "mean": 0.6349873290479582,
+     "bootstrap95": [
+      0.6345495257343565,
+      0.6353666442683152
+     ],
+     "gap_to_B": 0.2765945549890809,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.14288131111291502,
+      "sampling_inf_minus_n (signed)": -0.00035830194564190343,
+      "sampling_ci95_conditional_on_references": [
+       -0.0007376171659989605,
+       7.95013679597556e-05
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.27621523976872386,
+      0.2770323583026826
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -1.0345899651735047,
+      "bootstrap95": [
+       -1.039911863889172,
+       -1.028126123865995
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "lda@4000": {
+     "mean": 0.7770769488672026,
+     "bootstrap95": [
+      0.7769881430489051,
+      0.7771564534621769
+     ],
+     "gap_to_B": 0.13450493516983653,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.00010655246545288044,
+      "sampling_inf_minus_n (signed)": 0.00032683688257584276,
+      "sampling_ci95_conditional_on_references": [
+       0.0002473322876015427,
+       0.0004156427008733532
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.13442543057486223,
+      0.13459374098813404
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.010600944860734741,
+      "bootstrap95": [
+       0.0082500794832268,
+       0.013757771032355932
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "mlp@4000": {
+     "mean": 0.8787635,
+     "bootstrap95": [
+      0.87797896875,
+      0.8795355
+     ],
+     "gap_to_B": 0.03281838403703907,
+     "B_se_separate": 8.900134234001578e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.03204638403703908,
+      0.03360291528703907
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.7585926634108687,
+      "bootstrap95": [
+       0.7528084323880949,
+       0.7643043422767668
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "nm@16000": {
+     "mean": 0.6346972653683702,
+     "bootstrap95": [
+      0.6343429208993709,
+      0.6350558409951421
+     ],
+     "gap_to_B": 0.27688461866866887,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.14288131111291502,
+      "sampling_inf_minus_n (signed)": -6.823826605395489e-05,
+      "sampling_ci95_conditional_on_references": [
+       -0.00042681389282583915,
+       0.0002861062029453354
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 6.823826605395489e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.276526043041897,
+      0.27723896313766816
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": -1.0367236320917643,
+      "bootstrap95": [
+       -1.042493454435011,
+       -1.0297804414680327
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "lda@16000": {
+     "mean": 0.777318265408908,
+     "bootstrap95": [
+      0.7772877600135247,
+      0.7773463455952884
+     ],
+     "gap_to_B": 0.13426361862813108,
+     "B_se_separate": 8.900134234001578e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.1340715458218078,
+      "criterion_L_found_minus_inf": 0.00010655246545288044,
+      "sampling_inf_minus_n (signed)": 8.552034087039306e-05,
+      "sampling_ci95_conditional_on_references": [
+       5.7440154490051576e-05,
+       0.00011602573625368873
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 8.552034087039306e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.13423553844175073,
+      0.13429412402351437
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.012376034808559868,
+      "bootstrap95": [
+       0.00997271417467228,
+       0.015498940321627994
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    },
+    "mlp@16000": {
+     "mean": 0.8892397500000001,
+     "bootstrap95": [
+      0.8888673937499999,
+      0.8895937875000001
+     ],
+     "gap_to_B": 0.022342134037038996,
+     "B_se_separate": 8.900134234001578e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.021988096537039037,
+      0.022714490287039202
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": 0.8356544592350509,
+      "bootstrap95": [
+       0.8328651594363482,
+       0.8383917697742046
+      ],
+      "invalid_replicates": 0,
+      "replicates": 2000,
+      "label": "ratio of seed means; paired whole-seed bootstrap; conditional on the fixed reference B (B SE separate)"
+     }
+    }
+   }
+  },
+  "uniform_Fplus": {
+   "B": 0.6696342176261085,
+   "B_se": 7.790905744965231e-05,
+   "L_found": 0.6696018510140345,
+   "acc_nm_inf": 0.6696018510140345,
+   "acc_lda_inf": 0.6696018510140344,
+   "rows": {
+    "nm@250": {
+     "mean": 0.5967363955333214,
+     "bootstrap95": [
+      0.5818297297561059,
+      0.6113551131602618
+     ],
+     "gap_to_B": 0.07289782209278717,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.0728654554807131,
+      "sampling_ci95_conditional_on_references": [
+       0.05824673785377266,
+       0.08777212125792855
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.05827910446584672,
+      0.08780448787000261
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "lda@250": {
+     "mean": 0.6620904177758676,
+     "bootstrap95": [
+      0.661056702163586,
+      0.6629764223588722
+     ],
+     "gap_to_B": 0.007543799850240895,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.00751143323816672,
+      "sampling_ci95_conditional_on_references": [
+       0.0066254286551621355,
+       0.008545148850448325
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0066577952672363105,
+      0.0085775154625225
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "mlp@250": {
+     "mean": 0.65157025,
+     "bootstrap95": [
+      0.6454056375,
+      0.6566525125000001
+     ],
+     "gap_to_B": 0.018063967626108512,
+     "B_se_separate": 7.790905744965231e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.012981705126108412,
+      0.024228580126108512
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "nm@1000": {
+     "mean": 0.6318123257599726,
+     "bootstrap95": [
+      0.6203042459353169,
+      0.6426389271392662
+     ],
+     "gap_to_B": 0.03782189186613594,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.03778952525406187,
+      "sampling_ci95_conditional_on_references": [
+       0.026962923874768285,
+       0.04929760507871761
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.02699529048684235,
+      0.049329971690791674
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "lda@1000": {
+     "mean": 0.6675648749699576,
+     "bootstrap95": [
+      0.6671377746154761,
+      0.6679577649398181
+     ],
+     "gap_to_B": 0.0020693426561508854,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.0020369760440767104,
+      "sampling_ci95_conditional_on_references": [
+       0.0016440860742162888,
+       0.002464076398558279
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0016764526862904638,
+      0.0024964430106324542
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "mlp@1000": {
+     "mean": 0.66489175,
+     "bootstrap95": [
+      0.6640212624999999,
+      0.6656942875
+     ],
+     "gap_to_B": 0.004742467626108526,
+     "B_se_separate": 7.790905744965231e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.003939930126108493,
+      0.005612955126108599
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "nm@4000": {
+     "mean": 0.6574635855343949,
+     "bootstrap95": [
+      0.6527387994120479,
+      0.661648962488401
+     ],
+     "gap_to_B": 0.012170632091713651,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.012138265479639587,
+      "sampling_ci95_conditional_on_references": [
+       0.007952888525633472,
+       0.016863051601986534
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.007985255137707536,
+      0.016895418214060598
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "lda@4000": {
+     "mean": 0.6690641688567538,
+     "bootstrap95": [
+      0.6689346811731164,
+      0.6691861586573765
+     ],
+     "gap_to_B": 0.0005700487693547363,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.0005376821572805612,
+      "sampling_ci95_conditional_on_references": [
+       0.00041569235665783744,
+       0.0006671698409179694
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00044805896873201245,
+      0.0006995364529921444
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "mlp@4000": {
+     "mean": 0.6677207500000001,
+     "bootstrap95": [
+      0.6670436249999999,
+      0.6683993062499999
+     ],
+     "gap_to_B": 0.001913467626108445,
+     "B_se_separate": 7.790905744965231e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0012349113761086494,
+      0.002590592626108612
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "nm@16000": {
+     "mean": 0.6662813470480247,
+     "bootstrap95": [
+      0.6642384714140879,
+      0.6676845283840128
+     ],
+     "gap_to_B": 0.0033528705780838663,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.0033205039660098024,
+      "sampling_ci95_conditional_on_references": [
+       0.001917322630021645,
+       0.005363379599946594
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 0.0033205039660098024,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.001949689242095709,
+      0.005395746212020658
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "lda@16000": {
+     "mean": 0.6694645080769208,
+     "bootstrap95": [
+      0.6694359417551679,
+      0.6694931687003213
+     ],
+     "gap_to_B": 0.0001697095491877132,
+     "B_se_separate": 7.790905744965231e-05,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 3.2366612074063994e-05,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.00013734293711353818,
+      "sampling_ci95_conditional_on_references": [
+       0.00010868231371308212,
+       0.00016590925886650343
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 0.00013734293711353818,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00014104892578725714,
+      0.00019827587094067844
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    },
+    "mlp@16000": {
+     "mean": 0.6693505000000001,
+     "bootstrap95": [
+      0.6689369687500001,
+      0.6697947749999998
+     ],
+     "gap_to_B": 0.0002837176261084595,
+     "B_se_separate": 7.790905744965231e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      -0.00016055737389131242,
+      0.0006972488761084472
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0021 <= 0.01: N/A"
+     }
+    }
+   }
+  },
+  "modular_K0": {
+   "B": 0.935175564210283,
+   "B_se": 0.0,
+   "L_found": 0.9351755642102829,
+   "acc_nm_inf": 0.9351755642102829,
+   "acc_lda_inf": 0.9351755642102829,
+   "rows": {
+    "nm@250": {
+     "mean": 0.9340890203648545,
+     "bootstrap95": [
+      0.9338418388915551,
+      0.9343023791562759
+     ],
+     "gap_to_B": 0.0010865438454285004,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.0010865438454283893,
+      "sampling_ci95_conditional_on_references": [
+       0.0008731850540070196,
+       0.0013337253187277742
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0008731850540071306,
+      0.0013337253187278852
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "lda@250": {
+     "mean": 0.9340805266295191,
+     "bootstrap95": [
+      0.9338344298552661,
+      0.9342971481442187
+     ],
+     "gap_to_B": 0.0010950375807639023,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.0010950375807637913,
+      "sampling_ci95_conditional_on_references": [
+       0.0008784160660642026,
+       0.0013411343550168153
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0008784160660643137,
+      0.0013411343550169263
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "mlp@250": {
+     "mean": 0.9268282499999998,
+     "bootstrap95": [
+      0.9245977187499999,
+      0.92847500625
+     ],
+     "gap_to_B": 0.00834731421028323,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.006700557960283016,
+      0.010577845460283175
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "nm@1000": {
+     "mean": 0.9348864122392598,
+     "bootstrap95": [
+      0.9348285906545579,
+      0.9349402265238639
+     ],
+     "gap_to_B": 0.0002891519710231938,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.00028915197102308277,
+      "sampling_ci95_conditional_on_references": [
+       0.00023533768641903485,
+       0.0003469735557249942
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00023533768641914588,
+      0.00034697355572510524
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "lda@1000": {
+     "mean": 0.9348764472257702,
+     "bootstrap95": [
+      0.9348080051438403,
+      0.9349369220130105
+     ],
+     "gap_to_B": 0.0002991169845127928,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 0.00029911698451268176,
+      "sampling_ci95_conditional_on_references": [
+       0.00023864219727243174,
+       0.00036755906644259095
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00023864219727254277,
+      0.000367559066442702
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "mlp@1000": {
+     "mean": 0.9322120000000002,
+     "bootstrap95": [
+      0.9314914250000002,
+      0.93283051875
+     ],
+     "gap_to_B": 0.0029635642102828763,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.002345045460283024,
+      0.0036841392102828774
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "nm@4000": {
+     "mean": 0.9351043526291187,
+     "bootstrap95": [
+      0.9350911336495668,
+      0.9351162184425645
+     ],
+     "gap_to_B": 7.121158116429882e-05,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 7.12115811641878e-05,
+      "sampling_ci95_conditional_on_references": [
+       5.9345767718377296e-05,
+       8.44305607161644e-05
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      5.934576771848832e-05,
+      8.443056071627542e-05
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "lda@4000": {
+     "mean": 0.9351041978303926,
+     "bootstrap95": [
+      0.9350908741638272,
+      0.9351160461661326
+     ],
+     "gap_to_B": 7.136637989046957e-05,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 7.136637989035854e-05,
+      "sampling_ci95_conditional_on_references": [
+       5.951804415027517e-05,
+       8.469004645572653e-05
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      5.9518044150386196e-05,
+      8.469004645583755e-05
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "mlp@4000": {
+     "mean": 0.9342080000000003,
+     "bootstrap95": [
+      0.9338917187500002,
+      0.9345482625
+     ],
+     "gap_to_B": 0.0009675642102827675,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0006273017102830236,
+      0.0012838454602828175
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "nm@16000": {
+     "mean": 0.9351566858230755,
+     "bootstrap95": [
+      0.9351530327089879,
+      0.9351601381484449
+     ],
+     "gap_to_B": 1.8878387207488245e-05,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 1.8878387207377223e-05,
+      "sampling_ci95_conditional_on_references": [
+       1.5426061838019756e-05,
+       2.2531501295053324e-05
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 1.8878387207377223e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      1.5426061838130778e-05,
+      2.2531501295164347e-05
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "lda@16000": {
+     "mean": 0.935156265234153,
+     "bootstrap95": [
+      0.9351525115864975,
+      0.9351598613926679
+     ],
+     "gap_to_B": 1.9298976130066592e-05,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 1.1102230246251565e-16,
+      "criterion_L_found_minus_inf": 0.0,
+      "sampling_inf_minus_n (signed)": 1.929897612995557e-05,
+      "sampling_ci95_conditional_on_references": [
+       1.5702817614982045e-05,
+       2.30526237854356e-05
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 1.929897612995557e-05,
+     "gap_to_B_ci95_conditional_on_B": [
+      1.5702817615093068e-05,
+      2.3052623785546622e-05
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    },
+    "mlp@16000": {
+     "mean": 0.93506,
+     "bootstrap95": [
+      0.9348302500000001,
+      0.9353057812500001
+     ],
+     "gap_to_B": 0.00011556421028302566,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      -0.000130217039717051,
+      0.0003453142102829432
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0003 <= 0.01: N/A"
+     }
+    }
+   }
+  },
+  "uniform_K0": {
+   "B": 0.6695613253711723,
+   "B_se": 0.0,
+   "L_found": 0.6695613253711723,
+   "acc_nm_inf": 0.6695613253711722,
+   "acc_lda_inf": 0.6695613253711722,
+   "rows": {
+    "nm@250": {
+     "mean": 0.6615590921158417,
+     "bootstrap95": [
+      0.6602177661945018,
+      0.662787218094131
+     ],
+     "gap_to_B": 0.00800223325533056,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.008002233255330449,
+      "sampling_ci95_conditional_on_references": [
+       0.006774107277041197,
+       0.009343559176670402
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.006774107277041308,
+      0.009343559176670513
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "lda@250": {
+     "mean": 0.6615434637311973,
+     "bootstrap95": [
+      0.6601992555379126,
+      0.6627689833342753
+     ],
+     "gap_to_B": 0.008017861639974977,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.008017861639974866,
+      "sampling_ci95_conditional_on_references": [
+       0.006792342036896937,
+       0.0093620698332596
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.006792342036897048,
+      0.009362069833259712
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "mlp@250": {
+     "mean": 0.6452695,
+     "bootstrap95": [
+      0.6384708375,
+      0.651318725
+     ],
+     "gap_to_B": 0.02429182537117225,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.018242600371172313,
+      0.0310904878711723
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "nm@1000": {
+     "mean": 0.6673102538910834,
+     "bootstrap95": [
+      0.666864936386952,
+      0.6677568099459733
+     ],
+     "gap_to_B": 0.002251071480088851,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.00225107148008874,
+      "sampling_ci95_conditional_on_references": [
+       0.0018045154251988826,
+       0.0026963889842201993
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0018045154251989937,
+      0.0026963889842203104
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "lda@1000": {
+     "mean": 0.6673197408464564,
+     "bootstrap95": [
+      0.6668848358689001,
+      0.6677586750028618
+     ],
+     "gap_to_B": 0.0022415845247159005,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.0022415845247157895,
+      "sampling_ci95_conditional_on_references": [
+       0.001802650368310399,
+       0.0026764895022720614
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00180265036831051,
+      0.0026764895022721724
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "mlp@1000": {
+     "mean": 0.66241825,
+     "bootstrap95": [
+      0.6609846312500001,
+      0.6636893937500001
+     ],
+     "gap_to_B": 0.007143075371172314,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.005871931621172166,
+      0.008576694121172235
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "nm@4000": {
+     "mean": 0.6689755393395398,
+     "bootstrap95": [
+      0.6688445360679198,
+      0.6690928836016614
+     ],
+     "gap_to_B": 0.000585786031632507,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.000585786031632396,
+      "sampling_ci95_conditional_on_references": [
+       0.00046844176951077454,
+       0.0007167893032523631
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00046844176951088556,
+      0.0007167893032524741
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "lda@4000": {
+     "mean": 0.6689753072425879,
+     "bootstrap95": [
+      0.6688438149530052,
+      0.6690939888870863
+     ],
+     "gap_to_B": 0.0005860181285843868,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.0005860181285842758,
+      "sampling_ci95_conditional_on_references": [
+       0.0004673364840859229,
+       0.0007175104181670333
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": null,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0004673364840860339,
+      0.0007175104181671443
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "mlp@4000": {
+     "mean": 0.6671737499999999,
+     "bootstrap95": [
+      0.6665416875,
+      0.6678210562500001
+     ],
+     "gap_to_B": 0.0023875753711724013,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.0017402691211722,
+      0.0030196378711723204
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "nm@16000": {
+     "mean": 0.6694129972784888,
+     "bootstrap95": [
+      0.6693813765001879,
+      0.6694409896093533
+     ],
+     "gap_to_B": 0.0001483280926835029,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.00014832809268339187,
+      "sampling_ci95_conditional_on_references": [
+       0.0001203357618189127,
+       0.00017994887098427004
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 0.00014832809268339187,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00012033576181902372,
+      0.00017994887098438106
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "lda@16000": {
+     "mean": 0.6694128003999927,
+     "bootstrap95": [
+      0.669381257568665,
+      0.6694407987228865
+     ],
+     "gap_to_B": 0.00014852497117956442,
+     "B_se_separate": 0.0,
+     "decomposition": {
+      "B_minus_L_found (upper bound of nonlinearity gap)": 0.0,
+      "criterion_L_found_minus_inf": 1.1102230246251565e-16,
+      "sampling_inf_minus_n (signed)": 0.0001485249711794534,
+      "sampling_ci95_conditional_on_references": [
+       0.00012052664828565707,
+       0.0001800678025072333
+      ],
+      "note": "first two terms are fixed model references (no seed uncertainty); B carries its MC SE"
+     },
+     "convergence_abs_diff_to_inf": 0.0001485249711794534,
+     "gap_to_B_ci95_conditional_on_B": [
+      0.00012052664828576809,
+      0.00018006780250734433
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    },
+    "mlp@16000": {
+     "mean": 0.6691232500000001,
+     "bootstrap95": [
+      0.6686579437500001,
+      0.6696127937499999
+     ],
+     "gap_to_B": 0.0004380753711722418,
+     "B_se_separate": 0.0,
+     "gap_to_B_ci95_conditional_on_B": [
+      -5.1468378827634886e-05,
+      0.0009033816211722057
+     ],
+     "closed_share_vs_LDA1000": {
+      "estimate": null,
+      "reason": "denominator 0.0022 <= 0.01: N/A"
+     }
+    }
+   }
+  }
+ },
+ "evidence": {
+  "kind": "numerical_sample",
+  "empirical_status": "synthetic_only"
+ }
+}

@@ -1,0 +1,295 @@
+{
+ "schema": "mandala-memory-m12-protocol-v1",
+ "status": "FROZEN 2026-10-05 after IMPLEMENTIERUNGSREVIEW_ba5dabc / NACHPRUEFUNG_15edfbd; reviewed code commit 15edfbd0d4f034c15af0cf8efd4cbb82270c198c; freeze record protocol/m12_freeze.json; references, models and evaluation follow as one-time phases",
+ "plan": "docs/M12_PLAN_ROBUSTHEIT.md (Fassung 2, d1acc4a)",
+ "question": "How does the readout performance change under a different distractor amplitude or measurement noise when the trained decoders stay unchanged?",
+ "mandala": {
+  "network": "modular",
+  "nonlinearity": "tanh",
+  "delay": 4,
+  "source": "frozen M10 functions m10_task.network / readout_states (the Mandala is unchanged); M10 and M11 must be frozen (checked before any state)"
+ },
+ "base_condition": {
+  "name": "c0",
+  "X": 1,
+  "Y": 5,
+  "amplitude": 0.6,
+  "sigma": 0.02,
+  "m10_condition": "N"
+ },
+ "grid": {
+  "factors": [
+   0.5,
+   0.75,
+   1.0,
+   1.25,
+   1.5
+  ],
+  "rule": "one axis at a time; the other quantity stays at its base value; window, positions, pulse probability and delay unchanged",
+  "conditions": [
+   {
+    "name": "c0",
+    "amplitude": 0.6,
+    "sigma": 0.02
+   },
+   {
+    "name": "a0.30",
+    "amplitude": 0.3,
+    "sigma": 0.02
+   },
+   {
+    "name": "a0.45",
+    "amplitude": 0.45,
+    "sigma": 0.02
+   },
+   {
+    "name": "a0.75",
+    "amplitude": 0.75,
+    "sigma": 0.02
+   },
+   {
+    "name": "a0.90",
+    "amplitude": 0.9,
+    "sigma": 0.02
+   },
+   {
+    "name": "s0.010",
+    "amplitude": 0.6,
+    "sigma": 0.01
+   },
+   {
+    "name": "s0.015",
+    "amplitude": 0.6,
+    "sigma": 0.015
+   },
+   {
+    "name": "s0.025",
+    "amplitude": 0.6,
+    "sigma": 0.025
+   },
+   {
+    "name": "s0.030",
+    "amplitude": 0.6,
+    "sigma": 0.03
+   }
+  ]
+ },
+ "training": {
+  "condition": "c0 only",
+  "n_pairs": 16000,
+  "decoders": [
+   "lda",
+   "mlp"
+  ],
+  "lda": "Ledoit-Wolf LDA (m11_readout.lda_rule, unchanged) on all n pairs",
+  "mlp_procedure": "taken over from M11 unchanged: hidden, inits and hyperparameters are READ from the frozen M11 protocol (decoders.mlp) whose SHA-256 must equal hyper_source.m11_protocol_sha256; m11_readout.MLP and validation_split unchanged; own wrapper only for the M12 streams",
+  "hyper_source": {
+   "file": "protocol/m11_protokoll.json",
+   "m11_protocol_sha256": "c25c9cdd7697c45609fd7abbaf6889a66fbaa012f3798420d59a96481846911e"
+  },
+  "selection": "MLP: init with the smallest validation log-loss on the c0 validation split (every 5th pair), ties -> smallest index; LDA: none; no model is excluded",
+  "no_test_data": "the training phase computes no test accuracy and has no access to the shift grid",
+  "divergence_rule": "MLPDivergence or any failure -> the phase ends failed/aborted; no replacement seed, no silent retry"
+ },
+ "seeds": {
+  "research": [
+   41201,
+   41202,
+   41203,
+   41204,
+   41205,
+   41206,
+   41207,
+   41208,
+   41209,
+   41210,
+   41211,
+   41212,
+   41213,
+   41214,
+   41215,
+   41216,
+   41217,
+   41218,
+   41219,
+   41220
+  ],
+  "smoke": [
+   41051,
+   41052
+  ],
+  "dev": [
+   921,
+   922,
+   923
+  ]
+ },
+ "modes": {
+  "research": "m12",
+  "smoke": "m12",
+  "dev": "m12dev",
+  "bayes": "m12bayes"
+ },
+ "streams": {
+  "train": "(seed, kind in {pattern, noise}, 'train'); standard-normal noise scaled by sigma(c0)",
+  "test": "(seed, kind in {pattern, noise}, 'test'); ONE draw per seed shared by all 9 conditions and both decoders (common random numbers): y = z(c) + sigma(c) * eps",
+  "mlp_init": "(seed, 'mlp-init', 'modular_N_c0', n, k) -- same name structure as M11, own mode codes",
+  "bayes": "(base_seed, case_set, condition name): one independent stream per estimate; B(c0) estimated once"
+ },
+ "test": {
+  "pairs": 100000,
+  "se_rule": "per-pair contribution r = (1[A correct] + 1[B correct]) / 2, SE = sd(r) / sqrt(pairs)"
+ },
+ "references": {
+  "bayes": {
+   "estimator": "m10_bayes.bayes_accuracy_mc on m10_bayes.preserve_mixtures (unchanged)",
+   "n_mc": 2000000,
+   "block": 50000,
+   "base_seed": {
+    "research": 2026100512,
+    "dev": 2026100519
+   }
+  },
+  "lda_pop": "m11_readout.population_rules(z(c), P, sigma(c))['lda'] with exact_accuracy (exact, no Monte Carlo)",
+  "phase": "after the protocol freeze and before research training; once; exclusive claim; own artifact and hash, bound in the model freeze and the evaluation gate"
+ },
+ "decomposition": {
+  "loss": "L_D,s(c) = acc_D,s(c0) - acc_D,s(c)",
+  "delta_B": "B(c0) - B(c); MC-SE sqrt(SE0^2 + SEc^2) for c != c0, exactly 0 with SE 0 at c0; no seed interval",
+  "delta_G": "[B(c) - acc_D,s(c)] - [B(c0) - acc_D,s(c0)]; seed intervals conditional on the stored B values, MC-SE of delta_B reported alongside",
+  "lda_split": {
+   "bayes_gap_of_lda_pop": "[B - LDA_pop](c) - [B - LDA_pop](c0)",
+   "gap_fixed_to_lda_pop": "[LDA_pop - LDA_fix](c) - [LDA_pop - LDA_fix](c0)",
+   "note": "LDA_pop is the population rule of the LDA criterion, not the best linear rule; the second term includes the finite estimation of the fixed model"
+  },
+  "lda_accuracy_used": "exact population accuracy of the fixed rule for the decomposition; test accuracy for the confirmatory contrasts",
+  "mlp_note": "no condition-specific MLP reference without retraining; delta_G of the MLP is not attributed to a cause"
+ },
+ "confirmatory": {
+  "question": "Is the fixed MLP better than the fixed LDA by more than delta at the two raised endpoints?",
+  "tests": {
+   "R-a": {
+    "condition": "a0.90"
+   },
+   "R-sigma": {
+    "condition": "s0.030"
+   }
+  },
+  "contrast": "acc_MLP,test - acc_LDA,test on the same test episodes, paired by seed",
+  "delta": 0.01,
+  "alpha": 0.05,
+  "holm": true,
+  "one_sided": true,
+  "test": "one-sided t test of (mean paired seed difference - delta), df = 19; normality is an ASSUMPTION; whole-seed bootstrap alongside",
+  "zero_variance_rule": "all differences identical: p = 0 if mean > delta else 1 (as M11)",
+  "not_tested": "neither non-inferiority to c0 nor the preservation of the size of the base advantage",
+  "endpoint_rationale": "more distraction and more noise are the directions of practically expected degradation; halved values are reported descriptively; no monotonicity assumed; no post-hoc endpoint choice"
+ },
+ "diagnostics": {
+  "nature": "statistical cross-checks at 4 SE, not proofs; an alarm is not a certain code error",
+  "alarm_rule": "every alarm is recorded in the evaluation; the confirmatory release is withheld until a documented review by Johann/Astra; no repetition until a diagnostic passes",
+  "D1": "|B(c0) - B_M10(N)| <= 4 sqrt(SE^2 + SE_M10^2); M10 value from the frozen M10 research file via the M11 bayes_source (SHA-checked)",
+  "D2": "for neighbouring sigma values on the sigma axis: B(sigma_k+1) <= B(sigma_k) + 4 sqrt(SE^2 + SE^2) (4 checks)",
+  "D3": "LDA_pop(c) <= B(c) + 4 SE_B(c) (9 checks)",
+  "D4": "|exact LDA - test LDA| <= 4 SE_pair per seed and condition (20 x 9 = 180 checks)",
+  "analytic": "additional independent Gaussian noise is a garbling: the optimal accuracy cannot increase with sigma; strict decrease is not claimed"
+ },
+ "uncertainty": {
+  "bootstrap": {
+   "reps": 2000,
+   "seed": 2026100513
+  },
+  "t_intervals": "unadjusted 95 %"
+ },
+ "artifacts": {
+  "research_dir": "protocol/m12_models",
+  "smoke_dir": "D:/mandala/mandala-memory-results/m12/smoke/models",
+  "npz_keys": {
+   "W1": [
+    12,
+    32
+   ],
+   "b1": [
+    32
+   ],
+   "w2": [
+    32
+   ],
+   "b2": [
+    1
+   ],
+   "mean": [
+    12
+   ],
+   "std": [
+    12
+   ],
+   "lda_w": [
+    12
+   ],
+   "lda_b": [
+    1
+   ]
+  },
+  "load_rule": "np.load(allow_pickle=False); exact keys, shapes, float64, finite, std > 0; metadata complete; manifest contains exactly the protocol seeds of its mode",
+  "files_per_seed": [
+   "seed-<s>.npz",
+   "seed-<s>.json"
+  ]
+ },
+ "release": [
+  "mode research, status complete, no failures, no overrides",
+  "seeds equal the protocol; complete grid 20 x 9 x 2 decoders; finite values in [0, 1]",
+  "protocol, code, reference artifact and model manifest equal their freeze hashes; every artifact loads and has the expected provenance",
+  "model files hash-identical before and after the evaluation; weights/standardisation unchanged",
+  "no fit call in the evaluation; test stream separate from the training stream",
+  "no diagnostic alarm (otherwise: descriptive release only, confirmatory withheld pending review)"
+ ],
+ "phases": [
+  "1 plan + review",
+  "2 implementation at development settings + tests + mutation + runtime check + implementation review",
+  "3 protocol freeze (tag m12-freeze) BEFORE research training",
+  "4 reference phase (once): B(c), LDA_pop(c) -> protocol/m12_references.json",
+  "5 smoke: smoke models (results folder, own manifest) + smoke evaluation; never released",
+  "6 training phase (once): 20 research models in c0 -> protocol/m12_models/",
+  "7 model freeze (tag m12-models): protocol/m12_models_freeze.json binds protocol, references, manifest, code",
+  "8 robustness evaluation (once), report, review, integration"
+ ],
+ "attempt_rule": "each one-time phase has exactly one research attempt; an abort is kept, locked and reported; a second attempt needs a dated addendum and documented approval; phases over 10 min run detached with blocked system sleep",
+ "resources": {
+  "time_limits_s": {
+   "references": 1800,
+   "training": 5400,
+   "evaluation": 1800
+  },
+  "time_limit_kind": "elapsed wall-clock (monotonic), checked cooperatively (every MLP epoch, every MC block, every seed/condition unit)",
+  "ram": {
+   "plan_gib": 2,
+   "enforced": false,
+   "note": "peak RSS measured and reported, not technically enforced"
+  },
+  "runtime_check": {
+   "measured": "2026-10-05, development settings, ONE dev seed (921) at the full M12 volume, this PC, 2 BLAS threads",
+   "references_s": 57.6,
+   "training_per_seed_s": 105.1,
+   "evaluation_per_seed_s": 2.8,
+   "peak_rss_mib": 263,
+   "extrapolation": "training 20 seeds ~ 35 min for the dev case; the research case may differ (M11 research run: ~129 s per modular_N model at n = 16000), so up to ~45 min is plausible; evaluation ~1 min; all below the limits",
+   "files": "D:/mandala/mandala-memory-results/m12/dev-runtime-check/ (references-dev.json, models/, m12-dev-20261005T141920-b678faad.json + .evaluation.json)",
+   "note": "development values are tool checks, not findings"
+  }
+ },
+ "development": {
+  "base_condition": {
+   "name": "c0",
+   "X": 2,
+   "Y": 6,
+   "amplitude": 0.9,
+   "sigma": 0.02,
+   "m10_condition": "Ndev"
+  },
+  "conditions_rule": "same factors on the development base (amplitude 0.9, sigma 0.02)",
+  "bayes_d1_source": "dev",
+  "purpose": "tests, tool checks and the runtime check; values outside the research conditions; overrides allowed only in the dev mode"
+ }
+}

@@ -35,6 +35,7 @@ from experiments.mandala_memory import SCHEMA_VERSION
 from experiments.mandala_memory.core import EpisodeOperator, MemoryLabError, one_hot
 from experiments.mandala_memory.model import adapt_network, condition_specs
 from experiments.mandala_memory import lab as lablib
+from experiments.mandala_memory import studies
 
 HERE = Path(__file__).resolve().parent
 CONFIG = json.loads((HERE / "protocol" / "startkonfiguration.json").read_text(encoding="utf-8"))
@@ -47,7 +48,8 @@ MAX_RUNS = 4
 ADAPT_SEED = int(CONFIG["smoke"]["seeds"][0])
 TRACE_SCHEMA = "mandala-memory-trace-v1"
 UI_FILES = {"/": "index.html", "/index.html": "index.html", "/app.js": "app.js", "/style.css": "style.css",
-            "/lab.html": "lab.html", "/lab.js": "lab.js"}
+            "/lab.html": "lab.html", "/lab.js": "lab.js",
+            "/studies.html": "studies.html", "/studies.js": "studies.js", "/studies.css": "studies.css"}
 MAX_BODY = 20_000
 
 
@@ -188,6 +190,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
         self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Cache-Control", "no-store")
         self.end_headers()
         self.wfile.write(body)
 
@@ -195,6 +198,21 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self._send(code, json.dumps(obj, allow_nan=False).encode(), "application/json; charset=utf-8")
 
     def do_GET(self):
+        if self.path == "/api/studies":
+            return self._json(200, {"studies": studies.catalog()})
+        if self.path.startswith("/api/studies/"):
+            parts = self.path.split("/")
+            try:
+                if len(parts) == 4:
+                    return self._json(200, studies.load_study(parts[3]))
+                if len(parts) == 6 and parts[4] == "sources":
+                    return self._send(200, studies.source_bytes(parts[3], parts[5]), "text/plain; charset=utf-8")
+            except studies.IntegrityError:
+                # Never leak partial values or local filesystem details in failure responses.
+                return self._json(409, {"integrity": "failed", "error": "Quelldaten fehlen oder stimmen nicht mit dem Anzeigesnapshot überein. Keine verifizierte Darstellung möglich."})
+            except KeyError:
+                return self._json(404, {"error": "Unbekannte Studien- oder Quellen-ID"})
+            return self._json(404, {"error": "not found"})
         if self.path == "/api/preset":
             return self._json(200, {"config": CONFIG, "networks": NETWORKS, "interventions": INTERVENTIONS,
                                     "max_delay": MAX_DELAY, "max_runs": MAX_RUNS, "read_only": True,

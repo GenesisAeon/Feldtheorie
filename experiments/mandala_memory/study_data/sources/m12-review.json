@@ -1,0 +1,59 @@
+{
+  "result_sha256_raw": "90d4ac290a1eff1fd7fab9cbe7a28b0d6590655970ebe3b05d362e2eb6fbbf56",
+  "result_sha256_normalized": "90d4ac290a1eff1fd7fab9cbe7a28b0d6590655970ebe3b05d362e2eb6fbbf56",
+  "unchanged": true,
+  "evaluation_identical": true,
+  "freeze_reviewed_commit": "15edfbd0d4f034c15af0cf8efd4cbb82270c198c",
+  "models": 20,
+  "npz_git_problems": [],
+  "release": {
+    "released": true,
+    "structurally_valid": true,
+    "reasons": [],
+    "confirmatory_status": "released",
+    "alarm_review_reference": null,
+    "alarm_rule": "an alarm withholds the confirmatory release until a documented review by Johann/Astra, referenced in a separate addendum; never an automatic rerun; computed p-values stay as a NOT released evaluation"
+  },
+  "diagnostics": {
+    "checks": {
+      "D1": 1,
+      "D2": 4,
+      "D3": 9,
+      "D4": 180
+    },
+    "alarms": []
+  },
+  "independent_tests": {
+    "R-a": {
+      "mean": 0.103845,
+      "ci95": [
+        0.10260956816757244,
+        0.10508043183242757
+      ],
+      "p": 1.8839242901361684e-31,
+      "p_holm": 1.8839242901361684e-31
+    },
+    "R-sigma": {
+      "mean": 0.04281950000000001,
+      "ci95": [
+        0.04240811721431135,
+        0.04323088278568867
+      ],
+      "p": 7.426133155208442e-32,
+      "p_holm": 1.4852266310416883e-31
+    }
+  },
+  "smoke_release": {
+    "released": false,
+    "structurally_valid": false,
+    "reasons": [
+      "mode_is_not_research"
+    ],
+    "confirmatory_status": "not_released",
+    "alarm_review_reference": null,
+    "alarm_rule": "an alarm withholds the confirmatory release until a documented review by Johann/Astra, referenced in a separate addendum; never an automatic rerun; computed p-values stay as a NOT released evaluation"
+  },
+  "rows": 180,
+  "timing_s": 34.832412699994165,
+  "max_deltaB_mcse": 0.00013727206145045415
+}

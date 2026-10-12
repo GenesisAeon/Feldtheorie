@@ -8,6 +8,8 @@ Kleines, reproduzierbares CPU-Experiment. Es fragt: Welche Information über ein
 
 **Einstieg:** [docs/FORSCHUNGSUEBERSICHT.md](docs/FORSCHUNGSUEBERSICHT.md) fasst M0–M12 zusammen: Fragen, Ergebnisse, Grenzen und Links zu den eingefrorenen Belegen.
 
+**Studienansicht (lokaler Reviewstand):** `/studies.html` zeigt ausschließlich gespeicherte M9–M12-Ergebnisse, getrennt vom explorativen Regler-Labor. Quellen, Integritätskette und Grenzen: [docs/STUDIENANSICHT.md](docs/STUDIENANSICHT.md). Die unabhängige Implementierungsprüfung steht noch aus.
+
 Die Arbeitsschritte M0–M12 und alle Befunde stehen in [ROADMAP.md](ROADMAP.md), die eingefrorenen Protokolle unter [protocol/](protocol/).
 
 ## Startbefehle
