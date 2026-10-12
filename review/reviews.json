@@ -1,0 +1,17 @@
+{
+  "protocol_sha256": "38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578",
+  "runner_sha256": "a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0",
+  "model_sha256": "c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878",
+  "G01": {
+    "reviewer": "Claude Sonnet 5 (Claude Code)",
+    "verdict": "approved",
+    "report_path": "g01_independent/G01_REPORT.md",
+    "report_sha256": "80f662633ddc8b719c7ceaed5b16cdba7a5d56052f420f5e1c3a81858cb74603"
+  },
+  "implementation": {
+    "reviewer": "Claude Sonnet 5 (Claude Code)",
+    "verdict": "approved",
+    "report_path": "g02_independent/G02_REPORT.md",
+    "report_sha256": "4c82102928082e1042b23a5f23156c94d9ac435a8b36e44fcbbf42537351f3af"
+  }
+}

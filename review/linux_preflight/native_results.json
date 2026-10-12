@@ -1,0 +1,131 @@
+{
+  "_content_sha256": "b3b04e223ddf2387d0da8746c88e87873e291b085167905a746d0fd29512bef3",
+  "confirmatory_prepare_or_evaluate_executed": false,
+  "numpy": "2.3.5",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+  "probe_script_sha256": "19329da028477fdda1b8bfe11310bcff5aa3b7edb58745cd3c3cc9a19a66f385",
+  "probes": {
+    "disk": {
+      "disk_fixture_bytes": 98304,
+      "existing_file_preserved": true,
+      "external_over_limit_detected": true,
+      "memory_limit_restored": true,
+      "preflight_refused": true,
+      "signal_handler_restored": true,
+      "status": "passed",
+      "timer_cancelled": true
+    },
+    "interruption_resume": {
+      "audit": {
+        "all_rng_states_reconstructed": true,
+        "code_commit": "584b79500e912dffc17e03832802ac6a94f7bb45",
+        "counts": {
+          "train": {
+            "axial": 128,
+            "iid": 128,
+            "smooth": 128
+          },
+          "validation": {
+            "axial": 64,
+            "iid": 64,
+            "smooth": 64
+          }
+        },
+        "files_verified": 14,
+        "independent_cellwise_reference_mae": 0.0,
+        "rejections": {
+          "train": {
+            "axial": 0,
+            "iid": 0,
+            "smooth": 0
+          },
+          "validation": {
+            "axial": 0,
+            "iid": 0,
+            "smooth": 0
+          }
+        },
+        "samples_checked": 576,
+        "scope": "implementer-authored development audit",
+        "status": "passed",
+        "test_states_generated": false
+      },
+      "existing_files_preserved": 2,
+      "final_file_hashes": {
+        "batch-a3ffdb2069f546b58382a3928560ba51.json": "5343580650b59546ecc6ffa9c03a1c87d2b6007e0888eee5e9dc1d399ed5cffa",
+        "batch-b6f47a14fb604abe82f039f605e2cb31.json": "93fe2c5140462d1e700e1e74d9c9341966e2a24d9a458840343b08f8c78c7426",
+        "development.json": "2ffb027d9265d5446093dc3d5a4ca06976263e179479b47f908cfa2f5f58a762",
+        "manifest.json": "f16d68bfd69e51ce9c91c62ee62af74732790126e96148de5fa1a077e1bb0e72",
+        "repeat-00/BASE.json": "fca164c105fc1776678668a0bef5eb968d33c67623d0949858857fe60b3a58eb",
+        "repeat-00/COARSE.json": "688366c63d3ea0a630a4e2f3cf7e6cb36bd1f8564d583797fddf87f1f308b126",
+        "repeat-00/GEOMETRY.json": "68d30f182b52e966c57892699a3241414c4f736f9d5e30d75186ce04ecfad601",
+        "repeat-00/MICRO.json": "31707f57dfca94f71337aae65460e522ad13bab199378c2b726f02f90ece242d",
+        "repeat-00/SHUFFLED.json": "8660ba54efa79ce8992754181473eb26f9b049a804b003ea9bac86bab9684af2",
+        "repeat-00/frozen.json": "dca45c748b904978c4fd176a686740ac5a75ca838c31c56082ce6bcf143f300a",
+        "repeat-00/train-predictions.json": "fd57fd8d4760ad33bbbde5ddd954f79994f927c1e84f5a931fef50cf341c620d",
+        "repeat-00/train.json": "939a8aa0a279f588fb0e019ebe3876d0b82502bf7059697dc37a8abd2255c1cc",
+        "repeat-00/validation-predictions.json": "b36541f820968d828eca8812d3990ab8efff00968fafee23881fe6dc8c8b717d",
+        "repeat-00/validation.json": "15ee4b1164d8c754d6c3ceefee04c2e1076f04e4042c4349464b3ea0fa12b4af"
+      },
+      "interrupted_status": "incomplete",
+      "resource_batches": [
+        {
+          "active_seconds": 0.03049653200002922,
+          "failure": "TimeoutError: Active batch time limit reached; resume the same stage",
+          "memory_enforcement": "RLIMIT_AS <= 4 GiB virtual address space (stricter than RSS)",
+          "numerical_threads": 1,
+          "peak_rss_kib": 26224,
+          "size_bytes": 683,
+          "stage": "development",
+          "status": "incomplete",
+          "worker_processes": 1
+        },
+        {
+          "active_seconds": 0.544748391999974,
+          "failure": null,
+          "memory_enforcement": "RLIMIT_AS <= 4 GiB virtual address space (stricter than RSS)",
+          "numerical_threads": 1,
+          "peak_rss_kib": 44664,
+          "size_bytes": 3753036,
+          "stage": "development",
+          "status": "completed",
+          "worker_processes": 1
+        }
+      ],
+      "resume_status": "completed",
+      "status": "passed",
+      "time_fixture_seconds": 0.03
+    },
+    "memory": {
+      "active_rlimit_as_bytes": 4294967296,
+      "memory_limit_restored": true,
+      "oversized_virtual_mapping": "rejected_ENOMEM",
+      "signal_handler_restored": true,
+      "status": "passed",
+      "timer_cancelled": true
+    },
+    "timer": {
+      "configured_seconds": 0.05,
+      "elapsed_seconds": 0.05014639000000898,
+      "memory_limit_restored": true,
+      "real_SIGALRM_delivered": true,
+      "signal_handler_restored": true,
+      "status": "passed",
+      "timer_cancelled": true
+    }
+  },
+  "python": "3.12.14",
+  "resource_module": "built-in",
+  "review_evidence_verified": {
+    "G01": "approved",
+    "implementation": "approved"
+  },
+  "scientific_test_states_generated": false,
+  "source_hashes": {
+    "PROTOCOL.md": "7b58145b26d68413719294bf1c998ef430677d54943f8d75daed8952be6c37ba",
+    "model.py": "c1cecde52d656748bdfd6f71573368c575b97d4650c00b0f89445bf79049a878",
+    "protocol.json": "38de6c3ec0574f4abd712beda000255058821be66f23b12185301af39d78a578",
+    "runner.py": "a2e485722c6c16541086f5b2b7f699815843125c652c59bc6a57015d02ff48a0"
+  },
+  "status": "passed"
+}

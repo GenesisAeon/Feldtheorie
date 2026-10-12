@@ -1,0 +1,30 @@
+test_atomic_preservation_integrity_and_no_partial_on_invalid_json (test_predictive.CheckpointsAndGates.test_atomic_preservation_integrity_and_no_partial_on_invalid_json) ... ok
+test_missing_reviews_block_evaluation_before_data_or_output (test_predictive.CheckpointsAndGates.test_missing_reviews_block_evaluation_before_data_or_output) ... ok
+test_output_cap_prevents_publish (test_predictive.CheckpointsAndGates.test_output_cap_prevents_publish) ... ok
+test_resume_requires_identical_provenance (test_predictive.CheckpointsAndGates.test_resume_requires_identical_provenance) ... ok
+test_review_record_without_reports_is_insufficient (test_predictive.CheckpointsAndGates.test_review_record_without_reports_is_insufficient) ... ok
+test_blinker_and_periodic_transition (test_predictive.DynamicsAndSensors.test_blinker_and_periodic_transition) ... ok
+test_block_order_and_micro_windows (test_predictive.DynamicsAndSensors.test_block_order_and_micro_windows) ... ok
+test_boundaries_exclude_seams_and_cover_quantizer (test_predictive.DynamicsAndSensors.test_boundaries_exclude_seams_and_cover_quantizer) ... ok
+test_coarse_redundancy_and_sensor_ranges (test_predictive.DynamicsAndSensors.test_coarse_redundancy_and_sensor_ranges) ... ok
+test_empty_and_still_life (test_predictive.DynamicsAndSensors.test_empty_and_still_life) ... ok
+test_full_state_reference_zero_error (test_predictive.DynamicsAndSensors.test_full_state_reference_zero_error) ... ok
+test_shuffle_moves_whole_side_channel_rows_only (test_predictive.DynamicsAndSensors.test_shuffle_moves_whole_side_channel_rows_only) ... ok
+test_aggregation_support_heterogeneity_and_zero_denominator (test_predictive.LearningAndInference.test_aggregation_support_heterogeneity_and_zero_denominator) ... ok
+test_bootstrap_constant_and_seeded_paired_reference (test_predictive.LearningAndInference.test_bootstrap_constant_and_seeded_paired_reference) ... ok
+test_external_target_changes_do_not_change_features_or_fit (test_predictive.LearningAndInference.test_external_target_changes_do_not_change_features_or_fit) ... ok
+test_lambda_and_comparator_ties (test_predictive.LearningAndInference.test_lambda_and_comparator_ties) ... ok
+test_ridge_matches_augmented_normal_equations (test_predictive.LearningAndInference.test_ridge_matches_augmented_normal_equations) ... ok
+test_train_only_normalization_and_constant_columns (test_predictive.LearningAndInference.test_train_only_normalization_and_constant_columns) ... ok
+test_canonical_key_matches_independent_small_grid_enumeration (test_predictive.Sampling.test_canonical_key_matches_independent_small_grid_enumeration) ... ok
+test_canonical_key_symmetry_and_no_complement_identification (test_predictive.Sampling.test_canonical_key_symmetry_and_no_complement_identification) ... ok
+test_development_generator_density_and_reproducibility (test_predictive.Sampling.test_development_generator_density_and_reproducibility) ... ok
+test_development_rejects_test_access_before_generator_call (test_predictive.Sampling.test_development_rejects_test_access_before_generator_call) ... ok
+test_duplicate_rejection_records_and_bound (test_predictive.Sampling.test_duplicate_rejection_records_and_bound) ... ok
+test_packed_state_roundtrip (test_predictive.Sampling.test_packed_state_roundtrip) ... ok
+test_split_registry_and_rng_reconstruction (test_predictive.Sampling.test_split_registry_and_rng_reconstruction) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.809s
+
+OK
