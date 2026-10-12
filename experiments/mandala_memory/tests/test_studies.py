@@ -125,6 +125,40 @@ def test_lf_binding_accepts_crlf_pinned_target(copy_data, monkeypatch):
     assert studies.load_study("m9", copy_data)["integrity"] == "verified"
 
 
+@pytest.mark.parametrize("sid,source,path", [
+    ("m12", "m12-evaluation", ("confirmatory", "tests", "R-a", "mean")),          # B4 counterexample
+    ("m12", "m12-evaluation", ("confirmatory", "tests", "R-sigma", "p_holm")),
+    ("m11", "m11-evaluation", ("confirmatory", "contrasts", "C-Daten", "mean")),
+    ("m11", "m11-evaluation", ("descriptive", "modular_N", "B")),
+    ("m10", "m10-evaluation", ("confirmatory", "contrasts", "H-N", "delta_hat")),
+])
+def test_evaluation_values_bound_to_review_records(copy_data, monkeypatch, sid, source, path):
+    """A different, released and consistently re-pinned evaluation must not be displayed."""
+    p = copy_data / f"sources/{source}.json"
+    d = json.loads(p.read_bytes())
+    node = d
+    for key in path[:-1]: node = node[key]
+    node[path[-1]] = node[path[-1]] * 0.5          # stays finite and inside [0, 1]
+    p.write_text(json.dumps(d), encoding="utf-8")
+    repin(copy_data, monkeypatch)
+    with pytest.raises(studies.IntegrityError): studies.load_study(sid, copy_data)
+
+
+def test_active_pin_labels_pointers_and_zero_display():
+    """Pin c02f7685: B3 estimator labels, B10 frozen prediction band, B6 field-specific p=0 text."""
+    m11 = studies.load_study("m11")["panels"][0]["rows"]
+    assert m11[0]["label"].startswith("C-Daten · LDA exakt")
+    assert "beide auf denselben Testepisoden" in m11[1]["label"]
+    m9 = studies.load_study("m9")["panels"][1:]
+    assert len(m9) == 24
+    for i, panel in enumerate(m9):
+        f = panel["metrics"][1]["field"]
+        assert (f["source"], f["pointer"]) == ("m9-prediction", f"/held_out/{i}/prediction/D_interval")
+    zeros = [(sid, f["pointer"], f["zero_display"]) for sid in studies.IDS for panel in studies.load_study(sid)["panels"]
+             for f in [c for r in panel["rows"] for c in r["cells"]] + [x["field"] for x in panel["metrics"]] if "zero_display" in f]
+    assert zeros == [("m10", "/confirmatory/contrasts/H-N/p_holm", "< 10⁻¹² (numerisch 0)")]
+
+
 def test_catalog_has_no_numbers():
     assert [set(entry) for entry in studies.catalog()] == [{"id", "title"}] * len(studies.IDS)
     assert [entry["id"] for entry in studies.catalog()] == list(studies.IDS)

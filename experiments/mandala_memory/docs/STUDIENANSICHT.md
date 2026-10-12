@@ -27,11 +27,40 @@ Die Oberfläche sagt ausdrücklich, dass damit nicht laufend die Original-Arbeit
 
 Für M10–M12 werden die Ergebnisdateien zusätzlich gegen bereits vorhandene unabhängige
 Review-Hashbelege gebunden. Bei M9 ist die Bindung an die eingefrorenen Vorhersagen und
-deren Herleitung vorhanden. Ein separater historischer Vollhash des M9-Ergebnisses war
-bei der Bestandsaufnahme nicht nachgewiesen. Die betroffenen Artefakte, insbesondere
-gespeicherte Auswertungen, sind deshalb transparent als **neuer Anzeigesnapshot**
-gepinnt. Keine rückwirkende Präregistrierung. Die unabhängige Prüfung dieses neuen
-Anzeigestands durch Claude steht noch aus.
+deren Herleitung vorhanden. Für das M9-Ergebnis existiert außerdem ein historischer
+Vollhash: `review-m8-m9/REVIEW_MANIFEST.json` (2026-10-03), Eintrag
+`review/results/m9/m9-evaluation--8d353dbc88.json`, SHA-256 `8d353dbc…e857`, gleich den
+jetzigen Bytes. Die gespeicherten Auswertungen von M10–M12 haben keinen historischen
+Vollhash und sind transparent als **neuer Anzeigesnapshot** gepinnt. Ihre angezeigten
+bestätigenden Werte und Freigaben sind per Wertgleichheit an die historischen
+Review-Datensätze gebunden (`other_source`-Bindungen im Manifest):
+M10 Kontraste und Freigabe ↔ `astra-m10-review/RESULT_CHECK.json`; M11 bestätigende
+Kontraste, Hauptfall-Lernkurve und Freigabe ↔ `astra-m11-review/RESULT_CHECK_78c2d2f.json`;
+M12 R-a/R-σ (Mittel, Intervall, p, Holm-p) und Freigabe ↔
+`astra-m12-review/result-d79b7b2/verification.json`. Die übrigen M11-Fälle sind nur über
+die run_id zugeordnet; die beschreibenden M12-Kurven und ΔB/ΔG sind nur durch diesen
+Snapshot belegt. Keine rückwirkende Präregistrierung.
+
+### Pin-Historie
+
+| Pin (Manifest-SHA-256) | Quell-Commit | Stand |
+|---|---|---|
+| `d3417b1345e88db53960247448f7651e596707f81397b58583858b5a2468c195` | `7e4a242863` (2026-10-06) | abgelöst |
+| `c02f7685ecda35856e99eeac63f2ef4a23512821fb354c36f4a299a6bf771062` | dieser Commit (2026-10-12) | aktiv |
+
+Änderungsgrund (Claude-Review 2026-10-11, Befunde B3–B6, B10; Astra ASTRA-2026-10-12-02
+empfiehlt, Johann hat den Wechsel am 2026-10-12 freigegeben): Es ändert sich **nur das
+Manifest**; alle 30 Quellkopien sind bytegleich, alle angezeigten Werte gleich.
+- B3: M11-Hauptzeilen benennen die Schätzart („LDA exakt“; MLP − LDA „auf denselben
+  Testepisoden“) und erklären die kleine Abweichung zur Lernkurvendifferenz.
+- B4: 14 neue Wertbindungen der M10–M12-Auswertungen an die Review-Datensätze (siehe
+  oben); vorher hätte eine veränderte, neu gepinnte M12-Auswertung angezeigt werden können.
+- B5: M9-Herkunftstext nennt den historischen Vollhash.
+- B6: `zero_display` nur am Feld M10 H-N p_Holm (Beleg `m10-integration.md:17`).
+- B10: das vorhergesagte M9-D-Band kommt aus der eingefrorenen Vorhersage
+  (`m9-prediction /held_out/i/prediction/D_interval`), nicht aus der Ergebniskopie.
+
+Historische Belege und Quellkopien sind unverändert.
 
 Die vollständigen Quelldateien sind über feste IDs als Text abrufbar. Keine frei
 übergebenen Dateipfade, Shell-Endpunkte oder externen Dienste. Modellgewichte werden
@@ -41,7 +70,7 @@ dokumentieren ihre Herkunft.
 ## Darstellung
 
 - M9: Überblick sowie 24 auswählbare Kombinationen mit D und dessen vorhergesagtem
-  Band. Die Auswertung speichert Kurvenwerte nur bei d=0/4/8/16. Nur diese Punkte werden
+  Band aus der eingefrorenen Vorhersage. Die Auswertung speichert Kurvenwerte nur bei d=0/4/8/16. Nur diese Punkte werden
   mit den entsprechenden gespeicherten Vorhersagebandgrenzen gezeigt. Keine rekonstruierte
   65-Punkte-Kurve. Keine Zustandsanimation ohne gespeicherte Zustandsdaten.
 - M10: beide Hauptkontraste, Bayes-Komponenten der nahen Ablenkung und getrennt die
@@ -61,7 +90,9 @@ Geltungsbereich steht sowohl am Studienkopf als auch direkt an der Darstellung.
 Trefferquoten werden in Prozent, Unterschiede in Prozentpunkten angezeigt. Runden und
 Skalieren für die Anzeige ist erlaubt; die API enthält die originalen Zahlen samt
 JSON-Pointer. Holm gilt nur für p-Werte, nicht automatisch für die angezeigten Intervalle.
-M10 p=0 wird gemäß geprüftem Ergebnistext als `< 10⁻¹² (numerisch 0)` dargestellt.
+Ein p-Wert 0 wird nur dort als Schranke dargestellt, wo das Manifest ein feldspezifisches
+`zero_display` mit Beleg führt (derzeit M10 H-N p_Holm: `< 10⁻¹² (numerisch 0)` gemäß
+`m10-integration.md:17`); sonst neutral „0 (numerisch; siehe Quelle)“.
 „Nicht bestätigt“ wird nicht zu „kein Effekt“ umgedeutet.
 
 ## Schnittstellen und Trennung
@@ -91,6 +122,7 @@ Wechsel zum Spielbereich und zurück sowie sichtbare Ablehnung einer absichtlich
 beschädigten separaten Quellenkopie. Belege und reproduzierbare Prüfskripte liegen lokal
 unter `D:/mandala/mandala-memory-results/studies-review/`. Keine öffentlichen URLs.
 
-Noch kein unabhängiges Claude-Review und keine Integration in main. Die neue Ansicht
+Unabhängiges Claude-Review: `studies-review/claude-review-2026-10-11/REVIEW.md` (lokal).
+Keine Integration in main. Die neue Ansicht
 ist ein Präsentationsvorhaben, keine Forschungsstudie M13. Frozen Code, Protokolle und
 Originalergebnisse von M0–M12 bleiben unverändert.

@@ -11,7 +11,7 @@ import math
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent / "study_data"
-MANIFEST_SHA256 = "d3417b1345e88db53960247448f7651e596707f81397b58583858b5a2468c195"
+MANIFEST_SHA256 = "c02f7685ecda35856e99eeac63f2ef4a23512821fb354c36f4a299a6bf771062"
 IDS = ("m9", "m10", "m11", "m12")
 
 

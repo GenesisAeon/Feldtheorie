@@ -7,7 +7,7 @@
       "sha256": "8d353dbc88c25e525830a462b65190d69a8045cf6349490107fa711294a5e857",
       "sha256_lf": "8d353dbc88c25e525830a462b65190d69a8045cf6349490107fa711294a5e857",
       "origin": "D:\\mandala\\mandala-memory-results\\m9\\m9-evaluation--8d353dbc88.json",
-      "anchor": "Neuer Anzeigesnapshot; kein separater historischer Vollhash nachgewiesen. Die Vorhersagebindung ist historisch eingefroren.",
+      "anchor": "Historischer Vollhash: review-m8-m9/REVIEW_MANIFEST.json (2026-10-03), Eintrag review/results/m9/m9-evaluation--8d353dbc88.json. Die Vorhersagebindung ist historisch eingefroren.",
       "kind": "json"
     },
     "m9-prediction": {
@@ -55,7 +55,7 @@
       "sha256": "637e55a93df468d69aa6072811d70cdbb4dbc59102700ddf6aca569058096d47",
       "sha256_lf": "637e55a93df468d69aa6072811d70cdbb4dbc59102700ddf6aca569058096d47",
       "origin": "D:\\mandala\\mandala-memory-results\\m10\\research\\m10-research-20261003T230058-47d41706.evaluation.json",
-      "anchor": "Jetzt gepinnter Anzeigesnapshot; Quelle anhand der geprüften Ergebnisdokumentation zugeordnet.",
+      "anchor": "Neuer Anzeigesnapshot; kein historischer Vollhash. Bestätigende Kontraste und Freigabe sind an astra-m10-review/RESULT_CHECK.json gebunden (Werte gleich); Auswertung über run_id an das Ergebnis.",
       "kind": "json"
     },
     "m10-protocol": {
@@ -111,7 +111,7 @@
       "sha256": "1d52e3e5e25e49bb17bb2557430f88d0d28ef9fa3137787a8d023bf3b63efbeb",
       "sha256_lf": "1d52e3e5e25e49bb17bb2557430f88d0d28ef9fa3137787a8d023bf3b63efbeb",
       "origin": "D:\\mandala\\mandala-memory-results\\m11\\research\\m11-research-20261005T114106-e996e301.evaluation.json",
-      "anchor": "Jetzt gepinnter Anzeigesnapshot; Quelle anhand der geprüften Ergebnisdokumentation zugeordnet.",
+      "anchor": "Neuer Anzeigesnapshot; kein historischer Vollhash. Bestätigende Kontraste, Hauptfall-Lernkurve und Freigabe sind an astra-m11-review/RESULT_CHECK_78c2d2f.json gebunden (Werte gleich); übrige Fälle nur über run_id.",
       "kind": "json"
     },
     "m11-protocol": {
@@ -175,7 +175,7 @@
       "sha256": "652a7054952f961b7ceb12202054d34106beffd24d265f9e811ee7cd00b6e963",
       "sha256_lf": "652a7054952f961b7ceb12202054d34106beffd24d265f9e811ee7cd00b6e963",
       "origin": "D:\\mandala\\mandala-memory-results\\m12\\research\\m12-research-20261005T170243-972cca01.evaluation.json",
-      "anchor": "Jetzt gepinnter Anzeigesnapshot; Quelle anhand der geprüften Ergebnisdokumentation zugeordnet.",
+      "anchor": "Neuer Anzeigesnapshot; kein historischer Vollhash, keine run_id. R-a/R-σ (Mittel, Intervall, p, Holm-p) und Freigabe sind an astra-m12-review/result-d79b7b2/verification.json gebunden; beschreibende Kurven und ΔB/ΔG nur durch diesen Snapshot belegt.",
       "kind": "json"
     },
     "m12-protocol": {
@@ -464,8 +464,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/0/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/0/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -590,8 +590,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/1/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/1/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -716,8 +716,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/2/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/2/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -842,8 +842,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/3/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/3/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -968,8 +968,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/4/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/4/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1094,8 +1094,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/5/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/5/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1220,8 +1220,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/6/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/6/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1346,8 +1346,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/7/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/7/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1472,8 +1472,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/8/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/8/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1598,8 +1598,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/9/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/9/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1724,8 +1724,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/10/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/10/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1850,8 +1850,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/11/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/11/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -1976,8 +1976,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/12/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/12/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2102,8 +2102,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/13/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/13/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2228,8 +2228,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/14/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/14/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2354,8 +2354,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/15/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/15/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2480,8 +2480,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/16/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/16/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2606,8 +2606,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/17/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/17/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2732,8 +2732,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/18/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/18/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2858,8 +2858,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/19/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/19/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -2984,8 +2984,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/20/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/20/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -3110,8 +3110,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/21/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/21/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -3236,8 +3236,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/22/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/22/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -3362,8 +3362,8 @@
             {
               "label": "D vorhergesagt (Band)",
               "field": {
-                "source": "m9-result",
-                "pointer": "/combinations/23/D_interval",
+                "source": "m9-prediction",
+                "pointer": "/held_out/23/prediction/D_interval",
                 "unit": "count_interval",
                 "nullable": true
               }
@@ -3431,6 +3431,18 @@
           "pointer": "/result_sha256",
           "target": "m10-result",
           "hash": "sha256"
+        },
+        {
+          "source": "m10-evaluation",
+          "pointer": "/confirmatory/contrasts",
+          "other_source": "m10-review",
+          "other_pointer": "/contrasts"
+        },
+        {
+          "source": "m10-evaluation",
+          "pointer": "/release",
+          "other_source": "m10-review",
+          "other_pointer": "/release"
         }
       ],
       "panels": [
@@ -3464,7 +3476,8 @@
                   "source": "m10-evaluation",
                   "pointer": "/confirmatory/contrasts/H-N/p_holm",
                   "unit": "p",
-                  "nullable": false
+                  "nullable": false,
+                  "zero_display": "< 10⁻¹² (numerisch 0)"
                 },
                 {
                   "source": "m10-evaluation",
@@ -3683,6 +3696,24 @@
           "pointer": "/second_sha256",
           "target": "m11-result",
           "hash": "sha256"
+        },
+        {
+          "source": "m11-evaluation",
+          "pointer": "/confirmatory",
+          "other_source": "m11-review",
+          "other_pointer": "/confirmatory"
+        },
+        {
+          "source": "m11-evaluation",
+          "pointer": "/descriptive/modular_N",
+          "other_source": "m11-review",
+          "other_pointer": "/main_case"
+        },
+        {
+          "source": "m11-evaluation",
+          "pointer": "/release",
+          "other_source": "m11-review",
+          "other_pointer": "/release"
         }
       ],
       "panels": [
@@ -3698,7 +3729,7 @@
           ],
           "rows": [
             {
-              "label": "C-Daten · LDA: 16 000 vs. 1 000 je Klasse",
+              "label": "C-Daten · LDA exakt: 16 000 vs. 1 000 je Klasse",
               "cells": [
                 {
                   "source": "m11-evaluation",
@@ -3727,7 +3758,7 @@
               ]
             },
             {
-              "label": "C-Modell · MLP − LDA: 1 000 je Klasse",
+              "label": "C-Modell · MLP − LDA, beide auf denselben Testepisoden: 1 000 je Klasse",
               "cells": [
                 {
                   "source": "m11-evaluation",
@@ -3756,7 +3787,7 @@
               ]
             }
           ],
-          "note": "Mindesteffekt 1 Prozentpunkt. M10: Bayes-Kontraste; M11/M12: gepaarte Seed-Kontraste.",
+          "note": "Mindesteffekt 1 Prozentpunkt. M10: Bayes-Kontraste; M11/M12: gepaarte Seed-Kontraste. C-Modell vergleicht MLP und LDA auf denselben Testepisoden; die Lernkurve zeigt LDA exakt. Deshalb weicht die Differenz der Lernkurvenspalten leicht ab.",
           "chart": false
         },
         {
@@ -4627,6 +4658,60 @@
           "pointer": "/result_sha256_raw",
           "target": "m12-result",
           "hash": "sha256"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-a/mean",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-a/mean"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-a/ci95_t",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-a/ci95"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-a/p",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-a/p"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-a/p_holm",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-a/p_holm"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-sigma/mean",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-sigma/mean"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-sigma/ci95_t",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-sigma/ci95"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-sigma/p",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-sigma/p"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/confirmatory/tests/R-sigma/p_holm",
+          "other_source": "m12-review",
+          "other_pointer": "/independent_tests/R-sigma/p_holm"
+        },
+        {
+          "source": "m12-evaluation",
+          "pointer": "/release",
+          "other_source": "m12-review",
+          "other_pointer": "/release"
         }
       ],
       "panels": [
