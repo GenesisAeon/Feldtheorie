@@ -2,6 +2,10 @@
 # Explicit jobs: the root pytest only collects tests/, so these tests are invoked by path.
 # No failure masking (no "|| echo", no continue-on-error): a failing test fails the job (LR0-O2).
 # Never runs a research study: development/smoke runs only (runs.py refuses anything else).
+# Platform binding (2026-10-13, see experiments/lantern_reconstruction/CI_PLATTFORMBINDUNG.md): three frozen
+# provenance/bit-equality checks are bound to the Windows environment the freeze was made in. On Linux they are
+# deselected EXPLICITLY (listed below, visible in the log); they run in the job windows-bound-provenance instead.
+# A green Windows run does not explain the Linux deviation.
 name: lantern-reconstruction
 
 on:
@@ -47,6 +51,7 @@ jobs:
           experiments/lantern_reconstruction/tests/test_lr4_review.py
           experiments/lantern_reconstruction/tests/test_lr5_alarms.py
           experiments/lantern_reconstruction/tests/test_lr6.py
+          --deselect experiments/lantern_reconstruction/tests/test_lr2.py::test_reference_artifact_provenance
 
   legacy-import:
     name: Legacy adapter and import (LR0-LR1) - Python ${{ matrix.python-version }}
@@ -70,6 +75,36 @@ jobs:
           python -m pytest -p no:cacheprovider
           experiments/lantern_reconstruction/tests/test_lr0.py
           experiments/lantern_reconstruction/tests/test_lr1.py
+          experiments/lantern_reconstruction/tests/test_lr1_platform.py
+          --deselect experiments/lantern_reconstruction/tests/test_lr1.py::test_fresh_probe_rebuilds_exactly_the_pinned_snapshot
+          --deselect experiments/lantern_reconstruction/tests/test_lr1.py::test_probe_runs_the_full_loader_and_matches_the_snapshot
+
+  windows-bound-provenance:
+    # The three Windows-bound checks (CI_PLATTFORMBINDUNG.md). Line endings are configured explicitly:
+    # windows-latest alone does not guarantee a CRLF checkout, and the frozen pins bind CRLF bytes.
+    name: Windows-bound provenance pins (LR1-LR2) - Python 3.11
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Configure CRLF checkout (the freeze environment)
+        run: git config --global core.autocrlf true
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify the checkout really has CRLF line endings
+        run: python -c "import pathlib,sys; b=pathlib.Path('v9_alpha/models/phase_dynamics.py').read_bytes(); sys.exit(0 if bytes([13,10]) in b else 'expected a CRLF checkout of the legacy sources')"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned lab dependencies
+        run: python -m pip install numpy==2.2.6 scipy==1.15.3 PyYAML==6.0.3 pytest
+      - name: The three Windows-bound checks
+        run: >-
+          python -m pytest -p no:cacheprovider -v
+          experiments/lantern_reconstruction/tests/test_lr2.py::test_reference_artifact_provenance
+          experiments/lantern_reconstruction/tests/test_lr1.py::test_fresh_probe_rebuilds_exactly_the_pinned_snapshot
+          experiments/lantern_reconstruction/tests/test_lr1.py::test_probe_runs_the_full_loader_and_matches_the_snapshot
+          experiments/lantern_reconstruction/tests/test_lr1_platform.py
 
   smoke:
     name: Run management and release gate smoke (LR5) - Python ${{ matrix.python-version }}
