@@ -149,15 +149,29 @@ def test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking():
     import yaml
     wf_path = streams.HERE.parents[1] / ".github" / "workflows" / "lantern-reconstruction.yml"
     wf = yaml.safe_load(wf_path.read_text(encoding="utf-8"))
-    selected = []
-    for job in wf["jobs"].values():
-        assert "continue-on-error" not in job and job["strategy"]["matrix"]["python-version"] == ["3.11", "3.12"]
+    selected, deselected, windows_nodes = [], [], []
+    node = r"experiments/lantern_reconstruction/tests/(test_\w+\.py::\w+)"
+    for name, job in wf["jobs"].items():
+        assert "continue-on-error" not in job
+        windows = name == "windows-bound-provenance"                    # CI_PLATTFORMBINDUNG.md (2026-10-13)
+        if windows:
+            assert job["runs-on"] == "windows-latest"
+            assert any("core.autocrlf true" in s.get("run", "") for s in job["steps"])  # explicit CRLF checkout
+        else:
+            assert job["strategy"]["matrix"]["python-version"] == ["3.11", "3.12"]
         for step in job["steps"]:
             run = step.get("run", "")
             assert "continue-on-error" not in step and "||" not in run and "exit 0" not in run
-            selected += re.findall(r"experiments/lantern_reconstruction/tests/(test_\w+\.py)", run)
+            deselected += re.findall(r"--deselect\s+" + node, run)
+            nodes = re.findall(r"(?<!--deselect )" + node, run)
+            (windows_nodes if windows else []).extend(nodes)
+            assert windows or not set(nodes) - set(re.findall(r"--deselect\s+" + node, run))  # Linux: nodes only as deselect
+            selected += re.findall(r"experiments/lantern_reconstruction/tests/(test_\w+\.py)(?!::)", run)
     present = sorted(p.name for p in (streams.HERE / "tests").glob("test_*.py"))
-    assert sorted(selected) == present and len(selected) == len(set(selected)) and len(present) == 13
+    assert sorted(selected) == present and len(selected) == len(set(selected)) and len(present) == 14
+    # Every test deselected on Linux runs in the Windows job, and the Windows job runs nothing else:
+    # no check may silently disappear from CI.
+    assert deselected and sorted(deselected) == sorted(windows_nodes) and len(set(deselected)) == len(deselected)
 
 
 def test_mutation_campaign_record_is_consistent():

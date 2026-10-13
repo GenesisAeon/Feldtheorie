@@ -38,6 +38,19 @@ Der Branch `lantern-reconstruction` lief am 2026-10-13 zum ersten Mal in GitHub 
   - dazu eine Negativkontrolle.
 - Die tolerante Formelprüfung aus LR0 (`test_lr0.py`, ≤ 1e-14) läuft ebenfalls weiter unter Linux.
 
+## Erster CI-Lauf nach der Korrektur (`eac320713f`) und Nachbesserung
+
+- **Unter Linux bestehen** `test_lr1_platform.py` und alle übrigen LR0/LR1-Tests: 53 passed, 2 deselected, unter Python 3.11 und 3.12.
+  - Die vom Original-Loader berechnete Matrix weicht unter Linux also höchstens um 1e-14 vom eingefrorenen Snapshot ab.
+  - Das ist **vereinbar** mit der Rundungs-Vermutung, aber kein Beweis.
+- Zwei Fehler der Korrektur selbst, behoben im Folgecommit:
+  1. **Windows-Job:** Das Probe-Werkzeug verweigert absichtlich Schreibzugriffe auf C:, und das Standard-Temp von pytest liegt dort. Lösung: `--basetemp` auf `runner.temp`, das auf GitHubs Windows-Runnern auf D: liegt.
+  2. **Meta-Test** `test_lr5_alarms.py::test_ci_workflow_runs_every_lab_test_file_exactly_once_without_masking`: Er kannte weder den Windows-Job noch `--deselect`.
+     - Er wurde **verschärft**, nicht gelockert. Jede Testdatei wird weiterhin genau einmal aufgerufen; jetzt sind es 14 Dateien.
+     - Neu: Jeder unter Linux ausgenommene Test muss genau im Windows-Job laufen, und der Windows-Job darf nichts anderes enthalten.
+     - Neu: Der Windows-Job muss `windows-latest` mit ausdrücklicher CRLF-Konfiguration verwenden.
+     - Drei Mutanten werden erkannt: fehlende Ausnahme, fehlender Windows-Test, fehlende CRLF-Konfiguration.
+
 ## Grenzen
 
 - **Ein grüner Windows-Lauf erklärt die Linux-Abweichung nicht.** Er zeigt nur, dass die Nachweise in ihrer Entstehungsumgebung reproduzierbar sind.
