@@ -5,3 +5,5 @@ experiments/mandala_memory/protocol/m12_models/*.json -text
 experiments/lantern_reconstruction/reference/** -text
 # Lantern LR1: snapshot artifacts bind raw bytes (container hash) -- never convert line endings
 experiments/lantern_reconstruction/artifacts/** -text
+# Lantern LR7: research-run provenance (run_folder_SHA256SUMS binds raw bytes) -- never convert line endings
+experiments/lantern_reconstruction/lr7/ergebnis_*/** -text

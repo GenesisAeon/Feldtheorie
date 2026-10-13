@@ -1,0 +1,111 @@
+{
+ "code": {
+  "files": {
+   "__init__.py": "2a15f6ba517e641d0ca6394707c667091919b7baa9e63352e2de074c3c87e95a",
+   "artifacts.py": "df24be8a1083e619aa9d51558a0d3493a84bcbda242da0dc67ed27ce78a174cb",
+   "contexts.py": "8e406b4dee8ccfc06a7035b069a3b1281c7dac47b9d4558cdee0f1462cbfd97c",
+   "decoders.py": "dd3933b5eaabd50d357703b44228229bf11a5687f1d752883b4605e3d3938bc3",
+   "dynamics.py": "2e99fc7df5a10a82db632db7296ccf9b7f1f707badd2b84afb53acc855d21e03",
+   "encoding.py": "810e69a90b71fb8eeca8962c3d7276a8809b6688bd8fa082130c7be79904ad00",
+   "episodes.py": "f2c7b24af5d55a31427ee7d5c58b454919aa2384d67f32786775e24d47816e51",
+   "evaluate.py": "6048fffc9dc9b220df816e31b69c058d5ec85c81601fa5ade435f7920a7d2561",
+   "legacy_probe.py": "cfa80d5ec1bf5b445f94661d5ce0d9810ca74408832d1069c4dbf4058f28eb03",
+   "linear_diagnostics.py": "ecf303170df98d0c93b6da538bd02fa19ef2eeba80654141904eecc6a9b340f9",
+   "metrics.py": "ef1fd2e3d2da4cf4ca86bd777150e86159cb65e100f00524389cb2dd1aab7225",
+   "observation.py": "36bf485d35f570339460e923aca82b6336d7b1e18fb518e67defbeabfe1aaad8",
+   "protocol/PLAN_AENDERUNGEN.md": "5989620000b963667335c3848e4b7675fa03d305d130e1c8b5cd8b2a8741acb8",
+   "protocol/control_alarms.json": "fa07cbcd8d45b0586025ec1317628bcaebd9389fd85786130f99da0f8b54940a",
+   "protocol/control_alarms.yaml": "162eda03d3b2a508c0335dccd69c1ed5b50fac20460f83d0b6af96c3ddcaaca2",
+   "protocol/decoder_convergence_gate.json": "b82fd3047db905a3dfcc15bf5f0e00ceffc1602d5337bb412413d46c97791c71",
+   "protocol/decoder_convergence_gate.yaml": "15dc043e9349b551f187ebe324e963a95085225141f8fa4ce3a7dbfcc7d55687",
+   "protocol/freeze.json": "92d47170f17d91935ae0836aed837c128f4792b8fc30fe35abef0ec559f8b46d",
+   "protocol/plan_changes.json": "d5b7536ea73884e3fea5554e0f316a34e1eb6d9c0092e7a203d170394f2cbc7b",
+   "protocol/plan_changes.yaml": "85c3fb90ed7d406dd78af299f049f094961160d4af0eea1e3b4051579e2b1628",
+   "protocol/study_defaults.json": "7ca24901378ffa1c203aeb18d7a933fc03ca592c93790a32c45c2e7e77881d47",
+   "protocol/study_defaults.yaml": "db7d4aa21e47f470e3085e0d81008490fee8f90c897a7492c5e7509ebf3463ba",
+   "registry_adapter.py": "06dc4779b4305de06eff3d0ad0ecf487c3a73c5f8dc20dad81951fd95b350a6a",
+   "release.py": "92a25a8ecabc947568ce80f5c7f11282af02df8a7984897ad7df368842cd1ac8",
+   "runner.py": "9d763f31b1f737afe428c06c278b9a7cfbdf94078757c84fe73810a8a7b7b842",
+   "runs.py": "67a1626f97b208a540b1383b086a24213ad75ac1e47b2b1f4f8450b137bc6da3",
+   "streams.py": "f3d42ffb46dcd37e2ceb7055535f26439a4fa63a035ba7adde08ddc5c3a26f2c",
+   "surrogates.py": "4bbda215ed833964b370974f24af4dccbb35a38df8ae69b3fe6d139f9e8c1def",
+   "training.py": "f8725c60d3ee2050b50e3eebb6f9d4a0dee52594c59aefad1a8fe0323db04aac"
+  },
+  "git": {
+   "commit": "99ec950d6df4b9fbbb342bfdbecac23078b975fb",
+   "dirty": false
+  },
+  "identity": "5cbbad5b970cf49cdd490863526f3ece604fdf0294cd6246d07e06d06a924808"
+ },
+ "config_sha256": "7ca24901378ffa1c203aeb18d7a933fc03ca592c93790a32c45c2e7e77881d47",
+ "created_utc": "2026-10-12T12:48:04.735805+00:00",
+ "grid": {
+  "conditions": [
+   "lantern",
+   "uncoupled",
+   "uniform_total",
+   "strength_surrogate"
+  ],
+  "contexts": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19
+  ],
+  "controls": [
+   "reset",
+   "zero_impulse",
+   "permuted_targets"
+  ],
+  "dt": 0.02,
+  "proposals": 20000,
+  "sizes": {
+   "test": 1000,
+   "train": 1000,
+   "val": 250
+  },
+  "study_id": 1431972670,
+  "tasks": [
+   "A",
+   "B"
+  ],
+  "times": [
+   0.0,
+   0.5,
+   1.0,
+   2.0,
+   3.0,
+   5.0,
+   10.0
+  ]
+ },
+ "kind": "research",
+ "run_id": "lr7-research-20261012T124802Z",
+ "run_identity": "2e61024776cd1cad870df1e01536ef1df6e96c0c9234e56076e67332027639ae",
+ "schema": "lantern-run-v1",
+ "snapshot": {
+  "canonical_sha256": "2d6a2a6439efc4295af46026155daf63fbea71d4c0366cbfb11a3edf2df9ef2a",
+  "manifest_sha256": "5b7aa962da8b89157f400f50a51f01c45bd861f19deed456bd2c7498f60a04dc"
+ },
+ "software": {
+  "numpy": "2.2.6",
+  "python": "3.11.9",
+  "scipy": "1.15.3"
+ }
+}

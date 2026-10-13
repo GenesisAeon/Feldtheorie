@@ -11,7 +11,8 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 | LR4 | Ridge und Evaluation | ✅ erledigt, siehe [Bericht](lr4/LR4_BERICHT.md). Ridge per NumPy (LR0-O1); Decoder-Konvergenzgate bestanden; R1/R2 nach `REVIEW_LR4` geschlossen und von Astra nachgeprüft (`25ba293`, GO für LR5) |
 | LR5 | Laufverwaltung und CI | ✅ erledigt, siehe [Bericht](lr5/LR5_BERICHT.md). LR5-A1, Artefaktkette, Resume, Freigabe-Gate, Budget, CI-Workflow, Mutationskampagne; wartet auf Prüfung. Freigaberegel LR5-A1 vor dem Freeze zu entscheiden |
 | LR6 | Entwicklungsabnahme und Freeze-Kandidat | ✅ erledigt, siehe [Bericht](lr6/LR6_BERICHT.md). Entwicklungsabnahme sauber (nach Kontrollprotokoll v2); Freeze-Kandidat `lr6/freeze_candidate.json`; wartet auf Prüfung und Freeze-Entscheidung |
-| LR7–LR9 | Forschungsrunde, Bericht, Folgestudien | erst nach der LR6-Freigabe |
+| LR7 | Forschungsrunde und Ergebnisbericht | ✅ Lauf 2026-10-12 abgeschlossen; Bericht v2 nach Astras Review: [lr7/ergebnis_20261012](lr7/ergebnis_20261012/README.md) |
+| LR8–LR9 | Folgestudien | offen; jede neue Studie braucht ein neues Protokoll und Johanns Freigabe |
 
 ## LR0 (2026-10-08)
 
@@ -128,3 +129,12 @@ Grundlage: [Implementierungsplan Version 2.0, § 14](reference/review_package_20
 - **Startwerkzeug** `tools/lr7_research_run.py`: standardmäßig ein Probelauf; der Start verlangt `--confirm-study`.
 - Unterlagen: `lr7/LR7_VORSTART.md`.
 - **Offen:** das gesonderte Vorstartreview. **Kein Forschungslauf vor diesem Review.**
+
+## LR7 Ergebnis (2026-10-12/13)
+
+- Forschungslauf `lr7-research-20261012T124802Z`: 1960/1960 Zellen, technisch vollständig, wissenschaftlich interpretierbar, keine Kontroll-Alarme, Konvergenz-Gate bestanden.
+- **Aufgabe A:** gewichteter Rekonstruktionsgewinn mit Lantern 0,517, ungekoppelt 0,977. Das ist keine Aussage über dauerhafte Spur oder Gedächtnisdauer.
+- **Aufgabe B:** Der vorab geforderte Gewinn über 0,05 wurde nicht nachgewiesen (H-B1/H-B2). Das ist kein Unmöglichkeitsbeweis.
+- **Astras Ergebnisreview** (ASTRA-2026-10-12-04): Zahlen reproduziert. Die Wortlautkorrekturen R1–R7 sind in Bericht v2 umgesetzt.
+- **Ablage:** Bericht, Freigabebericht, Laufmanifest und Prüfsummen des vollständigen Laufordners liegen in [`lr7/ergebnis_20261012/`](lr7/ergebnis_20261012/README.md). Die Zellarchive bleiben außerhalb des Repos.
+

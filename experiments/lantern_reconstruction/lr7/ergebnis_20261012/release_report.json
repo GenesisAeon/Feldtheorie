@@ -1,0 +1,459 @@
+{
+ "control_alarms": {
+  "alpha": 0.01,
+  "cells": {
+   "permuted_targets|A|1.0": {
+    "G": -0.0011961794701772558,
+    "holm_p": 1.0,
+    "p": 0.5057,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "permuted_targets|A|5.0": {
+    "G": -0.0012854787806117845,
+    "holm_p": 1.0,
+    "p": 0.5467,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "permuted_targets|B|1.0": {
+    "G": -0.0009442634908389356,
+    "holm_p": 0.8217000000000001,
+    "p": 0.0913,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "permuted_targets|B|5.0": {
+    "G": -0.0008320469527542193,
+    "holm_p": 0.258,
+    "p": 0.0258,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "reset|A|1.0": {
+    "G": -0.000859457116069526,
+    "holm_p": 1.0,
+    "p": 0.3255,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "reset|A|5.0": {
+    "G": -0.0015796063248203409,
+    "holm_p": 1.0,
+    "p": 0.8554,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "reset|B|1.0": {
+    "G": -0.0007544879351492148,
+    "holm_p": 0.156,
+    "p": 0.013,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "reset|B|5.0": {
+    "G": -0.0009485248336810074,
+    "holm_p": 1.0,
+    "p": 0.2573,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "zero_impulse|A|1.0": {
+    "G": -0.000859457116069526,
+    "holm_p": 1.0,
+    "p": 0.3358,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "zero_impulse|A|5.0": {
+    "G": -0.0015796063248203409,
+    "holm_p": 1.0,
+    "p": 0.8562,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "zero_impulse|B|1.0": {
+    "G": -0.0007544879351492148,
+    "holm_p": 0.156,
+    "p": 0.0137,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   },
+   "zero_impulse|B|5.0": {
+    "G": -0.0009485248336810074,
+    "holm_p": 1.0,
+    "p": 0.2641,
+    "positive_spurious_success": false,
+    "target_dependence": false
+   }
+  },
+  "holm_family_size": 12,
+  "positive_spurious_success_alarm": false,
+  "release_rule": {
+   "implemented_default": "the release gate applies this rule (both alarms block)",
+   "interpretation": "both names denote the same directional test (per cell family its own null), with and without the additional condition G > 0; a missing alarm does not prove independence",
+   "investigation": "an investigation is no automatic override: finding, cause, consequences and, if needed, a new protocol version are documented",
+   "proposal": "either alarm sets scientifically_interpretable = false and blocks the scientific release until a documented investigation; a negative G does not make a target dependence harmless; technically_complete is unaffected by the alarms",
+   "status": "ENDORSED by Johann and Astra (REVIEW_LR5, 2026-10-09); becomes binding with the research freeze (LR6)"
+  },
+  "target_dependence_alarm": false
+ },
+ "convergence_gate": {
+  "bound_to_gate_definition": true,
+  "max_abs_dA": 2.506293506066015e-10,
+  "max_abs_dG": 8.71481664610485e-10,
+  "passed": true
+ },
+ "hypothesis": {
+  "status": "evaluated",
+  "task_A_estimation": {
+   "A_lantern": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     0.48030386991204155,
+     0.5533681859553693
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": 0.5168360279337054,
+    "n_contexts": 20,
+    "sd": 0.07805776386483,
+    "se": 0.01745424661733866,
+    "t_quantile": 2.093024054408263
+   },
+   "A_uncoupled": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     0.9694342168481818,
+     0.9853962769545397
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": 0.9774152469013607,
+    "n_contexts": 20,
+    "sd": 0.017052958079282476,
+    "se": 0.003813157348272986,
+    "t_quantile": 2.093024054408263
+   },
+   "kind": "estimation without a success threshold (plan 9, A)",
+   "paired_difference": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     -0.49806970210898577,
+     -0.4230887358263246
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": -0.4605792189676552,
+    "n_contexts": 20,
+    "sd": 0.08010540407957771,
+    "se": 0.017912112888702474,
+    "t_quantile": 2.093024054408263
+   },
+   "per_context": {
+    "lantern": {
+     "0": 0.42804552928600315,
+     "1": 0.4053471737619473,
+     "2": 0.6748058835905905,
+     "3": 0.46672707202015973,
+     "4": 0.5228997850143448,
+     "5": 0.4486924330571947,
+     "6": 0.5567506297586401,
+     "7": 0.5863064183734964,
+     "8": 0.6525647895122572,
+     "9": 0.531761425225064,
+     "10": 0.44909313873546103,
+     "11": 0.5733237484445723,
+     "12": 0.624561618503773,
+     "13": 0.5479703519176863,
+     "14": 0.44970726039661063,
+     "15": 0.45749073363779075,
+     "16": 0.5219071504262356,
+     "17": 0.538948080948265,
+     "18": 0.43597608300247853,
+     "19": 0.4638412530615391
+    },
+    "uncoupled": {
+     "0": 0.9815100493768962,
+     "1": 0.9547991358727281,
+     "2": 0.9715130595427729,
+     "3": 0.9705229626297575,
+     "4": 0.9689709186481137,
+     "5": 0.9648439420810396,
+     "6": 0.9918836938343607,
+     "7": 0.9838762940084754,
+     "8": 0.99107011673198,
+     "9": 0.9581216455403395,
+     "10": 0.9929687845273076,
+     "11": 0.9307077662608911,
+     "12": 0.9823155140387492,
+     "13": 0.9880672481489239,
+     "14": 0.996960918650378,
+     "15": 0.9992191070401167,
+     "16": 0.9949167914695545,
+     "17": 0.976099808657071,
+     "18": 0.9832486147124017,
+     "19": 0.9666885662553584
+    }
+   }
+  },
+  "task_B_descriptive": {
+   "lantern": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     -0.0015492472278269122,
+     -0.0004885403727094477
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": -0.00101889380026818,
+    "n_contexts": 20,
+    "sd": 0.0011331989363654149,
+    "se": 0.0002533909853743526,
+    "t_quantile": 2.093024054408263
+   },
+   "strength_surrogate": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     -0.0013385756402858608,
+     -0.00029681217007869205
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": -0.0008176939051822764,
+    "n_contexts": 20,
+    "sd": 0.001112960900259642,
+    "se": 0.0002488656229279923,
+    "t_quantile": 2.093024054408263
+   },
+   "uncoupled": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     -0.0017004588666748553,
+     -0.0007151086104836964
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": -0.001207783738579276,
+    "n_contexts": 20,
+    "sd": 0.0010526922277122046,
+    "se": 0.00023538913805501774,
+    "t_quantile": 2.093024054408263
+   },
+   "uniform_total": {
+    "degenerate": false,
+    "df": 19,
+    "interval": [
+     -0.001680796475597259,
+     -0.0006880951893414553
+    ],
+    "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+    "level": 0.95,
+    "mean": -0.0011844458324693572,
+    "n_contexts": 20,
+    "sd": 0.0010605456505596727,
+    "se": 0.0002371452167893166,
+    "t_quantile": 2.093024054408263
+   }
+  },
+  "task_B_hypotheses": {
+   "H_B1": {
+    "degenerate": false,
+    "df": 19,
+    "margin": 0.05,
+    "mean": -0.00101889380026818,
+    "n_contexts": 20,
+    "p": 1.0,
+    "t": -201.34454951068733
+   },
+   "H_B2": {
+    "degenerate": false,
+    "df": 19,
+    "margin": 0.05,
+    "mean": -0.00020119989508590348,
+    "n_contexts": 20,
+    "p": 1.0,
+    "t": -372.073722378135
+   },
+   "allowed_statement": "the pre-specified evidence was not reached; this is no general impossibility proof",
+   "bonferroni_intervals": {
+    "H_B1": {
+     "degenerate": false,
+     "df": 19,
+     "interval": [
+      -0.001635505613277865,
+      -0.000402281987258495
+     ],
+     "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+     "level": 0.975,
+     "mean": -0.00101889380026818,
+     "n_contexts": 20,
+     "sd": 0.0011331989363654149,
+     "se": 0.0002533909853743526,
+     "t_quantile": 2.433440211374214
+    },
+    "H_B2": {
+     "degenerate": false,
+     "df": 19,
+     "interval": [
+      -0.0005295262754148678,
+      0.0001271264852430608
+     ],
+     "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+     "level": 0.975,
+     "mean": -0.00020119989508590348,
+     "n_contexts": 20,
+     "sd": 0.0006033927620579742,
+     "se": 0.00013492272330929863,
+     "t_quantile": 2.433440211374214
+    }
+   },
+   "family_alpha": 0.05,
+   "holm_adjusted": [
+    1.0,
+    1.0
+   ],
+   "margin": 0.05,
+   "raw_intervals_95": {
+    "H_B1": {
+     "degenerate": false,
+     "df": 19,
+     "interval": [
+      -0.0015492472278269122,
+      -0.0004885403727094477
+     ],
+     "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+     "level": 0.95,
+     "mean": -0.00101889380026818,
+     "n_contexts": 20,
+     "sd": 0.0011331989363654149,
+     "se": 0.0002533909853743526,
+     "t_quantile": 2.093024054408263
+    },
+    "H_B2": {
+     "degenerate": false,
+     "df": 19,
+     "interval": [
+      -0.0004835964004585359,
+      8.119661028672896e-05
+     ],
+     "interval_kind": "pointwise two-sided t interval (model-based approximation, not simultaneous)",
+     "level": 0.95,
+     "mean": -0.00020119989508590348,
+     "n_contexts": 20,
+     "sd": 0.0006033927620579742,
+     "se": 0.00013492272330929863,
+     "t_quantile": 2.093024054408263
+    }
+   },
+   "rejected": [
+    false,
+    false
+   ]
+  }
+ },
+ "kind": "research",
+ "n_expected_cells": 1960,
+ "n_verified_cells": 1960,
+ "pipeline_gate_A_G0": {
+  "lantern": 0.9773299589769465,
+  "strength_surrogate": 0.9773299589769465,
+  "uncoupled": 0.9773299589769465,
+  "uniform_total": 0.9773299589769465
+ },
+ "problems": [],
+ "run_id": "lr7-research-20261012T124802Z",
+ "run_identity": "2e61024776cd1cad870df1e01536ef1df6e96c0c9234e56076e67332027639ae",
+ "scientific_blocks": [],
+ "scientifically_interpretable": true,
+ "status": "complete",
+ "structure_checks": {
+  "0": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "1": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "10": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "11": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "12": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "13": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "14": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "15": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "16": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "17": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "18": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "19": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "2": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "3": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "4": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "5": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "6": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "7": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "8": {
+   "reset": true,
+   "zero_impulse": true
+  },
+  "9": {
+   "reset": true,
+   "zero_impulse": true
+  }
+ },
+ "technically_complete": true
+}
