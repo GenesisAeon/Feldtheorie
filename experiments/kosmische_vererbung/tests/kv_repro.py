@@ -15,13 +15,26 @@ mean_Z 3.1e-17 abs on max 0.017 (1.8e-15), gas_mass 2.1e-9 Msun on 2e6 (1.0e-15)
 f_primordial_origin 6.1e-16 abs on 0.5 (1.2e-15), budget_rel_error 1.2e-16 abs (V5c).
 Emulating the compensated float ``sum()`` of Python 3.12 under 3.11 (``neumaier_sum``)
 reproduces exactly Astra's V5 deviations and additionally gives zone_Z 2.6e-15 scaled and
-budget_rel_error 8.2e-16 abs. Scaled quantities therefore get 1e-13 times the largest
-absolute value of the committed series (about 40-100x the largest observed deviation),
-budget_rel_error gets 1e-13 absolute (about 100x; it is itself a rounding residue and stays
-four orders of magnitude below the balance tolerance 1e-9 of both protocols). 1e-13 relative on
-mean_Z moves r = (Z_A - Z_B)/Z_B by at most about 2e-13, below the strictest protocol
-criterion (L: |r| <= 1e-12) and nine orders of magnitude below atol_r = 1e-4 of V5c.
-The scientific convergence criteria of the protocols are not touched here.
+budget_rel_error 8.2e-16 abs. Scaled quantities therefore get an absolute tolerance of
+SCALED_RTOL = 1e-13 times the largest absolute value of the whole committed series (about
+40-100x the largest observed deviation). budget_rel_error gets 1e-13 absolute (about 100x; it
+is itself a rounding residue and stays four orders of magnitude below the balance tolerance
+1e-9 of both protocols).
+
+The scaled tolerance is not a pointwise relative bound (Astra review ASTRA-2026-10-12-05,
+C5a). For a single value x of a series with maximum M the admissible relative change is
+1e-13 * M/|x|, which grows for small values (series [1, 1e-8]: about 5e-6 on the second
+value). What it means for r = (Z_A - Z_B)/Z_B: with absolute errors |dZ_A| <= a and
+|dZ_B| <= b < |Z_B|,
+
+    |dr| <= (a + |Z_A/Z_B| * b) / (|Z_B| - b)          (``r_deviation_bound``).
+
+For the stored V5 and V5c series the largest ratio max(mean_Z)/mean_Z(t) over positive values
+is 1.9735 in both studies; the bound evaluated on every stored A/B pair and time is at most
+3.98e-13, below the strictest protocol criterion (L: |r| <= 1e-12) and far below atol_r = 1e-4
+of V5c. test_kv_repro checks this on the stored data, so new data with small denominators
+fail instead of silently loosening the contract. The scientific convergence criteria of the
+protocols are not touched here.
 """
 from __future__ import annotations
 
@@ -112,3 +125,21 @@ def neumaier_sum(iterable, start=0):
                 s, c, comp = s + c, 0.0, False
             s = s + x
     return s + c if comp else s
+
+
+def r_deviation_bound(z_a: list, z_b: list, rtol: float = SCALED_RTOL) -> float:
+    """Largest possible |dr| over all times if Z_A and Z_B each move within the scaled tolerance.
+
+    a = rtol * max|Z_A|, b = rtol * max|Z_B| (absolute, as in compare_series). Returns inf if
+    some |Z_B(t)| <= b, because r is then not bounded by the comparison at all.
+    """
+    if len(z_a) != len(z_b) or not z_a:
+        raise ValueError("A and B series must be non-empty and of equal length")
+    a = rtol * max(abs(v) for v in z_a)
+    b = rtol * max(abs(v) for v in z_b)
+    worst = 0.0
+    for za, zb in zip(z_a, z_b):
+        if abs(zb) <= b:
+            return math.inf
+        worst = max(worst, (a + abs(za / zb) * b) / (abs(zb) - b))
+    return worst

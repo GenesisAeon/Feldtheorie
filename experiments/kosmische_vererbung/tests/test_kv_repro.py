@@ -128,7 +128,55 @@ def test_environment_binding_reports_each_difference():
     assert "python 0.0.1 (Lauf)" in reason and "numpy 0.0.2 (Lauf)" in reason and "scipy" not in reason
 
 
-def test_tolerance_stays_below_strictest_protocol_criterion():
-    # L: |r| <= 1e-12 (V5 and V5c); a relative error eps in Z_A and Z_B moves r by at most about 2*eps.
-    assert 2 * kv_repro.SCALED_RTOL < 1e-12
+STRICTEST_R_CRITERION = 1e-12  # L: |r| <= 1e-12 in V5 and V5c
+
+
+def _ab_pairs(study):
+    raw = json.loads((RUNS / study / "raw.json").read_text(encoding="utf-8"))
+    by = {}
+    for r in raw["runs"]:
+        cond = tuple(r.get(x) for x in ("scheme", "rule", "k", "dt"))
+        by.setdefault(cond, {})[r["init"]] = r["series"]["mean_Z"]
+    return [(c, d["A"], d["B"]) for c, d in sorted(by.items(), key=str) if "A" in d and "B" in d]
+
+
+@pytest.mark.parametrize("study, n_pairs", [("v5_mean_vs_distribution", 18), ("v5c_resolution", 72)])
+def test_r_bound_on_stored_series_stays_below_strictest_criterion(study, n_pairs):
+    pairs = _ab_pairs(study)
+    assert len(pairs) == n_pairs
+    worst = max(kv_repro.r_deviation_bound(za, zb) for _, za, zb in pairs)
+    assert worst < STRICTEST_R_CRITERION
+    assert worst == pytest.approx(3.984e-13, rel=1e-3, abs=0)
+    ratio = max(max(zs) / z for _, za, zb in pairs for zs in (za, zb) for z in zs if z > 0)
+    assert ratio == pytest.approx(1.973522505131025, rel=1e-12)
+
+
+def test_r_bound_matches_hand_value_and_is_attained():
+    # Z_A = 2, Z_B = 1, a = b = rtol*max: bound (2e-13 + 2*1e-13)/(1 - 1e-13) for rtol 1e-13.
+    bound = kv_repro.r_deviation_bound([2.0], [1.0])
+    assert bound == pytest.approx(4e-13 / (1 - 1e-13), rel=1e-12, abs=0)
+    a, b = 2e-13, 1e-13
+    worst_case = abs((2.0 + a) / (1.0 - b) - 2.0)
+    assert worst_case == pytest.approx(bound, rel=1e-3, abs=0)
+    # The scale is the maximum of the whole series, not the value at one time.
+    assert kv_repro.r_deviation_bound([2.0, 1.0], [1.0, 1.0]) == pytest.approx(bound, rel=1e-12, abs=0)
+
+
+def test_r_bound_fails_for_small_denominators():
+    # Scaled tolerance on a series with a small value: pointwise far looser than 1e-13.
+    assert kv_repro.r_deviation_bound([1.0, 1e-8], [1.0, 1e-8]) > STRICTEST_R_CRITERION
+    assert kv_repro.r_deviation_bound([1.0, 1e-14], [1.0, 1e-14]) == float("inf")
+    assert kv_repro.r_deviation_bound([0.0, 0.0], [1.0, -1e-14]) == float("inf")
+    with pytest.raises(ValueError):
+        kv_repro.r_deviation_bound([1.0], [1.0, 1.0])
+
+
+def test_scaled_tolerance_is_not_pointwise_relative():
+    committed = {"mean_Z": [1.0, 1e-8]}
+    changed = {"mean_Z": [1.0, 1e-8 + 0.5e-13]}
+    assert kv_repro.compare_series(changed, committed) == []
+    assert (0.5e-13 / 1e-8) > 1e-6
+
+
+def test_budget_tolerance_below_balance_tolerance():
     assert kv_repro.ABSOLUTE["budget_rel_error"] < 1e-9
